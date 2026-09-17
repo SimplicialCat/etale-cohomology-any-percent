@@ -1,0 +1,16 @@
+*.
+*-defunct*.typ
+old_sources
+old_sources/*
+extract
+extract/*
+*.pdf
+test.typ
+cover-page-image-v0*
+checklist.typ
+instructions.md
+typos.typ
+display-typo.typ
+sketchy.json
+typo-counts.csv
+tmp/*

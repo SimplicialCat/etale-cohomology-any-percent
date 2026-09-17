@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style
+  xmlns="http://purl.org/net/xbiblio/csl"
+  version="1.0"
+  class="in-text"
+  default-locale="en-US">
+
+  <info>
+    <title>Custom Short-Title Labels</title>
+    <id>placeholder</id>
+    <updated>2026-09-04T00:00:00+00:00</updated>
+  </info>
+
+  <!--
+    The important macro.
+
+    BibLaTeX:
+        shorttitle = {Har77}
+
+    becomes the short form of CSL's "title".
+  -->
+  <macro name="cite-label">
+    <text variable="title" form="short"/>
+  </macro>
+
+
+  <!-- Author -->
+  <macro name="author">
+    <names variable="author">
+      <name
+        initialize-with=". "
+        name-as-sort-order="all"
+        sort-separator=", "
+        delimiter=", "
+        and="text"/>
+
+      <!-- Use editor if there is no author. -->
+      <substitute>
+        <names variable="editor">
+          <name
+            initialize-with=". "
+            name-as-sort-order="all"
+            sort-separator=", "
+            delimiter=", "
+            and="text"/>
+        </names>
+      </substitute>
+    </names>
+  </macro>
+
+
+  <!-- Publication year -->
+  <macro name="year">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+
+
+  <!-- Journal / book publication information -->
+  <macro name="source">
+    <choose>
+
+      <!-- Journal articles -->
+      <if type="article-journal">
+        <group delimiter=", ">
+          <text
+            variable="container-title"
+            font-style="italic"/>
+
+          <group delimiter="">
+            <text
+              variable="volume"
+              font-weight="bold"/>
+
+            <text
+              variable="issue"
+              prefix="("
+              suffix=")"/>
+          </group>
+
+          <text variable="page"/>
+        </group>
+      </if>
+
+      <!-- Books and most other items -->
+      <else>
+        <group delimiter=", ">
+          <text variable="publisher"/>
+          <text variable="publisher-place"/>
+        </group>
+      </else>
+
+    </choose>
+  </macro>
+
+
+  <!--
+    CITATIONS
+
+      @hartshorne
+        -> [Har77]
+
+      @hartshorne[Theorem 3.7]
+        -> [Har77, Theorem 3.7]
+  -->
+  <citation>
+    <layout
+      prefix="["
+      suffix="]"
+      delimiter="; ">
+
+      <group delimiter=", ">
+        <text macro="cite-label"/>
+        <text variable="locator"/>
+      </group>
+
+    </layout>
+  </citation>
+
+
+  <!--
+    BIBLIOGRAPHY
+
+    Sort by exactly the same label that is printed
+    in the citations.
+  -->
+  <bibliography>
+
+    <sort>
+      <key
+        macro="cite-label"
+        sort="ascending"/>
+    </sort>
+
+    <layout suffix=".">
+
+      <!-- [Har77] -->
+      <text
+        macro="cite-label"
+        prefix="["
+        suffix="] "/>
+
+      <!-- Hartshorne, R. -->
+      <text
+        macro="author"
+        suffix=". "/>
+
+      <!-- Algebraic Geometry -->
+      <text
+        variable="title"
+        font-style="italic"
+        suffix=". "/>
+
+      <!-- Springer, New York -->
+      <text
+        macro="source"
+        suffix=". "/>
+
+      <!-- 1977 -->
+      <text macro="year"/>
+
+    </layout>
+
+  </bibliography>
+
+</style>
