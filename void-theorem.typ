@@ -58,7 +58,7 @@ This gives a *non-contextual* state update that does the same thing. The documen
     observation-color: depth => amplify-color(rgb("#e6c5ff"), calc.pow(0.5, depth - 1)),
     problem-color: depth => amplify-color(rgb("ff99cc"), calc.pow(0.5, depth - 1)),
     exercise-color: depth => amplify-color(rgb("ff99cc"), calc.pow(0.5, depth - 1)),
-    proof-color: depth => amplify-color(rgb("d0d0d0"), 0.6 / calc.max(depth, 1)),
+    proof-color: depth => amplify-color(rgb("e7e7e7"), 0.6 / calc.max(depth, 1)),
     date-color: depth => rgb("ffffff"),
   ).at(key)} else {
     depth => rgb("#00000000")
