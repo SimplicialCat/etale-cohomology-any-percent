@@ -82,7 +82,10 @@
             #set par(spacing: 1em)
             All source code and resources of this document has been included in this PDF file as attachments\
             You can use `pdfdetach -saveall <file-name>` on command line to extract them and reproduce this document with Typst #sys.version\
-            `pdfdetach` is available from package managers on mainstream Linux distros, and may be downloaded separately on Windows
+            `pdfdetach` is available from package managers on mainstream Linux distros, and may be downloaded separately on Windows#v(1.5em)
+
+            Source and releases of this document may also be found at:\
+            #link("https://github.com/SimplicialCat/etale-cohomology-any-percent", text(fill: blue.darken(25%), raw("https://github.com/SimplicialCat/etale-cohomology-any-percent")))
           ]
         }
       ]
