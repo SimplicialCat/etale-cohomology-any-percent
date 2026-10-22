@@ -1,17 +1,18 @@
+// audit-exception: 展示公式内的 #[...] 文字块嵌有多段行内公式，朴素配对会把块内散文切成伪公式段（如 $-good open dense of$、$whenever$）；译文只改文字说明，块内公式与全部数学逐段核对未变。
 #import "void-import.typ": *
 
-== Generic base change and finiteness
+== 一般基变换与有限性
 
-In this section, we establish the generic base change theorem, that for $f$ a morphism between finite type schemes over a base, the formation of $R f_*$ preserves $D^b_c$ and is compatible with base change, up to shrinking the base to a dense open. As an application, we establish the projection and Kunneth formulas - not for $R f_!$, but for $R f_*$. In its proof, Poincare duality will be used to bootstrap the last step, after a chain of reductions. 
+本节我们建立一般基变换定理：设 $f$ 是底上有限型概形之间的态射，则 $R f_*$ 的构造保持 $D^b_c$，并且在把底缩小到某个稠密开集之后与基变换相容。作为应用，我们建立投影公式与 Künneth 公式，不过针对的不是 $R f_!$，而是 $R f_*$。在其证明中，经过一串归约之后，我们会用 Poincaré 对偶打通最后一步。 
 
-The proof method used in this section closely follows that of @cite-lei-fu[Section 9.3] with order rearrangements and minor variations. It is ultimately the method of @cite-SGA4half. 
+本节的证明方法紧密沿用 @cite-lei-fu[Section 9.3] 的做法，只调整了叙述顺序、作了些微改动。归根结底，这仍是 @cite-SGA4half 的方法。 
 
 #theorem(name: <generic-base-change>)[
-  (Generic finiteness and base change) Let $Lambda$ be an $n$-torsion noetherian ring. Let $S$ be a noetherian $ZZ[n^(-1)]$-scheme and $f: X -> Y$ be a morphism between finite type $S$-schemes. Then for any $cal(K) in D^b_c (X_et, Lambda)$, there exists a dense open $U subset S$ s.t: 
+  (一般有限性与基变换) 设 $Lambda$ 是 $n$-挠 Noether 环，$S$ 是 Noether 的 $ZZ[n^(-1)]$-概形，$f: X -> Y$ 是有限型 $S$-概形之间的态射。则对任意 $cal(K) in D^b_c (X_et, Lambda)$，存在稠密开集 $U subset S$，使得： 
 
-  - $R f_(U,*) (cal(K)|_(X_U)) in D^b_c ((Y_U)_et, Lambda)$, where $f_U: X_U -> Y_U$ is the base change of $f$ along $U -> S$; 
+  - $R f_(U,*) (cal(K)|_(X_U)) in D^b_c ((Y_U)_et, Lambda)$，其中 $f_U: X_U -> Y_U$ 是 $f$ 沿 $U -> S$ 的基变换； 
 
-  - For any Cartesian diagram: #h(1fr)
+  - 对任意拉回图表：#h(1fr)
     #align(center, diagram({
       node((0, 0), [$X'$])
       node((1, 0), [$Y'$])
@@ -28,153 +29,153 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
       edge((2, 0), (2, 1), [$g$], label-side: left, "->")
       edge((0, 0), (0, 1), [$g_X$], label-side: right, "->")
     }))
-    in which $g(S') subset U$, 
+    其中 $g(S') subset U$， 
     $
       g_Y^(-1) R f_* cal(K) -> R f'_* g_X^(-1) cal(K)
     $
-    is an isomorphism. 
+    是同构。 
 ]
 #proof[
   #notation[
-    An open subset $U subset S$ for which the theorem above holds will be called an *$(f, cal(K), S)$-good* open for the duration of this proof. It can be seen that: 
+    在本证明中，若开子集 $U subset S$ 使上述定理成立，就称它为 *$(f, cal(K), S)$-好*开集。可以看出： 
 
-    - When $f$ is proper, $S$ itself is $(f, cal(K), S)$-good. (This is due to proper base change and finiteness of $R f_*$ (@finiteness-of-lower-shriek).)
+    - 若 $f$ 紧合，则 $S$ 本身是 $(f, cal(K), S)$-好的。（这来自紧合基变换以及 $R f_*$ 的有限性（@finiteness-of-lower-shriek）。）
 
-    - For $X ->^f Y ->^g Z$, if $U subset S$ is $(f, cal(K), S)$ good, then $U$ is $(g_U, R f_(U,*) (cal(K)|_(X_U)), S)$-good if and only if it is $(g compose f, cal(K), S)$-good. One can check this from the definition. 
+    - 对 $X ->^f Y ->^g Z$，若 $U subset S$ 是 $(f, cal(K), S)$-好的，则 $U$ 是 $(g_U, R f_(U,*) (cal(K)|_(X_U)), S)$-好的，当且仅当它是 $(g compose f, cal(K), S)$-好的。这可以直接由定义验证。 
 
-      // Conversely, if $U subset S$ is $(g compose f, cal(K))$-good and $(f, cal(K))$-good, then it is also $(g, R f_(U,*) (cal(K)|_(X_U)))$-good. 
+      // 反之，若 $U subset S$ 是 $(g compose f, cal(K))$-好的且是 $(f, cal(K))$-好的，则它也是 $(g, R f_(U,*) (cal(K)|_(X_U)))$-好的。 
 
-    - Given a distinguished triangle $cal(K)_1 -> cal(K)_2 -> cal(K)_3 ->^(+1)$ in $D^b_c (X_et, Lambda)$, if $U subset S$ is $(f, cal(K)_i, S)$-good for $i=1,2$, then it is also $(f, cal(K)_3, S)$-good. 
+    - 给定 $D^b_c (X_et, Lambda)$ 中的特殊三角 $cal(K)_1 -> cal(K)_2 -> cal(K)_3 ->^(+1)$，若 $U subset S$ 对 $i=1,2$ 都是 $(f, cal(K)_i, S)$-好的，则它也是 $(f, cal(K)_3, S)$-好的。 
   ]
 
-  Note that: 
+  注意： 
 
-  - Let $S$ have irreducible components $S_1, dots.c, S_m$, and let $U = S - union.big_(i<j) (S_i inter S_j)$. Then $U$ is a dense open of $S$ that is a disjoint union of its irreducible components. By shrinking $S$ to $U$ we may argue on each irreducible component separately, and thus assume that $S$ is irreducible. Base change to the reduction of $S$ and use topological invariance, we may thus from now on assume that $S$ is integral with generic point $sigma = Spec(K(S))$. By shrinking $S$ to any affine open, we may also assume that $S$ is affine. 
+  - 设 $S$ 的不可约分支为 $S_1, dots.c, S_m$，并令 $U = S - union.big_(i<j) (S_i inter S_j)$。则 $U$ 是 $S$ 的稠密开集，且是其不可约分支的不交并。把 $S$ 缩小到 $U$，便可在每个不可约分支上分别论证，从而不妨设 $S$ 不可约。再基变换到 $S$ 的约化并利用拓扑不变性，于是从今往后不妨设 $S$ 整、其泛点为 $sigma = Spec(K(S))$。把 $S$ 缩小到任一仿射开集，还可设 $S$ 仿射。 
 
-  - This problem is local in $Y$. Indeed, for an affine cover ${Y_i}$ of $Y$ consisting of finitely many opens, base change $f$ to $f_i: X_i -> Y_i$ and $cal(K)_i := cal(K)|_(X_i)$. Then if dense opens $U_i subset S$ are $(f_i, cal(K)_i, S)$-good, one can easily check that $inter.big_i U_i$ is $(f, cal(K), S)$-good. Hence, we may base change $f$ to an affine open of $Y$ whenever necessary. 
+  - 这个问题在 $Y$ 上是局部的。事实上，取 $Y$ 的一个由有限多个开集组成的仿射覆盖 ${Y_i}$，把 $f$ 基变换为 $f_i: X_i -> Y_i$，并置 $cal(K)_i := cal(K)|_(X_i)$。此时若稠密开集 $U_i subset S$ 都是 $(f_i, cal(K)_i, S)$-好的，则容易验证 $inter.big_i U_i$ 是 $(f, cal(K), S)$-好的。因此，必要时总可以把 $f$ 基变换到 $Y$ 的某个仿射开集上。 
 
   #lemma[
-    TFAE: 
+    以下条件等价： 
 
-    - For every morphism $f: X -> Y$ of finite type $S$-schemes in which $dim(X_sigma) <= d$ and every $cal(K) in D^b_c (X_et, Lambda)$, there is an $(f, cal(K), S)$-good open dense of $S$; 
+    - 对有限型 $S$-概形之间的每个态射 $f: X -> Y$（满足 $dim(X_sigma) <= d$）以及每个 $cal(K) in D^b_c (X_et, Lambda)$，都存在 $S$ 的 $(f, cal(K), S)$-好稠密开集； 
 
-    - For every open immersion $f: X -> Y$ of finite type $S$-schemes in which $dim(X_sigma) <= d$, $Y$ is affine and $f$ dominant, and every $cal(K) in D^b_c (X_et, Lambda)$, there is an $(f, cal(K), S)$-good open dense of $S$. 
+    - 对有限型 $S$-概形之间的每个开浸入 $f: X -> Y$（满足 $dim(X_sigma) <= d$、$Y$ 仿射且 $f$ 支配）以及每个 $cal(K) in D^b_c (X_et, Lambda)$，都存在 $S$ 的 $(f, cal(K), S)$-好稠密开集。 
   ]
   #proof[
-    ($==>$) is tautological, so we only prove ($<==$). 
-    We reduce to the case that $X$ is affine first. Suppose that the case where $X$ and $Y$ are both affine has been dealt with, and so has the case where $f$ is an open immersion. Put: 
+    ($==>$) 是同义反复，故只证 ($<==$)。 
+    先化归到 $X$ 仿射的情形。假定 $X$ 与 $Y$ 都仿射的情形以及 $f$ 为开浸入的情形都已处理完毕。置： 
     $
-      cal(S) = {Z subset X #[closed]: #[there exists an $(f, i_(Z,*) cal(K)_Z, S)$-good open dense of $S$ for all $cal(K)_Z in D^b_c (Z_et, Lambda)$]}
+      cal(S) = {Z subset X #[closed]: #[对一切 $cal(K)_Z in D^b_c (Z_et, Lambda) $，都存在 $S$ 的 $(f, i_(Z,*) cal(K)_Z, S) $-好稠密开集]}
     $
-    where $i_Z: Z -> X$ is the closed immersion where $Z$ is given the reduced substructure. We want to perform noetherian induction with $cal(S)$ to show that $X in cal(S)$. Suppose that $Z subset X$ is closed and for any proper closed $W subset.neq Z$, $W in cal(S)$. We aim to show that $Z in cal(S)$ as well. 
+    其中 $i_Z: Z -> X$ 是闭浸入，这里给 $Z$ 赋予既约子概形结构。我们想用 $cal(S)$ 作 Noether 归纳，证明 $X in cal(S)$。设 $Z subset X$ 闭，且对任一真闭子集 $W subset.neq Z$ 都有 $W in cal(S)$。我们要证 $Z in cal(S)$ 也成立。 
     
-    - Note that an $(f, i_(Z,*) cal(K)_Z, S)$-good open of $S$ is just an $(f compose i_Z, cal(K)_Z, S)$-good open dense. Thus we may assume that $Z = X$ itself by replacing $f$ with $f compose i_Z$. Take an affine open $V subset X$ with complementary closed $W subset X$, and immersions $j: V -> X, i: W -> X$. For $cal(K) in D^b_c (X_et, Lambda)$, consider the sections with support triangle: 
+    - 注意 $S$ 的 $(f, i_(Z,*) cal(K)_Z, S)$-好开集不过是 $(f compose i_Z, cal(K)_Z, S)$-好稠密开集。于是把 $f$ 换成 $f compose i_Z$，便可设 $Z = X$。取仿射开集 $V subset X$，其补闭集为 $W subset X$，并取浸入 $j: V -> X, i: W -> X$。对 $cal(K) in D^b_c (X_et, Lambda)$，考虑带支集截面三角： 
       $
         i_* R i^! cal(K) -> cal(K) -> R j_* j^(-1) cal(K) ->^(+1)
       $
-      Now: 
+      现在： 
 
-      - $j$ is an open immersion and $j^(-1) cal(K) in D^b_c (V_et, Lambda)$. Now $dim(V_sigma) <= dim(X_sigma) <= d$. Thus by the open immersion case, there exists a $(j, j^(-1) cal(K), S)$-good dense open $U subset S$. Shrinking $S$ to this open, we may thus assume that $S$ is $(j, j^(-1) cal(K), S)$-good, and in particular $R j_* j^(-1) cal(K) in D^b_c (X_et, Lambda)$. 
+      - $j$ 是开浸入，且 $j^(-1) cal(K) in D^b_c (V_et, Lambda)$。又有 $dim(V_sigma) <= dim(X_sigma) <= d$。于是由开浸入情形，存在 $(j, j^(-1) cal(K), S)$-好的稠密开集 $U subset S$。把 $S$ 缩小到这个开集，便可不妨设 $S$ 是 $(j, j^(-1) cal(K), S)$-好的，特别地 $R j_* j^(-1) cal(K) in D^b_c (X_et, Lambda)$。 
 
-      - Now $i_* R i^! cal(K) in D^b_c (X_et, Lambda)$, so by @finite-morphisms-and-constructible-sheaves, $R i^! cal(K) in D^b_c (W_et, Lambda)$. Thus since $W in cal(S)$, there exists an $(f, i_* R i^! cal(K), S)$-good dense open $U subset S$. Shrink $S$ to this open as well. 
+      - 现在 $i_* R i^! cal(K) in D^b_c (X_et, Lambda)$，故由 @finite-morphisms-and-constructible-sheaves 知 $R i^! cal(K) in D^b_c (W_et, Lambda)$。于是由 $W in cal(S)$，存在 $(f, i_* R i^! cal(K), S)$-好的稠密开集 $U subset S$。把 $S$ 也缩小到这个开集。 
 
-      - Since $f compose j: V -> Y$ is from an affine scheme $V$ and $dim(V_sigma) <= dim(X_sigma) <= d$, by the affine case, there exists an $(f compose j, j^(-1) cal(K), S)$-good dense open $U subset S$. Since $S$ is already $(j, j^(-1) cal(K), S)$-good, we see that $U$ is $(f, R j_* j^(-1) cal(K), S)$-good. 
+      - 由于 $f compose j: V -> Y$ 来自仿射概形 $V$，且 $dim(V_sigma) <= dim(X_sigma) <= d$，由仿射情形，存在 $(f compose j, j^(-1) cal(K), S)$-好的稠密开集 $U subset S$。而 $S$ 已是 $(j, j^(-1) cal(K), S)$-好的，故 $U$ 是 $(f, R j_* j^(-1) cal(K), S)$-好的。 
 
-      Now from the triangle, we see that $U$ is $(f, cal(K), S)$-good. Thus $X in cal(S)$. 
+      于是由这个三角可知 $U$ 是 $(f, cal(K), S)$-好的。故 $X in cal(S)$。 
     
-    Hence, it suffices to deal with the cases: 
+    因此，只需处理以下两种情形： 
 
-    - $f: X -> Y$ is an open immersion with $dim(X_sigma) <= d$; 
+    - $f: X -> Y$ 是开浸入，且 $dim(X_sigma) <= d$； 
 
-    - $f: X -> Y$ has $X$ affine and $dim(X_sigma) <= d$. 
+    - $f: X -> Y$ 中 $X$ 仿射，且 $dim(X_sigma) <= d$。 
 
-    Assume the first case. Then in the second case, $f$ is separated of finite type, so $f$ has a compactification $X ->^j ol(X) ->^(ol(f)) Y$ with $j$ open immersion and $ol(f)$ proper. Since $ol(f)$ is proper, $S$ is $(ol(f), cal(L), S)$-good for all $cal(L) in D^b_c (ol(X)_et, Lambda)$. Now $dim(X_sigma) <= d$, so the first open immersion case may be applied and there exists a dense open $U subset S$ that is $(j, cal(K), S)$-good. Then $U$ is $(ol(f) compose j, cal(K), S)$-good and we are done. 
+    假定第一种情形成立。至于第二种情形，$f$ 是有限型的分离态射，故 $f$ 有紧化 $X ->^j ol(X) ->^(ol(f)) Y$，其中 $j$ 是开浸入、$ol(f)$ 紧合。由于 $ol(f)$ 紧合，对一切 $cal(L) in D^b_c (ol(X)_et, Lambda)$，$S$ 都是 $(ol(f), cal(L), S)$-好的。现在 $dim(X_sigma) <= d$，故可应用第一种开浸入情形，得到稠密开集 $U subset S$，它是 $(j, cal(K), S)$-好的。于是 $U$ 是 $(ol(f) compose j, cal(K), S)$-好的，证毕。 
 
-    Thus it remains to deal with the case that $f: X -> Y$ is an open immersion with $dim(X_sigma) <= d$. By locality of the problem in $Y$, we may further assume that $Y$ is affine. 
+    这样只剩下 $f: X -> Y$ 是开浸入且 $dim(X_sigma) <= d$ 的情形。由问题在 $Y$ 上的局部性，还可进一步设 $Y$ 仿射。 
 
-    Finally, factor the open immersion $f$ through its schematic image, we may factor it into an open immersion with dense image, and a closed immersion. The closed immersion is dealt with by proper base change, so we may assume that $f$ has dense image. This reduces to the hypothesis. 
+    最后，把开浸入 $f$ 经其概形像作分解，即可写成像稠密的开浸入与闭浸入的复合。闭浸入的情形由紧合基变换处理，故不妨设 $f$ 的像稠密。这就归结到假设中的情形。 
   ]
 
-  Hence, by induction on $d$, we may assume that: 
+  于是对 $d$ 归纳，不妨设： 
 
-  - $f: X -> Y$ is an open immersion between finite type $S$-schemes with $dim(X_sigma) = d$, $Y$ affine and $f$ dominant; 
+  - $f: X -> Y$ 是有限型 $S$-概形之间的开浸入，$dim(X_sigma) = d$，$Y$ 仿射且 $f$ 支配； 
 
-  - For every general $f: X -> Y$ between finite type $S$-schemes with $dim(X_sigma) <= d-1$, every complex $cal(K) in D^b_c (X_et, Lambda)$ admits an $(f, cal(K), S)$-good dense open of $S$. 
+  - 对有限型 $S$-概形之间每个一般的态射 $f: X -> Y$（满足 $dim(X_sigma) <= d-1$），每个复形 $cal(K) in D^b_c (X_et, Lambda)$ 都存在 $S$ 的 $(f, cal(K), S)$-好稠密开集。 
 
-  In the $d <= 0$ case, we claim that $X_sigma = Y_sigma$. 
+  当 $d <= 0$ 时，我们断言 $X_sigma = Y_sigma$。 
   
-  - Indeed, generic points of $Y_sigma$ correspond to generic points of $Y$ of those irreducible components that dominate $S$, and are thus contained in $X$ since $X -> Y$ is dominant. Thus, the inclusion $X_sigma -> Y_sigma$ is dominant. But $dim(X_sigma) = 0$, so $X_sigma$ must be finitely many closed points of $Y_sigma$; hence $Y_sigma = X_sigma$. 
+  - 事实上，$Y_sigma$ 的泛点对应于 $Y$ 中那些支配 $S$ 的不可约分支的泛点；而 $X -> Y$ 支配，故这些点都落在 $X$ 里。于是包含映射 $X_sigma -> Y_sigma$ 支配。但 $dim(X_sigma) = 0$，所以 $X_sigma$ 只能由 $Y_sigma$ 的有限多个闭点组成；故 $Y_sigma = X_sigma$。 
 
-  Now applying @passage-to-limit-of-morphisms (3), we see that there exists a dense open $U subset S$ s.t. $X_U = Y_U$. Shrinking $S$ to this dense open, $f$ becomes $id$ and the problem becomes trivial. 
+  现在应用 @passage-to-limit-of-morphisms (3)，可知存在稠密开集 $U subset S$，使得 $X_U = Y_U$。把 $S$ 缩小到这个稠密开集，$f$ 就变成 $id$，问题变得平凡。 
 
-  The base step is now dealt with, and we may assume $d >= 1$ and we are in a genuine inductive step. We claim that it suffices to deal with the case that $X$ has a dense open that is smooth over $S$. 
+  归纳的起始步至此处理完毕，于是不妨设 $d >= 1$，真正进入归纳步。我们断言：只需处理 $X$ 有一个在 $S$ 上光滑的稠密开集的情形。 
 
-  #proof_[Proof of claim][
-    Let $L$ be the perfect closure of $K = K(S)$ the function field of $S$. 
+  #proof_[断言的证明][
+    设 $L$ 是 $S$ 的函数域 $K = K(S)$ 的完全闭包。 
   
-    Now consider the base change $f_L: X_L -> Y_L$ of $f$ along $Spec(L) -> S$. Now the reduction $(X_L)_#[red]$ is of finite type over a field $L$, so its regular locus is open. Since $X'_L = (X_L)_#[red]$ is reduced, all of its generic points have local rings being fields, and so the regular locus of $X'_L$ is dense. Thus there exists a dominant open immersion $W_L -> X'_L$. Now $W_L$ is regular over the perfect field $L$, hence smooth over $Spec(L)$. That is, $W_L -> X'_L -> Spec(L)$ is smooth. 
+    现在考虑 $f$ 沿 $Spec(L) -> S$ 的基变换 $f_L: X_L -> Y_L$。约化 $(X_L)_#[red]$ 是域 $L$ 上的有限型概形，故其正则轨迹是开集。由于 $X'_L = (X_L)_#[red]$ 既约，在它的每个泛点处，局部环都是域，因此 $X'_L$ 的正则轨迹稠密。于是存在支配的开浸入 $W_L -> X'_L$。而 $W_L$ 在完全域 $L$ 上正则，从而在 $Spec(L)$ 上光滑。也就是说，$W_L -> X'_L -> Spec(L)$ 光滑。 
 
-    Then as in the proof of @finiteness-of-lower-shriek, we may write: 
+    于是如在 @finiteness-of-lower-shriek 的证明中那样，可以写成： 
     $
       Spec(L) = dirlim_lambda T_lambda
     $
-    where each $T_lambda$ is an integral affine $S$-scheme s.t. there exists a principal affine open $S_lambda subset S$ s.t. $T_lambda -> S_lambda$ is finite surjective radicial, hence a universal homeomorphism. Now the morphisms: 
+    其中每个 $T_lambda$ 都是整的仿射 $S$-概形，并且存在主仿射开集 $S_lambda subset S$，使得 $T_lambda -> S_lambda$ 有限、满射且根性，从而是泛同胚。现在看下面这串 $L$-概形之间的态射： 
     $
       W_L -> X'_L -> X_L -> Y_L -> Spec(L)
     $
-    of $L$-schemes must come from base changing: 
+    它们必定来自基变换： 
     $
       W_lambda -> X'_lambda -> X_lambda -> Y_lambda -> T_lambda
     $
-    along $Spec(L) -> T_lambda$ for some stage $lambda$. By increasing $lambda$, we may assume that: 
+    即对某个阶段 $lambda$，沿 $Spec(L) -> T_lambda$ 作基变换。增大 $lambda$，便可不妨设： 
 
-    - $X_lambda -> Y_lambda -> T_lambda$ is exactly the base change of $X ->^f Y -> S$, by @passage-to-limit-of-morphisms (3). 
+    - 由 @passage-to-limit-of-morphisms (3)，$X_lambda -> Y_lambda -> T_lambda$ 恰是 $X ->^f Y -> S$ 的基变换。 
 
-    - $W_lambda -> T_lambda$ is smooth, by @passage-to-limit-of-properties (3c). 
+    - 由 @passage-to-limit-of-properties (3c)，$W_lambda -> T_lambda$ 光滑。 
 
-    - $W_lambda -> X'_lambda$ is an open immersion by @passage-to-limit-of-properties (3f). 
+    - 由 @passage-to-limit-of-properties (3f)，$W_lambda -> X'_lambda$ 是开浸入。 
 
-    - $X'_lambda -> X_lambda$ is a surjective closed immersion, in particular a universal homeomorphism by @passage-to-limit-of-properties (2b)(3g). 
+    - 由 @passage-to-limit-of-properties (2b)(3g)，$X'_lambda -> X_lambda$ 是满的闭浸入，特别地是泛同胚。 
 
-    - Finally, $W_lambda -> X'_lambda$ can also be taken to be dominant. Indeed, take its schematic image $W_lambda -> ol(W_lambda) -> X'_lambda$. Now since $W_L -> X'_L$ is dominant, by base changing to $L$ we see that $(ol(W)_lambda)_L -> (X'_lambda)_L$ is the identity. Now $L\/Frac(T_lambda)$ is a purely inseparable extension and defines a universal homeomorphism, so $ol(W_lambda) -> X'_lambda$ is dominant on generic fiber over $T_lambda$. Thus there exists a principal affine open $T_mu subset T_lambda$ (also being a scheme in the family ${T_lambda}$) s.t. $(ol(W)_lambda) times_(T_lambda) T_mu -> X'_mu$ is the identity. However this closed immersion is exactly the schematic image of $W_mu -> X'_mu$, so $W_mu -> X'_mu$ must be dominant. 
+    - 最后，还可以令 $W_lambda -> X'_lambda$ 支配。事实上，取它的概形像 $W_lambda -> ol(W_lambda) -> X'_lambda$。由于 $W_L -> X'_L$ 支配，基变换到 $L$ 便知 $(ol(W)_lambda)_L -> (X'_lambda)_L$ 是恒等映射。而 $L\/Frac(T_lambda)$ 是纯不可分扩张，定义了泛同胚，所以 $ol(W_lambda) -> X'_lambda$ 在 $T_lambda$ 上的泛纤维上支配。于是存在主仿射开集 $T_mu subset T_lambda$（它也是族 ${T_lambda}$ 中的概形），使得 $(ol(W)_lambda) times_(T_lambda) T_mu -> X'_mu$ 是恒等映射。然而这个闭浸入恰是 $W_mu -> X'_mu$ 的概形像，故 $W_mu -> X'_mu$ 必定支配。 
 
-    Now shrinking $S$ to $S_lambda$, we may assume that $T_lambda -> S$ is surjective. It is also finite radicial, hence a universal homeomorphism. By topological invariance, we may further base change $S$ to $T_lambda$ and replace $X_lambda$ with $X'_lambda$ without changing the problem. That is, we replace $S$ with $T_lambda$ and $f: X -> Y$ with $X'_lambda -> Y'_lambda$ (and note that $W_lambda$ is a dense open of $X'_lambda$ smooth over $T_lambda$), and we are done. 
+    现在把 $S$ 缩小到 $S_lambda$，便可设 $T_lambda -> S$ 满射。它还是有限根性的，从而是泛同胚。由拓扑不变性，还可把 $S$ 基变换到 $T_lambda$，并把 $X_lambda$ 换成 $X'_lambda$，而问题不变。也就是说，把 $S$ 换成 $T_lambda$、把 $f: X -> Y$ 换成 $X'_lambda -> Y'_lambda$（注意 $W_lambda$ 是 $X'_lambda$ 中在 $T_lambda$ 上光滑的稠密开集），便完成了这一步。 
   ]
-  Let $W subset X$ be a dense open s.t. $W -> S$ is smooth. Let $cal(K) in D^b_c (X_et, Lambda)$ and we aim to find an $(f, cal(K), S)$-good open dense of $S$. By truncating $cal(K)$, it suffices to show that for any constructible sheaf $cal(F)$ of $Lambda$-modules on $X$, there is an $(f, cal(F), S)$-good open dense of $S$. 
+  设 $W subset X$ 是使 $W -> S$ 光滑的稠密开集。取 $cal(K) in D^b_c (X_et, Lambda)$，我们要找 $S$ 的 $(f, cal(K), S)$-好稠密开集。对 $cal(K)$ 作截断，只需证明：对 $X$ 上任意 $Lambda$-模可构造层 $cal(F)$，都存在 $S$ 的 $(f, cal(F), S)$-好稠密开集。 
 
-  By shrinking $W$ further, we may assume that $W subset X$ is a dense open s.t. $cal(F)|_W$ is locally constant. (This can be done, say, by picking an open around every generic point on each stratum of $X$ over which $cal(F)$ is l.c.c.) Thus there exists an etale cover $pi: W_1 -> W$ s.t. $cal(F)|_(W_1)$ is constant on each connected component. 
+  进一步缩小 $W$，不妨设 $W subset X$ 是使 $cal(F)|_W$ 局部常值的稠密开集。（比如，在 $X$ 的每个使 $cal(F)$ 成为 l.c.c. 的分层上，围绕每个泛点各取一个开集即可。）于是存在平展覆盖 $pi: W_1 -> W$，使得 $cal(F)|_(W_1)$ 在每个连通分支上常值。 
 
-  The local ring at every generic point of $W$ is an artinian local ring, hence has its reduction a field. Every quasi-compact etale map to a field is finite etale, so by topological invariance (@top-invariance-sheaves (3)), $W_1 -> W$ has finite etale fibers over generic points of $W$. Thus by @passage-to-limit-of-properties (2a), upon replacing $W$ with a dense open, we may assume that $pi: W_1 -> W$ is a finite etale covering. 
+  对 $W$ 的每个泛点，其局部环是 Artin 局部环，故其约化是域。到域上的每个拟紧平展映射都是有限平展的，因此由拓扑不变性（@top-invariance-sheaves (3)），$W_1 -> W$ 在 $W$ 的泛点上的纤维是有限平展的。于是由 @passage-to-limit-of-properties (2a)，把 $W$ 换成某个稠密开集，便可设 $pi: W_1 -> W$ 是有限平展覆叠。 
 
-  Let $j: W -> X$ be the open immersion and $i: X - W -> X$ be the complementary closed immersion, and take the sections with support triangle: 
+  设 $j: W -> X$ 是开浸入，$i: X - W -> X$ 是补闭浸入，并取带支集截面三角： 
   $
     i_* R i^! cal(F) -> cal(F) -> R j_* j^(-1) cal(F) ->^(+1)
   $
-  Suppose that there exists a dense open of $S$ that is both $(j, j^(-1) cal(F), S)$-good and $(f compose j, j^(-1) cal(F), S)$-good. By shrinking $S$ to this dense open, we may assume that $S$ is $(f compose j, j^(-1) cal(F), S)$-good. In particular $R j_* j^(-1) cal(F) in D^b_c (X_et, Lambda)$, and so $i_* R i^! cal(F) in D^b_c (X_et, Lambda)$. Hence by @finite-morphisms-and-constructible-sheaves, $R i^! cal(F) in D^b_c ((X - W)_et, Lambda)$. 
+  假定存在 $S$ 的稠密开集，它既是 $(j, j^(-1) cal(F), S)$-好的，又是 $(f compose j, j^(-1) cal(F), S)$-好的。把 $S$ 缩小到这个稠密开集，不妨设 $S$ 是 $(f compose j, j^(-1) cal(F), S)$-好的。特别地 $R j_* j^(-1) cal(F) in D^b_c (X_et, Lambda)$，从而 $i_* R i^! cal(F) in D^b_c (X_et, Lambda)$。于是由 @finite-morphisms-and-constructible-sheaves，$R i^! cal(F) in D^b_c ((X - W)_et, Lambda)$。 
   
-  Now $f compose i: X - W -> Y$ is a map between finite type $S$-schemes. Generic points of $X_sigma$ are generic points of $X$ above $sigma$ and are contained in $W$, and so $W_sigma$ is dense in $X_sigma$. Thus $dim((X - W)_sigma) < dim(X_sigma) = d$. By the inductive hypothesis, there exists an $(f compose i, R i^! cal(F), S)$-good dense open $U subset S$. Thus: 
+  现在 $f compose i: X - W -> Y$ 是有限型 $S$-概形之间的映射。$X_sigma$ 的泛点是 $X$ 中位于 $sigma$ 上方的泛点，它们都落在 $W$ 里，所以 $W_sigma$ 在 $X_sigma$ 中稠密。于是 $dim((X - W)_sigma) < dim(X_sigma) = d$。由归纳假设，存在 $(f compose i, R i^! cal(F), S)$-好的稠密开集 $U subset S$。于是： 
   
-  - $U$ is $(f, i_* R i^! cal(F), S)$-good; 
+  - $U$ 是 $(f, i_* R i^! cal(F), S)$-好的； 
 
-  - $S$ is $(j, j^(-1) cal(F), S)$-good and $(f compose j, j^(-1) cal(F), S)$-good, hence $(f, R j_* j^(-1) cal(F), S)$-good. 
+  - $S$ 是 $(j, j^(-1) cal(F), S)$-好的，也是 $(f compose j, j^(-1) cal(F), S)$-好的，从而是 $(f, R j_* j^(-1) cal(F), S)$-好的。 
 
-  Using the sections with support triangle, $U$ is $(f, cal(F), S)$-good and we are done. Thus, it remains to show that: 
+  利用带支集截面三角便知 $U$ 是 $(f, cal(F), S)$-好的，证毕。于是只剩下证明： 
 
-  - There exists a dense open of $S$ that is both $(j, j^(-1) cal(F), S)$-good and $(f compose j, j^(-1) cal(F), S)$-good. 
+  - 存在 $S$ 的稠密开集，它既是 $(j, j^(-1) cal(F), S)$-好的，又是 $(f compose j, j^(-1) cal(F), S)$-好的。 
 
-  Now $j: W -> X$ and $f compose j: W -> Y$ are both dominant open immersions in which $dim(W_sigma) <= d$, $W$ is smooth over $S$ and there exists a finite etale covering $pi: W_1 -> W$ s.t. $cal(F)|_(W_1)$ is constant on each connected component. Thus, it suffices to prove that: 
+  现在 $j: W -> X$ 与 $f compose j: W -> Y$ 都是支配的开浸入，其中 $dim(W_sigma) <= d$，$W$ 在 $S$ 上光滑，且存在有限平展覆叠 $pi: W_1 -> W$，使 $cal(F)|_(W_1)$ 在每个连通分支上常值。因此只需证明： 
 
-  - For any dominant open immersion $f: X -> Y$ and l.c.c. $cal(F) in cAb(X_et, Lambda)$ s.t. $dim(X_sigma) <= d$, $X$ is smooth over $S$ and there exists a finite etale covering $pi: X_1 -> X$ s.t. $cal(F)|_(X_1)$ is constant on each connected component, there exists an $(f, cal(F), S)$-good dense open of $S$. 
+  - 对任意支配的开浸入 $f: X -> Y$ 与 l.c.c. 层 $cal(F) in cAb(X_et, Lambda)$，若 $dim(X_sigma) <= d$、$X$ 在 $S$ 上光滑，且存在有限平展覆叠 $pi: X_1 -> X$ 使 $cal(F)|_(X_1)$ 在每个连通分支上常值，则存在 $S$ 的 $(f, cal(F), S)$-好稠密开集。 
 
-  We claim that we may assume that $Y$ is proper over $S$, i.e. it suffices to show that:
+  我们断言可以设 $Y$ 在 $S$ 上紧合，也就是说，只需证明：
 
-  - For any dominant open immersion $f: X -> Y$ and l.c.c. $cal(F) in cAb(X_et, Lambda)$ s.t. $dim(X_sigma) <= d$, $X$ is smooth over $S$, $Y$ is proper over $S$ and there exists a finite etale covering $pi: X_1 -> X$ s.t. $cal(F)|_(X_1)$ is constant on each connected component, there exists an $(f, cal(F), S)$-good dense open of $S$. 
+  - 对任意支配的开浸入 $f: X -> Y$ 与 l.c.c. 层 $cal(F) in cAb(X_et, Lambda)$，若 $dim(X_sigma) <= d$、$X$ 在 $S$ 上光滑、$Y$ 在 $S$ 上紧合，且存在有限平展覆叠 $pi: X_1 -> X$ 使 $cal(F)|_(X_1)$ 在每个连通分支上常值，则存在 $S$ 的 $(f, cal(F), S)$-好稠密开集。 
 
-  Indeed, assume this case, and for the general case by locality on $Y$ we may assume that $Y$ is affine, and so $Y -> S$ is separated of finite type. Then pick a compactification $Y ->^j ol(Y) -> S$, in which $j$ can be assumed dominant (by passing to a schematic image). Now by the proper case, we may assume that $S$ is $(j compose f, cal(F), S)$-good upon shrinking $S$. Now: 
+  事实上，假定这一情形成立。对一般情形，由在 $Y$ 上的局部性，不妨设 $Y$ 仿射，于是 $Y -> S$ 是有限型的分离态射。取紧化 $Y ->^j ol(Y) -> S$，其中可设 $j$ 支配（换成概形像即可）。现在由紧合情形，把 $S$ 适当缩小，便可设 $S$ 是 $(j compose f, cal(F), S)$-好的。于是： 
     
-  - $R j_* R f_* cal(F) in D^b_c (ol(Y)_et, Lambda)$. Applying $j^(-1)$ shows that $R f_* cal(F) in D^b_c (Y_et, Lambda)$. 
+  - $R j_* R f_* cal(F) in D^b_c (ol(Y)_et, Lambda)$。作用 $j^(-1)$ 便知 $R f_* cal(F) in D^b_c (Y_et, Lambda)$。 
 
-  - For any Cartesian diagram: #h(1fr)
+  - 对任意拉回图表：#h(1fr)
     // https://q.uiver.app/#r=typst&q=WzAsOCxbMCwxLCJYIl0sWzEsMSwiWSJdLFsyLDEsIm9sKFkpIl0sWzMsMSwiUyJdLFszLDAsIlMnIl0sWzIsMCwib2woWSknIl0sWzEsMCwiWSJdLFswLDAsIlgiXSxbMCwxLCJmIiwyXSxbMSwyLCJqIiwyXSxbMiwzXSxbNyw2LCJmJyJdLFs2LDUsImonIl0sWzUsNF0sWzQsMywiZyJdLFs1LDIsIm9sKGcpJyJdLFs2LDEsImcnIl0sWzcsMCwiZycnIiwyXV0=
     #align(center, diagram({
       node((0, 1), [$X$])
@@ -196,48 +197,48 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
       edge((1, 0), (1, 1), [$g'$], label-side: left, "->")
       edge((0, 0), (0, 1), [$g''$], label-side: right, "->")
     }))
-    We have: 
+    有： 
     $
       ol(g)'^(-1) R j_* R f_* cal(F) cong R j'_* R f'_* g''^(-1) cal(F)
     $
-    Apply $j'^(-1)$, and: 
+    作用 $j'^(-1)$，得到： 
     $
       j'^(-1) ol(g)'^(-1) R j_* R f_* cal(F) cong g'^(-1) j^(-1) R j_* R f_* cal(F) cong g'^(-1) R f_* cal(F)
     $
-    while $j'^(-1) R j'_* R f'_* g''^(-1) cal(F) cong R f'_* g''^(-1) cal(F)$. Hence we have obtained an isomorphism $ol(g)'^(-1) R j_* R f_* cal(F) cong g'^(-1) R f_* cal(F)$, which can be checked to be the base change map by naturality. Thus $S$ is $(f, cal(F), S)$-good. 
+    而 $j'^(-1) R j'_* R f'_* g''^(-1) cal(F) cong R f'_* g''^(-1) cal(F)$。于是我们得到了同构 $ol(g)'^(-1) R j_* R f_* cal(F) cong g'^(-1) R f_* cal(F)$，由自然性可以验证它就是基变换映射。故 $S$ 是 $(f, cal(F), S)$-好的。 
 
-  Thus, we may in addition assume that $Y$ is proper over $S$. To proceed in the induction, we need the following lemma: 
+  于是还可额外设 $Y$ 在 $S$ 上紧合。为继续归纳，我们需要下面的引理： 
   
   #lemma[
-    Let $f: X -> Y$ be a dominant open immersion between finite type $S$-schemes s.t. $dim(X_sigma) <= d$, and let $cal(K) in D^b_c (X_et, Lambda)$. Then up to shrinking $S$ to a dense open, there exists an open subset $V subset Y$ s.t: 
+    设 $f: X -> Y$ 是有限型 $S$-概形之间的支配开浸入，且 $dim(X_sigma) <= d$；取 $cal(K) in D^b_c (X_et, Lambda)$。则把 $S$ 缩小到某个稠密开集后，存在开子集 $V subset Y$，使得： 
 
-    - $Y - V -> S$ is finite; 
+    - $Y - V -> S$ 有限； 
 
-    - $S$ is $(f_V, cal(K)|_(X_V), S)$-good for $f_V: X_V -> V$ the base change of $f$ to $V$. 
+    - $S$ 是 $(f_V, cal(K)|_(X_V), S)$-好的，其中 $f_V: X_V -> V$ 是 $f$ 到 $V$ 的基变换。 
   ]
   #proof[
-    Assume for now that $Y$ is affine. Since $Y -> S$ is finite type between affine schemes, we may choose a closed immersion $i: Y -> AA^m_S$ (by any finite presentation of $cal(O)_Y (Y)$ over $cal(O)_S (S)$). Let $pi_j: AA^m_S -> AA^1_S, 1<=j<=m$ be the projections onto each coordinate. Then consider $g_j = pi_j compose i compose f: X -> AA^1_S$. Let $x in X_sigma$ be any point, and let $K = K(S)$ be the function field of $S$. Then: 
+    暂且设 $Y$ 仿射。由于 $Y -> S$ 是仿射概形之间的有限型态射，可以取闭浸入 $i: Y -> AA^m_S$（任取 $cal(O)_Y (Y)$ 作为 $cal(O)_S (S)$-代数的一个有限展示即可）。设 $pi_j: AA^m_S -> AA^1_S, 1<=j<=m$ 是到各坐标的投影。再考虑 $g_j = pi_j compose i compose f: X -> AA^1_S$。任取 $x in X_sigma$，并设 $K = K(S)$ 是 $S$ 的函数域。则： 
     $
       trd_(K) (k(x)) <= dim(X_sigma) <= d
     $
-    Let $tau = Spec(K(t))$ be the generic point of $AA^1_S$. Thus suppose that $x in g_j^(-1) (tau)$, then: 
+    设 $tau = Spec(K(t))$ 是 $AA^1_S$ 的泛点。若 $x in g_j^(-1) (tau)$，则： 
     $
       trd_(K(t)) (k(x)) = trd_K (k(x)) - trd_K (K(t)) <= d - 1
     $
-    Thus the dimension of the generic fiber of $g_j$ satisfies $dim(g_j^(-1) (tau)) <= d-1$. The inductive hypothesis may thus be applied to $g_j$ and so:
+    于是 $g_j$ 的泛纤维维数满足 $dim(g_j^(-1) (tau)) <= d-1$。从而可以对 $g_j$ 应用归纳假设，得到：
     
-    - There exists a dense $(i_j compose f_j, cal(K), AA^1_S)$-good open $U_j subset AA^1_S$ for each $j$. 
+    - 对每个 $j$，存在 $(i_j compose f_j, cal(K), AA^1_S)$-好稠密开集 $U_j subset AA^1_S$。 
 
-      Put $V_j = i^(-1) (pi_j^(-1) (U_j)) subset Y$, and base change $X ->^f Y ->^i AA^m_S ->^(pi_j) AA^1_S$ along $U_j -> AA^1_S$ to get: #h(1fr)
+      置 $V_j = i^(-1) (pi_j^(-1) (U_j)) subset Y$，并把 $X ->^f Y ->^i AA^m_S ->^(pi_j) AA^1_S$ 沿 $U_j -> AA^1_S$ 作基变换，得到：#h(1fr)
       $
         X_j ->^(f_j) V_j ->^(i_j) AA^(m-1)_(U_j) ->^(tilde(pi)_j) U_j
       $
 
-      Then: 
+      则： 
       $
         i_(j,*) R f_(j,*) (cal(K)|_(X_j)) in D^b_c ((U_j)_et, Lambda)
       $
-      By @finite-morphisms-and-constructible-sheaves, $R f_(j,*) (cal(K)|_(X_j)) in D^b_c ((V_j)_et, Lambda)$. Furthermore, for any $g: S' -> S$, form the Cartesian diagram: 
+      由 @finite-morphisms-and-constructible-sheaves，$R f_(j,*) (cal(K)|_(X_j)) in D^b_c ((V_j)_et, Lambda)$。进一步，对任意 $g: S' -> S$，作拉回图表： 
       // https://q.uiver.app/#r=typst&q=WzAsMTAsWzAsMSwiWF9qIl0sWzEsMSwiVl9qIl0sWzIsMSwicGlfal4oLTEpIChVX2opIl0sWzMsMSwiVV9qIl0sWzQsMSwiUyJdLFs0LDAsIlMnIl0sWzMsMCwiVSdfaiJdLFsyLDAsInBpJ19qIChVJ19qKSJdLFsxLDAsIlYnX2oiXSxbMCwwLCJYJ19qIl0sWzUsNCwiZyJdLFs2LDMsImcnX2oiXSxbNywyLCJnJydfaiJdLFs4LDEsImdfKFZfaikiXSxbOSwwLCJnXyhYX2opIiwyXSxbMCwxLCJmX2oiLDJdLFsxLDIsImkiLDJdLFsyLDMsInBpX2oiLDJdLFszLDRdLFs5LDgsImYnX2oiXSxbOCw3LCJpJyJdLFs3LDYsInBpJ19qIl0sWzYsNV1d
       #align(center, diagram({
         node((0, 1), [$X_j$])
@@ -264,52 +265,52 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
         edge((2, 0), (3, 0), [$pi'_j$], label-side: left, "->")
         edge((3, 0), (4, 0), "->")
       }))
-      Then $g''_j$ is the base change of the morphism $g'_j: U'_j -> U_j$, so by $(f_j, cal(K)|_(X_j), AA^1_S)$-goodness of $U_j$, we have a base change isomorphism:
+      则 $g''_j$ 是态射 $g'_j: U'_j -> U_j$ 的基变换，于是由 $U_j$ 的 $(f_j, cal(K)|_(X_j), AA^1_S)$-好性，得到基变换同构：
       $
         g''_j^(-1) i_* R f_(j,*) (cal(K)|_(X_j)) cong i'_* R f'_(j,*) g_(X_j)^(-1) (cal(K)|_(X_j))
       $
-      Now the base change map $g''_j^(-1) i_* -> i'_* g_(V_j)^(-1)$ is an isomorphism, so we have an isomorphism: 
+      现在基变换映射 $g''_j^(-1) i_* -> i'_* g_(V_j)^(-1)$ 是同构，于是得到同构： 
       $
         i'_* g_(V_j)^(-1) R f_(j,*) (cal(K)|_(X_j)) -> i'_* R f'_(j,*) g_(X_j)^(-1) (cal(K)|_(X_j))
       $
-      and by applying $i'^(-1)$ we see that the base change $g_(V_j)^(-1) R f_(j,*) (cal(K)|_(X_j)) -> R f'_(j,*) g_(X_j)^(-1) (cal(K)|_(X_j))$ is an isomorphism. This says that $S$ is $(f_j, cal(K)|_(X_j), S)$-good. 
+      再作用 $i'^(-1)$，便知基变换 $g_(V_j)^(-1) R f_(j,*) (cal(K)|_(X_j)) -> R f'_(j,*) g_(X_j)^(-1) (cal(K)|_(X_j))$ 是同构。这就是说 $S$ 是 $(f_j, cal(K)|_(X_j), S)$-好的。 
 
-    - Now put: 
+    - 现在置： 
       $
         V = union.big_(j=1)^m V_j
       $
-      and let $f_V: X_V -> V$ be the base change of $f$ to $V$. 
+      并设 $f_V: X_V -> V$ 是 $f$ 到 $V$ 的基变换。 
 
-      Since for each $j$, $S$ is $(f_j, cal(K)|_(X_j), S)$-good, we have that $S$ is $(f_V, cal(K)|_(X_V), S)$-good. Further: 
+      由于对每个 $j$，$S$ 都是 $(f_j, cal(K)|_(X_j), S)$-好的，可知 $S$ 是 $(f_V, cal(K)|_(X_V), S)$-好的。此外： 
       $
         Y - V &= Y - i^(-1) (union.big_(j=1)^m pi_j^(-1) (U_j)) \
-        &= i^(-1) (AA^m_S - union.big_(j=1)^m pi_j^(-1) (U_j)) #[since $i$ is an immersion] \
+        &= i^(-1) (AA^m_S - union.big_(j=1)^m pi_j^(-1) (U_j)) #[因为 $i$ 是浸入] \
         &= i^(-1)((AA^1_S - U_1) times_S dots.c times_S (AA^1_S - U_m)) subset Y
       $
-      For each $j$, the generic point $tau in AA^1_S$ is contained in $U_j$, so the generic fiber $(U_j)_sigma in AA^1_K$ contains the generic point of $AA^1_K$. Thus its complement is a finite set of closed points. In other words, $AA^1_S - U_j -> AA^1_S -> S$ is finite when base changed to the generic point $sigma in S$. By @passage-to-limit-of-properties (2a), upon replacing $S$ by a dense affine open, we may assume $AA^1_S - U_j -> S$ is finite. Hence by shrinking $S$ to a dense affine open finitely many times, we may assume that $AA^1_S - U_j -> S$ is finite for all $j$. Then by the formula above, $Y - V$ is finite over $S$. 
+      对每个 $j$，泛点 $tau in AA^1_S$ 都落在 $U_j$ 中，故泛纤维 $(U_j)_sigma in AA^1_K$ 包含 $AA^1_K$ 的泛点。于是它的补集是有限多个闭点组成的集合。换言之，把 $AA^1_S - U_j -> AA^1_S -> S$ 基变换到泛点 $sigma in S$ 后是有限的。由 @passage-to-limit-of-properties (2a)，把 $S$ 换成某个稠密仿射开集，便可设 $AA^1_S - U_j -> S$ 有限。因此把 $S$ 缩小到稠密仿射开集、有限多次之后，不妨设对一切 $j$，$AA^1_S - U_j -> S$ 都有限。再由上面的公式，$Y - V$ 在 $S$ 上有限。 
 
-    We are now done with the case that $Y$ is affine. In general, cover $Y$ with finitely many affine opens ${Y_i}$ and base change to $f_i: X_i -> Y_i$. Now for each $Y_i$ there exists an open $V_i subset Y_i$ s.t: 
+    $Y$ 仿射的情形至此完成。对一般情形，用有限多个仿射开集 ${Y_i}$ 覆盖 $Y$，并基变换到 $f_i: X_i -> Y_i$。此时对每个 $Y_i$，存在开集 $V_i subset Y_i$，使得： 
 
-    - $S$ is $(f_(V_i), cal(K)|_(X_(V_i)), S)$-good; 
+    - $S$ 是 $(f_(V_i), cal(K)|_(X_(V_i)), S)$-好的； 
 
-    - $Y_i - V_i -> S$ is finite. 
+    - $Y_i - V_i -> S$ 有限。 
 
-    Put $V = union.big_i V_i$. Now: 
+    置 $V = union.big_i V_i$。现在： 
 
-    - $Y_sigma - V_sigma = union.big_i ((Y_i)_sigma - (V_i)_sigma)$ is a finite set, since each $Y_i - V_i -> S$ is finite. Thus by @passage-to-limit-of-properties (2a), upon shrinking $S$ we may assume that $Y - V -> S$ is finite; 
+    - $Y_sigma - V_sigma = union.big_i ((Y_i)_sigma - (V_i)_sigma)$ 是有限集，因为每个 $Y_i - V_i -> S$ 都有限。于是由 @passage-to-limit-of-properties (2a)，缩小 $S$ 便可设 $Y - V -> S$ 有限； 
 
-    - By checking locally, $S$ is $(f_V, cal(K)|_(X_V), S)$-good. 
+    - 局部检查可知 $S$ 是 $(f_V, cal(K)|_(X_V), S)$-好的。 
 
-    We are thereby done. 
+    至此完成。 
   ]
 
-  Now let: 
+  现在设： 
 
-  - $f: X -> Y$ be a dominant open immersion of finite type $S$-schemes in which $X$ is smooth over $S$ with $dim(X_sigma) <= d$ and $Y$ is proper over $S$. 
+  - $f: X -> Y$ 是有限型 $S$-概形之间的支配开浸入，其中 $X$ 在 $S$ 上光滑、$dim(X_sigma) <= d$，且 $Y$ 在 $S$ 上紧合。 
 
-  - $cal(F) in cAb(X_et, Lambda)$ is an l.c.c. sheaf of $Lambda$-modules with a finite etale covering $pi: X_1 -> X$ s.t. $cal(F)|_(X_1)$ is constant on each connected component of $X_1$. 
+  - $cal(F) in cAb(X_et, Lambda)$ 是 l.c.c. $Lambda$-模层，且存在有限平展覆叠 $pi: X_1 -> X$，使 $cal(F)|_(X_1)$ 在 $X_1$ 的每个连通分支上常值。 
 
-  We aim to show that there exists an $(f, cal(F), S)$-good dense open of $S$. By the previous lemma, choose an open $V subset Y$ with complementary immersions $j: V -> Y, i: W = Y - V -> Y$. Form the commutative diagram: 
+  我们要证明存在 $S$ 的 $(f, cal(F), S)$-好稠密开集。由上一条引理，取开集 $V subset Y$，配以互补的浸入 $j: V -> Y, i: W = Y - V -> Y$。作交换图表： 
   // https://q.uiver.app/#r=typst&q=WzAsNixbMCwxLCJYIl0sWzEsMSwiWSJdLFsxLDAsIlYiXSxbMSwyLCJTIl0sWzIsMSwiVi1ZIl0sWzAsMCwiWF9WIl0sWzIsMSwiaiJdLFs0LDEsImkiLDJdLFswLDEsImYiXSxbMCwzLCJhIiwyXSxbMSwzLCJiIiwxXSxbNCwzLCJjIl0sWzUsMiwiZl9WIl0sWzUsMCwiaiciLDJdXQ==
   #context align(center, diagram({
     node((0, 1), [$X$])
@@ -327,36 +328,36 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
     edge((0, 0), (1, 0), [$f_V$], label-side: left, "->")
     edge((0, 0), (0, 1), [$j_X$], label-side: right, "->")
   }, crossing-fill: thm-box-curr-color()))
-  with upper left square Cartesian. Then by our assumptions and the choice of $V$, after suitably shrinking $S$ to an affine open: 
+  其左上角方块是拉回。于是由我们的假设与 $V$ 的选取，把 $S$ 适当缩小为仿射开集后： 
 
-  - $a$ is smooth, $b$ is proper, $c$ is finite; 
+  - $a$ 光滑，$b$ 紧合，$c$ 有限； 
 
-  - $S$ is $(f_V, cal(F)|_(X_V), S)$-good. 
+  - $S$ 是 $(f_V, cal(F)|_(X_V), S)$-好的。 
 
-  We prove that there exists an $(f, cal(F), S)$-good dense open of $S$ under the following additional assumption: 
+  我们在下述额外假设下证明存在 $S$ 的 $(f, cal(F), S)$-好稠密开集： 
 
-  - There is a dense open of $S$ that is $(a, cal(F), S)$-good. 
+  - 存在 $S$ 的稠密开集，它是 $(a, cal(F), S)$-好的。 
 
-  By shrinking $S$, we may assume that $S$ is $(a, cal(F), S)$-good. Consider the extension by zero triangle: 
+  缩小 $S$，不妨设 $S$ 是 $(a, cal(F), S)$-好的。考虑零延拓三角： 
   $
     underbrace(j_! j^(-1) R f_* cal(F), j_! R f_(V,*) (cal(F)|_(X_V))) -> R f_* cal(F) -> i_* i^(-1) R f_* cal(F) ->^(+1)
   $
-  which, upon applying $R b_*$, yields a distinguished triangle: 
+  对它作用 $R b_*$，得到特殊三角： 
   $
     R b_* j_! R f_(V,*) (cal(F)|_(X_V)) -> R a_* cal(F) -> c_* i^(-1) R f_* cal(F) ->^(+1)
   $
-  Now: 
+  现在： 
 
-  - Since $S$ is $(a, cal(F), S)$-good, we have $R a_* cal(F) in D^b_c (S_et, Lambda)$. 
+  - 由于 $S$ 是 $(a, cal(F), S)$-好的，有 $R a_* cal(F) in D^b_c (S_et, Lambda)$。 
 
-    Since $S$ is $(f_V, cal(F)|_(X_V), S)$-good, we have $R f_(V,*) (cal(F)|_(X_V)) in D^b_c (V_et, Lambda)$. Since $b$ is proper, by the finiteness of $R(b compose j)_!$ (according to @finiteness-of-lower-shriek), $R b_* j_! R f_(V,*) (cal(F)|_(X_V)) in D^b_c (S_et, Lambda)$. 
+    由于 $S$ 是 $(f_V, cal(F)|_(X_V), S)$-好的，有 $R f_(V,*) (cal(F)|_(X_V)) in D^b_c (V_et, Lambda)$。又 $b$ 紧合，故由 $R(b compose j)_!$ 的有限性（据 @finiteness-of-lower-shriek），$R b_* j_! R f_(V,*) (cal(F)|_(X_V)) in D^b_c (S_et, Lambda)$。 
 
-    Thus, from the distinguished triangle, $c_* i^(-1) R f_* cal(F) in D^b_c (S_et, Lambda)$. By @finite-morphisms-and-constructible-sheaves, $i^(-1) R f_* cal(F) in D^b_c (W_et, Lambda)$ and hence $i_* R f_* cal(F) in D^b_c (Y_et, Lambda)$. Meanwhile $j_! j^(-1) R f_* cal(F) = j_! R f_(V,*) (cal(F)|_(X_V)) in D^b_c (Y_et, Lambda)$, so by the extension by zero triangle: 
+    于是由这个特殊三角，$c_* i^(-1) R f_* cal(F) in D^b_c (S_et, Lambda)$。由 @finite-morphisms-and-constructible-sheaves，$i^(-1) R f_* cal(F) in D^b_c (W_et, Lambda)$，从而 $i_* R f_* cal(F) in D^b_c (Y_et, Lambda)$。另一方面 $j_! j^(-1) R f_* cal(F) = j_! R f_(V,*) (cal(F)|_(X_V)) in D^b_c (Y_et, Lambda)$，故由零延拓三角： 
     $
       R f_* cal(F) in D^b_c (Y_et, Lambda)
     $
 
-  - For any $g: S' -> S$, base change the diagram along $g$ to: 
+  - 对任意 $g: S' -> S$，沿 $g$ 把图表基变换为： 
     // https://q.uiver.app/#r=typst&q=WzAsMTIsWzEsNSwiWCJdLFszLDQsIlkiXSxbNSwzLCJXIl0sWzIsMywiViJdLFswLDQsIlhfViJdLFs0LDUsIlMiXSxbMSwyLCJYJyJdLFs0LDIsIlMnIl0sWzIsMCwiViciXSxbMywxLCJZJyJdLFswLDEsIlhfKFYnKSJdLFs1LDAsIlcnIl0sWzAsMSwiZiIsMV0sWzIsMSwiaSIsMV0sWzMsMSwiaiIsMV0sWzQsMywiZl9WIiwxXSxbNCwwLCJqX1giLDFdLFswLDUsImEiLDFdLFsxLDUsImIiLDFdLFsyLDUsImMiLDFdLFs2LDksImYnIiwxXSxbMTEsOSwiaSciLDFdLFs4LDksImonIiwxXSxbMTAsOCwiZidfViIsMV0sWzEwLDYsImonX1giLDFdLFs2LDcsImEnIiwxXSxbOSw3LCJiJyIsMV0sWzExLDcsImMnIiwxXSxbMTAsNCwiZ18oWF9WKSIsMV0sWzYsMCwiZ19YIiwxLHsibGFiZWxfcG9zaXRpb24iOjIwfV0sWzgsMywiZ19WIiwxLHsibGFiZWxfcG9zaXRpb24iOjgwfV0sWzksMSwiZ19ZIiwxXSxbNyw1LCJnIiwxLHsibGFiZWxfcG9zaXRpb24iOjIwfV0sWzExLDIsImdfVyIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo4MH1dXQ==
     #context align(center, diagram({
       node((0, 1), [$X$])
@@ -395,133 +396,133 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
       edge((4, -4), (4, -1), [$g_W$], label-side: center, label-pos: 0.85, "->")
     }, crossing-fill: thm-box-curr-color(), spacing: 2em))
     
-    We aim to show that the base change $g_Y^(-1) R f_* cal(F) -> R f'_* g_X^(-1) cal(F)$ is an isomorphism. Put $cal(F)' = cal(F)|_(X')$. Consider the distinguished triangle: 
+    我们要证明基变换 $g_Y^(-1) R f_* cal(F) -> R f'_* g_X^(-1) cal(F)$ 是同构。置 $cal(F)' = cal(F)|_(X')$。考虑特殊三角： 
     $
       R b_* j_! R f_(V,*) (cal(F)|_(X_V)) -> R a_* cal(F) -> c_* i^(-1) R f_* cal(F) ->^(+1)
     $
-    and the same triangle for the base changed maps: 
+    以及对基变换后映射的同一个三角： 
     $
       R b'_* j'_! R f'_(V,*) (cal(F)'|_(X_V)) -> R a'_* cal(F)' -> c'_* i'^(-1) R f'_* cal(F)' ->^(+1)
     $
-    Now apply $g^(-1)$ to the first triangle: 
+    现在对第一个三角作用 $g^(-1)$： 
 
-    - Since $S$ is $(a, cal(F), S)$-good, the base change $g^(-1) R a_* cal(F) -> R a'_* cal(F)'$ is an isomorphism; 
+    - 由于 $S$ 是 $(a, cal(F), S)$-好的，基变换 $g^(-1) R a_* cal(F) -> R a'_* cal(F)'$ 是同构； 
 
-    - For the first term: #h(1fr)
+    - 对第一项：#h(1fr)
       $
-        g^(-1) R b_* j_! R f_(V,*) (cal(F)|_(X_V)) &cong R b'_* j'_! g_V^(-1) R f_(V,*) (cal(F)|_(X_V)) #[by proper base change] \
-        &cong R b'_* j'_! R f'_(V,*) (cal(F')|_(X'_V)) #[since $S$ is $(f_V, cal(F)|_(X_V), S)$-good] 
+        g^(-1) R b_* j_! R f_(V,*) (cal(F)|_(X_V)) &cong R b'_* j'_! g_V^(-1) R f_(V,*) (cal(F)|_(X_V)) #[由紧合基变换] \
+        &cong R b'_* j'_! R f'_(V,*) (cal(F')|_(X'_V)) #[因为 $S$ 是 $(f_V, cal(F)|_(X_V), S) $-好的] 
       $
     
-    Thus using the two distinguished triangles, the base change map on the third term must be an isomorphism since the one on the first and second term is. That is, the base change map: 
+    于是利用这两个特殊三角，既然第一项与第二项上的基变换映射是同构，第三项上的基变换映射也必定是同构。也就是说，基变换映射： 
     $
       g^(-1) c_* i^(-1) R f_* cal(F) -> c'_* i'^(-1) R f'_* cal(F)'
     $
-    is an isomorphism. Now $c$ is finite, so $g^(-1) c_* cong c'_* g_W^(-1)$, and in other words, 
+    是同构。现在 $c$ 有限，故 $g^(-1) c_* cong c'_* g_W^(-1)$。换言之， 
     $
       c'_* g_W^(-1) i^(-1) R f_* cal(F) -> c'_* i'^(-1) R f'_* cal(F)'
     $ 
-    is an isomorphism. Now $c'$ is finite, so by checking stalks, $g_W^(-1) i^(-1) R f_* cal(F) -> i'^(-1) R f'_* cal(F)'$ is an isomorphism. Applying $i'_*$ and use base change for $i_*$ shows that the base change: 
+    是同构。现在 $c'$ 有限，故逐茎检查可知 $g_W^(-1) i^(-1) R f_* cal(F) -> i'^(-1) R f'_* cal(F)'$ 是同构。作用 $i'_*$，再利用 $i_*$ 的基变换，便知基变换： 
     $
       g_Y^(-1) i_* i^(-1) R f_* cal(F) -> i'_* i'^(-1) R f'_* cal(F)'
     $
-    is an isomorphism. 
+    是同构。 
 
-    Furthermore, we have seen that: 
+    此外，我们已经看到： 
     $
       g_Y^(-1) j_! R f_(V,*) (cal(F)|_(X_V)) cong j'_! g_V^(-1) R f_(V,*) (cal(F)|_(X_V)) cong j'_! R f'_(V,*) (cal(F)'|_(X'_V))
     $
-    since $S$ is $(f_V, cal(F)|_(X_V), S)$-good. Now take the extension by zero triangles: 
+    这里用到 $S$ 是 $(f_V, cal(F)|_(X_V), S)$-好的。现在取零延拓三角： 
     $
       j_! R f_(V,*) (cal(F)|_(X_V)) -> R f_* cal(F) -> i_* i^(-1) R f_* cal(F) ->^(+1)
     $
-    and: 
+    以及： 
     $
       j'_! R f'_(V,*) (cal(F)'|_(X'_V)) -> R f'_* cal(F)' -> i'_* i'^(-1) R f'_* cal(F)' ->^(+1)
     $
-    Applying $g_Y^(-1)$ to the first triangle gives it a base change map to the second triangle, which we have shown to be an isomorphism on the first and third position. Thus it is an isomorphism on the second position, i.e: 
+    对第一个三角作用 $g_Y^(-1)$，就得到它到第二个三角的基变换映射；我们已证明它在第一、第三位置上是同构。于是它在第二个位置上也是同构，即： 
     $
       g_Y^(-1) R f_* cal(F) cong R f'_* cal(F)'
     $
-    by base change. 
+    该同构由基变换给出。 
 
-  These two arguments together show that $S$ is $(f, cal(F), S)$-good and we are done. The only assumption remaining to be shown is that up to shrinking $S$, $S$ is $(a, cal(F), S)$-good. In other words, it remains to prove that: 
+  这两段论证合起来表明 $S$ 是 $(f, cal(F), S)$-好的，证毕。剩下唯一要证的假设是：把 $S$ 适当缩小后，$S$ 是 $(a, cal(F), S)$-好的。换言之，还需证明： 
 
-  - If $f: X -> S$ is a separated smooth morphism, and $cal(F) in cAb(X_et, Lambda)$ is an l.c.c. sheaf of $Lambda$-modules trivialized by a finite etale covering $pi: X_1 -> X$, then there exists an $(f, cal(F), S)$-good dense open of $S$. 
+  - 若 $f: X -> S$ 是分离的光滑态射，$cal(F) in cAb(X_et, Lambda)$ 是被有限平展覆叠 $pi: X_1 -> X$ 平凡化的 l.c.c. $Lambda$-模层，则存在 $S$ 的 $(f, cal(F), S)$-好稠密开集。 
 
-  By taking each connected component of $X$, we may assume that $X$ is connected. Then any connected component of $X_1$ maps surjectively to $X$, so we may take $X_1$ to be surjective as well. By taking a Galois closure, we may assume that $pi: X_1 -> X$ is a Galois covering. Since $X$ is assumed to be connected, the smooth map $X -> S$ is of some pure relative dimension $d$ (being the rank of the locally free coherent sheaf $Omega_(X\/S)$ on $X$). 
+  对 $X$ 的每个连通分支分别处理，不妨设 $X$ 连通。此时 $X_1$ 的任一连通分支都满射到 $X$，故也可设 $X_1$ 满射。取 Galois 闭包，还可设 $pi: X_1 -> X$ 是 Galois 覆叠。由于假定 $X$ 连通，光滑映射 $X -> S$ 有某个纯相对维数 $d$（即 $X$ 上局部自由凝聚层 $Omega_(X\/S)$ 的秩）。 
 
-  By the filtrations $0 -> ell cal(F) -> cal(F) -> cal(F)\/ell cal(F) -> 0$, we see that it suffices to show for those $cal(F)$ that are $ell$-torsion for a prime number $ell in cal(O)_S^times$. By replacing $Lambda$ with $Lambda\/ell Lambda$, we may assume that $Lambda$ is $ell$-torsion too. Now by @finiteness-of-lower-shriek, $R f_! ul(ZZ\/ell) in D^b_c (S_et, Lambda)$. Thus by shrinking $S$, we may further assume that: 
+  利用滤过 $0 -> ell cal(F) -> cal(F) -> cal(F)\/ell cal(F) -> 0$，只需证明 $cal(F)$ 为 $ell$-挠的情形，其中 $ell in cal(O)_S^times$ 是素数。再把 $Lambda$ 换成 $Lambda\/ell Lambda$，不妨设 $Lambda$ 也是 $ell$-挠的。现在由 @finiteness-of-lower-shriek，$R f_! ul(ZZ\/ell) in D^b_c (S_et, Lambda)$。于是缩小 $S$，还可设： 
 
-  - Every $R^q f_(1,!) ul(ZZ\/ell)$ is a l.c.c. sheaf of $ZZ\/ell$-modules. 
+  - 每个 $R^q f_(1,!) ul(ZZ\/ell)$ 都是 l.c.c. 的 $ZZ\/ell$-模层。 
 
-  We claim that in this case $S$ is $(f_1, ul(ZZ\/ell), S)$-good and every $R^q f_* ul(ZZ\/ell)$ is l.c.c. 
+  我们断言：此时 $S$ 是 $(f_1, ul(ZZ\/ell), S)$-好的，且每个 $R^q f_* ul(ZZ\/ell)$ 都是 l.c.c.。 
 
-  #proof_[Proof of claim][
-    Replace $f$ with $f_1$ and we may assume that every $R^q f_! ul(ZZ\/ell)$ is l.c.c. Now $f$ remains smooth of relative dimension $d$. 
+  #proof_[断言的证明][
+    把 $f$ 换成 $f_1$，便可设每个 $R^q f_! ul(ZZ\/ell)$ 都是 l.c.c.。此时 $f$ 仍是相对维数为 $d$ 的光滑态射。 
 
-    By Poincare duality (@relative-poincare-duality), $R f^! ul(ZZ\/ell) cong ul(ZZ\/ell)(d)[2d]$ canonically. Thus by internal adjunction we have a canonical isomorphism: 
+    由 Poincaré 对偶（@relative-poincare-duality），有典范同构 $R f^! ul(ZZ\/ell) cong ul(ZZ\/ell)(d)[2d]$。于是由内伴随得到典范同构： 
     $
       R f_* ul(ZZ\/ell)(d)[2d] cong R f_* RHHom_(ZZ\/ell) (ul(ZZ\/ell), ul(ZZ\/ell)(d)[2d]) cong RHHom_(ZZ\/ell) (R f_! ul(ZZ\/ell), ul(ZZ\/ell))
     $
-    i.e. a canonical isomorphism: 
+    即典范同构： 
     $
       R f_* ul(ZZ\/ell) cong RHHom_(ZZ\/ell) (R f_! ul(ZZ\/ell), ul(ZZ\/ell))(-d)[-2d]
     $
 
-    - Note that $RHHom_(ZZ\/ell) (R f_! ul(ZZ\/ell), ul(ZZ\/ell)) = HHom_(ZZ\/ell) (R f_! ul(ZZ\/ell), ul(ZZ\/ell))$. Indeed, for a single l.c.c. sheaf $cal(G)$ of $ul(ZZ\/ell)$-modules, by @lcc-and-injective-has-no-higher-ext, $RHHom_(ZZ\/ell) (cal(G), ul(ZZ\/ell)) = HHom_(ZZ\/ell) (cal(G), ul(ZZ\/ell))$. Thus using truncations, we have: 
+    - 注意 $RHHom_(ZZ\/ell) (R f_! ul(ZZ\/ell), ul(ZZ\/ell)) = HHom_(ZZ\/ell) (R f_! ul(ZZ\/ell), ul(ZZ\/ell))$。事实上，对单个 l.c.c. 的 $ul(ZZ\/ell)$-模层 $cal(G)$，由 @lcc-and-injective-has-no-higher-ext 有 $RHHom_(ZZ\/ell) (cal(G), ul(ZZ\/ell)) = HHom_(ZZ\/ell) (cal(G), ul(ZZ\/ell))$。于是利用截断得到： 
       $
         RHHom_(ZZ\/ell) (R f_! ul(ZZ\/ell), ul(ZZ\/ell)) = HHom_(ZZ\/ell) (R f_! ul(ZZ\/ell), ul(ZZ\/ell))
       $
-      by gluing degree by degree. 
+      逐次粘合各个次数即得。 
 
-    Hence, we have canonical isomorphisms: 
+    因此有典范同构： 
     $
       R^q f_* ul(ZZ\/ell) cong HHom_(ZZ\/ell)(R^(2d-q) f_! ul(ZZ\/ell), ul(ZZ\/ell)) (-d)
     $
-    Thus $R^q f_* ul(ZZ\/ell)$ vanishes unless $0<=q<=2d$, and is l.c.c. (since $R^(2d-q) f_! ul(ZZ\/ell)$ is l.c.c, so any etale cover trivializing $R^(2d-q) f_! ul(ZZ\/ell)$ also trivializes $R^q f_* ul(ZZ\/ell)$). Furthermore, for any $g: S' -> S$, the canonical map $g^(-1) HHom_(ZZ\/ell) (R^(2d-q) f_! ul(ZZ\/ell), ul(ZZ\/ell)) -> HHom_(ZZ\/ell) (g^(-1) R^(2d-q) f_! ul(ZZ\/ell), ul(ZZ\/ell))$ is an isomorphism. (This is not in general true, but in this case we can check by pulling back along a trivializing etale cover, after which everything is constant, and then apply @surjective-pullback-conservative.) Thus the base change map: 
+    于是 $R^q f_* ul(ZZ\/ell)$ 在 $0<=q<=2d$ 之外消没；并且它是 l.c.c. 的（因为 $R^(2d-q) f_! ul(ZZ\/ell)$ 是 l.c.c.，故任何平凡化 $R^(2d-q) f_! ul(ZZ\/ell)$ 的平展覆盖也平凡化 $R^q f_* ul(ZZ\/ell)$）。进一步，对任意 $g: S' -> S$，典范映射 $g^(-1) HHom_(ZZ\/ell) (R^(2d-q) f_! ul(ZZ\/ell), ul(ZZ\/ell)) -> HHom_(ZZ\/ell) (g^(-1) R^(2d-q) f_! ul(ZZ\/ell), ul(ZZ\/ell))$ 是同构。（一般情形下这并不成立，但此处可以沿平凡化的平展覆盖拉回检查：拉回后一切都常值，再用 @surjective-pullback-conservative 即可。）于是基变换映射： 
     $
       g^(-1) R f_* ul(ZZ\/ell) -> R f'_* ul(ZZ\/ell)
     $
-    is induced by the base change map: 
+    由下述基变换映射诱导： 
     $
       g^(-1) R f_! ul(ZZ\/ell) -> R f'_! ul(ZZ\/ell)
     $
-    which is an isomorphism by proper base change. Thus the formation of $R f_* ul(ZZ\/ell)$ is compatible with base change. That is, we have shown that $S$ is $(f, ul(ZZ\/ell), S)$-good. 
+    由紧合基变换，它是同构。因此 $R f_* ul(ZZ\/ell)$ 的构造与基变换相容。也就是说，我们证明了 $S$ 是 $(f, ul(ZZ\/ell), S)$-好的。 
   ]
-  Now put $f_1: X_1 ->^pi X -> S$, and let $pi^(-1) cal(F) = ul(M)$ for a finite $Lambda$-module $M$. Then we have a projection map (where since $ZZ\/ell$ is a field, tensors are exact and don't need to be left derived): 
+  现在令 $f_1: X_1 ->^pi X -> S$，并设 $pi^(-1) cal(F) = ul(M)$，其中 $M$ 是有限 $Lambda$-模。则有一个投影映射（这里因为 $ZZ\/ell$ 是域，张量积正合，不需要取左导出）： 
   $
     R f_(1,*) pi^(-1) cal(F) = R f_(1,*) (ul(ZZ\/ell) otimes_(ZZ\/ell) ul(M)) -> R f_(1,*) ul(ZZ\/ell) otimes_(ZZ\/ell) ul(M)
   $
-  This projection map is an isomorphism. /*Indeed, by picking a basis we may assume that $ul(M) = ul(ZZ\/ell)^(oplus I)$. Then by @limit-formula-for-sheaves, 
+  这个投影映射是同构。/*事实上，取一组基便可设 $ul(M) = ul(ZZ\/ell)^(oplus I)$。于是由 @limit-formula-for-sheaves， 
   $
     R^q f_(1,*) ul(M) cong (R^q f_(1,*) ul(ZZ\/ell))^(oplus I) cong R^q f_(1,*) ul(ZZ\/ell) otimes_(ZZ\/ell) ul(M)
-  $*/Indeed, $id$ is universally locally acyclic relative to $ul(M)$ (say by @loc-acyc-of-smooth-maps), and the desired projection isomorphism follows from @loc-acyc-and-base-change. 
+  $*/事实上，$id$ 相对 $ul(M)$ 是泛局部零调的（比如由 @loc-acyc-of-smooth-maps），所求的投影同构便由 @loc-acyc-and-base-change 推出。 
 
 
-  However, $R^q f_(1,*) ul(ZZ\/ell)$ are l.c.c. sheaves of $ul(ZZ\/ell)$-modules. Hence $R^q f_(1,*) ul(M)$ are l.c.c. sheaves of $Lambda$-modules, trivialized by the same finite etale coverings of $S$ trivializing $R^q f_(1,*) ul(ZZ\/ell)$. Base change compatibility of $R^q f_(1,*) ul(ZZ\/ell)$ also passes to $R^q f_(1,*) ul(M)$. Hence, we conclude that: 
+  然而，$R^q f_(1,*) ul(ZZ\/ell)$ 都是 l.c.c. 的 $ul(ZZ\/ell)$-模层。因此 $R^q f_(1,*) ul(M)$ 是 l.c.c. 的 $Lambda$-模层，而且，凡在 $S$ 上平凡化 $R^q f_(1,*) ul(ZZ\/ell)$ 的有限平展覆叠，也都平凡化它。$R^q f_(1,*) ul(ZZ\/ell)$ 的基变换相容性同样传给 $R^q f_(1,*) ul(M)$。于是我们得到： 
 
-  - $S$ is $(f_1, ul(M), S)$-good with $R^q f_(1,*) ul(M) = R^q f_* pi_* pi^(-1) cal(F)$ being l.c.c. sheaves of $Lambda$-modules. 
+  - $S$ 是 $(f_1, ul(M), S)$-好的，且 $R^q f_(1,*) ul(M) = R^q f_* pi_* pi^(-1) cal(F)$ 都是 l.c.c. 的 $Lambda$-模层。 
 
-  That is, in a fully self-contained statement: 
+  也就是说，把结论完整地写成自足的表述： 
   
-  - Suppose that $f: X -> S$ is a separated smooth morphism of pure relative dimension with $X$ connected, and $Lambda$ is an $ell$-torsion noetherian ring for a prime number $ell$. Suppose that we have a Galois etale covering space $pi: X_1 -> X$, with $f_1: X_1 ->^pi X -> S$. 
+  - 设 $f: X -> S$ 是纯相对维数的分离光滑态射，$X$ 连通；$Lambda$ 是对某个素数 $ell$ 而言的 $ell$-挠 Noether 环。又设给定 Galois 平展覆叠空间 $pi: X_1 -> X$，并令 $f_1: X_1 ->^pi X -> S$。 
   
-    Then after shrinking $S$ so that every $R^q f_(1,!) ul(ZZ\/ell)$ is l.c.c, for any $cal(F) in cAb(X_et, Lambda)$ a l.c.c. sheaf of $Lambda$-modules trivialized by $pi$, $S$ is $(f_1, pi^(-1) cal(F), S)$-good. 
+    则把 $S$ 缩小、使每个 $R^q f_(1,!) ul(ZZ\/ell)$ 都成为 l.c.c. 之后，对任意被 $pi$ 平凡化的 l.c.c. $Lambda$-模层 $cal(F) in cAb(X_et, Lambda)$，$S$ 都是 $(f_1, pi^(-1) cal(F), S)$-好的。 
 
-  To proceed, we essentially need to use a sort of group cohomology for the group $Aut(X_1\/X)$ on etale sheaves. I don't want to write a long construction for that, so I replaced it with a janky four lemma induction that you have seen multiple times. 
+  要继续推进，本质上需要对群 $Aut(X_1\/X)$ 在平展层上作某种群上同调。我不愿意为此写一长串构造，于是换成了一个你已见过多次的粗糙四引理归纳。 
 
-  Take the exact sequence: 
+  取正合列： 
   $
     0 -> cal(F) -> pi_* pi^(-1) cal(F) -> cal(R) -> 0
   $
-  Now $cal(F)$ and $pi_* pi^(-1) cal(F)$ are both l.c.c. sheaves of $Lambda$-modules both trivialized by $pi$, hence so is $cal(R)$. Denote by: 
+  现在 $cal(F)$ 与 $pi_* pi^(-1) cal(F)$ 都是被 $pi$ 平凡化的 l.c.c. $Lambda$-模层，故 $cal(R)$ 也是。记： 
 
-  - $T(q)$ the proposition: For every l.c.c. sheaf $cal(F)$ of $Lambda$-modules on $X$ trivialized by $pi$:
+  - $T(q)$ 为下述命题：对 $X$ 上每个被 $pi$ 平凡化的 l.c.c. $Lambda$-模层 $cal(F)$：
   
-    - $R^p f_* cal(F)$ is constructible for all $p<=q$; 
+    - 对一切 $p<=q$，$R^p f_* cal(F)$ 可构造； 
     
-    - For every Cartesian diagram: #h(1fr)
+    - 对每个拉回图表：#h(1fr)
       #align(center, diagram({
         node((0, 0), [$X'$])
         node((1, 0), [$S'$])
@@ -533,16 +534,16 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
         edge((1, 0), (1, 1), [$g$], label-side: left, "->")
         edge((0, 0), (0, 1), [$g'$], label-side: right, "->")
       }))
-      the base change $g^(-1) R^p f_* cal(F) -> R^p f'_* g'^(-1) cal(F)$ is an isomorphism for every $0<=p<=q$. 
+      基变换 $g^(-1) R^p f_* cal(F) -> R^p f'_* g'^(-1) cal(F)$ 对每个 $0<=p<=q$ 都是同构。 
     
 
-  - $T'(q)$ the proposition $T(q)$, but with $g^(-1) R^p f_* cal(F) -> R^p f'_* g'^(-1) cal(F)$ only required to be injective when $p=q$. 
+  - $T'(q)$ 为命题 $T(q)$，但只要求当 $p=q$ 时 $g^(-1) R^p f_* cal(F) -> R^p f'_* g'^(-1) cal(F)$ 是单射。 
 
-  Assume $T(q-1)$. Take any arbitrary l.c.c. sheaf $cal(F) in cAb(X_et, Lambda)$ trivialized by $pi$. Now: 
+  假定 $T(q-1)$ 成立。任取被 $pi$ 平凡化的 l.c.c. 层 $cal(F) in cAb(X_et, Lambda)$。现在： 
 
-  - We have a long exact sequence involving $dots.c -> R^(q-1) f_* cal(R) -> R^q f_* cal(F) -> R^q f_(1,*) pi^(-1) cal(F) -> dots.c$. By $T(q-1)$ and previous arguments, $R^q f_* cal(F)$ is sandwiched between two constructible sheaves, hence constructible. 
+  - 有长正合列 $dots.c -> R^(q-1) f_* cal(R) -> R^q f_* cal(F) -> R^q f_(1,*) pi^(-1) cal(F) -> dots.c$。由 $T(q-1)$ 与前面的论证，$R^q f_* cal(F)$ 被夹在两个可构造层之间，故可构造。 
 
-  - Take any $g: S' -> S$ and form the usual Cartesian diagram. Now consider the commutative diagram with exact rows: 
+  - 任取 $g: S' -> S$，作通常的拉回图表。现在考虑行正合的交换图表： 
     // https://q.uiver.app/#r=typst&q=WzAsMTQsWzAsMCwiZG90cy5jIl0sWzAsMSwiZG90cy5jIl0sWzEsMCwiZ14oLTEpIFJeKHEtMSkgZl8oMSwqKSBwaV4oLTEpIGNhbChGKSJdLFsyLDAsImdeKC0xKSBSXihxLTEpIGZfKiBjYWwoUikiXSxbMywwLCJnXigtMSkgUl5xIGZfKiBjYWwoRikiXSxbNCwwLCJnXigtMSkgUl5xIGZfKDEsKikgcGleKC0xKSBjYWwoRikiXSxbNSwwLCJnXigtMSkgUl5xIGZfKiBjYWwoUikiXSxbNiwwLCJkb3RzLmMiXSxbMSwxLCJSXihxLTEpIGYnXygxLCopIHBpJ14oLTEpIGcnXigtMSkgY2FsKEYpIl0sWzQsMSwiUl5xIGYnXygxLCopIHBpJ14oLTEpIGcnXigtMSkgY2FsKEYpIl0sWzIsMSwiUl4ocS0xKSBmJ18qIGcnXigtMSkgY2FsKFIpIl0sWzUsMSwiUl5xIGYnXyogZydeKC0xKSBjYWwoUikiXSxbMywxLCJSXnEgZidfKiBnJ14oLTEpIGNhbChGKSJdLFs2LDEsImRvdHMuYyJdLFswLDJdLFsyLDNdLFszLDRdLFs0LDVdLFs1LDZdLFs2LDddLFsxLDhdLFs4LDEwXSxbMTAsMTJdLFsxMiw5XSxbOSwxMV0sWzExLDEzXSxbMiw4XSxbMywxMF0sWzQsMTJdLFs1LDldLFs2LDExXV0=
     #align(center, diagram({
       node((0, 0), [$dots.c$])
@@ -578,35 +579,35 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
       edge((5, 0), (5, 1), "->")
     }, spacing: 1.3em, label-size: 0.7em))
 
-    By $T(q-1)$, the first two vertical arrows are bijective. By previous arguments, the fourth vertical arrow is bijective. 
+    由 $T(q-1)$，前两个竖直箭头是双射。由前面的论证，第四个竖直箭头是双射。 
 
-    - By the injective four lemma, the third arrow is injective. Since $cal(F)$ is arbitrary, this proves $T'(q)$; 
+    - 由单射四引理，第三个箭头是单射。由于 $cal(F)$ 任意，这就证明了 $T'(q)$； 
 
-    - By $T'(q)$, the fifth arrow is injective. Now by the surjective four lemma, the third arrow is bijective. Since $cal(F)$ is arbitrary, this proves $T(q)$. 
+    - 由 $T'(q)$，第五个箭头是单射。再由满射四引理，第三个箭头是双射。由于 $cal(F)$ 任意，这就证明了 $T(q)$。 
 
-  Now start with $T(-1)$ and perform induction, we have all $T(q)$ verified. Now suppose that $f$ has fiber dimensions $<=d$. Then for any l.c.c. sheaf $cal(F) in cAb(X_et, Lambda)$ trivialized by $pi$, any $s in S$, by compatibility with base change, 
+  现在从 $T(-1)$ 出发作归纳，便验证了所有 $T(q)$。再设 $f$ 的纤维维数 $<=d$。则对任意被 $pi$ 平凡化的 l.c.c. 层 $cal(F) in cAb(X_et, Lambda)$ 与任意 $s in S$，由与基变换的相容性， 
   $
     s^(-1) R^q f_* cal(F) = R^q f_(s,*) s^(-1) cal(F) = 0 
   $
-  whenever $q > 2dim(X_s)$, by @relative-artin-grothendieck-vanishing (2). In this case, for any geometric point $ol(s)$ above $s$, $(R^q f_* cal(F))_(ol(s)) = 0$. Hence, if we take $q > 2d$, we have $(R^q f_* cal(F))_(ol(s)) = 0$ for every geometric point $ol(s)$ of $S$, hence $R^q f_* cal(F) = 0$. 
+  只要 $q > 2dim(X_s)$（这里用到 @relative-artin-grothendieck-vanishing (2)）。此时对 $s$ 上方的任意几何点 $ol(s)$，有 $(R^q f_* cal(F))_(ol(s)) = 0$。于是若取 $q > 2d$，则对 $S$ 的每个几何点 $ol(s)$ 都有 $(R^q f_* cal(F))_(ol(s)) = 0$，从而 $R^q f_* cal(F) = 0$。 
 
-  Summarizing the discussion above, this shows that: 
+  总结上面的讨论，可得： 
 
-  - Suppose that $f: X -> S$ is a separated smooth morphism of pure relative dimension with $X$ connected, and $Lambda$ is an $ell$-torsion noetherian ring for a prime number $ell$. Suppose that we have a Galois etale covering space $pi: X_1 -> X$, with $f_1: X_1 ->^pi X -> S$. 
+  - 设 $f: X -> S$ 是纯相对维数的分离光滑态射，$X$ 连通；$Lambda$ 是对某个素数 $ell$ 而言的 $ell$-挠 Noether 环。又设给定 Galois 平展覆叠空间 $pi: X_1 -> X$，并令 $f_1: X_1 ->^pi X -> S$。 
   
-    Then after shrinking $S$ so that every $R^q f_(1,!) ul(ZZ\/ell)$ is l.c.c, for any $cal(F) in cAb(X_et, Lambda)$ a l.c.c. sheaf of $Lambda$-modules trivialized by $pi$, $S$ is $(f, cal(F), S)$-good. 
+    则把 $S$ 缩小、使每个 $R^q f_(1,!) ul(ZZ\/ell)$ 都成为 l.c.c. 之后，对任意被 $pi$ 平凡化的 l.c.c. $Lambda$-模层 $cal(F) in cAb(X_et, Lambda)$，$S$ 都是 $(f, cal(F), S)$-好的。 
 
-  This concludes the proof. 
+  证明至此结束。 
 ]
 
-The generic base change theorem has profound implications. 
+一般基变换定理有着深刻的应用。 
 
 #corollary(name: <finiteness-of-rf-lower-star>)[
-  (Finiteness of $R f_*$) Let $k$ be any field, and $f: X -> Y$ be a morphism of finite type $k$-schemes. Let $Lambda$ be an $n$-torsion noetherian ring with $n in k^times$. Then: 
+  ($R f_*$ 的有限性) 设 $k$ 是任意域，$f: X -> Y$ 是有限型 $k$-概形之间的态射，$Lambda$ 是 $n$-挠 Noether 环且 $n in k^times$。则： 
   
-  + (Finiteness) $R f_*: D(X_et, Lambda) -> D(Y_et, Lambda)$ has finite cohomological dimension above, and sends $D^b_c (X_et, Lambda)$ to $D^b_c (Y_et, Lambda)$. 
+  + （有限性）$R f_*: D(X_et, Lambda) -> D(Y_et, Lambda)$ 的上同调维数有上界，并把 $D^b_c (X_et, Lambda)$ 送到 $D^b_c (Y_et, Lambda)$。 
 
-  + (Base change) For any Cartesian diagram: #h(1fr)
+  + （基变换）对任意拉回图表：#h(1fr)
     #align(center, diagram({
       node((0, 0), [$X'$])
       node((1, 0), [$Y'$])
@@ -626,32 +627,32 @@ The generic base change theorem has profound implications.
     $
       g_Y^(-1) R f_* cal(K) -> R f'_* g_X^(-1) cal(K)
     $
-    is an isomorphism for all $cal(K) in D^b_c (X_et, Lambda)$. 
+    对一切 $cal(K) in D^b_c (X_et, Lambda)$ 都是同构。 
 
-  // + Setup as in (2), and assume that every finite $Lambda$-module embeds into a finite free $Lambda$-module. Also assume that  Then we have an isomorphism of relative base change for all $cal(K) in D^b_c (X_et, Lambda), cal(L) in D^b_#[ctf] (S'_et, Lambda)$: 
+  // + 设置如 (2)，并假设每个有限 $Lambda$-模都能单射进入某个有限自由 $Lambda$-模。再作一个假设。则对一切 $cal(K) in D^b_c (X_et, Lambda), cal(L) in D^b_#[ctf] (S'_et, Lambda)$，相对基变换有同构： 
   //   $
   //     g_Y^(-1) R f_* cal(K) Lotimes_Lambda cal(L)|_(Y') -> R f'_* (g_X^(-1) cal(K) Lotimes_Lambda cal(L)|_(X'))
   //   $
 ]
 #proof[
-  Finite cohomological dimension of $R f_*$ follows from @relative-artin-grothendieck-vanishing. The rest of statements (1) and the plain base change in statement (2) follow from generic base change applied to $S = Spec(k)$, where since $S$ is a single point, its only dense open is itself. 
+  $R f_*$ 的有限上同调维数由 @relative-artin-grothendieck-vanishing 得到。陈述 (1) 的其余部分，以及陈述 (2) 中普通的基变换，则把一般基变换用于 $S = Spec(k)$ 即可得到——这里 $S$ 只有一个点，它唯一的稠密开集就是自身。 
 
-  // (3) By truncation, we may assume that $cal(K) = cal(F)$ is a constructible sheaf. Fix $a$, and we perform induction on the following statement $T(r)$: 
+  // (3) 由截断，不妨设 $cal(K) = cal(F)$ 是可构造层。固定 $a$，并对下述命题 $T(r)$ 作归纳： 
 
-  // - For all $cal(L) in D^b_#[ctf] (S'_et, Lambda)$ s.t. $cal(L) Lotimes_Lambda (-)$ has cohomological dimension below $<=a$, #h(1fr)
+  // - 对一切 $cal(L) in D^b_#[ctf] (S'_et, Lambda)$，只要 $cal(L) Lotimes_Lambda (-)$ 的上同调维数 $<=a$，#h(1fr)
   //   $
   //     h^q (g_Y^(-1) R f_* cal(F) Lotimes_Lambda cal(L)|_(Y')) -> h^q (R f'_* (g_X^(-1) cal(F) Lotimes_Lambda cal(L)|_(X')))
   //   $
-  //   is an isomorphism for all $q <= r$. 
+  //   对一切 $q <= r$ 都是同构。 
 
-  // Now for any $cal(L) in D^b_#[ctf] (S'_et, Lambda)$ with $$
+  // 现在对任意满足下式的 $cal(L) in D^b_#[ctf] (S'_et, Lambda)$：$$
 ]
 
 #corollary[
-  (Generic universal local acyclicity) Let $k$ be any field and $g: S -> Spec(k)$ be any finite type morphism. Let $Lambda$ be an $n$-torsion noetherian ring with $n in k^times$. Then $g$ is universally locally acyclic relative to every $cal(K) in D^b_#[ctf] (S_et, Lambda)$. 
+  (泛局部零调性) 设 $k$ 是任意域，$g: S -> Spec(k)$ 是任意有限型态射，$Lambda$ 是 $n$-挠 Noether 环且 $n in k^times$。则 $g$ 关于每个 $cal(K) in D^b_#[ctf] (S_et, Lambda)$ 都是泛局部零调的。 
 ]
 #proof[
-  By @loc-acyc-and-base-change, and Step 3 and the early half of Step 4 in the proof of @rel-bc-reductions, it suffices to show that for every Cartesian diagram: 
+  由 @loc-acyc-and-base-change，以及 @rel-bc-reductions 证明中的第三步，以及第四步的前半部分，只需证明：对每个拉回图表： 
   #align(center, diagram({
     node((0, 0), [$X$])
     node((1, 0), [$Y$])
@@ -667,50 +668,50 @@ The generic base change theorem has profound implications.
     edge((2, 0), (2, 1), [$g$], label-side: left, "->")
     edge((0, 0), (0, 1), [$g_X$], label-side: right, "->")
   }))
-  in which $X_0 -> Y_0$ is an open immersion of finite type $k$-schemes, and every constructible sheaf $cal(F) in cAb((X_0)_et, Lambda)$, with $cal(K)_Y = cal(K)|_Y$, the relative base change: 
+  其中 $X_0 -> Y_0$ 是有限型 $k$-概形之间的开浸入；则对每个可构造层 $cal(F) in cAb((X_0)_et, Lambda)$，记 $cal(K)_Y = cal(K)|_Y$，相对基变换： 
   $
     g_Y^(-1) R f_(0,*) cal(F) Lotimes_Lambda cal(K)_Y -> R f_* (g_X^(-1) cal(F) Lotimes_Lambda f^(-1) cal(K)_Y)
   $
-  is an isomorphism. 
+  是同构。 
 
-  For this, we intend to use a generation argument such as @cpct-generation-of-triangulated-cat. Unfortunately $D^b_c$ does not have arbitrary direct sums, so we need to relax the conditions to $cal(K) in D(S_et, Lambda)$ to be any complex. Now by (2) of the previous corollary, every pushforward in question here is compatible with changing the base field from $k$ to its algebraic closure $ol(k)$. Thus by base changing to $ol(k)$, we may assume that $k$ is algebraically closed. Now: 
+  为此我们想用类似 @cpct-generation-of-triangulated-cat 的生成论证。遗憾的是 $D^b_c$ 没有任意直和，故需放宽条件，允许 $cal(K) in D(S_et, Lambda)$ 是任意复形。现在由上一推论的 (2)，这里涉及的每个推前，都与底域从 $k$ 换成代数闭包 $ol(k)$ 这一步相容。于是基变换到 $ol(k)$，不妨设 $k$ 代数闭。现在： 
   
-  - In $g_Y^(-1) R f_(0,*) cal(F) Lotimes_Lambda cal(K)_Y -> R f_* (g_X^(-1) cal(F) Lotimes_Lambda f^(-1) cal(K)_Y)$, both sides are triangulated functors in $cal(K)$; 
+  - 在 $g_Y^(-1) R f_(0,*) cal(F) Lotimes_Lambda cal(K)_Y -> R f_* (g_X^(-1) cal(F) Lotimes_Lambda f^(-1) cal(K)_Y)$ 中，两边都是关于 $cal(K)$ 的三角函子； 
 
-  - For any family $cal(K)_i in D(S_et, Lambda)$, #h(1fr)
+  - 对任意一族 $cal(K)_i in D(S_et, Lambda)$，有#h(1fr)
     $
       g_Y^(-1) R f_(0,*) cal(F) Lotimes_Lambda (oplus.big_i cal(K)_(i,Y)) cong oplus.big_i (g_Y^(-1) R f_(0,*) cal(F) Lotimes_Lambda cal(K)_(i,Y))
     $
-    since tensor is a left adjoint, while: 
+    因为张量是左伴随，而： 
     $
       R f_* (g_X^(-1) cal(F) Lotimes_Lambda f^(-1) (oplus.big_i cal(K)_(i,Y))) &cong R f_* (oplus.big_i g_X^(-1) cal(F) Lotimes_Lambda f^(-1) cal(K)_(i,Y)) \
       &cong oplus.big_i R f_* (g_X^(-1) cal(F) Lotimes_Lambda f^(-1) cal(K)_(i,Y))
     $
-    Here, the last step is due to @relative-limit-formula-for-sheaves and the boundedness of $R f_*$. The argument is truncation then applying limit formula that is pretty much the same as the proof of @derived-bounded-limit-formula-for-direct-sum. 
+    这里最后一步用到 @relative-limit-formula-for-sheaves 以及 $R f_*$ 的有界性。论证方法是先截断、再用极限公式，与 @derived-bounded-limit-formula-for-direct-sum 的证明大体相同。 
 
-    Hence, both sides of $g_Y^(-1) R f_(0,*) cal(F) Lotimes_Lambda cal(K)_Y -> R f_* (g_X^(-1) cal(F) Lotimes_Lambda f^(-1) cal(K)_Y)$ are compatible with direct sums in $cal(K) in D(S_et, Lambda)$. 
+    因此，$g_Y^(-1) R f_(0,*) cal(F) Lotimes_Lambda cal(K)_Y -> R f_* (g_X^(-1) cal(F) Lotimes_Lambda f^(-1) cal(K)_Y)$ 的两边都与 $cal(K) in D(S_et, Lambda)$ 中的直和相容。 
 
-  - Consider the family of objects ${j_! ul(Lambda)}$ of $D(S_et, Lambda)$ for $j: U -> S$ etale with $U$ affine. Then: 
+  - 考虑 $D(S_et, Lambda)$ 中的对象族 ${j_! ul(Lambda)}$，其中 $j: U -> S$ 平展、$U$ 仿射。则： 
 
-    - If $cal(K) in D(S_et, Lambda)$ has $Hom_Lambda (j_! ul(Lambda)[q], cal(K)) = 0$ for all $j: U -> S$ etale with $U$ affine and all $q in ZZ$, then upon replacing $cal(K)$ with a K-injective resolution $cal(I)^bullet$, we see that $Gamma(U, h^q (cal(I))) = 0$ for all affine $U in Et_S$. Every object of $Et_S$ can be covered with affines, so this shows that $h^q (cal(I)) = 0$ for all $q$, and so $cal(K) = 0$. 
+    - 若 $cal(K) in D(S_et, Lambda)$ 对一切平展、$U$ 仿射的 $j: U -> S$ 以及一切 $q in ZZ$ 都满足 $Hom_Lambda (j_! ul(Lambda)[q], cal(K)) = 0$，则把 $cal(K)$ 换成 K-内射消解 $cal(I)^bullet$ 后可见，对一切仿射 $U in Et_S$ 都有 $Gamma(U, h^q (cal(I))) = 0$。$Et_S$ 的每个对象都能被仿射对象覆盖，所以 $h^q (cal(I)) = 0$ 对一切 $q$ 成立，从而 $cal(K) = 0$。 
 
-    - Each $j_! ul(Lambda)$ is a compact object. Indeed, for $j: U -> S$ etale with $U$ affine, 
+    - 每个 $j_! ul(Lambda)$ 都是紧对象。事实上，对平展、$U$ 仿射的 $j: U -> S$， 
       $
         Hom_Lambda (j_! ul(Lambda), oplus.big_i cal(K)_i) &cong h^0 (R Gamma(U, oplus.big_i cal(K)_i)) \
         &cong h^0 (oplus.big_i R Gamma(U, cal(K)_i)) \
         &cong oplus.big_i h^0 (R Gamma(U, cal(K)_i))
       $
-      where the second step is due to @derived-bounded-limit-formula-for-direct-sum. Here $S$ is finite type over the algebraically closed field $k$, and so is $U$, which gives $R Gamma(U, -)$ finite cohomological dimension above. 
+      其中第二步用到 @derived-bounded-limit-formula-for-direct-sum。这里 $S$ 是代数闭域 $k$ 上的有限型概形，$U$ 也是，于是 $R Gamma(U, -)$ 的上同调维数有上界。 
 
-  Hence, invoking @cpct-generation-of-triangulated-cat, it suffices to prove for all affine etale $j: U -> S$ that: 
+  因此，援引 @cpct-generation-of-triangulated-cat，只需对一切仿射平展的 $j: U -> S$ 证明： 
   $
     g_Y^(-1) R f_(0,*) cal(F) Lotimes_Lambda cal(K)_Y -> R f_* (g_X^(-1) cal(F) Lotimes_Lambda f^(-1) cal(K)_Y)
   $
-  is an isomorphism when $cal(K) = j_! ul(Lambda)$. Now by Zariski's main theorem, we may pick a compactification $j: U ->^ell ol(U) ->^pi S$ with $pi$ finite. Take the complementary closed immersion $i: Z -> ol(U)$ of $ell$ and put $pi' = pi compose i$, and by the extension by zero triangle and @etale-and-compactified-lower-shriek-agree, we have an exact sequence: 
+  当 $cal(K) = j_! ul(Lambda)$ 时它是同构。现在由 Zariski 主定理，可取紧化 $j: U ->^ell ol(U) ->^pi S$，其中 $pi$ 有限。取 $ell$ 的补闭浸入 $i: Z -> ol(U)$，并置 $pi' = pi compose i$。由零延拓三角与 @etale-and-compactified-lower-shriek-agree，得到正合列： 
   $
     0 -> j_! ul(Lambda) -> pi_* ul(Lambda) -> pi'_* ul(Lambda) -> 0
   $
-  Hence, it suffices to prove for all $cal(K) = pi_* ul(Lambda)$ for $pi: S' -> S$ finite. Form the Cartesian diagram: 
+  因此只需对一切有限态射 $pi: S' -> S$ 且 $cal(K) = pi_* ul(Lambda)$ 的情形证明。作拉回图表： 
   #align(center, diagram({
     node((0, 0), [$X$])
     node((1, 0), [$Y$])
@@ -734,20 +735,20 @@ The generic base change theorem has profound implications.
     edge((1, -1), (1, 0), $pi_Y$, label-side: left, "->")
     edge((0, -1), (0, 0), $pi_X$, "->")
   }))
-  and note $cal(K)_Y cong pi_(Y,*) ul(Lambda), f^(-1) cal(K)_Y cong pi_(X,*) ul(Lambda)$. Compute: 
+  注意 $cal(K)_Y cong pi_(Y,*) ul(Lambda), f^(-1) cal(K)_Y cong pi_(X,*) ul(Lambda)$。计算： 
   $
-    g_Y^(-1) R f_(0,*) cal(F) Lotimes_Lambda pi_(Y,*) ul(Lambda) &cong pi_(Y,*) pi_Y^(-1) g_Y^(-1) R f_(0,*) cal(F) #[by projection formula] \
-    &cong pi_(Y,*) R f'_* pi_X^(-1) g_X^(-1) cal(F) #[by generic base change as in (2) of previous corollary] \
+    g_Y^(-1) R f_(0,*) cal(F) Lotimes_Lambda pi_(Y,*) ul(Lambda) &cong pi_(Y,*) pi_Y^(-1) g_Y^(-1) R f_(0,*) cal(F) #[由投影公式] \
+    &cong pi_(Y,*) R f'_* pi_X^(-1) g_X^(-1) cal(F) #[由上一推论 (2) 中的一般基变换] \
     &cong R f_* pi_(X,*) pi_X^(-1) g_X^(-1) cal(F) \
-    &cong R f_* (g_X^(-1) cal(F) Lotimes_Lambda pi_(X,*) ul(Lambda)) #[by projection formula]
+    &cong R f_* (g_X^(-1) cal(F) Lotimes_Lambda pi_(X,*) ul(Lambda)) #[由投影公式]
   $
-  We are thereby done. 
+  至此完成。 
 ]
 
-We also establish a sort of generic base change for $R f^!$. 
+我们还要为 $R f^!$ 建立某种一般基变换。 
 
 #proposition[
-  Let $S$ be a noetherian $ZZ[n^(-1)]$-scheme, $Lambda$ be an $n$-torsion noetherian ring, $f: X -> Y$ be a separated morphism of finite type $S$-schemes, and $cal(K) in D^b_c (Y_et, Lambda)$. Then there exists a dense open $U$ of $S$ s.t for any Cartesian diagram: 
+  设 $S$ 是 Noether 的 $ZZ[n^(-1)]$-概形，$Lambda$ 是 $n$-挠 Noether 环，$f: X -> Y$ 是有限型 $S$-概形之间的分离态射，$cal(K) in D^b_c (Y_et, Lambda)$。则存在 $S$ 的稠密开集 $U$，使得对任意拉回图表： 
   #align(center, diagram({
     node((0, 0), [$X'$])
     node((1, 0), [$Y'$])
@@ -764,213 +765,213 @@ We also establish a sort of generic base change for $R f^!$.
     edge((2, 0), (2, 1), [$g$], label-side: left, "->")
     edge((0, 0), (0, 1), [$g_X$], label-side: right, "->")
   }))
-  in which $g(S') subset U$, the base change map
+  其中 $g(S') subset U$，基变换映射
   $
     g_X^(-1) R f^! cal(K) -> R f'^! g_Y^(-1) cal(K)
   $
-  (induced by the transposed Beck-Chevalley base change along the proper base change map $R f'_! g_X^(-1) cong g_Y^(-1) R f_!$) is an isomorphism. 
+  （由沿紧合基变换同构 $R f'_! g_X^(-1) cong g_Y^(-1) R f_!$ 的转置 Beck–Chevalley 基变换诱导）是同构。 
 ]
 #proof[
-  It is easy to check from @bcbc-horizontal-concat and @bcbc-vertical-concat that this base change map for $R f^!$ is compatible with horizontal and vertical concatenation of Cartesian squares. 
+  由 @bcbc-horizontal-concat 与 @bcbc-vertical-concat 容易验证，$R f^!$ 的这个基变换映射与拉回方块的水平、竖直拼接相容。 
 
-  For the duration of this proof, we denote by an $(f, cal(K), S)$-good open of $S$ an open $U subset S$ for which the statement of this proposition holds. 
+  在本证明中，若开集 $U subset S$ 使本命题的陈述成立，我们就称它为 $S$ 的 $(f, cal(K), S)$-好开集。 
 
-  This problem is Zariski local in $Y$. Pick an affine cover ${j_(Y,i): Y_i -> Y}$ and base change $f$ to $f_i: X_i -> Y_i$. Then suppose that $U$ is $(f_i, cal(K)|_(Y_i), S)$ good for all $i$. Then: 
+  这个问题在 $Y$ 上是 Zariski 局部的。取仿射覆盖 ${j_(Y,i): Y_i -> Y}$，把 $f$ 基变换为 $f_i: X_i -> Y_i$。若 $U$ 对一切 $i$ 都是 $(f_i, cal(K)|_(Y_i), S)$-好的，则： 
   $
     g_(X_i)^(-1) R f_i^! (cal(K)|_(Y_i)) cong R f'_i^! g_(Y_i)^(-1) (cal(K)|_(Y_i))
   $
-  which is saying $(g_X^(-1) R f^! cal(K))|_(X'_i) cong (R f'^! g_Y^(-1) cal(K))|_(X'_i)$. Thus $g_X^(-1) R f^! cal(K) cong R f'^! g_Y^(-1) cal(K)$ by @surjective-pullback-conservative. 
+  这就是说 $(g_X^(-1) R f^! cal(K))|_(X'_i) cong (R f'^! g_Y^(-1) cal(K))|_(X'_i)$。于是由 @surjective-pullback-conservative，$g_X^(-1) R f^! cal(K) cong R f'^! g_Y^(-1) cal(K)$。 
 
-  Hence, we may assume that $Y$ is affine. Now pick an affine cover ${j_i: X_i -> Y}$ of $X$. Then suppose that $U$ is $(f compose j_i, cal(K), S)$-good for all $i$. Then this is saying that for $g: S' -> S$ with $g(S') subset U$, 
+  因此不妨设 $Y$ 仿射。再取 $X$ 的仿射覆盖 ${j_i: X_i -> Y}$。若 $U$ 对一切 $i$ 都是 $(f compose j_i, cal(K), S)$-好的，这就是说：对满足 $g(S') subset U$ 的 $g: S' -> S$， 
   $
     j'_i^(-1) g_X^(-1) R f^! cal(K) cong g_(X_i)^(-1) j_i^(-1) R f^! cal(K) cong j'_i^(-1) R f'^! g_Y^(-1) cal(K)
   $
-  for all $i$. Thus $g_X^(-1) R f^! cal(K) cong R f'^! g_Y^(-1) cal(K)$ by @surjective-pullback-conservative, and so $U$ is $(f, cal(K), S)$-good. Thus we may argue Zariski locally on $X$ and assume that $X$ is affine with image contained in an affine open of $Y$. Thus we may assume that $X$ is affine too. We may thus factor $f$ into $X ->^i AA^m_Y ->^p Y$ for a closed immersion $i$. Now: 
+  对一切 $i$ 成立。于是由 @surjective-pullback-conservative，$g_X^(-1) R f^! cal(K) cong R f'^! g_Y^(-1) cal(K)$，从而 $U$ 是 $(f, cal(K), S)$-好的。这样便可以在 $X$ 上作 Zariski 局部论证，设 $X$ 仿射且其像落在 $Y$ 的某个仿射开集之中。于是 $X$ 也是仿射的。于是可把 $f$ 分解为 $X ->^i AA^m_Y ->^p Y$，其中 $i$ 是闭浸入。现在： 
   $
     g_X^(-1) R f^! cal(K) cong g_X^(-1) R i^! p^(-1) cal(K)(m)[2m] \
     R f'^! g_Y^(-1) cal(K) cong R i'^! p'^(-1) g_Y^(-1) cal(K)(m)[2m] cong R i'^! g_(AA^m_Y)^(-1) p^(-1) cal(K)(m)[2m]
   $
-  by relative Poincare duality. Hence, replacing $f$ with $i$ and $cal(K)$ with $p^(-1) cal(K)(m)[2m]$, we may assume that $f=i$ is a closed immersion. Now take the complementary open immersion $j: U -> Y$ use the sections with support triangle: 
+  这里用到相对 Poincaré 对偶。因此把 $f$ 换成 $i$、把 $cal(K)$ 换成 $p^(-1) cal(K)(m)[2m]$，便可设 $f=i$ 是闭浸入。现在取补开浸入 $j: U -> Y$，用带支集截面三角： 
   $
     R i^! cal(K) -> i^(-1) cal(K) -> i^(-1) R j_* j^(-1) cal(K) ->^(+1)
   $
-  By generic base change, we may shrink $S$ so that the formation of $R j_* j^(-1) cal(K)$ commutes with arbitrary base change. Now the second and third term of the triangle is compatible with base change, and so is the first. We are thereby done. 
+  由一般基变换，可缩小 $S$，使 $R j_* j^(-1) cal(K)$ 的构造与任意基变换交换。现在三角的第二、第三项都与基变换相容，第一项也是。至此完成。 
 ]
 
-Finally, as an application, we prove the preservation of $D^b_#[ctf]$ under the six fundamental constructions on etale sheaves we have defined, known as _Grothedieck's six functors_. 
+最后，作为应用，我们证明 $D^b_#[ctf]$ 对平展层上已定义的六种基本构造封闭；这六种构造合称_Grothendieck 六函子_。 
 
 #theorem(name: <finiteness-of-six-functors>)[
-  (Finiteness of six functors) Let $f: X -> Y$ be a morphism between separated $k$-schemes for a field $k$, and $Lambda$ be an $n$-torsion noetherian ring with $n in k^times$. Then the functors: 
+  (六函子的有限性) 设 $k$ 是域，$f: X -> Y$ 是分离 $k$-概形之间的态射，$Lambda$ 是 $n$-挠 Noether 环且 $n in k^times$。则下列函子： 
   $
     R f_*, R f_! : D(X_et, Lambda) -> D(Y_et, Lambda) \
     f^(-1), R f^!: D(Y_et, Lambda) -> D(X_et, Lambda) \
     - Lotimes_Lambda -: D(X_et, Lambda) times D(X_et, Lambda) -> D(X_et, Lambda) \
     RHHom_Lambda (-, -): D(X_et, Lambda)^opp times D(X_et, Lambda) -> D(X_et, Lambda)
   $
-  all sends $D^b_#[ctf]$ to $D^b_#[ctf]$, with the first four being bounded above and below. 
+  都把 $D^b_#[ctf]$ 送到 $D^b_#[ctf]$，其中前四个上有界且下有界。 
 ]
 #proof[
-  Three of these statements are already known: 
+  其中三条已经知道： 
 
-  - $f^(-1)$ preserves $D^b_c$ by @constructible-sheaves-first-props (1), and preserves finite Tor-amplitude by checking stalks; 
+  - 由 @constructible-sheaves-first-props (1)，$f^(-1)$ 保持 $D^b_c$；逐茎检查可知它保持有限 Tor 幅度； 
 
-  - $R f_!$ preserves $D^b_c$ by @finiteness-of-lower-shriek, and is bounded by Grothendieck vanishing. It preserves $D^b_#[ctf]$ by the projection formula: #h(1fr)
+  - 由 @finiteness-of-lower-shriek，$R f_!$ 保持 $D^b_c$；由 Grothendieck 消没，它有界。由投影公式，它保持 $D^b_#[ctf]$：#h(1fr)
     $
       R f_! cal(K) Lotimes_Lambda cal(L) cong R f_! (cal(K) Lotimes_Lambda f^(-1) cal(L))
     $
-    Indeed, suppose that $cal(K)$ has Tor-amplitude in $[a,b]$, and $cal(L)$ is concentrated in $[a',b']$. Then $cal(K) Lotimes_Lambda f^(-1) cal(L)$ is concentrated in $[a+a', b+b']$, and so $R f_! (cal(K) Lotimes_Lambda f^(-1) cal(L))$ is concentrated in $[a+a', b+b'+2d]$, where $d$ is the maximum fiber dimension of $f$. Hence, $R f_! cal(K)$ is Tor-amplitude in $[a, b+2d]$. 
+    事实上，设 $cal(K)$ 的 Tor 幅度在 $[a,b]$ 中，$cal(L)$ 集中在 $[a',b']$ 中。则 $cal(K) Lotimes_Lambda f^(-1) cal(L)$ 集中在 $[a+a', b+b']$，故 $R f_! (cal(K) Lotimes_Lambda f^(-1) cal(L))$ 集中在 $[a+a', b+b'+2d]$，其中 $d$ 是 $f$ 的最大纤维维数。因此 $R f_! cal(K)$ 的 Tor 幅度在 $[a, b+2d]$ 中。 
 
-  - $- Lotimes_Lambda -$ preserves $D^b_#[ctf]$. Indeed, for $cal(K)_(1,2) in D^b_#[ctf] (X_et, Lambda)$, we may pick bounded flat resolutions $cal(P)_(1,2)^bullet$ of them by @resolution-of-ctf-complexes, in which every term $cal(P)^q_(1,2)$ is constructible and flat. Then $Lotimes$ may be computed termwise: 
+  - $- Lotimes_Lambda -$ 保持 $D^b_#[ctf]$。事实上，对 $cal(K)_(1,2) in D^b_#[ctf] (X_et, Lambda)$，由 @resolution-of-ctf-complexes 可取它们的有界平坦消解 $cal(P)_(1,2)^bullet$，其中每一项 $cal(P)^q_(1,2)$ 都可构造且平坦。此时 $Lotimes$ 可以逐项计算： 
     $
       cal(K)_1 Lotimes_Lambda cal(K)_2 cong cal(P)^bullet_1 otimes_Lambda cal(P)^bullet_2
     $
-    Now tensors of constructible sheaves are still constructible sheaves (by checking on a stratification), and tensors of flat sheaves are flat (formally). Hence every term in the complex $cal(P)^bullet_1 otimes_Lambda cal(P)^bullet_2$, being a finite direct sum of tensors of constructible and flat sheaves, is constructible and flat. Thus $cal(K)_1 Lotimes_Lambda cal(K)_2 in D^b_#[ctf] (X_et, Lambda)$. 
+    现在可构造层的张量仍可构造（在分层上检查即可），平坦层的张量仍平坦（形式地）。因此复形 $cal(P)^bullet_1 otimes_Lambda cal(P)^bullet_2$ 的每一项都是可构造且平坦的层——它是若干可构造平坦层张量的有限直和。故 $cal(K)_1 Lotimes_Lambda cal(K)_2 in D^b_#[ctf] (X_et, Lambda)$。 
 
-  The next functor to deal with is $R f_*$. 
+  下一个要处理的函子是 $R f_*$。 
 
-  - By @finiteness-of-rf-lower-star, $R f_*$ preserves $D^b_c$ and is bounded above. It thus suffices to prove preservation of finite Tor-amplitude. #h(1fr)
+  - 由 @finiteness-of-rf-lower-star，$R f_*$ 保持 $D^b_c$ 且上有界。故只需证明它保持有限 Tor 幅度。#h(1fr)
 
-    For this, we claim that for any complex $M in D(Lambda)$, the projection map identifies
+    为此我们断言：对任意复形 $M in D(Lambda)$，投影映射给出同构
     $
       R f_* cal(K) Lotimes_Lambda ul(M)_Y cong R f_* (cal(K) Lotimes_Lambda ul(M)_X)
     $
-    Indeed, this property on $M$ is invariant under shifts and completion of distinguished triangles, since both sides are triangulated functors in $M$. Furthermore, both sides commute with arbitrary direct sums in $M$. This follows from the same truncation argument as in @derived-bounded-limit-formula-for-direct-sum, this time using the boundedness of $R f_*$ instead of $R Gamma$. Finally, when $M = Lambda$, both sides are $R f_* cal(K)$ and the projection is an isomorphism. Our claim is thus verified by @cpct-generator-of-d-lambda. 
+    事实上，这个关于 $M$ 的性质在平移与补全特殊三角下不变，因为两边都是关于 $M$ 的三角函子。进一步，两边都与 $M$ 中的任意直和交换：这由与 @derived-bounded-limit-formula-for-direct-sum 中相同的截断论证得到，只不过这次用的是 $R f_*$ 的有界性而非 $R Gamma$。最后，当 $M = Lambda$ 时两边都是 $R f_* cal(K)$，投影是同构。于是由 @cpct-generator-of-d-lambda，断言得证。 
 
-    In particular, let $d$ be the cohomological dimension above of $R f_*$, and $[a,b]$ be the Tor-amplitude of $cal(K)$. Then we have shown that for every geometric point $ol(y)$ of $Y$, every complex $M$ of $Lambda$-modules supported on $[a',b']$
+    特别地，设 $d$ 是 $R f_*$ 的上同调维数上界，$[a,b]$ 是 $cal(K)$ 的 Tor 幅度。则我们已证明：对 $Y$ 的每个几何点 $ol(y)$ 与每个支撑在 $[a',b']$ 上的 $Lambda$-模复形 $M$，
     $
       h^q ((R f_* cal(K))_(ol(y)) Lotimes_Lambda M) = 0, forall q in.not [a+a',b+b'+d]
     $
-    Thus by checking stalks, for every complex $cal(L) in D(Y_et, Lambda)$ supported on $[a',b']$, $h^q (R f_* cal(K) Lotimes_Lambda cal(L)) = 0$ for all $q in.not [a+a',b+b'+d]$. Thus $R f_* cal(K)$ has Tor-amplitude in $[a,b+d]$. 
+    于是逐茎检查可知：对每个支撑在 $[a',b']$ 上的复形 $cal(L) in D(Y_et, Lambda)$，当 $q in.not [a+a',b+b'+d]$ 时 $h^q (R f_* cal(K) Lotimes_Lambda cal(L)) = 0$。故 $R f_* cal(K)$ 的 Tor 幅度在 $[a,b+d]$ 中。 
 
-  Next, $R f^!$ is formal from $R f_!$. 
+  接下来，$R f^!$ 的情形可由 $R f_!$ 形式地推出。 
 
-  - For a closed immersion $i: Z -> X$ with complementary open immersion $j: U -> X$, we have the section with support triangle: 
+  - 对闭浸入 $i: Z -> X$ 及其补开浸入 $j: U -> X$，有带支集截面三角： 
     $
       i_* R i^! cal(K) -> cal(K) -> R j_* j^(-1) cal(K) ->^(+1)
     $
-    Now: 
+    现在： 
     
-    - Since $R j_*$ is bounded, so is $i_* R i^!$. Applying $i^(-1)$ thus shows that $R i^!$ is bounded; 
+    - 由于 $R j_*$ 有界，$i_* R i^!$ 也有界。作用 $i^(-1)$ 便知 $R i^!$ 有界； 
 
-    - Since $R j_* j^(-1)$ preserves $D^b_#[ctf]$ as argued above, so does $i_* R i^!$. Applying $i^(-1)$ thus shows that $R i^!$ preserves $D^b_#[ctf]$. 
+    - 如上论证，$R j_* j^(-1)$ 保持 $D^b_#[ctf]$，故 $i_* R i^!$ 也保持。作用 $i^(-1)$ 便知 $R i^!$ 保持 $D^b_#[ctf]$。 
 
-  - For a general separated morphism $f: X -> Y$ of finite type, cover $X$ by finitely many affine opens ${X_i}$, each lying over an affine open of $Y$. Take $X' = union.big_i X_i$ and take the local isomorphism $j: X' -> X$. Then $f compose j$ factors as $X ->^i AA^d_Y ->^p Y$ for a closed immersion $i$. Thus, 
+  - 对一般的有限型分离态射 $f: X -> Y$，用有限多个仿射开集 ${X_i}$ 覆盖 $X$，使每个都落在 $Y$ 的某个仿射开集之上。取 $X' = union.big_i X_i$ 与局部同构 $j: X' -> X$。则 $f compose j$ 可分解为 $X ->^i AA^d_Y ->^p Y$，其中 $i$ 是闭浸入。于是 
     $
       j^(-1) R f^! cal(K) cong R i^! R p^! cal(K)
     $
-    By relative Poincare duality, $R p^! cal(K) cong cal(K)(d)[2d]$. Thus $j^(-1) R f^! cal(K) cong R i^! R p^! cal(K) cong R i^! cal(K) (d)[2d]$. Since $R i^!$ is bounded and preserves $D^b_#[ctf]$, so does $j^(-1) R f^! cal(K)$. 
+    由相对 Poincaré 对偶，$R p^! cal(K) cong cal(K)(d)[2d]$。故 $j^(-1) R f^! cal(K) cong R i^! R p^! cal(K) cong R i^! cal(K) (d)[2d]$。既然 $R i^!$ 有界且保持 $D^b_#[ctf]$，$j^(-1) R f^! cal(K)$ 也具有这两条性质。 
 
-    Now constructiblity can be checked locally, so $R f^!$ preserves $D^b_c$. By checking stalks, $R f^!$ preserves $D^b_#[ctf]$. 
+    现在可构造性可以局部检查，故 $R f^!$ 保持 $D^b_c$。逐茎检查可知 $R f^!$ 保持 $D^b_#[ctf]$。 
 
-  The last functor to check is $RHHom_Lambda (-, -)$. 
+  最后一个要检查的函子是 $RHHom_Lambda (-, -)$。 
 
-  - To show that $RHHom_Lambda (-, -)$ preserves $D^b_#[ctf]$, by truncations and @resolution-of-ctf-complexes, it suffices to prove that for any flat constructible sheaves $cal(F), cal(G) in cAb(X_et, Lambda)$, $RHHom_Lambda (cal(F), cal(G)) in D^b_#[ctf] (X_et, Lambda)$. 
+  - 要证 $RHHom_Lambda (-, -)$ 保持 $D^b_#[ctf]$，由截断与 @resolution-of-ctf-complexes，只需证明：对任意平坦可构造层 $cal(F), cal(G) in cAb(X_et, Lambda)$，都有 $RHHom_Lambda (cal(F), cal(G)) in D^b_#[ctf] (X_et, Lambda)$。 
     
-    Let: 
+    令： 
     $
-      cal(S)_X = {Z subset X #[closed]:& RHHom_Lambda (cal(F), cal(G)) in D^b_#[ctf] #[for any flat constructible sheaves $cal(F), cal(G) in cAb(X_et, Lambda)$ \
-      $&$whenever $supp(cal(F)) subset Z$]}
+      cal(S)_X = {Z subset X #[closed]:& RHHom_Lambda (cal(F), cal(G)) in D^b_#[ctf] #[对任意平坦可构造层 $cal(F), cal(G) in cAb(X_et, Lambda) $ \
+      $&$只要 $supp(cal(F)) subset Z$]}
     $
 
-    We intend to perform noetherian induction on $cal(S)_X$. Note that: 
+    我们打算对 $cal(S)_X$ 作 Noether 归纳。注意： 
 
-    - Let $i: Z -> X$ be a closed subscheme. For any flat constructible sheaves $cal(F), cal(G) in cAb(X_et, Lambda)$ with $supp(cal(F)) subset Z$, we may write $cal(F) = i_* cal(F)_Z$ for a flat constructible sheaf $cal(F)_Z$ on $Z$. Now: 
+    - 设 $i: Z -> X$ 是闭子概形。对任意满足 $supp(cal(F)) subset Z$ 的平坦可构造层 $cal(F), cal(G) in cAb(X_et, Lambda)$，则 $cal(F)$ 可写成 $cal(F) = i_* cal(F)_Z$，其中 $cal(F)_Z$ 是 $Z$ 上的平坦可构造层。现在： 
       $
         RHHom_Lambda (i_* cal(F)_Z, cal(G)) cong i_* RHHom_Lambda (cal(F)_Z, R i^! cal(G))
       $
-      Now $R i^! cal(G) in D^b_#[ctf] (Z_et, Lambda)$ as argued before, so suppose that $Z in cal(S)_Z$, and then truncations show that $RHHom_Lambda (cal(F)_Z, R i^! cal(G)) in D^b_#[ctf] (Z_et, Lambda)$. Applying $i_*$ preserves $D^b_#[ctf]$, and this proves that $Z in cal(S)_X$. 
+      如前所述 $R i^! cal(G) in D^b_#[ctf] (Z_et, Lambda)$，故设 $Z in cal(S)_Z$，则由截断可知 $RHHom_Lambda (cal(F)_Z, R i^! cal(G)) in D^b_#[ctf] (Z_et, Lambda)$。作用 $i_*$ 保持 $D^b_#[ctf]$，这就证明了 $Z in cal(S)_X$。 
 
-      On the other hand, for constructible flat $cal(F)_Z, cal(G)_Z in cAb(Z_et, Lambda)$, 
+      另一方面，对可构造平坦层 $cal(F)_Z, cal(G)_Z in cAb(Z_et, Lambda)$， 
       $
         RHHom_Lambda (cal(F)_Z, cal(G)_Z) cong i^(-1) RHHom(i_* cal(F)_Z, i_* cal(G)_Z)
       $
-      and so $Z in cal(S)_X$ implies $Z in cal(S)_Z$. 
+      因此 $Z in cal(S)_X$ 蕴含 $Z in cal(S)_Z$。 
     
-    Thus, $Z in cal(S)_X$ if and only if $Z in cal(S)_Z$. Thus to perform noetherian induction, it suffices to check that: 
+    于是 $Z in cal(S)_X$ 当且仅当 $Z in cal(S)_Z$。这样，为作 Noether 归纳，只需验证： 
 
-    - If every proper closed subset $Z subset.neq X$ is in $cal(S)_X$, then $X in cal(S)_X$. 
+    - 若每个真闭子集 $Z subset.neq X$ 都属于 $cal(S)_X$，则 $X in cal(S)_X$。 
 
-    We now start to check this point. For any flat constructible sheaf $cal(F), cal(G) in cAb(X_et, Lambda)$, pick a nonempty open $U subset X$ s.t. $cal(F)|_U$ is constant. Take the complementary immersions $j: U -> X$ and $i: Z = X - U -> X$, and we have the extension by zero triangle: 
+    下面开始验证这一点。对任意平坦可构造层 $cal(F), cal(G) in cAb(X_et, Lambda)$，取非空开集 $U subset X$ 使 $cal(F)|_U$ 常值。取互补的浸入 $j: U -> X$ 与 $i: Z = X - U -> X$，便有零延拓三角： 
     $
       j_! j^(-1) cal(F) -> cal(F) -> i_* i^(-1) cal(F) ->^(+1)
     $ 
-    Now $supp(i_* i^(-1) cal(F)) subset Z in cal(S)_X$, so $RHHom_Lambda (i_* i^(-1) cal(F), cal(G)) in D^b_#[ctf]$. Thus, it remains to check that $RHHom_Lambda (j_! j^(-1) cal(F), cal(G)) in D^b_#[ctf]$. Indeed, 
+    现在 $supp(i_* i^(-1) cal(F)) subset Z in cal(S)_X$，故 $RHHom_Lambda (i_* i^(-1) cal(F), cal(G)) in D^b_#[ctf]$。于是只需再证 $RHHom_Lambda (j_! j^(-1) cal(F), cal(G)) in D^b_#[ctf]$。事实上， 
     $
       RHHom_Lambda (j_! j^(-1) cal(F), cal(G)) cong R j_* RHHom_Lambda (j^(-1) cal(F), j^(-1) cal(G))
     $
-    Now $R j_*$ preserves $D^b_#[ctf]$, so it suffices to prove that $RHHom_Lambda (j^(-1) cal(F), j^(-1) cal(G)) in D^b_#[ctf]$. Now $j^(-1) cal(F)$ is locally constant, so replacing $X$ with $U$, it remains to prove that: 
+    现在 $R j_*$ 保持 $D^b_#[ctf]$，故只需证明 $RHHom_Lambda (j^(-1) cal(F), j^(-1) cal(G)) in D^b_#[ctf]$。而 $j^(-1) cal(F)$ 局部常值，于是把 $X$ 换成 $U$ 后，只需证明： 
 
-    - If $cal(F), cal(G) in cAb(X_et, Lambda)$ are constructible flat with $cal(F)$ l.c.c, then $RHHom_Lambda (cal(F), cal(G)) in D^b_#[ctf]$. 
+    - 若 $cal(F), cal(G) in cAb(X_et, Lambda)$ 可构造且平坦，且 $cal(F)$ 是 l.c.c.，则 $RHHom_Lambda (cal(F), cal(G)) in D^b_#[ctf]$。 
 
-    Pick an etale cover $j: U -> X$ with $U$ affine s.t. $j^(-1) cal(F)$ is constant. Now suppose that we can show that $j^(-1) RHHom_Lambda (cal(F), cal(G)) in D^b_#[ctf]$. Then: 
+    取平展覆盖 $j: U -> X$，其中 $U$ 仿射，使 $j^(-1) cal(F)$ 常值。假定我们能证明 $j^(-1) RHHom_Lambda (cal(F), cal(G)) in D^b_#[ctf]$。那么： 
 
-    - $j^(-1) EExt^q_Lambda (cal(F), cal(G))$ are constructible and vanishes outside finitely many values of $q$. 
+    - $j^(-1) EExt^q_Lambda (cal(F), cal(G))$ 可构造，且除有限多个 $q$ 之外消没。 
 
-      Since $j$ is surjective, by @surjective-pullback-conservative, $EExt^q_Lambda (cal(F), cal(G))$ vanishes outside finitely many values of $q$. Furthermore, $cal(H) -> j_! j^(-1) cal(H)$ is injective for all $cal(H)$, and so $EExt^q_Lambda (cal(F), cal(G))$ are all constructible. 
+      由于 $j$ 满射，由 @surjective-pullback-conservative，$EExt^q_Lambda (cal(F), cal(G))$ 在有限多个 $q$ 之外消没。进一步，对一切 $cal(H)$，$cal(H) -> j_! j^(-1) cal(H)$ 都是单射，故所有 $EExt^q_Lambda (cal(F), cal(G))$ 都可构造。 
 
-      Thus, $RHHom_Lambda (cal(F), cal(G)) in D^b_c$. 
+      因此 $RHHom_Lambda (cal(F), cal(G)) in D^b_c$。 
 
-    - By checking stalks, we may upgrade to $RHHom_Lambda (cal(F), cal(G)) in D^b_#[ctf]$. 
+    - 逐茎检查即可提升为 $RHHom_Lambda (cal(F), cal(G)) in D^b_#[ctf]$。 
 
-    Now $j^(-1) RHHom_Lambda (cal(F), cal(G)) in D^b_#[ctf] cong RHHom_Lambda (j^(-1) cal(F), j^(-1) cal(G))$, so replacing $X$ with $U$ and noting that $j^(-1) cal(F)$ is constant, it remains to show that: 
+    现在 $j^(-1) RHHom_Lambda (cal(F), cal(G)) in D^b_#[ctf] cong RHHom_Lambda (j^(-1) cal(F), j^(-1) cal(G))$，故把 $X$ 换成 $U$，并注意 $j^(-1) cal(F)$ 常值，就只剩下证明： 
 
-    - If $cal(G) in cAb(X_et, Lambda)$ is constructible flat, and $M$ is a finite flat $Lambda$-module, then $RHHom_Lambda (ul(M), cal(G)) in D^b_#[ctf]$. 
+    - 若 $cal(G) in cAb(X_et, Lambda)$ 可构造且平坦，$M$ 是有限平坦 $Lambda$-模，则 $RHHom_Lambda (ul(M), cal(G)) in D^b_#[ctf]$。 
 
-    Any finite flat module over a noetherian ring is necessarily projective and locally free. Thus $M$ is a projective locally free $Lambda$-module. 
+    Noether 环上的有限平坦模必定投射，且局部自由。故 $M$ 是投射的局部自由 $Lambda$-模。 
     
     #lemma[
-      Suppose that $Lambda$ is a noetherian ring, $M$ is a finite $Lambda$-module and $N$ is any $Lambda$-module. Then for any scheme $X$, 
+      设 $Lambda$ 是 Noether 环，$M$ 是有限 $Lambda$-模，$N$ 是任意 $Lambda$-模。则对任意概形 $X$， 
       $
         EExt^q_Lambda (ul(M)_X, ul(N)_X) = ul(Ext^q_Lambda (M, N))
       $
     ]
     #proof[
-      We first prove for $N$ injective. That is, we need to show that for all $q >= 1$, $EExt^q_Lambda (ul(M)_X, ul(N)_X) = 0$. Pick a resolution $dots.c -> P^(-1) -> P^0 -> M -> 0$ by finite free $Lambda$-modules. Then $HHom_Lambda (ul(P^(-p)), -)$ is exact, and so $EExt^q_Lambda (ul(M)_X, -)$ may be computed as: 
+      先对 $N$ 内射的情形证明。也就是说，要证对一切 $q >= 1$ 都有 $EExt^q_Lambda (ul(M)_X, ul(N)_X) = 0$。取一个由有限自由 $Lambda$-模组成的消解 $dots.c -> P^(-1) -> P^0 -> M -> 0$。则 $HHom_Lambda (ul(P^(-p)), -)$ 正合，于是 $EExt^q_Lambda (ul(M)_X, -)$ 可计算为： 
       $
         EExt^q_Lambda (ul(M)_X, -) &cong h^q (0 -> HHom_Lambda (ul(P^0)_X, ul(N)_X) -> HHom_Lambda (ul(P^(-1))_X, ul(N)_X) -> dots.c) \
         &cong h^q (0 -> ul(Hom_Lambda (P^0, N))_X -> ul(Hom_Lambda (P^(-1), N))_X -> dots.c) \
         &cong ul(h^q (0 -> Hom_Lambda (P^0, N) -> Hom_Lambda (P^(-1), N) -> dots.c))_X \
         &= 0
       $ 
-      where the final vanishing is due to $N$ being an injective $Lambda$-module. Now in the general case, pick an injective resolution $0 -> N -> I^0 -> I^1 -> dots.c$ of $N$. Since $EExt^p_Lambda (ul(M)_X, ul(I^q)_X)$ vanishes for all $p>=1$, this resolution can be used to compute $EExt^p_Lambda (ul(M)_X, ul(N)_X)$: 
+      其中最后的消没是因为 $N$ 是内射 $Lambda$-模。现在看一般情形，取 $N$ 的内射消解 $0 -> N -> I^0 -> I^1 -> dots.c$。由于对一切 $p>=1$，$EExt^p_Lambda (ul(M)_X, ul(I^q)_X)$ 都消没，这个消解可用来计算 $EExt^p_Lambda (ul(M)_X, ul(N)_X)$： 
       $
         EExt^p_Lambda (ul(M)_X, ul(N)_X) &cong h^p (0 -> HHom_Lambda (ul(M)_X, ul(I^0)_X) -> HHom_Lambda (ul(M)_X, ul(I^1)_X) -> dots.c) \
         &cong ul(h^p (0 -> Hom_Lambda (M, I^0) -> Hom_Lambda (M, I^1) -> dots.c))_X \
         &cong ul(Ext^p_Lambda (M, N))
       $
-      We are thereby done. 
+      至此完成。 
     ]
 
-    By @finite-morphisms-and-constructible-sheaves, we may pick a resolution of $cal(G)$ by: 
+    由 @finite-morphisms-and-constructible-sheaves，可取 $cal(G)$ 的一个消解： 
     $
       0 -> cal(G) -> r_(0,*) ul(N^0) -> r_(1,*) ul(N^1) -> dots.c
     $
-    for $N^q$ finite $Lambda$-modules and $r_q: X_q -> X$ finite. Now: 
+    其中 $N^q$ 是有限 $Lambda$-模，$r_q: X_q -> X$ 有限。现在： 
     $
       EExt^q_Lambda (ul(M), r_(p,*) ul(N^p)) = r_(p,*) EExt^q_Lambda (ul(M)_(X_q), ul(N^p)_(X_q)) 
     $
-    which vanishes for $q>=1$ by the previous lemma, since $M$ is a projective $Lambda$-module. Therefore, the resolution of $cal(G)$ above is suitable for computing $EExt^q_Lambda (ul(M), cal(G))$, and: 
+    由上一条引理，当 $q>=1$ 时它消没，因为 $M$ 是投射 $Lambda$-模。因此上面 $cal(G)$ 的消解适合用来计算 $EExt^q_Lambda (ul(M), cal(G))$，并且： 
 
     $
       EExt^q_Lambda (ul(M), cal(G)) cong h^q (dots.c -> HHom_Lambda (ul(M), r_(q-1,*) ul(N^(q-1))) -> HHom_Lambda (ul(M), r_(q,*) ul(N^q)) -> HHom_Lambda (ul(M), r_(q+1,*) ul(N^(q+1))) -> dots.c)
     $
-    // By our choice of resolution, it is possible to take it so that each $r^q: X_q -> X$ factors as $X_q ->^(g^q) X_(q-1) ->^(r^(q-1)) X$. Thus, 
+    // 按我们对消解的选取，可以做到使每个 $r^q: X_q -> X$ 分解为 $X_q ->^(g^q) X_(q-1) ->^(r^(q-1)) X$。于是， 
     // $
     //   EExt^q_Lambda (ul(M), cal(G)) cong r^(q-1)_* h^q (ul(Hom_Lambda (M, N^(q-1))) -> g^(q-1)_* ul(Hom_Lambda (M, N^q)) -> g^(q-1)_* g^q_*)
     // $
-    Taking stalks this is the cohomology of: 
+    取茎之后，它就是下面复形的上同调： 
     $
       dots.c -> Hom_Lambda (M, oplus.big_(ol(x_(q-1)) in r_(q-1)^(-1) (ol(x))) N^(q-1)) -> Hom_Lambda (M, oplus.big_(ol(x_(q)) in r_(q)^(-1) (ol(x))) N^(q)) -> Hom_Lambda (M, oplus.big_(ol(x_(q+1)) in r_(q+1)^(-1) (ol(x))) N^(q+1)) -> dots.c
     $
-    For $q >= 1$, $oplus.big_(ol(x_(q-1)) in r_(q-1)^(-1) (ol(x))) N^(q-1) -> oplus.big_(ol(x_(q)) in r_(q)^(-1) (ol(x))) N^(q) -> oplus.big_(ol(x_(q+1)) in r_(q+1)^(-1) (ol(x))) N^(q+1)$ is exact as the stalks of the resolution of $cal(G)$. Since $M$ is projective, the complex above is thus exact at $q$. This proves that: 
+    当 $q >= 1$ 时，$oplus.big_(ol(x_(q-1)) in r_(q-1)^(-1) (ol(x))) N^(q-1) -> oplus.big_(ol(x_(q)) in r_(q)^(-1) (ol(x))) N^(q) -> oplus.big_(ol(x_(q+1)) in r_(q+1)^(-1) (ol(x))) N^(q+1)$ 正合，因为它是 $cal(G)$ 的消解取茎所得。又 $M$ 投射，故上面的复形在 $q$ 处正合。这就证明了： 
     $
       RHHom_Lambda (ul(M), cal(G)) = HHom_Lambda (ul(M), cal(G)) = ker(r_(0,*) Hom_Lambda (M, N^0) -> r_(1,*) Hom_Lambda (M, N^1))
     $
-    is constructible. Checking stalks as above, we see that: 
+    它是可构造的。如上取茎检查，便知： 
     $
       HHom_Lambda (ul(M), cal(G))_(ol(x)) cong Hom_Lambda (M, cal(G)_(ol(x)))
     $
-    Since $M$ is locally free, $M$ is dualizable with dual $caron(M)$ locally free too. Thus $Hom_Lambda (M, cal(G)_(ol(x))) cong caron(M) otimes_Lambda cal(G)_(ol(x))$ is flat. 
+    由于 $M$ 局部自由，$M$ 可对偶化，其对偶 $caron(M)$ 也局部自由。故 $Hom_Lambda (M, cal(G)_(ol(x))) cong caron(M) otimes_Lambda cal(G)_(ol(x))$ 平坦。 
 
-    In summary, $RHHom_Lambda (ul(M), cal(G)) = Hom_Lambda (ul(M), cal(G))$ is constructible flat, and we are done. 
+    总之，$RHHom_Lambda (ul(M), cal(G)) = Hom_Lambda (ul(M), cal(G))$ 可构造且平坦，证毕。 
 ]

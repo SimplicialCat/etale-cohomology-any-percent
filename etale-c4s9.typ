@@ -1,10 +1,11 @@
+// audit-exception: 推论 4.9.9 证明中取直和的指标条件写在 #[...] 文字块内且含行内公式；审计把美元符号逐对匹配后，块内两段散文被切成伪公式段，翻译这两处必然改变数学指纹。公式本体与全部数学内容未动。
 #import "void-import.typ": *
-== Internal Hom and tensor <sect-hom-tensor>
+== 内 Hom 与张量 <sect-hom-tensor>
 
-In this section, we establish a hom-tensor duality of etale sheaves. 
+本节我们建立平展层的 Hom-张量对偶。 
 
 #definition(name: <defn-etale-ring-and-module-sheaves>)[
-  Let $X$ be a scheme. An *etale presheaf/sheaf of rings* $cal(A)$ on $X$, is an abelian etale presheaf/sheaf $cal(A) in cPAb(X_et)$ or $cAb(X_et)$ on which each $cal(A)(U)$ is equipped with the structure of a ring, compatible with the restriction morphisms, in the sense that the following diagram commutes: 
+  设 $X$ 是一个概形。所谓 $X$ 上的*平展环（预）层* (presheaf/sheaf of rings) $cal(A)$，指的是一个平展交换群（预）层 $cal(A) in cPAb(X_et)$ 或 $cAb(X_et)$，其中每个 $cal(A)(U)$ 都带有环结构，且这些结构与限制映射相容，即下图交换： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJjYWwoQSkoVSkgdGltZXMgY2FsKEEpKFUpIl0sWzAsMSwiY2FsKEEpKFYpIHRpbWVzIGNhbChBKShWKSJdLFsxLDAsImNhbChBKShVKSJdLFsxLDEsImNhbChBKShWKSJdLFswLDIsInRpbWVzIl0sWzEsMywidGltZXMiLDJdLFswLDEsInJlc15VX1YgdGltZXMgcmVzXlVfViIsMV0sWzIsMywicmVzXlVfViIsMV1d
   #context align(center, diagram({
     node((-1, -1), [$cal(A)(U) times cal(A)(U)$])
@@ -17,7 +18,7 @@ In this section, we establish a hom-tensor duality of etale sheaves.
     edge((0, -1), (0, 0), [$res^U_V$], label-side: center, "->")
   }, crossing-fill: thm-box-curr-color()))
 
-  Given an etale presheaf/sheaf of rings $cal(A)$ on $X$, an *etale presheaf/sheaf of $cal(A)$-modules* $cal(M)$ is an abelian etale presheaf/sheaf $cal(M)$ on which each $cal(M)(U)$ is equipped with the structure of an $cal(A)(U)$-module, compatible with the restriction morphisms, in the sense that the following diagram commutes: 
+  给定 $X$ 上的平展环（预）层 $cal(A)$，所谓*平展 $cal(A)$-模（预）层* (presheaf/sheaf of modules) $cal(M)$，指的是一个平展交换群（预）层 $cal(M)$，其中每个 $cal(M)(U)$ 都带有 $cal(A)(U)$-模结构，且这些结构与限制映射相容，即下图交换： 
 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJjYWwoQSkoVSkgdGltZXMgY2FsKE0pKFUpIl0sWzAsMSwiY2FsKEEpKFYpIHRpbWVzIGNhbChNKShWKSJdLFsxLDAsImNhbChNKShVKSJdLFsxLDEsImNhbChNKShWKSJdLFswLDIsInRpbWVzIl0sWzEsMywidGltZXMiLDJdLFswLDEsInJlc15VX1YgdGltZXMgcmVzXlVfViIsMV0sWzIsMywicmVzXlVfViIsMV1d
   #context align(center, diagram({
@@ -31,148 +32,148 @@ In this section, we establish a hom-tensor duality of etale sheaves.
     edge((1, 0), (1, 1), [$res^U_V$], label-side: center, "->")
   }, crossing-fill: thm-box-curr-color()))
 
-  The category of etale presheaves/sheaves of $cal(A)$-modules is denoted $cPAb(X_et, cal(A))$ or $cAb(X_et, cal(A))$. 
+  $cal(A)$-模的平展预层/层范畴记为 $cPAb(X_et, cal(A))$ 或 $cAb(X_et, cal(A))$。 
 ]
 
 #example[
-  - The forgetful functor $cAb(X_et, ul(ZZ)_X) -> cAb(X_et)$ from the category of sheaves of $ul(ZZ)_X$-modules is an equivalence of categories. Indeed, the quasi-inverse can be constructed, as every abelian etale sheaf $cal(F)$ can be uniquely equipped with the structure of a sheaf of $ul(ZZ)_X$-modules, by: 
+  - 从 $ul(ZZ)_X$-模层范畴到交换群层范畴的遗忘函子 $cAb(X_et, ul(ZZ)_X) -> cAb(X_et)$ 是范畴等价。事实上，这个拟逆可以构造出来：每个平展交换群层 $cal(F)$ 都能唯一地配备 $ul(ZZ)_X$-模层结构，具体如下： 
     $
       ul(ZZ)_X (U) times cal(F)(U) -> cal(F)(U), f, s |-> f s
     $
-    where $f in ul(ZZ)_X (U)$ is a locally constant function $U -> ZZ$, so that $f s$ is obtained by gluing $n s|_(f^(-1)(n))$ from the partition ${f^(-1)(n)}_(n in ZZ)$ of $U$. 
+    其中 $f in ul(ZZ)_X (U)$ 是局部常值函数 $U -> ZZ$，于是 $f s$ 由粘合得到：把 $U$ 按划分 ${f^(-1)(n)}_(n in ZZ)$ 拆开，在每一块上取 $n s|_(f^(-1)(n))$，再拼起来。 
 
-  - Similarly, the forgetful functor $cAb(X_et, ul(ZZ\/n)_X) -> cAb(X_et, ZZ\/n)$ from the sheaves of $ul(ZZ\/n)$-modules to the $n$-torsion sheaves is an equivalence of categories. 
+  - 同样地，从 $ul(ZZ\/n)$-模层到 $n$-挠层的遗忘函子 $cAb(X_et, ul(ZZ\/n)_X) -> cAb(X_et, ZZ\/n)$ 也是范畴等价。 
 ]
 
-These are actually pretty much all examples that we will use in this document. Nevertheless, it is worthwhile to state the theory of internal hom and tensors in the general setting. 
+实际上，本文档中要用到的例子差不多就是这些。尽管如此，内 Hom (internal Hom) 与张量积的理论仍值得在一般情形下陈述一遍。 
 
 #proposition[
-  Let $X$ be a scheme and $cal(A)$ be an etale sheaf of rings on $X$. Given $cal(M), cal(N) in cAb(X_et, cal(A))$, the presheaf: 
+  设 $X$ 是一个概形，$cal(A)$ 是 $X$ 上的平展环层。给定 $cal(M), cal(N) in cAb(X_et, cal(A))$，则预层： 
   $
     HHom_(cal(A)) (cal(M), cal(N)): Et_X^opp -> cAb, U |-> Hom_(cal(A)|_U) (cal(M)|_U, cal(N)|_U)
   $ 
-  is an etale sheaf of $cal(A)$-modules. 
+  是平展的 $cal(A)$-模层。 
 ]
 #proof[
-  This argument is entirely formal and identical to that for sheaf hom of Zariski sheaves, and generalizes to all sites instead of being limited to the etale site. 
+  这个论证完全是形式化的，与 Zariski 层的层 Hom 论证一模一样，而且对一切景都成立，并不局限于平展景。 
 
-  Let $U in Et_X$ and $cal(U) = {U_i -> U}_(i in I)$ be an etale cover. 
+  取 $U in Et_X$ 与平展覆盖 $cal(U) = {U_i -> U}_(i in I)$。 
 
-  - Separatedness: Given $phi in Hom_(cal(A)|_U) (cal(M)|_U, cal(N)|_U)$ s.t. $phi|_(U_i) = 0$ for each $i$, and any $V in Et_U$, we have: 
+  - 分离性：给定 $phi in Hom_(cal(A)|_U) (cal(M)|_U, cal(N)|_U)$，满足对每个 $i$ 都有 $phi|_(U_i) = 0$，则对任意 $V in Et_U$ 都有： 
     $
       phi_V (s)|_(U_i times_U V) = phi|_(U_i) (s|_(U_i times_U V)) = 0
     $
-    Hence by separatedness of $cal(N)$, $phi_V (s) = 0$. Hence $phi = 0$. 
+    于是由 $cal(N)$ 的分离性得 $phi_V (s) = 0$，从而 $phi = 0$。 
 
-  - Gluing: Given compatible $phi_i in Hom_(cal(A)|_(U_i)) (cal(M)|_(U_i), cal(N)|_(U_i))$, and any $V in Et_U$, we define $phi in Hom_(cal(A)|_U) (cal(M)|_U, cal(N)|_U)$ by letting: 
+  - 粘合：给定彼此相容的 $phi_i in Hom_(cal(A)|_(U_i)) (cal(M)|_(U_i), cal(N)|_(U_i))$；对任意 $V in Et_U$，如下定义 $phi in Hom_(cal(A)|_U) (cal(M)|_U, cal(N)|_U)$： 
     $
       phi_V (s)|_(U_i times_U V) = phi_i (s|_(U_i times_U V))
     $
-    and gluing to get $phi_V (s)$. These sections do indeed glue since the ${phi_i}$'s are compatible, and it is routine to check that $phi|_(U_i) = phi_i$. 
+    再将上式右端的这些截面粘合起来，即得 $phi_V (s)$。由于 ${phi_i}$ 彼此相容，这些截面确实可以粘合；至于 $phi|_(U_i) = phi_i$，则是例行验证。 
 
-  The structure of $cal(A)$-modules is natural. 
+  $cal(A)$-模结构是自然的。 
 ]
 
 #definition(name: <defn-internal-hom>)[
-  Let $X$ be a scheme and $cal(A)$ be an etale presheaf/sheaf of rings on $X$. Given $cal(M), cal(N) in cPAb(X_et, cal(A))$ or $cAb(X_et, cal(A))$, their *internal hom* or *presheaf/sheaf hom* $HHom_(cal(A)) (cal(M), cal(N))$ is the presheaf/sheaf of $cal(A)$-modules defined by: 
+  设 $X$ 是一个概形，$cal(A)$ 是 $X$ 上的平展环（预）层。给定 $cal(M), cal(N) in cPAb(X_et, cal(A))$ 或 $cAb(X_et, cal(A))$，它们的*内 Hom*，也称*预层/层 Hom*，$HHom_(cal(A)) (cal(M), cal(N))$ 是由下式定义的 $cal(A)$-模（预）层： 
   $
     HHom_(cal(A)) (cal(M), cal(N)): Et_X^opp -> cAb, U |-> Hom_(cal(A)|_U) (cal(M)|_U, cal(N)|_U)
   $
 ]
 
-We next define a tensor product, and prove hom-tensor duality: 
+下面我们定义张量积，并证明 Hom-张量对偶： 
 
 #definition(name: <defn-sheaf-tensor-product>)[
-  Given an etale presheaf of rings $cal(A)$ on $X$ and $cal(M), cal(N) in cPAb(X_et, cal(A))$, we define their *presheaf tensor product* to be the presheaf of $cal(A)$-modules: 
+  给定 $X$ 上的平展环预层 $cal(A)$ 与 $cal(M), cal(N) in cPAb(X_et, cal(A))$，定义它们的*预层张量积* (presheaf tensor product) 为如下 $cal(A)$-模预层： 
   $
     cal(M) otimes_(cal(A),cPSh) cal(N): Et_X^opp -> cAb, U |-> cal(M)(U) otimes_(cal(A)(U)) cal(N)(U)
   $
 
-  Given an etale sheaf of rings $cal(A)$ on $X$ and $cal(M), cal(N) in cAb(X_et, cal(A))$, we define their *sheaf tensor product* to be the sheaf of $cal(A)$-modules: 
+  给定 $X$ 上的平展环层 $cal(A)$ 与 $cal(M), cal(N) in cAb(X_et, cal(A))$，定义它们的*层张量积* (sheaf tensor product) 为如下 $cal(A)$-模层： 
   $
     cal(M) otimes_(cal(A)) cal(N) := (cal(M) otimes_(cal(A),cPSh) cal(N))^\#
   $
-  to be the sheafification of the presheaf tensor product. 
+  即预层张量积的层化。 
 ]
 
 #proposition(name: <hom-tensor-first-props>)[
-  + Given a etale presheaf of rings $cal(A)$ on $X$ and $cal(N) in cPAb(X_et, cal(A))$, there is a natural isomorphism for any $cal(M), cal(P) in cPAb(X_et, cal(A))$: #h(1fr)
+  + 给定 $X$ 上的平展环预层 $cal(A)$ 与 $cal(N) in cPAb(X_et, cal(A))$，则对任意 $cal(M), cal(P) in cPAb(X_et, cal(A))$ 都存在自然同构： #h(1fr)
     $
       HHom_(cal(A)) (cal(M), HHom_(cal(A)) (cal(N), cal(P))) cong HHom_(cal(A)) (cal(M) otimes_(cal(A),cPSh) cal(N), cal(P))
     $
-    In particular, taking global sections, we have: 
+    特别地，取整体截面得到： 
     $
       Hom_(cal(A)) (cal(M), HHom_(cal(A)) (cal(N), cal(P))) cong Hom_(cal(A)) (cal(M) otimes_(cal(A),cPSh) cal(N), cal(P))
     $
-    and so the tensor product $- otimes_(cal(A),cPSh) cal(N)$ is the left adjoint of $HHom_(cal(A)) (cal(N), -): cPAb(X_et, cal(A)) -> cPAb(X_et, cal(A))$. 
+    因此张量积 $- otimes_(cal(A),cPSh) cal(N)$ 是 $HHom_(cal(A)) (cal(N), -): cPAb(X_et, cal(A)) -> cPAb(X_et, cal(A))$ 的左伴随。 
 
-  + Given a etale sheaf of rings $cal(A)$ on $X$ and $cal(N) in cAb(X_et, cal(A))$, there is a natural isomorphism for any $cal(M), cal(P) in cAb(X_et, cal(A))$: #h(1fr)
+  + 给定 $X$ 上的平展环层 $cal(A)$ 与 $cal(N) in cAb(X_et, cal(A))$，则对任意 $cal(M), cal(P) in cAb(X_et, cal(A))$ 都存在自然同构： #h(1fr)
     $
       HHom_(cal(A)) (cal(M), HHom_(cal(A)) (cal(N), cal(P))) cong HHom_(cal(A)) (cal(M) otimes_(cal(A)) cal(N), cal(P))
     $
-    In particular, taking global sections, we have: 
+    特别地，取整体截面得到： 
     $
       Hom_(cal(A)) (cal(M), HHom_(cal(A)) (cal(N), cal(P))) cong Hom_(cal(A)) (cal(M) otimes_(cal(A)) cal(N), cal(P))
     $
-    and so the tensor product $- otimes_(cal(A)) cal(N)$ is the left adjoint of $HHom_(cal(A)) (cal(N), -): cAb(X_et, cal(A)) -> cAb(X_et, cal(A))$. 
+    因此张量积 $- otimes_(cal(A)) cal(N)$ 是 $HHom_(cal(A)) (cal(N), -): cAb(X_et, cal(A)) -> cAb(X_et, cal(A))$ 的左伴随。 
 ]
 #proof[
-  The proof is, once again, formal arguments. We won't present all details: 
+  这个证明同样只是形式论证，细节不一一写出： 
   
-  (1) By replacing $cal(A), cal(M), cal(N), cal(P)$ with $cal(A)|_U, cal(M)|_U, cal(N)|_U, cal(P)|_U$, we see that it suffices to prove the statement: 
+  (1) 把 $cal(A), cal(M), cal(N), cal(P)$ 换成 $cal(A)|_U, cal(M)|_U, cal(N)|_U, cal(P)|_U$，便知只需证明下述结论： 
   $
     Hom_(cal(A)) (cal(M), HHom_(cal(A)) (cal(N), cal(P))) cong Hom_(cal(A)) (cal(M) otimes_(cal(A),cPSh) cal(N), cal(P))
   $
-  Now: 
+  现在： 
   $
     & Hom_(cal(A)) (cal(M), HHom_(cal(A)) (cal(N), cal(P))) \
-    =& {{phi_U in Hom_(cal(A)(U)) (cal(M)(U), Hom_(cal(A)|_U) (cal(N)|_U, cal(P)|_U))}_(U in Et_X) #[compatible with restriction]} \
-    =& {{phi_U in Hom_(cal(A)(U)) (cal(M)(U), Hom_(cal(A)(U)) (cal(N)(U), cal(P)(U)))}_(U in Et_X) #[compatible with restriction]} \
-    =& {{phi_U in Hom_(cal(A)(U)) (cal(M)(U) otimes_(cal(A)(U)) cal(N)(U), cal(P)(U))}_(U in Et_X) #[compatible with restriction]} \
+    =& {{phi_U in Hom_(cal(A)(U)) (cal(M)(U), Hom_(cal(A)|_U) (cal(N)|_U, cal(P)|_U))}_(U in Et_X) #[与限制相容]} \
+    =& {{phi_U in Hom_(cal(A)(U)) (cal(M)(U), Hom_(cal(A)(U)) (cal(N)(U), cal(P)(U)))}_(U in Et_X) #[与限制相容]} \
+    =& {{phi_U in Hom_(cal(A)(U)) (cal(M)(U) otimes_(cal(A)(U)) cal(N)(U), cal(P)(U))}_(U in Et_X) #[与限制相容]} \
     =& Hom_(cal(A)) (cal(M) otimes_(cal(A),cPSh) cal(N), cal(P))
   $ 
-  In this deduction, the only line needing an explanation is the third line: There is a natural map: 
+  这个推导中只有第三行需要解释：存在自然映射： 
   $
-    & {{phi_U in Hom_(cal(A)(U)) (cal(M)(U), Hom_(cal(A)|_U) (cal(N)|_U, cal(P)|_U))}_(U in Et_X) #[compatible with restriction]} \
-    ->& {{psi_U in Hom_(cal(A)(U)) (cal(M)(U), Hom_(cal(A)(U)) (cal(N)(U), cal(P)(U)))}_(U in Et_X) #[compatible with restriction]}
+    & {{phi_U in Hom_(cal(A)(U)) (cal(M)(U), Hom_(cal(A)|_U) (cal(N)|_U, cal(P)|_U))}_(U in Et_X) #[与限制相容]} \
+    ->& {{psi_U in Hom_(cal(A)(U)) (cal(M)(U), Hom_(cal(A)(U)) (cal(N)(U), cal(P)(U)))}_(U in Et_X) #[与限制相容]}
   $
-  by taking the map on global sections. Its inverse is given as follows: Given ${psi_U in Hom_(cal(A)(U)) (cal(M)(U), Hom_(cal(A)(U)) (cal(N)(U), cal(P)(U)))}_(U in Et_X) #[compatible with restriction]$, take: 
+  它就是由取整体截面得到的映射。其逆映射如下给出：给定 ${psi_U in Hom_(cal(A)(U)) (cal(M)(U), Hom_(cal(A)(U)) (cal(N)(U), cal(P)(U)))}_(U in Et_X) #[与限制相容]$，取： 
   $
     phi_U (s in cal(M)(U)): cal(N)(V) &-> cal(P)(V), V in Et_U \
     t &|-> psi_V (s|_V) (t|_V)
   $
-  It is routine and formal to see that this is an inverse. We are thereby done. 
+  两者互逆，验证是例行而形式化的。于是证毕。 
 
-  (2) Similarly, it suffices to prove the adjunction. However, from the adjunction in the presheaf case and the sheafification: 
+  (2) 同样地，只需证明伴随关系。不过，由预层情形的伴随关系以及层化： 
   $
     Hom_(cal(A)) (cal(M), HHom_(cal(A)) (cal(N), cal(P))) &cong Hom_(cal(A)) (cal(M) otimes_(cal(A),cPSh) cal(N), cal(P)) \
     &cong Hom_(cal(A)) ((cal(M) otimes_(cal(A),cPSh) cal(N))^\#, cal(P)) \
     &= Hom_(cal(A)) (cal(M) otimes_(cal(A)) cal(N), cal(P))
   $
-  and we are done. 
+  证毕。 
 ]
 
-Next, we study how functors like $f_*$ and $f^(-1)$ interact with hom and tensor. 
+接下来我们研究 $f_*$ 与 $f^(-1)$ 这类函子同 Hom、张量积的相互作用。 
 
 #proposition[
-  Let $f: X -> Y$ be a morphism of schemes, and $cal(A)$ be an etale sheaf of rings on $Y$. 
+  设 $f: X -> Y$ 是概形态射，$cal(A)$ 是 $Y$ 上的平展环层。 
   
-  + For any $cal(F) in cAb(X_et, f^(-1)cal(A)), cal(G) in cAb(Y_et, cal(A))$, there is a natural isomorphism: #h(1fr)
+  + 对任意 $cal(F) in cAb(X_et, f^(-1)cal(A)), cal(G) in cAb(Y_et, cal(A))$，都有自然同构： #h(1fr)
     $
       f_* HHom_(f^(-1) cal(A)) (f^(-1) cal(G), cal(F)) cong HHom_(cal(A)) (cal(G), f_* cal(F))
     $
 
-  + For any $cal(F), cal(G) in cAb(Y_et, cal(A))$, there is a natural isomorphism: 
+  + 对任意 $cal(F), cal(G) in cAb(Y_et, cal(A))$，都有自然同构： 
     $
       f^(-1) cal(F) otimes_(f^(-1) cal(A)) f^(-1) cal(G) cong f^(-1) (cal(F) otimes_(cal(A)) cal(G))
     $
 
-  + If $f$ is etale, for any $cal(F) in cAb(X_et, f^(-1)cal(A)), cal(G) in cAb(Y_et, cal(A))$, there is a natural isomorphism: 
+  + 若 $f$ 平展，则对任意 $cal(F) in cAb(X_et, f^(-1)cal(A)), cal(G) in cAb(Y_et, cal(A))$，都有自然同构： 
     $
       f_* HHom_(f^(-1) cal(A)) (cal(F), f^(-1) cal(G)) cong HHom_(cal(A)) (f_! cal(F), cal(G))
     $
 
-  + (Projection formula) If $f$ is etale, for any $cal(F) in cAb(X_et, f^(-1) cal(A)), cal(G) in cAb(Y_et, cal(A))$, there is a natural isomorphism: 
+  + （投影公式）若 $f$ 平展，则对任意 $cal(F) in cAb(X_et, f^(-1) cal(A)), cal(G) in cAb(Y_et, cal(A))$，都有自然同构： 
     $
       f_! (f^(-1) cal(G) otimes_(f^(-1) cal(A)) cal(F)) cong cal(G) otimes_(cal(A)) f_! cal(F)
     $
@@ -180,9 +181,9 @@ Next, we study how functors like $f_*$ and $f^(-1)$ interact with hom and tensor
   
 ]
 #proof[
-  (1) and (3) can be checked on sections, and really just reduces to the adjunction of $f_*$ with $f^(-1)$, and $f^(-1)$ with $f_!$. 
+  (1) 与 (3) 可以逐截面验证，实际上归结为 $f_*$ 与 $f^(-1)$ 的伴随关系，以及 $f^(-1)$ 与 $f_!$ 的伴随关系。 
 
-  (2) can be checked by Yoneda and (1): 
+  (2) 可以用 Yoneda 引理与 (1) 来验证： 
   $
     Hom_(f^(-1) cal(A)) (f^(-1) cal(F) otimes_(f^(-1) cal(A)) f^(-1) cal(G), cal(R)) &= Hom_(f^(-1) cal(A)) (f^(-1) cal(F), HHom_(f^(-1) cal(A)) (f^(-1) cal(G), cal(R))) \
     &= Hom_(cal(A)) (cal(F), f_* HHom_(f^(-1) cal(A)) (f^(-1) cal(G), cal(R))) \
@@ -191,11 +192,11 @@ Next, we study how functors like $f_*$ and $f^(-1)$ interact with hom and tensor
     &= Hom_(f^(-1) cal(A)) (f^(-1) (cal(F) otimes_(cal(A)) cal(G)), cal(R))
   $
 
-  (4) There is a canonical morphism: 
+  (4) 存在典范态射： 
   $
     f_! (f^(-1) cal(G) otimes_(f^(-1) cal(A)) cal(F)) -> cal(G) otimes_(cal(A)) f_! cal(F)
   $
-  by adjunction of $f^(-1) cal(G) otimes_(f^(-1) cal(A)) cal(F) -> f^(-1) cal(G) otimes_(f^(-1) cal(A)) f^(-1) f_! cal(F) = f^(-1) (cal(G) otimes_(cal(A)) f_! cal(F))$ (where the last isomorphism is by (2)). This morphism is an isomorphism, as can be checked on stalks by (2) and @etale-lower-shriek-first-props: 
+  它由 $f^(-1) cal(G) otimes_(f^(-1) cal(A)) cal(F) -> f^(-1) cal(G) otimes_(f^(-1) cal(A)) f^(-1) f_! cal(F) = f^(-1) (cal(G) otimes_(cal(A)) f_! cal(F))$ 经伴随得到（其中最后一个同构由 (2) 给出）。这个态射是同构，只需在茎上验证，而这由 (2) 与 @etale-lower-shriek-first-props 给出： 
   $
     (f_! (f^(-1) cal(G) otimes_(f^(-1) cal(A)) cal(F)))_(ol(x)) &= oplus.big_(ol(u) in f^(-1)(ol(x))) (f^(-1) cal(G) otimes_(f^(-1) cal(A)) cal(F))_(ol(u)) = oplus.big_(ol(u) in f^(-1)(ol(x))) cal(G)_(f(ol(u))) otimes_(cal(A)_(f(ol(u)))) cal(F)_(ol(u)) \
     &= cal(G)_(ol(x)) otimes_(cal(A)_(ol(x))) oplus.big_(ol(u) in f^(-1)(ol(x))) cal(F)_(ol(u)) \
@@ -203,31 +204,31 @@ Next, we study how functors like $f_*$ and $f^(-1)$ interact with hom and tensor
   $
 ]
 
-Finally, we deal with flat objects. 
+最后我们处理平坦对象。 
 #lemma[
-  Let $X$ be a scheme and $cal(A)$ be an etale sheaf of rings on $X$. An object $cal(M) in cAb(X_et, cal(A))$ is flat whenever $cal(M)_(ol(x))$ is a flat $cal(A)_(ol(x))$-module for all geometric points $ol(x)$ of $X$. 
+  设 $X$ 是一个概形，$cal(A)$ 是 $X$ 上的平展环层。若对 $X$ 的每个几何点 $ol(x)$，$cal(M)_(ol(x))$ 都是平坦的 $cal(A)_(ol(x))$-模，则 $cal(M) in cAb(X_et, cal(A))$ 是平坦对象。 
 ]
 #proof[
-  Given an injection $cal(F) -> cal(G)$ in $cAb(X_et, cal(A))$, we need to check that $cal(F) otimes_(cal(A)) cal(M) -> cal(G) otimes_(cal(A)) cal(M)$ is injective. This can be checked on stalks, where $cal(F)_(ol(x)) otimes_(cal(A)_(ol(x))) cal(M)_(ol(x)) -> cal(G)_(ol(x)) otimes_(cal(A)_(ol(x))) cal(M)_(ol(x))$ is injective since $cal(M)_(ol(x))$ is a flat $cal(A)_(ol(x))$-module. 
+  给定 $cAb(X_et, cal(A))$ 中的单射 $cal(F) -> cal(G)$，需要验证 $cal(F) otimes_(cal(A)) cal(M) -> cal(G) otimes_(cal(A)) cal(M)$ 是单射。这可以在茎上验证：由于 $cal(M)_(ol(x))$ 是平坦的 $cal(A)_(ol(x))$-模，$cal(F)_(ol(x)) otimes_(cal(A)_(ol(x))) cal(M)_(ol(x)) -> cal(G)_(ol(x)) otimes_(cal(A)_(ol(x))) cal(M)_(ol(x))$ 是单射。 
 ]
 
 #corollary(name: <flat-resolution-of-et-sheaf>)[
-  Let $X$ be a scheme and $cal(A)$ be an etale sheaf of rings on $X$. For every $(f: U -> X) in Et_X$, $f_! f^(-1) cal(A)$ is a flat object of $cAb(X_et, cal(A))$. In particular, $cAb(X_et, cal(A))$ has enough flat objects. 
+  设 $X$ 是一个概形，$cal(A)$ 是 $X$ 上的平展环层。对每个 $(f: U -> X) in Et_X$，$f_! f^(-1) cal(A)$ 都是 $cAb(X_et, cal(A))$ 中的平坦对象。特别地，$cAb(X_et, cal(A))$ 有足够多的平坦对象。 
 ]
 #proof[
-  We check that: 
+  我们先验证： 
   $
     (f_! f^(-1) cal(A))_(ol(x)) = oplus.big_(ol(u) in f^(-1)(ol(x))) (f^(-1) cal(A))_(ol(u)) = cal(A)_(ol(x))^(oplus f^(-1)(ol(x)))
   $
-  is a free $cal(A)_(ol(x))$-module, hence flat. 
+  是自由的 $cal(A)_(ol(x))$-模，从而平坦。 
 
-  For any $cal(M) in cAb(X_et, cal(A))$, it admits a surjection from a flat $cal(A)$-module by the following construction: 
+  对任意 $cal(M) in cAb(X_et, cal(A))$，都存在从某个平坦 $cal(A)$-模到它的满射，构造如下： 
   $
-    oplus.big_((f: U -> X) in Et_X \ #[$U$ affine \ $exists V subset X$ affine, $f(U) subset V$]) oplus.big_(s in cal(M)(f)) f_! f^(-1) cal(A) -> cal(M)
+    oplus.big_((f: U -> X) in Et_X \ #[$U$ 仿射 \ $exists V subset X$ 仿射，$f(U) subset V$]) oplus.big_(s in cal(M)(f)) f_! f^(-1) cal(A) -> cal(M)
   $
-  where for each $(f, s)$ indexing this direct sum, $f_! f^(-1) cal(A) -> cal(M)$ is obtained by adjunction from $f^(-1) cal(A) -> f^(-1) cal(M)$, defined by the global section $s$ of $f^(-1) cal(M)$. $s in cal(M)(f)$ is thus in the image of this $f_! f^(-1) cal(A) -> cal(M)$. Since every object of $Et_X$ is covered by objects $f: U -> X$ of $Et_X$ s.t. $U$ is affine and $f(U)$ is contained in an affine open of $X$, this morphism is surjective, and its LHS is a direct sum of flat objects, hence flat. 
+  其中对该直和的每个指标 $(f, s)$，态射 $f_! f^(-1) cal(A) -> cal(M)$ 由 $f^(-1) cal(A) -> f^(-1) cal(M)$ 经伴随得到，而后者由 $f^(-1) cal(M)$ 的整体截面 $s$ 定义。于是 $s in cal(M)(f)$ 落在这个 $f_! f^(-1) cal(A) -> cal(M)$ 的像中。由于 $Et_X$ 的每个对象都能被 $Et_X$ 中这样的对象覆盖：$f: U -> X$，其中 $U$ 仿射、$f(U)$ 含于 $X$ 的某个仿射开集，所以这个态射是满射，而它的左边是平坦对象的直和，从而是平坦对象。 
 
   #remark[
-    The restriction on $f in Et_X$ in the direct sum is to avoid a set-theoretic difficulty, as discussed in @set-categorical-subtleties. 
+    直和中之所以要对 $f in Et_X$ 加以限制，是为了避开集合论上的困难，详见 @set-categorical-subtleties。 
   ]
 ]

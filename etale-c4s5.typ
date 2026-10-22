@@ -1,78 +1,79 @@
+// audit-exception: $$ 展示公式内的 #[...] 谓词块嵌有多段 $...$，朴素配对会把块内文字切成伪公式；译文只改文字，块内公式逐段核对未变。
 #import "void-import.typ": *
 
-== Stalks <sect-stalks>
+== 茎 <sect-stalks>
 
-Let $Omega$ be a separably closed field. 
+设 $Omega$ 是可分闭域。 
 
 #lemma(name: <struct-of-spec-omega-et>)[
-  0. There is an equivalence of categories: 
+  0. 存在范畴等价： 
     $
       cSet -> Et_(Spec(Omega)), I |-> union.sq.big_(i in I) Spec(Omega)
     $
 
-  + For any $cal(G) in cPSh(Spec(Omega)_et)$, #h(1fr)
+  + 对任意 $cal(G) in cPSh(Spec(Omega)_et)$，有#h(1fr)
     $
       cal(G) (Spec(Omega)) = cal(G)^\# (Spec(Omega))
     $
-    and $cal(G)^\# (Spec(Omega))$ is the constant sheaf associated with $cal(G)(Spec(Omega))$. 
+    且 $cal(G)^\# (Spec(Omega))$ 是与 $cal(G)(Spec(Omega))$ 相伴的常值层。 
 
-  + Taking global sections $Gamma (Spec(Omega), -)$ induces an equivalence of categories: 
+  + 取整体截面 $Gamma (Spec(Omega), -)$ 给出范畴等价： 
     $
       cSh(Spec(Omega)_et) overset(->, tilde) cSet , cAb(Spec(Omega)_et) overset(->, tilde) cAb
     $
 ]
 #proof[
-  (0) Full faithfulness is evident, so we only prove essential surjectivity, i.e. every etale $X -> Spec(Omega)$ is a disjoint union of copies of $Spec(Omega)$. 
+  (0) 全忠实性显然，所以只需证明本质满性，即每个平展 $X -> Spec(Omega)$ 都是若干 $Spec(Omega)$ 副本的不交并。 
   
-  For any etale $X -> Spec(Omega)$ and any point $x in X$, by definition $k(x)\/Omega$ is a finite separable extension. Since $Omega$ is separably closed, it can only be that $k(x) = Omega$. Thus, the inclusion $Spec(k(x)) -> X -> Spec(Omega)$ is an isomorphism, and so $Spec(k(x)) -> X$ is a closed immersion. Thus $x$ is a closed point of $X$ with residue field $Omega$. 
+  对任意平展 $X -> Spec(Omega)$ 与任意点 $x in X$，按定义 $k(x)\/Omega$ 是有限可分扩张。由于 $Omega$ 可分闭，只能有 $k(x) = Omega$。于是包含映射 $Spec(k(x)) -> X -> Spec(Omega)$ 是同构，从而 $Spec(k(x)) -> X$ 是闭浸入。因此 $x$ 是 $X$ 的闭点，其剩余域为 $Omega$。 
 
-  On the other hand, fix $x in X$, let $U = Spec(A) subset X$ be any affine open around $x$. Then $U$ has only closed points. Since $A\/Omega$ is finite type, $A$ is noetherian. This combined with that $U$ has only closed points shows that $A$ is artinian. Thus $U$ is a finite discrete scheme, and so ${x}$ is an open subset of $U$, hence an open subset of $X$. 
+  另一方面，固定 $x in X$，任取 $x$ 附近的一个仿射开集 $U = Spec(A) subset X$。则 $U$ 的每个点都是闭点。$A\/Omega$ 是有限型的，故 $A$ 是 Noether 环。再加上 $U$ 的每个点都是闭点，可知 $A$ 是 Artin 环。于是 $U$ 是有限离散概形，从而 ${x}$ 是 $U$ 的开子集，进而是 $X$ 的开子集。 
 
-  In other words, every point of $X$ is open and closed, and has residue field $Omega$. Thus, 
+  换言之，$X$ 的每个点都既开又闭，且剩余域为 $Omega$。因此 
   $
     X cong union.sq.big_(x in X) Spec(Omega)
   $
 
-  (1) By (0), any etale cover $cal(U) = {U_i -> Spec(Omega)}$ is (non-canonically) refined by the single etale cover $id: Spec(Omega) -> Spec(Omega)$, by factoring $Spec(Omega)$ through an arbitrary connected component $Spec(Omega)$ of an arbitrary $U_i$. In other words, the direct limit: 
+  (1) 由 (0)，任一平展覆盖 $cal(U) = {U_i -> Spec(Omega)}$ 都被单个平展覆盖 $id: Spec(Omega) -> Spec(Omega)$ 非典范地加细：只需把 $Spec(Omega)$ 到自身的映射经任一 $U_i$ 的任一连通分支 $Spec(Omega)$ 分解。换言之，正向极限 
   $
     cal(G)^+ (Spec(Omega)) = dircolim_(cal(U)) caron(H)^0 (cal(U), cal(G))
   $
-  is taken over a directed system with a maximum object. There is thus a canonical isomorphism: 
+  是在一个有最大对象的正向系统上取的。因此存在典范同构： 
   $
     cal(G)^+ (Spec(Omega)) cong caron(H)^0 ({id}, cal(G)) = cal(G) (Spec(Omega))
   $
-  Taking $(-)^+$ twice, we see that $cal(G)^\# (Spec(Omega)) = cal(G) (Spec(Omega))$. 
+  把 $(-)^+$ 作用两次，即得 $cal(G)^\# (Spec(Omega)) = cal(G) (Spec(Omega))$。 
 
-  (2) From (0), we see that every etale sheaf $cal(G)$ over $Spec(Omega)$ is determined by its sections on $Spec(Omega)$, since its sections on $union.sq.big_(i in I) Spec(Omega)$ is just $product_(i in I) Gamma(Spec(Omega), cal(G))$. In other words, every etale sheaf on $Spec(Omega)$ is a constant sheaf. The equivalence of categories is thus evident. 
+  (2) 由 (0) 可知，$Spec(Omega)$ 上的每个平展层 $cal(G)$ 都由它在 $Spec(Omega)$ 上的截面决定：它在 $union.sq.big_(i in I) Spec(Omega)$ 上的截面正是 $product_(i in I) Gamma(Spec(Omega), cal(G))$。换言之，$Spec(Omega)$ 上的每个平展层都是常值层，于是范畴等价显然成立。 
 ]
 
 #definition(name: <defn-etale-stalk>)[
-  For a geometric point $overline(x): Spec(Omega) -> X$, we define the *stalk* at $overline(x)$ to be: 
+  对几何点 $overline(x): Spec(Omega) -> X$，定义在 $overline(x)$ 处的*茎*为： 
   $
     (-)_(overline(x)): cSh(X_et) &overset(->, overline(x)^(-1)) cSh(Spec(Omega)_et) overset(->, tilde) cSet, cAb(X_et) overset(->, overline(x)^(-1)) cAb(Spec(Omega)_et) overset(->, tilde) cAb \
     
     cal(F) &|-> cal(F)_(overline(x)) := (overline(x)^(-1) cal(F)) (Spec(Omega))
   $
   #remark[
-    The notion of points and stalks may be defined over arbitrary sites. However, the etale site has enough points, and injectivity/surjectivity can be detected by stalks, which is a phenomenon that doesn't happen in an arbitrary site. 
+    点与茎的概念可以在任意景上定义。不过平展景有足够多的点，单射性、满射性都能由茎检测出来，而这种现象在一般的景上并不会出现。 
   ]
 ]
 
 #properties(name: <stalks-first-props>)[
-  + $(-)_(overline(x))$ commutes with finite limits. Consequently, $(-)_(overline(x)): cAb(X_et) -> cAb$ is exact. 
+  + $(-)_(overline(x))$ 与有限极限交换。因此 $(-)_(overline(x)): cAb(X_et) -> cAb$ 是正合函子。 
 
-  + $cal(F)_(ol(x))$ may be expressed as a filtered colimit: #h(1fr)
+  + $cal(F)_(ol(x))$ 可以写成滤余极限：#h(1fr)
     $
       cal(F)_(overline(x)) = dircolim_(phi: (U, ol(u)) -> (X, ol(x))) cal(F)(U)
     $
-    taken over $U in Et_X$ with a geometric point $ol(u)$ mapping to $ol(x)$, i.e. an *etale neighborhood* of $ol(x)$. 
+    其中 $U in Et_X$ 取遍带有映到 $ol(x)$ 的几何点 $ol(u)$ 的对象；这样的对象连同几何点才构成 $ol(x)$ 的*平展邻域*。 
 
-  + Given a pointed morphism $f: (X, overline(x)) -> (Y, overline(y))$, there is a canonical isomorphism $(f^(-1) cal(G))_(overline(x)) cong cal(G)_(overline(y))$. 
+  + 给定带基点的态射 $f: (X, overline(x)) -> (Y, overline(y))$，有典范同构 $(f^(-1) cal(G))_(overline(x)) cong cal(G)_(overline(y))$。 
 ]
 #proof[
-  (1) This follows from corresponding properties for $ol(x)^(-1)$. 
+  (1) 由 $ol(x)^(-1)$ 的相应性质可得。 
 
-  (2) This follows from directly unfolding the definition of $ol(x)^(-1)_cPSh$, where to compute $ol(x)^(-1)_cPSh cal(F) (Spec(Omega))$, we have a filtered colimit taken over all diagrams of the shape: 
+  (2) 直接展开 $ol(x)^(-1)_cPSh$ 的定义即可。要计算 $ol(x)^(-1)_cPSh cal(F) (Spec(Omega))$，就要对一切如下形状的图表取滤余极限： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJTcGVjKE9tZWdhKSJdLFswLDEsIlNwZWMoT21lZ2EpIl0sWzEsMCwiVSJdLFsxLDEsIlgiXSxbMSwzLCJvbCh4KSIsMl0sWzAsMiwib2wodSkiXSxbMiwzXSxbMCwxXV0=
   #align(center, diagram({
     node((-1, -1), [$Spec(Omega)$])
@@ -84,293 +85,293 @@ Let $Omega$ be a separably closed field.
     edge((0, -1), (0, 0), "->")
     edge((-1, -1), (-1, 0), "=")
   }, spacing: 2em))
-  which is just over all etale neighborhoods of $(X, ol(x))$. Now, 
+  而这正是在 $(X, ol(x))$ 的所有平展邻域上取的滤余极限。于是 
   $
     ol(x)^(-1) cal(F) (Spec(Omega)) = (ol(x)^(-1)_cPSh cal(F))^\# (Spec(Omega)) = ol(x)^(-1)_cPSh cal(F) (Spec(Omega))
   $
-  as proved before. 
+  这在此前已经证过。 
 
-  (3) This follows from $ol(x)^(-1) compose f^(-1) = (f compose ol(x))^(-1) = ol(y)^(-1)$. 
+  (3) 由 $ol(x)^(-1) compose f^(-1) = (f compose ol(x))^(-1) = ol(y)^(-1)$ 可得。 
 ]
 
 #definition(name: <defn-germs-and-support>)[
-  Let $cal(F) in cSh(X_et)$, $U in Et_X$ and $ol(u)$ be a geometric point of $U$. Then $(U, ol(u))$ is an etale neighborhood of $(X, ol(u))$, thus inducing a natural morphism: 
+  设 $cal(F) in cSh(X_et)$，$U in Et_X$，$ol(u)$ 是 $U$ 的几何点。则 $(U, ol(u))$ 是 $(X, ol(u))$ 的平展邻域，于是诱导出自然态射： 
   $
     (-)_(ol(u)): cal(F)(U) -> cal(F)_(ol(u))
   $
-  For a section $s in cal(F)(U)$, $s_(ol(u))$ is called the *germ* of $s$ at $ol(u)$. It is evident that this construction is compatible with restriction (by unfolding the definition of the filtered colimit for $cal(F)_(ol(u))$). 
+  对截面 $s in cal(F)(U)$，称 $s_(ol(u))$ 为 $s$ 在 $ol(u)$ 处的*芽* (germ)。显然这个构造与限制相容（展开 $cal(F)_(ol(u))$ 的滤余极限定义即可看出）。 
 
-  The *support* of $s in cal(F)(U)$ is defined to be the set: 
+  定义 $s in cal(F)(U)$ 的*支集* (support) 为集合： 
   $
-    supp(s) := {u in U: exists#[a geometric point $ol(u)$ above $u$ s.t. $s_(ol(u)) != 0$]}
+    supp(s) := {u in U: exists#[一个几何点 $ol(u)$，位于 $u$ 上方且满足 $s_(ol(u)) != 0$]}
   $
 ]
 
-We state the rest of this section in terms of $cAb(X_et)$ only. You should keep in mind that analogs of these results exist for $cSh(X_et)$, but in this course we mainly deal with sheaves of abelian groups. 
+本节余下的内容只用 $cAb(X_et)$ 来叙述。你要记住，这些结果对 $cSh(X_et)$ 都有类似版本，只是本课程主要与交换群层打交道。 
 
 #lemma(name: <vanishing-stalks-spreads-out>)[
-  Let $cal(F) in cAb(X_et)$, $s in cal(F)(U)$ and $ol(u)$ be a geometric point of $U$ lying above $u in U$ s.t. $s_(ol(u)) = 0$. Then there exists a Zariski neighborhood $u in V subset U$ s.t. $s|_V = 0$. 
+  设 $cal(F) in cAb(X_et)$，$s in cal(F)(U)$，$ol(u)$ 是 $U$ 的几何点，位于 $u in U$ 上方，且 $s_(ol(u)) = 0$。则存在 Zariski 邻域 $u in V subset U$，使得 $s|_V = 0$。 
 
-  In particular, 
+  特别地， 
   $
-    supp(s) &= {u in U: exists#[a geometric point $ol(u)$ above $u$ s.t. $s_(ol(u)) != 0$]} \
-    &= {u in U: forall#[geometric points $ol(u)$ above $u$, $s_(ol(u)) != 0$]} subset U
+    supp(s) &= {u in U: exists#[一个几何点 $ol(u)$，位于 $u$ 上方且满足 $s_(ol(u)) != 0$]} \
+    &= {u in U: forall#[位于 $u$ 上方的几何点 $ol(u)$，$s_(ol(u)) != 0$]} subset U
   $
-  is a closed subset of $U$. 
-  // Consequently, if there exists a subset $E subset U$ intersecting every nonempty closed subset of $U$
+  是 $U$ 的闭子集。 
+  // 因此，若存在子集 $E subset U$ 与 $U$ 的每个非空闭子集都相交
 ]
 #proof[
-  Since $cal(F)_(ol(u))$ has the filtered colimit structure: 
+  由于 $cal(F)_(ol(u))$ 是滤余极限： 
   $
     cal(F)_(ol(u)) = dircolim_((V,ol(v)) -> (X,ol(u))) cal(F)(V)
   $
-  The image of $s in cal(F)(U)$ in this filtered colimit is $0$ means that there exists an etale neighborhood $phi: (W, ol(w)) -> (U, ol(u))$ s.t. $s|_W = 0$. Now $phi(W)$ is an open subset of $U$ containing $u$, and $phi: W -> phi(W)$ is surjective etale, hence an etale cover of $phi(W)$. Thus, 
+  而 $s in cal(F)(U)$ 在这个滤余极限中的像是 $0$，这意味着存在平展邻域 $phi: (W, ol(w)) -> (U, ol(u))$ 使得 $s|_W = 0$。此时 $phi(W)$ 是 $U$ 中含 $u$ 的开子集，而 $phi: W -> phi(W)$ 是满射平展，从而是 $phi(W)$ 的平展覆盖。于是 
   $
     s|_W = (s|_(phi(W)))|_W = 0
   $
-  and so by the sheaf conditions, $s|_(phi(W)) = 0$. Taking $V = phi(W)$ concludes the proof. 
+  由层条件即得 $s|_(phi(W)) = 0$。取 $V = phi(W)$ 便完成了证明。 
 
-  For the condition on $supp(s)$, note that if $u in U - supp(s)$, then $s|_V = 0$ for a Zariski neighborhood $V$ of $u in U$. Thus for all geometric points $ol(v)$ above a point of $V$, $s_(ol(v)) = 0$. Hence, the existential quantifier on $ol(u)$ in the definition of $supp(s)$ may be replaced by the universal quantifier, and $V subset U - supp(s)$. Thus $U - supp(s)$ is an open subset of $U$, making $supp(s) subset U$ closed.  
+  至于 $supp(s)$ 的条件，注意若 $u in U - supp(s)$，则对 $u in U$ 的某个 Zariski 邻域 $V$ 有 $s|_V = 0$。于是对 $V$ 中任一点上方的所有几何点 $ol(v)$ 都有 $s_(ol(v)) = 0$。因此 $supp(s)$ 的定义中对 $ol(u)$ 的存在量词可以换成全称量词，且 $V subset U - supp(s)$。所以 $U - supp(s)$ 是 $U$ 的开子集，从而 $supp(s) subset U$ 是闭的。  
 ]
 
 #proposition(name: <stalks-detects-properties>)[
-  0. Given $cal(F) in cAb(X_et)$ and two geometric points $ol(x)_1, ol(x)_2$ of $X$ lying above the same point $x in X$, there exists a non-canonical isomorphism: 
+  0. 给定 $cal(F) in cAb(X_et)$ 以及 $X$ 的两个位于同一点 $x in X$ 上方的几何点 $ol(x)_1, ol(x)_2$，存在非典范同构： 
     $
       cal(F)_(ol(x)_1) cong cal(F)_(ol(x)_2)
     $
 
-  + Given $cal(F) in cAb(X_et)$, the following are equivalent: 
-    + $cal(F) = 0$; 
-    + $cal(F)_(ol(x)) = 0$ for every geometric point $ol(x)$ of $X$; 
-    + There exists a subset $E subset X$ intersecting every nonempty locally closed subset of $X$, and for each $x in E$ some geometric point $ol(x)$ of $X$ lying above $x$ s.t. $cal(F)_(ol(x)) = 0$. 
+  + 给定 $cal(F) in cAb(X_et)$，以下条件等价： 
+    + $cal(F) = 0$； 
+    + 对 $X$ 的每个几何点 $ol(x)$ 都有 $cal(F)_(ol(x)) = 0$； 
+    + 存在子集 $E subset X$，使它与 $X$ 的每个非空局部闭子集都相交，且对每个 $x in E$，存在 $X$ 的某个位于 $x$ 上方的几何点 $ol(x)$ 使 $cal(F)_(ol(x)) = 0$。 
 
-  + Taking stalks commutes with kernels, cokernels and images. 
+  + 取茎与取核、余核、像交换。 
 
-  + The following are equivalent: 
-    + A morphism $cal(F) -> cal(G)$ of etale sheaves on $X$ is injective/surjective/isomorphism/zero, or $cal(F) -> cal(G) -> cal(H)$ is exact in the middle. 
-    + The same condition holds for $cal(F)_(ol(x)) -> cal(G)_(ol(x))$ or $cal(F)_(ol(x)) -> cal(G)_(ol(x)) -> cal(H)_(ol(x))$ for every geometric point $ol(x)$ of $X$; 
-    + There exists a subset $E subset X$ intersecting every nonempty locally closed subset of $X$, and for each $x in E$ some geometric point $ol(x)$ of $X$ lying above $x$ s.t. the same condition holds for $cal(F)_(ol(x)) -> cal(G)_(ol(x))$ or $cal(F)_(ol(x)) -> cal(G)_(ol(x)) -> cal(H)_(ol(x))$. 
+  + 以下条件等价： 
+    + $X$ 上平展层的态射 $cal(F) -> cal(G)$ 是单射/满射/同构/零态射，或者 $cal(F) -> cal(G) -> cal(H)$ 在中间正合。 
+    + 对 $X$ 的每个几何点 $ol(x)$，$cal(F)_(ol(x)) -> cal(G)_(ol(x))$ 或 $cal(F)_(ol(x)) -> cal(G)_(ol(x)) -> cal(H)_(ol(x))$ 满足同样的条件； 
+    + 存在子集 $E subset X$，使它与 $X$ 的每个非空局部闭子集都相交，且对每个 $x in E$，存在 $X$ 的某个位于 $x$ 上方的几何点 $ol(x)$，使 $cal(F)_(ol(x)) -> cal(G)_(ol(x))$ 或 $cal(F)_(ol(x)) -> cal(G)_(ol(x)) -> cal(H)_(ol(x))$ 满足同样的条件。 
 ]
 #proof[
-  (0) Let $ol(x) = Spec(k(x)^sep)$ be a separable closure of $k(x)$ as a geometric point above $x$. It suffices to show that $cal(F)_(ol(x)) cong cal(F)_(ol(x)_1)$. 
+  (0) 取 $ol(x) = Spec(k(x)^sep)$ 为 $k(x)$ 的可分闭包，作为 $x$ 上方的一个几何点。只需证明 $cal(F)_(ol(x)) cong cal(F)_(ol(x)_1)$。 
 
-  Indeed, let $ol(x)_1: Spec(Omega) -> X$. Since $Omega$ contains $k(x)$ and is separably closed, we may choose a non-canonical embedding $k(x)^sep -> Omega$ over $k(x)$. This gives a factorization $ol(x)_1: Spec(Omega) ->^(ol(xi)) Spec(k(x)^sep) ->^(ol(x)) X$. Now: 
+  事实上，设 $ol(x)_1: Spec(Omega) -> X$。由于 $Omega$ 包含 $k(x)$ 且可分闭，我们可以选取非典范的嵌入 $k(x)^sep -> Omega$（在 $k(x)$ 上）。这给出分解 $ol(x)_1: Spec(Omega) ->^(ol(xi)) Spec(k(x)^sep) ->^(ol(x)) X$。此时 
   $
     (ol(x)^(-1) cal(F))_(ol(xi)) = cal(F)_(ol(x_1))
   $
-  while $ol(x)^(-1) cal(F)$ is the constant sheaf associated with $cal(F)_(ol(x))$, hence has stalk $cal(F)_(ol(x))$ at any geometric point. 
+  而 $ol(x)^(-1) cal(F)$ 是与 $cal(F)_(ol(x))$ 相伴的常值层，因而在任意几何点处的茎都是 $cal(F)_(ol(x))$。 
 
-  (2) follows from exactness of $(-)_(ol(x))$. Consider a map $f: cal(F) -> cal(G)$. We may then form an exact sequence: 
+  (2) 由 $(-)_(ol(x))$ 的正合性可得。考虑态射 $f: cal(F) -> cal(G)$，可以写出正合列： 
   $
     0 -> ker(f) -> cal(F) ->^f cal(G) -> coker(f) -> 0
   $
-  Taking stalks at $ol(x)$, we then get an exact sequence: 
+  在 $ol(x)$ 处取茎，得到正合列： 
   $
     0 -> ker(f)_(ol(x)) -> cal(F)_(ol(x)) ->^(f_(ol(x))) cal(G)_(ol(x)) -> coker(f)_(ol(x)) -> 0
   $
-  This shows that $ker(f)_(ol(x)) = ker(f_(ol(x)))$ and $coker(f)_(ol(x)) = coker(f_(ol(x)))$. The image is the kernel of cokernel, and hence also commutes with taking stalks. 
+  这说明 $ker(f)_(ol(x)) = ker(f_(ol(x)))$，$coker(f)_(ol(x)) = coker(f_(ol(x)))$。像既是余核的核，所以也与取茎交换。 
 
-  (1) (a)$==>$(b)$==>$(c) is obvious, so we only prove that (c)$==>$(a). 
+  (1) (a) $==>$(b) $==>$(c) 显然，所以只需证 (c) $==>$(a)。 
 
-  Given any $(f: U -> X) in Et_X$ and any section $s in cal(F)(U)$, we would like to prove that $s = 0$. We additionally assume that $U$ is affine and $f(U)$ is contained in an affine open of $X$. Suppose that $s != 0$. Let $Z = supp(s) subset U$, which is a closed subset of $U$. Since $s != 0$, $Z$ must be nonempty. 
+  给定任意 $(f: U -> X) in Et_X$ 与任意截面 $s in cal(F)(U)$，我们要证明 $s = 0$。此外还假设 $U$ 仿射，且 $f(U)$ 含于 $X$ 的某个仿射开集中。反设 $s != 0$。令 $Z = supp(s) subset U$，它是 $U$ 的闭子集。由于 $s != 0$，$Z$ 必非空。 
 
-  Let $X_0$ be an affine open of $X$ containing $f(U)$, so that $f$ factors as $f: U ->^(f_0) X_0 -> X$. Now $f_0$ is affine (hence quasi-compact), and of finite presentation. By Chevalley's theorem (say the version in #cite-stacks("054K", [Theorem 29.22.3])), $f(Z)$ is a nonempty constructible subset of $X_0$. It thus contains a nonempty locally closed subset of $X_0$, hence a nonempty locally closed subset of $X$. 
+  取 $X$ 的仿射开集 $X_0$ 包含 $f(U)$，于是 $f$ 分解为 $f: U ->^(f_0) X_0 -> X$。此时 $f_0$ 仿射（从而拟紧），且是有限展示的。由 Chevalley 定理（比如 #cite-stacks("054K", [Theorem 29.22.3]) 中的版本），$f(Z)$ 是 $X_0$ 的非空可构造子集。于是它含有 $X_0$ 的非空局部闭子集，从而含有 $X$ 的非空局部闭子集。 
 
-  By our assumption on $E$, there exists $x in E$ s.t. $x in f(Z)$. Pick any geometric point $ol(x)$ above $x$ and (by (0)) $cal(F)_(ol(x)) = 0$, and any $z in Z$ s.t. $x = f(z)$. Since $f$ is etale, there exists a geometric point $ol(z)$ above $z$ s.t. $ol(x) = f(ol(z))$. Then $s_(ol(z)) != 0$ is an element of $cal(F)_(ol(x)) = 0$, a contradiction. 
+  按我们对 $E$ 的假设，存在 $x in E$ 使 $x in f(Z)$。取 $x$ 上方的任一几何点 $ol(x)$，由 (0) 有 $cal(F)_(ol(x)) = 0$；再取 $z in Z$ 使 $x = f(z)$。由于 $f$ 平展，存在 $z$ 上方的几何点 $ol(z)$ 使 $ol(x) = f(ol(z))$。那么 $s_(ol(z)) != 0$，而它却是零群 $cal(F)_(ol(x)) = 0$ 中的元素，矛盾。 
 
-  In other words, for any affine $U in Et_X$ whose image in $X$ is contained in an affine open, $cal(F)(U) = 0$. Since any $U in Et_X$ can be covered by sufficiently small affine opens satisfying this condition, using the sheaf conditions, $cal(F)(U) = 0$ for all $U in Et_X$. Hence $cal(F) = 0$. 
+  换言之，对任意仿射 $U in Et_X$，只要它在 $X$ 中的像含于一个仿射开集，就有 $cal(F)(U) = 0$。而任一 $U in Et_X$ 都能被足够小、且满足此条件的仿射开集覆盖，由层条件即知对一切 $U in Et_X$ 有 $cal(F)(U) = 0$，故 $cal(F) = 0$。 
 
-  (3) is simply (1) and (2) combined. 
+  (3) 不过是 (1) 与 (2) 的结合。 
 ]
 #remark(name: <very-dense-sets-of-pts>)[
-  The condition of a subset $E subset X$ intersecting with every nonempty locally closed subset is called *very dense*. Common examples of very dense subsets include: 
+  子集 $E subset X$ 与每个非空局部闭子集都相交，这个条件称为*极稠密* (very dense)。常见的极稠密子集有： 
 
-  + Trivially, $E = X$; 
+  + 平凡地，$E = X$； 
 
-  + A point $x in X$ is *of finite type* if $x: Spec(k(x)) -> X$ is a morphism of finite type. The subset of finite type points of $X$ is always very dense in $X$. (#cite-stacks("02J4", [Lemma 29.16.7]))
+  + 若 $x: Spec(k(x)) -> X$ 是有限型态射，则称点 $x in X$ 为*有限型点* (finite type point)。$X$ 的有限型点构成的子集总是 $X$ 中的极稠密子集。（#cite-stacks("02J4", [Lemma 29.16.7])）
 
-  + A scheme is called *Jacobson* if its closed points are very dense, or equivalently every finite type point is closed. (#cite-stacks("01TB", [Lemma 29.16.8])) In a Jacobson scheme, taking $E$ to be the set of closed points would work. 
+  + 若概形的闭点集极稠密，或者等价地说，每个有限型点都是闭点，则称该概形为 *Jacobson* 概形。（#cite-stacks("01TB", [Lemma 29.16.8])）在 Jacobson 概形中，取 $E$ 为闭点集即可。 
 
-    Common examples of Jacobson schemes include schemes of finite type over a field or over a 1-dimensional noetherian domain with infinitely many primes (such as the ring of integers of a number field, in particular $ZZ$). (#cite-stacks("02J6", [Lemma 29.16.10])) 
+    常见的 Jacobson 概形包括域上的有限型概形，以及一维且有无穷多个素理想的 Noether 整环（例如数域的整数环，特别是 $ZZ$）上的有限型概形。（#cite-stacks("02J6", [Lemma 29.16.10])） 
     
-    A famous non-example of a Jacobson scheme is the spectrum of a DVR. 
+    一个著名的非 Jacobson 概形是离散赋值环的谱。 
 ]
 
 #corollary[
-  A chain complex $0 -> cal(F) -> cal(G) -> cal(H)$ in $cAb(X_et)$ is left exact, if and only if for every $U in Et_X$, 
+  $cAb(X_et)$ 中的链复形 $0 -> cal(F) -> cal(G) -> cal(H)$ 左正合，当且仅当对每个 $U in Et_X$， 
   $
     0 -> cal(F)(U) -> cal(G)(U) -> cal(H)(U)
   $
-  is left exact. Furthermore, one can check this only for affine $U in Et_X$ whose image is contained in an affine open of $X$. 
+  都左正合。此外，只需对这样的仿射 $U in Et_X$ 检验这一点：它在 $X$ 中的像含于某个仿射开集。 
 ]
 #proof[
-  ($==>$) is left exactness of $Gamma(U, -)$, which we proved in @sections-left-exact. 
+  ($==>$) 就是 $Gamma(U, -)$ 的左正合性，我们在 @sections-left-exact 中证过。 
 
-  For ($<==$), we only need to prove that for every geometric point $ol(x)$, the sequence on stalks: 
+  至于 ($<==$)，只需证明对每个几何点 $ol(x)$，茎上的序列 
   $
     0 -> cal(F)_(ol(x)) -> cal(G)_(ol(x)) -> cal(H)_(ol(x))
   $
-  is left exact. Writing stalks as filtered colimits, this is: 
+  左正合。把茎写成滤余极限，就是： 
   $
     0 -> dircolim_((U,ol(u)) -> (X, ol(x))) cal(F)(U) -> dircolim_((U,ol(u)) -> (X, ol(x))) cal(G)(U) -> dircolim_((U,ol(u)) -> (X, ol(x))) cal(H)(U)
   $
-  which is a filtered colimit of the left exact sequences $0 -> cal(F)(U) -> cal(G)(U) -> cal(H)(U)$. However, $cAb$ satisfies the (Ab5) condition that filtered colimits are exact, so we are done. 
+  而这是左正合列 $0 -> cal(F)(U) -> cal(G)(U) -> cal(H)(U)$ 的滤余极限。不过 $cAb$ 满足 (Ab5) 条件，即滤余极限正合，所以证毕。 
 
-  Since every etale neighborhood of $(X, ol(x))$ is refined by some $(V, ol(v))$ s.t. $V$ is affine and has image in $X$ contained in an affine open of $X$, our further statement is justified. 
+  $(X, ol(x))$ 的每个平展邻域都被某个 $(V, ol(v))$ 加细，其中 $V$ 仿射，且它在 $X$ 中的像含于 $X$ 的某个仿射开集，因此后一个论断成立。 
 ]
 
 #corollary(name: <surjective-pullback-conservative>)[
-  For any surjective morphism $f: X -> Y$ of schemes, $f^(-1): cAb(Y_et) -> cAb(X_et)$ is a conservative functor. That is, any morphism $phi: cal(F) -> cal(G)$ in $cAb(Y_et)$ is injective/surjective/isomorphism/zero, if and only if the same holds for $f^(-1) phi: f^(-1) cal(F) -> f^(-1) cal(G)$. 
+  对概形间的任意满射 $f: X -> Y$，$f^(-1): cAb(Y_et) -> cAb(X_et)$ 是保守函子。也就是说，$cAb(Y_et)$ 中的态射 $phi: cal(F) -> cal(G)$ 是单射/满射/同构/零态射，当且仅当 $f^(-1) phi: f^(-1) cal(F) -> f^(-1) cal(G)$ 也如此。 
 ]
 #proof[
-  ($==>$) is exactness of $f^(-1)$, so we verify ($<==$) only. It suffices to show that for every $y in Y$, there exists a geometric point $ol(y)$ above $y$ s.t. $cal(F)_(ol(y)) -> cal(G)_(ol(y))$ is injective/surjective/isomorphism/zero. Since $f$ is surjective, we may pick $x in X$ s.t. $f(x) = y$. Pick any geometric point $ol(x)$ above $x$, and take $ol(y) = f(ol(x))$ to be a geometric point above $y$. Since $f^(-1) phi: f^(-1) cal(F) -> f^(-1) cal(G)$ is injective/surjective/isomorphism/zero, the same property holds for $(f^(-1) cal(F))_(ol(x)) -> (f^(-1) cal(G))_(ol(x))$, which is just $cal(F)_(ol(y)) -> cal(G)_(ol(y))$ by @stalks-first-props (3). We are thereby done. 
+  ($==>$) 是 $f^(-1)$ 的正合性，所以只验证 ($<==$)。只需证明对每个 $y in Y$，存在 $y$ 上方的几何点 $ol(y)$ 使 $cal(F)_(ol(y)) -> cal(G)_(ol(y))$ 是单射/满射/同构/零态射。由于 $f$ 满射，可以取 $x in X$ 使 $f(x) = y$。取 $x$ 上方的任一几何点 $ol(x)$，令 $ol(y) = f(ol(x))$ 作为 $y$ 上方的几何点。既然 $f^(-1) phi: f^(-1) cal(F) -> f^(-1) cal(G)$ 是单射/满射/同构/零态射，$(f^(-1) cal(F))_(ol(x)) -> (f^(-1) cal(G))_(ol(x))$ 也有同样的性质；而由 @stalks-first-props (3)，它就是 $cal(F)_(ol(y)) -> cal(G)_(ol(y))$。证毕。 
 ]
 
 #example[
-  There are two important exact sequences of etale sheaves on a scheme $X$: 
+  概形 $X$ 上有两个重要的平展层正合列： 
 
-  - If a positive integer $n in cal(O)_X (X)^times$, one has the *Kummer sequence*: #h(1fr)
+  - 若 $n in cal(O)_X (X)^times$ 且为正整数，就有*Kummer 序列*：#h(1fr)
     $
       0 -> mu_n arrow.r.hook GG_m -->^(x |-> x^n) GG_m -> 0
     $
-    Recall that $mu_n (U) = mu_n (cal(O)_U (U))$ are the $n$-th roots of unity in $cal(O)_U (U)$, and $GG_m (U) = cal(O)_U (U)^times$ are the units of $cal(O)_U (U)$. This sequence is left exact, since it is evidently left exact on sections: 
+    回忆 $mu_n (U) = mu_n (cal(O)_U (U))$ 是 $cal(O)_U (U)$ 中的 $n$ 次单位根，而 $GG_m (U) = cal(O)_U (U)^times$ 是 $cal(O)_U (U)$ 的可逆元（单位）全体。这个序列左正合，因为它在截面上显然左正合： 
     $
       0 -> mu_n (cal(O)_U (U)) -> cal(O)_U (U)^times -->^(x |-> x^n) cal(O)_U (U)^times 
     $
-    It remains to show that $GG_m -->^(x |-> x^n) GG_m$ is surjective, a result specific to etale sheaves that fails for Zariski sheaves. We need to show that for any $s in cal(O)_U (U)^times$, there exists an etale cover of $U$ s.t. $s$ has an $n$-th root in each piece. For this, we take the *Kummer covering*: 
+    剩下要证 $GG_m -->^(x |-> x^n) GG_m$ 满射，这是平展层特有的结果，对 Zariski 层不成立。需要证明：对任意 $s in cal(O)_U (U)^times$，存在 $U$ 的平展覆盖，使 $s$ 在每一块上都有 $n$ 次方根。为此取*Kummer 覆叠*： 
     $
       U' = SPec((cal(O)_U [T])/((T^n - s)))
     $
-    which is a finite etale covering of $U$. Recall that it is etale, since $(T^n - s)' = n T^(n-1)$ where $n in cal(O)_X^times$ and so $n in cal(O)_U^times$, and so $gcd(T^n - s, n T^(n-1)) = 1$. 
+    它是 $U$ 的有限平展覆叠。回忆它平展是因为 $(T^n - s)' = n T^(n-1)$，而 $n in cal(O)_X^times$，故 $n in cal(O)_U^times$，从而 $gcd(T^n - s, n T^(n-1)) = 1$。 
 
-    Now $s|_(U') = T^n$, and we are done. 
+    现在 $s|_(U') = T^n$，证毕。 
 
-  - If $p$ is a prime and $X$ is a scheme over $FF_p$, we have the Artin-Schreier sequence: 
+  - 若 $p$ 是素数且 $X$ 是 $FF_p$ 上的概形，就有 Artin–Schreier 序列： 
     $
       0 -> ul(ZZ\/p) arrow.r.hook GG_a -->^(x |-> x^p - x) GG_a -> 0 
     $
-    The morphism $ul(ZZ\/p) -> GG_a$ here is obtained by sheafifying the presheaf morphism defined by the inclusions $FF_p arrow.r.hook cal(O)_U (U)$ for each $U in Et_X$. It is thus injective since sheafification is exact. For each affine $U = Spec(A) in Et_X$, the left part of the sequence on sections on $U$ is: 
+    这里的态射 $ul(ZZ\/p) -> GG_a$，是对如下预层态射作层化的结果：在每个 $U in Et_X$ 上，该预层态射由包含 $FF_p arrow.r.hook cal(O)_U (U)$ 给出；层化正合，所以它是单射。对每个仿射 $U = Spec(A) in Et_X$，序列在 $U$ 上截面中的左半部分是： 
     $
       0 -> C(U; ZZ\/p) -> A -->^(x |-> x^p - x) A 
     $
-    By unfolding the definitions, the first morphism is defined in the following way: Given a locally constant function $f: U -> ZZ\/p$, $f^(-1)(a)$ for $a in FF_p$ partitions $U = Spec(A)$ into $p$ closed and open sets. This corresponds to a system ${e_a}_(a in FF_p)$ of orthogonal idempotents of $A$. This morphism is then: 
+    展开定义可知，第一个态射的构造如下：给定局部常值函数 $f: U -> ZZ\/p$，$f^(-1)(a)$（$a in FF_p$）把 $U = Spec(A)$ 分成 $p$ 个开闭集。这对应于 $A$ 的一族正交幂等元 ${e_a}_(a in FF_p)$。于是该态射为： 
     $
       C(U; ZZ\/p) -> A, f |-> sum_(a in FF_p) e_a a
     $
-    Suppose that $x in A$ s.t. $x^p - x = 0$, i.e. $product_(a in FF_p) (x-a) = 0$. Now ${x-a}_(a in FF_p)$ are pairwise coprime with product $0$, so by Chinese remainder theorem, we have an isomorphism: 
+    设 $x in A$ 满足 $x^p - x = 0$，即 $product_(a in FF_p) (x-a) = 0$。此时 ${x-a}_(a in FF_p)$ 两两互素且乘积为 $0$，故由中国剩余定理有同构： 
     $
       A cong product_(a in FF_p) A\/(x-a)
     $
-    In other words, there is a system of orthogonal idempotents ${e_a}_(a in FF_p)$ s.t. $e_a = 1 mod (x-a)$ and $0 mod (x-b)$ for $a != b in FF_p$. Now $x$ corresponds to $a$ on $A\/(x-a)$, so $x$ is sent to $(0, 1, dots.c, p-1)$ under this isomorphism, and hence $x = sum_(a in FF_p) e_a a$ comes from an element of $C(U; ZZ\/p)$. 
+    换言之，存在一族正交幂等元 ${e_a}_(a in FF_p)$，使得 $e_a = 1 mod (x-a)$，且对 $a != b in FF_p$，相应的幂等元同余于 $0 mod (x-b)$。此时 $x$ 在 $A\/(x-a)$ 中的像为 $a$，所以在这个同构下 $x$ 被送到 $(0, 1, dots.c, p-1)$，从而 $x = sum_(a in FF_p) e_a a$ 来自 $C(U; ZZ\/p)$ 中的元素。 
 
-    In other words, $0 -> C(U; ZZ\/p) -> A -->^(x |-> x^p - x) A$ is left exact. Hence, $0 -> ul(ZZ\/p) arrow.r.hook GG_a -->^(x |-> x^p - x) GG_a$ is left exact, and it remains to show that $GG_a -->^(x |-> x^p - x) GG_a$ is surjective. 
+    换言之，$0 -> C(U; ZZ\/p) -> A -->^(x |-> x^p - x) A$ 左正合。于是 $0 -> ul(ZZ\/p) arrow.r.hook GG_a -->^(x |-> x^p - x) GG_a$ 左正合，剩下要证 $GG_a -->^(x |-> x^p - x) GG_a$ 满射。 
 
-    For this, we use the same strategy as in the Kummer sequence, but in this case, for $s in cal(O)_U (U)$, we use the *Artin-Schreier* covering, a finite etale covering: 
+    这里沿用 Kummer 序列的策略，只不过对 $s in cal(O)_U (U)$ 改用*Artin–Schreier* 覆叠，它也是有限平展覆叠： 
     $
       U' = Spec((cal(O)_U [T])/((T^p - T - s)))
     $
 ]
 
-Finally, there is this alternative method of proving that $cAb(X_et)$ has enough injectives, that we promised earlier. 
+最后，还有我们先前许诺过的另一种方法，用来证明 $cAb(X_et)$ 有足够多的内射对象。 
 
 #example[
-  Let $ol(x)$ be a geometric point of $X$, and $M in cAb$. We may regard $M$ as a constant sheaf in $cAb(ol(x)_et)$, and push it forward to $ol(x)_* M in cAb(X_et)$. This sheaf is called the *skyscraper sheaf* associated with $M$ at $ol(x)$. //It is easy to check that the canonical map $ol(x)^(-1) ol(x)_* M -> M$ is an isomorphism, i.e. $(ol(x)_* M)_(ol(x)) = M$.
+  设 $ol(x)$ 是 $X$ 的几何点，$M in cAb$。可以把 $M$ 看作 $cAb(ol(x)_et)$ 中的常值层，并把它推前为 $ol(x)_* M in cAb(X_et)$。这个层称为与 $M$ 相伴、位于 $ol(x)$ 处的*摩天楼层* (skyscraper sheaf)。//容易验证，典范映射 $ol(x)^(-1) ol(x)_* M -> M$ 是同构，即 $(ol(x)_* M)_(ol(x)) = M$。
 
-  The stalks of a skyscraper sheaf can be hard to compute explicitly, but at least we know where it vanishes: 
+  摩天楼层的茎可能很难显式计算，但至少知道它在何处消没： 
   #lemma(name: <stalks-of-skyscraper-sheaves>)[
-    Let $ol(y)$ be a geometric point of $X$. Then if $x$ does not generalize $y$, then $(ol(x)_* M)_(ol(y)) = 0$. 
+    设 $ol(y)$ 是 $X$ 的几何点。若 $x$ 不一般化 $y$，则 $(ol(x)_* M)_(ol(y)) = 0$。 
   ]
   #proof[
-    If $x$ does not generalize $y$, pick a Zariski open $V subset X$ s.t. $y in V, x in.not V$. For any etale neighborhood $(U, ol(u)) -> (X, ol(y))$, if the image of $U$ in $X$ does not contain $x$, then $ol(x)_* M (U) = ul(M)_(ol(x)) (U_(ol(x))) = 0$. However, any etale neighborhood $(U, ol(u)) -> (X, ol(y))$ is refined by $(U times_X V, ol(u))$, whose image in $X$ does not contain $x$, so the filtered colimit defining the stalk is $0$. 
+    若 $x$ 不一般化 $y$，取 Zariski 开集 $V subset X$ 使 $y in V, x in.not V$。对任意平展邻域 $(U, ol(u)) -> (X, ol(y))$，若 $U$ 在 $X$ 中的像不含 $x$，则 $ol(x)_* M (U) = ul(M)_(ol(x)) (U_(ol(x))) = 0$。而任意平展邻域 $(U, ol(u)) -> (X, ol(y))$ 都被 $(U times_X V, ol(u))$ 加细，后者在 $X$ 中的像不含 $x$，所以定义茎的滤余极限为 $0$。 
   ]
   
-  Given any sheaf $cal(F) in cAb(X_et)$, given a morphism $cal(F)_(ol(x)) -> M$, i.e. a morphism $ol(x)^(-1) cal(F) -> M$, there exists a unique morphism $cal(F) -> ol(x)_* M$ inducing this morphism by adjunction. 
+  给定任意层 $cal(F) in cAb(X_et)$ 与任意态射 $cal(F)_(ol(x)) -> M$，即态射 $ol(x)^(-1) cal(F) -> M$，由伴随性存在唯一的态射 $cal(F) -> ol(x)_* M$ 诱导它。 
 ]
 
 #construction(name: <injective-godement-resolution>)[
-  (Injective Godement resolution) There is another way of proving that $cAb(X_et)$ has enough injectives, that does not use Grothendieck's Tohoku theorem, that has the advantage of being explicit and functorial. This is the Godement resolution. 
+  （内射 Godement 消解）还有另一种证明 $cAb(X_et)$ 有足够多的内射对象的方法，它不用 Grothendieck 的 Tohoku 定理，好处是显式而且具有函子性。这就是 Godement 消解。 
 
-  Firstly, we recall that in $cAb$, an arbitrary object may be embedded into an injective object via: 
+  首先回忆，在 $cAb$ 中，任意对象都可以嵌入一个内射对象： 
   $
     M -> I(M) := product_(chi in Hom(M, QQ\/ZZ)) QQ\/ZZ, x |-> (chi(x))_chi
   $
-  and this construction is functorial in $M$. 
+  而这一构造对 $M$ 具有函子性。 
 
-  For each $x in X$, choose a geometric point $ol(x)$ above $x$. //Now $ol(x)^(-1)cal(F)$ is just $cal(F)_(ol(x)) in cAb cong cAb(ol(x)_et)$, and thus embeds into $I(cal(F)_(ol(x))) in cAb cong cAb(ol(x)_et)$. This defines a morphism $ol(x)^(-1) cal(F) -> I(cal(F)_(ol(x)))$, hence a morphism $cal(F) -> ol(x)_* I(cal(F)_(ol(x)))$ by adjunction. 
-  From the inclusions $cal(F)_(ol(x)) -> I(cal(F)_(ol(x)))$, we obtain morphisms $cal(F) -> ol(x)_* I(cal(F)_(ol(x)))$ to the skyscraper sheaf. 
+  对每个 $x in X$，取 $x$ 上方的一个几何点 $ol(x)$。//此时 $ol(x)^(-1)cal(F) $ 就是 $cal(F)_(ol(x)) in cAb cong cAb(ol(x)_et) $，于是嵌入 $I(cal(F)_(ol(x))) in cAb cong cAb(ol(x)_et) $。这定义了态射 $ol(x)^(-1) cal(F) -> I(cal(F)_(ol(x))) $，由伴随性得到态射 $cal(F) -> ol(x)_* I(cal(F)_(ol(x))) $。 
+  由包含 $cal(F)_(ol(x)) -> I(cal(F)_(ol(x)))$，得到指向摩天楼层的态射 $cal(F) -> ol(x)_* I(cal(F)_(ol(x)))$。 
 
-  Passing to the direct product, this defines a morphism: 
+  取直积，就定义了态射： 
   $
     gamma: cal(F) -> product_(x in X) ol(x)_* I(cal(F)_(ol(x)))
   $
 
-  // On each geometric point $ol(x)$, $gamma$ induces a morphism $cal(F)_(ol(x)) -> I(cal(F)_(ol(x))) times dots.c$ on stalks, and is injective. Thus, $gamma$ is an injective morphism. $ol(x)_*$ has an exact left adjoint and hence preserves injectives, so $product_(x in X) ol(x)_* I(cal(F)_(ol(x)))$ is a direct product of injective objects, and is hence injective. 
+  // 在每个几何点 $ol(x)$ 处，$gamma$ 诱导茎上的态射 $cal(F)_(ol(x)) -> I(cal(F)_(ol(x))) times dots.c$，且是单射。因此 $gamma$ 是单射。$ol(x)_*$ 有正合的左伴随，从而保持内射对象，所以 $product_(x in X) ol(x)_* I(cal(F)_(ol(x)))$ 是内射对象的直积，因而内射。 
 
-  // This constructs an explicit embedding of $cal(F)$ into an injective object. This construction is functorial, and is canonical except for a choice#footnote[...which is not a big deal as long as you accept the axiom of choice.] of geometric points ${ol(x)}_(x in X)$.
+  // 这给出了 $cal(F)$ 到内射对象的显式嵌入。该构造具有函子性，并且除了几何点族 ${ol(x)}_(x in X)$ 的选取#footnote[……只要你接受选择公理，这就不算什么大问题。]之外是典范的。 
 
-  We claim that this morphism is injective. Indeed, given any $(f: U -> X) in Et_X$, we want to show that: 
+  我们断言这个态射是单射。事实上，给定任意 $(f: U -> X) in Et_X$，要证明 
   $
     cal(F)(U) -> product_(x in X) (ol(x)_* I (cal(F)_(ol(x))))(U) = product_(x in X) product_(ol(u) in f^(-1)(ol(x))) cal(F)_(ol(x))
   $
-  is injective. If $s in cal(F)(U)$ is sent to zero, then for every $ol(u) in f^(-1)(ol(x))$, the germ $s_(ol(u)) = 0$. Every point of $U$ has a geometric point $ol(u)$ of this shape lying above it, so by @vanishing-stalks-spreads-out, $s = 0$. Thus, $gamma$ is injective. 
+  是单射。若 $s in cal(F)(U)$ 的像为零，则对每个 $ol(u) in f^(-1)(ol(x))$，芽 $s_(ol(u)) = 0$。$U$ 的每个点上方都有这种形状的几何点 $ol(u)$，故由 @vanishing-stalks-spreads-out 得 $s = 0$。因此 $gamma$ 是单射。 
 ]
 
-Other than this injective Godement resolution, there is in fact an acyclic Godement resolution: 
+除了这个内射 Godement 消解，实际上还有零调 Godement 消解： 
 
 #lemma(name: <geom-point-pushforward-exact>)[
-  Let $ol(x): Spec(Omega) -> X$ be a geometric point. Then $ol(x)_*$ is an exact functor.
+  设 $ol(x): Spec(Omega) -> X$ 是几何点，则 $ol(x)_*$ 是正合函子。
 ]
 #proof[
-  Recall that $cAb(Spec(Omega)_et) cong cAb$ by @struct-of-spec-omega-et. Now given an exact sequence of abelian groups:
+  由 @struct-of-spec-omega-et，$cAb(Spec(Omega)_et) cong cAb$。现在给定交换群的正合列：
   $
     0 -> A -> B -> C -> 0
   $
-  consider the sequence after $ol(x)_*$:
+  考虑它在 $ol(x)_*$ 之后的序列：
   $
     0 -> ol(x)_* A -> ol(x)_* B -> ol(x)_* C -> 0
   $
-  When viewed on sections on $(f: U -> X) in Et_X$, this is:
+  在 $(f: U -> X) in Et_X$ 的截面上看，这就是：
   $
     0 -> product_(ol(u) in f^(-1)(ol(x))) A -> product_(ol(u) in f^(-1)(ol(x))) B -> product_(ol(u) in f^(-1)(ol(x))) C -> 0
   $
-  which is exact, as a direct product of exact sequences $0 -> A -> B -> C -> 0$. Thus $0 -> ol(x)_* A -> ol(x)_* B -> ol(x)_* C -> 0$ is exact.
+  它正合，因为它是正合列 $0 -> A -> B -> C -> 0$ 的直积。于是 $0 -> ol(x)_* A -> ol(x)_* B -> ol(x)_* C -> 0$ 正合。
 ]
 
 #proposition(name: <acyclic-godement-resolution>)[
-  For any scheme $X$, fix a system of geometric points ${ol(x)}$ above each $x in X$. For any $cal(F) in cAb(X_et)$,
+  对任意概形 $X$，在每个 $x in X$ 上方固定一个几何点，构成几何点系统 ${ol(x)}$。对任意 $cal(F) in cAb(X_et)$，
   $
     cal(C)^0 (cal(F)) := product_(x in X) ol(x)_* cal(F)_(ol(x))
   $
-  satisfies that the canonical map $cal(F) -> cal(C)^0 (cal(F))$ induced by adjunction between $ol(x)_*$ and $ol(x)^(-1)$ is injective, and is acyclic in the sense that:
+  满足：由 $ol(x)_*$ 与 $ol(x)^(-1)$ 的伴随性诱导的典范映射 $cal(F) -> cal(C)^0 (cal(F))$ 是单射，而且 $cal(C)^0 (cal(F))$ 是零调的，即
   $
     H^q (X, cal(C)^0 (cal(F))) = 0, forall q >= 1
   $
-  Thus, taking $cal(C)^1 (cal(F)) = cal(C)^0 (coker(cal(F) -> cal(C)^0 (cal(F))))$ and so on, we have inductively constructed an acyclic resolution:
+  于是取 $cal(C)^1 (cal(F)) = cal(C)^0 (coker(cal(F) -> cal(C)^0 (cal(F))))$，如此类推，就归纳构造出零调消解：
   $
     0 -> cal(F) -> cal(C)^0 (cal(F)) -> cal(C)^1 (cal(F)) -> dots.c -> cal(C)^p (cal(F)) -> dots.c
   $
-  functorial in $cal(F)$.
+  它对 $cal(F)$ 具有函子性。
 ]
 #proof[
-  For acyclicity, we use the Leray spectral sequence @derived-lower-star-first-props (2) and exactness of $ol(x)_*$ proved above. Since $R^q ol(x)_* = 0$ for $q >= 1$ by exactness of $ol(x)_*$, the spectral sequence:
+  零调性可由 Leray 谱序列 @derived-lower-star-first-props (2) 与上面证明的 $ol(x)_*$ 正合性推出。由于 $ol(x)_*$ 正合，$R^q ol(x)_* = 0$（$q >= 1$），故谱序列
   $
     H^p (X, R^q ol(x)_* A) ==> H^(p+q) (ol(x), A)
   $
-  degenerates, giving isomorphisms:
+  退化，给出同构：
   $
     H^q (X, ol(x)_* A) cong H^q (ol(x), A) = 0
   $
-  for all $q >= 1$. Thus, $cal(C)^0 (cal(F))$ as a direct product of sheaves of the shape $ol(x)_* A$ is acyclic.
+  对一切 $q >= 1$ 成立。因此 $cal(C)^0 (cal(F))$ 作为形如 $ol(x)_* A$ 的层的直积是零调的。
   
-  Next, we show that the natural map:
+  接下来证明自然映射
   $
     gamma: cal(F) -> cal(C)^0 (cal(F)) = product_(x in X) ol(x)_* cal(F)_(ol(x))
   $
-  is injective. This is the same proof as in @injective-godement-resolution. Indeed, given any $(f: U -> X) in Et_X$, we want to show that:
+  是单射。这与 @injective-godement-resolution 中的证明相同。事实上，给定任意 $(f: U -> X) in Et_X$，要证明
   $
     cal(F)(U) -> product_(x in X) (ol(x)_* cal(F)_(ol(x)))(U) = product_(x in X) product_(ol(u) in f^(-1)(ol(x))) cal(F)_(ol(x))
   $
-  is injective. If $s in cal(F)(U)$ is sent to zero, then for every $ol(u) in f^(-1)(ol(x))$, the germ $s_(ol(u)) = 0$. Every point of $U$ has a geometric point $ol(u)$ of this shape lying above it, so by @vanishing-stalks-spreads-out, $s = 0$. Thus, $gamma$ is injective.
+  是单射。若 $s in cal(F)(U)$ 的像为零，则对每个 $ol(u) in f^(-1)(ol(x))$，芽 $s_(ol(u)) = 0$。$U$ 的每个点上方都有这种形状的几何点 $ol(u)$，故由 @vanishing-stalks-spreads-out 得 $s = 0$。因此 $gamma$ 是单射。
 ]
 
-The advantage of this acyclic Godement resolution is that, if $cal(F)$ is $n$-torsion, then so are its stalks, and so $cal(C)^0 (cal(F))$ is $n$-torsion. This may make some results that only work for torsion sheaves applicable.
+这个零调 Godement 消解的好处在于：若 $cal(F)$ 是 $n$-挠的，则它的茎也如此，从而 $cal(C)^0 (cal(F))$ 也是 $n$-挠的。于是某些只对挠层 (torsion sheaf) 成立的结果也就能用上了。 

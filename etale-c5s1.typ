@@ -1,264 +1,264 @@
 #import "void-import.typ": *
 
-Last chapter, we introduced the etale site and etale sheaves, and established fundamental operations on sheaves. 
+上一章我们引入了平展景与平展层，并建立了层的一些基本运算。 
 
-As discussed earlier, etale cohomology, as defined by right deriving the global section functor on etale sheaves, is the central object to our study. 
+正如前面讨论过的，平展上同调由平展层上的整体截面函子作右导出得到，它是我们研究的核心对象。 
 
-In this chapter, we will establish basic results of etale cohomology, and explore first examples. We will introduce: 
+本章将建立平展上同调的基本结论，并考察最初的几个例子。我们会介绍： 
 
-- Limit formulas: They are formulas allowing us to compute: #h(1fr)
+- 极限公式：这类公式让我们能计算： #h(1fr)
   $
-    H^q (X, dirlim_i cal(F)_i) #[#h(10%) and #h(10%)] H^q (invlim_i X_i, u_(i_0)^(-1) cal(F))
+    H^q (X, dirlim_i cal(F)_i) #[#h(10%) 与 #h(10%)] H^q (invlim_i X_i, u_(i_0)^(-1) cal(F))
   $
-  from cohomology of its parts. Limit formulas are of theoretic importance, in the sense that they allow for _devissage_ on torsion sheaves. One will observe later, that a torsion sheaf is always a filtered colimit of a certain type of sheaves called constructible sheaves, which are in turn reduced to $ul(ZZ\/n)$. This allows us to reduce statements on general torsion sheaves to statements on $ul(ZZ\/n)$. 
+  即用各部分的上同调算出整体的上同调。极限公式在理论上的重要性在于，它们允许对挠层作 _devissage_。后面会看到，挠层总是这样一类层的滤余极限：这类层称为可构造层 (constructible sheaf)，而可构造层又归结为 $ul(ZZ\/n)$。这就把关于一般挠层的命题化归为关于 $ul(ZZ\/n)$ 的命题。 
 
-- Cohomology of $cal(M)_et$, and first cohomology of $GG_m$ and $ul(M)$: 
+- $cal(M)_et$ 的上同调，以及 $GG_m$ 与 $ul(M)$ 的一次上同调： 
 
-  - For $cal(M) in QCoh(X)$, etale cohomology of $cal(M)_et$ is just Zariski cohomology of $cal(M)$: #h(1fr)
+  - 对 $cal(M) in QCoh(X)$，$cal(M)_et$ 的平展上同调就是 $cal(M)$ 的 Zariski 上同调： #h(1fr)
     $
       H^q (X_et, cal(M)_et) cong H^q (X_#[top], cal(M))
     $
-    This tells us that etale sheaves coming from quasi-coherent sheaves are of little interest to etale cohomology theory, and they yield no new cohomological invariant. 
+    这说明来自拟凝聚层的平展层对平展上同调理论意义不大，它们给不出新的上同调不变量。 
 
-  - For the multiplicative group $GG_m$: 
+  - 对乘法群 $GG_m$： 
     $
       H^1 (X_et, GG_m) cong Pic(X)
     $
-    This is crucial in further developments of theory, as it allows for computation of cohomology of $ul(ZZ\/n)$ on curves, when combined with the Kummer and Artin-Schreier sequence. They will, in turn, prove to be critical input to very general results like proper base change. 
+    这一点在理论的后续发展中至关重要：与 Kummer 序列、Artin–Schreier 序列结合之后，它使我们能计算曲线上的 $ul(ZZ\/n)$ 上同调。而这些计算反过来又成为紧合基变换之类相当一般的结论的关键输入。 
 
-  - For a constant sheaf $ul(M)$: 
+  - 对常值层 $ul(M)$： 
     $
       H^1 (X_et, ul(M)) cong Hom_#[cont] (pi_1^et (X), M)
     $
-    where $M$ is given the discrete topology. This relates the theory of cohomology with that of fundamental groups that we have established and ultimately with finite etale coverings, and will also prove to be useful to further theory like proper base change. 
+    其中 $M$ 赋以离散拓扑。这把上同调理论与我们已经建立的基本群理论联系起来，并最终与有限平展覆叠联系起来；后面也会看到，它对紧合基变换之类的进一步理论同样有用。 
 
-- Cohomology of curves: 
+- 曲线的上同调： 
 
-  We will explicitly compute $H^q_et (X, ul(ZZ\/n))$ for a nonsingular curve $X$ over an algebraically closed field $k$. This is of both theoretic and pedagogical significance. The cohomology of curves will be the motivating example of many future results, such as vanishing theorems and Poincare duality. It will also be a key input to proper base change. 
+  对代数闭域 $k$ 上的非奇异曲线 $X$，我们将具体算出 $H^q_et (X, ul(ZZ\/n))$。这既有理论意义，也有教学意义。曲线的上同调将成为后续许多结论的动机性例子，例如消没定理与 Poincaré 对偶；它也会成为紧合基变换的关键输入。 
 
-== Limit formulas <sect-limit-formulas>
+== 极限公式 <sect-limit-formulas>
 
-We first discuss the limit formula for sheaves on a fixed scheme. 
+我们先讨论固定概形上的层的极限公式。 
 
 #theorem(name: <limit-formula-for-sheaves>)[
-  (Limit formula for sheaves) For $X$ #furi[quasi-compact quasi-separated][qcqs], and for a filtered colimit of sheaves $cal(F) = dircolim_i cal(F)_i$ in $cAb(X_et)$, we have a natural isomorphism: 
+  (层的极限公式) 设 $X$ #furi[quasi-compact quasi-separated][拟紧拟分离]，并设 $cal(F) = dircolim_i cal(F)_i$ 是 $cAb(X_et)$ 中层的滤余极限，则有自然同构： 
   $
     H^q (U, cal(F)) cong dircolim_i H^q (U, cal(F)_i)
   $
-  for every qcqs $U in Et_X$. 
+  对每个拟紧拟分离的 $U in Et_X$。 
 ]
 #proof[
-  We prove this theorem in 4 steps. 
+  我们分四步证明这个定理。 
 
-  Step 1. Proof for $H^0$. We claim that: 
+  第一步：$H^0$ 的情形。我们断言： 
   $
     Gamma(X, cal(F)) cong dircolim_i Gamma(X, cal(F)_i)
   $
   #proof[
-    Consider the presheaf colimit: 
+    考虑预层的余极限： 
     $
       cal(P) = dircolim_(i,cPSh) cal(F)_i in cPAb(X_et), U |-> dircolim_i cal(F)_i (U)
     $
-    so that $cal(F) = cal(P)^\#$. We thus intend to show that $cal(P)^\# (U) = cal(P)(U)$ for $U in Et_X$ qcqs. 
+    于是 $cal(F) = cal(P)^\#$。我们要证明：对拟紧拟分离的 $U in Et_X$，有 $cal(P)^\# (U) = cal(P)(U)$。 
 
-    We claim that for each $U in Et_X$ quasi-compact, the canonical map $cal(P)(U) -> cal(P)^+ (U)$ is an isomorphism. Indeed, when $U$ is quasi-compact, every etale cover of $U$ can be refined by a cover $cal(U) = {U_i -> U}_(1<=i<=n)$ consisting of finitely many maps in which every $U_i$ is affine. Denote by $cal(S)$ the collection of such etale covers, and so: 
+    我们断言：对每个拟紧的 $U in Et_X$，典范映射 $cal(P)(U) -> cal(P)^+ (U)$ 是同构。事实上，$U$ 拟紧时，$U$ 的每个平展覆盖都能被一个覆盖 $cal(U) = {U_i -> U}_(1<=i<=n)$ 所加细，其中只有有限多个映射，且每个 $U_i$ 都仿射。把这类平展覆盖的全体记为 $cal(S)$，于是： 
     $
       caron(H)^0 (U, cal(P)) = dirlim_(cal(U)) caron(H)^0 (cal(U), cal(P)) = dirlim_(cal(U) in cal(S)) caron(H)^0 (cal(U), cal(P))
     $
-    and we claim that for each $cal(U) in cal(S)$, the morphism $cal(P)(U) -> caron(H)^0 (cal(U), cal(P))$ is an isomorphism. Indeed, from the sheaf conditions for each $cal(F)_i$, we have exact sequences: 
+    并且断言：对每个 $cal(U) in cal(S)$，态射 $cal(P)(U) -> caron(H)^0 (cal(U), cal(P))$ 是同构。事实上，由每个 $cal(F)_i$ 的层条件，有正合列： 
     $
       0 -> cal(F)_i (U) -> product_(1<=j<=n) cal(F)_i (U_j) -> product_(1<=j,k<=n) cal(F)_i (U_j times_U U_k)
     $
-    Taking the filtered colimit w.r.t. $I$ and using (Ab5) for $cAb$, we get: 
+    对 $I$ 取滤余极限，并用 $cAb$ 的 (Ab5)，得到： 
     $
       0 -> dircolim_i cal(F)_i (U) -> dircolim_i product_(1<=j<=n) cal(F)_i (U_j) -> dircolim_i product_(1<=j,k<=n) cal(F)_i (U_j times_U U_k)
     $
-    However, filtered colimits commute with finite limits, so this sequence is just: 
+    然而滤余极限与有限极限交换，所以这个序列就是： 
     $
       0 -> dircolim_i cal(F)_i (U) -> product_(1<=j<=n) dircolim_i cal(F)_i (U_j) -> product_(1<=j,k<=n) dircolim_i cal(F)_i (U_j times_U U_k)
     $
-    i.e. 
+    即
     $
       0 -> cal(P) (U) -> product_(1<=j<=n) cal(P) (U_j) -> product_(1<=j,k<=n) cal(P) (U_j times_U U_k)
     $
-    In other words, $cal(P)$ satisfies the sheaf conditions for $cal(U)$, and $caron(H)^0 (cal(U), cal(P)) = cal(P)(U)$. We have thus succeeded in proving that $cal(P)^+ (U) = cal(P) (U)$ for all quasi-compact $U in Et_X$. 
+    换言之，$cal(P)$ 对 $cal(U)$ 满足层条件，且 $caron(H)^0 (cal(U), cal(P)) = cal(P)(U)$。这样我们就证明了对所有拟紧的 $U in Et_X$，都有 $cal(P)^+ (U) = cal(P) (U)$。 
 
-    Next, we prove that $cal(P)^\# (U) = cal(P)^+ (U) = cal(P)(U)$ for qcqs $U in Et_X$. Similarly, the directed system of etale covers of $U$ has a cofinal subsystem $cal(S)$ consisting of etale covers of the form ${U_i -> U}_(1<=i<=n)$ with finitely many maps in which each $U_i$ is affine. Now for each $cal(U) in cal(S)$, we have an exact sequence: 
+    接下来证明：对拟紧拟分离的 $U in Et_X$，有 $cal(P)^\# (U) = cal(P)^+ (U) = cal(P)(U)$。同样地，$U$ 的平展覆盖构成的正向系统有一个共尾子系统 $cal(S)$，由形如 ${U_i -> U}_(1<=i<=n)$ 的平展覆盖组成，其中只有有限多个映射，且每个 $U_i$ 都仿射。现在对每个 $cal(U) in cal(S)$，有正合列： 
     $
       0 -> caron(H)^0 (cal(U), cal(P)^+) -> product_(1<=j<=n) cal(P)^+ (U_j) -> product_(1<=j,k<=n) cal(P)^+ (U_j times_U U_k) -> 0
     $
-    Since $U$ is quasi-separated, each $U_j times_U U_k$ is quasi-compact. Each $U_j$ is itself quasi-compact, so by our result that $cal(P)^+ (U) = cal(P) (U)$ whenever $U$ is quasi-compact, this sequence is just: 
+    由于 $U$ 拟分离，每个 $U_j times_U U_k$ 都拟紧。每个 $U_j$ 本身也拟紧，所以按前面“$U$ 拟紧时 $cal(P)^+ (U) = cal(P) (U)$”的结论，这个序列就是： 
     $
       0 -> caron(H)^0 (cal(U), cal(P)^+) -> product_(1<=j<=n) cal(P) (U_j) -> product_(1<=j,k<=n) cal(P) (U_j times_U U_k) -> 0
     $
-    i.e. $caron(H)^0 (cal(U), cal(P)^+) = caron(H)^0 (cal(U), cal(P)) = cal(P)(U)$. Hence, 
+    即 $caron(H)^0 (cal(U), cal(P)^+) = caron(H)^0 (cal(U), cal(P)) = cal(P)(U)$。因此，
     $
       cal(P)^\# (U) = dircolim_(cal(U) in cal(S)) caron(H)^0 (cal(U), cal(P)^+) = cal(P)(U)
     $
     #suppress-qed
   ]
 
-  Step 2. Proof for Cech cohomology. We claim that for every $p >= 0$, every qcqs $U in Et_X$, 
+  第二步：Čech 上同调的情形。我们断言：对每个 $p >= 0$ 与每个拟紧拟分离的 $U in Et_X$，
   $
     caron(H)^p (U, cal(F)) cong dircolim_i caron(H)^p (U, cal(F)_i)
   $
 
   #proof[
-    As usual, the directed system of etale covers of $U$ has a cofinal subsystem $cal(S)$ consisting of etale covers of the form ${U_i -> U}_(1<=i<=n)$ with finitely many maps in which each $U_i$ is affine. For each such $cal(U) = {U_i -> U}_(1<=i<=n) in cal(S)$, $U$ is qcqs and every $U_i$ is affine, each: 
+    照例，$U$ 的平展覆盖构成的正向系统有一个共尾子系统 $cal(S)$，由形如 ${U_i -> U}_(1<=i<=n)$ 的平展覆盖组成，其中只有有限多个映射，且每个 $U_i$ 都仿射。对其中每个 $cal(U) = {U_i -> U}_(1<=i<=n) in cal(S)$，$U$ 拟紧拟分离、每个 $U_i$ 仿射，因此每个
     $
       U_(i_0,dots.c,i_p) = U_(i_0) times_U dots.c times_U U_(i_p)
     $
-    is qcqs. In other words, Step 1 is applicable to each $U_(i_0,dots.c,i_p)$. As such, 
+    都拟紧拟分离。换言之，每个 $U_(i_0,dots.c,i_p)$ 都满足第一步的条件，故可对它应用第一步。于是，
     $
       C^p (cal(U), cal(F)) &= product_(1<=i_0,dots.c,i_p<=n) cal(F) (U_(i_0,dots.c,i_p)) \
-      &= product_(1<=i_0,dots.c,i_p<=n) dircolim_i cal(F)_i (U_(i_0,dots.c,i_p)) #[by Step 1] \
-      &= dircolim_i product_(1<=i_0,dots.c,i_p<=n) cal(F)_i (U_(i_0,dots.c,i_p)) #[since finite limits commute with filtered colimits] \
+      &= product_(1<=i_0,dots.c,i_p<=n) dircolim_i cal(F)_i (U_(i_0,dots.c,i_p)) #[由第一步] \
+      &= dircolim_i product_(1<=i_0,dots.c,i_p<=n) cal(F)_i (U_(i_0,dots.c,i_p)) #[因为有限极限与滤余极限交换] \
       &= dircolim_i C^p (cal(U), cal(F)_i)
     $
-    In other words, the Cech complex $0 -> C^bullet (cal(U), cal(F))$ is the filtered colimit $0 -> dircolim_i C^bullet (cal(U), cal(F)_i)$ of Cech complexes for each $cal(F)_i$. By (Ab5) for $cAb$, taking cohomology commutes with filtered colimits, so: 
+    换言之，Čech 复形 $0 -> C^bullet (cal(U), cal(F))$ 是各个 $cal(F)_i$ 的 Čech 复形构成的滤余极限，也就是 $0 -> dircolim_i C^bullet (cal(U), cal(F)_i)$。由 $cAb$ 的 (Ab5)，取上同调与滤余极限交换，故： 
     $
       caron(H)^p (cal(U), cal(F)) = dircolim_i caron(H)^p (cal(U), cal(F)_i)
     $
-    Taking a direct limit w.r.t. $cal(U) in cal(S)$ and commute two colimits on RHS, we get: 
+    对 $cal(U) in cal(S)$ 取正向极限，并交换右端的两个余极限，得到： 
     $
       caron(H)^p (U, cal(F)) = dircolim_i caron(H)^p (U, cal(F)_i)
     $
     #suppress-qed
   ]
-  Step 3. Proof for injectives. We claim that for a filtered colimit of ${cal(I)_i}$ in which every $cal(I)_i in cAb(X_et)$ is injective, $cal(I) = dircolim_i cal(I)_i$ satisfies: 
+  第三步：内射对象的情形。我们断言：设 $cal(I) = dircolim_i cal(I)_i$ 是 ${cal(I)_i}$ 的滤余极限，其中每个 $cal(I)_i in cAb(X_et)$ 都内射，则它满足： 
   $
     H^q (U, cal(I)) = 0, forall q >= 1
   $
-  for every qcqs $U in Et_X$. In other words, although $cal(I)$ is not necessarily injective, it is necessarily acyclic for computing $H^q (U, -)$. 
+  对每个拟紧拟分离的 $U in Et_X$。换言之，$cal(I)$ 未必内射，但用它来计算 $H^q (U, -)$ 时，它必然零调。 
   #proof[
-    We perform induction on $q$. For the base case $q = 1$, we use the canonical isomorphism $H^1 (U, -) cong caron(H)^1 (U, -)$ by @h1-is-cech-h1. Thus, 
+    我们对 $q$ 归纳。奠基情形 $q = 1$ 用典范同构 $H^1 (U, -) cong caron(H)^1 (U, -)$，它来自 @h1-is-cech-h1。于是： 
     $
       H^1 (U, cal(I)) &= caron(H)^1 (U, cal(I)) \
-      &= dircolim_i caron(H)^1 (U, cal(I)_i) #[by Step 2] \
+      &= dircolim_i caron(H)^1 (U, cal(I)_i) #[由第二步] \
       &= dircolim_i H^1 (U, cal(I)_i) \
-      &= 0 #[since each $cal(I)_i$ is injective]
+      &= 0 #[因为每个 $cal(I)_i$ 都内射]
     $
-    Suppose that we have proved the claim for all $1 <= q < n$, and we want to prove that $H^n (U, cal(I)) = 0$. For this, we use the Cech-to-derived-functor spectral sequence: 
+    设已对一切 $1 <= q < n$ 证明断言，要证 $H^n (U, cal(I)) = 0$。为此使用 Čech 到导出函子的谱序列： 
     $
       E_2^(p,q) = caron(H)^p (U, ul(H)^q (cal(I))) => H^(p+q) (U, cal(I))
     $
-    By the inductive hypothesis, for $0 < q < n$ and any qcqs $U in Et_X$, $ul(H)^q (cal(I))(U) = H^q (U, cal(I)) = 0$. As usual, the directed system of etale covers of $U$ has a cofinal subsystem $cal(S)$ consisting of etale covers of the form ${U_i -> U}_(1<=i<=n)$ with finitely many maps in which each $U_i$ is affine. For each such $cal(U) = {U_i -> U}_(1<=i<=n) in cal(S)$, $U$ is qcqs and every $U_i$ is affine, each:
+    由归纳假设，对 $0 < q < n$ 及任意拟紧拟分离的 $U in Et_X$，有 $ul(H)^q (cal(I))(U) = H^q (U, cal(I)) = 0$。照例，$U$ 的平展覆盖构成的正向系统有一个共尾子系统 $cal(S)$，由形如 ${U_i -> U}_(1<=i<=n)$ 的平展覆盖组成，其中只有有限多个映射，且每个 $U_i$ 都仿射。对其中每个 $cal(U) = {U_i -> U}_(1<=i<=n) in cal(S)$，$U$ 拟紧拟分离、每个 $U_i$ 仿射，因此每个
     $
       U_(i_0,dots.c,i_p) = U_(i_0) times_U dots.c times_U U_(i_p)
     $
-    is qcqs. Hence for each $cal(U) in cal(S)$, the whole Cech complex $0 -> C^bullet (cal(U), ul(H)^q (cal(I)))$ is zero, and so $caron(H)^p (cal(U), ul(H)^q (cal(I))) = 0$. Taking a direct limit w.r.t. $cal(U) in cal(S)$, 
+    都拟紧拟分离。因此对每个 $cal(U) in cal(S)$，整个 Čech 复形 $0 -> C^bullet (cal(U), ul(H)^q (cal(I)))$ 为零，从而 $caron(H)^p (cal(U), ul(H)^q (cal(I))) = 0$。对 $cal(U) in cal(S)$ 取正向极限，
     $
       caron(H)^p (U, ul(H)^q (cal(I))) = 0, forall 0<q<n
     $
-    In other words, the Cech-to-derived-functor spectral sequence has a horizontal vanishing strip. We use the following cohomological lemma: 
+    换言之，这个 Čech 到导出函子的谱序列有一条水平的消没带。下面用到一条上同调引理： 
     #lemma[
-      Let $E_2^(p,q) => H^(p+q)$ be a first quadrant spectral sequence with a horizontal vanishing strip. Then there exists a modified five term exact sequence: 
+      设 $E_2^(p,q) => H^(p+q)$ 是第一象限的谱序列，且有一条水平的消没带。则存在修正的五项正合列： 
       $
         0 -> E_2^(n,0) -> H^n -> E_2^(0,n) -> E_2^(n+1,0) -> H^(n+1)
       $
     ]
-    By this modified five term exact sequence, we get an exact sequence: 
+    由这个修正的五项正合列，得到正合列： 
     $
       0 -> caron(H)^n (U, cal(I)) -> H^n (U, cal(I)) -> caron(H)^0 (U, ul(H)^n (cal(I))) -> dots.c
     $
-    However, $caron(H)^n (U, cal(I)) = dircolim_i caron(H)^n (U, cal(I)_i) = 0$ by Step 2, and $caron(H)^0 (U, ul(H)^n (cal(I))) = 0$ by @cech-h0-of-hq-psh-vanish. As such, $H^n (U, cal(I))$, being sandwiched in two zeros in an exact sequence, must be $0$. 
+    然而由第二步，$caron(H)^n (U, cal(I)) = dircolim_i caron(H)^n (U, cal(I)_i) = 0$；又由 @cech-h0-of-hq-psh-vanish，$caron(H)^0 (U, ul(H)^n (cal(I))) = 0$。于是 $H^n (U, cal(I))$ 在正合列中被夹在两个零之间，必为 $0$。 
     #suppress-qed
   ]
 
-  Step 4. Proof for general case. Fix a set of geometric points ${ol(x)}_(x in X)$ above each point of $X$. For each $cal(F)_i$, we may then construct the Godement resolution: 
+  第四步：一般情形。对 $X$ 的每个点，固定它上方的一个几何点，合起来记作 ${ol(x)}_(x in X)$。于是对每个 $cal(F)_i$ 都可以构造 Godement 消解： 
   $
     0 -> cal(F)_i -> cal(I)_i^bullet
   $
-  // However, for each $p$, ${cal(I)_i^p}$ generally does not necessarily form a filtered colimit, because the maps induced between them by homological algebra are only unique up to isomorphism, and are 
-  Now by functoriality of the Godement resolution, for each $p$, ${cal(I)^p_i}_i$ form a filtered colimit, and by (Ab5) of $cAb(X_et)$, we have an exact sequence: 
+  // 然而，对每个 $p$，${cal(I)_i^p}$ 一般未必构成滤余极限，因为同调代数在它们之间诱导的映射只在同构意义下唯一，且
+  现在，由 Godement 消解的函子性，对每个 $p$，${cal(I)^p_i}_i$ 构成一个滤过系统；再由 $cAb(X_et)$ 的 (Ab5)，得到正合列： 
   $
     0 -> cal(F) -> dircolim_i cal(I)_i^bullet
   $
-  However, for every qcqs $U in Et_X$, by Step 3, each $dircolim_i cal(I)_i^p$ is acyclic w.r.t. ${H^q (U, -)}_(q>=0)$. In other words, we have an acyclic resolution of $cal(F)$ that can be used to compute its cohomology: 
+  然而对每个拟紧拟分离的 $U in Et_X$，由第三步，每个 $dircolim_i cal(I)_i^p$ 关于 ${H^q (U, -)}_(q>=0)$ 都是零调的。换言之，我们得到了 $cal(F)$ 的一个零调消解，可以用它来计算 $cal(F)$ 的上同调： 
   $
     H^q (U, cal(F)) &= h^q (0 -> (dircolim_i cal(I)_i^bullet)(U)) \
-    &= h^q (0 -> dircolim_i cal(I)_i^bullet (U)) #[by Step 1] \
-    &= dircolim_i h^q (0 -> cal(I)_i^bullet (U)) #[by (Ab5) of $cAb$] \
-    &= dircolim_i H^q (U, cal(F)_i) #[by definition]
+    &= h^q (0 -> dircolim_i cal(I)_i^bullet (U)) #[由第一步] \
+    &= dircolim_i h^q (0 -> cal(I)_i^bullet (U)) #[将 (Ab5) 应用于 $cAb$] \
+    &= dircolim_i H^q (U, cal(F)_i) #[按定义]
   $
   #remark[
-    The functoriality of the Godement resolution plays a crucial role here. Without a functorial choice of an injective resolution, we would not necessarily have ${cal(I)^p_i}_i$ forming a filtered colimit, as the morphisms between injective resolutions given by homological algebra are only unique up to chain homotopy and in general do not form a functor $I -> cAb(X_et)$. 
+    这里 Godement 消解的函子性起了关键作用。若不能函子性地选取内射消解，我们就未必能让 ${cal(I)^p_i}_i$ 构成一个滤过系统：同调代数给出的内射消解之间的态射只在链同伦意义下唯一，一般并不构成函子 $I -> cAb(X_et)$。 
   ]
 ]
 
-Next, we deal with limit formula for schemes. 
+接下来处理概形的极限公式。 
 
 #theorem(name: <limit-formula-for-schemes-0>)[
-  (Limit formula for schemes) Let ${Z_i}_(i in I)$ be a projective system of qcqs schemes, with all transition maps affine, with a final object $0 in I$. 
+  (概形的极限公式) 设 ${Z_i}_(i in I)$ 是拟紧拟分离概形构成的逆向系统，所有过渡映射都仿射，且有终对象 $0 in I$。
   
-  Let: 
+  令：
   $
     Z = invlim_(i in I) Z_i
   $
-  with maps $v_i: Z -> Z_i, u_i: Z_i -> Z_0$. 
+  映射为 $v_i: Z -> Z_i, u_i: Z_i -> Z_0$。
   
-  Take any $cal(F)_0 in cAb((Z_0)_et)$, and any qcqs $U in Et_Z$. Then there exists $k in I$ s.t. $U$ is the base change of $U_k in Et_(Z_k)$. Then the canonical map induced by the pullbacks $H^q (Z_j, u_j^(-1) cal(F)_0) -> H^q (Z, v_0^(-1) cal(F)_0)$ along $v_j$:
+  任取 $cal(F)_0 in cAb((Z_0)_et)$ 与拟紧拟分离的 $U in Et_Z$。则存在 $k in I$，使得 $U$ 是某个 $U_k in Et_(Z_k)$ 的基变换。于是由沿 $v_j$ 的拉回 $H^q (Z_j, u_j^(-1) cal(F)_0) -> H^q (Z, v_0^(-1) cal(F)_0)$ 诱导的典范映射：
   $
     dirlim_(j>=k) H^q (U_j, u_j^(-1) cal(F)_0) -> H^q (U, v_0^(-1) cal(F)_0) 
   $
-  is an isomorphism. In particular, there is a canonical isomorphism: 
+  是同构。特别地，有典范同构： 
   $
     dirlim_(i in I) H^q (Z_i, u_i^(-1) cal(F)_0) -> H^q (Z, v_0^(-1) cal(F)_0)
   $
 ]
 #proof[
-  // We first use a general categorical construction to reduce from a general cofiltered limit to a projective limit. 
+  // 我们先用一个一般的范畴构造，把一般的余滤过极限化归为逆向极限。
   // #lemma[
-  //   (Artin-Mazur construction) Let $I$ be a cofiltered category with a final object. Then there exists a directed poset $P$ with a minimum element, with a cofinal functor $P -> I^opp$. 
+  //   (Artin–Mazur 构造) 设 $I$ 是带终对象的余滤过范畴。则存在带最小元的正向偏序集 $P$，以及共尾函子 $P -> I^opp$。
   // ]
   // #proof[
-  //   This is mostly just #cite-stacks("0032", [Lemma 4.21.5]), where we additionally truncate $P$ to elements $>=$ some element to guarantee the existence of a minimum element. 
+  //   这基本上就是 #cite-stacks("0032", [Lemma 4.21.5])，只是我们额外把 $P$ 截断到某个元素 $>=$ 以上的部分，以保证最小元存在。
   // ]
-  // This construction tells us that we may replace the cofiltered limit $I$ with the projective limit over $P$. We may thus assume that the cofiltered category $I$ is actually a directed poset with a minimum element $0$, and we are dealing with a projective limit of schemes. 
+  // 这个构造说明，可以把余滤过极限 $I$ 换成 $P$ 上的逆向极限。于是不妨假设余滤过范畴 $I$ 实际上就是带最小元 $0$ 的正向偏序集，而所处理的是概形的逆向极限。
 
   #lemma[
-    + Any $U in Et_Z$ of finite presentation over $Z$ comes from base changing a $U_j in Et_(Z_j)$ of finite presentation over $Z_j$ for some $j in I$. 
+    + 任取 $Et_Z$ 中在 $Z$ 上有限展示的 $U$，都存在 $j in I$ 与在 $Z_j$ 上有限展示的 $U_j in Et_(Z_j)$，使得前者是后者的基变换。
 
-    + Every etale cover of any $U in Et_Z$ of finite presentation over $Z$ is refined by one in the subsystem $cal(S)$ of etale covers defined below: 
+    + 对 $Et_Z$ 中任何在 $Z$ 上有限展示的 $U$，其每个平展覆盖都能被下面定义的平展覆盖子系统 $cal(S)$ 中的覆盖加细：
     
-      Suppose that $U$ is obtained by base changing $U_j in Et_(Z_j)$. Then $cal(S)$ consists of etale covers $cal(U) = {U_alpha -> U}$ with finitely many maps, so that there exists some $k in I$ and an etale cover $cal(U)_k = {U_(alpha,k) -> U_k}$ in $Et_(Z_k)$, whose base change to $Z$ is $cal(U)$, and where each $U_(alpha,k)$ is affine, and of finite presentation (i.e. qcqs, since we already have locally of finite presentation from etaleness) over $U_k$. 
+      设 $U$ 由 $U_j in Et_(Z_j)$ 作基变换得到。则 $cal(S)$ 由这样的平展覆盖 $cal(U) = {U_alpha -> U}$ 组成，其中只有有限多个映射，且存在某个 $k in I$ 以及 $Et_(Z_k)$ 中的平展覆盖 $cal(U)_k = {U_(alpha,k) -> U_k}$，它在 $Z$ 上的基变换是 $cal(U)$，并且每个 $U_(alpha,k)$ 都在 $U_k$ 上仿射且有限展示（即在 $U_k$ 上拟紧拟分离；由平展性，局部有限展示已自动成立）。
   ]
   #proof[
-    (1) follows from Theorem @passage-to-limit-of-morphisms and @passage-to-limit-of-properties. 
+    (1) 由定理 @passage-to-limit-of-morphisms 与 @passage-to-limit-of-properties 得到。
 
-    (2) Since $U$ is of finite presentation over the qcqs scheme $Z$, it is itself qcqs. Given any etale cover $cal(U) = {U_alpha -> U}$, we may first refine it by a cover in which every $U_alpha$ is affine. Since $U$ is quasi-compact, we may further refine by a finite subcover, so the index set for $alpha$'s is finite. 
+    (2) $U$ 在拟紧拟分离概形 $Z$ 上有限展示，故自身也拟紧拟分离。任给平展覆盖 $cal(U) = {U_alpha -> U}$，先把它加细为每个 $U_alpha$ 都仿射的覆盖。由于 $U$ 拟紧，还可进一步加细为有限子覆盖，因此指标 $alpha$ 的集合有限。
     
-    Since $U_alpha$ and $U$ are both qcqs, the morphism $U_alpha -> U$ is qcqs. Since it is also etale (and so locally of finite presentation), it is of finite presentation. By @passage-to-limit-of-morphisms and @passage-to-limit-of-properties, for each $alpha$, there exists some $j <= i_alpha in I$ s.t. $U_alpha -> U$ comes from base changing a morphism $U_(alpha,i_alpha) -> U_(i_alpha)$ in $Et_(Z_(i_alpha))$. By picking a common upper bound for all $alpha$'s, there exists some $j <= k in I$ and morphisms ${U_(alpha,k) -> U_k}_alpha$ in $Et_(Z_k)$ whose base change to $Z$ is ${U_alpha -> U}$. Since $union.sq.big_alpha U_alpha -> U$ is surjective, up to replacing $k$ with some further stage, we may assume that $union.sq.big_alpha U_(alpha,k) -> U$ is surjective, and so ${U_(alpha,k) -> U_k}_alpha$ is jointly surjective, hence an affine cover. We are thereby done. 
+    由于 $U_alpha$ 与 $U$ 都拟紧拟分离，态射 $U_alpha -> U$ 拟紧拟分离。它又是平展的（从而局部有限展示），因此有限展示。由 @passage-to-limit-of-morphisms 与 @passage-to-limit-of-properties，对每个 $alpha$，存在某个 $j <= i_alpha in I$，使得 $U_alpha -> U$ 来自 $Et_(Z_(i_alpha))$ 中态射 $U_(alpha,i_alpha) -> U_(i_alpha)$ 的基变换。取所有 $alpha$ 的公共上界，便存在某个 $j <= k in I$ 以及 $Et_(Z_k)$ 中的态射族 ${U_(alpha,k) -> U_k}_alpha$，其到 $Z$ 的基变换为 ${U_alpha -> U}$。由于 $union.sq.big_alpha U_alpha -> U$ 满射，把 $k$ 换成更靠后的阶段，不妨设 $union.sq.big_alpha U_(alpha,k) -> U$ 也满射；于是 ${U_(alpha,k) -> U_k}_alpha$ 联合满射，从而是一个仿射覆盖。这就完成了证明。
   ]
 
-  We now prove the result in 3 steps: For $H^0$, for Cech cohomology, and with the Cech-to-derived-functor spectral sequence, analogous to the proof for the limit formula for sheaves. 
+  下面分三步证明：先证 $H^0$，再证 Čech 上同调，最后借助 Čech 到导出函子的谱序列处理一般情形；这与层的极限公式的证明类似。
 
-  Step 1. Proof for $q = 0$. Write $cal(F)_i = u_i^(-1) cal(F)_0$ and $cal(F) = v_0^(-1) cal(F)_0$. We claim that there exists a canonical identification: 
+  第一步：$q = 0$ 的情形。记 $cal(F)_i = u_i^(-1) cal(F)_0$、$cal(F) = v_0^(-1) cal(F)_0$。我们断言存在典范的等同：
   $
     cal(F) (U) = dirlim_(j >= k) cal(F)_j (U_j)
   $
-  for any $U in Et_Z$ obtained from base changing some qcqs (i.e. of finite presentation over $Z_k$) $U_k in Et_(Z_k)$, whenever $U$ is qcqs. (Such $U_k$ always exists by previous lemma.)
+  对 $Et_Z$ 中任何由某个拟紧拟分离（即在 $Z_k$ 上有限展示）的 $U_k in Et_(Z_k)$ 作基变换得到的 $U$，只要 $U$ 拟紧拟分离，上式就成立。（这样的 $U_k$ 由前一条引理总是存在。）
 
   #proof[
-    We first prove a lemma: 
+    先证一条引理：
     #lemma(name: <limit-formula-for-schemes-pab>)[
-      Let ${Z_i}_(i in I)$ be a projective system of qcqs schemes, with all transition maps affine, with a final object $0 in I$.
+      设 ${Z_i}_(i in I)$ 是拟紧拟分离概形构成的逆向系统，所有过渡映射都仿射，且有终对象 $0 in I$。
       
-      Let:
+      令：
       $
         Z = invlim_(i in I) Z_i
       $
-      with maps $v_i: Z -> Z_i, u_i: Z_i -> Z_0$. Take any $cal(F)_0 in cPAb((Z_0)_et)$. Then for any qcqs $U in Et_Z$ obtained from base changing some qcqs (i.e. of finite presentation over $Z_k$) $U_k in Et_(Z_k)$: 
+      映射为 $v_i: Z -> Z_i, u_i: Z_i -> Z_0$。任取 $cal(F)_0 in cPAb((Z_0)_et)$。则对 $Et_Z$ 中任何由某个拟紧拟分离（即在 $Z_k$ 上有限展示）的 $U_k in Et_(Z_k)$ 作基变换得到的拟紧拟分离 $U$：
       $
         v_(0,cPSh)^(-1) cal(F)_0 (U) = dirlim_(j>=k) u_(j,cPSh)^(-1) cal(F)_0 (U_j)
       $
     ]
     #proof[
-      Recall that for any $U in Et_Z$:
+      回忆：对任意 $U in Et_Z$，
       $
         v_(0,cPSh)^(-1) cal(F)_0 (U) = dircolim_((V_0,phi)) cal(F)_0 (V_0)
       $
-      where the filtered colimit is over all diagrams of the shape:
+      其中滤余极限取遍所有如下形状的图表：
       // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwxLCJaIl0sWzEsMSwiWl8wIl0sWzEsMCwiVl8wIl0sWzAsMCwiVSJdLFszLDIsInBoaSJdLFswLDFdLFszLDBdLFsyLDFdXQ==
       #align(center, diagram({
         node((-1, 0), [$Z$])
@@ -270,26 +270,26 @@ Next, we deal with limit formula for schemes.
         edge((-1, -1), (-1, 0), "->")
         edge((0, -1), (0, 0), "->")
       }))
-      with $V_0 in Et_(Z_0)$. In other words, we are dealing with a filtered colimit: 
+      其中 $V_0 in Et_(Z_0)$。换言之，我们面对的是一个滤余极限：
       $
         v_(0,cPSh)^(-1) cal(F)_0 (U) = dircolim_(V_0 in Et_(Z_0) \ phi in Hom_Z (U, Z times_(Z_0) V_0)) cal(F)_0 (V_0)
       $
-      Similarly, 
+      同样，
       $
         dirlim_(j>=k) u_(i,cPSh)^(-1) cal(F)_0 (U_j) = dirlim_(j>=k) dircolim_(V_0 in Et_(Z_0) \ phi_j in Hom_(Z_j) (U_j, Z_j times_(Z_0) V_0)) cal(F)_0 (V_0)
       $
 
-      However, by @passage-to-limit-of-morphisms, 
+      然而由 @passage-to-limit-of-morphisms，
       $
         Hom_Z (U, Z times_(Z_0) V_0) = dirlim_(j>=k) Hom_(Z_j) (U_j, Z_j times_(Z_0) V_0)
       $
-      so $(j, V_0, phi_j) |-> (V_0, Z times_(Z_j) phi_j)$ is a cofinal functor between the index categories between the two filtered colimits. Thus, the natural map: 
+      因此 $(j, V_0, phi_j) |-> (V_0, Z times_(Z_j) phi_j)$ 是这两个滤余极限的指标范畴之间的共尾函子。于是自然映射
       $
         dirlim_(j>=k) dircolim_(V_0 in Et_(Z_0) \ phi_j in Hom_(Z_j) (U_j, Z_j times_(Z_0) V_0)) cal(F)_0 (V_0) -> dircolim_(V_0 in Et_(Z_0) \ phi in Hom_Z (U, Z times_(Z_0) V_0)) cal(F)_0 (V_0)
       $
-      is an isomorphism. 
+      是同构。
       /*
-      However, $U -> Z$ is the base change of $U_k -> Z_k$. By @passage-to-limit-of-morphisms (2) and @passage-to-limit-of-properties, the morphism $U -> V := V times_(Z_0) Z_k$ over $Z$ is the base change of some $U_j -> V_j := V_0 times_(Z_0) Z_j$ over $Z_j$, i.e. a morphism $U_j -> V_0$ over $Z_0$. By picking $j >= k$, $U_j -> Z_j$ is also etale. In other words, the diagram above factors as:
+      然而，$U -> Z$ 是 $U_k -> Z_k$ 的基变换。由 @passage-to-limit-of-morphisms (2) 与 @passage-to-limit-of-properties，$Z$ 上的态射 $U -> V := V times_(Z_0) Z_k$ 是 $Z_j$ 上某个态射 $U_j -> V_j := V_0 times_(Z_0) Z_j$ 的基变换，也就是 $Z_0$ 上的一个态射 $U_j -> V_0$。取 $j >= k$，$U_j -> Z_j$ 仍是平展的。换言之，上面的图表分解为：
       // https://q.uiver.app/#r=typst&q=WzAsNixbMCwxLCJaIl0sWzEsMSwiWl9rIl0sWzEsMCwiVV9rIl0sWzAsMCwiVSJdLFsyLDAsIlZfMCJdLFsyLDEsIlpfMCJdLFszLDJdLFswLDFdLFszLDBdLFsyLDFdLFsxLDVdLFsyLDQsInBoaV9rIl0sWzQsNV1d
       #align(center, diagram({
         node((-1, 0), [$Z$])
@@ -308,114 +308,114 @@ Next, we deal with limit formula for schemes.
         edge((1, -1), (1, 0), "->")
       }))
       
-      Using abstract categorical arguments, the filtered colimit can thus be taken over $(j, V_0, phi_j)$ where $j>=k, V_0 in Et_(Z_0)$ and $phi_j: U_j -> V_0$, fitting in the diagram above. As such,
+      利用抽象的范畴论证，这个滤余极限取在满足 $j>=k$、$V_0 in Et_(Z_0)$ 且 $phi_j: U_j -> V_0$ 并嵌入上述图表的 $(j, V_0, phi_j)$ 上。于是，
       $
         v_(0,cPSh)^(-1) cal(F)_0 (U) &= dircolim_((V_0,phi)) cal(F)_0 (V_0) = dircolim_((j,V_0,phi_j) \ j>=k) cal(F)_0 (V_0) = dirlim_(j>=k) dircolim_((V_0,phi_j)) cal(F_0) (V_0) \
         &= dirlim_(j>=k) u_j^(-1) cal(F)_0 (U_k) = dirlim_(j>=k) cal(F)_k (U_k)
       $
-      for all $U in Et_Z$ qcqs. */
+      对所有拟紧拟分离的 $U in Et_Z$ 成立。 */
     ]
 
-    We now prove that for all $U in Et_Z$ qcqs, $cal(F)(U) = v_(0,cPSh)^(-1) cal(F)_0 (U)$. Let $cal(S)$ be the subsystem of etale covers of $U$ as in the previous lemma. We now compute $caron(H)^0 (cal(U), v_(0,cPSh)^(-1) cal(F)_0)$ for some $cal(U) = {U_alpha -> U} in cal(S)$, base changed from $cal(U)_(k') = {U_(alpha,k') -> U_(k')}$ for $k' >= k$, an etale cover in $Et_(Z_(k'))$. Consider:
+    现在证明：对所有拟紧拟分离的 $U in Et_Z$，$cal(F)(U) = v_(0,cPSh)^(-1) cal(F)_0 (U)$。设 $cal(S)$ 是前一条引理中 $U$ 的平展覆盖子系统。对某个 $cal(U) = {U_alpha -> U} in cal(S)$（它由 $Et_(Z_(k'))$ 中的平展覆盖 $cal(U)_(k') = {U_(alpha,k') -> U_(k')}$ 经基变换得到，$k' >= k$），计算 $caron(H)^0 (cal(U), v_(0,cPSh)^(-1) cal(F)_0)$。考虑：
     $
       & caron(H)^0 (cal(U), v_(0,cPSh)^(-1) cal(F)_0) \
-      =& ker(product_alpha v_(0,cPSh)^(-1) cal(F)_0 (U_alpha) -> product_(alpha,beta) v_(0,cPSh)^(-1) cal(F)_0 (U_alpha times_U U_beta)) #[by definition]\
+      =& ker(product_alpha v_(0,cPSh)^(-1) cal(F)_0 (U_alpha) -> product_(alpha,beta) v_(0,cPSh)^(-1) cal(F)_0 (U_alpha times_U U_beta)) #[按定义]\
       =& ker(product_alpha dirlim_(j>=k') u_(j,cPSh)^(-1) cal(F)_0 (U_(alpha,j)) -> product_(alpha,beta) dirlim_(j>=k') u_(j,cPSh)^(-1) cal(F)_0 (U_(alpha,j) times_(U_j) U_(beta,j))) \
-      & #[by our description of $v_(0,cPSh)^(-1) cal(F)_0$] \
+      & #[由我们对 $v_(0,cPSh)^(-1) cal(F)_0$ 的描述] \
       =& ker(dirlim_(j>=k') product_alpha u_(j,cPSh)^(-1) cal(F)_0 (U_(alpha,j)) -> dirlim_(j>=k') product_(alpha,beta) u_(j,cPSh)^(-1) cal(F)_0 (U_(alpha,j) times_(U_j) U_(beta,j))) \
-      & #[as finite lims commutes with filtered colims] \
-      =& dirlim_(j>=k') ker(product_alpha u_(j,cPSh)^(-1) cal(F)_0 (U_(alpha,j)) -> product_(alpha,beta) u_(j,cPSh)^(-1) cal(F)_0 (U_(alpha,j) times_(U_j) U_(beta,j))) #[by (Ab5) of $cAb$] \
+      & #[因为有限极限与滤余极限交换] \
+      =& dirlim_(j>=k') ker(product_alpha u_(j,cPSh)^(-1) cal(F)_0 (U_(alpha,j)) -> product_(alpha,beta) u_(j,cPSh)^(-1) cal(F)_0 (U_(alpha,j) times_(U_j) U_(beta,j))) #[将 (Ab5) 应用于 $cAb$] \
       =& dirlim_(j>=k') caron(H)^0 (cal(U), u_(j,cPSh)^(-1) cal(F)_0)
     $
-    Taking a directed limit over all $cal(U) in cal(S)$, we see that:
+    对一切 $cal(U) in cal(S)$ 取正向极限，得到：
     $
       caron(H)^0 (U, v_(0,cPSh)^(-1) cal(F)_0) = dirlim_(j>=k) caron(H)^0 (U_j, u_(j,cPSh)^(-1) cal(F)_0)
     $
-    for all qcqs $U in Et_Z$. In other words,
+    对一切拟紧拟分离的 $U in Et_Z$ 成立。换言之，
     $
       (v_(0,cPSh)^(-1) cal(F)_0)^+ (U) = dirlim_(j>=k) (u_(j,cPSh)^(-1) cal(F)_0)^+ (U_j)
     $
-    for all $U in Et_Z$ qcqs. Next, we repeat the argument above again for computing $caron(H)^0 (U, (v_(0,cPSh)^(-1) cal(F)_0)^+)$, where every etale cover is refined by one in $cal(S)$, which has all etale opens and their fiber products being qcqs. We then see that:
+    对一切拟紧拟分离的 $U in Et_Z$ 成立。接下来，对 $caron(H)^0 (U, (v_(0,cPSh)^(-1) cal(F)_0)^+)$ 重复上面的论证：这里每个平展覆盖都能被 $cal(S)$ 中的覆盖加细，而 $cal(S)$ 中所有平展开集及其纤维积都拟紧拟分离。于是得到：
     $
       cal(F) (U) = (v_(0,cPSh)^(-1) cal(F)_0)^\# (U) = dirlim_(j>=k) (u_(j,cPSh)^(-1) cal(F)_0)^\# (U_j) = dirlim_(j>=k) cal(F)_j (U_j)
     $
     #suppress-qed
   ]
 
-  Step 2. Proof for Cech cohomology. We claim that the canonical map: 
+  第二步：Čech 上同调的情形。我们断言典范映射：
   $
     dirlim_(j>=k) caron(H)^p (U_j, cal(F)_j) -> caron(H)^p (U, cal(F)) 
   $
-  is an isomorphism for all qcqs $U in Et_Z$, coming from a qcqs $U_k in Et_(Z_k)$. 
+  是同构，其中 $U in Et_Z$ 取遍拟紧拟分离的对象，并且每个都来自某个拟紧拟分离的 $U_k in Et_(Z_k)$。
 
   #proof[
-    Given any $cal(U) in cal(S)$, say $cal(U) = {U_alpha -> U}$ coming from $cal(U)_(k') = {U_(alpha,k') -> U_(k')}$ for $k' >= k$, an etale cover in $Et_(Z_(k'))$. Consider the Cech complex: 
+    任取 $cal(U) in cal(S)$，设 $cal(U) = {U_alpha -> U}$ 来自 $Et_(Z_(k'))$ 中的平展覆盖 $cal(U)_(k') = {U_(alpha,k') -> U_(k')}$，其中 $k' >= k$。考虑 Čech 复形：
     $
-      C^p (cal(U), cal(F)) &= product_(alpha_0,dots.c,alpha_p) cal(F)(U_(alpha_0,dots.c,alpha_p)) #[by definition] \
-      &= product_(alpha_0,dots.c,alpha_p) dirlim_(j>=k') cal(F)_j (U_(j,alpha_0,dots.c,alpha_p)) #[by Step 1] \
-      &= dirlim_(j>=k') product_(alpha_0,dots.c,alpha_p) cal(F)_j (U_(j,alpha_0,dots.c,alpha_p)) #[by commuting finite lims and filtered colims] \
+      C^p (cal(U), cal(F)) &= product_(alpha_0,dots.c,alpha_p) cal(F)(U_(alpha_0,dots.c,alpha_p)) #[按定义] \
+      &= product_(alpha_0,dots.c,alpha_p) dirlim_(j>=k') cal(F)_j (U_(j,alpha_0,dots.c,alpha_p)) #[由第一步] \
+      &= dirlim_(j>=k') product_(alpha_0,dots.c,alpha_p) cal(F)_j (U_(j,alpha_0,dots.c,alpha_p)) #[因为有限极限与滤余极限交换] \
       &= dirlim_(j>=k') C^p (cal(U)_j, cal(F)_j)
     $
-    In other words, the Cech complex for $cal(F)$ w.r.t. $cal(U)$ is the direct limit of the Cech complexes for those $cal(F)_j$ w.r.t. $cal(U)_j$ for $j >= k'$. By (Ab5) of $cAb$, taking cohomologies commutes with filtered colimits, so: 
+    换言之，$cal(F)$ 关于 $cal(U)$ 的 Čech 复形，是那些 $cal(F)_j$ 关于 $cal(U)_j$（$j >= k'$）的 Čech 复形的正向极限。由 $cAb$ 的 (Ab5)，取上同调与滤余极限交换，故：
     $
       caron(H)^p (cal(U), cal(F)) = dirlim_(j>=k') caron(H)^p (cal(U)_j, cal(F)_j)
     $
-    Next, we would like to take the direct limit w.r.t. $cal(U) in cal(S)$ and commute two direct limits. However, $k'$ depends on $cal(U)$ and there's some categorical subtleties: We get an isomorphism
+    接下来想对 $cal(U) in cal(S)$ 取正向极限，并交换两个正向极限。然而 $k'$ 依赖于 $cal(U)$，这里有一些范畴上的微妙之处。我们得到同构
     $
       caron(H)^p (U, cal(F)) = dirlim_(cal(U)) dirlim_(j>=k') caron(H)^p (cal(U)_j, cal(F)_j) = dirlim_((k', cal(U),j) \ j>=k'>=k) caron(H)^p (cal(U)_j, cal(F)_j) = dirlim_(j>=k) caron(H)^p (U_j, cal(F)_j)
     $
-    where the last two equalities follow by abstract categorical arguments. 
+    其中最后两个等号来自抽象的范畴论证。
   ]
 
-  Step 3. Proof for general case. The case $q = 0$ is Step 1, and the case $q = 1$ follows from Step 2 and $caron(H)^1 = H^1$. Suppose that the theorem holds whenever $q < n$, and we want to deal with degree $n$ cohomology. 
+  第三步：一般情形。$q = 0$ 的情形就是第一步，$q = 1$ 由第二步与 $caron(H)^1 = H^1$ 得到。设定理对一切 $q < n$ 成立，下面处理 $n$ 次上同调。
   
-  Take the Cech-to-derived-functor spectral sequence for each $cal(F)_j$: 
+  对每个 $cal(F)_j$ 取 Čech 到导出函子的谱序列：
   $
     E_(2,j)^(p,q) = caron(H)^p (U_j, ul(H)^q (cal(F)_j)) => H^(p+q) (U_j, cal(F)_j) 
   $
-  Passing to the direct limit (which is exact), we obtain a new spectral sequence, 
+  取正向极限（它是正合的），得到新的谱序列
   $
     tilde(E)_2^(p,q) = dirlim_(j>=k) caron(H)^p (U_j, ul(H)^q (cal(F)_j)) => dirlim_(j>=k) H^(p+q) (U_j, cal(F)_j)
   $
-  On the other hand, we have the Cech-to-derived-functor spectral sequence for $cal(F)$: 
+  另一方面，$cal(F)$ 也有 Čech 到导出函子的谱序列：
   $
     E_2^(p,q) = caron(H)^p (U, ul(H)^q (cal(F))) => H^(p+q) (U, cal(F))
   $
-  The filtered system induces a canonical morphism $Phi: tilde(E)_2^(p,q) -> E_2^(p,q)$ of spectral sequences. 
+  滤过系统诱导谱序列的典范态射 $Phi: tilde(E)_2^(p,q) -> E_2^(p,q)$。
 
-  Since $U$ is qcqs, its Cech cohomologies may be computed using covers in $cal(S)$, involving only qcqs objects of $Et_Z$. As such, computing $caron(H)^p (U, ul(H)^q (cal(F)))$ only involves evaluating $ul(H)^q (cal(F))$ on qcqs objects, on which the inductive hypothesis may be applied. Since covers in $cal(S)$ involves only finitely many maps, for any $cal(U) in cal(S)$ and any $0 <= q < n$, we have: 
+  由于 $U$ 拟紧拟分离，它的 Čech 上同调可以用 $cal(S)$ 中的覆盖来计算，而这些覆盖只涉及 $Et_Z$ 中拟紧拟分离的对象。因此计算 $caron(H)^p (U, ul(H)^q (cal(F)))$ 时，只需用到 $ul(H)^q (cal(F))$ 在拟紧拟分离对象上的取值，而归纳假设在这些对象上适用。又因 $cal(S)$ 中的覆盖只含有限多个映射，故对任意 $cal(U) in cal(S)$ 与任意 $0 <= q < n$，有：
   $
     caron(H)^p (cal(U), ul(H)^q (cal(F))) &= h^p (0 -> C^bullet (cal(U), ul(H)^q (cal(F)))) \
-    &= h^p (dirlim_(j>=k') (0 -> C^bullet (cal(U)_j, ul(H)^q (cal(F)_j)))) #[by commuting finite lims and filtered colims] \
+    &= h^p (dirlim_(j>=k') (0 -> C^bullet (cal(U)_j, ul(H)^q (cal(F)_j)))) #[因为有限极限与滤余极限交换] \
     &= dirlim_(j>=k') caron(H)^p (cal(U)_j, ul(H)^q (cal(F)_j))
   $
-  Passing to the direct limit over $cal(U) in cal(S)$, and resolving categorical subtleties as in Step 2, we see that: 
+  对 $cal(U) in cal(S)$ 取正向极限，并像第二步那样处理范畴上的微妙之处，得到：
   $
     caron(H)^p (U, ul(H)^q (cal(F))) = dirlim_(j>=k) caron(H)^p (U_j, ul(H)^q (cal(F)_j))
   $
-  In other words, $Phi: tilde(E)_2^(p,q) -> E_2^(p,q)$, as a morphism of spectral sequences, induces isomorphisms on the region $0 <= q < n$. 
+  换言之，作为谱序列的态射，$Phi: tilde(E)_2^(p,q) -> E_2^(p,q)$ 在区域 $0 <= q < n$ 上诱导同构。
 
-  Consider a bi-degree $(p, q)$ so that $p + q = n$. For a differential on page $r >= 2$ involving bi-degree $(p, q)$: 
+  考虑满足 $p + q = n$ 的双次 $(p, q)$。对第 $r >= 2$ 页上涉及双次 $(p, q)$ 的微分：
 
-  - If $q = n$, note that by @cech-h0-of-hq-psh-vanish, $E_2^(0,n) = caron(H)^0 (U, ul(H)^n (cal(F))) = 0$, and $tilde(E)_2^(0,n) = 0$ for the same reason. As such, all differentials involving the bi-degree $(0, n)$ are zero, and $Phi$ induces an isomorphism $tilde(E)_oo^(0,n) -> E_oo^(0,n)$, both of whose terms are $0$. 
+  - 若 $q = n$，注意由 @cech-h0-of-hq-psh-vanish，$E_2^(0,n) = caron(H)^0 (U, ul(H)^n (cal(F))) = 0$，同理 $tilde(E)_2^(0,n) = 0$。于是所有涉及双次 $(0, n)$ 的微分都为零，$Phi$ 诱导同构 $tilde(E)_oo^(0,n) -> E_oo^(0,n)$，而其两端都是 $0$。
 
-  - Assume $q < n$. 
+  - 设 $q < n$。
 
-    - If this differential fires from $(p, q)$, its signature is $d^r: E_2^(p,q) -> E_2^(p+r,q-r+1)$. Then $q - r + 1 < q < n$, so this differential is in the region $0 <= q < n$, so it is isomorphic to $tilde(d)^r: tilde(E)_2^(p,q) -> tilde(E)_2^(p+r,q-r+1)$. 
+    - 若这个微分从 $(p, q)$ 发出，记作 $d^r: E_2^(p,q) -> E_2^(p+r,q-r+1)$。此时 $q - r + 1 < q < n$，故该微分位于区域 $0 <= q < n$ 内，于是对应于 $tilde(d)^r: tilde(E)_2^(p,q) -> tilde(E)_2^(p+r,q-r+1)$。
 
-    - If this differential fires into $(p, q)$, its signature is $d^r: E_2^(p-r,q+r-1) -> E_2^(p,q)$. Since we have a first quadrant spectral sequence, for this differential to be nonzero, it is required that $r <= p$, and so $q + r - 1 <= q + p - 1 = n - 1$. As such, this differential is in the region $0 <= q < n$, so it is isomorphic to $tilde(d)^r: tilde(E)_2^(p-r,q+r-1) -> tilde(E)_2^(p,q)$. 
+    - 若这个微分射入 $(p, q)$，记作 $d^r: E_2^(p-r,q+r-1) -> E_2^(p,q)$。由于这是第一象限的谱序列，该微分非零要求 $r <= p$，从而 $q + r - 1 <= q + p - 1 = n - 1$。于是该微分位于区域 $0 <= q < n$ 内，故对应于 $tilde(d)^r: tilde(E)_2^(p-r,q+r-1) -> tilde(E)_2^(p,q)$。
 
-    As such, $Phi$ induces isomorphisms on all differentials involving the bi-degree $(p, q)$, and induces an isomorphism $tilde(E)_oo^(p,q) -> E_oo^(p,q)$. 
+    于是 $Phi$ 在所有涉及双次 $(p, q)$ 的微分上诱导同构，并诱导同构 $tilde(E)_oo^(p,q) -> E_oo^(p,q)$。
 
-  Finally, there exist filtrations: 
+  最后，存在滤过：
   $
     0 = tilde(F)_(n+1) subset tilde(F)_n subset dots.c subset tilde(F)_0 = tilde(H)^n = dirlim_(j>=k) H^n (U_j, cal(F)_j)
   $
-  and: 
+  以及：
   $
     0 = F_(n+1) subset F_n subset dots.c subset F_0 = H^n = H^n (U, cal(F))
   $
-  so that $Phi$ induces morphisms compatible with these filtrations. Furthermore, we have commutative diagrams: 
+  使得 $Phi$ 诱导与这些滤过相容的态射。此外还有交换图表：
   // https://q.uiver.app/#r=typst&q=WzAsMTAsWzAsMCwiMCJdLFsxLDAsInRpbGRlKEYpXihwKzEpIl0sWzIsMCwidGlsZGUoRilecCJdLFszLDAsInRpbGRlKEUpX29vXihwLG4tcCkiXSxbNCwwLCIwIl0sWzAsMSwiMCJdLFsxLDEsIkZeKHArMSkiXSxbMiwxLCJGXnAiXSxbMywxLCJFX29vXihwLG4tcCkiXSxbNCwxLCIwIl0sWzAsMV0sWzEsMl0sWzIsM10sWzMsNF0sWzUsNl0sWzYsN10sWzcsOF0sWzgsOV0sWzEsNiwiUGhpIl0sWzIsNywiUGhpIl0sWzMsOCwiUGhpIl1d
   #align(center, diagram({
     node((-2, -1), [$0$])
@@ -440,122 +440,122 @@ Next, we deal with limit formula for schemes.
     edge((0, -1), (0, 0), [$Phi$], label-side: left, "->")
     edge((1, -1), (1, 0), [$Phi$], label-side: left, "->")
   }))
-  for each $0 <= p <= n$. By five lemma, since $Phi$ induces isomorphisms $tilde(E)^(p,n-p)_oo -> E^(p,n-p)_oo$, we see that: 
+  对每个 $0 <= p <= n$。由五引理，既然 $Phi$ 诱导同构 $tilde(E)^(p,n-p)_oo -> E^(p,n-p)_oo$，便得到：
   $
     Phi: tilde(F)^(p+1) ->^tilde F^(p+1) ==> Phi: tilde(F)^p ->^tilde F^p
   $
-  We may thus proceed inductively to show that $Phi$ induces an isomorphism $tilde(F)^0 -> F^0$. In other words, we have obtained the canonical isomorphism: 
+  于是可以归纳地证明 $Phi$ 诱导同构 $tilde(F)^0 -> F^0$。换言之，我们得到了典范同构：
   $
     dirlim_(j>=k) H^q (U_j, u_j^(-1) cal(F)_0) ->^tilde H^q (U, v_0^(-1) cal(F)_0) 
   $
 ]
 
-We apply these limit formulas to compute stalks of push forwards of etale sheaves, by characterizing the limit of etale neighborhoods via the strict henselization. This is the most important application of the strict henselization, and shows that strict henselization defines the correct local ring for the etale topology. 
+我们把这些极限公式用于计算平展层推前的茎。具体做法是：用严格 Hensel 化来刻画平展邻域的极限。这是严格 Hensel 化最重要的应用，也说明严格 Hensel 化给出了平展拓扑下正确的局部环。
 
 #construction(name: <strict-local-ring-and-localization>)[
-  Given a scheme $X$ and a geometric point $ol(x): Spec(Omega) -> X$ of $X$, the *strict local ring* of $X$ at $ol(x)$ is defined as the strict henselization: 
+  给定概形 $X$ 与其几何点 $ol(x): Spec(Omega) -> X$，$X$ 在 $ol(x)$ 处的*严格局部环* (strict local ring) 定义为严格 Hensel 化：
   $
     cal(O)_(X,ol(x)) := cal(O)_(X,x)^#[sh] 
   $
-  where the strict henselization is taken w.r.t. the inclusion $k(x) -> k(x)^sep subset Omega$, where $k(x)^sep$ is the separable closure of $k(x)$ within $Omega$.
+  其中严格 Hensel 化是对包含 $k(x) -> k(x)^sep subset Omega$ 取的，这里 $k(x)^sep$ 是 $k(x)$ 在 $Omega$ 中的可分闭包。
   
-  Now consider the directed limit: 
+  现在考虑正向极限：
   $
     dirlim_((Spec(C),ol(u)) -> (X,ol(x)) #[etale]) C = dirlim_((Spec(C),ol(u)) -> (X,ol(x)) #[etale]) cal(O)_(Spec(C),u)
   $
-  of etale neighborhoods of $(X, ol(x))$. 
+  即 $(X, ol(x))$ 的平展邻域组成的正向极限。
   
-  For any etale neighborhood $(Spec(B), frak(q)) -> (cal(O)_(X,x), frak(m)_x)$ with inclusion $phi: k(frak(q)) -> k(x)^sep$, defining a stage $B_(frak(q))$ in the directed limit defining $A^#[sh]$, by @passage-to-limit-of-morphisms (1) and @passage-to-limit-of-properties (3d), $(Spec(B), frak(q)) -> (cal(O)_(X,x), frak(m)_x)$ comes from base changing an etale map $(Spec(C), frak(r)) -> (Spec(A), frak(m)_x)$ for an affine neighborhood $x in Spec(A) subset X$. Furthermore, the compatible inclusion $k(frak(q)) -> k(x)^sep$ uniquely defines a geometric point of $Spec(C)$ above $frak(r)$ lying above $ol(x)$. Thus, 
+  任取平展邻域 $(Spec(B), frak(q)) -> (cal(O)_(X,x), frak(m)_x)$，连同包含 $phi: k(frak(q)) -> k(x)^sep$；它在定义 $A^#[sh]$ 的正向极限中给出一个阶段 $B_(frak(q))$。由 @passage-to-limit-of-morphisms (1) 与 @passage-to-limit-of-properties (3d)，该态射 $(Spec(B), frak(q)) -> (cal(O)_(X,x), frak(m)_x)$ 来自某个平展映射 $(Spec(C), frak(r)) -> (Spec(A), frak(m)_x)$ 的基变换，其中 $x in Spec(A) subset X$ 是仿射邻域。此外，相容的包含 $k(frak(q)) -> k(x)^sep$ 唯一地定义了 $Spec(C)$ 上一个位于 $frak(r)$ 之上、并落在 $ol(x)$ 之上的几何点。于是：
   $
     cal(O)_(X,ol(x)) = cal(O)_(X,x)^#[sh] = dirlim_((Spec(B),frak(q),phi)) B_(frak(q)) = dirlim_((Spec(C),ol(u)) -> (X,ol(x)) #[etale]) cal(O)_(Spec(C),u) = dirlim_((Spec(C),ol(u)) -> (X,ol(x)) #[etale]) C
   $  
 
-  Denote: 
+  记：
   $
     tilde(X)_(ol(x)) = Spec(cal(O)_(X,ol(x)))
   $
-  and then: 
+  于是：
   $
     tilde(X)_(ol(x)) = lim_((Spec(C),ol(u)) -> (X,ol(x)) #[etale]) Spec(C)
   $
-  is an inverse limit of a cofinal system of etale neighborhoods of $(X, ol(x))$ under affine transition morphisms. 
+  它是 $(X, ol(x))$ 的一个共尾平展邻域系统在仿射过渡映射下的逆向极限。
 
-  In other words, the strict henselization of the local ring at $x$ is the limit of etale neighborhoods of $(X, ol(x))$. It is to the etale topology what the local ring is to the Zariski topology. 
+  换言之，$x$ 处局部环的严格 Hensel 化就是 $(X, ol(x))$ 的平展邻域的极限。它之于平展拓扑，正如局部环之于 Zariski 拓扑。
 ]
 
 #theorem(name: <limit-formula-for-schemes>)[
-  (Limit formula for schemes) Let ${Z_i}_(i in I)$ be a cofiltered system of qcqs schemes, with all transition maps affine, with a final object $0 in I$.
+  (概形的极限公式) 设 ${Z_i}_(i in I)$ 是拟紧拟分离概形构成的余滤过系统，所有过渡映射都仿射，且有终对象 $0 in I$。
   
-  Let:
+  令：
   $
     Z = lim_(i in I) Z_i
   $
-  be the cofiltered limit with maps $v_i: Z -> Z_i, u_i: Z_i -> Z_0$.
-  /*Take any $cal(F)_0 in cAb((Z_0)_et)$, and any qcqs $U in Et_Z$. Then there exists $k in I$ s.t. $U$ is the base change of $U_k in Et_(Z_k)$. Then the canonical map induced by the pullbacks $H^q (Z_j, u_j^(-1) cal(F)_0) -> H^q (Z, v_0^(-1) cal(F)_0)$ by $v_j$:
+  为余滤过极限，映射为 $v_i: Z -> Z_i, u_i: Z_i -> Z_0$。
+  /*任取 $cal(F)_0 in cAb((Z_0)_et)$ 与拟紧拟分离的 $U in Et_Z$。则存在 $k in I$，使得前者是后者的基变换。于是由沿 $v_j$ 的拉回 $H^q (Z_j, u_j^(-1) cal(F)_0) -> H^q (Z, v_0^(-1) cal(F)_0)$ 诱导的典范映射：
   $
     dircolim_(j->k) H^q (U_j, u_j^(-1) cal(F)_0) -> H^q (U, v_0^(-1) cal(F)_0)
   $
-  is an isomorphism. */Then there is a canonical isomorphism:
+  是同构。*/则存在典范同构：
   $
     dircolim_(i in I) H^q (Z_i, u_i^(-1) cal(F)_0) -> H^q (Z, v_0^(-1) cal(F)_0)
   $
 ]
 #proof[
-  The case when $I$ is a directed set is proved above. For the case where $I$ is a general cofiltered category, we use the Artin-Mazur construction @artin-mazur-construction. 
+  $I$ 是正向集的情形上面已证。对一般的余滤过范畴 $I$，我们使用 Artin–Mazur 构造 @artin-mazur-construction。
 
-  Thus there exists a directed set $P$ and a cofinal functor $F: P -> I^opp$. Up to replacing $P$ with $P_(>=0_P)$ for some element $0_P$, we may assume that $P$ admits a minimum element $0_P$. Now: 
+  于是存在正向集 $P$ 与共尾函子 $F: P -> I^opp$。把 $P$ 换成某个元素 $0_P$ 对应的 $P_(>=0_P)$，不妨设 $P$ 有最小元 $0_P$。现在：
   $
     Z = lim_(i in I) Z_i = invlim_(p in P) Z_(F(p))
   $
-  Let $cal(F)_i = u_i^(-1) cal(F)_0, cal(F) = v_0^(-1) cal(F)_0$. Given $p in P$, the transition morphism $tilde(u)_p: Z_(F(p)) -> Z_(F(0_P))$ is a morphism satisfying $u_(F(0_P)) compose tilde(u)_p = u_(F(p))$. In particular, 
+  令 $cal(F)_i = u_i^(-1) cal(F)_0, cal(F) = v_0^(-1) cal(F)_0$。对给定的 $p in P$，过渡态射 $tilde(u)_p: Z_(F(p)) -> Z_(F(0_P))$ 满足 $u_(F(0_P)) compose tilde(u)_p = u_(F(p))$。特别地，
   $
     cal(F)_(F(p)) = tilde(u)_p^(-1) cal(F)_(F(0_P))
   $
-  Similarly, let $tilde(v)_p: Z -> Z_(F(p))$, and so $u_(F(0_P)) compose tilde(v)_(0_P) = v_0$. As such, 
+  同样，令 $tilde(v)_p: Z -> Z_(F(p))$，则 $u_(F(0_P)) compose tilde(v)_(0_P) = v_0$。于是，
   $
     cal(F) = tilde(v)_(0_P)^(-1) cal(F)_(F(0_P))
   $
-  Hence, applying the previous theorem to the directed set $P$ and the schemes ${Z_(F(p))}_(p in P)$, we see that: 
+  因此，把前一个定理应用于正向集 $P$ 与概形族 ${Z_(F(p))}_(p in P)$，得到：
   $
     dircolim_(i in I) H^q (Z_i, cal(F)_i) = dirlim_(p in P) H^q (Z_(F(p)), cal(F)_(F(p))) = H^q (Z, cal(F))
   $
 ]
 
 #theorem(name: <stalks-of-derived-lowerstar>)[
-  Let $f: X -> Y$ be a qcqs morphism between schemes. Then for any $cal(F) in cAb(X_et)$ and geometric point $ol(y)$ of $Y$, there is a natural isomorphism:
+  设 $f: X -> Y$ 是概形间的拟紧拟分离态射。则对任意 $cal(F) in cAb(X_et)$ 与 $Y$ 的几何点 $ol(y)$，有自然同构：
   $
     (R^q f_* cal(F))_(ol(y)) = H^q (X times_Y tilde(Y)_(ol(y)), cal(F)|_(X times_Y tilde(Y)_(ol(y))))
   $
 ]
 #proof[
-  Recall that $R^q f_* cal(F)$ is the sheafification of $U |-> H^q (X times_Y U, cal(F))$ by @derived-lower-star-first-props, i.e. $U |-> H^q (X times_Y U, cal(F)|_(X times_Y U))$ by @pullback-along-etale-morphism-derived. Also the stalks may be computed by taking the filtered colimit on the presheaf level by @pullback-first-props (3), so:
+  回忆：由 @derived-lower-star-first-props，$R^q f_* cal(F)$ 是 $U |-> H^q (X times_Y U, cal(F))$ 的层化；而由 @pullback-along-etale-morphism-derived，它也就是 $U |-> H^q (X times_Y U, cal(F)|_(X times_Y U))$ 的层化。又由 @pullback-first-props (3)，茎可以在预层层面取滤余极限来计算，故：
   $
-    (R^q f_* cal(F))_(ol(y)) &= dircolim_((U,ol(u)) -> (Y,ol(y)) \ #[etale nbhds]) H^q (X times_Y U, cal(F)|_(X times_Y U)) \
-    &= dircolim_((U,ol(u)) -> (Y,ol(y)) \ #[affine etale nbhds]) H^q (X times_Y U, cal(F)|_(X times_Y U))
+    (R^q f_* cal(F))_(ol(y)) &= dircolim_((U,ol(u)) -> (Y,ol(y)) \ #[平展邻域]) H^q (X times_Y U, cal(F)|_(X times_Y U)) \
+    &= dircolim_((U,ol(u)) -> (Y,ol(y)) \ #[仿射平展邻域]) H^q (X times_Y U, cal(F)|_(X times_Y U))
   $
-  However, note that:
+  然而注意：
   $
-    lim_((U,ol(u)) -> (Y,ol(y)) \ #[affine etale nbhds]) X times_Y U = X times_Y lim_((U,ol(u)) -> (Y,ol(y)) \ #[affine etale nbhds]) U = X times_Y tilde(Y)_(ol(y))
+    lim_((U,ol(u)) -> (Y,ol(y)) \ #[仿射平展邻域]) X times_Y U = X times_Y lim_((U,ol(u)) -> (Y,ol(y)) \ #[仿射平展邻域]) U = X times_Y tilde(Y)_(ol(y))
   $
-  with transition morphisms all affine, and each $X times_Y U$ qcqs over the affine scheme $U$, hence qcqs. As such, limit formula of schemes (@limit-formula-for-schemes) may be applied, and we see that:
+  其中过渡映射都仿射，且每个 $X times_Y U$ 都在仿射概形 $U$ 上拟紧拟分离，因而自身拟紧拟分离。于是可以应用概形的极限公式（@limit-formula-for-schemes），得到：
   $
     (R^q f_* cal(F))_(ol(y)) = H^q (X times_Y tilde(Y)_(ol(y)), cal(F)|_(X times_Y tilde(Y)_(ol(y))))
   $
 ]
 
 #corollary(name: <stalks-of-finite-pushforward>)[
-  If $f: X -> Y$ is a finite morphism, then there exists a canonical isomorphism for any $cal(F) in cAb(X_et)$ and any algebraically closed geometric point $ol(y)$ of $Y$:
+  若 $f: X -> Y$ 是有限态射，则对任意 $cal(F) in cAb(X_et)$ 与 $Y$ 的任意代数闭几何点 $ol(y)$，存在典范同构：
   $
     (f_* cal(F))_(ol(y)) = oplus.big_(ol(x) in f^(-1)(ol(y))) cal(F)_(ol(x))
   $
-  In particular, $f_*$ is exact.
+  特别地，$f_*$ 正合。
 ]
 #proof[
-  By @strict-henselization-and-finite-base-change,
+  由 @strict-henselization-and-finite-base-change，
   $
     X times_Y tilde(Y)_(ol(y)) = product_(ol(x) in f^(-1)(ol(y))) tilde(X)_(ol(x))
   $
-  Hence,
+  因此，
   $
     (f_* cal(F))_(ol(y)) &= Gamma(X times_Y tilde(Y)_(ol(y)), cal(F)|_(X times_Y tilde(Y)_(ol(y)))) = Gamma(product_(ol(x) in f^(-1)(ol(y))) tilde(X)_(ol(x)), cal(F)|_(product_(ol(x) in f^(-1)(ol(y))) tilde(X)_(ol(x)))) \
     &= oplus.big_(ol(x) in f^(-1)(ol(y))) Gamma(tilde(X)_(ol(x)), cal(F)|_(tilde(X)_(ol(x)))) = oplus.big_(ol(x) in f^(-1)(ol(y))) cal(F)_(ol(x))
@@ -563,202 +563,202 @@ We apply these limit formulas to compute stalks of push forwards of etale sheave
 ]
 
 #corollary(name: <pushforward-by-finite-morphism>)[
-  If $f: X -> Y$ is a finite morphism, then for any $cal(F) in cAb(X_et)$, there is a canonical isomorphism: 
+  若 $f: X -> Y$ 是有限态射，则对任意 $cal(F) in cAb(X_et)$，有典范同构：
   $
     H^q (X, cal(F)) cong H^q (Y, f_* cal(F))
   $
 ]
 #proof[
-  Consider the Leray spectral sequence: 
+  考虑 Leray 谱序列：
   $
     E_2^(p,q) = H^p (Y, R^q f_* cal(F)) => H^(p+q) (X, cal(F))
   $
-  Since $f_*$ is exact, $R^q f_* = 0$ for $q >= 1$, and so the Leray spectral sequence degenerates, giving a canonical isomorphism: 
+  由于 $f_*$ 正合，$q >= 1$ 时 $R^q f_* = 0$，于是 Leray 谱序列退化，给出典范同构：
   $
     H^q (Y, f_* cal(F)) ->^tilde H^q (X, cal(F))
   $
 ]
 
-Combining the limit formulas for sheaves and schemes, we have a composite limit formula: 
+把层与概形的极限公式结合起来，就得到复合极限公式：
 
 #theorem(name: <limit-formula-composite>)[
-  (Composite limit formula) Let ${X_i}_(i in I)$ be a projective system of qcqs schemes, with all transition maps $u_(i,j): X_i -> X_j$ for $i>=j$ affine. Let: 
+  (复合极限公式) 设 ${X_i}_(i in I)$ 是拟紧拟分离概形构成的逆向系统，其中所有过渡映射 $u_(i,j): X_i -> X_j$（$i>=j$）都仿射。令：
   $
     X = invlim_(i in I) X_i
   $
-  with projections $v_i: X -> X_i$. $(cal(F)_i, psi_(i,j))$ is called a *system of sheaves* for the projective system ${X_i}$, if: 
+  投影为 $v_i: X -> X_i$。若以下两条成立，则称 $(cal(F)_i, psi_(i,j))$ 为逆向系统 ${X_i}$ 的*层系统* (system of sheaves)：
 
-  - Each $cal(F)_i in cAb((X_i)_et)$ is an abelian etale sheaf on $X_i$. 
+  - 每个 $cal(F)_i in cAb((X_i)_et)$ 都是 $X_i$ 上的平展交换群层。
 
-  - For any $i>=j$, $psi_(i,j): u_(i,j)^(-1) cal(F)_j -> cal(F)_i$ is a sheaf morphism satisfying for $i>=j>=k$: #h(1fr)
+  - 对任意 $i>=j$，$psi_(i,j): u_(i,j)^(-1) cal(F)_j -> cal(F)_i$ 是层态射，且对 $i>=j>=k$ 满足： #h(1fr)
     $
       psi_(i,k) = psi_(i,j) compose u_(i,j)^(-1) psi_(j,k)
     $
 
-  The *limit sheaf* of this system of sheaves is defined as: 
+  这个层系统的*极限层* (limit sheaf) 定义为：
   $
     cal(F) := dirlim_(i in I) v_i^(-1) cal(F)_i
   $
-  where for $i>=j$, the transition morphism $v_j^(-1) cal(F)_j -> v_i^(-1) cal(F)_i$ is the morphism $v_i^(-1) psi_(i,j)$. Then any qcqs $U in Et_X$ comes from base changing a qcqs $U_k in Et_(X_k)$ for some $k$, and the canonical morphism: 
+  其中对 $i>=j$，过渡态射 $v_j^(-1) cal(F)_j -> v_i^(-1) cal(F)_i$ 就是态射 $v_i^(-1) psi_(i,j)$。于是，任取拟紧拟分离的 $U in Et_X$，都存在 $k$ 与拟紧拟分离的 $U_k in Et_(X_k)$，使得前者是后者的基变换；而典范态射
   $
     dirlim_(i>=k) H^q (U_i, cal(F)_i) -> H^q (U, cal(F))
   $
-  is an isomorphism. 
+  是同构。
 ]
 #proof[
-  We combine the limit formula for sheaves (@limit-formula-for-sheaves) and the limit formula for schemes (@limit-formula-for-schemes). From the limit formula for sheaves: 
+  我们把层的极限公式（@limit-formula-for-sheaves）与概形的极限公式（@limit-formula-for-schemes）结合起来。由层的极限公式：
   $
     H^q (U, cal(F)) = H^q (U, dirlim_(j in I) v_j^(-1) cal(F)_j) = dirlim_(j in I) H^q (U, v_j^(-1) cal(F)_j) = dirlim_(j >=k) H^q (U, v_j^(-1) cal(F)_j)
   $
-  Now for each $j>=k$, we apply the limit formula for schemes: 
+  现在对每个 $j>=k$ 应用概形的极限公式：
   $
     H^q (U, v_j^(-1) cal(F)_j) = dirlim_(i>=j) H^q (U_i, u_(i,j)^(-1) cal(F)_j)
   $
-  Thus, we have a double directed limit: 
+  于是得到一个二重正向极限：
   $
     H^q (U, cal(F)) = dirlim_(j>=k) dirlim_(i>=j) H^q (U_i, u_(i,j)^(-1) cal(F)_j)
   $
-  Since $I$ is a directed set, every pair $(j,i)$ in this double limit is dominated by $(i,i)$. In other words, the objects corresponding to $i = j >= k$ are cofinal in the index category of this colimit. Thus, 
+  由于 $I$ 是正向集，这个二重极限中的每一对 $(j,i)$ 都被 $(i,i)$ 支配。换言之，对应于 $i = j >= k$ 的对象在这个余极限的指标范畴中共尾。因此，
   $
     H^q (U, cal(F)) = dirlim_(j>=k) dirlim_(i>=j) H^q (U_i, u_(i,j)^(-1) cal(F)_j) = dirlim_(i>=k) H^q (U_i, cal(F)_i)
   $
-  and we are done. 
+  证毕。
 ]
 
-This has a corollary, as a limit formula stated directly in terms of a sheaf on the limit scheme. 
+由此得到一个推论，它是直接用极限概形上的层来陈述的极限公式。
 
 #corollary(name: <limit-formula-adjunction>)[
-  Let ${X_i}_(i in I)$ be a projective system of qcqs schemes, with all transition maps $u_(i,j): X_i -> X_j$ for $i>=j$ affine. Let: 
+  设 ${X_i}_(i in I)$ 是拟紧拟分离概形构成的逆向系统，其中所有过渡映射 $u_(i,j): X_i -> X_j$（$i>=j$）都仿射。令：
   $
     X = invlim_(i in I) X_i
   $
-  with projections $v_i: X -> X_i$. For any $cal(F) in cAb(X_et)$, ${v_(i,*) cal(F)}_(i in I)$, together with the transition morphisms: 
+  投影为 $v_i: X -> X_i$。对任意 $cal(F) in cAb(X_et)$，${v_(i,*) cal(F)}_(i in I)$ 连同过渡态射
   $
     psi_(i,j): u_(i,j)^(-1) v_(j,*) cal(F) -> v_(i,*) cal(F)
   $
-  defined as adjunctions of the identity morphism $v_(j,*) cal(F) -> u_(i,j,*) v_(i,*) cal(F) = v_(j,*) cal(F)$, makes a system of sheaves for ${X_i}$ with limit sheaf $cal(F)$. In other words, the canonical map: 
+  构成 ${X_i}$ 的一个层系统，其极限层为 $cal(F)$；这些过渡态射由恒等态射 $v_(j,*) cal(F) -> u_(i,j,*) v_(i,*) cal(F) = v_(j,*) cal(F)$ 的伴随性定义。换言之，典范映射
   $
     dirlim_(i in I) v_i^(-1) v_(i,*) cal(F) -> cal(F)
   $
-  is an isomorphism. In particular, by @limit-formula-composite: 
+  是同构。特别地，由 @limit-formula-composite：
   $
     H^q (X, cal(F)) = dirlim_(i in I) H^q (X_i, v_(i,*) cal(F))
   $
 ]
 #proof[
-  To show that $dirlim_(i in I) v_i^(-1) v_(i,*) cal(F) cong cal(F)$, it suffices to check section-wise. For qcqs $U in Et_X$ coming from qcqs $U_k in Et_(X_k)$, 
+  为证 $dirlim_(i in I) v_i^(-1) v_(i,*) cal(F) cong cal(F)$，只需逐截面验证。对拟紧拟分离的 $U in Et_X$，若它由拟紧拟分离的 $U_k in Et_(X_k)$ 得到，则
   $
-    (dirlim_(i in I) v_i^(-1) v_(i,*) cal(F))(U) &= dirlim_(i>=k) v_(i,*) cal(F) (U_i) #[by @limit-formula-composite] \
+    (dirlim_(i in I) v_i^(-1) v_(i,*) cal(F))(U) &= dirlim_(i>=k) v_(i,*) cal(F) (U_i) #[由 @limit-formula-composite] \
     &= dirlim_(i>=k) cal(F)(U) = cal(F)(U)
   $
-  Since every $U in Et_X$ is covered by qcqs objects, we have shown $dirlim_(i in I) v_i^(-1) v_(i,*) cal(F) cong cal(F)$. 
+  由于每个 $U in Et_X$ 都能被拟紧拟分离的对象覆盖，我们便证明了 $dirlim_(i in I) v_i^(-1) v_(i,*) cal(F) cong cal(F)$。
 ]
 
-We also have relative versions of limit formulas: 
+极限公式还有相对版本：
 
 #proposition(name: <relative-limit-formula-for-sheaves>)[
-  Let $f: X -> S$ be a morphism between qcqs schemes, and ${cal(F)_i}_(i in I)$ be a directed system of sheaves in $cAb(X_et)$, and: 
+  设 $f: X -> S$ 是拟紧拟分离概形间的态射，${cal(F)_i}_(i in I)$ 是 $cAb(X_et)$ 中的一个正向系统，且
   $
     cal(F) = dirlim_(i in I) cal(F)_i
   $
-  Then the natural map: 
+  则自然映射
   $
     dirlim_(i in I) R^q f_* cal(F)_i -> R^q f_* cal(F)
   $
-  is an isomorphism. 
+  是同构。
 ]
 #proof[
-  For a geometric point $ol(s)$ of $S$, since stalks commute with colimits as a left adjoint: 
+  对 $S$ 的几何点 $ol(s)$，由于茎作为左伴随与余极限交换：
   $
     (dirlim_(i in I) R^q f_* cal(F)_i)_(ol(s)) = dirlim_(i in I) H^q (X times_S tilde(S)_(ol(s)), cal(F)_i|_(X times_S tilde(S)_(ol(s)))) = H^q (X times_S tilde(S)_(ol(s)), dirlim_(i in I) cal(F)_i|_(X times_S tilde(S)_(ol(s))))
   $
-  by @limit-formula-for-sheaves, while: 
+  这里用了 @limit-formula-for-sheaves。另一方面，
   $
     (R^q f_* cal(F))_(ol(s)) = H^q (X times_S tilde(S)_(ol(s)), cal(F)|_(X times_S tilde(S)_(ol(s))))
   $
-  Meanwhile, pullbacks commute with colimits as left adjoints, so: 
+  又因为拉回作为左伴随也与余极限交换，故：
   $
     cal(F)|_(X times_S tilde(S)_(ol(s))) = dirlim_(i in I) cal(F)_i|_(X times_S tilde(S)_(ol(s)))
   $
-  and we are done. 
+  证毕。
 ]
 
 #proposition(name: <relative-limit-formula-for-schemes>)[
-  Let $S$ be a qcqs scheme, and $X = invlim_(i in I) X_i$ be a projective limit of qcqs $S$-schemes with affine transition morphisms and a final object $0 in I$, with structure maps $g: X -> S$ and $g_i: X_i -> S$. 
+  设 $S$ 是拟紧拟分离概形，$X = invlim_(i in I) X_i$ 是拟紧拟分离 $S$-概形的逆向极限，过渡映射都仿射，有终对象 $0 in I$，结构映射为 $g: X -> S$ 与 $g_i: X_i -> S$。
 
-  Let $cal(F)_0 in cAb((X_0)_et)$, and take $cal(F)_i = cal(F)_0|_(X_i), cal(F) = cal(F)_0|_X$. Then the natural map: 
+  设 $cal(F)_0 in cAb((X_0)_et)$，并取 $cal(F)_i = cal(F)_0|_(X_i), cal(F) = cal(F)_0|_X$。则自然映射
   $
     dirlim_(i in I) R^q g_(i,*) cal(F)_i -> R^q g_* cal(F)
   $
-  is an isomorphism. 
+  是同构。
 ]
 #proof[
-  For a geometric point $ol(s)$ of $S$, since stalks commute with colimits as a left adjoint: 
+  对 $S$ 的几何点 $ol(s)$，由于茎作为左伴随与余极限交换：
   $
     (dirlim_(i in I) R^q g_(i,*) cal(F)_i)_(ol(s)) = dirlim_(i in I) (R^q g_(i,*) cal(F)_i)_(ol(s)) = dirlim_(i in I) H^q (X_i times_S tilde(S)_(ol(s)), cal(F)_i|_(X_i times_S tilde(S)_(ol(s))))
   $
-  and: 
+  而由 @stalks-of-derived-lowerstar，
   $
     (R^q g_* cal(F))_(ol(s)) = H^q (X times_S tilde(S)_(ol(s)), cal(F)|_(X times_S tilde(S)_(ol(s))))
   $
-  by @stalks-of-derived-lowerstar. Now $X_i times_S tilde(S)_(ol(s))$ are qcqs, 
+  现在 $X_i times_S tilde(S)_(ol(s))$ 都拟紧拟分离，
   $
     cal(F)_i|_(X_i times_S tilde(S)_(ol(s))) = cal(F)_0|_(X_i)|_(X_i times_S tilde(S)_(ol(s))) = cal(F)_0|_(X_0 times_S tilde(S)_(ol(s)))|_(X_i times_S tilde(S)_(ol(s)))
   $
-  and the same holds with $i$ omitted. Thus, we may apply @limit-formula-for-schemes to see that: 
+  去掉 $i$ 也有同样的等式。于是可以应用 @limit-formula-for-schemes，得到：
   $
     dirlim_(i in I) H^q (X_i times_S tilde(S)_(ol(s)), cal(F)_i|_(X_i times_S tilde(S)_(ol(s)))) -> H^q (X times_S tilde(S)_(ol(s)), cal(F)|_(X times_S tilde(S)_(ol(s))))
   $
-  is an isomorphism. We are thereby done since $dirlim_(i in I) R^q g_(i,*) cal(F)_i -> R^q g_* cal(F)$ is an isomorphism. 
+  这就说明 $dirlim_(i in I) R^q g_(i,*) cal(F)_i -> R^q g_* cal(F)$ 是同构，证毕。
   /*
-  For every qcqs $U in Et_X$, 
+  对每个拟紧拟分离的 $U in Et_X$，
   $
     dirlim_(i in I) H^q (U times_S X_i, cal(F)_i) -> H^q (U times_S X, cal(F))
   $
-  is an isomorphism by @limit-formula-for-schemes. Now $R^q g_* cal(F)$ is the sheafification of $rho^q (g, cal(F)) := (U |-> H^q (U times_S X_i, cal(F)))$ by @derived-lower-star-first-props (3). 
+  由 @limit-formula-for-schemes，它是同构。现在由 @derived-lower-star-first-props (3)，$R^q g_* cal(F)$ 是 $rho^q (g, cal(F)) := (U |-> H^q (U times_S X_i, cal(F)))$ 的层化。
 
-  Thus, the natural presheaf morphism: 
+  于是，自然预层态射：
   $
     dirlim_(i in I) rho^q (g_i, cal(F)_i) -> rho^q (g, cal(F))
   $
-  are isomorphisms on sections on qcqs $U in Et_X$. Since colimits of sheaves may be computed by computing as colimits of presheaves, then sheafify, and that for $U in Et_X$ qcqs, $caron(H)^0 (U, -)$ may be computed using qcqs sections only, we have: 
+  在拟紧拟分离的 $U in Et_X$ 上逐截面为同构。层的余极限可以先按预层余极限计算再层化，而 $Et_X$ 中拟紧拟分离的 $U$ 上 $caron(H)^0 (U, -)$ 只需用拟紧拟分离的截面来计算，因此
   $
     R^q g_(i,*) cal(F)_i -> R^q g_* cal(F)
   $
-  being an isomorphism on all $U in Et_X$ qcqs. Every $U in Et_X$ is covered by qcqs objects of $Et_X$, so this morphism is a sheaf isomorphism. */
+  在 $Et_X$ 中所有拟紧拟分离的 $U$ 上为同构。每个 $U$ 都被拟紧拟分离的对象覆盖，故这个态射是层的同构。 */
 ]
 
 #proposition(name: <relative-limit-formula-composite>)[
-  Let $S$ be a qcqs scheme. Let ${X_i}_(i in I)$ be a projective system of qcqs $S$-schemes, with all transition maps $u_(i,j): X_i -> X_j$ for $i>=j$ affine. Let: 
+  设 $S$ 是拟紧拟分离概形。设 ${X_i}_(i in I)$ 是拟紧拟分离 $S$-概形构成的逆向系统，其中所有过渡映射 $u_(i,j): X_i -> X_j$（$i>=j$）都仿射。令：
   $
     X = invlim_(i in I) X_i
   $
-  with projections $v_i: X -> X_i$ and structure maps $g_i: X_i -> S$. 
+  投影为 $v_i: X -> X_i$，结构映射为 $g_i: X_i -> S$。
   
-  Given a system of sheaves $(cal(F)_i, psi_(i,j))$ for the projective system ${X_i}$, with limit sheaf $cal(F)$, the canonical map: 
+  给定逆向系统 ${X_i}$ 的层系统 $(cal(F)_i, psi_(i,j))$，设其极限层为 $cal(F)$，则典范映射
   $
     dirlim_(i in I) R^q g_(i,*) cal(F)_i -> R^q g_* cal(F)
   $
-  is an isomorphism. 
+  是同构。
 ]
 #proof[
-  We combine the relative limit formula for sheaves (@relative-limit-formula-for-sheaves) and for schemes (@relative-limit-formula-for-schemes): 
+  我们把层的相对极限公式（@relative-limit-formula-for-sheaves）与概形的相对极限公式（@relative-limit-formula-for-schemes）结合起来：
   $
     R^q g_* cal(F) &= R^q g_* (dirlim_(j in I) v_j^(-1) cal(F)_j) = dirlim_(j in I) R^q g_* v_j^(-1) cal(F)_j \
     &= dirlim_(j in I) dirlim_(i>=j) R^q g_(i,*) u_(i,j)^(-1) cal(F)_j \
-    &= dirlim_(i in I) R^q g_(i,*) cal(F)_i #[since the diagonal $(i,i)$ is cofinal]
+    &= dirlim_(i in I) R^q g_(i,*) cal(F)_i #[因为对角 $(i,i)$ 共尾]
   $
 ]
 
-Finally, we state @stalks-of-derived-lowerstar in the derived category. 
+最后，我们在导出范畴中陈述 @stalks-of-derived-lowerstar。
 
 #proposition(name: <derived-stalks-of-derived-pushforward>)[
-  For $cal(K) in D^+ (X_et, Lambda)$ and a qcqs morphism $f: X -> Y$ between schemes, there exists a canonical quasi-isomorphism: 
+  对 $cal(K) in D^+ (X_et, Lambda)$ 与概形间的拟紧拟分离态射 $f: X -> Y$，存在典范拟同构：
   $
     (R f_* cal(K))_(ol(y)) cong R Gamma(X times_Y tilde(Y)_(ol(y)), cal(K)|_(X times_Y tilde(Y)_(ol(y))))
   $
-  This quasi-isomorphism holds for all $cal(K) in D(X_et, Lambda)$ if $R f_*$ and $R Gamma (X times_Y tilde(Y)_(ol(y)), -)$ are bounded above. 
+  若 $R f_*$ 与 $R Gamma (X times_Y tilde(Y)_(ol(y)), -)$ 上有界，则该拟同构对一切 $cal(K) in D(X_et, Lambda)$ 都成立。
 ]
 #proof[
-  We apply @stalks-of-derived-lowerstar and way-out lemma. 
+  我们应用 @stalks-of-derived-lowerstar 与 way-out 引理。
 ]

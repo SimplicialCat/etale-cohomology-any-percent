@@ -21,21 +21,21 @@
   ("A6", (0,), <appendix-brown-representability>)
 )
 #let chap-titles = (
-  c1: "Introduction",
-  c2: "Etale morphisms",
-  c3: "Etale fundamental group",
-  c4: "Etale site",
-  c5: "Basics of etale cohomology",
-  c6: "Proper base change", 
-  c7: "Pushforward with proper support",
-  c8: "Local acyclicity", 
-  c9: "Poincare duality", 
-  cA1: "Passage to limit",
-  cA2: "Tsen's theorem", 
-  cA3: "Beck-Chevalley base change", 
-  cA4: "Artin approximation", 
-  cA5: "Strict henselization and quasi-finite maps", 
-  cA6: "Brown representability"
+  c1: "引言",
+  c2: "平展态射",
+  c3: "平展基本群",
+  c4: "平展景",
+  c5: "平展上同调初步",
+  c6: "紧合基变换", 
+  c7: "紧支推前",
+  c8: "局部零调性", 
+  c9: "Poincaré 对偶", 
+  cA1: "极限论证",
+  cA2: "曾炯定理", 
+  cA3: "Beck–Chevalley 基变换", 
+  cA4: "Artin 逼近", 
+  cA5: "严格 Hensel 化与拟有限映射", 
+  cA6: "Brown 可表示性"
 )
 #let active-sections = if (compile-cfg.ide-mode) {
   all-sections.filter(chap => (chap.at(0) in (5,)) or (false and type(chap.at(0)) == str and "A" in chap.at(0)))
@@ -68,7 +68,7 @@
 }
 
 #if compile-cfg.distribute-sources {
-  // Attach all source files to the PDF
+  // 把全部源文件附到 PDF 中
   let attached-sources = for (chap-num, chap-arr, _) in active-sections {
     for sect-num in chap-arr {
       let file-name = "etale-c" + str(chap-num) + "s" + str(sect-num) + ".typ"
@@ -76,7 +76,7 @@
         file-name, 
         relationship: "source", 
         mime-type: "text/vnd.typst", 
-        description: "Source file " + file-name + " for this document."
+        description: "本文档的源文件 " + file-name + "。"
       )
     }
   } + for other-source in other-sources {
@@ -84,8 +84,8 @@
     pdf.attach(
       file-name,
       relationship: "source",
-      mime-type: if file-name.ends-with(".typ") { "text/vnd.typst" /* otherwise unknown */},
-      description: "Misc source file " + file-name + " for this document.",
+      mime-type: if file-name.ends-with(".typ") { "text/vnd.typst" /* 其他情况未知 */},
+      description: "本文档的附属源文件 " + file-name + "。",
     )
   }
   attached-sources
@@ -113,26 +113,26 @@
 #if (compile-cfg.license) { include "license.typ" }
 #block(width: 100%, height: auto, inset: (x: 30pt, y: 60pt), stroke: black, breakable: true, {
   counter(heading).update(9004)
-  [= Acknowledgements]
+  [= 致谢]
   nonmath.acknowledgements
   v(1fr)
   colbreak()
   counter(heading).update(9005)
-  [= Disclosure of AI usage]
+  [= AI 使用说明]
   nonmath.disclosure-of-ai-usage
   v(1fr)
 })
 #[] <outline-start>
 #block(width: 100%, height: auto, inset: (x: 30pt, y: 60pt), stroke: black, breakable: true, {
   counter(heading).update(9002)
-  [= Table of contents]
+  [= 目录]
   outline(depth: 2, target: selector(heading).before(<outline-start>).or(selector(heading).after(<outline-end>)), title: none)
   v(1fr)
 })
 #[] <outline-end>
 #block(width: 100%, height: auto, inset: (x: 30pt, y: 60pt), stroke: black, breakable: true, {
   counter(heading).update(9006)
-  [= Preface]
+  [= 前言]
   nonmath.preface
   v(1fr)
 })
@@ -143,7 +143,7 @@
 
 #block(width: 100%, height: auto, inset: (x: 30pt, y: 60pt), stroke: black, breakable: true, {
   counter(heading).update(9007)
-  [= Epilogue]
+  [= 后记]
   nonmath.epilogue
   v(1fr)
 })

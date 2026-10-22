@@ -2,39 +2,41 @@
 // #show: void-style
 
 #let acknowledgements = [
-  I hold sincere gratitude towards Prof. Koji Shimizu, who gave a course on etale cohomology in 2025 Fall in Tsinghua University. This document is based on his course, and I am grateful for such an accessible introduction to etale cohomology. 
+  我衷心感谢 Koji Shimizu 教授，他于 2025 年秋季在清华大学开设了平展上同调课程。本书基于他的课程编写。我对这一平易近人的入门讲解十分感激。
 
-  I also hold sincere gratitude towards the authors of the large number of accessible references already present on the topic of etale cohomology. Without consulting these materials and comparing their approaches, I couldn't have made the roadmap to etale cohomology clear and conceptual. These references are: Stacks Project @cite-SP, Lei Fu (扶磊) @cite-lei-fu, Freitag-Kiehl @cite-freitag-kiehl, Deligne's Arcata notes @cite-deligne-arcata, Milne @cite-milne-lectures and @cite-milne-etale, and of course the original SGA books @cite-SGA1, @cite-SGA4 and @cite-SGA4half.
+  我也衷心感谢平展上同调领域已有的大量通俗参考文献的作者。若没有参阅这些材料并比较其处理方式，我无法把通往平展上同调的道路梳理得清晰、有概念性。这些文献是：Stacks Project @cite-SP、扶磊 @cite-lei-fu、Freitag–Kiehl @cite-freitag-kiehl、Deligne 的 Arcata 笔记 @cite-deligne-arcata、Milne @cite-milne-lectures 与 @cite-milne-etale，当然还有 SGA 原书 @cite-SGA1、@cite-SGA4 与 @cite-SGA4half。
 
-  I would also like to thank my friends, who gave me consistent support, helpful discussions and advice throughout the construction of this document. My friend Irisu (`Irisu7777h@gmail.com`) helped me develop a high-level understanding of some large theorems (Smooth Base Change, and also the setup of the Weil conjectures), and pointed out multiple technicalities that I should keep in mind (such as one in @chapter-etale-sheaves). #if (not compile-cfg.cover-pic.censored) [He also kindly created the beautiful artwork on the cover page. ]My friend Sean (#link("https://triangulated-ruler.github.io/index.html", text(fill: blue.darken(25%))[homepage])) checked my independent proof of topological invariance in @sect-topological-invariance and had some discussions with me around the compatibility conditions in @chapter-lower-shriek. My friend and roommate Darpaz endured my keyboard noise whilst I was typing this document through many nights, and executed my impromptu suggestions to order food delivery at 0 o'clock. My friends Mark, AppoloniusSun (#link("https://apolloniussun.github.io/", text(fill: blue.darken(25%))[homepage])), VByed7 (#link("https://vbyed7.github.io/VByed7/", text(fill: blue.darken(25%))[homepage])), KahlerManifold and SimplicialCat (#link("https://simplicialcat.github.io/", text(fill: blue.darken(25%))[homepage])) listened to my explanation on various topics several times, following approaches adopted in this document, which provided valuable opportunities for me to check my understanding and the validity of these approaches.#footnote[All of these names are pseudonyms because I am not by default exposing the identities of my friends.]
+  我还要感谢我的朋友们，他们在本书写作过程中给予我持续的支持、有益的讨论和建议。我的朋友 Irisu（`Irisu7777h@gmail.com`）帮助我对一些大定理（光滑基变换以及 Weil 猜想的框架）建立了高层次的理解，并指出了多处我应留意的技术细节（例如 @chapter-etale-sheaves 中的一处）。#if (not compile-cfg.cover-pic.censored) [他还慷慨地为封面创作了美丽的插图。 ]我的朋友 Sean（#link("https://triangulated-ruler.github.io/index.html", text(fill: blue.darken(25%))[个人主页])）检查了我在 @sect-topological-invariance 中对拓扑不变性的独立证明，并和我讨论了 @chapter-lower-shriek 中的相容性条件。我的朋友兼室友 Darpaz 忍受了我许多个夜晚敲键盘的噪音，还执行了我半夜 0 点突发奇想的点外卖建议。我的朋友 Mark、AppoloniusSun（#link("https://apolloniussun.github.io/", text(fill: blue.darken(25%))[个人主页])）、VByed7（#link("https://vbyed7.github.io/VByed7/", text(fill: blue.darken(25%))[个人主页])）、KahlerManifold 和 SimplicialCat（#link("https://simplicialcat.github.io/", text(fill: blue.darken(25%))[个人主页])）多次听我跟随本书采用的证明路线讲解各种主题，这为我检验自己的理解以及这些路线的有效性提供了宝贵机会。#footnote[这些名字都是化名，因为我默认不公开朋友们的身份。]
 
-  Last but not least, the AI models I used played a crucial role in constructing the document. I will discuss their roles in the disclosure of AI usage section. They have answered my random informal questions that would be deemed too uninspiring, technical or repetitive for a human answerer. They also refined my understanding and did much painstaking work. For example, ChatGPT 5.6 Terra found 996 typos within this document, of which I accepted 956 and rejected 40. I genuinely cannot imagine how an author could eliminate typos so systematically without AI assistance. 
+  最后同样重要的是，我使用的 AI 模型在本文的构建中发挥了关键作用。我将在“AI 使用披露”一节讨论它们的作用。它们回答了我随手提出的、对人类回答者来说可能过于无趣、技术性或重复的问题。它们也帮助我完善理解，并做了大量艰苦工作。例如，ChatGPT 5.6 Terra 在本文中找出了 996 个笔误，我接受了 956 个，拒绝了 40 个。DeepSeek V4.1 Flash 1017 翻译了全部的正文，光文本就有 1MB。没有 AI 协助，我实在无法想象一位作者如何能完成这样的工程。
 ]
 
 #let disclosure-of-ai-usage = [
-  This document was prepared with help from the following AI models: ChatGPT 5.6 Sol, ChatGPT 5.6 Terra, ChatGPT 5.5, Gemini 3.1, DeepSeek V4 Pro. 
+  本书英文原版在以下 AI 模型的协助下完成：ChatGPT 5.6 Sol、ChatGPT 5.6 Terra、ChatGPT 5.5、Gemini 3.1、DeepSeek V4 Pro。
 
-  Regarding their role, I asked them to help me understand the underlying ideas for many proofs and also to explain details of proofs that I did not understand. I also used them to do hard work such as finding and correcting typos, finding sketchy paragraphs that require attention, and proposing resolutions of questionable paragraphs and todos. 
+  关于它们的作用，我请它们帮助我理解许多证明背后的想法，也请它们解释我不理解的证明细节。我还让它们承担一些艰苦工作，例如查找并更正笔误、找出需要留意的草率段落，以及为可疑段落和待办事项提出解决方案。
 
-  Nevertheless, I typed 99% of the text within this document myself, and I did manually check each of the few blocks of text proposed by an AI model. I hereby declare that, as far as I know, this document consists of sound mathematics that I can personally agree with and is free of AI hallucinations. 
+  尽管如此，本书英文原版的 99% 的文字是我自己输入的；AI 模型提出的少数文本块，我都逐块人工核对过。我在此声明：据我所知，本文由我本人能够认同的可靠数学内容构成，不含 AI 幻觉。
+
+  本书的中文版主体由 DeepSeek V4.1 Flash 1017 翻译完成，共消耗约 22 亿 token。我把关了主要的翻译步骤，审核了近千处语言表述上的修改，并对译文进行了几个章节的人工抽检。我认为译文符合中文的语言习惯，是相对流畅、自然的。
 ]
 
 #let preface = [
-  This document started as the lecture notes for the 2025 Fall course by Prof. Koji Shimizu, as mentioned in the acknowledgements. Over time, I used the original lecture notes as a skeleton and rewrote most of it while expanding in my own words, to the point that it should be considered an original creation of myself. 
-  
-  This material is designed to be especially suitable for speedrunning the theory of etale cohomology, even for people with no particularly strong background in or enthusiasm for algebraic geometry. The title _Etale Cohomology (Any%)_ was also coined with this purpose in mind, where "(Any%)" refers to a category of video game speedruns that requires completing only the main goals of the game as quickly as possible, rather than achieving 100% completion. 
+  本文最初是 2025 年秋季 Koji Shimizu 教授课程的讲义，致谢中已提到。随着时间推移，我以原始讲义为骨架，重写了大部分内容，并用自己的话加以扩展，以至于它应当被视为我本人的原创作品。
 
-  Now you might have asked: This document is over 500 pages long. How can this possibly be called a speedrun? 
+  这份材料特别适合“速通”平展上同调理论，即使读者没有很强的代数几何背景或热情。书名 _平展上同调（Any%）_ 也是出于这个目的：其中“(Any%)”指电子游戏速通的一类规则——只要求尽快完成游戏的主要目标，而不追求 100% 完成度。
 
-  Personally, I believe that for mathematical texts of length below a certain large threshold, length introduces clarity, and compression is accompanied by obfuscation. I've arranged the document in such a way that a reader can obtain a good enough understanding of etale cohomology in a single sequential pass through the document, with jumps occurring only when the appendix is involved. 
-  
-  All proofs are explained in sufficient detail to avoid having the reader fill in gaps, and all references to previous propositions have hyperlinks, so that you can hover your mouse over them in a PDF reader to view those propositions without jumping to them, allowing your thinking to be contiguous and uninterrupted. Soft explanations are inserted whenever needed, explaining the motivation or structure of a chapter from a high-level perspective, to keep your entire journey motivated. 
+  现在你可能会问：本文长达 500 多页，这怎么能叫速通？
 
-  As a beginner, I have experienced the frustration of having to jump between multiple materials, translating notations back and forth, to piece together a single complete picture of the theory. As such, I have made this material as self-contained as possible. It only requires Hartshorne-level algebraic geometry and homological algebra. Furthermore, to achieve maximum self-containment, every proposition in this document containing a concept defined in this document has a proof, as far as I know. 
+  就我个人而言，我相信对于低于某个较大阈值的数学文本，篇幅会带来清晰，而压缩则伴随晦涩。我安排本文的方式是：读者只需按顺序通读一遍，就能对平展上同调获得足够好的理解；只有涉及附录时才需要跳跃。
 
-  Based on my experience with programming, I've spent much time optimizing the division of chapters and sections, arranging my document in such a way that the materials are as modular as possible, highlighting encapsulation and separation of concerns, so that each section internally appears as a collection of involved and detailed proofs and theory development, and externally as a set of clean and intuitive interfaces to be invoked in later sections. 
+  所有证明都解释得足够详细，以免读者自行填补空缺；所有对前文命题的引用都带有超链接，你可以在 PDF 阅读器中把鼠标悬停其上查看那些命题，而不必跳转过去，从而让思路保持连贯、不被打断。需要时我会插入一些“软性”说明，从高层次解释一章的动机或结构，让你整个旅程都有动力。
 
-  I believe that I have arranged my document in a practically superior way. Indeed, I think you may find it encouraging that a friend of mine—then a fourth-year undergraduate who had once been interested in algebraic geometry but had been specializing in statistics for more than two years—successfully understood the computation of etale cohomology of curves using this material with my explanation in an hour.
+  作为一个初学者，我曾体会过在多种材料之间跳来跳去、反复翻译记号、才能拼出一幅完整理论图景的挫败感。因此，我尽可能让这份材料自足。它只需要 Hartshorne 水平的代数几何与同调代数。此外，为了实现最大程度的自足，据我所知，本文中每个包含本文所定义概念的命题都有证明。
+
+  基于我的编程经验，我花了很多时间优化章节划分，让材料尽可能模块化，强调封装、强调关注点分离：每一节内部看起来都是一组深入而详细的证明与理论展开，外部则是一组干净、直观、可供后续章节调用的接口。
+
+  我相信我的安排在实践中是更优的。事实上，我的一位朋友——他当时是本科四年级，曾经对代数几何感兴趣，但已在统计方向专攻两年多——在我的讲解下，用一小时就成功理解了利用这份材料计算曲线平展上同调的过程；我想这会对你是种鼓励。
 ]
 
 #let epilogue = [

@@ -1,61 +1,60 @@
 #import "void-import.typ": *
-== Etale cohomology of quasi-coherent sheaves
+== 拟凝聚层的平展上同调
 
 #lemma[
-  Let $U = Spec(A)$ be an affine scheme, and $cal(M) = tilde(M) in QCoh(U)$ be a quasi-coherent sheaf. Then: 
+  设 $U = Spec(A)$ 是仿射概形，$cal(M) = tilde(M) in QCoh(U)$ 是拟凝聚层。则：
   $
     H^q (U, cal(M)_et) = 0, forall q >= 1
   $
 ]
 #proof[
-  We first prove for Cech cohomology, i.e: 
+  我们先对 Čech 上同调证明这一消没性，即证明：
   $
     caron(H)^q (U, cal(M)_et) = 0, forall q >= 1
   $
-  For this, we prove vanishing for a cofinal system of etale covers of $U$. Since $U$ is affine and so quasi-compact, every etale cover of $U$ is refined by one consisting of finitely many affine schemes. The Cech cohomology of such a cover is equal to the Cech cohomology of the cover consisting of a single map, obtained by taking the disjoint union. As such, it suffices to show that for etale covers of the shape $cal(U) = {U' = Spec(A') -> U}$, 
+  为此，我们对 $U$ 的平展覆盖的一个共尾系统证明消没性。$U$ 仿射，因而拟紧，于是 $U$ 的每个平展覆盖都有由有限多个仿射概形组成的加细覆盖。对这样的覆盖取不交并，就得到由单个映射构成的覆盖，二者的 Čech 上同调相等。因此，只需对形如 $cal(U) = {U' = Spec(A') -> U}$ 的平展覆盖证明：
   $
     caron(H)^q (cal(U), cal(M)_et) = 0, forall q >= 1
   $
-  Now since $U' ->> U$ is surjective etale, $A -> A'$ is faithfully flat. The Cech complex of $cal(U)$ is thus: 
+  现在，由于 $U' ->> U$ 是满射平展，$A -> A'$ 忠实平坦。于是 $cal(U)$ 的 Čech 复形是：
   $
     0 -> M otimes_A A' -> dots.c -> M otimes_A A^((q)) -> M otimes_A A^((q+1)) -> dots.c
   $
-  This is just the Amitsur complex with the term $M$ removed, and so is exact at all $q >= 1$ by @amitsur-complex-exact. We are thereby done with the proof for Cech cohomology. 
+  这正是删去 $M$ 项后的 Amitsur 复形，故由 @amitsur-complex-exact 可知，它在每个 $q >= 1$ 处都正合。Čech 上同调的情形至此证毕。
 
-  We now pass to etale cohomology with the Cech-to-derived-functor spectral sequence and induction. Since $caron(H)^1 (U, -) = H^1 (U, -)$, we are already done with $q = 1$. Suppose that the lemma holds for all $0 < q < n$ and all quasi-coherent sheaves on affine schemes. Consider the Cech-to-derived-functor spectral sequence: 
+  接下来，我们借助 Čech 到导出函子的谱序列与归纳法，过渡到平展上同调。由于 $caron(H)^1 (U, -) = H^1 (U, -)$，$q = 1$ 的情形已经解决。假设引理对所有 $0 < q < n$ 以及仿射概形上的一切拟凝聚层成立。考虑 Čech 到导出函子的谱序列：
   $
     E_2^(p,q) = caron(H)^p (U, ul(H)^q (cal(M)_et)) => H^(p+q) (U, cal(M)_et)
   $
-  We claim that this spectral sequence vanishes for all $0 < q < n$. Since $U$ is affine, it is quasi-compact, so we may prove that: 
+  我们断言，这个谱序列在 $0 < q < n$ 的各行上全为零。$U$ 仿射，因而拟紧，故只需证明：对一切 $0 < q < n$，以及一切由有限多个仿射概形组成的 $cal(U) = {U_i = Spec(B_i) -> U}_(1<=i<=m)$，都有
   $
     caron(H)^p (cal(U), ul(H)^q (cal(M)_et)) = 0
   $
-  for all $0 < q < n$ and all $cal(U) = {U_i = Spec(B_i) -> U}_(1<=i<=m)$ consisting of finitely many affine schemes. Then by @pullback-along-etale-morphism-derived, the $p$-th term of the Cech complex of $ul(H)^q (cal(M)_et)$ is the direct product of terms of the shape: 
+  于是由 @pullback-along-etale-morphism-derived，$ul(H)^q (cal(M)_et)$ 的 Čech 复形的第 $p$ 项是若干形如下式的项的直积：
   $
     H^q (U_(i_0,dots.c,i_p), cal(M)_et) = H^q (U_(i_0,dots.c,i_p), u_(i_0,dots.c,i_p)^(-1) cal(M)_et)
   $
-  where $u_(i_0,dots.c,i_p): U_(i_0,dots.c,i_p) := U_(i_0) times_U dots.c times_U U_(i_p) -> U$ is affine etale, and $u_(i_0,dots.c,i_p)^(-1) cal(M)_et = (u_(i_0,dots.c,i_p)^* cal(M))_et$, as can be checked section-wise. 
+  其中 $u_(i_0,dots.c,i_p): U_(i_0,dots.c,i_p) := U_(i_0) times_U dots.c times_U U_(i_p) -> U$ 是仿射平展的，且 $u_(i_0,dots.c,i_p)^(-1) cal(M)_et = (u_(i_0,dots.c,i_p)^* cal(M))_et$，后一等式可以逐截面验证。
 
-  However, whenever $0 < q < n$, all terms of this shape are $0$ by the inductive hypothesis. In other words, $caron(H)^p (U, ul(H)^q (cal(M)_et)) = 0$ for all $0 < q < n$, giving a horizontal vanishing strip for the Cech-to-derived-functor spectral sequence. Applying the modified five term exact sequence, we obtain an exact sequence: 
+  然而，只要 $0 < q < n$，由归纳假设，形如上式的项全为 $0$。换言之，对一切 $0 < q < n$ 都有 $caron(H)^p (U, ul(H)^q (cal(M)_et)) = 0$，于是这条谱序列上出现一条水平的消没带。应用修正后的五项正合列，我们得到正合列：
   $
     0 -> caron(H)^n (U, cal(M)_et) -> H^n (U, cal(M)_et) -> caron(H)^0 (U, ul(H)^n (cal(M)_et)) -> dots.c
   $
-  Now $caron(H)^n (U, cal(M)_et) = 0$ as proved previously, and $caron(H)^0 (U, ul(H)_n (cal(M)_et)) = 0$ by @cech-h0-of-hq-psh-vanish. We are thereby done showing $H^n (U, cal(M)_et) = 0$.  
+  现在，前文已证 $caron(H)^n (U, cal(M)_et) = 0$，而由 @cech-h0-of-hq-psh-vanish 有 $caron(H)^0 (U, ul(H)_n (cal(M)_et)) = 0$。至此便得到 $H^n (U, cal(M)_et) = 0$。
 ]
 
 #theorem(name: <etale-cohom-of-qcoh-sheaf>)[
-  Let $X$ be any scheme and $cal(M) in QCoh(X)$. Then there are natural isomorphisms: 
+  设 $X$ 是任意概形，$cal(M) in QCoh(X)$。则 $cal(M)_et$ 的平展上同调与 $cal(M)$ 的 Zariski 上同调之间存在自然同构：
   $
     H^q_et (X, cal(M)_et) cong H^q_#[Zar] (X, cal(M)), forall q >= 0
   $
-  between the etale cohomology of $cal(M)_et$ and the Zariski cohomology of $cal(M)$. 
 ]
 #proof[
-  Consider the forgetful functor: 
+  考虑遗忘函子：
   $
     epsilon: cAb(X_et) -> cAb(X_#[Zar])
   $
-  from etale sheaves on $X$ to Zariski sheaves on $X$. Since left exactness for both etale and Zariski sheaves are measured section-wise, $epsilon$ is a left exact functor. We want to apply the Grothendieck-Leray spectral sequence to the composition: 
+  它把 $X$ 上的平展层映到 $X$ 上的 Zariski 层。平展层与 Zariski 层上的左正合性都可以逐截面检验，所以 $epsilon$ 是左正合函子。我们希望把 Grothendieck–Leray 谱序列应用于下面这个复合函子：
   // https://q.uiver.app/#r=typst&q=WzAsMyxbMCwxLCJjQWIoWF9ldCkiXSxbMiwxLCJjQWIiXSxbMSwwLCJjQWIoWF8jW1phcl0pIl0sWzIsMSwiR2FtbWEoWCwtKSJdLFswLDEsIkdhbW1hKFgsLSkiLDJdLFswLDIsImVwc2lsb24iXV0=
   #align(center, diagram({
     node((-1, 0), [$cAb(X_et)$])
@@ -65,50 +64,50 @@
     edge((-1, 0), (1, 0), [$Gamma(X, -)$], label-side: right, "->")
     edge((-1, 0), (0, -1), [$epsilon$], label-side: left, "->")
   }))
-  For this, we need to show that $epsilon$ sends injectives to ${H^q_#[Zar] (X, -)}_(q>=0)$-acyclics. 
+  为此，需要说明 $epsilon$ 把内射对象映到 ${H^q_#[Zar] (X, -)}_(q>=0)$-零调对象。
 
   #lemma[
-    Given additive functors $F: cal(A) -> cal(B), G: cal(B) -> cal(C)$ between abelian categories, where $cal(A), cal(B)$ has enough injectives. Suppose that there exists a collection $cal(I)$ of injectives of $cal(A)$ s.t:
+    设 $F: cal(A) -> cal(B), G: cal(B) -> cal(C)$ 是 Abel 范畴之间的加性函子，这里 $cal(A), cal(B)$ 都有足够多的内射对象。假设存在 $cal(A)$ 的一族内射对象 $cal(I)$，使得：
     
-    - Every object of $cal(A)$ embeds into an object in the collection $cal(I)$; 
-
-    - $F$ sends every object of $cal(I)$ to $G$-acyclics. 
-
-    Then $F$ sends injectives to $G$-acyclics. 
+    - $cal(A)$ 的每个对象都能嵌入 $cal(I)$ 中的某个对象；
+    
+    - $F$ 把 $cal(I)$ 的每个对象都映到 $G$-零调对象。
+    
+    则 $F$ 把内射对象映到 $G$-零调对象。
   ]
   #proof[
-    For any injective $I in cal(A)$, embed it as $I ->^i I_0$ where $I_0 in cal(I)$, and form the cokernel: 
+    对任意内射对象 $I in cal(A)$，取它到某个 $I_0 in cal(I)$ 的嵌入 $I ->^i I_0$，再取余核：
     $
       0 -> I ->^i I_0 -> coker(i) -> 0
     $
-    Then by injectivity of $I$, this exact sequence splits, identifying $I_0 = I oplus coker(i)$. Thus, $F(I_0) = F(I) oplus F(coker(i))$, and for each $q >= 1$, 
+    于是由 $I$ 的内射性，这个正合列分裂，从而有 $I_0 = I oplus coker(i)$。因此 $F(I_0) = F(I) oplus F(coker(i))$，且对每个 $q >= 1$，
     $
       0 = R^q G (F(I_0)) = R^q G (F(I)) oplus R^q G (F(coker(i)))
     $
-    and so $R^q G(F(I)) = 0, forall q >= 1$. Hence $F(I)$ is a $G$-acyclic object. 
+    从而 $R^q G(F(I)) = 0, forall q >= 1$。因此 $F(I)$ 是 $G$-零调对象。
   ]
-  By the Godement resolution, every sheaf in $cAb(X_et)$ embeds into an injective sheaf of the shape: 
+  由 Godement 消解可知，$cAb(X_et)$ 中的每个层都能嵌入形如下式的内射层：
   $
     product_(x in X) ol(x)_* I_x
   $
-  After applying the forgetful functor, this sheaf goes to the Zariski sheaf $product_(x in X) x_* I_x$, a direct product of skyscraper sheaves. Such a sheaf is flasque, hence ${H^q_#[Zar] (X, -)}_(q>=0)$-acyclic. 
+  施加遗忘函子后，这个层变为 Zariski 层 $product_(x in X) x_* I_x$，即若干摩天楼层的直积。这样的层是松弛的，从而是 ${H^q_#[Zar] (X, -)}_(q>=0)$-零调的。
   #remark[
-    If we resort to general topos theory, we see that there is a pair of maps between sites $X_et arrows.rl X_#[Zar]$, inducing an exact left adjoint to $epsilon$, making it send injectives to injectives. However, I prefer to use a simple readable ad hoc argument, instead of introducing general topoi just to get a technical condition. 
+    如果诉诸一般的意象理论，会看到景之间有一对映射 $X_et arrows.rl X_#[Zar]$，它诱导出 $epsilon$ 的一个正合左伴随，从而使 $epsilon$ 把内射对象映到内射对象。不过，我更愿意采用简单、易读的权宜论证，而不愿只为了一个技术性条件就去引入一般意象理论。
   ]
   
-  By the Grothendieck-Leray spectral sequence, we get a spectral sequence: 
+  由 Grothendieck–Leray 谱序列，我们得到：
   $
     E_2^(p,q) = H^p_#[Zar] (X, R^q epsilon (cal(M)_et)) => H^(p+q)_et (X, cal(M)_et)
   $
-  Therefore, to show that $H^p_#[Zar] (X, cal(M)) cong H^p_et (X, cal(M)_et)$, it suffices to show that this spectral sequence degenerates, by showing that $R^q epsilon (cal(M)_et) = 0$ for all $q >= 1$. 
+  因此，要证明 $H^p_#[Zar] (X, cal(M)) cong H^p_et (X, cal(M)_et)$，只需证明这个谱序列退化，而这又只需证明对一切 $q >= 1$ 都有 $R^q epsilon (cal(M)_et) = 0$。
 
-  For any object $cal(F) in cAb(X_et)$, take an injective resolution $0 -> cal(F) -> cal(I)^bullet$. We then apply $epsilon$ to this chain complex to get $0 -> epsilon(cal(F)) -> epsilon(cal(I)^bullet)$. Now: 
+  对任意对象 $cal(F) in cAb(X_et)$，取内射消解 $0 -> cal(F) -> cal(I)^bullet$。再对这条链复形施加 $epsilon$，得到 $0 -> epsilon(cal(F)) -> epsilon(cal(I)^bullet)$。此时：
   $
     R^q epsilon (cal(F)) = h^q (0 -> epsilon(cal(I)^bullet))
   $
-  By the theory of Zariski sheaves, this sheaf is the Zariski sheafification of $U |-> h^q (0 -> epsilon(cal(I)^bullet)(U)) = H^q_et (U, cal(F))$. As such, to show that $R^q epsilon (cal(M)_et) = 0$, it suffices to show that $H^q_et (U, cal(M)_et) = 0$ for elements $U$ of a basis of the Zariski topology of $X$. However, 
+  由 Zariski 层理论，这个层是 $U |-> h^q (0 -> epsilon(cal(I)^bullet)(U)) = H^q_et (U, cal(F))$ 的 Zariski 层化。因此，要证明 $R^q epsilon (cal(M)_et) = 0$，只需证明：对 $X$ 的 Zariski 拓扑的某一组基中的每个元素 $U$，都有 $H^q_et (U, cal(M)_et) = 0$。然而，由前面的引理，对一切仿射开集 $U subset X$ 都有：
   $
     H^q_et (U, cal(M)_et) = H^q_et (U, (cal(M)|_U)_et) = 0
   $
-  for all affine opens $U subset X$, by the previous lemma. We are thereby done. 
+  至此证毕。
 ]

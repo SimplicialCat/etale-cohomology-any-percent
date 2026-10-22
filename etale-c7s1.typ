@@ -2,95 +2,95 @@
 
 #date[
   #set align(left) 
-  Throughout this chapter and onwards, we will make frequent and often essential uses of the language of the derived category. 
+  本章及往后，我们会频繁使用导出范畴的语言，而这些用法往往不可或缺。 
 ]
 
-In this chapter, we want to construct compactly supported cohomology, i.e. the functors $R Gamma_c$ and $R f_!$. As usual, we will first explain the motivations behind a concept, before introducing it. 
+本章我们要构造紧支上同调，也就是函子 $R Gamma_c$ 与 $R f_!$。按惯例，我们会先讲清一个概念背后的动机，再引入它。 
 
-Etale cohomology was introduced as an analog of singular cohomology in positive characteristics, and to solve the Weil conjectures. For this, we need an analog of Poincare duality, and an analog of Lefschetz trace formula. 
+平展上同调当初是作为正特征下奇异上同调的类比、并为解决 Weil 猜想而引入的。为此，我们需要 Poincaré 对偶与 Lefschetz 迹公式的类比。 
 
-We recall the statements of Poincare duality and Lefschetz trace formula in singular cohomology, and replace all homologies with cohomologies since in the etale setting, we only have a cohomology theory. 
+我们先回忆奇异上同调中 Poincaré 对偶与 Lefschetz 迹公式的陈述，再把其中的同调全部换成上同调——因为在平展的框架里，我们只有上同调理论。 
 
-Let $X$ be an $n$-dimensional orientable manifold. 
+设 $X$ 是 $n$ 维可定向流形。 
 
-- Singular Poincare duality says that the natural map: #h(1fr)
+- 奇异 Poincaré 对偶说的是，自然映射：#h(1fr)
   $
     H^k_c (X) -> H_(n-k) (X)
   $
-  is an isomorphism. To change homology into cohomology, we use a universal coefficient theorem. Then Poincare duality states that the cup product pairing: 
+  是同构。要把同调换成上同调，我们用一个万有系数定理。于是 Poincaré 对偶可陈述为：杯积配对： 
   $
     - smile -: H^k_c (X, QQ) times H^(n-k) (X, QQ) -> H^n_c (X, QQ) ->^(tr_X) QQ
   $
-  is a perfect pairing. 
+  是完美配对。 
 
-- Singular Lefschetz trace formula says that if a map $f: X -> X$ has the Lefschetz number: 
+- 奇异 Lefschetz 迹公式说的是：若映射 $f: X -> X$ 的 Lefschetz 数 
   $
     Lambda_f = sum_(i=0)^n (-1)^i tr(f_*: H_i (X, QQ))
   $
-  nonzero, then $f$ has a fixed point. To convert to cohomology, we use Poincare duality, giving rise to compactly supported cohomology on the way: 
+  非零，则 $f$ 有不动点。要换到上同调，我们用 Poincaré 对偶，紧支上同调也就顺带登场了： 
   $
     Lambda_f = sum_(i=0)^n (-1)^i tr(f^*: H^i_c (X, QQ))
   $
 
-As such, to establish analogs of Poincare duality and Lefschetz trace formula for etale cohomology, it is essential to establish the notion of $H^q_c (X, -)$ or $R Gamma_c (X, -)$, a kind of compactly supported cohomology. 
+因此，要为平展上同调建立 Poincaré 对偶与 Lefschetz 迹公式的类比，就必须先把 $H^q_c (X, -)$ 或 $R Gamma_c (X, -)$ 这个概念确立起来，也就是某种紧支上同调。 
 
-We will also need a relative notion of compactly supported cohomology, namely $R f_!$. Briefly speaking, $R f_!$ is to $R f_*$ what $R Gamma_c (X, -)$ is to $R Gamma(X, -)$. The significance of $R f_!$ can be seen as follows: 
+我们还需要紧支上同调的相对版本，即 $R f_!$。粗略地说，$R f_!$ 之于 $R f_*$，正如 $R Gamma_c (X, -)$ 之于 $R Gamma(X, -)$。$R f_!$ 的重要性可以从下面几点看出： 
 
-- $R f_*$ is in some sense the "bad" push forward. It does not commute with arbitrary base change, and is not suitable for stating the projection and Kunneth formulas, unless $f$ is proper. 
+- $R f_*$ 在某种意义上是“坏”的推前。它不与任意基变换交换，也不适合用来陈述投影公式与 Künneth 公式，除非 $f$ 紧合。 
   
-  On the other hand, $R f_!$ is the "good" push forward. It commutes with arbitrary base change, and can be used to state the projection and Kunneth formulas. 
+  另一方面，$R f_!$ 是“好”的推前：它与任意基变换交换，可以用来陈述投影公式与 Künneth 公式。 
 
-- $R f_!$ defined on the derived category allows a relative form of Poincare duality to be stated. Unlike its sister $R f_*$ which is a right adjoint, $R f_!$ is left adjoint to a functor $R f^!$. Then Poincare duality in this setting amounts to an explicit description of $R f^!$ whenever $f$ is smooth. 
+- 把 $R f_!$ 定义在导出范畴上，就能陈述相对形式的 Poincaré 对偶。它的姊妹函子 $R f_*$ 是右伴随，$R f_!$ 则不同，它是某个函子 $R f^!$ 的左伴随。于是这一框架下的 Poincaré 对偶，就归结为在 $f$ 光滑时具体刻画 $R f^!$。 
 
-  The six functors: 
+  这六个函子： 
   $
     f^(-1), R f_* \
     R f_!, R f^! \
     - Lotimes_Lambda -, RHHom_Lambda (-, -)
   $
-  now form three adjunction pairs, and allow us to summarize etale cohomology into an axiomatic list of statements. 
+  现在构成三对伴随，使我们能把平展上同调总结成一组公理化的陈述。 
   
-  This is Grothendieck's famous *six functor formalism* and the formalism of *Verdier duality*, allowing one to view etale cohomology from a higher perspective. 
+  这就是 Grothendieck 著名的*六函子形式*，与 *Verdier 对偶*的形式体系，它们让人能从更高的视角来看平展上同调。 
 
-Finally, we bring some insight to the construction of $R Gamma_c (X, -)$ (and $R f_!$). In the case of singular cohomology of a manifold $X$, $H^q_(#[sing],c) (X, Lambda)$ is defined using compactly supported cochains. Etale cohomology is not defined using cochains, but as a derived functor cohomology. 
+最后，我们为 $R Gamma_c (X, -)$（以及 $R f_!$）的构造提供一些直观解释。对流形 $X$ 的奇异上同调，$H^q_(#[sing],c) (X, Lambda)$ 是用紧支上链定义的；平展上同调则不用上链，而用导出函子来定义。 
 
-- If we view singular cohomology from the perspective of considering it as a derived functor cohomology, $H^q_(#[sing],c) (X, Lambda)$ may be reinterpreted as follows. Suppose for now that there is an open inclusion $j: X -> ol(X)$ in which $ol(X)$ is a compact manifold. Then: 
+- 若把奇异上同调看作导出函子上同调，那么 $H^q_(#[sing],c) (X, Lambda)$ 可以这样重新解释。先假设存在开浸入 $j: X -> ol(X)$，其中 $ol(X)$ 是紧流形。那么： 
   $
-    H^q_(#[sing],c) (X, Lambda) &= dirlim_(K subset X #[compact]) H^q_#[sing] (X, X - K, Lambda) = dirlim_(K subset X #[compact]) H^q (ol(X), ol(X) - K, Lambda) #[by excision] \
+    H^q_(#[sing],c) (X, Lambda) &= dirlim_(K subset X #[compact]) H^q_#[sing] (X, X - K, Lambda) = dirlim_(K subset X #[compact]) H^q (ol(X), ol(X) - K, Lambda) #[由切除] \
     &= dirlim_(K subset X #[compact]) H^q (ol(X), i_K^! ul(Lambda)_K) = H^q (ol(X), dirlim_(K subset X #[compact]) i_K^! ul(Lambda)_K) = H^q (ol(X), j_! ul(Lambda)_X)
   $
-  Therefore, we see that singular cohomology with compact support may be defined using an external compactification. 
+  由此可见，紧支奇异上同调可以借助一个外部紧化来定义。 
 
-In the settings of etale cohomology, Nagata compactification will play the role of a (non-canonical) compactification, allowing $R Gamma_c$ and $R f_!$ to be defined. One must remark that although these functors are (of course) independent from the choice of compactification, they cannot be defined intrinsically without the choice of an embedding into a "compact" (i.e. proper) ambient space. 
+在平展上同调的框架里，充当这种外部紧化的将是 Nagata 紧化（它是非典范的），从而使 $R Gamma_c$ 与 $R f_!$ 得以定义。必须指出：这两个函子虽然（当然）与紧化的选取无关，但若不先选定一个到某个“紧”的（即紧合的）外围空间的嵌入，就无法内蕴地定义它们。 
 
-== Construction of $R f_!$ and $R Gamma_c$
+== $R f_!$ 与 $R Gamma_c$ 的构造
 
-As we've just remarked, $R f_!$ and $R Gamma_c$ are defined via an external compactification. This requires the existence of some compactification. 
+正如刚才所说，$R f_!$ 与 $R Gamma_c$ 是借助外部紧化定义的，这就要用到某种紧化的存在性。 
 
 #theorem(name: <nagata-compactification>)[
-  (Nagata compactification) Let $f: X -> Y$ be a separated morphism of finite type between qcqs schemes. Then $f$ factors into: 
+  (Nagata 紧化) 设 $f: X -> Y$ 是拟紧拟分离概形之间分离、有限型的态射。则 $f$ 可分解为： 
   $
     X ->^j ol(X) ->^(ol(f)) Y
   $
-  in which $j$ is an open immersion and $ol(f)$ is proper. 
+  其中 $j$ 是开浸入，$ol(f)$ 紧合。 
 ]
 #proof[
-  This is a very famous and standard result in algebraic geometry. We refer to #cite-stacks("0F41")[Theorem 38.33.8]. 
+  这是代数几何中非常有名、也很标准的结果。参见 #cite-stacks("0F41")[Theorem 38.33.8]。 
 ]
-The upshot of this chapter would be to define: 
+本章的要点就是定义： 
 $
   R f_! = R ol(f)_* compose j_!
 $
-However, the choice of compactification is highly non-unique and non-canonical, so it is a necessity that we establish some generalities regarding compactifications in advance, so that we can establish compatibility between $R ol(f)_* compose j_!$ defined by various compactifications. 
+然而紧化的选取极不唯一，也毫不典范。因此我们必须先对紧化建立一些一般性结论，才能说明由不同紧化给出的 $R ol(f)_* compose j_!$ 彼此相容。 
 
 #definition(name: <defn-compactification>)[
-  For a morphism $f: X -> Y$ separated of finite type, a *compactification* of $f$ denotes a factoring: 
+  对分离、有限型的态射 $f: X -> Y$，所谓 $f$ 的*紧化*，指的是一个分解： 
   $
     X ->^j ol(X) ->^(ol(f)) Y
   $
-  in which $j$ is an open immersion and $ol(f)$ is proper. 
+  其中 $j$ 是开浸入，$ol(f)$ 紧合。 
   
-  A morphism between two compactifications $X ->^(j_1) ol(X)_1 ->^(ol(f)_1) Y$ and $X ->^(j_2) ol(X)_2 ->^(ol(f)_2) Y$ is a morphism $h: ol(X)_1 -> ol(X)_2$ fitting in the commutative diagram: 
+  两个紧化 $X ->^(j_1) ol(X)_1 ->^(ol(f)_1) Y$ 与 $X ->^(j_2) ol(X)_2 ->^(ol(f)_2) Y$ 之间的态射，指的是一个态射 $h: ol(X)_1 -> ol(X)_2$，它使下图交换： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwxLCJYIl0sWzEsMCwib2woWClfMSJdLFsyLDEsIlkiXSxbMSwyLCJvbChYKV8yIl0sWzAsMSwial8xIl0sWzAsMywial8yIiwyXSxbMSwyLCJvbChmKV8xIl0sWzMsMiwib2woZilfMiIsMl0sWzEsMywiaCIsMV1d
   #context align(center, diagram({
     node((-1, 0), [$X$])
@@ -103,18 +103,18 @@ However, the choice of compactification is highly non-unique and non-canonical, 
     edge((0, 1), (1, 0), [$ol(f)_2$], label-side: right, "->")
     edge((0, -1), (0, 1), [$h$], label-side: center, "->")
   }, crossing-fill: thm-box-curr-color(), spacing: (3em, 2em)))
-  Since proper morphisms cancel, such $h$ is necessarily proper. 
+  由于紧合态射可以消去（复合态射与其后一个因子都紧合），这样的 $h$ 必定紧合。 
 ]
 
 #proposition(name: <compactification-filtered>)[
-  Let $f: X -> Y$ be a separated morphism of finite type between qcqs schemes. Then the compactifications of $f$ form a directed system. In other words: 
+  设 $f: X -> Y$ 是拟紧拟分离概形之间分离、有限型的态射。则 $f$ 的紧化构成一个正向系统。换言之： 
 
-  + Given two compactifications $X ->^(j_i) ol(X)_i ->^(ol(f)_i) Y$, there exists a third compactification $X ->^j ol(X) ->^(ol(f)) Y$ admitting morphisms to both $ol(X)_1$ and $ol(X)_2$. 
+  + 给定两个紧化 $X ->^(j_i) ol(X)_i ->^(ol(f)_i) Y$，存在第三个紧化 $X ->^j ol(X) ->^(ol(f)) Y$，它同时有到 $ol(X)_1$ 与 $ol(X)_2$ 的态射。 
 
-  + Given two morphisms $h_(1,2): ol(X)_1 -> ol(X)_2$ between two compactifications $X ->^(j_i) ol(X)_i ->^(ol(f)_i) Y$, there exists a third compactification $X ->^j ol(X) ->^(ol(f)) Y$ and a morphism $g: ol(X) -> ol(X)_1$ of compactifications s.t. $h_1 compose g = h_2 compose g$. 
+  + 给定两个紧化 $X ->^(j_i) ol(X)_i ->^(ol(f)_i) Y$ 之间的两个态射 $h_(1,2): ol(X)_1 -> ol(X)_2$，存在第三个紧化 $X ->^j ol(X) ->^(ol(f)) Y$，以及紧化之间的态射 $g: ol(X) -> ol(X)_1$，使得 $h_1 compose g = h_2 compose g$。 
 ]
 #proof[
-  (1) We may form the fiber product: 
+  (1) 我们可以作纤维积： 
   // https://q.uiver.app/#r=typst&q=WzAsNSxbMCwxLCJYIl0sWzIsMSwib2woWClfMSB0aW1lc19ZIG9sKFgpXzIiXSxbMywxLCJZIl0sWzIsMCwib2woWClfMSJdLFsyLDIsIm9sKFgpXzIiXSxbMCwzLCJqXzEiXSxbMCw0LCJqXzIiLDJdLFszLDIsIm9sKGYpXzEiXSxbNCwyLCJvbChmKV8yIiwyXSxbMSwzLCJwXzEiLDFdLFsxLDQsInBfMiIsMV0sWzEsMiwicGhpIiwxXSxbMCwxLCJnYW1tYSIsMV1d
   #context align(center, diagram({
     node((-1, 0), [$X$])
@@ -132,11 +132,11 @@ However, the choice of compactification is highly non-unique and non-canonical, 
     edge((-1, 0), (1, 0), [$gamma$], label-side: center, "->")
   }, crossing-fill: thm-box-curr-color()))
 
-  Now consider $gamma: X -> ol(X)_1 times_Y ol(X)_2$. It is the product of two immersions, hence an immersion. All schemes here are qcqs. By #cite-stacks("01QV")[Lemma 29.3.2], a quasi-compact immersion factors into an open immersion followed by a closed immersion. Thus, $gamma$ factors into: 
+  现在考虑 $gamma: X -> ol(X)_1 times_Y ol(X)_2$。它是两个浸入的积，因此是浸入。这里所有概形都是拟紧拟分离的。由 #cite-stacks("01QV")[Lemma 29.3.2]，拟紧的浸入可分解为先一个开浸入、再一个闭浸入。于是 $gamma$ 分解为： 
   $
     X ->^j ol(X) ->^t ol(X)_1 times_Y ol(X)_2
   $
-  in which $j$ is an open immersion and $t$ is a closed immersion. We now have the diagram: 
+  其中 $j$ 是开浸入，$t$ 是闭浸入。于是我们有下图： 
   // https://q.uiver.app/#r=typst&q=WzAsNixbMCwxLCJYIl0sWzIsMSwib2woWClfMSB0aW1lc19ZIG9sKFgpXzIiXSxbMywxLCJZIl0sWzIsMCwib2woWClfMSJdLFsyLDIsIm9sKFgpXzIiXSxbMSwxLCJvbChYKSJdLFswLDMsImpfMSJdLFswLDQsImpfMiIsMl0sWzMsMiwib2woZilfMSJdLFs0LDIsIm9sKGYpXzIiLDJdLFsxLDMsInBfMSIsMV0sWzEsNCwicF8yIiwxXSxbMSwyLCJwaGkiLDFdLFswLDUsImoiLDFdLFs1LDEsInQiLDFdLFs1LDMsInFfMSIsMV0sWzUsNCwicV8yIiwxXV0=
   #context align(center, diagram({
     node((0, 1), [$X$])
@@ -157,13 +157,13 @@ However, the choice of compactification is highly non-unique and non-canonical, 
     edge((1, 1), (2, 0), [$h_1$], label-side: center, "->")
     edge((1, 1), (2, 2), [$h_2$], label-side: center, "->")
   }, crossing-fill: thm-box-curr-color()))
-  Now $phi$ is a product of proper morphisms, hence proper. $t$ is a closed immersion. Thus, we have constructed a compactification $X ->^j ol(X) ->^(phi compose t) Y$ admitting morphisms $h_(1,2)$ to $ol(X)_(1,2)$, respectively. 
+  现在 $phi$ 是两个紧合态射的积，因此紧合；$t$ 是闭浸入。于是我们构造出了紧化 $X ->^j ol(X) ->^(phi compose t) Y$，它分别有到 $ol(X)_(1,2)$ 的态射 $h_(1,2)$。 
 
-  (2) Form the graph morphisms: 
+  (2) 考虑图态射： 
   $
     Gamma_(h_1), Gamma_(h_2): ol(X)_1 -> ol(X)_1 times_Y ol(X)_2
   $
-  These morphisms are the base changes of the diagonal $Delta_(ol(X)_1\/Y): ol(X)_2 -> ol(X)_2 times_Y ol(X)_2$ along $h_(1,2): ol(X)_1 -> ol(X)_2$ respectively, hence are closed immersions. We now form the Cartesian square: 
+  这两个态射分别是对角态射 $Delta_(ol(X)_1\/Y): ol(X)_2 -> ol(X)_2 times_Y ol(X)_2$ 沿 $h_(1,2): ol(X)_1 -> ol(X)_2$ 的基变换，因此都是闭浸入。现在作拉回方块： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJXIl0sWzEsMCwib2woWClfMSJdLFswLDEsIm9sKFgpXzEiXSxbMSwxLCJvbChYKV8xIHRpbWVzX1kgb2woWClfMiJdLFswLDEsInBfMSJdLFswLDIsInBfMiIsMl0sWzEsMywiR2FtbWFfKGhfMSkiXSxbMiwzLCJHYW1tYV8oaF8yKSIsMl1d
   #align(center, diagram({
     node((-1, -1), [$W$])
@@ -176,17 +176,17 @@ However, the choice of compactification is highly non-unique and non-canonical, 
     edge((0, -1), (0, 0), [$Gamma_(h_1)$], label-side: left, "->")
     edge((-1, 0), (0, 0), [$Gamma_(h_2)$], label-side: right, "->")
   }))
-  in which every morphism is a closed immersion. Denote the projection $q: ol(X)_1 times_Y ol(X)_2 -> ol(X)_1$. Note: 
+  其中每个态射都是闭浸入。记投影为 $q: ol(X)_1 times_Y ol(X)_2 -> ol(X)_1$。注意： 
   $
     p_1 = p_1 compose Gamma_(h_1) compose q = p_2 compose Gamma_(h_2) compose q = p_2
   $
-  and so we may denote $p = p_1 = p_2: W -> ol(X)_1$. We claim that $p$ is the equalizer of $h_(1,2): ol(X)_1 -> ol(X)_2$ in the category of $Y$-schemes. Indeed, a $Y$-morphism $k: Z -> W$ is equivalent to two $Y$-morphisms $k_(1,2): Z -> ol(X)_1$ s.t. $Gamma_(h_1) compose k_1 = Gamma_(h_2) compose k_2$. Applying the two projections, we see that this condition is equivalent to: 
+  因此我们可以记 $p = p_1 = p_2: W -> ol(X)_1$。我们断言，$p$ 是 $h_(1,2): ol(X)_1 -> ol(X)_2$ 在 $Y$-概形范畴中的等化子。事实上，一个 $Y$-态射 $k: Z -> W$ 等价于两个 $Y$-态射 $k_(1,2): Z -> ol(X)_1$，使得 $Gamma_(h_1) compose k_1 = Gamma_(h_2) compose k_2$。把两个投影作用上去，可见该条件等价于： 
   $
     k_1 = k_2, h_1 compose k_1 = h_2 compose k_2
   $
-  and so a $Y$-morphism $k: Z -> W$ is just a $Y$-morphism $k' = k_1 = k_2: Z -> ol(X)_1$ s.t. $h_1 compose k' = h_2 compose k'$. 
+  于是 $Y$-态射 $k: Z -> W$ 无非就是一个 $Y$-态射 $k' = k_1 = k_2: Z -> ol(X)_1$，使得 $h_1 compose k' = h_2 compose k'$。 
 
-  Now in the diagram: 
+  现在看下图： 
   // https://q.uiver.app/#r=typst&q=WzAsNSxbMCwxLCJYIl0sWzEsMSwib2woWClfMSJdLFsyLDEsIlkiXSxbMSwyLCJvbChYKV8yIl0sWzEsMCwiVyJdLFswLDQsImpfMCIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFs0LDEsImdfMCJdLFswLDEsImpfMSIsMl0sWzEsMiwib2woZl8xKSIsMl0sWzEsMywiaF8xIiwyLHsib2Zmc2V0IjoxfV0sWzEsMywiaF8yIiwwLHsib2Zmc2V0IjotMX1dLFswLDMsImpfMiIsMl0sWzMsMiwib2woZilfMiIsMl1d
   #align(center, diagram({
     node((-1, 0), [$X$])
@@ -203,15 +203,15 @@ However, the choice of compactification is highly non-unique and non-canonical, 
     edge((-1, 0), (0, 1), [$j_2$], label-side: right, "->")
     edge((0, 1), (1, 0), [$ol(f)_2$], label-side: right, "->")
   }))
-  there exists a $Y$-morphism $j_0: X -> W$ s.t. $p compose j_0 = j_1$, by the universal properties. Now that $j_1$ is an open immersion and $p$ is a closed immersion, so $j_0$ must be an open immersion. Now $ol(f)_1 compose p$ is proper, so: 
+  由泛性质，存在 $Y$-态射 $j_0: X -> W$，使得 $p compose j_0 = j_1$。既然 $j_1$ 是开浸入、$p$ 是闭浸入，$j_0$ 必定是开浸入。又 $ol(f)_1 compose p$ 紧合，故： 
   $
     X ->^(j_0) W ->^(ol(f)_1 compose f) Y
   $
-  is a compactification with a morphism $p: W -> ol(X)_1$ of compactifications equalizing $h_(1,2)$. 
+  这就给出了一个紧化，并带有紧化之间的态射 $p: W -> ol(X)_1$，它等化 $h_(1,2)$。 
 ]
 
 #construction[
-  Suppose that we have a commutative square: 
+  假设有交换方块： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJYXzEiXSxbMCwxLCJYXzIiXSxbMSwxLCJZXzIiXSxbMSwwLCJZXzEiXSxbMCwzLCJmXzEiXSxbMSwyLCJmXzIiLDJdLFswLDEsImpfWCIsMl0sWzMsMiwial9ZIl1d
   #align(center, diagram({
     node((-1, 0), [$X_1$])
@@ -223,17 +223,17 @@ However, the choice of compactification is highly non-unique and non-canonical, 
     edge((-1, 0), (-1, 1), [$j_X$], label-side: right, "->")
     edge((0, 0), (0, 1), [$j_Y$], label-side: left, "->")
   }))
-  in which vertical morphisms are open immersions and horizontal morphisms are proper. 
+  其中竖直态射是开浸入，水平态射紧合。 
   
   #lemma[
-    Setup as above, the base change map: 
+    沿用上述设定，基变换映射： 
     $
       j_Y^(-1) R f_(2,*) j_(X,!) -> R f_(1,*) j_X^(-1) j_(X,!) = R f_(1,*)
     $
-    is an isomorphism. 
+    是同构。 
   ]
   #proof[
-    Form the base change $tilde(X) = X_2 times_(Y_2) Y_1$, and we have a diagram: 
+    作基变换 $tilde(X) = X_2 times_(Y_2) Y_1$，得到下图： 
     // https://q.uiver.app/#r=typst&q=WzAsNixbMCwyLCJYXzIiXSxbMSwyLCJZXzIiXSxbMSwxLCJZXzEiXSxbMCwxLCJ0aWxkZShYKSJdLFswLDAsIlhfMSJdLFsxLDAsIllfMSJdLFswLDEsImZfMiIsMl0sWzMsMiwidGlsZGUoZikiXSxbNCw1LCJmXzEiXSxbNCwzLCJwIiwyXSxbMywwLCJ0aWxkZShqKSIsMl0sWzIsMSwial9ZIl0sWzUsMiwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV1d
     #align(center, diagram({
       node((-1, 1), [$X_2$])
@@ -251,31 +251,31 @@ However, the choice of compactification is highly non-unique and non-canonical, 
       edge((0, -1), (0, 0), "=")
       node((-0.7, 0.3), $cart$)
     }))
-    where $f_1, tilde(f), f_2$ are proper and $tilde(j)$ is an open immersion. Now $j_X = tilde(j) compose p$ where $j_X, tilde(j)$ are open immersions, so $p$ is also an open immersion. On the other hand, since $f_1 = tilde(f) compose p$ where $f_1, tilde(f)$ is proper, $p$ is proper. As such, $p$ is an open and closed immersion. 
+    其中 $f_1, tilde(f), f_2$ 紧合，$tilde(j)$ 是开浸入。现在 $j_X = tilde(j) compose p$，而 $j_X, tilde(j)$ 都是开浸入，所以 $p$ 也是开浸入。另一方面，$f_1 = tilde(f) compose p$ 且 $f_1, tilde(f)$ 紧合，故 $p$ 紧合。于是 $p$ 是开闭浸入。 
 
-    Then the base change $j_Y^(-1) R f_(2,*) j_(X,!) -> R f_(1,*) j_X^(-1) j_(X,!)$ factors into base changes along the two squares, according to the naturality of base change: 
+    接下来，由基变换的自然性，基变换映射 $j_Y^(-1) R f_(2,*) j_(X,!) -> R f_(1,*) j_X^(-1) j_(X,!)$ 分解为沿两个方块的基变换： 
     $
       j_Y^(-1) R f_(2,*) j_(X,!) -> R tilde(f)_* tilde(j)^(-1) j_(X,!) -> R f_(1,*) j_X^(-1) j_(X,!)
     $
-    Here, the first base change is an isomorphism by @pbc-etale-bc. For the second base change, note that $p$ is an open and closed immersion, so $R p_* = p_!$, and so $R f_(1,*) j_X^(-1) j_(X,!)= R tilde(f)_* p_! p^(-1) tilde(j) j_(X,!)$. Under this identification, the second base change is just the adjunction unit: 
+    由 @pbc-etale-bc，第一个基变换是同构。对第二个基变换，注意 $p$ 是开闭浸入，故 $R p_* = p_!$，从而 $R f_(1,*) j_X^(-1) j_(X,!)= R tilde(f)_* p_! p^(-1) tilde(j) j_(X,!)$。在这一等同下，第二个基变换不过是伴随的单位： 
     $
       R tilde(f)_* tilde(j)^(-1) j_(X,!) -> R f_(1,*) j_X^(-1) j_(X,!)= R tilde(f)_* p_! p^(-1) tilde(j)^(-1) j_(X,!)
     $
-    Now the unit $id -> p_! p^(-1) = R p_* p^(-1)$ is an isomorphism on complexes supported on $X_1$, and so $tilde(j)^(-1) j_(X,!) -> p_! p^(-1) tilde(j)^(-1) j_(X,!)$ is an isomorphism. We are thereby done. 
+    现在单位 $id -> p_! p^(-1) = R p_* p^(-1)$ 在支集含于 $X_1$ 的复形上是同构，因此 $tilde(j)^(-1) j_(X,!) -> p_! p^(-1) tilde(j)^(-1) j_(X,!)$ 是同构。证毕。 
   ]
   
-  Then there is a natural transformation: 
+  于是有自然变换： 
   $
     j_(Y,!) R f_(1,*) -> R f_(2,*) j_(X,!)
   $
-  between functors $D(X_(1,et), Lambda) -> D(Y_(2,et), Lambda)$, obtained by lifting the inverse of the isomorphism $j_Y^(-1) R f_(2,*) j_(X,!) ->^tilde R f_(1,*)$ through adjunction.
+  它是函子 $D(X_(1,et), Lambda) -> D(Y_(2,et), Lambda)$ 之间的自然变换，由同构 $j_Y^(-1) R f_(2,*) j_(X,!) ->^tilde R f_(1,*)$ 的逆经伴随对应提升得到。
 ]
 
 #lemma(name: <open-proper-compat-naturality>)[
-  The natural transformation $j_(Y,!) R f_(1,*) -> R f_(2,*) j_(X,!)$ constructed above is compatible with horizontal and vertical concatenation of commutative diagrams. 
+  上面构造的自然变换 $j_(Y,!) R f_(1,*) -> R f_(2,*) j_(X,!)$ 与交换图的水平拼接、竖直拼接相容。 
 ]
 #proof[
-  We will prove that the morphism above is a Beck-Chevalley base change, as defined in @bcbc-defn. Indeed, consider the diagram: 
+  我们将证明上述态射是一个 Beck–Chevalley 基变换，其定义见 @bcbc-defn。事实上，考虑下图： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJEKFhfKDIsZXQpKSJdLFsxLDAsIkQoWV8oMixldCkpIl0sWzAsMSwiRChYXygxLGV0KSkiXSxbMSwxLCJEKFlfKDEsZXQpKSJdLFswLDEsIlIgZl8oMiwqKSJdLFsyLDMsIlIgZl8oMSwqKSIsMl0sWzAsMiwial9YXigtMSkiLDJdLFsxLDMsImpfWV4oLTEpIl1d
   #context align(center, diagram({
     node((-1, -1), [$D(X_(2,et))$])
@@ -289,7 +289,7 @@ However, the choice of compactification is highly non-unique and non-canonical, 
     edge((-0.7, -0.3), (-0.3, -0.7), $t$, "=>", label-side: center)
   }, crossing-fill: thm-box-curr-color()))
   
-  Here, the diagonal map $t$ is defined as follows. Setup as in previous lemma: 
+  图中对角位置的自然变换 $t$ 定义如下。沿用上一条引理的设定： 
   #align(center, diagram({
     node((-1, 1), [$X_2$])
     node((0, 1), [$Y_2$])
@@ -307,55 +307,55 @@ However, the choice of compactification is highly non-unique and non-canonical, 
     node((-0.7, 0.3), $cart$)
   }))
 
-  We define $t$ to be: 
+  定义 $t$ 为： 
   $
     t: R f_(1,*) j_X^(-1) = R tilde(f)_* p_! p^(-1) tilde(j)^(-1) -> R tilde(f)_* tilde(j)^(-1) ->^tilde j_Y^(-1) R f_(2,*)
   $
-  Here, the second map is an adjunction counit, and the third map is the inverse of base change. 
+  其中第一个映射是等号给出的等同，第二个映射是伴随的余单位，第三个映射是基变换的逆。 
 
-  Note that the base change map of the upper square is the adjunction unit: 
+  注意上方方块的基变换映射是伴随的单位： 
   $
     R tilde(f)_* -> R tilde(f)_* p_! p^(-1) = R f_(1,*) p^(-1)
   $
-  and that the composition $p_! p^(-1) -> id -> p_! p^(-1)$ of unit and counit is an isomorphism. Therefore, the map $t$ above is a section of the base change map $b: j_Y^(-1) R f_(2,*) -> R f_(1,*) j_X^(-1)$. 
+  并且单位与余单位的复合 $p_! p^(-1) -> id -> p_! p^(-1)$ 是同构。因此上面的映射 $t$ 是基变换映射 $b: j_Y^(-1) R f_(2,*) -> R f_(1,*) j_X^(-1)$ 的一个截面。 
 
-  - Indeed, the Beck-Chevalley base change corresponding to this $t$ is the map: #h(1fr)
+  - 事实上，与这个 $t$ 对应的 Beck–Chevalley 基变换是映射：#h(1fr)
     $
-      j_(Y,!) R f_(1,*) = j_(Y,!) R f_(1,*) j_X^(-1) j_(X,!) ->^(j_(Y,!) t j_(X,!)) j_(Y,!) j_Y^(-1) R f_(2,*) j_(X,!) ->^#[counit] R f_(2,*) j_(X,!)
+      j_(Y,!) R f_(1,*) = j_(Y,!) R f_(1,*) j_X^(-1) j_(X,!) ->^(j_(Y,!) t j_(X,!)) j_(Y,!) j_Y^(-1) R f_(2,*) j_(X,!) ->^#[余单位] R f_(2,*) j_(X,!)
     $
   
-    This corresponds by adjunction to the map $R f_(1,*) -> j_Y^(-1) R f_(2,*) j_(X,!)$ defined by: #h(1fr)
+    在伴随对应下，它对应于由下式定义的映射 $R f_(1,*) -> j_Y^(-1) R f_(2,*) j_(X,!)$：#h(1fr)
     $
       R f_(1,*) = R f_(1,*) j_X^(-1) j_(X,!) ->^(t j_(X,!)) j_Y^(-1) R f_(2,*) j_(X,!)
     $
 
-    Since $t$ is a section to base change, the map above is a section to the base change $j_Y^(-1) R f_(2,*) j_(X,!) -> R f_(1,*) j_X^(-1) j_(X,!) = R f_(1,*)$, which is an isomorphism by the previous lemma. Thus, the morphism above is exactly the inverse to the base change $j_Y^(-1) R f_(2,*) j_(X,!) ->^tilde R f_(1,*)$. It is thus exactly what the map $j_(Y,!) R f_(1,*) -> R f_(2,*) j_(X,!)$ corresponds to under adjunction, by our construction of this map. Thus $j_(Y,!) R f_(1,*) -> R f_(2,*) j_(X,!)$ is indeed this Beck-Chevalley base change. 
+    由于 $t$ 是基变换的截面，上面的映射也就是基变换 $j_Y^(-1) R f_(2,*) j_(X,!) -> R f_(1,*) j_X^(-1) j_(X,!) = R f_(1,*)$ 的截面，而后者由上一条引理是同构。于是上面的态射恰是同构 $j_Y^(-1) R f_(2,*) j_(X,!) ->^tilde R f_(1,*)$ 的逆。按我们对映射 $j_(Y,!) R f_(1,*) -> R f_(2,*) j_(X,!)$ 的构造，它在伴随下对应的正是这个映射。因此 $j_(Y,!) R f_(1,*) -> R f_(2,*) j_(X,!)$ 确实就是这个 Beck–Chevalley 基变换。 
 
-  We claim that $t$ is the unique natural section of $b$, i.e. the unique section as a natural transformation. 
+  我们断言，$t$ 是 $b$ 唯一的自然截面，即作为自然变换的唯一截面。 
 
-  - $b$ is the composition of two base changes: #h(1fr)
+  - $b$ 是两个基变换的复合：#h(1fr)
     $
       j_Y^(-1) R f_(2,*) ->^(b_1) R tilde(f)_* tilde(j)^(-1) ->^(b_2) R f_(1,*) j_X^(-1)
     $
-    where $b_1$ is an isomorphism. Thus, it suffices to prove that the section of $b_2$ is unique. 
+    其中 $b_1$ 是同构。因此只需证明 $b_2$ 的截面唯一。 
 
-    Let $u: R f_(1,*) j_X^(-1) -> R tilde(f)_* tilde(j)^(-1)$ be a section to $b_2$. 
+    设 $u: R f_(1,*) j_X^(-1) -> R tilde(f)_* tilde(j)^(-1)$ 是 $b_2$ 的一个截面。 
 
-  - Also form the complement $i: Z -> X_2$ of $j_X: X_1 -> X_2$, a closed immersion. Now for a complex $cal(K) in D(X_(2,et), Lambda)$, there is a distinguished triangle: 
+  - 再取 $j_X: X_1 -> X_2$ 的补 $i: Z -> X_2$，它是闭浸入。于是对复形 $cal(K) in D(X_(2,et), Lambda)$，有特殊三角： 
     $
       j_(X,!) j_X^(-1) cal(K) -> cal(K) -> i_* i^(-1) cal(K) ->^(+1)
     $
-    Note that $j_X^(-1) i_* i^(-1) cal(K) = 0$. Thus, $u$ is $0$ on $i_* i^(-1) cal(K)$, and so $u$ is determined by its action on objects of the form $j_(X,!) cal(L)$ for $cal(L) in D(tilde(X)_(1,et), Lambda)$. 
+    注意 $j_X^(-1) i_* i^(-1) cal(K) = 0$。因此 $u$ 在 $i_* i^(-1) cal(K)$ 上是 $0$，从而 $u$ 由它在形如 $j_(X,!) cal(L)$ 的对象上的作用决定，其中 $cal(L) in D(tilde(X)_(1,et), Lambda)$。 
 
-  - For such objects, $b_2 j_(X,!)$ is the base change $R tilde(f)_* tilde(j)^(-1) j_(X,!) -> R f_(1,*) j_X^(-1) j_(X,!) = R f_(1,*)$, proven to be an isomorphism by the previous lemma. In other words, $b_2$ is an isomorphism on objects of the form $j_(X,!) cal(L)$, so $u$ acts on these objects by the inverse of $b_2$ and is determined. 
+  - 对这类对象，$b_2 j_(X,!)$ 就是基变换 $R tilde(f)_* tilde(j)^(-1) j_(X,!) -> R f_(1,*) j_X^(-1) j_(X,!) = R f_(1,*)$，上一条引理已证它是同构。换言之，$b_2$ 在形如 $j_(X,!) cal(L)$ 的对象上是同构，故 $u$ 在这些对象上的作用就是 $b_2$ 的逆，从而完全确定。 
 
-  Thus, $b$ must have a unique section, which is $t$. Now for a horizontal or vertical concatenation of commutative squares, the diagonal maps $t$ defined for the two small squares must compose to $t$ defined for the rectangle, since by @base-change-naturality the naturality of base change, they are both sections to base changes of the large rectangle, hence equal by the uniqueness argued above. 
+  于是 $b$ 的截面唯一，就是 $t$。现在考虑交换方块的水平或竖直拼接：对两个小方块分别定义的自然变换 $t$，它们的复合必须等于对矩形定义的 $t$——因为由 @base-change-naturality，基变换的自然性保证它们都是大矩形基变换的截面，再由上面论证的唯一性即得相等。 
 
-  Thus, the map $j_(Y,!) R f_(1,*) ->^tilde R f_(2,*) j_(X,!)$ is compatible with horizontal and vertical concatenation of commutative squares, by generalities argued for Beck-Chevalley base changes in @bcbc-horizontal-concat and @bcbc-vertical-concat. 
+  因此，按 @bcbc-horizontal-concat 与 @bcbc-vertical-concat 中对 Beck–Chevalley 基变换所论证的一般性结论，映射 $j_(Y,!) R f_(1,*) ->^tilde R f_(2,*) j_(X,!)$ 与交换方块的水平拼接、竖直拼接相容。 
 ]
 
 #proposition(name: <open-proper-compat>)[
-  Given a commutative diagram: 
+  给定交换图： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJYXzEiXSxbMCwxLCJYXzIiXSxbMSwxLCJZXzIiXSxbMSwwLCJZXzEiXSxbMCwzLCJmXzEiXSxbMSwyLCJmXzIiLDJdLFswLDEsImpfWCIsMl0sWzMsMiwial9ZIl1d
   #align(center, diagram({
     node((-1, 0), [$X_1$])
@@ -367,20 +367,20 @@ However, the choice of compactification is highly non-unique and non-canonical, 
     edge((-1, 0), (-1, 1), [$j_X$], label-side: right, "->")
     edge((0, 0), (0, 1), [$j_Y$], label-side: left, "->")
   }))
-  in which horizontal morphisms are proper and vertical morphisms are open immersions, and all schemes are noetherian, for $cal(K) in D_#[tor] (X_(1,et), Lambda)$ the canonical map: 
+  其中水平态射紧合，竖直态射是开浸入，且所有概形都是 Noether 的。则对 $cal(K) in D_#[tor] (X_(1,et), Lambda)$，典范映射： 
   $
     j_(Y,!) R f_(1,*) cal(K) -> R f_(2,*) j_(X,!) cal(K)
   $
-  is a quasi-isomorphism. 
+  是拟同构。 
 ]
 #proof[
-  According to the construction, when pulled back along $j_Y$, we get the map $R f_(1,*) cal(K) -> j_Y^(-1) R f_(2,*) j_(X,!) cal(K)$ inverse to the base change: 
+  按构造，沿 $j_Y$ 拉回后得到的是与基变换互逆的映射 $R f_(1,*) cal(K) -> j_Y^(-1) R f_(2,*) j_(X,!) cal(K)$： 
   $
     j_Y^(-1) R f_(2,*) j_(X,!) cal(K) -> R f_(1,*) j_X^(-1) j_(X,!) cal(K) = R f_(1,*) cal(K)
   $
-  and hence an isomorphism. Thus, take the complementary closed immersion $i: Z -> Y_2$ of $j_Y: Y_1 -> Y_2$, it suffices to show that $j_(Y,!) R f_(1,*) cal(K) -> R f_(2,*) j_(X,!) cal(K)$ when pulled back along $i$ is still an isomorphism. 
+  从而是同构。于是取 $j_Y: Y_1 -> Y_2$ 的补，即闭浸入 $i: Z -> Y_2$，只需证明 $j_(Y,!) R f_(1,*) cal(K) -> R f_(2,*) j_(X,!) cal(K)$ 沿 $i$ 拉回后仍是同构。 
 
-  Note that $i^(-1) j_(Y,!) = 0$, and so $i^(-1) j_(Y,!) R f_(1,*) cal(K) = 0$. On the other hand, since $cal(K) in D_#[tor] (X_(1,et), Lambda)$, by @torsion-sheaves-first-props, $j_(X,!) cal(K) in D_#[tor] (X_(2,et), Lambda)$ is torsion. Since $f_2$ is proper and all schemes involved are noetherian, proper base change is applicable. We form the Cartesian square by $f_2$ and $i$: 
+  注意 $i^(-1) j_(Y,!) = 0$，因此 $i^(-1) j_(Y,!) R f_(1,*) cal(K) = 0$。另一方面，由 $cal(K) in D_#[tor] (X_(1,et), Lambda)$ 及 @torsion-sheaves-first-props，$j_(X,!) cal(K) in D_#[tor] (X_(2,et), Lambda)$ 是挠的。由于 $f_2$ 紧合，且涉及的概形都是 Noether 的，紧合基变换适用。用 $f_2$ 与 $i$ 作拉回方块： 
   // https://q.uiver.app/#r=typst&q=WzAsNixbMCwwLCJYXzEiXSxbMCwxLCJYXzIiXSxbMSwxLCJZXzIiXSxbMSwwLCJZXzEiXSxbMSwyLCJaIl0sWzAsMiwiVyJdLFswLDMsImZfMSJdLFsxLDIsImZfMiIsMl0sWzAsMSwial9YIiwyXSxbMywyLCJqX1kiXSxbNSw0LCJmJyIsMl0sWzQsMiwiaSIsMl0sWzUsMSwiaSciXV0=
   #align(center, diagram({
     node((0, 0), [$X_1$])
@@ -398,23 +398,23 @@ However, the choice of compactification is highly non-unique and non-canonical, 
     edge((0, 2), (0, 1), [$i'$], label-side: left, "->")
     node((0.3, 1.7), rotate(-90deg, $cart$))
   }))
-  Then by proper base change: 
+  则由紧合基变换： 
   $
     i^(-1) R f_(2,*) j_(X,!) cal(K) = R f'_* i'^(-1) j_(X,!) cal(K)
   $
-  However: 
+  然而： 
   $
     X_1 times_(X_2) W = X_1 times_(X_2) X_2 times_(Y_2) Z = X_1 times_(Y_2) Z = emptyset
   $
-  since the image of $X_1$ in $Y_2$ is contained in $Y_1$ and is disjoint from $Z$. Thus, $i'^(-1) j_(X,!) cal(K) = 0$. 
+  因为 $X_1$ 在 $Y_2$ 中的像含于 $Y_1$，与 $Z$ 不交。因此 $i'^(-1) j_(X,!) cal(K) = 0$。 
 
-  In other words, we have proved that $j_(Y,!) R f_(1,*) cal(K) -> R f_(2,*) j_(X,!) cal(K)$ is an isomorphism upon pulling back by $j_Y$, and is a morphism between two zeros upon pulling back by $i$. It is thus an isomorphism. 
+  换言之，我们证明了 $j_(Y,!) R f_(1,*) cal(K) -> R f_(2,*) j_(X,!) cal(K)$ 沿 $j_Y$ 拉回是同构，沿 $i$ 拉回则是零对象之间的态射。因此它是同构。 
 ]
 
-We are now ready to prove the well-definedness of $R f_!$. 
+现在可以证明 $R f_!$ 的良定义性了。 
 
 #theorem(name: <derived-lower-shriek-well-defined>)[
-  Let $f: X -> Y$ be a separated morphism of finite type between noetherian schemes. Given two compactifications: 
+  设 $f: X -> Y$ 是 Noether 概形之间分离、有限型的态射。给定两个紧化： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwxLCJYIl0sWzIsMSwiWSJdLFsxLDAsIm9sKFgpXzEiXSxbMSwyLCJvbChYKV8yIl0sWzAsMiwial8xIl0sWzAsMywial8yIiwyXSxbMiwxLCJvbChmKV8xIl0sWzMsMSwib2woZilfMiIsMl1d
   #align(center, diagram({
     node((-1, 0), [$X$])
@@ -426,21 +426,21 @@ We are now ready to prove the well-definedness of $R f_!$.
     edge((0, -1), (1, 0), [$ol(f)_1$], label-side: left, "->")
     edge((0, 1), (1, 0), [$ol(f)_2$], label-side: right, "->")
   }, spacing: (2em, 1.5em)))
-  There is a canonical isomorphism: 
+  存在典范同构： 
   $
     R ol(f)_(1,*) j_(1,!) cal(K) -> R ol(f)_(2,*) j_(2,!) cal(K)
   $
-  for $cal(K) in D_#[tor] (X_et, Lambda)$. 
+  其中 $cal(K) in D_#[tor] (X_et, Lambda)$。 
 ]
 #proof[
-  - Step 1. Construction of an isomorphism when there is a morphism $phi: ol(X)_1 -> ol(X)_2$ of compactifications. 
+  - 第一步。当紧化之间存在态射 $phi: ol(X)_1 -> ol(X)_2$ 时，构造同构。 
 
-    Given such a morphism $phi$, we have $j_2 = phi compose j_1$ and $ol(f)_1 = ol(f)_2 compose phi$, with $phi$ proper. Now: 
+    给定这样的态射 $phi$，有 $j_2 = phi compose j_1$ 与 $ol(f)_1 = ol(f)_2 compose phi$，且 $phi$ 紧合。现在： 
     $
       R ol(f)_(1,*) j_(1,!) cal(K) = R ol(f)_(2,*) R phi_* j_(1,!) cal(K)
     $
 
-    Now consider the commutative diagram: 
+    现在考虑交换图： 
     // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJYIl0sWzAsMSwib2woWClfMSJdLFsxLDEsIm9sKFgpXzIiXSxbMSwwLCJYIl0sWzEsMiwicGhpIiwyXSxbMCwxLCJqXzEiLDJdLFswLDMsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFszLDIsImpfMiJdXQ==
     #align(center, diagram({
       node((0, 0), [$X$])
@@ -452,14 +452,14 @@ We are now ready to prove the well-definedness of $R f_!$.
       edge((0, 0), (1, 0), "=")
       edge((1, 0), (1, 1), [$j_2$], label-side: left, "->")
     }))
-    in which horizontal morphisms are proper and vertical morphisms are open immersions. Thus by @open-proper-compat, there is a canonical quasi-isomorphism $j_(2,!) cal(K) ->^tilde R phi_* j_(1,!) cal(K)$. Composing with its inverse, we get a quasi-isomorphism: 
+    其中水平态射紧合，竖直态射是开浸入。于是由 @open-proper-compat，有典范拟同构 $j_(2,!) cal(K) ->^tilde R phi_* j_(1,!) cal(K)$。与其逆复合，得到拟同构： 
     $
       R ol(f)_(1,*) j_(1,!) cal(K) = R ol(f)_(2,*) R phi_* j_(1,!) cal(K) ->^tilde R ol(f)_(2,*) j_(2,!) cal(K)
     $
 
-  - Step 2. Functoriality of this construction. 
+  - 第二步。该构造的函子性。 
 
-    Denote by $R(phi)$ the natural isomorphism $R ol(f)_(1,*) j_(1,!) -> R ol(f)_(2,*) j_(2,!)$ between functors $D_#[tor] (X_et, Lambda) -> D(Y_et, Lambda)$, which is induced by a morphism $phi: ol(X)_1 -> ol(X)_2$ of compactifications. Suppose that we have a chain of morphisms of compactifications: 
+    记 $R(phi)$ 为由紧化之间的态射 $phi: ol(X)_1 -> ol(X)_2$ 诱导的同构 $R ol(f)_(1,*) j_(1,!) -> R ol(f)_(2,*) j_(2,!)$，这是函子 $D_#[tor] (X_et, Lambda) -> D(Y_et, Lambda)$ 之间的自然同构。假设有紧化之间的一串态射： 
     // https://q.uiver.app/#r=typst&q=WzAsNSxbMCwxLCJYIl0sWzIsMSwiWSJdLFsxLDAsIm9sKFgpXzEiXSxbMSwyLCJvbChYKV8zIl0sWzEsMSwib2woWClfMiJdLFswLDIsImpfMSJdLFswLDMsImpfMyIsMl0sWzIsMSwib2woZilfMSJdLFszLDEsIm9sKGYpXzMiLDJdLFswLDQsImpfMiIsMV0sWzQsMSwib2woZilfMiIsMV0sWzIsNCwicGhpIiwxXSxbNCwzLCJwc2kiLDFdXQ==
     #context align(center, diagram({
       node((0, 1), [$X$])
@@ -476,12 +476,12 @@ We are now ready to prove the well-definedness of $R f_!$.
       edge((1, 0), (1, 1), [$phi$], label-side: center, "->")
       edge((1, 1), (1, 2), [$psi$], label-side: center, "->")
     }, crossing-fill: thm-box-curr-color()))
-    Then we claim that: 
+    则我们断言： 
     $
       R(psi compose phi) = R(psi) compose R(phi): R ol(f)_(1,*) j_(1,!) -> R ol(f)_(3,*) j_(3,!)
     $
 
-    Consider the commutative diagram: 
+    考虑交换图： 
     // https://q.uiver.app/#r=typst&q=WzAsNixbMCwwLCJYIl0sWzAsMSwib2woWClfMSJdLFsxLDEsIm9sKFgpXzIiXSxbMSwwLCJYIl0sWzIsMSwib2woWClfMyJdLFsyLDAsIlgiXSxbMSwyLCJwaGkiLDJdLFswLDEsImpfMSIsMl0sWzAsMywiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzMsMiwial8yIl0sWzIsNCwicHNpIiwyXSxbMyw1LCIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNSw0LCJqXzMiXV0=
     #align(center, diagram({
       node((0, 0), [$X$])
@@ -498,10 +498,10 @@ We are now ready to prove the well-definedness of $R f_!$.
       edge((1, 0), (2, 0), "=")
       edge((2, 0), (2, 1), [$j_3$], label-side: left, "->")
     }))
-    with horizontal morphisms being proper, and vertical morphisms being open immersions. 
+    其中水平态射紧合，竖直态射是开浸入。 
 
 
-    By @open-proper-compat, the left/right squares and the large rectangle induces natural isomorphisms: 
+    由 @open-proper-compat，左、右两个方块与大矩形各自诱导自然同构： 
     $
       q_1: j_(2,!) -> R phi_* j_(1,!): D_#[tor] (X_et, Lambda) -> D(ol(X)_(2,et), Lambda) \
 
@@ -509,39 +509,39 @@ We are now ready to prove the well-definedness of $R f_!$.
 
       q_3: j_(3,!) -> R psi_* R phi_* j_(1,!): D_#[tor] (X_et, Lambda) -> D(ol(X)_(3,et), Lambda)
     $
-    By @open-proper-compat-naturality, this construction is compatible with horizontal concatenation. Therefore: 
+    由 @open-proper-compat-naturality，该构造与水平拼接相容。因此： 
     $
       q_3 = R psi_* q_1 compose q_2
     $
     
-    By definition, $R(psi) compose R(phi)$ is the composition: 
+    按定义，$R(psi) compose R(phi)$ 是这样的复合： 
     $
       R ol(f)_(1,*) j_(1,!) = R ol(f)_(2,*) R phi_* j_(1,!) ->^(R ol(f)_(2,*) q_1^(-1)) R ol(f)_(2,*) j_(2,!) = R ol(f)_(3,*) R psi_* j_(2,!) ->^(R ol(f)_(3,*) q_2^(-1)) -> R ol(f)_(3,*) j_(3,!)
     $
-    However, $R ol(f)_(3,*) q_2^(-1) compose R ol(f)_(2,*) q_1^(-1) = R ol(f)_(3,*) (q_2^(-1) compose R psi_* q_1^(-1)) = R ol(f)_(3,*) (R psi_* q_1 compose q_2)^(-1) = R ol(f)_(3,*) q_3^(-1) = R(psi compose phi)$, so we have proved our claim. 
+    而 $R ol(f)_(3,*) q_2^(-1) compose R ol(f)_(2,*) q_1^(-1) = R ol(f)_(3,*) (q_2^(-1) compose R psi_* q_1^(-1)) = R ol(f)_(3,*) (R psi_* q_1 compose q_2)^(-1) = R ol(f)_(3,*) q_3^(-1) = R(psi compose phi)$，于是断言得证。 
 
-  - Step 3. Construction of the general isomorphism. 
+  - 第三步。一般同构的构造。 
 
-    For any two compactifications $ol(X)_1, ol(X)_2$, by @compactification-filtered, there is a third compactification $ol(X)_3$ and morphisms $phi_i: ol(X)_3 -> ol(X)_i, i=1,2$ between compactifications. We intend to construct the canonical isomorphism as: 
+    对任意两个紧化 $ol(X)_1, ol(X)_2$，由 @compactification-filtered，存在第三个紧化 $ol(X)_3$ 以及紧化之间的态射 $phi_i: ol(X)_3 -> ol(X)_i, i=1,2$。我们想把典范同构构造成： 
     $
       R ol(f)_1 j_(1,!) -->^(R(phi_1)^(-1)) R ol(f)_3 j_(3,!) -->^(R(phi_2)) R ol(f)_2 j_(2,!)
     $
 
-    However, the choice of $ol(X)_3$ and $phi_(1,2)$ might be non-unique, so currently this isomorphism is non-canonical. Given a fourth compactification $ol(X)_4$ and morphisms $psi_i: ol(X)_4 -> ol(X)_i, i=1,2$ between compactifications, we must show that $R(phi_1)^(-1) compose R(phi_2) = R(psi_1)^(-1) compose R(psi_2)$. 
+    然而 $ol(X)_3$ 与 $phi_(1,2)$ 的选取可能不唯一，所以这个同构目前还不是典范的。给定第四个紧化 $ol(X)_4$ 以及紧化之间的态射 $psi_i: ol(X)_4 -> ol(X)_i, i=1,2$，我们必须证明 $R(phi_1)^(-1) compose R(phi_2) = R(psi_1)^(-1) compose R(psi_2)$。 
 
-    For this, we pick a fifth compactification $ol(X)_5$ with morphisms $chi'_i: ol(X)_5 -> ol(X)_i, i = 3,4$. We thus have pairs of morphisms between compactifications: 
+    为此，取第五个紧化 $ol(X)_5$ 及态射 $chi'_i: ol(X)_5 -> ol(X)_i, i = 3,4$。这样我们就得到两对紧化之间的态射： 
     $
       phi_1 compose chi'_3, psi_1 compose chi'_4: ol(X)_5 -> ol(X)_1 \
 
       phi_2 compose chi'_3, psi_2 compose chi'_4: ol(X)_5 -> ol(X)_2
     $
-    By @compactification-filtered, we may pick a sixth compactification $ol(X)_6$ and a morphism $chi: ol(X)_6 -> ol(X)_5$, s.t: 
+    由 @compactification-filtered，可以取第六个紧化 $ol(X)_6$ 及态射 $chi: ol(X)_6 -> ol(X)_5$，使得： 
     $
       phi_1 compose chi'_3 compose chi = psi_1 compose chi'_4 compose chi: ol(X)_6 -> ol(X)_1 \
 
       phi_2 compose chi'_3 compose chi = psi_2 compose chi'_4 compose chi: ol(X)_6 -> ol(X)_2
     $
-    Take $chi_i = chi'_i compose chi: ol(X)_6 -> ol(X)_i, i = 3,4$, and we have the following commutative diagram of compactifications: 
+    取 $chi_i = chi'_i compose chi: ol(X)_6 -> ol(X)_i, i = 3,4$，便得到下面这个紧化之间的交换图： 
     // https://q.uiver.app/#r=typst&q=WzAsMTUsWzAsMywib2woWClfMSJdLFsxLDIsIm9sKFgpXzMiXSxbMyw0LCJvbChYKV80Il0sWzQsMywib2woWClfMiJdLFsyLDMsIm9sKFgpXzYiXSxbMywyLCJYIl0sWzIsMSwiWCJdLFsxLDAsIlgiXSxbMCwxLCJYIl0sWzQsMSwiWCJdLFsyLDUsIlkiXSxbMCw1LCJZIl0sWzQsNSwiWSJdLFsxLDQsIlkiXSxbMyw2LCJZIl0sWzEsMCwicGhpXzEiLDFdLFsxLDMsInBoaV8yIiwxXSxbMiwwLCJwc2lfMSIsMV0sWzIsMywicHNpXzIiLDFdLFs0LDEsImNoaV8zIiwxXSxbNCwyLCJjaGlfNCIsMV0sWzgsMCwial8xIiwxLHsibGFiZWxfcG9zaXRpb24iOjMwfV0sWzcsMSwial8zIiwxXSxbNiw0LCJqXzYiLDEseyJsYWJlbF9wb3NpdGlvbiI6MzB9XSxbNSwyLCJqIiwxLHsibGFiZWxfcG9zaXRpb24iOjIwfV0sWzksMywial8yIiwxLHsibGFiZWxfcG9zaXRpb24iOjMwfV0sWzgsNiwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzcsNiwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzYsNSwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzYsOSwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzAsMTEsIm9sKGYpXzEiLDEseyJsYWJlbF9wb3NpdGlvbiI6NzB9XSxbMSwxMywib2woZilfMyIsMSx7ImxhYmVsX3Bvc2l0aW9uIjozMH1dLFs0LDEwLCJvbChmKV82IiwxLHsibGFiZWxfcG9zaXRpb24iOjcwfV0sWzIsMTQsIm9sKGYpXzQiLDEseyJsYWJlbF9wb3NpdGlvbiI6MzB9XSxbMywxMiwib2woZilfMiIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo3MH1dLFsxMywxMCwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzEwLDE0LCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMTEsMTAsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsxMCwxMiwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
     #context align(center, diagram({
       node((-2, 0), [$ol(X)_1$])
@@ -584,92 +584,92 @@ We are now ready to prove the well-definedness of $R f_!$.
       edge((-2, 2), (0, 2), "=")
       edge((0, 2), (2, 2), "=")
     }, crossing-fill: thm-box-curr-color()))
-    Then since $phi_1 compose chi_3 = psi_1 compose chi_4$, we have: 
+    于是由 $phi_1 compose chi_3 = psi_1 compose chi_4$，有： 
     $
       R(phi_1) compose R(chi_3) = R(psi_1) compose R(chi_4)
     $
-    Similarly: 
+    同理： 
     $
       R(phi_2) compose R(chi_3) = R(psi_2) compose R(chi_4)
     $
-    Thus, $R(phi_1)^(-1) compose R(psi_1) = R(chi_3) compose R(chi_4)^(-1) = R(phi_2)^(-1) compose R(psi_2)$, and so: 
+    因此 $R(phi_1)^(-1) compose R(psi_1) = R(chi_3) compose R(chi_4)^(-1) = R(phi_2)^(-1) compose R(psi_2)$，从而： 
     $
       R(phi_2) compose R(phi_1)^(-1) = R(psi_2) compose R(psi_1)^(-1)
     $
-    We are thereby done. 
+    证毕。 
 ]
 
-Finally, we prove a lemma stating that $R f_*$ for proper $f$ preserves torsion complexes, thus completing the construction of $R f_!$ as a functor on $D_#[tor]$. 
+最后，我们证明一条引理：$f$ 紧合时 $R f_*$ 保持挠复形。这样就把 $R f_!$ 这个 $D_#[tor]$ 上的函子构造出来了。 
 
 #lemma(name: <derived-lower-shriek-preserves-torsion>)[
-  For $f: X -> Y$ proper between noetherian schemes, $R f_*$ sends complexes in $D_#[tor] (X_et, Lambda)$ to complexes in $D_#[tor] (Y_et, Lambda)$. 
+  设 $f: X -> Y$ 是 Noether 概形之间的紧合态射，则 $R f_*$ 把 $D_#[tor] (X_et, Lambda)$ 中的复形送到 $D_#[tor] (Y_et, Lambda)$ 中的复形。 
 ]
 #proof[
-  By @derived-artin-grothendieck-vanishing, $R f_*$ is bounded both above and below. Thus, given a complex $cal(K) in D_#[tor] (X_et, Lambda)$ and a fixed $q$, there exists some truncation $sigma_([a,b]) (cal(K)) in D^b_#[tor] (X_et, Lambda)$ s.t. $R f_* (sigma_([a,b]) cal(K)) -> R f_* cal(K)$ induces an isomorphism on $h^q$. 
+  由 @derived-artin-grothendieck-vanishing，$R f_*$ 的上同调维数上下都有界。于是，给定复形 $cal(K) in D_#[tor] (X_et, Lambda)$ 与固定的 $q$，存在某个截断 $sigma_([a,b]) (cal(K)) in D^b_#[tor] (X_et, Lambda)$，使得 $R f_* (sigma_([a,b]) cal(K)) -> R f_* cal(K)$ 在 $h^q$ 上诱导同构。 
 
-  Thus, it suffices to prove that $R f_*$ sends $D^b_#[tor]$ to $D_#[tor]$. By truncation triangles, it suffices to prove that $R f_*$ sends $cAb_#[tor] (X_et, Lambda)$ to $D_#[tor] (Y_et, Lambda)$. 
+  因此只需证明 $R f_*$ 把 $D^b_#[tor]$ 送到 $D_#[tor]$。由截断三角，只需证明 $R f_*$ 把 $cAb_#[tor] (X_et, Lambda)$ 送到 $D_#[tor] (Y_et, Lambda)$。 
   
-  Denote by $T_n (cal(F))$ the $n$-torsion of a sheaf $cal(F)$ (because the notation $cal(F)[n]$ is taken by shifts of complexes). For every torsion sheaf $cal(F) in cAb_#[tor] (X_et, Lambda)$, by @relative-limit-formula-for-sheaves, 
+  记 $T_n (cal(F))$ 为层 $cal(F)$ 的 $n$-挠部分（因为记号 $cal(F)[n]$ 已被复形的平移占用）。对每个挠层 $cal(F) in cAb_#[tor] (X_et, Lambda)$，由 @relative-limit-formula-for-sheaves， 
   $
     R^q f_* cal(F) = R^q f_* (dirlim_n T_n (cal(F))) = dirlim_n R^q f_* (T_n (cal(F)))
   $
-  is a direct limit of torsion sheaves, hence torsion. Thus, the cohomology sheaves of $R f_* cal(F)$ are torsion, hence $R f_* cal(F)$ is in $D_#[tor] (Y_et, Lambda)$. 
+  这是一族挠层的正向极限，因此是挠的。于是 $R f_* cal(F)$ 的上同调层都是挠层，从而 $R f_* cal(F)$ 属于 $D_#[tor] (Y_et, Lambda)$。 
 ]
 
 #definition(name: <defn-derived-pushforward-with-proper-support>)[
-  Let $f: X -> Y$ be a separated morphism of finite type between noetherian schemes. Pick any compactification: 
+  设 $f: X -> Y$ 是 Noether 概形之间分离、有限型的态射。任取一个紧化： 
   $
     X ->^j ol(X) ->^(ol(f)) Y
   $
-  We define the functor $R f_!$ to be: 
+  定义函子 $R f_!$ 为： 
   $
     R f_!: D_#[tor] (X_et, Lambda) &-> D_#[tor] (Y_et, Lambda) \
     cal(K) &|-> R ol(f)_* j_! cal(K)
   $
-  By @derived-lower-shriek-well-defined and @derived-lower-shriek-preserves-torsion, this functor is well-defined and independent from the compactification chosen. In particular, for any compactification $X ->^j ol(X) ->^(ol(f)) Y$ of $f$, there exists a natural isomorphism: 
+  由 @derived-lower-shriek-well-defined 与 @derived-lower-shriek-preserves-torsion，这个函子良定义，且与所选紧化无关。特别地，对 $f$ 的任意紧化 $X ->^j ol(X) ->^(ol(f)) Y$，存在自然同构： 
   $
     R ol(f)_* j_! cong R f_!: D_#[tor] (X_et, Lambda) &-> D_#[tor] (Y_et, Lambda)
   $
-  compatible with the isomorphisms in @derived-lower-shriek-well-defined. 
+  它与 @derived-lower-shriek-well-defined 中的那些同构相容。 
 
-  This functor is called derived *pushforward with proper support*. 
+  这个函子称为导出的*紧支推前*。 
 ]
 
 #definition(name: <defn-cohomology-with-proper-support>)[
-  Suppose that $X$ is a separated scheme of finite type over $Spec(k)$, with $k$ a separably closed field. Let $f: X -> Spec(k)$ be the structure map. $R Gamma_c (X, -)$ is defined to be the functor: 
+  设 $X$ 是 $Spec(k)$ 上分离、有限型的概形，其中 $k$ 是可分闭域。令 $f: X -> Spec(k)$ 为结构态射。定义 $R Gamma_c (X, -)$ 为函子： 
   $
     D_#[tor] (X_et, Lambda) ->^(R f_!) D_#[tor] (Spec(k)_et, Lambda) ->^tilde D_#[tor] (Lambda)
   $
 
-  This functor is called *cohomology with proper support*. 
+  这个函子称为*紧支上同调*。 
 ]
 
 #notation(name: <proper-support-cohomology-notation>)[
-  For a sheaf $cal(F) in cAb_#[tor] (X_et, Lambda)$: 
+  对层 $cal(F) in cAb_#[tor] (X_et, Lambda)$： 
 
-  - Given a separated morphism $f: X -> Y$ of finite type between noetherian schemes, we denote by: #h(1fr)
+  - 给定 Noether 概形之间分离、有限型的态射 $f: X -> Y$，记：#h(1fr)
     $
       R^q f_! cal(F) := h^q (R f_! cal(F)) \
       f_! cal(F) := h^0 (R f_! cal(F))
     $
 
-  - If $X$ is a separated scheme of finite type over $Spec(k)$ for a separably closed field $k$, we denote by: 
+  - 若 $X$ 是 $Spec(k)$ 上分离、有限型的概形，其中 $k$ 是可分闭域，则记： 
     $
       H^q_c (X, cal(F)) := h^q (R Gamma_c (X, cal(F))) \
       Gamma_c (X, cal(F)) := h^0 (R Gamma_c (X, cal(F)))
     $
 
   #remark[
-    There are some subtleties with this notation: 
+    这套记号有几处微妙之处： 
 
-    - The notation $f_! cal(F) := h^0 (R f_! cal(F))$ clashes with the notation for the functor $f_!$ defined in @etale-lower-shriek-defn. However, these notations are consistent. We will show that for a morphism $f: X -> Y$ that is separated and etale between noetherian schemes: #h(1fr)
+    - 记号 $f_! cal(F) := h^0 (R f_! cal(F))$ 与 @etale-lower-shriek-defn 中函子 $f_!$ 的记号冲突。不过两者是相容的。我们将证明：对 Noether 概形之间分离且平展的态射 $f: X -> Y$，有#h(1fr)
       $
         R f_! = f_!: D_#[tor] (X_et, Lambda) -> D_#[tor] (Y_et, Lambda)
       $
-      where $R f_!$ is pushforward with proper support defined above, and $f_!$ is as defined in @etale-lower-shriek-defn. 
+      其中 $R f_!$ 是上面定义的紧支推前，$f_!$ 则按 @etale-lower-shriek-defn 定义。 
 
-    - Although $Gamma_c (X, -)$ and $f_!$ are left exact functors, $R Gamma_c (X, -)$ and $R f_!$, or $H^q_c (X, -)$ and $R^q f_!$, are not their derived functors. 
+    - 尽管 $Gamma_c (X, -)$ 与 $f_!$ 是左正合函子，$R Gamma_c (X, -)$ 与 $R f_!$（以及 $H^q_c (X, -)$ 与 $R^q f_!$）却不是它们的导出函子。 
 
-      As such, there is a slight abuse of notation. You should keep this point in mind. 
+      因此这里有轻微的记号滥用。这一点请务必记在心里。 
   ]
 ]

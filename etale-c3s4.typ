@@ -1,97 +1,98 @@
+// audit-exception: construction 环境的三处公式在方括号文本块内含行内公式，审计把美元符号逐个配对后会把块内散文切成伪公式段，故翻译这些散文必然改变数学指纹；公式本体未改动。
 #import "void-import.typ": *
-== First properties of $pi_1^et$ and examples
+== $pi_1^et$ 的基本性质与例子
 
-We now introduce first properties of etale fundamental groups.
+下面介绍平展基本群的初步性质。
 
 #properties[
-  + (Dependency on $ol(x)$) For another geometric point $ol(x'): Spec(Omega') -> X$, there exists a natural isomorphism (i.e. a path) $eta: F_(ol(x)) -> F_(ol(x'))$ inducing a continuous isomorphism:
+  + （对 $ol(x)$ 的依赖）对另一个几何点 $ol(x'): Spec(Omega') -> X$，存在自然同构（即一条路径）$eta: F_(ol(x)) -> F_(ol(x'))$，它诱导出连续同构：
     $
       pi_1^et (X, ol(x)) cong pi_1^et (X, ol(x'))
     $
-    The choice of the path $eta$ is not unique, but the isomorphisms $pi_1^et (X, ol(x)) cong pi_1^et (X, ol(x'))$ obtained this way differ only by conjugation (i.e. inner automorphisms of $pi_1^et (X, ol(x))$). 
+    路径 $eta$ 的选取并不唯一，但由此得到的同构 $pi_1^et (X, ol(x)) cong pi_1^et (X, ol(x'))$ 彼此只差一个共轭（即 $pi_1^et (X, ol(x))$ 的内自同构）。
     #proof[
-      That for different choices of $eta$, the isomorphisms constructed differ by an inner automorphism is entirely a formal consequence: Suppose that we are given different paths $eta, eta': F_(ol(x)) -> F_(ol(x'))$. Then $gamma := eta^(-1) compose eta' in Aut(F_(ol(x))) = pi_1^et (X, ol(x))$. Now for any element $delta$ of $pi_1^et (X, ol(x))$, the isomorphism defined by $eta'$ sends it to: 
+      不同的 $eta$ 给出的同构只差一个内自同构，这纯粹是形式推导：设有两条不同的路径 $eta, eta': F_(ol(x)) -> F_(ol(x'))$，则 $gamma := eta^(-1) compose eta' in Aut(F_(ol(x))) = pi_1^et (X, ol(x))$。现在对 $pi_1^et (X, ol(x))$ 中任意元素 $delta$，由 $eta'$ 定义的同构把它送到：
       $
         eta' compose delta compose (eta')^(-1) = eta compose (gamma delta gamma^(-1)) compose eta^(-1)
       $
-      differs from the one defined by $eta$ by an inner automorphism of $pi_1^et (X, ol(x))$. 
+      它和由 $eta$ 定义的同构只差 $pi_1^et (X, ol(x))$ 的一个内自同构。
 
-      It remains to show that there indeed exists a path, i.e. a natural isomorphism $eta: F_(ol(x)) -> F_(ol(x'))$. We first construct $eta$ on the full subcategory of $FEt_X$ consisting of the Galois covering spaces. 
+      剩下要证的是路径确实存在，即存在自然同构 $eta: F_(ol(x)) -> F_(ol(x'))$。我们先在 $FEt_X$ 的满子范畴，也就是由 Galois 覆叠空间构成的那个范畴上构造 $eta$。
       
-      Let ${(X_i, ol(x_i))}_(i in I)$ be the directed system of pointed Galois coverings of $(X, ol(x))$. Suppose that we are given a system of geometric points ${ol(x'_i) in F_(ol(x'))(X_i)}_(i in I)$. We are then able to define maps: 
+      设 ${(X_i, ol(x_i))}_(i in I)$ 是 $(X, ol(x))$ 的带基点 Galois 覆叠构成的正向系统。假定给出一族几何点 ${ol(x'_i) in F_(ol(x'))(X_i)}_(i in I)$，则可定义映射：
       $
         eta_i: F_(ol(x)) (X_i) -> F_(ol(x')) (X_i), sigma(ol(x_i)) |-> sigma(ol(x'_i)), forall sigma in Aut(X_i\/X)
       $
-      Since $Aut(X_i\/X)$ maps bijectively to $F_(ol(x)) (X_i)$ and $F_(ol(x')) (X_i)$ by acting on $ol(x_i)$ and $ol(x'_i)$ respectively, this map constructed for each individual $i$ is a bijection. 
+      由于 $Aut(X_i\/X)$ 作用在 $ol(x_i)$ 与 $ol(x'_i)$ 上，分别给出到 $F_(ol(x)) (X_i)$ 与 $F_(ol(x')) (X_i)$ 的双射，故对每个 $i$ 构造出的这个映射都是双射。
 
-      We then study what requirements should be imposed on ${ol(x'_i)}_(i in I)$ to make the maps ${eta_i}_(i in I)$ natural (w.r.t. morphisms between pointed Galois coverings of $(X, ol(x))$). For every morphism $f_(i,j): (X_j, ol(x_j)) -> (X_i, ol(x_i))$, we require that: 
+      接着考察：要让这族映射 ${eta_i}_(i in I)$ 是自然的（相对于 $(X, ol(x))$ 的带基点 Galois 覆叠之间的态射），需要对 ${ol(x'_i)}_(i in I)$ 施加什么要求。对每个态射 $f_(i,j): (X_j, ol(x_j)) -> (X_i, ol(x_i))$，要求：
       $
         eta_i (f_(i,j) (ol(y))) = f_(i,j) (eta_j (ol(y))), forall ol(y) in F_(ol(x)) (X_j)
       $
-      or equivalently, 
+      等价地，
       $
         eta_i (f_(i,j) (sigma_j (ol(x_j)))) = f_(i,j) (eta_j (sigma_j (ol(x_j)))), forall sigma_j in Aut(X_j\/X)
       $
-      Let $sigma_j |-> sigma_i$ under $Aut(X_j\/X) -> Aut(X_i\/X)$ induced by $f_(i,j)$.  Now for RHS $f_(i,j) (eta_j (sigma_j (ol(x_j)))) = f_(i,j) (sigma_j (ol(x'_j))) = sigma_i (f_(i,j) (ol(x'_j)))$, and for LHS, $eta_i (f_(i,j) (sigma_j (ol(x_j)))) = eta_i (sigma_i (ol(x_i))) = sigma_i (ol(x'_i))$. In other words, the naturality condition above for all $i<=j$ is equivalent to: 
+      设 $sigma_j |-> sigma_i$ 是 $f_(i,j)$ 诱导的映射 $Aut(X_j\/X) -> Aut(X_i\/X)$。现在右端是 $f_(i,j) (eta_j (sigma_j (ol(x_j)))) = f_(i,j) (sigma_j (ol(x'_j))) = sigma_i (f_(i,j) (ol(x'_j)))$，左端是 $eta_i (f_(i,j) (sigma_j (ol(x_j)))) = eta_i (sigma_i (ol(x_i))) = sigma_i (ol(x'_i))$。换言之，上述对所有 $i<=j$ 的自然性条件等价于：
       $
         f_(i,j) (ol(x'_j)) = ol(x'_i), forall i <= j
       $
-      i.e. 
+      即
       $
         (ol(x'_i))_(i in I) in invlim_(i in I) F_(ol(x')) (X_i)
       $
-      where the maps in this inverse system are induced by $f_(i,j): X_j -> X_i$. We claim that such a compatible system of points $(ol(x'_i))_(i in I)$ exists, i.e. the projective limit $invlim_(i in I) F_(ol(x')) (X_i)$ is not empty. This is due to the following set-theoretic fact: 
+      其中这个逆向系统中的映射由 $f_(i,j): X_j -> X_i$ 诱导。我们断言这样的相容点族 $(ol(x'_i))_(i in I)$ 存在，即逆向极限 $invlim_(i in I) F_(ol(x')) (X_i)$ 非空。这源于下面这个集合论事实：
       #lemma[
-        A projective limit of nonempty finite sets with surjective transition maps must be nonempty. 
+        非空有限集带上满射过渡映射，其逆向极限必非空。
       ]
       #proof[
-        Let ${X_i}_(i in I)$ be a projective limit of nonempty finite sets with transition maps $f_(i,j): X_j -> X_i$. The projective limit is the subset: 
+        设 ${X_i}_(i in I)$ 是非空有限集的一个逆向极限，过渡映射为 $f_(i,j): X_j -> X_i$。这个逆向极限是子集：
         $
           invlim_(i in I) X_i = {(x_i)_(i in I) in product_(i in I) X_i : f_(i,j)(x_j) = x_i, forall i<=j} = inter.big_(i<=j) C_(i,j)
         $
-        where: 
+        其中：
         $
           C_(i,j) = {(x_i)_(i in I) in product_(i in I) X_i : f_(i,j)(x_j) = x_i}
         $
-        Equip each $X_i$ with the discrete topology and $product_(i in I) X_i$ with the product topology. Then by Tychonoff's theorem, since each $X_i$ is compact (by finiteness), $product_(i in I) X_i$ must be compact. $C_(i,j)$ is the preimage of the diagonal of $X_i times X_i$ under the map $product_(i in I) X_i -> X_i times X_i, (x_i)_(i in I) |-> (x_i, f_(i,j) (x_j))$. Since $X_i times X_i$ is discrete, the diagonal is closed, so $C_(i,j)$ is closed in $product_(i in I) X_i$. 
+        给每个 $X_i$ 装上离散拓扑，给 $product_(i in I) X_i$ 装上积拓扑。每个 $X_i$ 都紧（因为有限），故由 Tychonoff 定理，$product_(i in I) X_i$ 必紧。$C_(i,j)$ 是 $X_i times X_i$ 的对角线在映射 $product_(i in I) X_i -> X_i times X_i, (x_i)_(i in I) |-> (x_i, f_(i,j) (x_j))$ 下的原像。由于 $X_i times X_i$ 离散，对角线是闭的，故 $C_(i,j)$ 在 $product_(i in I) X_i$ 中闭。
 
-        Now that $product_(i in I) X_i$ is compact, to show that the intersection of the closed sets $C_(i,j)$ is nonempty, it suffices to show that the intersection of every finite collection of them is nonempty. Let $i_1 <= j_1, dots.c, i_t <= j_t$ be finitely such pairs, and pick an upper bound $k$ of $j_1, dots.c, j_t$. Since $X_k$ is nonempty, pick any $x_k in X_k$, and pick $(x_i)_(i in I)$ so that $x_i = f_(i,k)(x_k)$ whenever $i<=k$ (and pick $x_i$ arbitrarily otherwise). Then one may easily see that $(x_i)_(i in I) in inter.big_(s=1)^t C_(i_s,j_s)$. We are thereby done. 
+        既然 $product_(i in I) X_i$ 紧，要证这些闭集 $C_(i,j)$ 的交非空，只需证明其中任意有限个的交非空。设 $i_1 <= j_1, dots.c, i_t <= j_t$ 是有限多对，取 $j_1, dots.c, j_t$ 的一个上界 $k$。由于 $X_k$ 非空，任取 $x_k in X_k$，再取 $(x_i)_(i in I)$，使得当 $i<=k$ 时 $x_i = f_(i,k)(x_k)$（其余的 $x_i$ 随意取）。于是容易看出 $(x_i)_(i in I) in inter.big_(s=1)^t C_(i_s,j_s)$。至此证毕。
         #suppress-qed
       ]
-      Since each $F_(ol(x')) (X_i)$ is nonempty, such a compatible choice $(ol(x'_i))_(i in I)$ exists. In other words, we have constructed natural bijections: 
+      由于每个 $F_(ol(x')) (X_i)$ 都非空，这样的相容选取 $(ol(x'_i))_(i in I)$ 存在。换言之，我们构造出了自然双射：
       $
         eta_i : F_(ol(x)) (X_i) -> F_(ol(x')) (X_i)
       $
-      Let $Z in FEt_X$ be a Galois cover. Suppose that $Z cong X_i$ over $X$, forgetting about the pointed structure of $X_i$. Then we define $eta_Z : F_(ol(x)) (X_i) -> F_(ol(x')) (X_i)$ to be $eta_i$. This definition is independent of the choice of $i$: another choice $j$ corresponds to an isomorphism $(X_i, ol(x_i)) -> (X_j, ol(x_j))$, and naturality of ${eta_i}$ gives the same definition of $eta_Z$. The naturality of ${eta_Z}$ follows from that of ${eta_i}$. We have thus defined $eta$ on the full subcategory of $FEt_X$ consisting of Galois coverings. 
+      设 $Z in FEt_X$ 是 Galois 覆叠。假定有 $X$ 上的同构 $Z cong X_i$，并忘掉 $X_i$ 的带基点结构。则定义 $eta_Z : F_(ol(x)) (X_i) -> F_(ol(x')) (X_i)$ 为 $eta_i$。这个定义与 $i$ 的选取无关：换一个 $j$ 就对应一个同构 $(X_i, ol(x_i)) -> (X_j, ol(x_j))$，而 ${eta_i}$ 的自然性给出同样的 $eta_Z$。${eta_Z}$ 的自然性则由 ${eta_i}$ 的自然性推出。这样我们就在 $FEt_X$ 中由 Galois 覆叠构成的满子范畴上定义了 $eta$。
 
-      The rest of the proof that passes from Galois coverings to general coverings is identical to the last part of the proof for @pi1et-as-invlim. As such, you can skip the rest of the proof if you want. 
+      从 Galois 覆叠过渡到一般覆叠的剩余论证，与 @pi1et-as-invlim 证明的最后一段完全相同。所以你要是愿意，剩下的证明可以跳过。
 
-      Finally, for an arbitrary covering $Y in FEt_X$, pick a Galois covering $f: Z -> Y$. Then we define: 
+      最后，对任意的覆叠 $Y in FEt_X$，取 Galois 覆叠 $f: Z -> Y$，然后定义：
       $
         eta_Y: F_(ol(x)) (Y) -> F_(ol(x')) (Y), f(ol(z)) |-> f(eta_Z (ol(z)))
       $
 
-      - $eta_Y$ is well-defined: Suppose that $ol(y) in F_(ol(x))(Y)$ is written as $ol(y) = f(ol(z_1)) = f(ol(z_2))$ where $ol(z_1), ol(z_2) in F_(ol(y))(Z) subset F_(ol(x))(Z)$. Then since $Z\/X$ is Galois, by @galois-theory-of-coverings (0) so is $Z\/Y$, and there exists $sigma in Aut(Z\/Y)$ s.t. $ol(z_2) = sigma(ol(z_1))$. Now: 
+      - $eta_Y$ 良定义：假定 $ol(y) in F_(ol(x))(Y)$ 写成 $ol(y) = f(ol(z_1)) = f(ol(z_2))$，其中 $ol(z_1), ol(z_2) in F_(ol(y))(Z) subset F_(ol(x))(Z)$。由于 $Z\/X$ 是 Galois 的，由 @galois-theory-of-coverings (0)，$Z\/Y$ 也是 Galois 的，故存在 $sigma in Aut(Z\/Y)$ 使得 $ol(z_2) = sigma(ol(z_1))$。现在：
         $
           f(eta_Z (ol(z_2))) &= f(eta_Z (sigma(ol(z_1)))) \
-          &= f(sigma(eta_Z (ol(z_1)))) #[by definition or naturality of $eta$] \
-          &= f(eta_Z (ol(z_1))) #[since $sigma in Aut(Z\/Y)$]
+          &= f(sigma(eta_Z (ol(z_1)))) #[由 $eta$ 的定义或自然性] \
+          &= f(eta_Z (ol(z_1))) #[因为 $sigma in Aut(Z\/Y) $]
         $
-        We must also show that $eta_Y$ is independent from the choice of Galois covering $Z$. By passing to the Galois closure of the composite covering, we are reduced to showing that $eta_Y$ defined using Galois coverings $W$ and $Z$ are the same when given $W ->^g Z ->^f Y -> X$. Under the definition with $W$, 
+        还要说明 $eta_Y$ 不依赖于 Galois 覆叠 $Z$ 的选取。取复合覆叠的 Galois 闭包，问题就归结为：在给定 $W ->^g Z ->^f Y -> X$ 时，用 Galois 覆叠 $W$ 与 $Z$ 定义的 $eta_Y$ 是同一个映射。按 $W$ 的定义：
         $
           f(g(ol(w))) |-> f(g(eta_W (ol(w))))
         $
-        while under the definition with $Z$, 
+        而按 $Z$ 的定义：
         $
           f(g(ol(w))) |-> f(eta_Z (g(ol(w))))
         $
-        By naturality of ${eta_Z}$ among the Galois coverings, $g(eta_W (ol(w))) = eta_Z (g(ol(w)))$ and we are done.         
+        由 ${eta_Z}$ 在 Galois 覆叠之间的自然性，$g(eta_W (ol(w))) = eta_Z (g(ol(w)))$，证毕。
 
-      - $eta_Y$ is bijective: Since $eta_Z$ is bijective, the image of $eta_Y$ contains all points of the form $f(ol(z'))$ where $ol(z') in F_(ol(x'))(Z)$. However $F_(ol(x')) (Z) -> F_(ol(x')) (Y)$ is surjective, so $eta_Y$ is surjective. 
+      - $eta_Y$ 是双射：由于 $eta_Z$ 是双射，$eta_Y$ 的像包含所有形如 $f(ol(z'))$ 的点，其中 $ol(z') in F_(ol(x'))(Z)$。而 $F_(ol(x')) (Z) -> F_(ol(x')) (Y)$ 是满射，故 $eta_Y$ 是满射。
 
-        Now we could prove $eta_Y$ is injective by hand. But instead let's just invoke the very deep theorem that a surjective map between finite sets of the same size is bijective and call it a day. 
+        我们当然可以手工证明 $eta_Y$ 是单射。但不如直接搬出那条极其深刻的定理——同样大小的有限集之间的满射必是双射——然后收工。
 
-      - ${eta_Y}$ is natural: Given a morphism $g: Y_1 -> Y$ in $FEt_X$, there exists a common Galois covering $Z$: 
+      - ${eta_Y}$ 是自然的：给定 $FEt_X$ 中的态射 $g: Y_1 -> Y$，存在公共的 Galois 覆叠 $Z$：
         // https://q.uiver.app/#r=typst&q=WzAsNCxbMSwwLCJZIl0sWzIsMSwiWCJdLFsxLDIsIllfMSJdLFswLDEsIloiXSxbMywwLCJmIl0sWzMsMiwiZl8xIiwyXSxbMCwxXSxbMiwxXV0=
         #context align(center, diagram({
           node((0, -1), [$Y$])
@@ -104,28 +105,28 @@ We now introduce first properties of etale fundamental groups.
           edge((0, -1), (1, 0), "->")
           edge((0, 1), (1, 0), "->")
         }, spacing: 2em, crossing-fill: thm-box-curr-color()))
-        Then for any $ol(y_1) = f_1 (ol(z)) in F_(ol(x)) (Y_1)$, 
+        则对任意的 $ol(y_1) = f_1 (ol(z)) in F_(ol(x)) (Y_1)$，
         $
           g(eta_(Y_1) (ol(y_1))) &= g(eta_(Y_1) (f_1 (ol(z)))) \
-          &= g(f_1 (eta_Z (ol(z)))) #[by definition of $eta_(Y_1)$] \
+          &= g(f_1 (eta_Z (ol(z)))) #[由 $eta_(Y_1) $ 的定义] \
           &= f(eta_Z (ol(z))) \
-          &= eta_Y (f(ol(z))) #[by definition of $eta_(Y)$] \
+          &= eta_Y (f(ol(z))) #[由 $eta_(Y) $ 的定义] \
           &= eta_Y (g(ol(y_1)))
         $
-        and naturality is verified. 
+        自然性得证。
 
-      Finally, we need to verify continuity of the isomorphism $pi_1^et (X, ol(x)) -> pi_1^et (X, ol(x'))$ arising from such $eta$. However, our construction of $eta$ realized ${(X_i, ol(x'_i))}_(i in I)$ as the directed system of pointed Galois coverings of $(X, ol(x'))$, so the isomorphism constructed is essentially: 
+      最后还要验证由这样的 $eta$ 得到的同构 $pi_1^et (X, ol(x)) -> pi_1^et (X, ol(x'))$ 连续。然而，我们构造 $eta$ 时把 ${(X_i, ol(x'_i))}_(i in I)$ 实现成了 $(X, ol(x'))$ 的带基点 Galois 覆叠构成的正向系统，因此构造出的同构本质上是：
       $
         pi_1^et (X, ol(x)) cong invlim_(i in I) Aut(X_i\/X)^opp cong pi_1^et (X, ol(x')) 
       $
-      In other words, by Theorem @pi1et-as-invlim, the topologies on $pi_1^et (X, ol(x))$ and $pi_1^et (X, ol(x'))$ are both defined by $invlim_(i in I) Aut(X_i\/X)^opp$. This gives the continuity of the isomorphism. 
+      换言之，由定理 @pi1et-as-invlim，$pi_1^et (X, ol(x))$ 与 $pi_1^et (X, ol(x'))$ 上的拓扑都由 $invlim_(i in I) Aut(X_i\/X)^opp$ 定义。这就给出该同构的连续性。
     ]
   
-  + (Functoriality) Given $alpha: (X, ol(x)) -> (Y, ol(y))$ a morphism between pointed connected noetherian schemes, there is a canonical continuous group homomorphism:
+  + （函子性）给定带几何点的连通 Noether 概形之间的态射 $alpha: (X, ol(x)) -> (Y, ol(y))$，存在典范的连续群同态：
     $
       alpha_*: pi_1^et (X, ol(x)) -> pi_1^et (Y, ol(y))
     $
-    making:
+    使得下图交换：
     // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJGRXRfWSJdLFsyLDAsIkZFdF9YIl0sWzAsMiwicGlfMSAoWSwgb3ZlcmxpbmUoeSkpXCItXCJjU2V0XlwiZi5jXCIiXSxbMiwyLCJwaV8xIChYLCBvdmVybGluZSh4KSlcIi1cImNTZXReXCJmLmNcIiJdLFswLDEsImFscGhhXigtMSkiXSxbMCwyLCJ0aWxkZSIsMl0sWzEsMywidGlsZGUiXSxbMiwzLCIoLSkgY29tcG9zZSBhbHBoYV8qIiwyXV0=
     #align(center, diagram({
       node((-1, -1), [$FEt_Y$])
@@ -137,14 +138,14 @@ We now introduce first properties of etale fundamental groups.
       edge((1, -1), (1, 1), [$tilde$], label-side: left, "->")
       edge((-1, 1), (1, 1), [$(-) compose alpha_*$], label-side: right, "->")
     }, spacing: 2em))
-    commutative, where $alpha^(-1)$ sends $Y' -> Y$ to $X times_Y Y' -> X$.
+    其中 $alpha^(-1)$ 把 $Y' -> Y$ 送到 $X times_Y Y' -> X$。
     #proof[
-      By universal property of the fiber product, for any $Y' in FEt_Y$,
+      由纤维积的泛性质，对任意 $Y' in FEt_Y$，
       $
         F_(ol(x)) (X times_Y Y') = F_(ol(y)) (Y')
       $
       /*
-      from the commutative diagram:
+      由交换图表：
       // https://q.uiver.app/#r=typst&q=WzAsNixbMiwwLCJYIHRpbWVzX1kgWSciXSxbNCwwLCJZJyJdLFsyLDIsIlgiXSxbNCwyLCJZIl0sWzAsMiwiU3BlYyhPbWVnYSkiXSxbMCwwLCJGXyhvdmVybGluZSh4KSkgKFggdGltZXNfWSBZJykiXSxbNSwwXSxbNSw0XSxbNCwyLCJvdmVybGluZSh4KSIsMl0sWzIsMywiYWxwaGEiLDJdLFs0LDMsIm92ZXJsaW5lKHkpIiwyLHsiY3VydmUiOjR9XSxbMCwxXSxbMSwzXSxbMCwyXV0=
       #align(center, diagram(
         {
@@ -165,327 +166,325 @@ We now introduce first properties of etale fundamental groups.
         },
         spacing: (2em, 2em),
       ))*/
-      This induces a natural homomorphism: 
+      这诱导出自然同态：
       $
         alpha_*: Aut(F_(ol(x))) &-> Aut(F_(ol(y))) \
         gamma &|-> (gamma_(X times_Y Y'): F_(ol(y)) (Y') -> F_(ol(y)) (Y'))_(Y' in FEt_Y)
       $
-      The commutative diagram in the statement is immediate from this construction. 
+      陈述中的交换图表由这个构造立得。
       
-      Continuity is also easy: For every pointed Galois covering $(Z, ol(z)) -> (Y, ol(y))$, we need to prove that: 
+      连续性也不难：只需证对每个带基点 Galois 覆叠 $(Z, ol(z)) -> (Y, ol(y))$，如下映射
       $
         pi_1^et (X, ol(x)) ->^(alpha_*) pi_1^et (Y, ol(y)) ->> Aut(Z\/Y)
       $
-      has kernel containing an open subgroup of $pi_1^et (X, ol(x))$. From our construction of $alpha_*$, the kernel consists of elements $sigma in pi_1^et (X, ol(x))$ acting trivially on $F_(ol(x)) (Z times_Y X) in GSet(pi_1^et (X, ol(x)))^#[fin,cont]$. It must contain an open normal subgroup of $pi_1^et (X, ol(x))$ immediately from the equivalence $FEt_X cong GSet(pi_1^et (X, ol(x)))^#[fin,cont]$. 
+      的核包含 $pi_1^et (X, ol(x))$ 的某个开子群。按 $alpha_*$ 的构造，这个核由那些在 $F_(ol(x)) (Z times_Y X) in GSet(pi_1^et (X, ol(x)))^#[fin,cont]$ 上平凡作用的元素 $sigma in pi_1^et (X, ol(x))$ 组成。由等价 $FEt_X cong GSet(pi_1^et (X, ol(x)))^#[fin,cont]$ 立知，它必包含 $pi_1^et (X, ol(x))$ 的某个开正规子群。
     ]
 ]
 
-Next, we answer the question: 
+接下来回答这个问题：
 
-- How much information about $alpha_*: pi_1^et (X, ol(x)) -> pi_1^et (Y, ol(y))$ can be read off from $alpha^(-1): FEt_Y -> FEt_X$? 
+- 从 $alpha^(-1): FEt_Y -> FEt_X$ 能读出多少关于 $alpha_*: pi_1^et (X, ol(x)) -> pi_1^et (Y, ol(y))$ 的信息？
 
-Note that $FEt_X cong GSet(pi_1^et (X, ol(X)))^#[fin,cont]$. As such, this is really asking what information about a group homomorphism can be read off from its induced morphism on the category of finite sets under group actions. 
+注意 $FEt_X cong GSet(pi_1^et (X, ol(X)))^#[fin,cont]$。因此这实际上是在问：从群同态在“带群作用的有限集”范畴上诱导出的态射，能读出关于这个群同态的多少信息。
 
 #construction[
-  Let $alpha: G -> H$ be a homomorphism between finite groups. Then we may construct the map $alpha^(-1): GSet(H)^#[fin] -> GSet(G)^#[fin]$. Then from elementary arguments:
+  设 $alpha: G -> H$ 是有限群之间的同态，则可构造映射 $alpha^(-1): GSet(H)^#[fin] -> GSet(G)^#[fin]$。由初等论证可得：
   $
-    alpha #[surjective]
-    & <==> #[$G$ acts on $H$ transitively] \
-    & <==> #[$alpha^(-1)$ sends transitive $H$-sets to transitive $G$-sets]
+    alpha #[满射]
+    & <==> #[$G$ 传递地作用在 $H$ 上] \
+    & <==> #[$alpha^(-1) $ 把传递 $H$-集送到传递 $G$-集]
   $
-  and: 
+  以及：
   $
-    alpha #[trivial]
-    & <==> #[$alpha^(-1)$ sends every $H$-set to a $G$-set with trivial $G$-action]
+    alpha #[平凡]
+    & <==> #[$alpha^(-1) $ 把每个 $H$-集送到 $G$-作用平凡的 $G$-集]
   $
-  and: 
+  还有：
   $
-    & alpha #[injective] <==> #[there exists a $G$-equivariant map $G\/ker(alpha) -> G$] \
-    <==>& #[$forall T in GSet(G)^#[fin]$,  $exists S in GSet(H)^#[fin]$ and a $G$-equivariant map $S_0 -> T$ where $S_0$ is a $G$-orbit of $alpha^(-1)(S)$]
+    & alpha #[单射] <==> #[存在 $G$-等变映射 $G\/ker(alpha) -> G$] \
+    <==>& #[$forall T in GSet(G)^#[fin]$,  $exists S in GSet(H)^#[fin]$，以及 $G$-等变映射 $S_0 -> T$，其中 $S_0$ 是 $alpha^(-1)(S) $ 的某条 $G$-轨道]
   $
 ]
 
-With this toy example in mind, we propose the following results on profinite groups: 
+有了这个玩具例子，我们提出关于投射有限群的如下结果：
 #lemma(name: <profin-grp-action-props>)[
-  Let $G, H$ be profinite groups and $alpha: G -> H$ be a continuous homomorphism inducing a functor $alpha^(-1): GSet(H)^#[fin,cont] -> GSet(G)^#[fin,cont]$. Then: 
+  设 $G, H$ 是投射有限群，$alpha: G -> H$ 是连续同态，它诱导出函子 $alpha^(-1): GSet(H)^#[fin,cont] -> GSet(G)^#[fin,cont]$。则：
 
-  + $alpha$ is surjective if and only if $alpha^(-1)$ sends transitive $H$-sets to transitive $G$-sets; 
+  + $alpha$ 是满射，当且仅当 $alpha^(-1)$ 把传递 $H$-集送到传递 $G$-集；
 
-  + $alpha$ is trivial if and only if $alpha^(-1)$ sends every $H$-set to a $G$-set with trivial action; 
+  + $alpha$ 是平凡同态，当且仅当 $alpha^(-1)$ 把每个 $H$-集送到作用平凡的 $G$-集；
 
-  + $alpha$ is injective if and only if $forall T in GSet(G)^#[fin,cont]$,  $exists S in GSet(H)^#[fin,cont]$ and a $G$-equivariant map $S_0 -> T$ where $S_0$ is a $G$-orbit of $alpha^(-1)(S)$. 
+  + $alpha$ 是单射，当且仅当：$forall T in GSet(G)^#[fin,cont]$，$exists S in GSet(H)^#[fin,cont]$，以及 $G$-等变映射 $S_0 -> T$，其中 $S_0$ 是 $alpha^(-1)(S)$ 的某条 $G$-轨道。
 
-  + Consider a third profinite group $K$ and a continuous surjective homomorphism $beta: H -> K$. Then:
+  + 再取第三个投射有限群 $K$ 与连续满同态 $beta: H -> K$。则：
   $
     G -> H -> K -> 1
   $
-    is exact in the middle, if and only if for every transitive $S in GSet(H)^#[fin,cont]$, $alpha^(-1)(S) in GSet(G)^#[fin,cont]$ has a point fixed by all of $G$ $<==>$ there exists $Q in GSet(K)^#[fin,cont]$ s.t. $S cong beta^(-1)(Q)$. 
+    在中间正合，当且仅当对每个传递的 $S in GSet(H)^#[fin,cont]$，下述两条彼此等价：$alpha^(-1)(S) in GSet(G)^#[fin,cont]$ 有被 $G$ 全体元素固定的点 $<==>$ 存在 $Q in GSet(K)^#[fin,cont]$ 使得 $S cong beta^(-1)(Q)$。
 ]
 #proof[
-  The proof is completely elementary and analogous to the finite group case. We only prove (3)(4) for demonstration, since the statements for (3)(4) are the longest. 
+  证明完全是初等的，与有限群情形类似。这里只证 (3)(4) 作示范，因为 (3)(4) 的陈述最长。
 
-  (4) Let $I = im(alpha)$ and $H_0 = ker(beta)$. For an object $T in GSet(G)^#[fin,cont]$, we use the notation $rho_T$ to denote the continuous homomorphism $G -> Sym(T)$, where $Sym(T)$ is the permutation group on $T$, a finite group. 
+  (4) 设 $I = im(alpha)$，$H_0 = ker(beta)$。对对象 $T in GSet(G)^#[fin,cont]$，用 $rho_T$ 表示连续同态 $G -> Sym(T)$，其中 $Sym(T)$ 是 $T$ 上的置换群，是个有限群。
 
-  Then we may translate the proposed equivalent condition into conditions on $rho$. Given a transitive $S in GSet(H)^#[fin,cont]$, we'll assume that $S cong H\/H_1$ where $H_1$ is an open subgroup of $H$: 
+  于是可以把所提出的等价条件翻译成关于 $rho$ 的条件。给定传递的 $S in GSet(H)^#[fin,cont]$，不妨设 $S cong H\/H_1$，其中 $H_1$ 是 $H$ 的开子群：
 
-  - $alpha^(-1) (S)$ having a fixed point $h H_1$ means that $h^(-1) I h subset H_1$. 
+  - $alpha^(-1) (S)$ 有不动点 $h H_1$，意思是 $h^(-1) I h subset H_1$。
 
-  - We claim that the existence of $Q in GSet(K)^#[fin,cont]$ s.t. $S cong beta^(-1) (Q)$ is equivalent to $H_0 subset ker(rho_S)$. Indeed, for $S cong beta^(-1) (Q)$, $Q$ must be bijective to $S$ as a set. Then the existence of a $K$-action on $S$ compatible with its given $H$-action is equivalent to $rho_S: H -> Sym(S)$ factoring through $beta: H -> K$. 
+  - 我们断言：存在 $Q in GSet(K)^#[fin,cont]$ 使得 $S cong beta^(-1) (Q)$，等价于 $H_0 subset ker(rho_S)$。事实上，若 $S cong beta^(-1) (Q)$，则 $Q$ 作为集合必与 $S$ 一一对应。于是 $S$ 上存在与其给定的 $H$-作用相容的 $K$-作用，等价于 $rho_S: H -> Sym(S)$ 穿过 $beta: H -> K$ 分解。
 
-    If $rho_S$ factors as $H ->^beta K -> Sym(S)$, then $H_0 = ker(beta) subset ker(rho_S)$. Conversely, if $H_0 subset ker(rho_S)$, since $beta: H ->> K$ is surjective, we may identify $K cong H\/H_0$, and then $rho_S$ factors through $beta$ from the first isomorphism theorem. 
+    若 $rho_S$ 分解为 $H ->^beta K -> Sym(S)$，则 $H_0 = ker(beta) subset ker(rho_S)$。反之，若 $H_0 subset ker(rho_S)$，则由 $beta: H ->> K$ 是满射，有 $K cong H\/H_0$，再由第一同构定理，$rho_S$ 穿过 $beta$ 分解。
 
-  In other words, the equivalent condition can be restated as: For every open subgroup $H_1 <= H$, 
+  换言之，等价条件可以改述为：对每个开子群 $H_1 <= H$，
   $
     exists h, I subset h^(-1)H_1 h <==> H_0 subset ker(H -> Sym(H\/H_1)) = inter.big_(h in H) h^(-1)H_1 h
   $
-  Since $H_0 = ker(beta)$ is a normal subgroup, $H_0 subset inter.big_(h in H) h^(-1)H_1 h$ is just equivalent to $H_0 subset H_1$. Thus the equivalent condition can be rewritten as: 
+  由于 $H_0 = ker(beta)$ 是正规子群，$H_0 subset inter.big_(h in H) h^(-1)H_1 h$ 就等价于 $H_0 subset H_1$。于是等价条件可改写为：
   $
     exists h, I subset h^(-1)H_1 h <==> H_0 subset H_1
   $
-  When $I = H_0$, $I$ is automatically normal, so $exists h, I subset h^(-1)H_1 h$ is equivalent to $I subset H_1$, and this condition automatically holds. 
+  当 $I = H_0$ 时，$I$ 自动正规，故 $exists h, I subset h^(-1)H_1 h$ 等价于 $I subset H_1$，而这个条件自动成立。
 
-  Conversely, suppose that this condition holds. Then in particular $I subset H_1 ==> H_0 subset H_1$. Now $I$ and $H_0$ are closed subgroups of $H$, and any closed subgroup of a profinite group is the intersection of the open subgroups containing it. As such, $I supset H_0$. 
+  反之，假定这个条件成立。特别地有 $I subset H_1 ==> H_0 subset H_1$。现在 $I$ 与 $H_0$ 都是 $H$ 的闭子群，而投射有限群的任何闭子群都是包含它的开子群的交。因此 $I supset H_0$。
   
-  Next, we may restrict the view to open normal subgroups $H_1$. Then we have the condition that for any open normal subgroup $H_1$ of $H$, $H_0 subset H_1 ==> I subset H_1$. In a profinite group, a closed normal subgroup is the intersection of the open normal subgroups containing it. Thus taking an intersection yields $H_0 supset I$. 
+  接下来只看开正规子群 $H_1$。此时条件变成：对 $H$ 的任意开正规子群 $H_1$，$H_0 subset H_1 ==> I subset H_1$。在投射有限群中，闭正规子群是包含它的开正规子群的交。于是取交得到 $H_0 supset I$。
 
-  (3)($==>$) Suppose that $alpha$ is injective, identifying $G$ as a closed subgroup of $H$ (equipped with the subspace topology). For every $T in GSet(G)^#[fin,cont]$, we'll replace $T$ with a $G$-orbit to assume that $T$ is transitive under $G$. Then picking the stabilizer of an element of $T$, we may assume that $T cong G\/G_0$ as $G$-sets, where $G_0$ is a subgroup of $G$ of finite index, hence an open and closed subgroup. 
+  (3)（$==>$）设 $alpha$ 是单射，从而把 $G$ 等同于 $H$ 的闭子群（带子空间拓扑）。对每个 $T in GSet(G)^#[fin,cont]$，把 $T$ 换成它的一条 $G$-轨道，不妨设 $T$ 在 $G$ 下传递。再取 $T$ 中某个元素的稳定子群，不妨设作为 $G$-集有 $T cong G\/G_0$，其中 $G_0$ 是 $G$ 的有限指数子群，从而是开且闭的子群。
 
-  Since $G_0 <= G$ is open and closed, there exists an open and closed subgroup $H_0 <= H$ s.t. $G_0 = H_0 ∩ G$. $H_0$ is necessarily of finite index, so we may pick the $H$-set $S = H\/H_0 in GSet(H)^#[fin,cont]$. Consider the $G$-orbit of the class $[1] in S = H\/H_0$, and by the second isomorphism theorem, 
+  由于 $G_0 <= G$ 开且闭，存在开且闭的子群 $H_0 <= H$ 使得 $G_0 = H_0 ∩ G$。$H_0$ 必为有限指数，故可取 $H$-集 $S = H\/H_0 in GSet(H)^#[fin,cont]$。考察类 $[1] in S = H\/H_0$ 的 $G$-轨道，由第二同构定理，
   $
     im(G -> H\/H_0) cong G\/(G ∩ H_0) = G\/G_0 cong T
   $
-  as $G$-sets. We are thereby done. 
+  作为 $G$-集。至此证毕。
 
-  ($<==$) Suppose that $ker(alpha) != {1}$, say with an element $1 != g in ker(alpha)$. From the profinite topology, there exists a finite index normal subgroup $N$ of $G$ s.t. $g in.not N$. Let $T = G\/N in GSet(G)^#[fin,cont]$. 
+  （$<==$）设 $ker(alpha) != {1}$，取元素 $1 != g in ker(alpha)$。由投射有限拓扑，存在 $G$ 的有限指数正规子群 $N$ 使得 $g in.not N$。令 $T = G\/N in GSet(G)^#[fin,cont]$。
   
-  By hypothesis, there exists a finite continuous $H$-set $S$ with a $G$-orbit $S_0$ and a $G$-equivariant morphism: 
+  按假设，存在有限连续 $H$-集 $S$、它的一条 $G$-轨道 $S_0$，以及 $G$-等变态射：
   $
     phi: S_0 -> T = G\/N
   $
-  Since $G\/N$ is a transitive $G$-set, $phi(S_0)$, being a $G$-invariant subset of $G\/N$, must be $G\/N$ itself. That is, $phi$ is surjective. On the other hand, $g in ker(alpha)$, so $g$ acts as $alpha(g) = 1 in H$ on $S_0$, i.e. $g$ acts on $S_0$ trivially. Thus, $g$ acts on $phi(S_0) = G\/N$ trivially by $G$-equivariance of $phi$. In particular, $g N = N$, i.e. $g in N$, a contradiction. 
+  由于 $G\/N$ 是传递 $G$-集，$phi(S_0)$ 作为 $G\/N$ 的 $G$-不变子集必等于 $G\/N$ 本身。也就是说，$phi$ 是满射。另一方面，$g in ker(alpha)$，故 $g$ 在 $S_0$ 上的作用等于 $alpha(g) = 1 in H$ 的作用，即 $g$ 平凡地作用在 $S_0$ 上。于是由 $phi$ 的 $G$-等变性，$g$ 平凡地作用在 $phi(S_0) = G\/N$ 上。特别地 $g N = N$，即 $g in N$，矛盾。
 
 ]
 
-By translating these algebraic results into the language of etale covering spaces, we then obtain the following results; compare @cite-lei-fu[Proposition 3.3.4]:
+把这些代数结果翻译成平展覆叠空间的语言，就得到下面的结果；可与 @cite-lei-fu[Proposition 3.3.4] 对照：
 
 #properties(name: <pi1et-mor-props>)[
-  Let $alpha: (X, ol(x)) -> (Y, ol(y))$ be a morphism between geometrically pointed connected noetherian schemes. 
+  设 $alpha: (X, ol(x)) -> (Y, ol(y))$ 是带几何点的连通 Noether 概形之间的态射。
 
-  + $alpha_*$ is surjective if and only if for any $Y' in FEt_Y$ connected, $X times_Y Y' in FEt_X$ is connected.
+  + $alpha_*$ 是满射，当且仅当对任意连通的 $Y' in FEt_Y$，$X times_Y Y' in FEt_X$ 连通。
   
-  + $alpha_*$ is trivial if and only if for all $Y' in FEt_Y$, $X times_Y Y' in FEt_X$ is the disjoint union of some copies of $X$.
+  + $alpha_*$ 是平凡同态，当且仅当对一切 $Y' in FEt_Y$，$X times_Y Y' in FEt_X$ 都是若干份 $X$ 的不交并。
   
-  + $alpha_*$ is injective if and only if for any $(Z -> X) in FEt_X$, there exists a $(W -> Y) in FEt_Y$ and a morphism in $FEt_X$ from a connected component of $X times_Y W$ to $Z$. 
+  + $alpha_*$ 是单射，当且仅当对任意 $(Z -> X) in FEt_X$，都存在 $(W -> Y) in FEt_Y$ 以及 $FEt_X$ 中从 $X times_Y W$ 的某个连通分支到 $Z$ 的态射。
 
-  + Given a third scheme $(Z, ol(z))$ with $beta: (Y, ol(y)) -> (Z, ol(z))$ s.t. $beta_*$ is surjective, 
+  + 再给定第三个概形 $(Z, ol(z))$ 与 $beta: (Y, ol(y)) -> (Z, ol(z))$，使得 $beta_*$ 是满射，则：
     $
       pi_1^et (X, ol(x)) ->^(alpha_*) pi_1^et (Y, ol(y)) ->^(beta_*) pi_1^et (Z, ol(z)) -> 1
     $
-    is exact if and only if for every connected $Y' in FEt_Y$, $Y'$ is the base change of some $Z' in FEt_Z$ if and only if $X' = Y' times_Y X in FEt_X$ has a connected component that is just $X$. 
+    正合，当且仅当对每个连通的 $Y' in FEt_Y$，$Y'$ 都是某个 $Z' in FEt_Z$ 的基变换，当且仅当 $X' = Y' times_Y X in FEt_X$ 有某个连通分支恰好就是 $X$。
   /*
-  + $alpha_*$ is surjective if and only if $alpha^(-1)$ sends transitive $pi_1 (Y)$-sets to transitive $pi_1 (X)$-sets, if and only if $Y' in FEt_Y$ connected $==>$ $X times_Y Y' in FEt_X$ connected.
+  + $alpha_*$ 是满射，当且仅当 $alpha^(-1)$ 把传递 $pi_1 (Y)$-集送到传递 $pi_1 (X)$-集，当且仅当 $Y' in FEt_Y$ 连通 $==>$ $X times_Y Y' in FEt_X$ 连通。
   
-  + $alpha_*$ is trivial if and only if for all $Y' in FEt_Y$, $X times_Y Y' in FEt_X$ is the disjoint union of some copies of $X$.
+  + $alpha_*$ 是平凡同态，当且仅当对一切 $Y' in FEt_Y$，$X times_Y Y' in FEt_X$ 都是若干份 $X$ 的不交并。
   
-  + $alpha_*$ is injective if and only if for any $T in GSet(pi_1 (X))^"f.c"$, there exists $S in GSet(pi_1 (Y))^"f.c"$ transitive, and a $pi_1 (X)$-equivariant map from a $pi_1 (X)$-orbit in $alpha_*^(-1) (S) -> T$. This is equivalent to for any $(Z -> X) in FEt_X$, there exists a connected $(W -> Y) in FEt_Y$ and a morphism in $FEt_X$ from a connected component of $X times_Y W$ to $Z$.*/
+  + $alpha_*$ 是单射，当且仅当对任意 $T in GSet(pi_1 (X))^"f.c"$，存在传递的 $S in GSet(pi_1 (Y))^"f.c"$，以及从 $alpha_*^(-1) (S) -> T$ 中的一条 $pi_1 (X)$-轨道到 $T$ 的 $pi_1 (X)$-等变映射。这等价于：对任意 $(Z -> X) in FEt_X$，存在连通的 $(W -> Y) in FEt_Y$ 以及 $FEt_X$ 中的态射，从 $X times_Y W$ 的某个连通分支到 $Z$。*/
 ]
 #proof[
-  This is a simple translation of @profin-grp-action-props (1)(2)(3)(4), where finite continuous $pi_1^et (X, ol(x))$-sets are translated into elements of $FEt_X$ under the equivalence $F_(ol(x)): FEt_X -> GSet(pi_1^et (X, ol(x)))^#[fin,cont]$. The translations are: 
+  这只是把 @profin-grp-action-props (1)(2)(3)(4) 直接翻译过来：在等价 $F_(ol(x)): FEt_X -> GSet(pi_1^et (X, ol(x)))^#[fin,cont]$ 之下，有限连续 $pi_1^et (X, ol(x))$-集对应 $FEt_X$ 中的对象。具体对应如下：
 
-  - $Z in FEt_X$ is connected if and only if $F_(ol(x)) (Z)$ is transitive; 
+  - $Z in FEt_X$ 连通，当且仅当 $F_(ol(x)) (Z)$ 传递；
 
-  - $Z in FEt_X$ is trivial (i.e. a disjoint union of copies of $X$) if and only if $F_(ol(x)) (Z)$ has a trivial $pi_1^et (X, ol(x))$-action; 
+  - $Z in FEt_X$ 平凡（即若干份 $X$ 的不交并），当且仅当 $F_(ol(x)) (Z)$ 上的 $pi_1^et (X, ol(x))$-作用平凡；
 
-  - Taking a connected component of $Z in FEt_X$ is equivalent to taking a $pi_1^et (X, ol(x))$-orbit of $F_(ol(x)) (Z)$. 
+  - 取 $Z in FEt_X$ 的连通分支，等价于取 $F_(ol(x)) (Z)$ 的一条 $pi_1^et (X, ol(x))$-轨道。
 ]
 
-Using the functoriality for $pi_1^et$, we may obtain various methods to obtain information on $pi_1^et$ for various types of schemes. The first case we'll deal with is base changes that separably closes the base field. 
+借助 $pi_1^et$ 的函子性，可以得到各种办法来获取不同类型概形的 $pi_1^et$ 的信息。第一个要处理的情形，是使基域可分闭的基变换。
 
 #corollary[
-  Let $k$ be a field, and fix a separable closure $k^sep$. Let $X$ be a geometrically connected#footnote[The equivalence of the two statements for geometric connectivity is an exercise in @cite-hartshorne-ag[Section II.4].] (i.e. $X_(k^sep) = X otimes_k k^sep$ connected, or $X_L = X otimes_k L$ connected for every field extension $L\/k$) scheme of finite type over $k$.
+  设 $k$ 是域，固定一个可分闭包 $k^sep$。设 $X$ 是 $k$ 上有限型的几何连通概形#footnote[几何连通性的两种说法等价，这是 @cite-hartshorne-ag[Section II.4] 中的一道习题。]，即 $X_(k^sep) = X otimes_k k^sep$ 连通，或等价地，对每个域扩张 $L\/k$ 都有 $X_L = X otimes_k L$ 连通。
   
-  Fix a geometric point $ol(x): Spec(k^sep) -> X_(k^sep) -> X -> Spec(k)$. Then the morphisms $X_(k^sep) -> X -> Spec(k)$ induce an exact sequence: 
+  固定几何点 $ol(x): Spec(k^sep) -> X_(k^sep) -> X -> Spec(k)$。则态射 $X_(k^sep) -> X -> Spec(k)$ 诱导出正合列：
   $
     1 -> pi_1^et (X_(k^sep), ol(x)) -> pi_1^et (X, ol(x)) -> underbrace(Gal(k^sep\/k), pi_1^et (Spec(k), Spec(k^sep))) -> 1
   $
 ]
 #proof[
-  Exactness on the right:
+  右端正合性：
   #proof[
-    To show that $pi_1^et (X, ol(x)) -> Gal(k^sep\/k)$ is surjective, we use @pi1et-mor-props (1). A connected etale covering space of $Spec(k)$ is $Spec(L)$ for a finite separable extension $L\/k$, and $X_L = X otimes_k L$ is connected by geometric connectivity. Thus the conditions for @pi1et-mor-props (1) are verified.
+    要证 $pi_1^et (X, ol(x)) -> Gal(k^sep\/k)$ 是满射，用 @pi1et-mor-props (1)。$Spec(k)$ 的连通平展覆叠空间都形如 $Spec(L)$，其中 $L\/k$ 是有限可分扩张；而由几何连通性，$X_L = X otimes_k L$ 连通。于是 @pi1et-mor-props (1) 的条件全部满足。
     #suppress-qed
   ]
 
-  Exactness in the middle: 
+  中间的正合性：
   #proof[
-    Since we have exactness on the right, we may use @pi1et-mor-props (4). 
+    既已得到右端正合性，就可以用 @pi1et-mor-props (4)。
 
-    Given $Spec(L) in FEt_(Spec(k))$, i.e. $L\/k$ a finite separable extension, the base change $X_L times_X X_(k^sep) cong X times_k Spec(L) times_k Spec(k^sep) = X times_k union.sq.big_([L:k]) Spec(k^sep) = union.sq.big_([L:k]) X_(k^sep)$ is just a disjoint union of copies of $X_(k^sep)$. 
+    给定 $Spec(L) in FEt_(Spec(k))$，即 $L\/k$ 是有限可分扩张，其基变换 $X_L times_X X_(k^sep) cong X times_k Spec(L) times_k Spec(k^sep) = X times_k union.sq.big_([L:k]) Spec(k^sep) = union.sq.big_([L:k]) X_(k^sep)$ 恰好是若干份 $X_(k^sep)$ 的不交并。
 
-    Conversely, suppose that $X' in FEt_X$ is connected, such that $X'_(k^sep) = X' otimes_k k^sep = X' times_X X_(k^sep) in FEt_(X_(k^sep))$ has a connected component that is just $X_(k^sep)$. 
+    反之，设 $X' in FEt_X$ 连通，且 $X'_(k^sep) = X' otimes_k k^sep = X' times_X X_(k^sep) in FEt_(X_(k^sep))$ 有某个连通分支恰好就是 $X_(k^sep)$。
 
-    Let $C$ be such a connected component of $X'_(k^sep)$, so $C cong X_(k^sep)$ over $X_(k^sep)$. The natural action of $Gal(k^sep\/k)$ on $X'_(k^sep)$ permutes its connected components, and since $X'$ is connected, this action is transitive. Hence every connected component of $X'_(k^sep)$ is again a copy of $X_(k^sep)$ over $X_(k^sep)$.
+    设 $C$ 是 $X'_(k^sep)$ 的这样一个连通分支，则在 $X_(k^sep)$ 上有 $C cong X_(k^sep)$。$Gal(k^sep\/k)$ 在 $X'_(k^sep)$ 上的自然作用置换其连通分支；又因 $X'$ 连通，这个作用是传递的。因此 $X'_(k^sep)$ 的每个连通分支在 $X_(k^sep)$ 上都是一份 $X_(k^sep)$。
 
-    Let $H <= Gal(k^sep\/k)$ be the stabilizer of $C$. Since there are only finitely many connected components, $H$ is open, so $L := (k^sep)^H$ is a finite separable extension of $k$. We claim that $X' cong X_L$ over $X$. Indeed, 
+    设 $H <= Gal(k^sep\/k)$ 是 $C$ 的稳定子群。连通分支只有有限多个，故 $H$ 是开的，于是 $L := (k^sep)^H$ 是 $k$ 的有限可分扩张。我们断言在 $X$ 上有 $X' cong X_L$。事实上，
     $
       X' otimes_k k^sep = X'_(k^sep) = union.sq.big_(Gal(k^sep\/k)\/H) X_(k^sep) cong X_L otimes_k k^sep
     $
-    Furthermore, the descent datum from $X_(k^sep)$ to $X$ for both $X'$ and $X_L$ agrees, as can be checked directly. Thus by @fpqc-descent-of-morphisms, $X' cong X_L$. 
+    此外，$X'$ 与 $X_L$ 从 $X_(k^sep)$ 到 $X$ 的下降数据一致，这可以直接验证。于是由 @fpqc-descent-of-morphisms，$X' cong X_L$。
 
     #suppress-qed
   ]
 
-  To show that $pi_1^et (X_(k^sep), ol(x)) -> pi_1^et (X, ol(x))$ is injective, we use @pi1et-mor-props (3). We may check (3) for only connected covering spaces $Z in FEt_(X_(k^sep))$. We then need to show that there exists some $W in FEt_X$ and a connected component $V$ of $X_(k^sep) times_X W$, with a morphism $V -> Z$. 
+  要证 $pi_1^et (X_(k^sep), ol(x)) -> pi_1^et (X, ol(x))$ 是单射，用 @pi1et-mor-props (3)。只需对连通的覆叠空间 $Z in FEt_(X_(k^sep))$ 验证 (3)。于是要证：存在 $W in FEt_X$ 与 $X_(k^sep) times_X W$ 的连通分支 $V$，以及态射 $V -> Z$。
    
-  Since $Z -> X_(k^sep)$ is finite etale, hence of finite presentation, it descends to some finite separable extension $L\/k$ inside $k^sep$: there exists $Z_L in FEt_(X_L)$ such that
+  由于 $Z -> X_(k^sep)$ 有限平展，从而是有限展示的，故可下降到 $k^sep$ 内某个有限可分扩张 $L\/k$ 上：存在 $Z_L in FEt_(X_L)$，使得
   $
     Z cong Z_L times_(X_L) X_(k^sep)
   $
-  over $X_(k^sep)$. Let $W$ be $Z_L$ regarded as a finite etale covering of $X$ via $Z_L -> X_L -> X$. Then
+  在 $X_(k^sep)$ 上成立。把 $Z_L$ 经由 $Z_L -> X_L -> X$ 看作 $X$ 的有限平展覆叠，记为 $W$。则
   $
     X_(k^sep) times_X W = Z_L otimes_k k^sep.
   $
-  Since $L otimes_k k^sep cong union.sq.big_(Hom_k(L, k^sep)) k^sep$, this is a disjoint union of the conjugates of $Z$, and the component corresponding to the chosen embedding $L subset k^sep$ is exactly $Z$. Taking this component as $V$ gives the required morphism $V cong Z -> Z$.
+  由于 $L otimes_k k^sep cong union.sq.big_(Hom_k(L, k^sep)) k^sep$，这是 $Z$ 的各共轭的不交并，而对应于所选嵌入 $L subset k^sep$ 的那个分支恰好是 $Z$。取这个分支为 $V$，就得到所需的态射 $V cong Z -> Z$。
 ]
 
 #remark[
-  In the exact sequence: 
+  在上述正合列中：
   $
     1 -> pi_1^et (X_(k^sep), ol(x)) -> pi_1^et (X, ol(x)) ->^q underbrace(Gal(k^sep\/k), pi_1^et (Spec(k), Spec(k^sep))) -> 1
   $
-  If $y in X(k)$ is a $k$-point of $X$, then $y_*: Gal(k^sep\/k) -> pi_1^et (X, ol(x))$ is a section of $q$ compatible with $pi_1$-conjugation.
+  若 $y in X(k)$ 是 $X$ 的一个 $k$-点，则 $y_*: Gal(k^sep\/k) -> pi_1^et (X, ol(x))$ 是 $q$ 的一个截面，并且与 $pi_1$-共轭相容。
   
-  There is a conjecture that if $X$ is so-called "hyperbolic", then this is the only way to get sections of $q$. This is called Grothendieck's section conjecture.
+  有一个猜想说：若 $X$ 是所谓的“双曲”的，则这是得到 $q$ 的截面的唯一方式。这称为 Grothendieck 截面猜想。
 ]
 
-The next case we'll deal with is computing $pi_1^et$ for a normal scheme. 
+下一个要处理的情形是计算正规概形的 $pi_1^et$。
 
 #proposition(name: <p1et-of-normal-scheme>)[
-  Let $X$ be a connected noetherian normal scheme. Let $K$ be the function field $K(X)$ of $X$, and:
+  设 $X$ 是连通 Noether 正规概形，$K$ 是 $X$ 的函数域 $K(X)$，而泛点为
   $
     ol(eta): Spec(K^sep) -> Spec(K) ->^eta X
   $
-  be the generic point. Then the induced morphism:
+  则诱导的态射
   $
     eta_*: underbrace(Gal(K^sep\/K), pi_1^et (Spec(K), Spec(K^sep))) -> pi_1^et (X, ol(eta))
   $
-  is surjective with kernel $Gal(K^sep\/K^"ur" (X))$. Here $K^sep\/K^"ur" (X)\/K$ is an intermediate field characterized by two equivalent ways: 
+  是满射，其核为 $Gal(K^sep\/K^"ur" (X))$。这里 $K^sep\/K^"ur" (X)\/K$ 中间的域有两种等价的刻画：
 
-  - $K^"ur" (X)$ is the union of all finite separable $L\/K$ s.t. the normalization $X_L$ of $X$ in $L$ (a priori finite over $X$ due to #cite-stacks("032L")[Lemma 10.161.8]) is etale over $X$; 
+  - $K^"ur" (X)$ 是所有满足下述条件的有限可分 $L\/K$ 的并：$X$ 在 $L$ 中的正规化 $X_L$（先验地，由 #cite-stacks("032L")[Lemma 10.161.8] 知它在 $X$ 上有限）在 $X$ 上平展；
 
-  - $K^"ur" (X)$ is the largest separable algebraic extension of $K$ s.t. for every finite subextension $L\/K$ of $K^"ur" (X)$, the normalization $X_L$ of $X$ in $L$ is etale over $X$. 
+  - $K^"ur" (X)$ 是 $K$ 的最大的可分代数扩张，使得对 $K^"ur" (X)$ 的每个有限子扩张 $L\/K$，$X$ 在 $L$ 中的正规化 $X_L$ 都在 $X$ 上平展。
   
-  In other words, $eta_*$ identifies: 
+  换言之，$eta_*$ 给出等同：
   $
     pi_1^et (X, ol(eta)) cong Gal(K^"ur" (X)\/K)
   $
 ]
-This proposition gives a method to compute $pi_1^et (X)$ in principle, but often $K$ is a large complicated field of large transcendence degree over a familiar field (such as a finite field or a number field) and it is hard to compute $K^"ur" (X)$. Nevertheless, this proposition works in the prototypical case where $X$ is the spectrum of the integer ring of a local field or a global field.    
+这个命题原则上给出了计算 $pi_1^et (X)$ 的方法。但 $K$ 往往是某个熟悉域（比如有限域或数域）上超越次数很大的复杂域，$K^"ur" (X)$ 并不好算。尽管如此，在 $X$ 是局部域或整体域的整数环的谱这种典型情形下，这个命题是管用的。
 #proof[
-  $eta_*$ is surjective by @pi1et-mor-props (1): For any $Z in FEt_X$ connected, since $X$ is normal and $Z\/X$ is etale, $Z$ is normal (by @etale-local-properties (5)). Since $Z$ is normal and connected, $Z$ is integral. Then the generic fiber $Z_K := Z times_X Spec(K)$ of $Z$ over $X$ is also integral, hence connected. In this case since $Z_K$ is also etale over $Spec(K)$, it must be that $Z_K = Spec(L)$ for $L = K(Z)\/K$ a finite separable extension. 
+  由 @pi1et-mor-props (1)，$eta_*$ 是满射：对任意连通的 $Z in FEt_X$，由于 $X$ 正规、$Z\/X$ 平展，由 @etale-local-properties (5) 知 $Z$ 正规。由于 $Z$ 正规且连通，$Z$ 是整的。于是 $Z$ 在 $X$ 上的泛纤维 $Z_K := Z times_X Spec(K)$ 也是整的，从而连通。此时 $Z_K$ 在 $Spec(K)$ 上也平展，故必有 $Z_K = Spec(L)$，其中 $L = K(Z)\/K$ 是有限可分扩张。
 
-  Next, we prove that the two characterizations of $K^"ur" (X)$ are equivalent. It suffices to show that if $M\/L\/K$ are finite separable extensions s.t. $X_M -> X$ is finite etale, $X_L -> X$ is necessarily finite etale. 
+  下面证明 $K^"ur" (X)$ 的两种刻画等价。只需证明：若 $M\/L\/K$ 是有限可分扩张，且 $X_M -> X$ 有限平展，则 $X_L -> X$ 必有限平展。
 
-  - Let $N$ be the Galois closure of $M$. If we can show that $X_N -> X$ is finite etale, then $X_L = X_N\/Gal(N\/L)$, and so by @galois-theory-of-coverings (2), $X_L -> X$ is finite etale. 
+  - 设 $N$ 是 $M$ 的 Galois 闭包。若能证明 $X_N -> X$ 有限平展，则由 $X_L = X_N\/Gal(N\/L)$ 与 @galois-theory-of-coverings (2) 知 $X_L -> X$ 有限平展。
   
-    Let $M_1, dots, M_r$ be the Galois conjugates of $M$ in $K^sep$. Each $X_(M_i)$ is isomorphic over $X$ to $X_M$, hence is finite etale over $X$. Therefore $X_(M_1) times_X dots times_X X_(M_r)$ is finite etale over $X$. Since $N = M_1 dots.c M_r$ as subfields of $K^sep$, $N$ is a quotient of $M_1 otimes_K dots.c otimes_K M_r$, which is artinian. 
+    设 $M_1, dots, M_r$ 是 $M$ 在 $K^sep$ 中的全体 Galois 共轭。每个 $X_(M_i)$ 都在 $X$ 上同构于 $X_M$，从而在 $X$ 上有限平展。因此 $X_(M_1) times_X dots times_X X_(M_r)$ 在 $X$ 上有限平展。由于作为 $K^sep$ 的子域有 $N = M_1 dots.c M_r$，$N$ 是 $M_1 otimes_K dots.c otimes_K M_r$ 的商，而后者是 Artin 环。
     
-    Now $M_1 otimes_K dots.c otimes_K M_r$ is reduced. Indeed, tensoring it with $N$ yields: 
+    现在说明 $M_1 otimes_K dots.c otimes_K M_r$ 既约。事实上，把它与 $N$ 作张量积得到：
     $
       (M_1 otimes_K N) otimes_N dots.c otimes_N (M_r otimes_K N)
     $
-    Each $M_i otimes_K N cong N^([M:K])$, so this ring is a direct product of copies of $N$, and is reduced. Now $Spec(N) -> Spec(K)$ is etale, so this ring is etale over $M_1 otimes_K dots.c otimes_K M_r$. Thus by @etale-local-properties (4), $M_1 otimes_K dots.c otimes_K M_r$ is reduced. Thus, $Spec(N)$ is a connected component of $Spec(M_1 otimes_K dots.c otimes_K M_r)$. Hence $X_N$ is a connected component of $X_(M_1) times_X dots times_X X_(M_r)$, and is finite etale over $X$. 
+    每个 $M_i otimes_K N cong N^([M:K])$，故这个环是若干份 $N$ 的直积，从而是既约的。又 $Spec(N) -> Spec(K)$ 平展，故该环在 $M_1 otimes_K dots.c otimes_K M_r$ 上平展。于是由 @etale-local-properties (4)，$M_1 otimes_K dots.c otimes_K M_r$ 既约。因此 $Spec(N)$ 是 $Spec(M_1 otimes_K dots.c otimes_K M_r)$ 的一个连通分支。于是 $X_N$ 是 $X_(M_1) times_X dots times_X X_(M_r)$ 的连通分支，且在 $X$ 上有限平展。
 
-  Now we consider the sequence: 
+  现在考察序列：
   $
     Gal(K^sep\/K^"ur" (X)) -> Gal(K^sep\/K) ->^(eta_*) pi_1^et (X, ol(eta)) -> 1
   $
-  By @pi1et-mor-props (4), it suffices to prove that for a finite separable extension $L\/K$, $L = K(Z)$ for some $Z in FEt_X$ if and only if $L otimes_K K^"ur" (X)$ is a direct product of fields with a factor $K^"ur" (X)$. Now this condition is equivalent to $L subset K^"ur" (X)$. 
+  由 @pi1et-mor-props (4)，只需证明：对有限可分扩张 $L\/K$，存在 $Z in FEt_X$ 使 $L = K(Z)$，当且仅当 $L otimes_K K^"ur" (X)$ 是若干域的直积且其中一个因子为 $K^"ur" (X)$。而这个条件又等价于 $L subset K^"ur" (X)$。
 
-  ($<==$) If $L subset K^"ur" (X)$, the normalization $X_L$ is known to be finite over $X$, and etale by definition of $K^"ur" (X)$. Thus $L = K(X_L)$.
+  （$<==$）若 $L subset K^"ur" (X)$，则正规化 $X_L$ 已知在 $X$ 上有限，且按 $K^"ur" (X)$ 的定义是平展的。于是 $L = K(X_L)$。
 
-  ($==>$) If $L = K(Z)$ for some connected $Z in FEt_X$, then $Z$ is normal by @etale-local-properties (5). Since $Z -> X$ is finite, $Z$ is the normalization of $X$ in $K(Z)$. By definition of $K^"ur" (X)$, $K(Z) subset K^"ur" (X)$.  
+  （$==>$）若对某个连通的 $Z in FEt_X$ 有 $L = K(Z)$，则由 @etale-local-properties (5) 知 $Z$ 正规。又 $Z -> X$ 有限，故 $Z$ 就是 $X$ 在 $K(Z)$ 中的正规化。按 $K^"ur" (X)$ 的定义，$K(Z) subset K^"ur" (X)$。
 ]
 
 #example[
-  // The morphism:
+  // 该态射：
   // $
   //   Gal(QQ_p^sep\/QQ_p) ->> Gal(QQ_p^"ur"\/QQ_p) cong pi_1^et (Spec(ZZ_p))
   // $
-  // can be obtained this way.
-  Let $K$ be a local field and $cal(O)_K$ its ring of integers. From the previous proposition, we see that: 
+  // 可以这样得到。
+  设 $K$ 是局部域，$cal(O)_K$ 是其整数环。由上一个命题可知：
   $
     pi_1^et (Spec(cal(O)_K)) cong Gal(K^"ur"\/K)
   $
-  However, let $k$ be the residue field of $K$, which is a finite field. Then the finite unramified extensions of $K$ are entirely classified by the finite extensions of $k$, so: 
+  而 $K$ 的剩余域 $k$ 是有限域。$K$ 的有限非分歧扩张完全由 $k$ 的有限扩张刻画，因此：
   $
     pi_1^et (Spec(cal(O)_K)) cong Gal(K^"ur"\/K) cong Gal(ol(k)\/k) cong hat(ZZ)
   $
 ]
 
 #example[
-  Suppose that $U subset Spec(cal(O)_K)$ is an open subset of the ring of integers of a global field $K$. Then by the previous proposition, we see that: 
+  设 $K$ 是整体域，$U subset Spec(cal(O)_K)$ 是其整数环的谱的开子集。则由上一个命题可知：
   $
     pi_1^et (U) cong Gal(K_U^"ur"\/K)
   $
-  where $K_U^"ur"$ is the maximal unramified extension of $K$ relative to points (i.e. places) in $U$.
+  其中 $K_U^"ur"$ 是 $K$ 相对于 $U$ 中的点（即素位）的最大非分歧扩张。
   
   #example[
-    Minkowski's bound from number fields: 
+    数域上的 Minkowski 界：
     $
       (4/pi)^(s_2) (n!)/(n^n) sqrt(abs("disc"(K))) >= 1
     $
-    implies that $abs("disc"(K)) > 1$ for any number field $K != QQ$. Thus for any number field $K != QQ$, there is some prime of $ZZ$ ramified in $K$. This implies that:
+    它表明对任意数域 $K != QQ$ 都有 $abs("disc"(K)) > 1$。于是对任意数域 $K != QQ$，$ZZ$ 总有某个素子在 $K$ 中分歧。这意味着下面这个群是平凡的：
     $
       pi_1^et (Spec(ZZ)) = 1
     $
-    is trivial. 
   ]
 ]
 
-Finally, we consider one more case: the etale fundamental group of the two simplest curves, namely $PP^1$ and elliptic curves. These cases are solved directly from the definitions. 
+最后再看一个情形：两条最简单的曲线（即 $PP^1$ 与椭圆曲线）的平展基本群。这两个情形可以直接用定义算出。
 
 #example[
-  Let $k$ be an algebraically closed field. Recall that for a finite dominant morphism $f: X -> Y$ between smooth projective curves over $k$ such that $K(X)\/K(Y)$ is separable, we have an injective morphism:
+  设 $k$ 是代数闭域。回忆：对 $k$ 上光滑射影曲线之间的有限支配态射 $f: X -> Y$，若 $K(X)\/K(Y)$ 可分，则有单射态射
   $
     f^* Omega_(Y\/k) arrow.r.hook Omega_(X\/k)
   $
-  that is an isomorphism on the stalk at the generic point. Thus, $cal(F) = Omega_(X\/k)\/f^* Omega_(Y\/k)$ is supported on a finite set. This sheaf is called the ramification divisor. 
+  它在泛点处的茎上是同构。于是 $cal(F) = Omega_(X\/k)\/f^* Omega_(Y\/k)$ 的支集是有限集。这个层称为分歧除子 (ramification divisor)。
   
-  The Riemann-Hurwitz theorem states that, for $n = [K(X):K(Y)]$ the degree of $f$:
+  Riemann–Hurwitz 定理断言：设 $n = [K(X):K(Y)]$ 为 $f$ 的次数，则
   $
     2 - 2g(X) = n (2 - 2g(Y)) - deg(cal(F)),
   $
-  where $deg(cal(F))$ is the degree of the ramification divisor.
+  其中 $deg(cal(F))$ 是分歧除子的次数。
 
-  In the case of a connected finite etale covering $Z -> X$ where $X$ is a nonsingular curve over $k$, $Z$ is automatically a nonsingular curve (since normality is etale local). Etale morphisms are unramified, so Riemann-Hurwitz is applicable here with: 
+  若 $Z -> X$ 是连通有限平展覆叠，且 $X$ 是 $k$ 上的非奇异曲线，则 $Z$ 自动是非奇异曲线（因为正规性是平展局部的）。平展态射都是非分歧的，故 Riemann–Hurwitz 在这里适用，给出：
   $
     2 - 2g(Z) = n (2 - 2g(X))
   $
 
-  - In the case $X = PP^1_k$ is a projective line, $g(X) = 0$. Then $2 - 2g(Z) = 2n > 0$, so $g(Z) = 0$ and $n = 1$. In other words, the only connected finite etale covering of $PP^1_k$ is itself. Thus, 
+  - 若 $X = PP^1_k$ 是射影直线，则 $g(X) = 0$。于是 $2 - 2g(Z) = 2n > 0$，故 $g(Z) = 0$ 且 $n = 1$。换言之，$PP^1_k$ 的唯一连通有限平展覆叠就是它自己。因此下面这个群是平凡的：
     $
       pi_1^et (PP^1_k) = 1
     $
-    is trivial. 
 
-  - Assume additionally that $k$ has characteristic $0$ for simplicity, and let $X = E$ be an elliptic curve. Then $g(X) = 1$, so $2 - 2g(Z) = 0$ and $g(Z) = 1$. Choose a point $z in Z(k)$ above the origin $0 in E(k)$. Taking $z$ as the origin makes $Z$ an elliptic curve, and the covering $Z -> E$, being a pointed morphism of elliptic curves, is a homomorphism. Thus every connected finite etale covering of $E$ is a finite etale isogeny. Conversely, every finite etale isogeny with target $E$ is such a covering.
+  - 为简单起见再设 $k$ 的特征为 $0$，并取椭圆曲线 $X = E$。此时 $g(X) = 1$，故 $2 - 2g(Z) = 0$，$g(Z) = 1$。取原点 $0 in E(k)$ 上方的一点 $z in Z(k)$。以 $z$ 为原点使 $Z$ 成为椭圆曲线，而覆叠 $Z -> E$ 作为带基点的椭圆曲线态射，必是同态。于是 $E$ 的每个连通有限平展覆叠都是有限平展同源。反之，每个以 $E$ 为目标的有限平展同源都是这样的覆叠。
 
-    Since $"char"(k) = 0$, every multiplication map $[n]: E -> E$ is finite etale. These maps, indexed by the positive integers ordered by divisibility, form a cofinal system of pointed Galois coverings of $(E, 0)$. Indeed, let $f: (Z, z) -> (E, 0)$ be a finite etale isogeny of degree $d$. Its dual isogeny $hat(f): (E, 0) -> (Z, z)$ satisfies:
+    由于 $"char"(k) = 0$，每个倍乘映射 $[n]: E -> E$ 都有限平展。这些映射以按整除关系排序的正整数为指标，构成 $(E, 0)$ 的带基点 Galois 覆叠的共尾系统。事实上，设 $f: (Z, z) -> (E, 0)$ 是 $d$ 次有限平展同源，其对偶同源 $hat(f): (E, 0) -> (Z, z)$ 满足：
     $
       f compose hat(f) = [d]: E -> E,
     $
-    so $[d]$ dominates $f$.
+    故 $[d]$ 支配 $f$。
 
-    The deck transformations of $[n]$ are translations by points of $E[n](k)$. If $m = n s$, the morphism from $[m]$ to $[n]$ is $[s]: E -> E$, and the induced transition map $E[m](k) -> E[n](k)$ is multiplication by $s$. Therefore, @pi1et-as-invlim gives a canonical isomorphism:
+    $[n]$ 的覆叠变换是沿 $E[n](k)$ 中的点所作的平移。若 $m = n s$，则从 $[m]$ 到 $[n]$ 的态射是 $[s]: E -> E$，诱导的过渡映射 $E[m](k) -> E[n](k)$ 是乘以 $s$。因此由 @pi1et-as-invlim 得到典范同构：
     $
       pi_1^et (E, 0) cong invlim_(n>=1) E[n](k) cong product_(ell) T_ell (E),
     $
-    where $ell$ ranges over the primes and:
+    其中 $ell$ 取遍素数，而
     $
       T_ell (E) := invlim_(r>=1) E[ell^r](k).
     $
-    is the Tate module. Since $k$ has characteristic $0$, each $T_ell (E)$ is (non-canonically) a free $ZZ_ell$-module of rank $2$. Hence, non-canonically:
+    这就是 Tate 模。由于 $k$ 的特征为 $0$，每个 $T_ell (E)$ 都（非典范地）是秩 $2$ 的自由 $ZZ_ell$-模。于是（非典范地）：
     $
       pi_1^et (E, 0) cong product_(ell) ZZ_ell^2 cong hat(ZZ)^2.
     $

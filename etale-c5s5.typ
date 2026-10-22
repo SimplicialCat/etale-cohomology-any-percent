@@ -1,125 +1,125 @@
 #import "void-import.typ": *
 
-== Topological invariance <sect-topological-invariance>
+== 拓扑不变性 <sect-topological-invariance>
 
-In this section, we prove topological invariance of the etale site, that the etale site is insensitive to universal homeomorphisms, such as nilpotent thickenings and inseparable extensions of base fields. 
+本节我们证明平展景的拓扑不变性：平展景对泛同胚（例如幂零加厚、基域的不可分扩张）不敏感。 
 
 // #definition[
-//   A scheme morphism $f: X' -> X$ is called a *universal homeomorphism*, if it induces a homeomorphism on underlying topological spaces upon any base change. 
+//   若概形态射 $f: X' -> X$ 在任意基变换下都诱导底拓扑空间的同胚，则称它为*泛同胚*。 
 // ]
 
-Throughout this section, you should keep in mind that a universal homeomorphism is equivalent to an integral surjective radicial morphism, by @radicial-morphism-first-props (2). We will use this statement implicitly throughout this section. 
+本节从头到尾都要记住：由 @radicial-morphism-first-props (2)，泛同胚等价于整、满射、根性的态射。下文默认使用这一结论，不再逐次说明。 
 
-The statement of topological invariance is: 
+拓扑不变性的表述是： 
 
-- Given a universal homeomorphism $f: X' -> X$, the induced functor: #h(1fr)
+- 给定泛同胚 $f: X' -> X$，它在平展景上诱导的函子：#h(1fr)
   $
     Et_X -> Et_(X'), U |-> U' = U times_X X'
   $
-  on etale sites is an equivalence of categories. 
+  是范畴等价。 
 
-Now that the underlying sites are equivalent, the notions of etale sheaves on $X$ and $X'$ are also equivalent, in the sense that $f_*: cAb(X'_et) arrows.rl cAb(X_et): f^(-1)$ are equivalences of categories and quasi-inverses to each other. 
+既然底层的景已经等价，$X$ 与 $X'$ 上的平展层概念也随之等价：$f_*: cAb(X'_et) arrows.rl cAb(X_et): f^(-1)$ 是范畴等价，且互为拟逆。 
 
-The proof strategy of topological invariance is an induction on dimension. The induction is carried out through a preliminary limit argument to finite universal homeomorphisms between finite type $ZZ$-schemes, then through induction via the statement: 
+拓扑不变性的证明策略是对维数归纳。归纳之前先做一次极限论证，把问题化归到有限型 $ZZ$-概形之间的有限泛同胚；然后再借助下面这条陈述来做归纳： 
 
-- Topological invariance holds for $f: X' -> X$ if for any geometric point $ol(x)$ of $X$, topological invariance holds for $X' times_X tilde(X)_(ol(x)) -> tilde(X)_(ol(x))$. 
+- 若对 $X$ 的每个几何点 $ol(x)$，拓扑不变性对 $X' times_X tilde(X)_(ol(x)) -> tilde(X)_(ol(x))$ 都成立，则拓扑不变性对 $f: X' -> X$ 成立。 
 
-It will turn out that a universal homeomorphism $Spec(A') -> Spec(A)$ in which $A$ is strict henselian must have $A'$ strict henselian. Now by properties of strict henselian local rings, for any etale $A$-algebra $B$, the $k(A)$-points of $B$ correspond to direct factors $A$ of $B$. These factors may be trivially dropped, leaving us to prove topological invariance for the punctured spectra $U' = Spec(A') - frak(m)_(A') -> U = Spec(A) - frak(m)_A$. However, the local rings of $U$ have dimensions $< dim(A)$ because the closed point was removed. This allows an induction on dimension to be performed. 
+后面会看到，若 $A$ 是严格 Hensel 的，则对任何泛同胚 $Spec(A') -> Spec(A)$，$A'$ 也必定是严格 Hensel 的。于是由严格 Hensel 局部环的性质，对任何平展 $A$-代数 $B$，$B$ 的 $k(A)$-点对应于 $B$ 的直积项 $A$。这些直积项可以平凡地略去，问题于是化归为对去心谱 $U' = Spec(A') - frak(m)_(A') -> U = Spec(A) - frak(m)_A$ 证明拓扑不变性。不过由于闭点已被去掉，$U$ 的局部环维数都 $< dim(A)$。这样便能对维数做归纳了。 
 
-This method is independently come up with by myself, but upon reference checking, it resembles the method of @cite-SGA1. 
+这个方法是我不查文献、自己独立想出来的；后来查了文献，发现它与 @cite-SGA1 中的方法相像。 
 
-We now start the proof. We first prove a lemma for limit arguments. 
+现在开始证明。我们先证明一个供极限论证使用的引理。 
 
 #lemma(name: <passage-of-limit-of-univ-homeo>)[
-  Let $X' = Spec(A') -> Spec(A) = X$ be a universal homeomorphism. Then: 
+  设 $X' = Spec(A') -> Spec(A) = X$ 是泛同胚。则： 
   
-  + We may write $A' = dirlim_lambda A'_lambda$ as a directed limit of finite $A$-algebras in which every $Spec(A'_lambda) -> Spec(A)$ is a universal homeomorphism. 
+  + 可把 $A' = dirlim_lambda A'_lambda$ 写成有限 $A$-代数的正向极限，其中每个 $Spec(A'_lambda) -> Spec(A)$ 都是泛同胚。 
 
-  + If $A'$ is finite over $A$, we may write $A' = dirlim_lambda A'_lambda$ as a directed limit of finite $A$-algebras of finite presentation in which every $Spec(A'_lambda) -> Spec(A)$ is a universal homeomorphism. 
+  + 若 $A'$ 在 $A$ 上有限，则可把 $A' = dirlim_lambda A'_lambda$ 写成有限展示的有限 $A$-代数的正向极限，其中每个 $Spec(A'_lambda) -> Spec(A)$ 都是泛同胚。 
 ]
 #proof[
-  We claim that if the composition $X -> Y -> Z$ is a universal homeomorphism with $X -> Y$ surjective and both morphisms affine, then $X -> Y$ and $Y -> Z$ are both universal homeomorphism. 
+  我们断言：若复合 $X -> Y -> Z$ 是泛同胚，其中 $X -> Y$ 满射且两个态射都仿射，则 $X -> Y$ 与 $Y -> Z$ 都是泛同胚。 
 
-  - Since $X$ is integral over $Z$ with $X -> Y -> Z$ both affine, $X$ is integral over $Y$. Since $X -> Z$ is injective, so is $X -> Y$. Now let $x in X$ lie above $y in Y$ and $z in Z$. Since $X -> Z$ is radicial, $k(x)\/k(z)$ is purely inseparable, and so $k(x)\/k(y)$ is also purely inseparable. Now by @equiv-defns-of-radicial (2), $X -> Y$ is radicial. Thus it is integral surjective radicial, hence a universal homeomorphism. 
+  - 由于 $X -> Y -> Z$ 中的两个态射都仿射，而 $X$ 在 $Z$ 上整，故 $X$ 在 $Y$ 上整。又 $X -> Z$ 是单射，所以 $X -> Y$ 也是单射。现在取 $x in X$，它位于 $y in Y$ 与 $z in Z$ 之上。由于 $X -> Z$ 根性，$k(x)\/k(z)$ 纯不可分，从而 $k(x)\/k(y)$ 也纯不可分。于是由 @equiv-defns-of-radicial (2) 知 $X -> Y$ 根性。因此它整、满射、根性，从而是泛同胚。 
 
-    Since $X -> Y$ and $X -> Z$ are both universal homeomorphisms, so is $Y -> Z$. 
+    $X -> Y$ 与 $X -> Z$ 既然都是泛同胚，$Y -> Z$ 也是泛同胚。 
 
-  (1) We may write $A' = dirlim_lambda A'_lambda$ as a directed limit of its finite type $A$-subalgebras, necessarily finite over $A$ since $A'$ is integral over $A$. Now consider $Spec(A') -> Spec(A'_lambda) -> Spec(A)$. 
+  （1）可把 $A' = dirlim_lambda A'_lambda$ 写成其有限型 $A$-子代数的正向极限；由于 $A'$ 在 $A$ 上整，这些子代数在 $A$ 上必定有限。现在考虑 $Spec(A') -> Spec(A'_lambda) -> Spec(A)$。 
 
-  - Since $A'_lambda -> A'$ is an inclusion, $Spec(A') -> Spec(A'_lambda)$ is dominant. It is also closed by integrality, hence surjective. By definition $A -> A'_lambda$ is finite type and integral, hence finite. 
+  - 由于 $A'_lambda -> A'$ 是包含映射，$Spec(A') -> Spec(A'_lambda)$ 支配。它又因整性而闭，从而是满射。按定义，$A -> A'_lambda$ 有限型且整，故有限。 
 
-  Thus by claim, each $Spec(A'_lambda) -> Spec(A)$ is a universal homeomorphism. 
+  于是由上述断言，每个 $Spec(A'_lambda) -> Spec(A)$ 都是泛同胚。 
 
-  (2) Pick $t_1, dots.c, t_n in A'$ s.t. $A' = A[t_1, dots.c, t_n]$, so that we may write $A' = A[T_1,dots.c,T_n]\/I$ for an ideal $I$. By finiteness, for each $i$ there is a monic polynomial $p_i (T_i) in I$. Now let $K_0 = (p_1 (T_1), dots.c, p_n (T_n))$, and put $A'_0 = A[T_1,dots.c,T_n]\/K_0$, a finite free $A$-algebra. Then $A'_0 ->> A'$ is a surjection with kernel $J$, and put: 
+  （2）取 $t_1, dots.c, t_n in A'$ 使得 $A' = A[t_1, dots.c, t_n]$，于是存在理想 $I$ 使 $A' = A[T_1,dots.c,T_n]\/I$。由有限性，对每个 $i$ 都存在首一多项式 $p_i (T_i) in I$。现在令 $K_0 = (p_1 (T_1), dots.c, p_n (T_n))$，并置 $A'_0 = A[T_1,dots.c,T_n]\/K_0$，这是有限自由 $A$-代数。于是 $A'_0 ->> A'$ 是满射，其核为 $J$。再置： 
   $
-    A' = dirlim_(K_lambda subset J \ #[finitely generated ideal]) A'_0\/K_lambda
+    A' = dirlim_(K_lambda subset J \ #[有限生成理想]) A'_0\/K_lambda
   $
-  Denote $A'_lambda = A'_0\/K_lambda$, and consider $Spec(A') -> Spec(A'_lambda) -> Spec(A)$. By claim, it suffices to prove that for sufficiently large $lambda$, $Spec(A') -> Spec(A'_lambda)$ is surjective. It suffices to show that $Spec(A'_0) - V(J)$ is quasi-compact. Indeed: 
+  记 $A'_lambda = A'_0\/K_lambda$，并考虑 $Spec(A') -> Spec(A'_lambda) -> Spec(A)$。由断言，只需证明当 $lambda$ 充分大时 $Spec(A') -> Spec(A'_lambda)$ 满射。而这又只需证明 $Spec(A'_0) - V(J)$ 拟紧。事实上： 
 
-  - If $Spec(A'_0) - V(J)$ is quasi-compact, there exists finitely many $f_1, dots.c, f_m in J$ s.t. $V(J) = V(f_1, dots.c, f_m)$. Thus $sqrt(J) = sqrt((f_1, dots.c, f_m))$. Thus, whenever $K_lambda supset (f_1, dots.c, f_m)$, we have $Spec(A'_0\/J) = Spec(A') -> Spec(A'_lambda) = Spec(A'_0\/K_lambda)$ a closed immersion defined by a nil ideal, hence surjective. 
+  - 若 $Spec(A'_0) - V(J)$ 拟紧，则存在有限多个 $f_1, dots.c, f_m in J$ 使得 $V(J) = V(f_1, dots.c, f_m)$。于是 $sqrt(J) = sqrt((f_1, dots.c, f_m))$。这样一来，只要 $K_lambda supset (f_1, dots.c, f_m)$，就有 $Spec(A'_0\/J) = Spec(A') -> Spec(A'_lambda) = Spec(A'_0\/K_lambda)$ 是由幂零理想定义的闭浸入，从而是满射。 
 
-  To establish this quasi-compactness, we use the universal homeomorphisms. Since $Spec(A') -> Spec(A)$ is a universal homeomorphism, so is $p: Spec(A' otimes_A A'_0) -> Spec(A'_0)$. 
+  为得到这个拟紧性，我们用泛同胚。由于 $Spec(A') -> Spec(A)$ 是泛同胚，$p: Spec(A' otimes_A A'_0) -> Spec(A'_0)$ 也是泛同胚。 
   
-  Consider $s: Spec(A') -> Spec(A' otimes_A A'_0)$ defined by the multiplication map: 
+  考虑由乘法映射
   $
     phi: A' otimes_A A'_0 -> A'
   $
-  It is elementary to check that its kernel is $([T_1] otimes 1 - 1 otimes [T_1], dots.c, [T_n] otimes 1 - 1 otimes [T_n])$, a finitely generated ideal. Thus, 
+  定义的 $s: Spec(A') -> Spec(A' otimes_A A'_0)$。直接验证可知其核为 $([T_1] otimes 1 - 1 otimes [T_1], dots.c, [T_n] otimes 1 - 1 otimes [T_n])$，这是有限生成理想。因此， 
   $
     s(Spec(A')) = V(ker(phi))
   $
-  has quasi-compact complement. We claim that $p^(-1) (V(J)) = s(Spec(A'))$ on underlying set. Indeed, $p compose s: Spec(A') -> Spec(A'_0)$ is the structure map, identifying $Spec(A')$ with $V(J)$. Thus since $p$ is a homeomorphism, $p^(-1) (V(J)) = s(Spec(A'))$. 
+  该集合的补集拟紧。我们断言在底空间上有 $p^(-1) (V(J)) = s(Spec(A'))$。事实上，$p compose s: Spec(A') -> Spec(A'_0)$ 是结构映射，它把 $Spec(A')$ 与 $V(J)$ 等同起来。因此，既然 $p$ 是同胚，就有 $p^(-1) (V(J)) = s(Spec(A'))$。 
   
-  Thus $p^(-1) (V(J))$ has quasi-compact complement, and so does $V(J)$ since $p$ is a homeomorphism. Thus, truncating the directed system to those $J supset K_lambda supset (f_1, dots.c, f_m)$ concludes the proof. 
+  于是 $p^(-1) (V(J))$ 的补集拟紧；又因 $p$ 是同胚，$V(J)$ 的补集也拟紧。因此，把正向系统截断到满足 $J supset K_lambda supset (f_1, dots.c, f_m)$ 的那部分，就完成了证明。 
 ]
 
 #theorem(name: <top-invariance>)[
-  For any universal homeomorphism $f: X' -> X$, the induced functor: #h(1fr)
+  对任何泛同胚 $f: X' -> X$，它在平展景上诱导的函子：#h(1fr)
   $
     Et_X -> Et_(X'), U |-> U' = U times_X X'
   $
-  on etale sites is an equivalence of categories. 
+  是范畴等价。 
 ]
 #proof[
-  We denote by "topological invariance holds for $f: X' -> X$" for the statement that the induced map: 
+  所谓“对 $f: X' -> X$ 的拓扑不变性成立”，指的是平展景上诱导的映射
   $
     f: Et_X -> Et_(X'), U |-> U' = U times_X X'
   $
-  on etale sites is an equivalence of categories. 
+  是范畴等价。 
 
-  // The first few steps are reductions through limit arguments. Firstly, note that by @passage-to-limit-of-properties (3d), given a projective limit $S = invlim_i S_i$ of qcqs schemes under affine transition maps, 
+  // 最初几步都是用极限论证做化归。首先注意，由 @passage-to-limit-of-properties (3d)，给定拟紧拟分离概形在仿射过渡映射下的逆向极限 $S = invlim_i S_i$，
   // $
-  //   Et_S^#[qcqs] cong dirlim_i Et_(S_i)^#[qcqs]
+  //   Et_S^#[拟紧拟分离] cong dirlim_i Et_(S_i)^#[拟紧拟分离]
   // $
-  // where $Et_S^#[qcqs]$ denotes the full subcategory of $Et_S$ consisting of qcqs schemes. 
+  // 其中 $Et_S^#[拟紧拟分离]$ 表示 $Et_S$ 中由拟紧拟分离概形组成的满子范畴。 
   
   #lemma[
-    For every universal homeomorphism $f: X' -> X$, $Et_X -> Et_(X')$ is faithful. 
+    对每个泛同胚 $f: X' -> X$，$Et_X -> Et_(X')$ 忠实。 
   ]
   #proof[
-    Given $Y, Z in Et_X$ and $u, v in Hom_X (Y, Z)$ giving rise to $u',v' in Hom_(X') (Y', Z')$. Form the graphs $Gamma_u, Gamma_v: Y -> Y times_X Z$. These graphs, since $Z -> X$ is etale, are open immersions. Furthermore, it is purely formal that they base change to the graphs: 
+    给定 $Y, Z in Et_X$ 与 $u, v in Hom_X (Y, Z)$，它们诱导 $u',v' in Hom_(X') (Y', Z')$。作图像 $Gamma_u, Gamma_v: Y -> Y times_X Z$。由于 $Z -> X$ 平展，这两个图像都是开浸入。此外，沿 $X' -> X$ 作基变换后它们变成下面的图像，这一点纯粹是形式上的：
     $
       Gamma_(u'), Gamma_(v'): Y' -> Y' times_(X') Z'
     $
-    along $X' -> X$. Suppose that $u' = v'$. Then $Gamma_(u') (Y') = Gamma_(v') (Y')$. Since $Y' times_(X') Z' -> Y times_X Z$ is a homeomorphism, $Gamma_u (Y) = Gamma_v (Y)$. Thus, as open immersions, $Gamma_u = Gamma_v$, and upon projecting along $Y times_X Z -> Z$, we see that $u = v$. 
+    设 $u' = v'$，则 $Gamma_(u') (Y') = Gamma_(v') (Y')$。由于 $Y' times_(X') Z' -> Y times_X Z$ 是同胚，$Gamma_u (Y) = Gamma_v (Y)$。于是作为开浸入有 $Gamma_u = Gamma_v$；再沿 $Y times_X Z -> Z$ 投影，即见 $u = v$。 
   ]
 
-  Thus, we may assume faithfulness and only prove fullness and essential surjectivity. 
+  忠实性至此已无待证明，我们只需再证全与本质满。 
 
-  Step 1. Topological invariance holds for all universal homeomorphisms, if it holds for all universal homeomorphisms between affine schemes. 
+  第一步。若拓扑不变性对所有仿射概形之间的泛同胚成立，则它对所有泛同胚成立。 
 
-  #proof_[Proof of Step 1][
-    Assume topological invariance for universal homeomorphisms between affine schemes. Let $f: X' -> X$ be a general universal homeomorphism. Cover $X$ by affine opens ${X_i}$, take $X_(i,j) = X_i inter X_j$, and form the base changes $f_i: X'_i -> X_i, f_(i,j): X'_(i,j) -> X_(i,j)$ of $f$. Each $f_i$ is a universal homeomorphism between affine schemes(, where $X'_i$ is affine since $f_i$ is integral and $X_i$ is affine). 
+  #proof_[第一步的证明][
+    假定仿射概形之间的泛同胚满足拓扑不变性。设 $f: X' -> X$ 是一般的泛同胚。用仿射开集 ${X_i}$ 覆盖 $X$，令 $X_(i,j) = X_i inter X_j$，并作 $f$ 的基变换 $f_i: X'_i -> X_i, f_(i,j): X'_(i,j) -> X_(i,j)$。每个 $f_i$ 都是仿射概形之间的泛同胚（这里 $X'_i$ 仿射，因为 $f_i$ 整而 $X_i$ 仿射）。 
 
-    We first prove full faithfulness. For etale $X$-schemes $Y, Z$, form the base changes $Y_i, Z_i$ and $Y_(i,j), Z_(i,j)$. Scheme morphisms glue on open covers, so we have equalizers: 
+    先证全忠实。对平展 $X$-概形 $Y, Z$，作基变换 $Y_i, Z_i$ 与 $Y_(i,j), Z_(i,j)$。概形态射可以在开覆盖上粘接，因此有等化子： 
     $
       Hom_X (Y, Z) -> product_i Hom_(X_i) (Y_i, Z_i) arrows.rr product_(i,j) Hom_(X_(i,j)) (Y_(i,j), Z_(i,j))
     $
-    and: 
+    以及： 
     $
       Hom_(X') (Y', Z') -> product_i Hom_(X'_i) (Y'_i, Z'_i) arrows.rr product_(i,j) Hom_(X'_(i,j)) (Y'_(i,j), Z'_(i,j))
     $
-    We now have a diagram: 
+    于是得到图表： 
     // https://q.uiver.app/#r=typst&q=WzAsNixbMCwwLCJIb21fWCAoWSwgWikiXSxbMSwwLCJwcm9kdWN0X2kgSG9tXyhYX2kpIChZX2ksIFpfaSkiXSxbMiwwLCJwcm9kdWN0XyhpLGopIEhvbV8oWF8oaSxqKSkgKFlfKGksaiksIFpfKGksaikpIl0sWzAsMSwiSG9tXyhYJykgKFknLCBaJykiXSxbMSwxLCJwcm9kdWN0X2kgSG9tXyhYJ19pKSAoWSdfaSwgWidfaSkiXSxbMiwxLCJwcm9kdWN0XyhpLGopIEhvbV8oWCdfKGksaikpIChZJ18oaSxqKSwgWidfKGksaikpIl0sWzAsM10sWzEsNF0sWzIsNV0sWzAsMV0sWzEsMiwiIiwxLHsib2Zmc2V0IjoxfV0sWzEsMiwiIiwxLHsib2Zmc2V0IjotMX1dLFs0LDUsIiIsMSx7Im9mZnNldCI6LTF9XSxbNCw1LCIiLDEseyJvZmZzZXQiOjF9XSxbMyw0XV0=
     #align(center, diagram({
       node((0, 0), [$Hom_X (Y, Z)$])
@@ -138,79 +138,79 @@ We now start the proof. We first prove a lemma for limit arguments.
       edge((1, 1), (2, 1 + 0.12), "->")
       edge((0, 1), (1, 1), "->")
     }))
-    with commuting parallelograms and equalizer rows. 
+    其中各个平行四边形都交换，每一行都是等化子。 
 
-    - By our assumption on topological invariance for universal homeomorphisms between affine schemes, the middle vertical arrow is bijective. We have already proved faithfulness, so all vertical arrows are injective. 
+    - 按我们对仿射概形之间泛同胚的拓扑不变性假设，中间的竖直箭头是双射。忠实性已证，故所有竖直箭头都是单射。 
 
-      By diagram tracing, the first arrow is surjective, so we have full faithfulness. 
+      追图可知第一个箭头满射，于是得到全忠实。 
 
-    Next, we prove essential surjectivity. For any etale $X'$-scheme $Y'$, form $Y'_i = Y' times_(X') X'_i$. By the affine case, each $Y'_i$ descends to an etale $X_i$-scheme $Y_i$. By full faithfulness, there are compatible isomorphisms $Y_i times_(X_i) X_(i,j) cong Y_j times_(X_j) X_(i,j)$. They thus glue to an etale $X$-scheme $Y$ s.t. $Y' cong Y times_X X'$. 
+    接着证本质满。对任何平展 $X'$-概形 $Y'$，作 $Y'_i = Y' times_(X') X'_i$。由仿射情形，每个 $Y'_i$ 都下降为平展 $X_i$-概形 $Y_i$。由全忠实，存在相容的同构 $Y_i times_(X_i) X_(i,j) cong Y_j times_(X_j) X_(i,j)$。于是它们粘成平展 $X$-概形 $Y$，使得 $Y' cong Y times_X X'$。 
   ]
 
-  To proceed, we prove a lemma that allows us to replace $Et_(Spec(A))$ with the category of etale $A$-algebras, thus introducing necessary qcqs conditions. 
+  下面证明一个引理，借助它可以把 $Et_(Spec(A))$ 换成平展 $A$-代数构成的范畴，从而引入必要的拟紧拟分离条件。 
 
   #lemma(name: <top-invariance-et-to-et-aff>)[
-    Let $f: X' = Spec(A') -> X = Spec(A)$ be a universal homeomorphism, and denote by $Et_S^#[aff]$ the full category of $Et_S$ consisting of affine schemes. Then topological invariance holds for $f$ (i.e. $Et_X -> Et_(X')$ is an equivalence), if and only if $Et_X^#[aff] -> Et_(X')^#[aff]$ is an equivalence. 
+    设 $f: X' = Spec(A') -> X = Spec(A)$ 是泛同胚，并记 $Et_S^#[aff]$ 为 $Et_S$ 中由仿射概形组成的满子范畴。则拓扑不变性对 $f$ 成立（即 $Et_X -> Et_(X')$ 是等价），当且仅当 $Et_X^#[aff] -> Et_(X')^#[aff]$ 是等价。 
   ]
   #proof[
-    Note that $Y in Et_X$ is affine if and only if $Y' = Y times_X X'$ is affine. Indeed, if $Y$ is affine then $Y'$ is obviously affine. Conversely, if $Y'$ is affine, note that $Y' -> Y$ is integral and surjective. By @passage-to-limit-of-morphisms, we may write $Y' = invlim_i Y'_i -> Y$ where $Y'_i$ are finite $Y$-schemes of finite presentation. Each $Y'_i -> Y$ is surjective, and by #cite-stacks("01Z6")[Lemma 32.4.13], $Y'_i$ is affine for sufficiently large $i$. Thus $Y$ admits a finite surjection from an affine scheme, and is affine by Chevalley's theorem. This immediately gives the ($==>$) direction. We now focus on the ($<==$) direction and assume that $Et_X^#[aff] -> Et_(X')^#[aff]$ is an equivalence. 
+    注意 $Y in Et_X$ 仿射当且仅当 $Y' = Y times_X X'$ 仿射。事实上，若 $Y$ 仿射则 $Y'$ 显然仿射。反之设 $Y'$ 仿射，注意 $Y' -> Y$ 整且满射。由 @passage-to-limit-of-morphisms，有 $Y' = invlim_i Y'_i -> Y$，其中各 $Y'_i$ 是有限展示的有限 $Y$-概形。每个 $Y'_i -> Y$ 都满射；由 #cite-stacks("01Z6")[Lemma 32.4.13]，当 $i$ 充分大时 $Y'_i$ 仿射。于是存在从仿射概形到 $Y$ 的有限满射，由 Chevalley 定理知 $Y$ 仿射。这立刻给出 ($==>$) 方向。下面集中处理 ($<==$) 方向，假定 $Et_X^#[aff] -> Et_(X')^#[aff]$ 是等价。 
  
-    We first demonstrate full faithfulness. Faithfulness is known, so it suffices to prove fullness. Indeed, let $Y, Z in Et_X$ and let $u' in Hom_(X') (Y', Z')$, cover $Z'$ by affine opens ${Z'_i}$, and $Y'$ by affine opens ${Y'_j}$ s.t. $u'(Y'_j) subset Z'_(alpha(j))$ for some index $alpha(j)$. We may now restrict to maps $u'_j: Y'_j -> Z'_(alpha(j))$. 
+    先证全忠实。忠实性已知，故只需证全。具体说，取 $Y, Z in Et_X$ 与 $u' in Hom_(X') (Y', Z')$，用仿射开集 ${Z'_i}$ 覆盖 $Z'$，用仿射开集 ${Y'_j}$ 覆盖 $Y'$，使得存在指标 $alpha(j)$ 满足 $u'(Y'_j) subset Z'_(alpha(j))$。于是可限制到映射 $u'_j: Y'_j -> Z'_(alpha(j))$。 
 
-    By essential surjectivity in the affine case, $Y'_j, Z'_i in Et_(X')$ descend to $Y_j, Z_i in Et_X$. Then by full faithfulness in the affine case, there exist maps $u_j: Y_j -> Z_(alpha(j))$ base changing to $u'_j$. By faithfulness, the maps $Y_j ->^(u_j) Z_(alpha(j)) -> Z$ are compatible on $Y_j inter Y_(j')$, and thus glue to a map $u: Y -> Z$ base changing to $u'$. We thus obtain fullness. 
+    由仿射情形的本质满，$Y'_j, Z'_i in Et_(X')$ 下降为 $Y_j, Z_i in Et_X$。再由仿射情形下的全忠实，存在基变换到 $u'_j$ 的映射 $u_j: Y_j -> Z_(alpha(j))$。由忠实性，映射 $Y_j ->^(u_j) Z_(alpha(j)) -> Z$ 在 $Y_j inter Y_(j')$ 上相容，于是粘成基变换到 $u'$ 的映射 $u: Y -> Z$。这样就得到全。 
 
-    Finally, for essential surjectivity, take any $Y' in Et_(X')$. Cover $Y'$ by affine opens ${Y'_i}$ and by the affine case, $Y'_i = Y_i times_X X'$ for some affine $Y_i in Et_X$. Let $Y'_(i,j) = Y'_i inter Y'_j$ descend to opens $Y^((1))_(i,j) subset Y_i, Y^((2))_(i,j) subset Y_j$, and then by full faithfulness, there are compatible isomorphisms $Y_(i,j)^((1)) cong Y_(i,j)^((2))$, allowing us to glue ${Y_i}$ to $Y in Et_X$ that base changes to $Y'$. This concludes the proof. 
+    最后证本质满。取任意 $Y' in Et_(X')$，用仿射开集 ${Y'_i}$ 覆盖 $Y'$；由仿射情形，$Y'_i = Y_i times_X X'$，其中 $Y_i in Et_X$ 仿射。设 $Y'_(i,j) = Y'_i inter Y'_j$ 下降为开集 $Y^((1))_(i,j) subset Y_i, Y^((2))_(i,j) subset Y_j$；再由全忠实，存在相容的同构 $Y_(i,j)^((1)) cong Y_(i,j)^((2))$，从而可以把 ${Y_i}$ 粘成 $Y in Et_X$，它在基变换后给出 $Y'$。证毕。 
   ]
 
-  We will use the above lemma implicitly throughout the rest of the proof. 
+  下面的证明会默认使用上面这个引理。 
 
-  To proceed, we use limit arguments. Let $S = invlim_i S_i$ be a projective limit of affine schemes. Then by @passage-to-limit-of-morphisms and @passage-to-limit-of-properties (1a)(3d), 
+  接下来我们改用极限论证。设 $S = invlim_i S_i$ 是仿射概形的逆向极限。则由 @passage-to-limit-of-morphisms 与 @passage-to-limit-of-properties (1a)(3d) 有 
   $
     Et_S^#[aff] cong dirlim_i Et_(S_i)^#[aff]
   $ 
 
-  Step 2. Topological invariance holds for all universal homeomorphisms, if it holds for all finite universal homeomorphisms of finite presentation between affine schemes. 
+  第二步。若拓扑不变性对所有仿射概形之间有限展示的有限泛同胚成立，则它对所有泛同胚成立。 
   #proof[
-    By Step 1, it suffices to deal with a universal homeomorphism $f: Spec(A') = X' -> X = Spec(A)$ between affine schemes. By @passage-of-limit-of-univ-homeo (1), we may write $X' = invlim_i X'_i$ as a projective limit of finite $X$-schemes, in which each $f_i: Spec(A'_i) = X'_i -> X$ is a universal homeomorphism. By @passage-of-limit-of-univ-homeo (2), we may write each $X'_i = invlim_j X'_(i,j)$ as a projective limit of finite $X$-schemes of finite presentation, in which each $f_(i,j): X'_(i,j) -> X$ is a universal homeomorphism. 
+    由第一步，只需处理仿射概形之间的泛同胚 $f: Spec(A') = X' -> X = Spec(A)$。由 @passage-of-limit-of-univ-homeo (1)，可把 $X' = invlim_i X'_i$ 写成有限 $X$-概形的逆向极限，其中每个 $f_i: Spec(A'_i) = X'_i -> X$ 都是泛同胚。由 @passage-of-limit-of-univ-homeo (2)，又可把每个 $X'_i = invlim_j X'_(i,j)$ 写成有限展示的有限 $X$-概形的逆向极限，其中每个 $f_(i,j): X'_(i,j) -> X$ 都是泛同胚。 
 
-    Now that each $f_(i,j)$ is a finite universal homeomorphism of finite presentation, by this assumed case of topological invariance, we have $Et_X cong Et_(X'_(i,j))$. Now, 
+    既然每个 $f_(i,j)$ 都是有限展示的有限泛同胚，按所假定的这一情形，有 $Et_X cong Et_(X'_(i,j))$。现在， 
     $
       Et_(X'_i)^#[aff] cong dirlim_j Et_(X'_(i,j))^#[aff] cong dirlim_j Et_X^#[aff] cong Et_X^#[aff]
     $
-    and so: 
+    从而： 
     $
       Et_(X')^#[aff] cong dirlim_i Et_(X'_i)^#[aff] cong dirlim_i Et_X^#[aff] cong Et_X^#[aff]
     $
-    and we are done. 
+    证毕。 
   ]
 
-  Step 3. Topological invariance holds for all universal homeomorphisms, if it holds for all finite universal homeomorphisms between finite type affine $ZZ$-schemes. 
+  第三步。若拓扑不变性对所有有限型仿射 $ZZ$-概形之间的有限泛同胚成立，则它对所有泛同胚成立。 
 
   #proof[
-    By Step 2, it suffices to deal with a finite universal homeomorphism of finite type $f: Spec(A') = X' -> X = Spec(A)$ between affine schemes. Writing $A = dirlim_i A_i$ as a directed limit of finite type $ZZ$-algebras. Let $X_i = Spec(A_i)$, and by @passage-to-limit-of-morphisms, there exists a finite stage $i_0$ and $f_(i_0): X'_(i_0) -> X_(i_0)$ whose base change along $X -> X_(i_0)$ is $f: X' -> X$. Base change $f_(i_0)$ to $f_i: X'_i -> X_i$ at stages $i>=i_0$, and by @passage-to-limit-of-properties (2a)(3g) and (3g) applied to the diagonal, upon enlarging $i_0$, we have all $f_i$ being finite universal homeomorphisms. Thus each $f_i$ is a finite universal homeomorphism between finite type $ZZ$-schemes, so by the assumed case $Et_(X'_i) cong Et_(X_i)$. Thus, 
+    由第二步，只需处理仿射概形之间有限型的有限泛同胚 $f: Spec(A') = X' -> X = Spec(A)$。把 $A = dirlim_i A_i$ 写成有限型 $ZZ$-代数的正向极限。令 $X_i = Spec(A_i)$。由 @passage-to-limit-of-morphisms，存在有限阶段 $i_0$ 与 $f_(i_0): X'_(i_0) -> X_(i_0)$，它沿 $X -> X_(i_0)$ 的基变换就是 $f: X' -> X$。把 $f_(i_0)$ 在阶段 $i>=i_0$ 作基变换得 $f_i: X'_i -> X_i$；由 @passage-to-limit-of-properties (2a)(3g) 以及把 (3g) 用于对角态射，适当放大 $i_0$ 后可使所有 $f_i$ 都是有限泛同胚。于是每个 $f_i$ 都是有限型 $ZZ$-概形之间的有限泛同胚，按所假定的情形有 $Et_(X'_i) cong Et_(X_i)$。于是 
     $
       Et_(X')^#[aff] cong dirlim_i Et_(X'_i)^#[aff] cong dirlim_i Et_(X_i)^#[aff] cong Et_X^#[aff]
     $
-    and we are done. 
+    证毕。 
   ]
 
-  After this limit argument, we are ready to perform the induction. We prove the key lemma first: 
+  极限论证到此结束，可以开始归纳了。我们先证明关键的引理： 
 
   #lemma[
-    Let $f: Spec(A') = X' -> X = Spec(A)$ be a finite universal homeomorphism between affine schemes. 
+    设 $f: Spec(A') = X' -> X = Spec(A)$ 是仿射概形之间的有限泛同胚。 
 
-    Topological invariance holds for $f$, if for every geometric point $ol(x)$ of $X$, topological invariance holds for the base change $tilde(f)_(ol(x)): tilde(X)_(ol(x)) times_X X' -> tilde(X)_(ol(x))$. 
+    若对 $X$ 的每个几何点 $ol(x)$，拓扑不变性对基变换 $tilde(f)_(ol(x)): tilde(X)_(ol(x)) times_X X' -> tilde(X)_(ol(x))$ 成立，则拓扑不变性对 $f$ 成立。 
   ]
   #proof[
-    (Fully faithfulness) Faithfulness is already known, so we only deal with fullness. Let $Y, Z in Et_X^#[aff]$ and $u' in Hom_(X') (Y', Z')$. For every point $x in X$, let $ol(x)$ be a geometric point above $x$. Topological invariance holds for $tilde(f)_(ol(x)): tilde(X)_(ol(x)) times_X X' -> tilde(X)_(ol(x))$. Thus, the base change $tilde(u)'_(ol(x)) in Hom_(X' times_X tilde(X)_(ol(x))) (Y' times_X tilde(X)_(ol(x)), Z' times_X tilde(X)_(ol(x)))$ is base changed from a morphism $tilde(u)_(ol(x)) in Hom_(tilde(X)_(ol(x))) (Y times_X tilde(X)_(ol(x)), Z times_X tilde(X)_(ol(x)))$. 
+    （全忠实）忠实性已知，故只处理全。取 $Y, Z in Et_X^#[aff]$ 与 $u' in Hom_(X') (Y', Z')$。对每一点 $x in X$，取 $x$ 上方的一个几何点 $ol(x)$。拓扑不变性对 $tilde(f)_(ol(x)): tilde(X)_(ol(x)) times_X X' -> tilde(X)_(ol(x))$ 成立。因此，存在某个态射 $tilde(u)_(ol(x)) in Hom_(tilde(X)_(ol(x))) (Y times_X tilde(X)_(ol(x)), Z times_X tilde(X)_(ol(x)))$，而 $tilde(u)'_(ol(x)) in Hom_(X' times_X tilde(X)_(ol(x))) (Y' times_X tilde(X)_(ol(x)), Z' times_X tilde(X)_(ol(x)))$ 正是它的基变换。 
 
-    By @passage-to-limit-of-morphisms (1), there exists an etale neighborhood $(V, ol(v)) -> (X, ol(x))$ and a morphism $u_V: Y times_X V -> Z times_X V$ that base changes to $tilde(u)_(ol(x))$. By @passage-to-limit-of-morphisms (3), up to shrinking $(V, ol(v))$, we may assume that the base change $u'_V: Y' times_X V -> Z' times_X V$ is the base change of $u'$ along $V -> X$. By shrinking $V$ further, we may assume that $V$ is affine. 
+    由 @passage-to-limit-of-morphisms (1)，存在平展邻域 $(V, ol(v)) -> (X, ol(x))$ 与态射 $u_V: Y times_X V -> Z times_X V$，它基变换到 $tilde(u)_(ol(x))$。由 @passage-to-limit-of-morphisms (3)，适当缩小 $(V, ol(v))$，不妨设基变换 $u'_V: Y' times_X V -> Z' times_X V$ 正是 $u'$ 沿 $V -> X$ 的基变换。再把 $V$ 缩小一点，不妨设 $V$ 仿射。 
 
-    Repeat this process for every point $x in X$ and picking a finite subcover, we see that there exists a surjective etale $V -> X$ and a morphism $u_V: Y times_X V -> Z times_X V$, satisfying: 
+    对每一点 $x in X$ 重复这一过程并取有限子覆盖，可知存在满射的平展态射 $V -> X$ 与态射 $u_V: Y times_X V -> Z times_X V$，满足： 
 
-    - The base change $u'_V: Y' times_X V -> Z' times_X V$ along $X' -> X$, is exactly the same as the base change of $u'$ along $V -> X$. 
+    - 沿 $X' -> X$ 的基变换 $u'_V: Y' times_X V -> Z' times_X V$，与 $u'$ 沿 $V -> X$ 的基变换完全一致。 
 
-    Put $V_2 = V times_X V$, and $V' = X' times_X V, V'_2 = X' times_X V_2$. By fpqc descent of morphisms, we have a diagram: 
+    令 $V_2 = V times_X V$，以及 $V' = X' times_X V, V'_2 = X' times_X V_2$。由态射的 fpqc 下降，我们有图表： 
     // https://q.uiver.app/#r=typst&q=WzAsNixbMCwwLCJIb21fWCAoWSwgWikiXSxbMCwxLCJIb21fKFgnKSAoWScsIFonKSJdLFsxLDAsIkhvbV9WIChZIHRpbWVzX1ggViwgWiB0aW1lc19YIFYpIl0sWzIsMCwiSG9tXyhWXzIpIChZIHRpbWVzX1ggVl8yLCBaIHRpbWVzX1ggVl8yKSJdLFsxLDEsIkhvbV8oVicpIChZJyB0aW1lc18oWCcpIFYnLCBaJyB0aW1lc18oWCcpIFYnKSJdLFsyLDEsIkhvbV8oVidfMikgKFknIHRpbWVzXyhYJykgVidfMiwgWicgdGltZXNfKFgnKSBWJ18yKSJdLFswLDJdLFsxLDRdLFswLDFdLFsyLDRdLFszLDVdXQ==
     #align(center, diagram({
       node((0, 0), [$Hom_X (Y, Z)$])
@@ -229,194 +229,194 @@ We now start the proof. We first prove a lemma for limit arguments.
       edge((1, 1), (2, 1 + 0.12), "->", $beta_(2,2)$, label-side: right)
       edge((1, 1), (2, 1 - 0.12), "->", $beta_(2,1)$, label-side: left)
     }))
-    in which the rows are equalizers and every diagram commutes. The maps $g_(1,2,3)$ are injective by faithfulness, and we have $g_2 (u_V) = u'_V = alpha_2 (u')$. Now: 
+    其中各行都是等化子，且整个图表交换。由忠实性，映射 $g_(1,2,3)$ 都是单射，并且 $g_2 (u_V) = u'_V = alpha_2 (u')$。现在： 
     $
       g_3 (beta_(1,1) (u_V)) = beta_(2,1) (g_2 (u_V)) = beta_(2,1) (alpha_2 (u')) = beta_(2,2) (alpha_2 (u')) = beta_(2,2) (g_2 (u_V)) = g_3 (beta_(1,2) (u_V))
     $
-    Since $g_3$ is injective, $beta_(1,1) (u_V) = beta_(1,2) (u_V)$, and since the first row is an equalizer, there exists $u in Hom_X (Y, Z)$ s.t. $alpha_1 (u) = u_V$. Now: 
+    由于 $g_3$ 是单射，$beta_(1,1) (u_V) = beta_(1,2) (u_V)$；又因第一行是等化子，存在 $u in Hom_X (Y, Z)$ 使得 $alpha_1 (u) = u_V$。于是： 
     $
       alpha_2 (u') = g_2 (u_V) = g_2 (alpha_1 (u)) = alpha_2 (g_1 (u))
     $
-    and so $u' = g_1 (u)$. Thus $u'$ is in the image of $Hom_X (Y, Z) -> Hom_(X') (Y', Z')$, concluding the proof of fully faithfulness. 
+    从而 $u' = g_1 (u)$。这说明 $u'$ 落在 $Hom_X (Y, Z) -> Hom_(X') (Y', Z')$ 的像中，全忠实得证。 
 
-    (Essential surjectivity) Let $Y' in Et_(X')^#[aff]$. For every point $x in X$, let $ol(x)$ be a geometric point above $x$. Topological invariance holds for $tilde(f)_(ol(x)): tilde(X)_(ol(x)) times_X X' -> tilde(X)_(ol(x))$. Thus, there exists some $tilde(Y)_(ol(x)) in Et_(tilde(X)_(ol(x)))$ s.t. $X' times_X tilde(Y)_(ol(x)) cong tilde(X)_(ol(x)) times_X Y'$. By @passage-to-limit-of-properties (1a)(3d), there exists an affine etale neighborhood $(V, ol(v)) -> (X, ol(x))$ and an affine etale $Y_V in Et_V^#[aff]$ s.t. $tilde(Y)_(ol(x)) = tilde(X)_(ol(x)) times_V Y_V$. Let $Y'_V = X' times_X Y_V$. Then, 
+    （本质满）设 $Y' in Et_(X')^#[aff]$。对每一点 $x in X$，取 $x$ 上方的一个几何点 $ol(x)$。拓扑不变性对 $tilde(f)_(ol(x)): tilde(X)_(ol(x)) times_X X' -> tilde(X)_(ol(x))$ 成立。因此存在某个 $tilde(Y)_(ol(x)) in Et_(tilde(X)_(ol(x)))$，使得 $X' times_X tilde(Y)_(ol(x)) cong tilde(X)_(ol(x)) times_X Y'$。由 @passage-to-limit-of-properties (1a)(3d)，存在仿射平展邻域 $(V, ol(v)) -> (X, ol(x))$ 与仿射平展的 $Y_V in Et_V^#[aff]$，使得 $tilde(Y)_(ol(x)) = tilde(X)_(ol(x)) times_V Y_V$。令 $Y'_V = X' times_X Y_V$。则 
     $
       tilde(X)_(ol(x)) times_X Y'_V cong tilde(X)_(ol(x)) times X' times_X Y_V cong X' times_X tilde(Y)_(ol(x)) cong tilde(X)_(ol(x)) times_X Y'
     $
-    Hence, by @passage-to-limit-of-morphisms (3), upon shrinking $V$, we may assume $V times_X Y' cong Y'_V := X' times_X Y_V$. 
+    于是由 @passage-to-limit-of-morphisms (3)，缩小 $V$ 后不妨设 $V times_X Y' cong Y'_V := X' times_X Y_V$。 
 
-    Repeat this process for every point $x in X$ and pick a finite subcover. We see that there exists a surjective affine etale $V ->> X$ and an affine etale $Y_V in Et_V^#[aff]$ s.t: 
+    对每一点 $x in X$ 重复这一过程并取有限子覆盖，可知存在满射的仿射平展态射 $V ->> X$ 与仿射平展的 $Y_V in Et_V^#[aff]$，使得： 
     $
       X' times_X Y_V cong V times_X Y' 
     $
 
-    Write $V = Spec(A_1)$ so $A_1$ is a surjective etale $A$-algebra, and $A'_1 = A_1 otimes_A A'$. Write $Y' = Spec(B')$. Then our condition translates to: 
+    写 $V = Spec(A_1)$，于是 $A_1$ 是满射的平展 $A$-代数，且 $A'_1 = A_1 otimes_A A'$。再写 $Y' = Spec(B')$。则上述条件变成： 
 
-    - We have an etale $A_1$-algebra $B_1$ and an isomorphism: #h(1fr)
+    - 我们有平展 $A_1$-代数 $B_1$ 与同构：#h(1fr)
       $
         phi: B_1 otimes_A A' -> B' otimes_A A_1
       $
 
-    We now define an isomorphism $eta: B_1 otimes_A A_1 -> A_1 otimes_A B_1$ as follows. A morphism $s$ suffixed by a permutation will denote a permutation of tensor factors. A suffix to a morphism denotes the tensor factors it acts on. We first define it up to tensoring with $A'$: 
+    现在如下定义同构 $eta: B_1 otimes_A A_1 -> A_1 otimes_A B_1$。带置换下标的 $s$ 表示张量因子的置换；而态射的下标表示它所作用的张量因子。我们先定义它与 $A'$ 作张量积之后的版本： 
     $
       eta': B_1 otimes_A A_1 otimes_A A' &->^(phi_(1,3)) B' otimes_A A_1 otimes_A A_1 ->^(s_((1,2))) A_1 otimes_A B' otimes_A A_1 ->^(phi_(2,3)^(-1)) A_1 otimes_A B_1 otimes_A A'
     $
-    Now $B_1 otimes_A A_1$ and $A_1 otimes_A B_1$ are etale $A$-algebras. Thus, by fully faithfulness, $eta'$ descends to an isomorphism: 
+    现在 $B_1 otimes_A A_1$ 与 $A_1 otimes_A B_1$ 都是平展 $A$-代数。于是由全忠实，$eta'$ 下降为同构： 
     $
       eta: B_1 otimes_A A_1 -> A_1 otimes_A B_1
     $
-    We now verify the cocycle condition. 
+    下面验证余圈条件。 
 
-    - By fully faithfulness, it suffices to verify the cocycle conditions tensoring $A'$. Expanding, we need to show that the following composition is exactly $eta'_(1,3,4)$: 
+    - 由全忠实，只需验证与 $A'$ 作张量积之后的余圈条件。展开后，要证下述复合恰好是 $eta'_(1,3,4)$： 
       $
         B_1 otimes_A A_1 otimes_A A_1 otimes_A A' &-->^(phi_(1,4)) B' otimes_A A_1 otimes_A A_1 otimes_A A_1 -->^(s_((1,2))) A_1 otimes_A B' otimes_A A_1 otimes_A A_1 \
         &-->^(phi_(2,4)^(-1)) A_1 otimes_A B_1 otimes_A A_1 otimes_A A' -->^(phi_(2,4)) A_1 otimes_A B' otimes_A A_1 otimes_A A_1 \
         &-->^(s_((2,3))) A_1 otimes_A A_1 otimes_A B' otimes_A A_1 -->^(phi_(3,4)^(-1)) A_1 otimes_A A_1 otimes_A B_1 otimes_A A'
       $
-      We may cancel $phi_(2,4)^(-1)$ and $phi_(2,4)$, and then fuse $s_((2,3)) compose s_((1,2)) = s_((1,3))$. Then the composition becomes: 
+      这里可以把 $phi_(2,4)^(-1)$ 与 $phi_(2,4)$ 消去，再利用 $s_((2,3)) compose s_((1,2)) = s_((1,3))$ 作合并。于是该复合变成： 
       $
         B_1 otimes_A A_1 otimes_A A_1 otimes_A A' &-->^(phi_(1,4)) B' otimes_A A_1 otimes_A A_1 otimes_A A_1 -->^(s_((1,3))) A_1 otimes_A A_1 otimes_A B' otimes_A A_1 \
         &-->^(phi_(3,4)^(-1)) A_1 otimes_A A_1 otimes_A B_1 otimes_A A'
       $
-      which is just $eta_(1,3,4)$. 
+      而这就是 $eta_(1,3,4)$。 
 
-    Thus, by fpqc descent, there exists an $A$-module $B$ and an isomorphism $delta: B otimes_A A_1 cong B_1$. Furthermore, by descending the multiplication map on $B_1 otimes_(A_1) B_1 -> B_1$ to a map $B otimes_A B -> B$, we may equip $B$ with the structure of an $A$-algebra, making $delta$ a ring homomorphism. Now we have isomorphisms: 
+    于是由 fpqc 下降，存在 $A$-模 $B$ 与同构 $delta: B otimes_A A_1 cong B_1$。进一步，把乘法映射 $B_1 otimes_(A_1) B_1 -> B_1$ 下降为映射 $B otimes_A B -> B$，就可使 $B$ 带有 $A$-代数结构，并使 $delta$ 成为环同态。现在有同构： 
     $
       B otimes_A A' otimes_A A_1 ->^(delta_(1,3)) B_1 otimes_A A' ->^phi B' otimes_A A_1 
     $
-    Since $A -> A_1$ is faithfully flat, this gives an isomorphism $B otimes_A A' cong B'$, thus descending $B'$ to an $A$-algebra $B$. It remains to show that $B$ is an etale $A$-algebra. Indeed, $B otimes_A A_1 cong B_1$ is an etale $A_1$-algebra, and by faithfully flat descent of etaleness (@fpqc-descent-of-properties (5)), $B$ is an etale $A$-algebra. Taking $Y = Spec(B) in Et_X$, we have $Y' cong X' times_X Y$ and we are done. 
+    由于 $A -> A_1$ 忠实平坦，这给出同构 $B otimes_A A' cong B'$，从而把 $B'$ 下降为 $A$-代数 $B$。剩下要证的是 $B$ 是平展 $A$-代数。事实上，$B otimes_A A_1 cong B_1$ 是平展 $A_1$-代数，而由平展性的忠实平坦下降（@fpqc-descent-of-properties (5)），$B$ 是平展 $A$-代数。取 $Y = Spec(B) in Et_X$，就有 $Y' cong X' times_X Y$，证毕。 
   ]
 
-  Next, observe that: 
+  接下来观察： 
 
-  - Suppose that $Spec(A') = X' -> X = Spec(A)$ is a finite universal homeomorphism in which $A$ is a strict henselian local ring. Then $A'$ is a finite $A$-algebra. By @finite-over-henselian-is-henselian, $A'$ is a direct product of strict henselian local $A$-algebras. However, since $Spec(A')$ is homeomorphic to $Spec(A)$, it only has one closed point. Thus $A'$ itself is local. It is thus strict henselian too. 
+  - 设 $Spec(A') = X' -> X = Spec(A)$ 是有限泛同胚，其中 $A$ 是严格 Hensel 局部环。则 $A'$ 是有限 $A$-代数。由 @finite-over-henselian-is-henselian，$A'$ 是严格 Hensel 局部 $A$-代数的直积。然而 $Spec(A')$ 同胚于 $Spec(A)$，只有一个闭点，故 $A'$ 本身是局部的。于是它也严格 Hensel。 
 
-  We are now ready to perform the induction. 
+  现在可以做归纳了。 
   #lemma[
-    Topological invariance holds for any finite universal homeomorphism $f: X' -> X$ between noetherian schemes of finite dimension. 
+    拓扑不变性对有限维 Noether 概形之间的任何有限泛同胚 $f: X' -> X$ 成立。 
   ]
   #proof[
-    Perform induction on $d = dim(X) = dim(X')$. Assume as the inductive hypothesis that topological invariance holds for any finite universal homeomorphism between noetherian schemes of dimension $<=d-1$. 
+    对 $d = dim(X) = dim(X')$ 归纳。归纳假设是：拓扑不变性对维数 $<=d-1$ 的 Noether 概形之间的任何有限泛同胚成立。 
 
-    By the same argument as in Step 1, to show that topological invariance holds for $f$, it suffices to show that it holds for $f_i: f^(-1) (X_i) -> X_i$ for every affine open $X_i subset X$. Now $dim(X_i) <= dim(X) = d$, so we may replace $f$ with $f_i$ and assume that $X', X$ are affine. Now by the previous lemma, it suffices to show that for any geometric point $ol(x)$ of $X$, topological invariance holds for $tilde(f)_(ol(x)): X' times_X tilde(X)_(ol(x)) -> tilde(X)_(ol(x))$. Note that $dim(tilde(X)_(ol(x))) = dim(cal(O)_(X,x)) <= dim(X) <= d$. 
+    与第一步同样的论证表明：要证拓扑不变性对 $f$ 成立，只需证它对 $f$ 在每个仿射开集 $X_i subset X$ 上的限制 $f_i: f^(-1) (X_i) -> X_i$ 成立。现在 $dim(X_i) <= dim(X) = d$，故可把 $f$ 换成 $f_i$，从而不妨设 $X', X$ 仿射。再由上一个引理，只需证：对 $X$ 的每个几何点 $ol(x)$，拓扑不变性对 $tilde(f)_(ol(x)): X' times_X tilde(X)_(ol(x)) -> tilde(X)_(ol(x))$ 成立。注意 $dim(tilde(X)_(ol(x))) = dim(cal(O)_(X,x)) <= dim(X) <= d$。 
 
-    Thus, replacing $f$ with $tilde(f)_(ol(x))$, we may assume that $f: Spec(A') = X' -> X = Spec(A)$ is a finite universal homeomorphism in which $A$ is a strict henselian local ring with $dim(A) <= d$. As observed above, $A'$ is also a strict henselian local ring. Take $U = Spec(A) - frak(m)_A, U' = Spec(A') - frak(m)_(A')$ to be the punctured spectra, so $f_U: U' -> U$ is another universal homeomorphism. 
+    于是把 $f$ 换成 $tilde(f)_(ol(x))$，不妨设 $f: Spec(A') = X' -> X = Spec(A)$ 是有限泛同胚，其中 $A$ 是严格 Hensel 局部环且 $dim(A) <= d$。如上所观察，$A'$ 也是严格 Hensel 局部环。取去心谱 $U = Spec(A) - frak(m)_A, U' = Spec(A') - frak(m)_(A')$，则 $f_U: U' -> U$ 也是泛同胚。 
     
-    Note that as a punctured spectrum, $dim(U) = dim(X) - 1 <= d - 1$. Hence, the inductive hypothesis gives topological invariance for $f_U$. 
+    注意作为去心谱，$dim(U) = dim(X) - 1 <= d - 1$。于是归纳假设给出 $f_U$ 的拓扑不变性。 
 
-    Now: 
+    现在： 
 
-    - For any etale $A$-algebra $B$, points of $Spec(B\/frak(m)_A B)$ correspond bijectively to sections $B -> A$. These sections $Spec(A) -> Spec(B)$ are closed immersions as sections of a separated morphism, and are open immersions as sections of an etale morphism. Thus, every $k(A)$-point of $Spec(B)$ corresponds to a connected component of $Spec(B)$ isomorphic to $Spec(A)$. Thus $B$ has a direct product decomposition: 
+    - 对任何平展 $A$-代数 $B$，$Spec(B\/frak(m)_A B)$ 的点与截面 $B -> A$ 一一对应。这些截面 $Spec(A) -> Spec(B)$ 作为分离态射的截面是闭浸入，作为平展态射的截面是开浸入。于是 $Spec(B)$ 的每个 $k(A)$-点都对应 $Spec(B)$ 的一个同构于 $Spec(A)$ 的连通分支。因此 $B$ 有直积分解： 
       $
         B = A^(Spec(B\/frak(m)_A B)) times B_1
       $ 
-      where $B_1$ has image above $U$, thus $Spec(B_1) in Et_U$. 
+      其中 $B_1$ 的像落在 $U$ 之上，故 $Spec(B_1) in Et_U$。 
 
-      The same decomposition:
+      同样的分解 
       $
         B' = A'^(Spec(B'\/frak(m)_(A')B')) times B'_1
       $
-      exists for any etale $A'$-algebra $B'$. 
+      对任何平展 $A'$-代数 $B'$ 都存在。 
 
-    - Now for $Spec(B), Spec(C) in Et_(Spec(A))^#[aff]$, decompose: 
+    - 现在对 $Spec(B), Spec(C) in Et_(Spec(A))^#[aff]$ 作分解： 
       $
         B = A^(Spec(B\/frak(m)_A B)) times B_1, C = A^(Spec(C\/frak(m)_A C)) times C_1
       $
-      for $Spec(B_1), Spec(C_1) in Et_U$. Then the base changes $B', C'$ decomposes as: 
+      其中 $Spec(B_1), Spec(C_1) in Et_U$。于是基变换 $B', C'$ 分解为： 
       $
         B' = A'^(Spec(B'\/frak(m)_(A') B')) times B'_1, C' = A'^(Spec(C'\/frak(m)_(A') C')) times C'_1
       $
-      where $Spec(B'_1), Spec(C'_1) in Et_(U')$ are base changes of $B_1, C_1$. 
+      这里 $Spec(B'_1), Spec(C'_1) in Et_(U')$ 分别是 $B_1, C_1$ 的基变换。 
       
-      For a morphism $Spec(B) -> Spec(C)$, any $Spec(A)$-component in $Spec(B)$ must map isomorphically to a $Spec(A)$-component in $Spec(C)$. Meanwhile, $Spec(B_1)$ maps into the part of $Spec(C)$ above $U$, i.e. $union.sq.big_(Spec(C\/frak(m)_A C)) U union.sq Spec(C_1)$. Thus, 
+      对态射 $Spec(B) -> Spec(C)$，$Spec(B)$ 中任何 $Spec(A)$-分支都必须同构地映入 $Spec(C)$ 的某个 $Spec(A)$-分支。而 $Spec(B_1)$ 映入 $Spec(C)$ 位于 $U$ 之上的部分，即 $union.sq.big_(Spec(C\/frak(m)_A C)) U union.sq Spec(C_1)$。因此， 
       $
         Hom_X (Spec(B), Spec(C)) = Spec(C\/frak(m)_A C)^(Spec(B\/frak(m)_A B)) times Hom_U (Spec(B_1), union.sq.big_(Spec(C\/frak(m)_A C)) U union.sq Spec(C_1))
       $
-      and similarly, 
+      类似地， 
       $
         Hom_(X') (Spec(B'), Spec(C')) = Spec(C\/frak(m)_A C)^(Spec(B\/frak(m)_A B)) times Hom_(U') (Spec(B'_1), union.sq.big_(Spec(C\/frak(m)_A C)) U' union.sq Spec(C'_1))
       $
-      Now the base change map $Hom_X (Spec(B), Spec(C)) -> Hom_(X') (Spec(B'), Spec(C'))$ is the identity on the first factor $Spec(C\/frak(m)_A C)^(Spec(B\/frak(m)_A B))$, which is a finite set. It is the base change map on the second factor: 
+      现在基变换映射 $Hom_X (Spec(B), Spec(C)) -> Hom_(X') (Spec(B'), Spec(C'))$ 在第一个因子 $Spec(C\/frak(m)_A C)^(Spec(B\/frak(m)_A B))$ 上是恒等，而这个因子是有限集。在第二个因子上它就是基变换映射： 
       $
         Hom_U (Spec(B_1), union.sq.big_(Spec(C\/frak(m)_A C)) U union.sq Spec(C_1)) -> Hom_(U') (Spec(B'_1), union.sq.big_(Spec(C\/frak(m)_A C)) U' union.sq Spec(C'_1))
       $
-      Thus, this component is also an isomorphism, by topological invariance for $f_U: U' -> U$. We have thus shown that $Et_X^#[aff] -> Et_(X')^#[aff]$ is fully faithful. 
+      于是由 $f_U: U' -> U$ 的拓扑不变性，这一分量也是同构。至此证明了 $Et_X^#[aff] -> Et_(X')^#[aff]$ 全忠实。 
 
-    - For essential surjectivity, let $Y' = Spec(B') in Et_(X')^#[aff]$. We may decompose: 
+    - 至于本质满，设 $Y' = Spec(B') in Et_(X')^#[aff]$。可作分解： 
       $
         B' = A'^r times B'_1
       $
-      for some $Spec(B'_1) in Et_(U')$. By topological invariance for $U' -> U$, there exists $Y_1 in Et_U$ s.t. $Spec(B'_1) cong U' times_U Y_1$. Now take: 
+      其中 $Spec(B'_1) in Et_(U')$。由 $U' -> U$ 的拓扑不变性，存在 $Y_1 in Et_U$ 使得 $Spec(B'_1) cong U' times_U Y_1$。现在取： 
       $
         Y = union.sq.big_(i=1)^r Spec(A) union.sq Y_1
       $
-      and so we have $Y' cong X' times_X Y$. Now $Y' -> Y$ is finite surjective with $Y'$ affine, so $Y$ is affine by Chevalley's theorem. We have thus shown that $Et_X^#[aff] -> Et_(X')^#[aff]$ is essentially surjective. 
+      于是 $Y' cong X' times_X Y$。现在 $Y' -> Y$ 是有限满射且 $Y'$ 仿射，故由 Chevalley 定理知 $Y$ 仿射。至此证明了 $Et_X^#[aff] -> Et_(X')^#[aff]$ 本质满。 
 
-    By @top-invariance-et-to-et-aff, $Et_X -> Et_(X')$ is an equivalence, and we are done. 
+    由 @top-invariance-et-to-et-aff，$Et_X -> Et_(X')$ 是等价，证毕。 
   ]
 
-  Recall from Step 3 that we only need to prove topological invariance for finite universal homeomorphisms between finite type $ZZ$-schemes. By the previous lemma, topological invariance does hold in this case, and so we are done. 
+  回忆第三步：我们只需对有限型 $ZZ$-概形之间的有限泛同胚证明拓扑不变性。由上一个引理，拓扑不变性在这种情形确实成立，于是证毕。 
 ]
 
 #corollary(name: <top-invariance-sheaves>)[
-  Let $f: X' -> X$ be a universal homeomorphism between schemes. Then:
+  设 $f: X' -> X$ 是概形之间的泛同胚。则：
   
-  0. The base change: 
+  0. 基变换：
     $
       f^(-1): Et_X -> Et_(X')
     $
-    is an equivalence of categories. $cal(U) = {U_i -> U}$ is an etale cover in $Et_X$ if and only if $f^(-1)(cal(U))$ is an etale cover in $Et_(X')$. 
+    是范畴等价。$cal(U) = {U_i -> U}$ 是 $Et_X$ 中的平展覆盖，当且仅当 $f^(-1)(cal(U))$ 是 $Et_(X')$ 中的平展覆盖。 
   
-  1. For any $cal(F) in cAb(X_et)$, every $V in Et_(X')$ is $U times_X X'$ for some $U in Et_X$, and we have a canonical isomorphism: 
+  1. 对任何 $cal(F) in cAb(X_et)$，每个 $V in Et_(X')$ 都可写成 $U times_X X'$，其中 $U in Et_X$；并且有典范同构： 
     $
       (f^(-1) cal(F))(V) = cal(F)(U)
     $
-    The functors: 
+    函子：
     $
       f_*: cAb(X'_et, Lambda) arrows.rl cAb(X_et, Lambda): f^(-1)
     $
-    are quasi-inverses to each other, and induce an equivalence of categories $cAb(X'_et, Lambda) cong cAb(X_et, Lambda)$. 
+    互为拟逆，并诱导范畴等价 $cAb(X'_et, Lambda) cong cAb(X_et, Lambda)$。 
 
-    As a derived category statement, the functors: 
+    作为导出范畴中的陈述，函子：
     $
       f^(-1): D(X_et, Lambda) arrows.rl D(X'_et, Lambda): R f_*
     $
-    are quasi-inverses to each other, and induce an equivalence of categories $D(X_et, Lambda) cong D(X'_et, Lambda)$. 
+    互为拟逆，并诱导范畴等价 $D(X_et, Lambda) cong D(X'_et, Lambda)$。 
 
-  2. There are canonical isomorphisms: 
+  2. 有典范同构： 
     $
       H^q (U, f_* cal(F)) = H^q (U times_X X', cal(F)) \
 
       H^q (U, cal(G)) = H^q (U times_X X', f^(-1) cal(G))
     $
-    for any $U in Et_X, cal(F) in cAb(X'_et), cal(G) in cAb(X_et)$. 
+    对任何 $U in Et_X, cal(F) in cAb(X'_et), cal(G) in cAb(X_et)$。 
 
-  3. Suppose that $X, X'$ are noetherian. The base change: 
+  3. 设 $X, X'$ 是 Noether 概形。基变换：
     $
       f^(-1): FEt_X -> FEt_(X')
     $
-    is also an equivalence of categories. 
+    也是范畴等价。 
     
-    As a corollary, when $X, X'$ are also connected, for geometric points $ol(x) = f(ol(x'))$: 
+    作为推论，若 $X, X'$ 还连通，则对几何点 $ol(x) = f(ol(x'))$： 
     $
       f_*: pi_1^et (X', ol(x')) -> pi_1^et (X, ol(x))
     $
-    is an isomorphism. 
+    是同构。 
 ]
 #proof[
-  (1) and (2) are obvious consequences of (0). For (0), that $f^(-1)$ is an equivalence of categories is already proved. That $cal(U)$ is jointly surjective if and only if $f^(-1)(cal(U))$ is, is a consequence of $f$ being a universal homeomorphism. 
+  （1）与（2）是（0）的显然推论。至于（0），$f^(-1)$ 是范畴等价已经证过。而 $cal(U)$ 联合满射当且仅当 $f^(-1)(cal(U))$ 联合满射，这是 $f$ 为泛同胚的推论。 
 
-  (3) Fully faithfulness follows from that of $Et_X -> Et_(X')$ directly, so it suffices to show essential surjectivity. If we can prove essential surjectivity whenever $X$ (and also $X'$) is affine, then we may glue the descended finite etale coverings of $X$ by fully faithfulness, and prove the general case. Thus we may assume that $X, X'$ are affine.
+  （3）全忠实性由 $Et_X -> Et_(X')$ 的全忠实性直接得到，故只需证本质满。若能在 $X$（以及 $X'$）仿射的情形下证明本质满，就可以用全忠实性把下降得到的 $X$ 上的有限平展覆叠粘起来，从而得到一般情形。于是不妨设 $X, X'$ 仿射。
 
-  Let $Y' in FEt_(X')$ come from base changing $Y in Et_X$. By @fet-trivializes-fet-locally, there exists a finite etale covering $U' -> X'$ s.t: 
+  设 $Y' in FEt_(X')$ 来自 $Y in Et_X$ 的基变换。由 @fet-trivializes-fet-locally，存在有限平展覆叠 $U' -> X'$，使得：
   $
     Y' times_(X') U' cong union.sq.big_(i=1)^m U'
   $
-  as $U'$-schemes. 
+  作为 $U'$-概形。 
   
-  Now by essential surjectivity let $U' -> X'$ come from base changing an etale cover $U -> X$. By fully faithfulness: 
+  现在由本质满，$U' -> X'$ 来自某个平展覆盖 $U -> X$ 的基变换。由全忠实： 
   $
     Y times_X U cong union.sq.big_(i=1)^m U
   $
-  Thus $Y times_X U -> U$ is finite. $U$ is quasi-compact since it is homeomorphic to the affine scheme $U'$. Thus $U -> X$ is fpqc, and by @fpqc-descent-of-properties (2), $Y -> X$ is finite. Thus $Y in FEt_X$. 
+  故 $Y times_X U -> U$ 有限。$U$ 同胚于仿射概形 $U'$，故拟紧。于是 $U -> X$ 是 fpqc，由 @fpqc-descent-of-properties (2) 知 $Y -> X$ 有限。因此 $Y in FEt_X$。 
 ]

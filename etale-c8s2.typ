@@ -1,42 +1,42 @@
 #import "void-import.typ": *
 
-== Local acyclicity
+== 局部零调性
 
-With the reductions of last section in mind, we are now ready to introduce local acyclicity. The notion of local acyclicity represents a certain compatibility between special and generic fibers of a morphism, and is the correct compatibility condition required for the relative base change map (w.r.t. a certain complex $cal(L)$) to be universally an isomorphism. 
+回顾上一节所做的归约，现在可以引入局部零调性了。局部零调性刻画了态射的特殊纤维与泛纤维之间的某种相容性，它也正是使相对基变换映射（关于某个复形 $cal(L)$）成为泛同构所要求的恰当相容性条件。 
 
 #definition(name: <defn-local-acyclicity>)[
-  Given a morphism of schemes $f: X -> S$ with geometric points $ol(x)$ of $X$ and $ol(s) = f(ol(x))$, and a geometric point $ol(t)$ of $tilde(S)_(ol(s))$ (i.e. a generalization of $ol(s)$), we define the *vanishing cycle variety* to be: 
+  给定概形态射 $f: X -> S$，取 $X$ 的几何点 $ol(x)$ 并令 $ol(s) = f(ol(x))$，再取 $tilde(S)_(ol(s))$ 的几何点 $ol(t)$（即 $ol(s)$ 的一个一般化）。我们定义*消没圈簇* (vanishing cycle variety) 为： 
   $
     F_(ol(x),ol(t)) := ol(t) times_(tilde(S)_(ol(s))) tilde(X)_(ol(x))
   $
-  Since $tilde(X)_(ol(x))$ is strict henselian, $Gamma(tilde(X)_(ol(x)), -)$ is exact and isomorphic to $(-)_(ol(x))$. Thus $R Gamma(tilde(X)_(ol(x)), -) = (-)_(ol(x))$, and so for any complex $cal(K) in D^+ (X_et, Lambda)$, there exists a restriction morphism: 
+  由于 $tilde(X)_(ol(x))$ 是严格 Hensel 的，$Gamma(tilde(X)_(ol(x)), -)$ 正合，且同构于 $(-)_(ol(x))$。因此 $R Gamma(tilde(X)_(ol(x)), -) = (-)_(ol(x))$，从而对任意复形 $cal(K) in D^+ (X_et, Lambda)$，都有如下限制态射： 
 
   $
     alpha_(cal(K),ol(x),ol(t)): cal(K)_(ol(x)) -> R Gamma(F_(ol(x),ol(t)), cal(K)|_(F_(ol(x),ol(t))))
   $
-  Denote: 
+  我们规定： 
 
-  - $f$ is *locally acyclic at $ol(x)$ relative to $cal(K)$*, if for any geometric point $ol(t)$ of $tilde(S)_(ol(s))$, $alpha_(cal(K),ol(x),ol(t))$ is an isomorphism. 
+  - 若对 $tilde(S)_(ol(s))$ 的任意几何点 $ol(t)$，$alpha_(cal(K),ol(x),ol(t))$ 都是同构，则称 $f$ 在 $ol(x)$ 处*关于 $cal(K)$ 局部零调*。 
 
-  - $f$ is *locally acyclic relative to $cal(K)$* if it is locally acyclic at every geometric point relative to $cal(K)$, and *locally acyclic* if for every natural number $n in cal(O)_S^times$, $f$ is locally acyclic relative to $ul(ZZ\/n)$. 
+  - 若 $f$ 在每个几何点处都关于 $cal(K)$ 局部零调，则称它*关于 $cal(K)$ 局部零调*；若对每个自然数 $n in cal(O)_S^times$，$f$ 都关于 $ul(ZZ\/n)$ 局部零调，则称它*局部零调*。 
 
-  - $f$ is *universally locally acyclic (relative to $cal(K)$)*, if every base change $f': X' -> S'$ along $g: S' -> S$ is locally acyclic (relative to $g^(-1) cal(K)$). 
+  - 若沿任意 $g: S' -> S$ 作基变换所得的 $f': X' -> S'$ 都（关于 $g^(-1) cal(K)$）局部零调，则称 $f$（关于 $cal(K)$）是*泛局部零调* (universally locally acyclic)。 
 
-  Note that: 
+  注意： 
   
-  // - By @bc-along-extension-of-sep-cl-fields, whenever $cal(K) in D^+_(#[tor]\/S) (X_et, Lambda)$, the property that $alpha_(cal(K),ol(x),ol(t))$ is independent from the choice of different geometric points $ol(t)$ above the same point of $tilde(S)_(ol(s))$. Thus, when checking local acyclicity for such complexes, we may assume that $ol(t)$ is an algebraic geometric point. 
+  // - 由 @bc-along-extension-of-sep-cl-fields，只要 $cal(K) in D^+_(#[tor]\/S) (X_et, Lambda)$，性质“$alpha_(cal(K),ol(x),ol(t))$ 是同构”就与 $tilde(S)_(ol(s))$ 中同一点上方不同几何点 $ol(t)$ 的选取无关。因此，对这类复形检验局部零调性时，不妨假设 $ol(t)$ 是代数几何点。 
 
-  - Local acyclicity depends only on the map $tilde(X)_(ol(x)) -> tilde(S)_(ol(s))$. It is thus in particular an etale-local property, and is also independent of the choice of geometric point $ol(x)$ above a point $x in X$. 
+  - 局部零调性只依赖于映射 $tilde(X)_(ol(x)) -> tilde(S)_(ol(s))$。特别地，它是平展局部的性质，并且与 $X$ 中点 $x$ 上方几何点 $ol(x)$ 的选取无关。 
 ]
 
-Local acyclicity is a sort of compatibility condition between the cohomology of $cal(K)$ on the generic and special fibers, as illustrated in the following proposition. 
+局部零调性是 $cal(K)$ 在泛纤维与特殊纤维上的上同调之间的一种相容性条件，下面的命题说明了这一点。 
 
 #proposition(name: <loc-acyc-alt-desc>)[
-  For a morphism $f: X -> S$ and $cal(K) in D^+ (X_et, Lambda)$. For a geometric point $ol(s)$ of $S$, TFAE: 
+  设 $f: X -> S$ 是概形态射，$cal(K) in D^+ (X_et, Lambda)$。对 $S$ 的几何点 $ol(s)$，以下条件等价： 
 
-  + $f: X -> S$ is locally acyclic w.r.t. $cal(K)$ at every geometric point of $X_(ol(s))$; 
+  + $f: X -> S$ 在 $X_(ol(s))$ 的每个几何点处都关于 $cal(K)$ 局部零调； 
 
-  + For $ol(t)$ any geometric point of $tilde(S)_(ol(s))$, Form the Cartesian diagram: #h(1fr)
+  + 对 $tilde(S)_(ol(s))$ 的任意几何点 $ol(t)$，作拉回图表：#h(1fr)
     // https://q.uiver.app/#r=typst&q=WzAsNixbMCwwLCJYXyhvbCh0KSkiXSxbMSwwLCJYIHRpbWVzX1MgdGlsZGUoUylfKG9sKHMpKSJdLFsyLDAsIlhfKG9sKHMpKSJdLFsyLDEsIm9sKHMpIl0sWzEsMSwidGlsZGUoUylfKG9sKHMpKSJdLFswLDEsIm9sKHQpIl0sWzUsNCwiaiIsMl0sWzMsNCwiaSJdLFsyLDMsImZfKG9sKHMpKSJdLFsxLDQsInRpbGRlKGYpIl0sWzAsNSwiZl8ob2wodCkpIiwyXSxbMiwxLCJpJyIsMl0sWzAsMSwiaiciXV0=
     #align(center, diagram({
       node((0, 0), [$X_(ol(t))$])
@@ -53,59 +53,59 @@ Local acyclicity is a sort of compatibility condition between the cohomology of 
       edge((2, 0), (1, 0), [$i'$], label-side: right, "->")
       edge((0, 0), (1, 0), [$j'$], label-side: left, "->")
     }))
-    and $tilde(cal(K)) = cal(K)|_(X times_S tilde(S)_(ol(s)))$. Then the unit:
+    并令 $tilde(cal(K)) = cal(K)|_(X times_S tilde(S)_(ol(s)))$。则单位映射：
     $
       i'^(-1) tilde(cal(K)) -> i'^(-1) R j'_* j'^(-1) tilde(cal(K))
     $
-    is an isomorphism. 
+    是同构。 
 ]
 #proof[
-  We devise an equivalent formulation of condition (2). Passing to the stalk at any geometric point $ol(x)$ of $X_(ol(s))$ (which is also a geometric point of $X$), the unit map then becomes: 
+  我们为条件 (2) 找一个等价表述。对 $X_(ol(s))$ 的任意几何点 $ol(x)$（它同时也是 $X$ 的几何点）取茎，单位映射便成为： 
   $
     cal(K)_(ol(x)) -> (R j'_* j'^(-1) tilde(cal(K)))_(i'(ol(x))) cong R Gamma(X_(ol(t)) times_(X times_S tilde(S)_(ol(s))) (X times_S tilde(S)_(ol(s)))^tilde_(i'(ol(x))), tilde(cal(K))|_(X_(ol(t)) times_(X times_S tilde(S)_(ol(s))) (X times_S tilde(S)_(ol(s)))^tilde_(i'(ol(x)))))
   $
-  Note that: 
+  注意： 
   $
     X_(ol(t)) times_(X times_S tilde(S)_(ol(s))) (X times_S tilde(S)_(ol(s)))^tilde_(i'(ol(x))) = ol(t) times_(tilde(S)_(ol(s))) (X times_S tilde(S)_(ol(s)))^tilde_(i'(ol(x)))
   $
-  We claim that the canonical map $(X times_S tilde(S)_(ol(s)))^tilde_(i'(ol(x))) -> tilde(X)_(ol(x))$ defined by the projection $X times_S tilde(S)_(ol(s)) -> X$ is an isomorphism. 
+  我们断言：由投影 $X times_S tilde(S)_(ol(s)) -> X$ 给出的典范映射 $(X times_S tilde(S)_(ol(s)))^tilde_(i'(ol(x))) -> tilde(X)_(ol(x))$ 是同构。 
 
-  - Indeed, this is showing that: #h(1fr)
+  - 事实上，这相当于要证明：#h(1fr)
     $
       cal(O)_(X,x)^#[sh] cong (cal(O)_(X,x) otimes_(cal(O)_(S,s)) cal(O)_(S,s)^#[sh])^#[sh]_(ker(cal(O)_(X,x) otimes_(cal(O)_(S,s)) cal(O)_(S,s)^#[sh] -> k(ol(x))))
     $
-    Since $cal(O)_(S,s)^#[sh]$ is a filtered colimit of quasi-finite $cal(O)_(S,s)$-algebras, @strict-henselizations-tensors-and-qfinites may be invoked, and RHS is just $cal(O)_(X,x)^#[sh] otimes_(cal(O)_(S,s)^#[sh]) cal(O)_(S,s)^#[sh] cong cal(O)_(X,x)^#[sh]$. 
+    由于 $cal(O)_(S,s)^#[sh]$ 是拟有限 $cal(O)_(S,s)$-代数的滤余极限，可以引用 @strict-henselizations-tensors-and-qfinites；而右端恰好就是 $cal(O)_(X,x)^#[sh] otimes_(cal(O)_(S,s)^#[sh]) cal(O)_(S,s)^#[sh] cong cal(O)_(X,x)^#[sh]$。 
     
 
-  In summary, the unit map in question becomes: 
+  总之，所讨论的单位映射变成： 
   $
     cal(K)_(ol(x)) = R Gamma(tilde(X)_(ol(x)), cal(K)|_(tilde(X)_(ol(x)))) -> R Gamma(ol(t) times_(tilde(S)_(ol(s))) tilde(X)_(ol(x)), cal(K)|_(ol(t) times_(tilde(S)_(ol(s))) tilde(X)_(ol(x))))
   $
-  the restriction map. There is a canonical map of geometric points $f(ol(x)) -> ol(s)$, inducing a canonical isomorphism $tilde(S)_(ol(s)) cong tilde(S)_(f(ol(x)))$. Under this isomorphism, the restriction map above is: 
+  即限制映射。存在几何点之间的典范映射 $f(ol(x)) -> ol(s)$，它诱导典范同构 $tilde(S)_(ol(s)) cong tilde(S)_(f(ol(x)))$。在这个同构下，上面的限制映射就是： 
   $
     cal(K)_(ol(x)) = R Gamma(tilde(X)_(ol(x)), cal(K)|_(tilde(X)_(ol(x)))) -> R Gamma(F_(ol(x),ol(t)), cal(K)|_(F_(ol(x),ol(t))))
   $
-  for the vanishing cycle variety $F_(ol(x),ol(t))$. This is just the map $alpha_(cal(K),ol(x),ol(t))$ in the definition of local acyclicity. 
+  其中 $F_(ol(x),ol(t))$ 是消没圈簇。这恰好就是局部零调性定义中的映射 $alpha_(cal(K),ol(x),ol(t))$。 
   
-  Thus, by checking stalks, condition (2) is equivalent to the statement: 
+  因此，通过检查茎可知，条件 (2) 等价于下述陈述： 
 
-  - For any geometric point $ol(x)$ of $X_(ol(s))$ and any geometric point $ol(t)$ of $tilde(S)_(f(ol(x)))$, #h(1fr)
+  - 对 $X_(ol(s))$ 的任意几何点 $ol(x)$ 与 $tilde(S)_(f(ol(x)))$ 的任意几何点 $ol(t)$，#h(1fr)
     $
       alpha_(cal(K),ol(x),ol(t)): cal(K)_(ol(x)) = R Gamma(tilde(X)_(ol(x)), cal(K)|_(tilde(X)_(ol(x)))) -> R Gamma(F_(ol(x),ol(t)), cal(K)|_(F_(ol(x),ol(t))))
     $
-    is an isomorphism. 
+    是同构。 
 
-  This is by definition local acyclicity at every geometric point $ol(x)$ of $X_(ol(s))$, i.e. condition (1). 
+  按定义，这正是 $f$ 在 $X_(ol(s))$ 的每个几何点 $ol(x)$ 处的局部零调性，即条件 (1)。 
 ]
 
-We are now ready to establish the relation between local acyclicity and base change. 
+现在可以建立局部零调性与基变换之间的联系了。 
 
 #theorem(name: <loc-acyc-and-base-change>)[
-  Let $Lambda$ be a torsion noetherian ring. Let $g: S' -> S$ be a morphism with $S$ noetherian, and $cal(L)_S in D^b_#[ctf] (S'_et, Lambda)$. 
+  设 $Lambda$ 是挠 Noether 环，$S$ 是 Noether 概形，$g: S' -> S$ 是态射，且 $cal(L)_S in D^b_#[ctf] (S'_et, Lambda)$。 
   
-  Then among the following statements, (1)$==>$(2)$==>$(3), and (3)$==>$(1) whenever every finite $Lambda$-module embeds into a finite free $Lambda$-module. 
+  则下列陈述之间有 (1) $==>$(2) $==>$(3)；此外，若每个有限 $Lambda$-模都能嵌入某个有限自由 $Lambda$-模，则还有 (3) $==>$(1)。 
 
-  + For every morphism $f: X -> Y$ of qcqs $S$-schemes, base change to the following Cartesian square: 
+  + 对拟紧拟分离 $S$-概形之间的任意态射 $f: X -> Y$，作基变换得到如下拉回方块： 
     $
       // http://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJYJyJdLFsxLDAsIlknIl0sWzAsMSwiWCJdLFsxLDEsIlkiXSxbMiwzLCJmIiwyXSxbMCwxLCJmJyJdLFsxLDMsImciXSxbMCwyLCJnJyIsMl1d
       #align(center, diagram({
@@ -120,31 +120,31 @@ We are now ready to establish the relation between local acyclicity and base cha
         edge((0, 0), (0, 1), [$g_X$], label-side: right, "->")
       }))
     $
-    and put $cal(L)_X = cal(L)_S|_(X')$ and $cal(L)_Y = cal(L)_S|_(Y')$. Then the relative base change map: 
+    并令 $cal(L)_X = cal(L)_S|_(X')$、$cal(L)_Y = cal(L)_S|_(Y')$。则相对基变换映射： 
     $
       g_Y^(-1) R f_* cal(K) Lotimes_Lambda cal(L)_Y -> R f'_* (g_X^(-1) cal(K) Lotimes_Lambda cal(L)_X)
     $
-    is an isomorphism for all $cal(K) in D^+ (X_et, Lambda)$. 
+    对一切 $cal(K) in D^+ (X_et, Lambda)$ 都是同构。 
 
-  + $g$ is universally locally acyclic relative to $cal(L)_S$. 
+  + $g$ 关于 $cal(L)_S$ 泛局部零调。 
 
-  + Let $X$ be any $S$-scheme that is the normalization of a finite type $S$-scheme in the algebraic closure of its function field with generic point $xi$. Then the base change $g_X: X' -> X$ and $cal(L)_X = cal(L)_S|_(X')$ satisfies that: 
+  + 设 $X$ 是任一 $S$-概形，它是某个有限型 $S$-概形在其函数域代数闭包中的正规化，其泛点为 $xi$。则基变换 $g_X: X' -> X$ 与 $cal(L)_X = cal(L)_S|_(X')$ 满足： 
 
-    - For a very dense subset $E subset X'$ and a family of geometric points ${ol(x')}$ above each point of $E$, the map: 
+    - 对极稠密子集 $E subset X'$，以及 $E$ 中每一点上方的一族几何点 ${ol(x')}$，映射： 
       $
         alpha_(ol(x'),xi): (cal(L)_X)_(ol(x')) -> R Gamma(F_(ol(x'),xi), cal(L)_X|_(F_(ol(x'),xi)))
       $
-      is an isomorphism. 
+      是同构。 
 
-    In particular, this hypothesis holds if $g_X$ is locally acyclic relative to $cal(L)_X$. 
+    特别地，若 $g_X$ 关于 $cal(L)_X$ 局部零调，则上述条件自动成立。 
 ]
 #proof[
-  (1)$==>$(2): Suppose that we can show that $g$ is locally acyclic from (1). Note that condition (1) is preserved under qcqs base change. Thus, for every qcqs morphism $X -> S$, the base change $g_X: X' -> X$ is locally acyclic relative to $cal(L)_X$. Now let $h: X -> S$ be an arbitrary morphism. To show that $g_X: X' -> X$ is locally acyclic relative to $cal(L)_X$, we may use etale locality of local acyclicity: it suffices to show that for any affine open $U subset X$, $g_U: U' -> U$ is locally acyclic relative to $cal(L)_U$. But this has already been proved, since $U -> S$ is qcqs. 
+  (1) $==>$(2)：先设我们能由 (1) 推出 $g$ 局部零调。注意条件 (1) 在拟紧拟分离基变换下保持不变。于是对每个拟紧拟分离态射 $X -> S$，基变换 $g_X: X' -> X$ 都关于 $cal(L)_X$ 局部零调。现在设 $h: X -> S$ 是任意态射。要证 $g_X: X' -> X$ 关于 $cal(L)_X$ 局部零调，可以用局部零调性的平展局部性：只需对任意仿射开集 $U subset X$ 证明 $g_U: U' -> U$ 关于 $cal(L)_U$ 局部零调。而这一点已经得证，因为 $U -> S$ 是拟紧拟分离的。 
 
-  Thus, it suffices to prove that $g$ is locally acyclic. 
+  于是，只需证明 $g$ 局部零调。 
 
   #lemma[
-    For a Cartesian diagram, 
+    对拉回图表， 
     $
       // http://localhost:8000/#r=typst&q=WzAsNCxbMCwwLCJYJyJdLFsxLDAsIlknIl0sWzAsMSwiWCJdLFsxLDEsIlkiXSxbMiwzLCJmIiwyXSxbMCwxLCJmJyJdLFsxLDMsImciXSxbMCwyLCJnJyIsMl1d
       #align(center, diagram({
@@ -159,21 +159,21 @@ We are now ready to establish the relation between local acyclicity and base cha
         edge((0, 0), (0, 1), [$g'$], label-side: right, "->")
       }))
     $
-    and $cal(L) in D(Y'_et, Lambda)$, the unit map $cal(L) -> R f'_* f'^(-1) cal(L)$ is the composition: 
+    并设 $cal(L) in D(Y'_et, Lambda)$，则单位映射 $cal(L) -> R f'_* f'^(-1) cal(L)$ 是如下复合： 
     $
       cal(L) cong g^(-1) ul(Lambda) Lotimes_Lambda cal(L) -> g^(-1) R f_* ul(Lambda) Lotimes_Lambda cal(L) -> R f'_* (g'^(-1) ul(Lambda) Lotimes_Lambda f'^(-1) cal(L)) cong R f'_* f'^(-1) cal(L)
     $
-    where the first map is a unit and the second map is a relative base change. 
+    其中第一个映射是单位，第二个映射是相对基变换。 
   ]
   #proof[
-    Under adjunction, this map is: 
+    在伴随之下，这个映射就是： 
     $
       f'^(-1) cal(L) cong g'^(-1) f^(-1) ul(Lambda) Lotimes_Lambda f'^(-1) cal(L) cong g'^(-1) ul(Lambda) Lotimes_Lambda f'^(-1) cal(L) cong f'^(-1) cal(L)
     $
-    in which every step is the identity. We are thereby done. 
+    其中每一步都是恒等映射。证毕。 
   ]
 
-  We now prove local acyclicity. Let $ol(s)$ be any algebraic geometric point of $S$, and $ol(t)$ be any algebraic geometric point of $tilde(S)_(ol(s))$. Form the Cartesian diagram: 
+  现在来证明局部零调性。取 $S$ 的任意代数几何点 $ol(s)$，以及 $tilde(S)_(ol(s))$ 的任意代数几何点 $ol(t)$。作拉回图表： 
   #align(center, diagram({
     node((0, 0), [$S'_(ol(t))$])
     node((1, 0), [$S' times_S tilde(S)_(ol(s))$])
@@ -189,31 +189,31 @@ We are now ready to establish the relation between local acyclicity and base cha
     edge((2, 0), (1, 0), [$i'$], label-side: right, "->")
     edge((0, 0), (1, 0), [$j'$], label-side: left, "->")
   }))
-  and $tilde(cal(L)) = cal(L)_S|_(S' times_S tilde(S)_(ol(s)))$. By the previous lemma, the unit:
+  并令 $tilde(cal(L)) = cal(L)_S|_(S' times_S tilde(S)_(ol(s)))$。由前一个引理，单位映射：
   $
     tilde(cal(L)) -> R j'_* j'^(-1) tilde(cal(L))
   $
-  factors as: 
+  分解为： 
   $
     tilde(cal(L)) cong tilde(g)^(-1) ul(Lambda) Lotimes_Lambda tilde(cal(L)) -> tilde(g)^(-1) R j_* ul(Lambda) Lotimes_Lambda tilde(cal(L)) -> R j'_* (g_(ol(t))^(-1) ul(Lambda) Lotimes_Lambda j'^(-1) tilde(cal(L))) cong R j'_* j'^(-1) tilde(cal(L)) 
   $
-  Now $ol(t) -> tilde(S)_(ol(s))$ is a morphism between qcqs schemes, so the second map, being a relative base change along the left square w.r.t. $cal(L)|_(S' times_S tilde(S)_(ol(s)))$ is an isomorphism. Thus, to prove that: 
+  现在 $ol(t) -> tilde(S)_(ol(s))$ 是拟紧拟分离概形之间的态射，所以第二个映射是沿左侧方块、关于 $cal(L)|_(S' times_S tilde(S)_(ol(s)))$ 的相对基变换，从而是同构。因此，要证： 
   $
     i'^(-1) tilde(cal(L)) -> i'^(-1) R j'_* j'^(-1) tilde(cal(L))
   $
-  is an isomorphism, it suffices to prove that $tilde(g)^(-1) ul(Lambda) Lotimes_Lambda tilde(cal(L)) -> tilde(g)^(-1) R j_* ul(Lambda) Lotimes_Lambda tilde(cal(L))$ is an isomorphism upon pulling back along $i'^(-1)$. That is, we need to show that: 
+  是同构，只需证明 $tilde(g)^(-1) ul(Lambda) Lotimes_Lambda tilde(cal(L)) -> tilde(g)^(-1) R j_* ul(Lambda) Lotimes_Lambda tilde(cal(L))$ 沿 $i'^(-1)$ 拉回后是同构。也就是说，需要证明： 
   $
     g_(ol(s))^(-1) i^(-1) ul(Lambda) -> g_(ol(s))^(-1) i^(-1) R j_* ul(Lambda)
   $
-  is an isomorphism. Thus it suffices to show that $ul(Lambda) -> i^(-1) R j_* ul(Lambda)$ is an isomorphism, i.e. $(R j_* ul(Lambda))_(ol(s)) = Lambda$. Indeed, 
+  是同构。于是只需证明 $ul(Lambda) -> i^(-1) R j_* ul(Lambda)$ 是同构，即 $(R j_* ul(Lambda))_(ol(s)) = Lambda$。事实上， 
   $
     (R j_* ul(Lambda))_(ol(s)) = R Gamma(ol(t) times_(tilde(S)_(ol(s))) (tilde(S)_(ol(s)))^tilde_(ol(s)), ul(Lambda)) = R Gamma(ol(t) times_(tilde(S)_(ol(s))) tilde(S)_(ol(s)), ul(Lambda)) = R Gamma(ol(t), ul(Lambda)) = Lambda
   $
-  and we are done showing that $i'^(-1) tilde(cal(L)) -> i'^(-1) R j'_* j'^(-1) tilde(cal(L))$ is an isomorphism. Thus by @loc-acyc-alt-desc, $g$ is locally acyclic. 
+  这就证明了 $i'^(-1) tilde(cal(L)) -> i'^(-1) R j'_* j'^(-1) tilde(cal(L))$ 是同构。于是由 @loc-acyc-alt-desc，$g$ 局部零调。 
 
-  (2)$==>$(3) is tautological. 
+  (2) $==>$(3) 是显然的。 
 
-  (3)$==>$(1): Recall that we assumed that every finite $Lambda$-module embeds into a finite free $Lambda$-module. By @rel-bc-reductions, it suffices to show the result when $X = Spec(A)$ is the normalization of a finite type $S$-scheme in the algebraic closure of its function field $K$, and $j: xi = Spec(K) -> X$ is the inclusion of the generic point, in the Cartesian diagram: 
+  (3) $==>$(1)：回忆我们假设了每个有限 $Lambda$-模都能嵌入某个有限自由 $Lambda$-模。由 @rel-bc-reductions，只需在下列情形证明结论：$X = Spec(A)$ 是某个有限型 $S$-概形在其函数域 $K$ 的代数闭包中的正规化，$j: xi = Spec(K) -> X$ 是泛点的包含，且给定拉回图表： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJ4aSciXSxbMCwxLCJ4aSJdLFsxLDEsIlgiXSxbMSwwLCJYJyJdLFszLDIsImdfWCJdLFswLDEsImdfeGkiLDJdLFsxLDIsImoiLDJdLFswLDMsImonIl1d
   #align(center, diagram({
     node((0, 0), [$X'_xi$])
@@ -226,59 +226,59 @@ We are now ready to establish the relation between local acyclicity and base cha
     edge((0, 1), (1, 1), [$j$], label-side: right, "->")
     edge((0, 0), (1, 0), [$j'$], label-side: left, "->")
   }))
-  the relative base change: 
+  相对基变换： 
   $
     g_X^(-1) R j_* ul(Lambda) Lotimes_Lambda cal(L)_X -> R j'_* j'^(-1) cal(L)_X
   $
-  (where $cal(L)_X = cal(L)_S|_(X')$) is an isomorphism. 
+  （其中 $cal(L)_X = cal(L)_S|_(X')$）是同构。 
 
-  We establish a lemma about integral normal schemes with algebraically closed function field. 
+  我们先证明一个关于函数域代数闭的整正规概形的引理。 
 
   #lemma(name: <integral-normal-affine-with-ac-func-field>)[
-    Let $S = Spec(A)$ be an affine integral normal scheme with algebraically closed function field $K$. Then: 
+    设 $S = Spec(A)$ 是仿射的整正规概形，其函数域 $K$ 代数闭。则： 
 
-    (1) Any monic polynomial in $A[T]$ splits completely in $A$, and the same statement holds with $A$ replaced by a local ring of $S$; 
+    (1) $A[T]$ 中任意首一多项式都在 $A$ 中完全分裂；把 $A$ 换成 $S$ 的局部环后，同样的结论成立； 
 
-    (2) The local rings of $S$ are integral, normal and strict henselian, with algebraically closed residue fields. 
+    (2) $S$ 的局部环都是整的、正规的、严格 Hensel 的，且剩余域代数闭。 
   ]
   #proof[
-    (1) Any monic polynomial in $A[T]$ splits completely in $K$, since $K$ is algebraically closed. Now that $A$ is integrally closed in $K$, the roots of this monic polynomial must lie in $A$. Thus this polynomial splits completely in $A$. 
+    (1) 由于 $K$ 代数闭，$A[T]$ 中任意首一多项式在 $K$ 中完全分裂。又因 $A$ 在 $K$ 中整闭，该首一多项式的根必落在 $A$ 中。于是它在 $A$ 中完全分裂。 
 
-    The same argument holds for a local ring of $S$, since these local rings are also integral normal with algebraically closed fraction field $K$. 
+    对 $S$ 的局部环，同样的论证适用，因为这些局部环也是整正规的，且分式域都是代数闭域 $K$。 
 
-    (2) Let $frak(p) in Spec(A)$. Now for a monic polynomial $f_0 (T) in k(frak(p))[T]$, we may lift it to a monic polynomial $f(T) in A_(frak(p)) [T]$. By (1), $f(T)$ splits completely over $A_(frak(p))$. Reducing modulo $frak(p) A_(frak(p))$, we see that $f_0 (T)$ splits completely in $k(frak(p))$. 
+    (2) 设 $frak(p) in Spec(A)$。对首一多项式 $f_0 (T) in k(frak(p))[T]$，我们可以把它提升为首一多项式 $f(T) in A_(frak(p)) [T]$。由 (1)，$f(T)$ 在 $A_(frak(p))$ 上完全分裂。模去 $frak(p) A_(frak(p))$ 作约化，即知 $f_0 (T)$ 在 $k(frak(p))$ 中完全分裂。 
 
-    For any monic $f(T) in A_(frak(p)) [T]$ reducing to $f_0 (T) in k(frak(p))[T]$, $f(T)$ splits completely over $A_(frak(p))$, with roots reducing to roots of $f_0 (T)$. Thus Hensel's lemma trivially holds, as every root of $f_0 (T)$ trivially lifts to one of $f(T)$. Thus $A_(frak(p))$ is henselian. Since its residue field is algebraically closed (hence separably closed), $A_(frak(p))$ is strict henselian. 
+    对任意约化到 $f_0 (T) in k(frak(p))[T]$ 的首一多项式 $f(T) in A_(frak(p)) [T]$，$f(T)$ 在 $A_(frak(p))$ 上完全分裂，且其根约化后给出 $f_0 (T)$ 的根。于是 Hensel 引理平凡成立，因为 $f_0 (T)$ 的每个根都平凡地提升为 $f(T)$ 的某个根。因此 $A_(frak(p))$ 是 Hensel 的。又因其剩余域代数闭（从而可分闭），$A_(frak(p))$ 是严格 Hensel 的。 
   ]
 
-  Note that by @generic-pt-pushforward-of-const-shv-on-normal-sch and by @geom-point-pushforward-exact, 
+  注意，由 @generic-pt-pushforward-of-const-shv-on-normal-sch 与 @geom-point-pushforward-exact， 
   $
     R j_* ul(Lambda) cong ul(Lambda)
   $
-  and so $g_X^(-1) R j_* ul(Lambda) Lotimes_Lambda cal(L)_X cong cal(L)_X$. Thus we only need to show that the unit map: 
+  从而 $g_X^(-1) R j_* ul(Lambda) Lotimes_Lambda cal(L)_X cong cal(L)_X$。于是只需证明单位映射： 
   $
     cal(L)_X -> R j'_* j'^(-1) cal(L)_X
   $
-  is an isomorphism, where $g_X$ is locally acyclic relative to $cal(L)_X$ by (3). 
+  是同构，因为由 (3)，$g_X$ 关于 $cal(L)_X$ 局部零调。 
 
-  Let $ol(x')$ be a geometric point of $X'$ above $x in X$ in the family ${ol(x')}$ above $E$, as in hypothesis, and so: 
+  取 $X'$ 的几何点 $ol(x')$，它位于 $x in X$ 上方，是假设中为 $E$ 上每一点选定的那族几何点 ${ol(x')}$ 中的一个，于是： 
   $
     (R j'_* j'^(-1) cal(L)_X)_(ol(x')) = R Gamma(xi times_X tilde(X')_(ol(x')), cal(L)_X|_(tilde(X')_(ol(x'))))
   $
-  By @integral-normal-affine-with-ac-func-field, $x$ is always a geometric point of $X$, and:  
+  由 @integral-normal-affine-with-ac-func-field，$x$ 总是 $X$ 的几何点，且：  
   $
     xi = xi times_X tilde(X)_x
   $
-  Thus, 
+  于是， 
   $
     (R j'_* j'^(-1) cal(L)_X)_(ol(x')) = R Gamma(xi times_X tilde(X')_(ol(x')), cal(L)_X|_(tilde(X')_(ol(x')))) = R Gamma(xi times_(tilde(X)_x) tilde(X')_(ol(x')), cal(L)_X|_(xi times_(tilde(X)_x) tilde(X')_(ol(x')))) = R Gamma(F_(ol(x'),xi), cal(L)_X|_(F_(ol(x'),xi)))
   $
-  and so the stalk of the unit $cal(L)_X -> R j'_* j'^(-1) cal(L)_X$ is the restriction map: 
+  因此单位映射 $cal(L)_X -> R j'_* j'^(-1) cal(L)_X$ 的茎就是限制映射： 
   $
     (cal(L)_X)_(ol(x')) -> R Gamma(F_(ol(x'),xi), cal(L)_X|_(F_(ol(x'),xi)))
   $
-  which is an isomorphism by hypothesis. We are thereby done. 
-  /*By the lemma above, every point of $X$ is a geometric point. For a point $x in X$, form the Cartesian diagram: 
+  由假设它是同构。证毕。 
+  /*由上述引理，$X$ 的每个点都是几何点。对点 $x in X$，作拉回图表： 
   // https://q.uiver.app/#r=typst&q=WzAsNixbMCwwLCJ4aSciXSxbMCwxLCJ4aSJdLFsxLDEsInRpbGRlKFgpXyhvbCh4KSkiXSxbMSwwLCJYJyB0aW1lc19YIHRpbGRlKFgpXyhvbCh4KSkiXSxbMiwxLCJ4Il0sWzIsMCwieCciXSxbMywyLCJnX1giXSxbMCwxLCJnX3hpIiwyXSxbMSwyLCJqIiwyXSxbMCwzLCJqJyJdLFs0LDIsImkiXSxbNSw0LCJnX3giXSxbNSwzLCJpJyIsMl1d
   #align(center, diagram({
     node((0, 0), [$X'_xi$])
@@ -295,7 +295,7 @@ We are now ready to establish the relation between local acyclicity and base cha
     edge((2, 0), (2, 1), [$g_x$], label-side: left, "->")
     edge((2, 0), (1, 0), [$i'$], label-side: right, "->")
   }))
-  to which we may attach two more Cartesian squares at the bottom: 
+  再在底部接上两个拉回方块： 
   // https://q.uiver.app/#r=typst&q=WzAsOSxbMCwwLCJ4aSciXSxbMCwxLCJ4aSJdLFsxLDEsInRpbGRlKFgpX3giXSxbMSwwLCJYJyB0aW1lc19YIHRpbGRlKFgpX3giXSxbMiwxLCJ4Il0sWzIsMCwieCciXSxbMSwyLCJYIl0sWzIsMiwieCJdLFswLDIsInhpIl0sWzMsMiwidGlsZGUoZykiXSxbMCwxLCJnX3hpIiwyXSxbMSwyLCJqXzEiLDJdLFswLDMsImonIl0sWzQsMiwiaV8xIl0sWzUsNCwiZ194Il0sWzUsMywiaSciLDJdLFsyLDYsImdhbW1hIl0sWzgsNiwiaiIsMl0sWzcsNiwiaSJdLFs0LDcsIiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdWJsZSBiYXJyZWQifX19XSxbMSw4LCIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3VibGUgYmFycmVkIn19fV1d
   #align(center, diagram({
     node((0, 0), [$X'_xi$])
@@ -320,20 +320,20 @@ We are now ready to establish the relation between local acyclicity and base cha
     edge((2, 1), (2, 2), "=")
     edge((0, 1), (0, 2), "=")
   }))
-  By @loc-acyc-alt-desc, the unit: 
+  由 @loc-acyc-alt-desc，单位映射： 
   $
     tilde(i)^(-1) (cal(L)_X|_(X' times_X tilde(X)_x)) -> tilde(i)^(-1) R tilde(j)_* tilde(j)^(-1) (cal(L)_X|_(X' times_X tilde(X)_x))
   $
-  is an isomorphism. Taking stalk, this says
+  是同构。取茎，这说明
   $
     
   $*/
 ]
 
-Now that we have seen the intimate connection between local acyclicity and base changes, we study the cospecialization, a construction that arises from local acyclicity, and also study the properties that allows us to manipulate local acyclicity. 
+我们已经看到局部零调性与基变换之间的紧密联系。接下来我们研究余特殊化映射 (cospecialization map)——这是由局部零调性产生的一种构造——并研究那些让我们得以运用局部零调性的性质。 
 
 #properties(name: <loc-acyc-and-limits-of-qfinite>)[
-  In a Cartesian diagram of schemes: 
+  在概形的拉回图表中： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJYJyJdLFswLDEsIlMnIl0sWzEsMCwiWCJdLFsxLDEsIlMiXSxbMSwzLCJnIiwyXSxbMCwyLCJnJyJdLFsyLDMsImYiXSxbMCwxLCJmJyIsMl1d
   #align(center, diagram({
     node((0, 0), [$X'$])
@@ -346,37 +346,37 @@ Now that we have seen the intimate connection between local acyclicity and base 
     edge((1, 0), (1, 1), [$f$], label-side: left, "->")
     edge((0, 0), (0, 1), [$f'$], label-side: right, "->")
   }))
-  Let $ol(x')$ be a geometric point of $X'$, $ol(x) = g'(ol(x'))$. Suppose that $S'$ is a projective limit of locally quasi-finite $S$-schemes with affine transition maps. Then:
+  设 $ol(x')$ 是 $X'$ 的几何点，$ol(x) = g'(ol(x'))$。假设 $S'$ 是带仿射过渡映射的局部拟有限 $S$-概形的逆向极限。则：
     
-  - If $f$ is locally acyclic relative to $cal(K)$ at $ol(x)$, then $f'$ is locally acyclic relative to $cal(K)|_(X')$ at $ol(x')$. 
+  - 若 $f$ 在 $ol(x)$ 处关于 $cal(K)$ 局部零调，则 $f'$ 在 $ol(x')$ 处关于 $cal(K)|_(X')$ 局部零调。 
 ]
 #proof[
-  (1) Let $ol(s') = f'(ol(x')), ol(s) = f(ol(x))$. Let $ol(t')$ be a geometric point of $tilde(S')_(ol(s'))$ above $ol(t)$ of $tilde(S)_(ol(s))$. We now compare the vanishing cycle varieties: 
+  (1) 令 $ol(s') = f'(ol(x')), ol(s) = f(ol(x))$。取 $tilde(S')_(ol(s'))$ 的几何点 $ol(t')$，它位于 $tilde(S)_(ol(s))$ 的几何点 $ol(t)$ 上方。现在比较两个消没圈簇：一个是 
   $
     F_(ol(x'),ol(t')) = ol(t') times_(tilde(S')_(ol(s'))) tilde(X')_(ol(x')) 
   $
-  v.s: 
+  另一个是 
   $
     F_(ol(x),ol(t)) = ol(t) times_(tilde(S)_(ol(s))) tilde(X)_(ol(x))
   $
 
-  By applying @strict-henselizations-tensors-and-qfinites with $Omega$ being the residue field of $ol(x')$, 
+  在 @strict-henselizations-tensors-and-qfinites 中取 $Omega$ 为 $ol(x')$ 的剩余域，得： 
   $
     cal(O)_(X,ol(x))^#[sh] otimes_(cal(O)_(s,ol(s))^#[sh]) cal(O)_(S',ol(s'))^#[sh] cong cal(O)_(X',ol(x'))
   $
-  and so: 
+  于是： 
   $
     Omega otimes_(cal(O)_(S',ol(s'))^#[sh]) cal(O)_(X',ol(x')) cong Omega otimes_(cal(O)_(s,ol(s))^#[sh]) cal(O)_(X,ol(x))^#[sh]
   $
-  i.e. $F_(ol(x'),ol(t')) cong F_(ol(x),ol(t))$. Now that: 
+  即 $F_(ol(x'),ol(t')) cong F_(ol(x),ol(t))$。现在，由 $f$ 在 $ol(x)$ 处关于 $cal(K)$ 的局部零调性，映射
   $
     cal(K)_(ol(x)) -> R Gamma(F_(ol(x),ol(t)), cal(K)|_(F_(ol(x),ol(t))))
   $
-  is an isomorphism by local acyclicity of $f$ relative to $cal(K)$ at $ol(x)$, $cal(K)_(ol(x)) -> R Gamma(F_(ol(x'),ol(t')), cal(K)|_(F_(ol(x'),ol(t'))))$ must be an isomorphism. Thus $f'$ is locally acyclic at $ol(x')$ relative to $cal(K)|_(X')$. 
+  是同构，因此 $cal(K)_(ol(x)) -> R Gamma(F_(ol(x'),ol(t')), cal(K)|_(F_(ol(x'),ol(t'))))$ 也必是同构。因此 $f'$ 在 $ol(x')$ 处关于 $cal(K)|_(X')$ 局部零调。 
 ]
 
 #construction(name: <cospecialization-map>)[
-  Suppose that $f: X -> S$ is a locally acyclic morphism relative to $cal(K) in D^+ (X_et, Lambda)$. For any geometric point $ol(s)$ of $S$, any geometric point $ol(t)$ of $tilde(S)_(ol(s))$, form the Cartesian diagram: #h(1fr)
+  设 $cal(K) in D^+ (X_et, Lambda)$，$f: X -> S$ 是关于 $cal(K)$ 局部零调的态射。对 $S$ 的任意几何点 $ol(s)$ 与 $tilde(S)_(ol(s))$ 的任意几何点 $ol(t)$，作拉回图表：#h(1fr)
     // https://q.uiver.app/#r=typst&q=WzAsNixbMCwwLCJYXyhvbCh0KSkiXSxbMSwwLCJYIHRpbWVzX1MgdGlsZGUoUylfKG9sKHMpKSJdLFsyLDAsIlhfKG9sKHMpKSJdLFsyLDEsIm9sKHMpIl0sWzEsMSwidGlsZGUoUylfKG9sKHMpKSJdLFswLDEsIm9sKHQpIl0sWzUsNCwiaiIsMl0sWzMsNCwiaSJdLFsyLDMsImZfKG9sKHMpKSJdLFsxLDQsInRpbGRlKGYpIl0sWzAsNSwiZl8ob2wodCkpIiwyXSxbMiwxLCJpJyIsMl0sWzAsMSwiaiciXV0=
     #align(center, diagram({
       node((0, 0), [$X_(ol(t))$])
@@ -393,25 +393,25 @@ Now that we have seen the intimate connection between local acyclicity and base 
       edge((2, 0), (1, 0), [$i'$], label-side: right, "->")
       edge((0, 0), (1, 0), [$j'$], label-side: left, "->")
     }))
-    and $tilde(cal(K)) = cal(K)|_(X times_S tilde(S)_(ol(s)))$. By @loc-acyc-alt-desc, the unit:
+    并令 $tilde(cal(K)) = cal(K)|_(X times_S tilde(S)_(ol(s)))$。由 @loc-acyc-alt-desc，单位映射：
     $
       beta_(cal(K),ol(s),ol(t)): i'^(-1) tilde(cal(K)) -> i'^(-1) R j'_* j'^(-1) tilde(cal(K))
     $
-    is an isomorphism of complexes in $D^+ ((X_(ol(s)))_et, Lambda)$. Thus, we may define a composition: 
+    是 $D^+ ((X_(ol(s)))_et, Lambda)$ 中的复形同构。于是可以定义如下复合： 
     $
       R Gamma(X_(ol(t)), cal(K)|_(X_(ol(t)))) &= R Gamma(X_(ol(t)), j'^(-1) tilde(cal(K))) = R Gamma(X times_S tilde(S)_(ol(s)), R j'_* j'^(-1) tilde(cal(K))) \
       &-> R Gamma(X_(ol(s)), i'^(-1) R j'_* j'^(-1) tilde(cal(K))) \
       &->^(beta_(cal(K),ol(s),ol(t))^(-1)) R Gamma(X_(ol(s)), i'^(-1) tilde(cal(K))) = R Gamma(X_(ol(s)), cal(K)|_(X_(ol(s))))
     $
-    Here, the first map is restriction along $i'^(-1)$ and the second map is induced by the inverse of the isomorphism $beta_(cal(K),ol(s),ol(t))$. This map is called the *cospecialization map*, and denoted: 
+    其中第一个映射是沿 $i'^(-1)$ 的限制，第二个映射由同构 $beta_(cal(K),ol(s),ol(t))$ 的逆诱导。这个映射称为*余特殊化映射*，记作： 
     $
       cosp: R Gamma(X_(ol(t)), cal(K)|_(X_(ol(t)))) -> R Gamma(X_(ol(s)), cal(K)|_(X_(ol(s))))
     $
-    By construction, the cospecialization is transitive w.r.t. chains of generalizations of geometric points. 
+    按构造，沿几何点的一般化链，余特殊化映射具有传递性。 
 ]
 
 #proposition(name: <loc-acyc-sp-cosp-square>)[
-  Let $f: X -> S$ be a qcqs locally acyclic morphism relative to $cal(K) in D^+ (X_et, Lambda)$. Then for every geometric point $ol(s)$ of $S$, every generalization of $ol(s)$, i.e. a geometric point $ol(t)$ of $tilde(S)_(ol(s))$, the following diagram commutes: 
+  设 $f: X -> S$ 是拟紧拟分离的态射，且关于 $cal(K) in D^+ (X_et, Lambda)$ 局部零调。则对 $S$ 的每个几何点 $ol(s)$、每个 $ol(s)$ 的一般化（即 $tilde(S)_(ol(s))$ 的几何点 $ol(t)$），下图交换： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCIoUiBmXyogY2FsKEspKV8ob2wocykpIl0sWzAsMSwiKFIgZl8qIGNhbChLKSlfKG9sKHQpKSJdLFsxLDAsIlIgR2FtbWEoWF8ob2wocykpLCBjYWwoSyl8XyhYXyhvbChzKSkpKSJdLFsxLDEsIlIgR2FtbWEoWF8ob2wodCkpLCBjYWwoSyl8XyhYXyhvbCh0KSkpKSJdLFswLDIsIkJDIl0sWzEsMywiQkMiLDJdLFswLDEsInNwIiwyXSxbMiwzLCJjb3NwIl1d
   #align(center, diagram({
     node((0, 0), [$(R f_* cal(K))_(ol(s))$])
@@ -423,24 +423,24 @@ Now that we have seen the intimate connection between local acyclicity and base 
     edge((0, 0), (0, 1), [$sp$], label-side: right, "->")
     edge((1, 1), (1, 0), [$cosp$], label-side: right, "->")
   }))
-  Here, the horizontal maps are base changes, the left map is the specialization map, and the right map is the cospecialization map. 
+  其中水平映射是基变换，左边的映射是特殊化映射，右边的映射是余特殊化映射。 
 ]
 #proof[
-  By unfolding the definitions, we see that we may replace $f: X -> S$ with $tilde(f): tilde(X) = X times_S tilde(S)_(ol(s)) -> tilde(S)_(ol(s))$, and $cal(K)$ with $tilde(cal(K)) = cal(K)|_(X times_S tilde(S)_(ol(s)))$. Indeed, 
+  展开定义即可看出，我们可以把 $f: X -> S$ 换成 $tilde(f): tilde(X) = X times_S tilde(S)_(ol(s)) -> tilde(S)_(ol(s))$，把 $cal(K)$ 换成 $tilde(cal(K)) = cal(K)|_(X times_S tilde(S)_(ol(s)))$。理由如下： 
 
-  - $tilde(f)$ is locally acyclic relative to $tilde(cal(K))$. Indeed, $tilde(S)_(ol(s)) -> S$ is a projective limit of etale neighborhoods of $ol(s)$ in $S$, and thus $tilde(S)_(ol(s))$ is a projective limit of quasi-finite $S$-schemes. By @loc-acyc-and-limits-of-qfinite, $tilde(f)$ is locally acyclic relative to $tilde(cal(K))$. 
+  - $tilde(f)$ 关于 $tilde(cal(K))$ 局部零调。事实上，$tilde(S)_(ol(s)) -> S$ 是 $S$ 中 $ol(s)$ 的平展邻域的逆向极限，因此 $tilde(S)_(ol(s))$ 是拟有限 $S$-概形的逆向极限。由 @loc-acyc-and-limits-of-qfinite，$tilde(f)$ 关于 $tilde(cal(K))$ 局部零调。 
 
-  - By @derived-stalks-of-derived-pushforward, we have isomorphisms: 
+  - 由 @derived-stalks-of-derived-pushforward，有同构： 
     $
       (R f_* cal(K))_(ol(t)) = R Gamma(X times_S tilde(S)_(ol(t)), cal(K)|_(X times_S tilde(S)_(ol(t)))) = R Gamma(tilde(X) times_(tilde(S)_(ol(s))) (tilde(S)_(ol(s)))^tilde_(ol(t)), tilde(cal(K))|_(tilde(X) times_(tilde(S)_(ol(s))) (tilde(S)_(ol(s)))^tilde_(ol(t)))) = (R tilde(f)_* tilde(cal(K)))_(ol(t))
     $
-    These isomorphisms are compatible with restrictions and base changes to a stalk (which are essentially restrictions), hence specializations (which are also essentially restrictions). Thus, the left side of the diagram passes over. 
+    这些同构与限制、以及与取茎的基变换（本质上都是限制）相容，从而与特殊化（本质上同样是限制）相容。于是图表左侧可以整体过渡过来。 
 
-  - The construction of $cosp$ is only dependent on the map $tilde(f): X times_S tilde(S)_(ol(s))$ and its fibers above $ol(s)$ and $ol(t)$, and so the right side of the diagram passes over. 
+  - $cosp$ 的构造只依赖于映射 $tilde(f): X times_S tilde(S)_(ol(s))$ 以及它在 $ol(s)$ 与 $ol(t)$ 上方的纤维，所以图表右侧也可以整体过渡过去。 
 
-  Thus, we may assume that $S$ is the spectrum of a strict henselian local ring and $ol(s)$ is the closed point of $S$. 
+  于是，不妨假设 $S$ 是严格 Hensel 局部环的谱，且 $ol(s)$ 是 $S$ 的闭点。 
 
-  Form the Cartesian diagram: 
+  作拉回图表： 
   #align(center, diagram({
     node((0, 0), [$X_(ol(t))$])
     node((1, 0), [$X$])
@@ -457,7 +457,7 @@ Now that we have seen the intimate connection between local acyclicity and base 
     edge((0, 0), (1, 0), [$j'$], label-side: left, "->")
   }))
 
-  Inspecting the definition of specialization and cospecialization, we see that we need to show the commutativity of the following diagram: 
+  检视特殊化与余特殊化的定义，我们需要证明下图交换： 
 
   // https://q.uiver.app/#r=typst&q=WzAsNixbMCwwLCJSIEdhbW1hKFgsIGNhbChLKSkiXSxbMSwwLCJSIEdhbW1hKFhfKG9sKHMpKSwgaSdeKC0xKSBjYWwoSykpIl0sWzAsMiwiUiBHYW1tYShYIHRpbWVzX1MgdGlsZGUoUylfKG9sKHQpKSwgY2FsKEspfF8oWCB0aW1lc19TIHRpbGRlKFMpXyhvbCh0KSkpKSJdLFsxLDIsIlIgR2FtbWEoWF8ob2wodCkpLCBqJ14oLTEpIGNhbChLKSkiXSxbMiwyLCJSIEdhbW1hKFgsIFIgaidfKiBqJ14oLTEpIGNhbChLKSkiXSxbMiwwLCJSIEdhbW1hKFhfKG9sKHMpKSwgaSdeKC0xKSBSIGonXyogaideKC0xKSBjYWwoSykpIl0sWzAsMiwicmVzIiwyXSxbMiwzLCJyZXMiLDJdLFswLDEsInJlcyJdLFszLDQsIiIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdWJsZSBiYXJyZWQifX19XSxbMSw1LCJiZXRhIl0sWzQsNSwicmVzIiwyXV0=
   #align(center, diagram({
@@ -474,13 +474,13 @@ Now that we have seen the intimate connection between local acyclicity and base 
     edge((1, 0), (2, 0), [$beta$], label-side: left, "->")
     edge((2, 2), (2, 0), [$res$], label-side: right, "->")
   }))
-  where $beta$ is the unit and the $res$'s are restrictions. The composition of the left and lower left restriction arrows is the restriction $res: R Gamma(X, cal(K)) -> R Gamma(X_(ol(t)), cal(K)|_(X_(ol(t))))$. Now under $D(Lambda) cong D(ol(s)_et, Lambda)$, we have the natural isomorphisms: 
+  其中 $beta$ 是单位映射，各 $res$ 都是限制映射。左侧竖直与底部水平两个限制箭头的复合，就是限制映射 $res: R Gamma(X, cal(K)) -> R Gamma(X_(ol(t)), cal(K)|_(X_(ol(t))))$。现在在 $D(Lambda) cong D(ol(s)_et, Lambda)$ 之下，有自然同构： 
   $
     R Gamma(X, -) cong i^(-1) R f_* (-) \
     R Gamma(X_(ol(s)), -) cong R f_(ol(s),*) \
     R Gamma(X_(ol(t)), -) cong i^(-1) R j_* R f_(ol(t),*) cong i^(-1) R f_* R j'_*
   $
-  Under this identification, we only need to verify the commutativity of: 
+  在这个等同之下，只需验证下图交换： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJpXigtMSkgUiBmXyogY2FsKEspIl0sWzAsMSwiaV4oLTEpIFIgZl8qIFIgaidfKiBqJ14oLTEpIGNhbChLKSJdLFsxLDEsIlIgZl8ob2wocyksKikgaSdeKC0xKSBSIGonXyogaideKC0xKSBjYWwoSykiXSxbMSwwLCJSIGZfKG9sKHMpLCopIGknXigtMSkgY2FsKEspIl0sWzAsMywiQkMiXSxbMywyXSxbMCwxXSxbMSwyLCJCQyIsMl1d
   #align(center, diagram({
     node((0, 0), [$i^(-1) R f_* cal(K)$])
@@ -492,65 +492,65 @@ Now that we have seen the intimate connection between local acyclicity and base 
     edge((0, 0), (0, 1), "->")
     edge((0, 1), (1, 1), [$BC$], label-side: right, "->")
   }))
-  which is nothing but a naturality square. 
+  这不过是一个自然性方块。 
 ]
 
 #corollary(name: <proper-loc-acyc-bc>)[
-  Let $f: X -> S$ be a proper morphism between locally noetherian schemes that is locally acyclic relative to $cal(K) in D^+_#[tor] (X_et, Lambda)$. Then for every geometric point $ol(s)$ of $S$, every generalization of $ol(s)$, i.e. a geometric point $ol(t)$ of $tilde(S)_(ol(s))$, the specialization and cospecialization maps: 
+  设 $f: X -> S$ 是局部 Noether 概形之间的紧合态射，且关于 $cal(K) in D^+_#[tor] (X_et, Lambda)$ 局部零调。则对 $S$ 的每个几何点 $ol(s)$、每个 $ol(s)$ 的一般化（即 $tilde(S)_(ol(s))$ 的几何点 $ol(t)$），特殊化映射与余特殊化映射： 
   $
     sp: (R f_* cal(K))_(ol(s)) -> (R f_* cal(K))_(ol(t)) \
 
     cosp: R Gamma(X_(ol(t)), cal(K)|_(X_(ol(t)))) -> R Gamma(X_(ol(s)), cal(K)|_(X_(ol(s))))
   $
-  are both isomorphisms. 
+  都是同构。 
 ]
 #proof[
-  In the commutative diagram of @loc-acyc-sp-cosp-square, the base change maps are both isomorphisms by proper base change, since $f$ is proper. Thus, it suffices to prove either of $sp$ or $cosp$ is an isomorphism. 
+  在 @loc-acyc-sp-cosp-square 的交换图表中，由于 $f$ 紧合，两个基变换映射按紧合基变换都是同构。因此，只需证明 $sp$ 与 $cosp$ 之一同构。 
 
-  We will directly prove that $cosp$ is an isomorphism. Indeed, $cosp$ is constructed as: 
+  我们直接证明 $cosp$ 是同构。事实上，$cosp$ 如下构造： 
   $
     R Gamma(X_(ol(t)), cal(K)|_(X_(ol(t)))) &= R Gamma(X_(ol(t)), j'^(-1) tilde(K)) = R Gamma(X times_S tilde(S)_(ol(s)), R j'_* j'^(-1) tilde(cal(K))) \
     &-> R Gamma(X_(ol(s)), i'^(-1) R j'_* j'^(-1) tilde(cal(K))) \
     &->^(beta_(cal(K),ol(s),ol(t))^(-1)) R Gamma(X_(ol(s)), i'^(-1) tilde(cal(K))) = R Gamma(X_(ol(s)), cal(K)|_(X_(ol(s))))
   $
-  The second map is by definition an isomorphism. Meanwhile, the first map: 
+  第二个映射按定义就是同构。至于第一个映射： 
   $
     R Gamma(X times_S tilde(S)_(ol(s)), R j'_* j'^(-1) tilde(cal(K))) -> R Gamma(X_(ol(s)), i'^(-1) R j'_* j'^(-1) tilde(cal(K)))
   $
-  is the base change of the proper map $X times_S tilde(S)_(ol(s)) -> tilde(S)_(ol(s))$ along the closed geometric point $ol(s) -> tilde(S)_(ol(s))$. Here, $tilde(S)_(ol(s))$ is noetherian and $R j'_* j'^(-1) tilde(cal(K)) in D^+_#[tor]$, so proper base change is applicable. Thus this map is an isomorphism too by proper base change. We are thereby done showing that $cosp$ is an isomorphism. 
+  它是紧合映射 $X times_S tilde(S)_(ol(s)) -> tilde(S)_(ol(s))$ 沿闭几何点 $ol(s) -> tilde(S)_(ol(s))$ 的基变换。这里 $tilde(S)_(ol(s))$ 是 Noether 的，且 $R j'_* j'^(-1) tilde(cal(K)) in D^+_#[tor]$，故紧合基变换适用。因此这个映射也是同构。这就证明了 $cosp$ 是同构。 
 ]
 
 #properties(name: <loc-acyc-compose>)[
-  Local acyclicity is compatible with composition, in the following sense. Let $X ->^f Y ->^g S$ be qcqs morphisms between locally noetherian schemes, and $cal(K) in D^b_#[ctf] (X_et, Lambda)$, with geometric points $ol(x)$ of $X$, and $ol(y) = f(ol(x))$. 
+  局部零调性与复合相容，具体含义如下。设 $X ->^f Y ->^g S$ 是局部 Noether 概形之间的拟紧拟分离态射，$cal(K) in D^b_#[ctf] (X_et, Lambda)$，$ol(x)$ 是 $X$ 的几何点，$ol(y) = f(ol(x))$。 
   
-  If $f$ is locally acyclic relative to $cal(K)$ at every point of $tilde(X)_(ol(x))$, and $g$ is locally acyclic relative to $ul(cal(K)_(ol(x)))$ at $ol(y)$, then $g compose f$ is locally acyclic relative to $cal(K)$ at $ol(x)$. 
+  若 $f$ 在 $tilde(X)_(ol(x))$ 的每个点处都关于 $cal(K)$ 局部零调，且 $g$ 在 $ol(y)$ 处关于 $ul(cal(K)_(ol(x)))$ 局部零调，则 $g compose f$ 在 $ol(x)$ 处关于 $cal(K)$ 局部零调。 
 ]
 #proof[
-  Put $ol(s) = g(ol(y))$. Since local acyclicity is only dependent on the strict local neighborhood, we may replace $X, Y, S$ with $tilde(X)_(ol(x)), tilde(Y)_(ol(y)), tilde(S)_(ol(s))$ and assume that: 
+  令 $ol(s) = g(ol(y))$。由于局部零调性只依赖于严格局部邻域，我们可以把 $X, Y, S$ 换成 $tilde(X)_(ol(x)), tilde(Y)_(ol(y)), tilde(S)_(ol(s))$，并假设： 
 
-  - $X, Y, S$ are spectra of noetherian strict henselian local rings, and $ol(x), ol(y), ol(s)$ are above their closed points. 
+  - $X, Y, S$ 是 Noether 严格 Hensel 局部环的谱，且 $ol(x), ol(y), ol(s)$ 位于各自的闭点上方。 
 
-  - $f$ is locally acyclic relative to $cal(K)$ and $g$ is locally acyclic at $ol(y)$ relative to $ul(cal(K)_(ol(x))) = ul(R Gamma(X, cal(K)))$. 
+  - $f$ 关于 $cal(K)$ 局部零调，且 $g$ 在 $ol(y)$ 处关于 $ul(cal(K)_(ol(x))) = ul(R Gamma(X, cal(K)))$ 局部零调。 
 
-  Let $ol(t)$ be any geometric point of $S$. To show that $g compose f$ is locally acyclic relative to $cal(K)$ at $ol(x)$, it suffices to show that the map: 
+  取 $S$ 的任意几何点 $ol(t)$。要证 $g compose f$ 在 $ol(x)$ 处关于 $cal(K)$ 局部零调，只需证明映射： 
   $
     cal(K)_(ol(x)) -> R Gamma(X_(ol(t)), cal(K)|_(X_(ol(t))))
   $
-  Base change $f$ to $f_(ol(t)): X_(ol(t)) -> Y_(ol(t))$. Now by the Leray spectral sequence, 
+  是同构。把 $f$ 基变换为 $f_(ol(t)): X_(ol(t)) -> Y_(ol(t))$。由 Leray 谱序列， 
   $
     R Gamma(X_(ol(t)), cal(K)|_(X_(ol(t)))) cong R Gamma(Y_(ol(t)), R f_(ol(t),*) (cal(K)|_(X_(ol(t)))))
   $
-  There is a map $ul(cal(K)_(ol(x))) = ul(R Gamma(X, cal(K))) -> cal(K)$, hence a map $ul(cal(K)_(ol(x))) -> cal(K)|_(X_(ol(t)))$. Thus by adjunction there is a canonical map: 
+  此外，存在映射 $ul(cal(K)_(ol(x))) = ul(R Gamma(X, cal(K))) -> cal(K)$，从而有映射 $ul(cal(K)_(ol(x))) -> cal(K)|_(X_(ol(t)))$。于是由伴随，有典范映射： 
   $
     ul(cal(K)_(ol(x))) -> R f_(ol(t),*) (cal(K)|_(X_(ol(t))))
   $
-  Suppose that this map is an isomorphism, then: 
+  假设这个映射是同构，则： 
   $
     R Gamma(X_(ol(t)), cal(K)|_(X_(ol(t)))) cong R Gamma(Y_(ol(t)), R f_(ol(t),*) (cal(K)|_(X_(ol(t))))) cong R Gamma(Y_(ol(t)), ul(cal(K)_(ol(x)))) cong cal(K)_(ol(x))
   $
-  where the last isomorphism is due to local acyclicity of $g$ relative to $ul(cal(K)_(ol(x)))$. We would thus be done. It therefore suffices to show that the canonical map $ul(cal(K)_(ol(x))) -> R f_(ol(t),*) (cal(K)|_(X_(ol(t))))$ is an isomorphism. 
+  其中最后一个同构来自 $g$ 关于 $ul(cal(K)_(ol(x)))$ 的局部零调性。若该映射是同构，证明即告完成；于是归结为证明典范映射 $ul(cal(K)_(ol(x))) -> R f_(ol(t),*) (cal(K)|_(X_(ol(t))))$ 是同构。 
   #lemma[
-    Let $f: X -> S$ be a locally acyclic morphism relative to $cal(K) in D^+ (X_et, Lambda)$. Then for every geometric point $ol(t)$ of $S$, form the Cartesian diagram: 
+    设 $cal(K) in D^+ (X_et, Lambda)$，$f: X -> S$ 是关于 $cal(K)$ 局部零调的态射。则对 $S$ 的每个几何点 $ol(t)$，作拉回图表： 
     // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJYXyhvbCh0KSkiXSxbMSwwLCJYIl0sWzEsMSwiUyJdLFswLDEsIm9sKHQpIl0sWzAsMSwiaiciXSxbMywyLCJqIiwyXSxbMSwyLCJmIl0sWzAsMywiZl8ob2wodCkpIiwyXV0=
     #align(center, diagram({
       node((0, 0), [$X_(ol(t))$])
@@ -562,68 +562,68 @@ Now that we have seen the intimate connection between local acyclicity and base 
       edge((1, 0), (1, 1), [$f$], label-side: left, "->")
       edge((0, 0), (0, 1), [$f_(ol(t))$], label-side: right, "->")
     }))
-    Then the relative base change map: 
+    则相对基变换映射： 
     $
       cal(K) Lotimes_Lambda f^(-1) j_* ul(Lambda) -> R j'_* j'^(-1) cal(K)
     $
-    is an isomorphism. 
+    是同构。 
   ]
   #proof[
-    Let $ol(t)$ lie above $t in S$, and let $S'$ be the normalization of $ol({t})$, equipped with its reduced substructure, in the algebraic closure of its function field. Then: 
+    设 $ol(t)$ 位于 $t in S$ 上方。取 $ol({t})$（带其约化结构）在其函数域的代数闭包中的正规化，记为 $S'$。则： 
     $
       S' -> ol({t}) -> S
     $
-    is the composition of an integral map with a closed immersion, hence integral. Thus by @loc-acyc-and-limits-of-qfinite, the base change $f': X' -> S'$ of $f: X -> S$ along $S' -> S$ is locally acyclic relative to $cal(K)|_(X')$. 
+    是整映射与闭浸入的复合，从而是整映射。于是由 @loc-acyc-and-limits-of-qfinite，$f: X -> S$ 沿 $S' -> S$ 的基变换 $f': X' -> S'$ 关于 $cal(K)|_(X')$ 局部零调。 
 
-    Since relative base change is compatible with horizontal concatenation of Cartesian squares, by @finite-bc-in-the-limit, it suffices to deal with base change along $ol(t) -> S'$ and $X' -> S'$. In other words, we may assume that: 
+    由于相对基变换与拉回方块的水平拼接相容，由 @finite-bc-in-the-limit，只需处理沿 $ol(t) -> S'$ 与 $X' -> S'$ 的基变换。换言之，不妨假设： 
 
-    - $S$ is a normal integral scheme with algebraically closed function field, and $ol(t)$ is above its generic point. 
+    - $S$ 是正规整概形，其函数域代数闭，且 $ol(t)$ 位于其泛点上方。 
 
-    Let $t$ be the generic point of $S$, which is an algebraic geometric point. Factor $j: ol(t) -> S$ into $ol(t) ->^q t -> S$ where $t$ is the generic point of $S$, being an algebraic geometric point. By @integral-normal-affine-with-ac-func-field, 
+    设 $t$ 是 $S$ 的泛点，它是代数几何点。把 $j: ol(t) -> S$ 分解为 $ol(t) ->^q t -> S$，其中 $t$ 正是前述 $S$ 的泛点，它已是代数几何点。由 @integral-normal-affine-with-ac-func-field， 
     $
       f^(-1) j_* ul(Lambda) = f^(-1) h_* q_* ul(Lambda) = f^(-1) h_* ul(Lambda) = f^(-1) ul(Lambda) = ul(Lambda)
     $
-    Thus, it suffices to show that $cal(K) -> R j'_* j'^(-1) cal(K)$ is an isomorphism. Indeed, for a geometric point $ol(x)$ lying above $x in X$, 
+    于是，只需证明 $cal(K) -> R j'_* j'^(-1) cal(K)$ 是同构。事实上，对位于 $x in X$ 上方的几何点 $ol(x)$， 
     $
       (R j'_* j'^(-1) cal(K))_(ol(x)) = R Gamma(X_(ol(t)) times_X tilde(X)_(ol(x)), cal(K)|_(X_(ol(t)) times_X tilde(X)_(ol(x)))) = R Gamma(ol(t) times_S tilde(X)_(ol(x)), cal(K)|_(ol(t) times_S tilde(X)_(ol(x))))
     $
 
-    For $s = f(x)$, $tilde(X)_(ol(x))$ is local above $Spec(cal(O)_(S,s))$, and: 
+    对 $s = f(x)$，$tilde(X)_(ol(x))$ 是 $Spec(cal(O)_(S,s))$ 上方的局部概形，且： 
     $
       ol(t) times_S tilde(X)_(ol(x)) = ol(t) otimes_(cal(O)_(S,s)) tilde(X)_(ol(x))
     $
-    However, by @integral-normal-affine-with-ac-func-field, $s$ is a geometric point of $S$, and $cal(O)_(S,s)$ is strict henselian. Thus: 
+    然而由 @integral-normal-affine-with-ac-func-field，$s$ 是 $S$ 的几何点，且 $cal(O)_(S,s)$ 是严格 Hensel 的。于是： 
     $
       ol(t) times_S tilde(X)_(ol(x)) = ol(t) otimes_(cal(O)_(S,s)) tilde(X)_(ol(x)) = ol(t) times_(tilde(S)_s) tilde(X)_(ol(x)) = F_(ol(x),ol(t))
     $
-    is a vanishing cycle variety. Thus, the map: 
+    是消没圈簇。因此，映射： 
     $
       cal(K)_(ol(x)) -> (R j'_* j'^(-1) cal(K))_(ol(x)) = R Gamma(F_(ol(x),ol(t)), cal(K)|_(F_(ol(x),ol(t))))
     $
-    is an isomorphism by definition of local acyclicity. Hence $cal(K) -> R j'_* j'^(-1) cal(K)$ is an isomorphism. 
+    按局部零调性的定义，它是同构。故 $cal(K) -> R j'_* j'^(-1) cal(K)$ 是同构。 
   ]
 
   #lemma[
-    Let $Lambda$ be a noetherian ring s.t. every finite $Lambda$-module embeds into a finite free $Lambda$-module. Suppose that $f: X -> S$ is a qcqs locally acyclic morphism relative to $cal(K) in D^b_#[ctf] (X_et, Lambda)$, in which $S$ is locally noetherian. Suppose that $ol(s)$ is a geometric point of $S$ s.t. all cospecializations: 
+    设 $Lambda$ 是 Noether 环，且每个有限 $Lambda$-模都能嵌入某个有限自由 $Lambda$-模。设 $f: X -> S$ 是拟紧拟分离的态射，关于 $cal(K) in D^b_#[ctf] (X_et, Lambda)$ 局部零调，且 $S$ 是局部 Noether 概形。又设 $ol(s)$ 是 $S$ 的几何点，使得对 $tilde(S)_(ol(s))$ 的几何点 $ol(t)$，所有余特殊化： 
     $
       R Gamma(X_(ol(t)), cal(K)|_(X_(ol(t)))) -> R Gamma(X_(ol(s)), cal(K)|_(X_(ol(s))))
     $
-    are isomorphisms for geometric points $ol(t)$ of $tilde(S)_(ol(s))$. Then the base change: 
+    都是同构。则基变换： 
     $
       (R f_* cal(K))_(ol(s)) -> R Gamma(X_(ol(s)), cal(K)|_(X_(ol(s))))
     $
-    is an isomorphism. 
+    是同构。 
   ]
   #proof[
-    As in the start of the proof of @loc-acyc-sp-cosp-square, we may replace $f: X -> S$ with $X times_S tilde(S)_(ol(s)) -> tilde(S)_(ol(s))$ and $cal(K)$ with $cal(K)|_(X times_S tilde(S)_(ol(s)))$. We may thus assume that $S$ is the spectrum of a noetherian strict henselian local ring, and $ol(s)$ lies above its closed point. 
+    与 @loc-acyc-sp-cosp-square 证明的开头一样，我们可以把 $f: X -> S$ 换成 $X times_S tilde(S)_(ol(s)) -> tilde(S)_(ol(s))$，把 $cal(K)$ 换成 $cal(K)|_(X times_S tilde(S)_(ol(s)))$。于是不妨假设 $S$ 是 Noether 严格 Hensel 局部环的谱，且 $ol(s)$ 位于其闭点上方。 
 
-    To prove the desired result, we prove that for all sheaves $cal(F)$ of $Lambda$-modules on $S$, the base change: 
+    为证明所要的结论，我们对 $S$ 上所有 $Lambda$-模层 $cal(F)$ 证明基变换： 
     $
       (R f_* (cal(K) Lotimes_Lambda f^(-1) cal(F)))_(ol(s)) = R Gamma(X, cal(K) Lotimes_Lambda f^(-1) cal(F)) -> R Gamma (X_(ol(s)), (cal(K) Lotimes_Lambda f^(-1) cal(F))|_(X_(ol(s))))
     $
-    is an isomorphism. We will then take $cal(F) = ul(Lambda)$ to conclude the proof. 
+    是同构。最后取 $cal(F) = ul(Lambda)$ 即可完成证明。 
 
-    Firstly, suppose that $cal(F) = j_* ul(Lambda)$ for a geometric point $j: ol(t) -> S$. Form the Cartesian diagram: 
+    首先假设 $cal(F) = j_* ul(Lambda)$，其中 $j: ol(t) -> S$ 是几何点。作拉回图表： 
     #align(center, diagram({
       node((0, 0), [$X_(ol(t))$])
       node((1, 0), [$X$])
@@ -639,49 +639,49 @@ Now that we have seen the intimate connection between local acyclicity and base 
       edge((2, 0), (1, 0), [$i'$], label-side: right, "->")
       edge((0, 0), (1, 0), [$j'$], label-side: left, "->")
     }))
-    By the previous lemma, LHS is: 
+    由上一个引理，左端为： 
     $
       R Gamma(X, cal(K) Lotimes_Lambda f^(-1) j_* ul(Lambda)) = R Gamma(X, R j'_* j'^(-1) cal(K)) = R Gamma(X_(ol(t)), j'^(-1) cal(K))
     $ 
-    while on RHS: 
+    而右端为： 
     $
       i'^(-1) (cal(K) Lotimes_Lambda f^(-1) j_* ul(Lambda)) = i'^(-1) cal(K) Lotimes_Lambda f_(ol(s))^(-1) i^(-1) j_* ul(Lambda)
     $
-    Now $i^(-1) j_* ul(Lambda) = ul((j_* ul(Lambda))_(ol(s))) = ul(R Gamma(S, j_* ul(Lambda))) = ul(Lambda)$, and so $f_(ol(s))^(-1) i^(-1) j_* ul(Lambda) = ul(Lambda)$. Thus RHS is: 
+    现在 $i^(-1) j_* ul(Lambda) = ul((j_* ul(Lambda))_(ol(s))) = ul(R Gamma(S, j_* ul(Lambda))) = ul(Lambda)$，故 $f_(ol(s))^(-1) i^(-1) j_* ul(Lambda) = ul(Lambda)$。于是右端为： 
     $
       R Gamma (X_(ol(s)), (cal(K) Lotimes_Lambda f^(-1) cal(F))|_(X_(ol(s)))) = R Gamma(X_(ol(s)), i'^(-1) cal(K))
     $
-    By unfolding the definitions, it can be checked that under these identifications of LHS and RHS, the base change map becomes exactly the cospecialization: 
+    展开定义可以验证：在左端与右端的这些等同之下，基变换映射恰好变成余特殊化： 
     $
       cosp: R Gamma(X_(ol(t)), j'^(-1) cal(K)) -> R Gamma(X_(ol(s)), i'^(-1) cal(K))
     $
-    and is an isomorphism by hypothesis. In other words, we have proved that the base change: 
+    而它由假设是同构。换言之，我们已经证明：只要 $cal(F) = j_* ul(Lambda)$ 且 $j: ol(t) -> S$ 是几何点，基变换： 
     $
       (R f_* (cal(K) Lotimes_Lambda f^(-1) cal(F)))_(ol(s)) -> R Gamma (X_(ol(s)), (cal(K) Lotimes_Lambda f^(-1) cal(F))|_(X_(ol(s))))
     $
-    is an isomorphism whenever $cal(F) = j_* ul(Lambda)$ for a geometric point $j: ol(t) -> S$. 
+    就是同构。 
 
-    Replace $cal(K)$ by a bounded flat resolution $cal(P)^bullet$, and we have hypercohomology spectral sequences: 
+    把 $cal(K)$ 换成有界平坦消解 $cal(P)^bullet$，便得到超上同调谱序列： 
     $
       E_1^(p,q) (cal(F)) := R^q f_* (cal(P)^p otimes_Lambda f^(-1) cal(F)) => h^(p+q) ((R f_* (cal(K) Lotimes_Lambda f^(-1) cal(F)))_(ol(s))) =: L^q (cal(F)) \
 
       tilde(E)_1^(p,q) (cal(F)) := H^q (X_(ol(s)), (cal(P)^p Lotimes_Lambda f^(-1) cal(F))|_(X_(ol(s)))) => h^(p+q) (R Gamma (X_(ol(s)), (cal(K) Lotimes_Lambda f^(-1) cal(F))|_(X_(ol(s))))) =: S^q (cal(F))
     $
-    Since $f$ is qcqs, by the limit formulas @limit-formula-for-sheaves and @relative-limit-formula-for-sheaves, $E_1^(p,q)$ and $tilde(E)_1^(p,q)$ both commute with directed limits. Thus, $L^q (cal(F))$ and $S^q (cal(F))$ both commute with directed limits in $cal(F)$. 
+    由于 $f$ 是拟紧拟分离的，由极限公式 @limit-formula-for-sheaves 与 @relative-limit-formula-for-sheaves，$E_1^(p,q)$ 与 $tilde(E)_1^(p,q)$ 都与正向极限交换。因此 $L^q (cal(F))$ 与 $S^q (cal(F))$ 作为 $cal(F)$ 的函子都与正向极限交换。 
 
-    Suppose that for a fixed $q$, for all $r < q$, $L^r (cal(F)) -> S^r (cal(F))$ is an isomorphism for all $cal(F) in cAb(S_et, Lambda)$. Note that: 
+    固定 $q$，假设对所有 $r < q$ 及所有 $cal(F) in cAb(S_et, Lambda)$，$L^r (cal(F)) -> S^r (cal(F))$ 都是同构。注意： 
 
-    - $S$ is noetherian, and so every sheaf $cal(F) in cAb(S_et, Lambda)$ can be written as $cal(F) = dirlim_lambda cal(F)_lambda$ as a directed limit of constructible sheaves of $Lambda$-modules. Now $L^q (cal(F)) -> S^q (cal(F))$ is the directed limit of $L^q (cal(F)_lambda) -> S^q (cal(F)_lambda)$, and so TFAE: 
+    - $S$ 是 Noether 的，因此每个层 $cal(F) in cAb(S_et, Lambda)$ 都可以写成 $cal(F) = dirlim_lambda cal(F)_lambda$，也就是可构造 $Lambda$-模层的正向极限。而 $L^q (cal(F)) -> S^q (cal(F))$ 是 $L^q (cal(F)_lambda) -> S^q (cal(F)_lambda)$ 的正向极限，故以下条件等价： 
 
-      - $L^q (cal(F)) -> S^q (cal(F))$ is injective for all $cal(F) in cAb(S_et, Lambda)$; 
+      - 对一切 $cal(F) in cAb(S_et, Lambda)$，$L^q (cal(F)) -> S^q (cal(F))$ 是单射； 
 
-      - $L^q (cal(F)) -> S^q (cal(F))$ is injective for all constructible $cal(F) in cAb(S_et, Lambda)$. 
+      - 对一切可构造的 $cal(F) in cAb(S_et, Lambda)$，$L^q (cal(F)) -> S^q (cal(F))$ 是单射。 
   
-    - For every constructible sheaf $cal(F)$, by @constructible-godement-resolution we may get an injection $cal(F) -> oplus.big_(i=1)^m ol(t_i)_* ul(M_i)$ for finite $Lambda$-modules $M_i$ and geometric points $ol(t_i) -> S$. Now since every finite $Lambda$-module embeds into a finite free $Lambda$-module, we may assume that every $M_i$ is finite free, and by splitting them we may assume that every $M_i = Lambda$. Form the short exact sequence: #h(1fr)
+    - 对每个可构造层 $cal(F)$，由 @constructible-godement-resolution 可以得到单射 $cal(F) -> oplus.big_(i=1)^m ol(t_i)_* ul(M_i)$，其中 $M_i$ 是有限 $Lambda$-模，$ol(t_i) -> S$ 是几何点。由于每个有限 $Lambda$-模都能嵌入某个有限自由 $Lambda$-模，不妨设每个 $M_i$ 都是有限自由；再把它们拆分，不妨设每个 $M_i = Lambda$。作短正合列：#h(1fr)
       $
         0 -> cal(F) -> cal(C) = oplus.big_(i=1)^m ol(t_i)_* ul(Lambda) -> cal(R) -> 0
       $
-      Now consider the following commutative diagram with exact rows: 
+      现在考虑如下各行正合的交换图表： 
       // https://q.uiver.app/#r=typst&q=WzAsMTQsWzAsMCwiZG90cy5jIl0sWzEsMCwiTF4ocS0xKSAoY2FsKEMpKSJdLFsyLDAsIkxeKHEtMSkgKGNhbChSKSkiXSxbMywwLCJMXnEgKGNhbChGKSkiXSxbNCwwLCJMXnEgKGNhbChDKSkiXSxbNSwwLCJMXnEgKGNhbChSKSkiXSxbNiwwLCJkb3RzLmMiXSxbMCwxLCJkb3RzLmMiXSxbNiwxLCJkb3RzLmMiXSxbMSwxLCJTXihxLTEpIChjYWwoQykpIl0sWzIsMSwiU14ocS0xKSAoY2FsKFIpKSJdLFszLDEsIlNecSAoY2FsKEYpKSJdLFs0LDEsIlNecSAoY2FsKEMpKSJdLFs1LDEsIlNecSAoY2FsKFIpKSJdLFswLDFdLFsxLDJdLFsyLDNdLFszLDRdLFs0LDVdLFs1LDZdLFs3LDldLFs5LDEwXSxbMTAsMTFdLFsxMSwxMl0sWzEyLDEzXSxbMTMsOF0sWzEsOV0sWzIsMTBdLFszLDExXSxbNCwxMl0sWzUsMTNdXQ==
       #align(center, diagram({
         node((0, 0), [$dots.c$])
@@ -717,74 +717,74 @@ Now that we have seen the intimate connection between local acyclicity and base 
         edge((5, 0), (5, 1), "->")
       }))
       
-      - By our inductive hypothesis, the first two vertical maps are isomorphisms. By the discussion above on sheaves of the shape $ul(t)_* ul(Lambda)$, the fourth vertical map is an isomorphism. 
+      - 由归纳假设，前两个竖直映射是同构。由上面关于形如 $ul(t)_* ul(Lambda)$ 的层的讨论，第四个竖直映射是同构。 
 
-        Thus, by the injective four lemma, the third vertical arrow is injective. Thus $L^q (cal(F)) -> S^q (cal(F))$ is injective for all constructible sheaves $cal(F)$, hence for all sheaves by the previous bullet. 
+        于是由单射四引理，第三个竖直箭头是单射。因此对一切可构造层 $cal(F)$，$L^q (cal(F)) -> S^q (cal(F))$ 是单射；再由前面关于正向极限的等价条件，对一切层都成立。 
 
-        In particular $L^q (cal(R)) -> S^q (cal(R))$, the fifth vertical arrow, is injective, so by the surjective four lemma, the third vertical arrow is surjective. Thus $L^q (cal(F)) -> S^q (cal(F))$ is bijective for all constructible sheaves $cal(F)$, hence for all sheaves $cal(F)$ by the previous bullet.
+        特别地，第五个竖直箭头 $L^q (cal(R)) -> S^q (cal(R))$ 是单射，故由满射四引理，第三个竖直箭头是满射。因此对一切可构造层 $cal(F)$，$L^q (cal(F)) -> S^q (cal(F))$ 是双射；再由前面关于正向极限的等价条件，对一切层 $cal(F)$ 都成立。
 
-    Setting $cal(F) = ul(Lambda)$ concludes the proof.  
+    取 $cal(F) = ul(Lambda)$ 即完成证明。  
   ]
 
   #lemma(name: <loc-acyc-constancy-of-pushforward>)[
-    Let $Lambda$ be a noetherian ring s.t. every finite $Lambda$-module embeds into a finite free $Lambda$-module. Let $f: X -> S$ be a qcqs morphism between locally noetherian schemes, locally acyclic relative to $cal(K) in D^b_#[ctf] (X_et, Lambda)$. 
+    设 $Lambda$ 是 Noether 环，且每个有限 $Lambda$-模都能嵌入某个有限自由 $Lambda$-模。设 $cal(K) in D^b_#[ctf] (X_et, Lambda)$，$f: X -> S$ 是局部 Noether 概形之间的拟紧拟分离态射，关于该复形局部零调。 
 
-    Suppose that we have a complex $A in D^b (Lambda)$ and a morphism $alpha: ul(A)_X -> cal(K)$, s.t. for every geometric point $ol(s)$ of $S$, the map induced by $alpha$: 
+    设给定复形 $A in D^b (Lambda)$ 与态射 $alpha: ul(A)_X -> cal(K)$，使得对 $S$ 的每个几何点 $ol(s)$，由 $alpha$ 诱导的映射： 
     $
       A -> R Gamma(X_(ol(s)), ul(A)) -> R Gamma(X_(ol(s)), cal(K)|_(X_(ol(s))))
     $
-    is an isomorphism. Then the map: 
+    都是同构。则由伴随从 $alpha$ 诱导的映射： 
     $
       beta: ul(A)_S -> R f_* cal(K)
     $
-    induced from $alpha$ by adjunction is an isomorphism. 
+    是同构。 
   ]
   #proof[
-    By unfolding the definitions, it can be checked that the isomorphisms $A -> R Gamma(X_(ol(s)), cal(K)|_(X_(ol(s))))$ are compatible with cospecializations between different geometric fibers. Thus, all cospecializations of $f$ on $cal(K)$ are isomorphisms. 
+    展开定义可以验证，这些同构 $A -> R Gamma(X_(ol(s)), cal(K)|_(X_(ol(s))))$ 与不同几何纤维之间的余特殊化相容。因此 $f$ 关于 $cal(K)$ 的所有余特殊化都是同构。 
 
-    For every geometric point $ol(s)$ of $S$, consider the map $tilde(f)_(ol(s)): X times_S tilde(S)_(ol(s)) -> tilde(S)_(ol(s))$. $tilde(S)_(ol(s))$ is a projective limit of affine etale neighborhoods of $ol(s)$ in $S$, and is hence a projective limit of quasi-finite $S$-schemes under affine transition maps. Thus by @loc-acyc-and-limits-of-qfinite, $tilde(f)_(ol(s))$ is locally acyclic relative to $cal(K)|_(X times_S tilde(S)_(ol(s)))$. 
+    对 $S$ 的每个几何点 $ol(s)$，考虑映射 $tilde(f)_(ol(s)): X times_S tilde(S)_(ol(s)) -> tilde(S)_(ol(s))$。$tilde(S)_(ol(s))$ 是 $S$ 中 $ol(s)$ 的仿射平展邻域的逆向极限，从而是带仿射过渡映射的拟有限 $S$-概形的逆向极限。于是由 @loc-acyc-and-limits-of-qfinite，$tilde(f)_(ol(s))$ 关于 $cal(K)|_(X times_S tilde(S)_(ol(s)))$ 局部零调。 
 
-    Furthermore, the cospecializations of $tilde(f)_(ol(s))$ on $cal(K)|_(X times_S tilde(S)_(ol(s)))$ are exactly the same as the cospecializations of $f$ on $cal(K)$ by definition. Thus, all cospecializations of $tilde(f)_(ol(s))$ on $cal(K)|_(X times_S tilde(S)_(ol(s)))$ are isomorphisms. 
+    此外，按定义，$tilde(f)_(ol(s))$ 关于 $cal(K)|_(X times_S tilde(S)_(ol(s)))$ 的余特殊化与 $f$ 关于 $cal(K)$ 的余特殊化完全相同。因此 $tilde(f)_(ol(s))$ 关于 $cal(K)|_(X times_S tilde(S)_(ol(s)))$ 的所有余特殊化都是同构。 
 
-    The previous lemma is now applicable, and we have a base change isomorphism: 
+    现在可以应用上一个引理，得到基变换同构： 
     $
       R Gamma(X times_S tilde(S)_(ol(s)), cal(K)|_(X times_S tilde(S)_(ol(s)))) cong R tilde(f)_(ol(s),*) (cal(K)|_(X times_S tilde(S)_(ol(s))))_(ol(s)) cong R Gamma(X_(ol(s)), cal(K)|_(X_(ol(s))))
     $
-    However, by @derived-stalks-of-derived-pushforward, $R Gamma(X times_S tilde(S)_(ol(s)), cal(K)|_(X times_S tilde(S)_(ol(s)))) cong (R f_* cal(K))_(ol(s))$. Thus, we have shown that: 
+    然而由 @derived-stalks-of-derived-pushforward，$R Gamma(X times_S tilde(S)_(ol(s)), cal(K)|_(X times_S tilde(S)_(ol(s)))) cong (R f_* cal(K))_(ol(s))$。于是我们证明了： 
     $
       (R f_* cal(K))_(ol(s)) cong R Gamma(X_(ol(s)), cal(K)|_(X_(ol(s)))) cong A
     $
-    One may check that this isomorphism is exactly the morphism $beta_(ol(x)): A -> (R f_* cal(K))_(ol(s))$. Thus $beta$ is an isomorphism. 
+    可以验证，这个同构恰好就是态射 $beta_(ol(x)): A -> (R f_* cal(K))_(ol(s))$。故 $beta$ 是同构。 
   ]
 
-  Recall that we intend to show that the map $ul(cal(K)_(ol(x))) -> R f_(ol(t),*) (cal(K)|_(X_(ol(t))))$, induced from $ul(cal(K)_(ol(x))) -> cal(K)|_(X_(ol(t)))$, is an isomorphism. $ol(t) -> S$ is quasi-finite, so by @loc-acyc-and-limits-of-qfinite, $f_(ol(t))$ is locally acyclic relative to $cal(K)|_(X_(ol(t)))$. Now for a geometric point $ol(u)$ of $Y_(ol(t))$, 
+  回忆我们要证明：由 $ul(cal(K)_(ol(x))) -> cal(K)|_(X_(ol(t)))$ 诱导的映射 $ul(cal(K)_(ol(x))) -> R f_(ol(t),*) (cal(K)|_(X_(ol(t))))$ 是同构。$ol(t) -> S$ 拟有限，故由 @loc-acyc-and-limits-of-qfinite，$f_(ol(t))$ 关于 $cal(K)|_(X_(ol(t)))$ 局部零调。现在对 $Y_(ol(t))$ 的几何点 $ol(u)$， 
   $
     R Gamma(X_(ol(t)) times_(Y_(ol(t))) ol(u), cal(K)|_(X_(ol(t)) times_(Y_(ol(t))) ol(u))) cong R Gamma(X_(ol(u)), cal(K)|_(X_(ol(u))))
   $
-  However, $X_(ol(u)) = ol(u) times_Y X = ol(u) times_(tilde(Y)_(ol(y))) tilde(X)_(ol(x)) = F_(ol(x),ol(u))$ is a vanishing cycle variety for $f: X -> Y$, so $R Gamma(X_(ol(u)), cal(K)|_(X_(ol(u)))) = R Gamma(F_(ol(x),ol(u)), cal(K)|_(F_(ol(x),ol(u)))) = cal(K)_(ol(x))$ by definition of local acyclicity. Thus we have natural isomorphisms $cal(K)_(ol(x)) cong R Gamma(X_(ol(t)) times_(Y_(ol(t))) ol(u), cal(K)|_(X_(ol(t)) times_(Y_(ol(t))) ol(u)))$. The previous lemma can now be invoked to show that we have the desired isomorphism: 
+  然而 $X_(ol(u)) = ol(u) times_Y X = ol(u) times_(tilde(Y)_(ol(y))) tilde(X)_(ol(x)) = F_(ol(x),ol(u))$ 是 $f: X -> Y$ 的消没圈簇，故由局部零调性的定义，$R Gamma(X_(ol(u)), cal(K)|_(X_(ol(u)))) = R Gamma(F_(ol(x),ol(u)), cal(K)|_(F_(ol(x),ol(u)))) = cal(K)_(ol(x))$。于是有自然同构 $cal(K)_(ol(x)) cong R Gamma(X_(ol(t)) times_(Y_(ol(t))) ol(u), cal(K)|_(X_(ol(t)) times_(Y_(ol(t))) ol(u)))$。现在可以引用上一个引理，说明我们得到了所要的同构： 
   $
     ul(cal(K)_(ol(x))) cong R f_(ol(t),*) (cal(K)|_(X_(ol(t))))
   $
 ]
 
 #lemma(name: <loc-acyc-pass-to-lcc-sheaves>)[
-  Let $f: X -> S$ be a locally acyclic scheme morphism. Let $Lambda$ be a torsion noetherian ring whose torsion order $n in cal(O)_S^times$. 
+  设 $f: X -> S$ 是局部零调的概形态射，$Lambda$ 是挠 Noether 环，其挠系数 $n in cal(O)_S^times$。 
   
-  Then for any locally constant sheaf $cal(F) in cAb(X_et, Lambda)$ of $Lambda$-modules, $f$ is locally acyclic relative to $cal(F)$. 
+  则对任意局部常值 $Lambda$-模层 $cal(F) in cAb(X_et, Lambda)$，$f$ 都关于 $cal(F)$ 局部零调。 
 ]
 #proof[
-  Since local acyclicity only depends on the strict local rings, for $ol(x)$ of $X$ and $ol(s) = f(ol(x))$, to show that $f$ is locally acyclic relative to $cal(F)$ at $ol(x)$, it suffices to show that $tilde(X)_(ol(x)) -> tilde(S)_(ol(s))$ is locally acyclic relative to $cal(F)|_(tilde(X)_(ol(x)))$. Now $tilde(X)_(ol(x)) -> tilde(S)_(ol(s))$ is locally acyclic, so we may replace $f$ by it, and assume that $X, S$ are spectra of strict henselian local rings. 
+  由于局部零调性只依赖于严格局部环，对 $X$ 的几何点 $ol(x)$（令 $ol(s) = f(ol(x))$），要证 $f$ 在 $ol(x)$ 处关于 $cal(F)$ 局部零调，只需证明 $tilde(X)_(ol(x)) -> tilde(S)_(ol(s))$ 关于 $cal(F)|_(tilde(X)_(ol(x)))$ 局部零调。而 $tilde(X)_(ol(x)) -> tilde(S)_(ol(s))$ 是局部零调的，故可用它替换 $f$，并假设 $X, S$ 是严格 Hensel 局部环的谱。 
 
-  Now $cal(F)$ is an l.c.c. sheaf of $Lambda$-modules on $X$. Thus by definition there exists an etale cover $U -> X$ s.t. $cal(F)|_U$ is constant. The special fiber of $U -> X$ gives at least a section $s: X -> U$ by @equiv-defns-of-henselian (4), since $X$ is the spectrum of a strict henselian local ring, so $s^(-1) (cal(F)|_U) = cal(F)$ is constant. Thus $cal(F) = ul(M)$ for a $Lambda$-module $M$. Since $Lambda$ is $n$-torsion, $M$ is an $n$-torsion abelian group, so as abelian groups: 
+  现在 $cal(F)$ 是 $X$ 上的 l.c.c. $Lambda$-模层。于是按定义存在平展覆盖 $U -> X$，使 $cal(F)|_U$ 为常值层。由于 $X$ 是严格 Hensel 局部环的谱，对 $U -> X$ 特殊纤维上的任一点，都至少有一个截面 $s: X -> U$ 经过它（@equiv-defns-of-henselian (4)），故 $s^(-1) (cal(F)|_U) = cal(F)$ 是常值层。于是 $cal(F) = ul(M)$，其中 $M$ 是 $Lambda$-模。又因 $Lambda$ 是 $n$-挠的，$M$ 是 $n$-挠交换群，故作为交换群有： 
   $
     M = oplus.big_i ZZ\/d_i
   $
-  for some $d_i|n$. By the limit formula @limit-formula-for-sheaves, 
+  其中 $d_i|n$。由极限公式 @limit-formula-for-sheaves， 
   $
     H^q (F_(ol(x),ol(t)), ul(M)) = H^q (F_(ol(x),ol(t)), oplus.big_i ZZ\/d_i) = oplus.big_i H^q (F_(ol(x),ol(t)), ZZ\/d_i) = cases(
       0 &\, q >= 1, 
       oplus.big_i ZZ\/d_i = M &\, q = 0
     )
   $
-  where we used local acyclicity of $f$ relative to each $ZZ\/d_i$ (where $d_i | n$ is in $cal(O)_S^times$). We are thereby done showing local acyclicity of $f$ relative to $cal(F) = ul(M)$. 
+  这里用到了 $f$ 关于每个 $ZZ\/d_i$ 的局部零调性（其中 $d_i | n$ 属于 $cal(O)_S^times$）。这就证明了 $f$ 关于 $cal(F) = ul(M)$ 的局部零调性。 
 ]

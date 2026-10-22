@@ -1,38 +1,39 @@
+// audit-exception: 作者 R3 意见：把求值映射明确写作 $e_n$，只补出符号，数学内容未变。
 #import "void-import.typ": *
 
-In this appendix, we prove the Brown representability theorem, a formal criterion for a triangulated functor $D(cal(A)) -> cal(D)$ to have a right adjoint. The statement is: 
+本附录证明 Brown 可表示性定理：它给出三角函子 $D(cal(A)) -> cal(D)$ 有右伴随的形式判别法。定理的陈述是： 
 
-- Let $cal(A)$ be a Grothendieck abelian category. Then any triangulated functor $D(cal(A)) -> cal(D)$ that preserves arbitrary direct sums must have a triangulated right adjoint. 
+- 设 $cal(A)$ 是 Grothendieck Abel 范畴。则任何保持任意直和的三角函子 $D(cal(A)) -> cal(D)$ 都必有三角右伴随。 
 
-The proof first reduces to the module category $AMod(R)$ by the Gabriel-Popescu theorem, and then uses a compact version of Brown representability theorem to bootstrap the proof. 
+证明分两步：先用 Gabriel–Popescu 定理归约到模范畴 $AMod(R)$，再用 Brown 可表示性定理的紧情形完成剩下的论证。 
 
 #theorem(name: <gabriel-popescu>)[
-  (Gabriel-Popescu theorem) Let $cal(A)$ be a Grothendieck abelian category. Then there exists a non-commutative ring $R$ and functors: 
+  (Gabriel–Popescu 定理) 设 $cal(A)$ 是 Grothendieck Abel 范畴。则存在非交换环 $R$ 与函子： 
   $
     Q: AMod(R) arrows.rl cal(A): G
   $
-  with $Q$ left adjoint to $G$, $G$ fully faithful and $Q$ exact. 
+  其中 $Q$ 是 $G$ 的左伴随，$G$ 全忠实，$Q$ 正合。 
 ]
 #proof[
-  Let $U in cal(A)$ be a generator and $R = End_(cal(A)) (U)$ be its ring of endomorphisms. Now put: 
+  设 $U in cal(A)$ 是生成元，$R = End_(cal(A)) (U)$ 是它的自同态环。令： 
   $
     G: cal(A) -> AMod(R), A |-> Hom_(cal(A)) (U, A)
   $
-  Then each $G(A) = Hom_(cal(A)) (U, A)$ is a right $R$-module under composition. On the other hand, to define $Q$, for any $M in AMod(R)$ there is a canonical free resolution: 
+  此时每个 $G(A) = Hom_(cal(A)) (U, A)$ 都通过复合成为右 $R$-模。另一方面，要定义 $Q$，注意对任意 $M in AMod(R)$ 都有典范自由消解： 
   $
     R^(oplus K(M)) ->^A R^(oplus M) -> M -> 0
   $
-  in which $K(M) = ker(R^(oplus M) -> M)$. Let $A$ be represented by a matrix $display(mat(r_(m,k))_(k in K(M),m in M))$ where $r_(m,k) in R = End_(cal(A)) (U)$ is an endomorphism of $U$. Then $A$ passes to a morphism: 
+  其中 $K(M) = ker(R^(oplus M) -> M)$。设 $A$ 由矩阵 $display(mat(r_(m,k))_(k in K(M),m in M))$ 表示，其中 $r_(m,k) in R = End_(cal(A)) (U)$ 是 $U$ 的自同态。于是 $A$ 诱导出态射： 
   $
     A_U: U^(oplus K(M)) -> U^(oplus M), (u_k) |-> (sum_(k in K(M)) r_(m,k)(u_k))_m
   $
-  (Note: $cal(A)$ is a general abelian category and $U$ is an opaque object, so the formula above with elements of $U$ doesn't really make sense. Nevertheless $A_U$ is the unique morphism induced by $r_(m,k): U -> U$ on the respective direct summands.)
+  （注：$cal(A)$ 是一般的 Abel 范畴，$U$ 是个抽象的对象，所以上面那个用 $U$ 的元素写出的公式其实没有意义。话虽如此，$A_U$ 仍是由各个 $r_(m,k): U -> U$ 在相应直和项上诱导出的唯一态射。）
 
-  We now define: 
+  现在定义： 
   $
     Q: AMod(R) -> cal(A), M |-> coker(A_U\: U^(oplus K(M)) -> U^(oplus M))
   $
-  $Q$ is a functor since the free resolution of $M$ is functorial. Now: 
+  $Q$ 是函子，因为 $M$ 的自由消解是函子性的。现在有： 
   $
     Hom_(cal(A)) (Q(M), A) &= Hom_(cal(A)) (coker(A_U\: U^(oplus K(M)) -> U^(oplus M)), A) \
     &= ker(Hom_(cal(A)) (U^(oplus M), A) -> Hom_(cal(A)) (U^(oplus K(M)), A)) \
@@ -42,354 +43,354 @@ The proof first reduces to the module category $AMod(R)$ by the Gabriel-Popescu 
     &= Hom_R (coker(R^(oplus K(M)) -> R^(oplus M)), G(A)) \
     &= Hom_R (M, G(A))
   $
-  and so $Q$ is left adjoint to $G$. $Q$ is automatically right exact as a left adjoint. 
+  因此 $Q$ 是 $G$ 的左伴随。作为左伴随，$Q$ 自动右正合。 
 
-  - Note that: #h(1fr)
+  - 注意：#h(1fr)
     $
       Hom_(cal(A)) (U^(oplus I), A) = G(A)^I = Hom_R (R^(oplus I), G(A))
     $
-    Thus we have identifications $Q(R^(oplus I)) = U^(oplus I)$. 
+    于是 $Q(R^(oplus I)) = U^(oplus I)$。 
 
-  - We claim that if $i: M arrow.hook G(A)$ is injective, then the morphism $tilde(i): Q(M) arrow A$ induced by adjunction is injective. 
+  - 我们断言：若 $i: M arrow.hook G(A)$ 是单射，则由伴随诱导的态射 $tilde(i): Q(M) arrow A$ 也是单射。 
 
-    Given any map $g: R^n -> M$, induce a map $Q(g): U^n -> Q(M)$ by applying $Q$ to it. Now any map $alpha: U -> U^n$ is defined by $n$ elements of $Hom_(cal(A)) (U, U) = R$, and is thus induced by some $a: R -> R^n$ via functoriality, i.e. $alpha = Q(a)$. Now we claim that: 
+    任给映射 $g: R^n -> M$，把 $Q$ 作用于它，便得到映射 $Q(g): U^n -> Q(M)$。而任何映射 $alpha: U -> U^n$ 都由 $Hom_(cal(A)) (U, U) = R$ 中的 $n$ 个元素确定，因此由函子性，它来自某个 $a: R -> R^n$，即 $alpha = Q(a)$。我们断言： 
     $
       tilde(i) compose Q(g) compose Q(a) = 0 <==> Q(g) compose Q(a) = 0
     $
-    We only need to prove $(==>)$. If $tilde(i) compose Q(g) compose Q(a) = 0$, then by adjunction $i compose g compose a: R -> M$ is zero. Since $i$ is injective, $g compose a = 0$ and so $Q(g) compose Q(a) = 0$. Thus for any map $alpha: U -> U^n$, $tilde(i) compose Q(g) compose alpha = 0 <==> Q(g) compose alpha = 0$. That is, 
+    只需证明 $(==>)$。若 $tilde(i) compose Q(g) compose Q(a) = 0$，则由伴随性，$i compose g compose a: R -> M$ 为零。$i$ 是单射，故 $g compose a = 0$，从而 $Q(g) compose Q(a) = 0$。于是对任意映射 $alpha: U -> U^n$，都有 $tilde(i) compose Q(g) compose alpha = 0 <==> Q(g) compose alpha = 0$。也就是说， 
     $
       Hom_(cal(A)) (U, ker(Q(g))) -> Hom_(cal(A)) (U, ker(tilde(i) compose Q(g)))
     $
-    is an isomorphism. Since $U$ is a generator, $ker(Q(g)) = ker(tilde(i) compose Q(g))$. 
+    是同构。$U$ 是生成元，故 $ker(Q(g)) = ker(tilde(i) compose Q(g))$。 
 
-    Now pick any free resolution $h: R^(oplus I) -> M$. The above argument then says that for any finite subset $I' subset I$, $h_(I'): R^(oplus I')$ has: 
+    现在取任意自由消解 $h: R^(oplus I) -> M$。上面的论证说明：对任意有限子集 $I' subset I$，$h_(I'): R^(oplus I')$ 满足： 
     $
       ker(Q(h_(I'))) = ker(tilde(i) compose Q(h_(I')))
     $
-    Taking a directed limit over all finite $I' subset I$ and using (Ab5), we have: 
+    对所有有限 $I' subset I$ 取正向极限，并用 (Ab5)，得： 
     $
       ker(Q(h)) = ker(tilde(i) compose Q(h))
     $
-    Since $Q(h)$ is surjective (as $Q$ is right exact), this implies that $tilde(i)$ is injective. 
+    由于 $Q(h)$ 是满射（$Q$ 右正合），这说明 $tilde(i)$ 是单射。 
 
-  Now by the claim applied to $id_(G(A))$, we see that the unit $eta_A: Q G (A) -> A$ is always injective. On the other hand, any map $U = Q(R) -> A$ can be regarded as an element of $G(A)$, and factors into $U = Q(R) -> Q G(A) -> A$, hence through $eta_A$. Thus the evaluation map $oplus.big_(phi in Hom_(cal(A)) (U,A)) U -> A$ factors through $eta_A$. The evaluation map is surjective, so $eta_A$ is surjective. Hence the counit $eta: Q G -> id$ is a natural isomorphism, or equivalently $G$ is fully faithful. 
+  现在把上述断言用于 $id_(G(A))$，便知单位 $eta_A: Q G (A) -> A$ 总是单射。另一方面，任意映射 $U = Q(R) -> A$ 都可看作 $G(A)$ 的元素，并分解为 $U = Q(R) -> Q G(A) -> A$，从而穿过 $eta_A$。于是求值映射 $oplus.big_(phi in Hom_(cal(A)) (U,A)) U -> A$ 也穿过 $eta_A$；而求值映射是满射，故 $eta_A$ 是满射。因此余单位 $eta: Q G -> id$ 是自然同构，等价地说，$G$ 全忠实。 
 
-  Finally we show that $Q$ is exact. It is already right exact, so it suffices to show that it respects injections. 
+  最后证明 $Q$ 正合。它已经右正合，故只需证明它保持单射。 
 
-  - First suppose that we have an inclusion $K arrow.hook R^(oplus I) = G(U^(oplus I))$. The claim above then shows that $Q(K) -> Q(R^(oplus I)) = U^(oplus I)$ is injective. 
+  - 先设有一个包含 $K arrow.hook R^(oplus I) = G(U^(oplus I))$。上面的断言表明 $Q(K) -> Q(R^(oplus I)) = U^(oplus I)$ 是单射。 
 
-  - For a general inclusion $A arrow.hook B$ in $AMod(R)$, pick a free resolution $P -> B$ and form: 
+  - 对 $AMod(R)$ 中一般的包含 $A arrow.hook B$，取自由消解 $P -> B$，并令： 
     $
       L = ker(P -> B), K = A times_B P
     $
-    We then have $L subset K subset P$ with identifications $A = K\/L, B = P\/L$. By right exactness of $Q$, 
+    于是 $L subset K subset P$，且有等同 $A = K\/L, B = P\/L$。由 $Q$ 右正合， 
     $
       Q(A) = Q(K)\/Q(L), Q(B) = Q(P)\/Q(L)
     $
-    By the previous bullet, since $P$ is free, $Q(K) -> Q(P)$ is injective. Thus $Q(A) -> Q(B)$ is injective. 
+    由上一项，既然 $P$ 是自由的，便有 $Q(K) -> Q(P)$ 是单射。于是 $Q(A) -> Q(B)$ 是单射。 
 
-  We are thereby done. 
+  证毕。 
 ]
 
 #corollary(name: <gabriel-popescu-derived>)[
-  Let $cal(A)$ be a Grothendieck abelian category. The functors $Q: AMod(R) arrows.rl cal(A): G$ defined in @gabriel-popescu pass to the unbounded derived categories: 
+  设 $cal(A)$ 是 Grothendieck Abel 范畴。@gabriel-popescu 中定义的函子 $Q: AMod(R) arrows.rl cal(A): G$ 过渡到无界导出范畴： 
   $
     Q: D(R) arrows.rl D(cal(A)): R G
   $
-  s.t. $Q$ is left adjoint to $R G$, and $R G$ is fully faithful. 
+  使得 $Q$ 是 $R G$ 的左伴随，且 $R G$ 全忠实。 
 ]
 #proof[
-  The Grothendieck abelian category $cal(A)$ has enough injectives. The rest is formal from @gabriel-popescu. 
+  $cal(A)$ 是 Grothendieck Abel 范畴，有足够多的内射对象。其余部分由 @gabriel-popescu 形式推出。 
 ]
 
-Next, we give the bootstrapping compact case Brown representability theorem. 
+下面给出紧情形的 Brown 可表示性定理，作为整个论证的跳板。 
 
 #notation(name: <compact-objects-and-generators>)[
-  In a triangulated category $cal(D)$, an object $G in cal(D)$ is called *compact* if $Hom_(cal(D)) (G, -): cal(D) -> cAb$ commutes with arbitrary direct sums. 
+  在三角范畴 $cal(D)$ 中，若 $Hom_(cal(D)) (G, -): cal(D) -> cAb$ 与任意直和交换，则称对象 $G in cal(D)$ 为*紧的*。 
 
-  A family of compact objects $cal(G) subset cal(D)$ is said to *generate* $cal(D)$, if: 
+  一族紧对象 $cal(G) subset cal(D)$ 若满足下述条件，则称 $cal(G)$ *生成* $cal(D)$： 
 
-  - For any $X in cal(D)$, if for all $G in cal(G), n in ZZ$, #h(1fr)
+  - 对任意 $X in cal(D)$，若对所有 $G in cal(G), n in ZZ$ 都有 #h(1fr)
     $
       Hom_(cal(D)) (G[n], X) = 0
     $
-    then $X = 0$. 
+    则 $X = 0$。 
 ]
 
 #construction(name: <telescoping-construction>)[
-  (Telescoping construction) In a triangulated category $cal(D)$ with arbitrary direct sums, suppose that we have a chain of maps $X_0 ->^(u_0) X_1 ->^(u_1) dots.c$. 
+  （望远镜构造 (telescoping construction)）设三角范畴 $cal(D)$ 具有任意直和，并设有一串映射 $X_0 ->^(u_0) X_1 ->^(u_1) dots.c$。 
 
-  Put $S = oplus.big_(n>=0) X_n$ with inclusions $i_n: X_n -> S$, and define a map $sigma: S -> S$ by sending $X_n -> X_(n+1)$ by $u_n$. In other words, 
+  令 $S = oplus.big_(n>=0) X_n$，包含映射为 $i_n: X_n -> S$；再定义映射 $sigma: S -> S$：在每个直和项上取映射 $X_n -> X_(n+1)$，即 $u_n$。换言之， 
   $
     sigma compose i_n = i_(n+1) compose u_n
   $
-  Form a distinguished triangle: 
+  作特殊三角： 
   $
     S -->^(1-sigma) S -->^q X_oo ->^(+1)
   $
-  and set $j_n = q compose i_n: X_n -> X_oo$. Since $q compose (1 - sigma) = 0$, we have: 
+  并令 $j_n = q compose i_n: X_n -> X_oo$。由于 $q compose (1 - sigma) = 0$，有： 
   $
     j_n = q compose i_n = q compose sigma compose i_n = q compose i_(n+1) compose u_n = j_(n+1) compose u_n
   $
-  Note that the choice of $X_oo$ is not canonical (i.e. unique up to unique isomorphism) as it is just an arbitrary cone for $1-sigma: S -> S$. It has the following property: 
+  注意 $X_oo$ 的选取并不典范（即在唯一同构意义下唯一），它只是 $1-sigma: S -> S$ 的任意一个锥。它具有下述性质： 
 
-  - For any (covariant) cohomological functor $F: cal(D) -> cal(A)$ (for some abelian category $cal(A)$) preserving direct sums, the morphisms $j_n: X_n -> X_oo$ induce an isomorphism: #h(1fr)
+  - 对任意（共变的）上同调函子 $F: cal(D) -> cal(A)$（$cal(A)$ 是某个 Abel 范畴），只要它保持直和，态射 $j_n: X_n -> X_oo$ 就诱导出同构：#h(1fr)
     $
       dirlim_(n>=0) F(X_n) cong F(X_oo)
     $
-    Indeed, applying $F(-)$ to $S -->^(1-sigma) S -->^q X_oo ->^(+1)$ and using preservation of direct sums by $F$, we get a long exact sequence: 
+    事实上，把 $F(-)$ 作用于 $S -->^(1-sigma) S -->^q X_oo ->^(+1)$，并利用 $F$ 保持直和，即得长正合列： 
     $
       & oplus.big_(n>=0) F(X_n) ->^D oplus.big_(n>=0) F(X_n) -> F(X_oo) -> oplus.big_(n>=0) F(X_n [1]) ->^(D') oplus.big_(n>=0) F(X_n [1])
     $
-    where: 
+    其中： 
     $
       D: oplus.big_(n>=0) F(X_n) -> oplus.big_(n>=0) F(X_n), (a_n)_n |-> (a_n - F(u_(n-1)) a_(n-1))_n \
 
       D': oplus.big_(n>=0) F(X_n [1]) -> oplus.big_(n>=0) F(X_n [1]), (a_n)_n |-> (a_n - F(u_(n-1) [1]) compose a_(n-1))_n
     $
-    Both maps are injective. Indeed, if $(a_n)_n in ker(D)$, then: 
+    两个映射都是单射。事实上，若 $(a_n)_n in ker(D)$，则： 
     $
       a_0 = 0 \
       a_n = F(u_(n-1)) a_(n-1), forall n>=1
     $
-    and one can inductively show all $a_n = 0$. The same goes for $D'$. Now that $D'$ is injective, we have an identification: 
+    归纳可知所有 $a_n = 0$。$D'$ 同理。既然 $D'$ 是单射，就有等同： 
     $
       F(X_oo) cong coker(D\: oplus.big_(n>=0) F(X_n) -> oplus.big_(n>=0) F(X_n))
     $
-    However by definition of $D$, this cokernel is exactly $dirlim_(n>=0) F(X_n)$. 
+    不过，按 $D$ 的定义，这个余核正是 $dirlim_(n>=0) F(X_n)$。 
 
-    In particular, for a compact object $G in cal(D)$, $Hom_(cal(D)) (G, X_oo) = dirlim_(n>=0) Hom_(cal(D)) (G, X_n)$. 
+    特别地，对紧对象 $G in cal(D)$，有 $Hom_(cal(D)) (G, X_oo) = dirlim_(n>=0) Hom_(cal(D)) (G, X_n)$。 
 
-  - There is a dual statement: For any contravariant cohomological functor $H: cal(D)^opp -> cal(A)$ sending direct sums to direct products, 
+  - 对偶的陈述是：对任意反变上同调函子 $H: cal(D)^opp -> cal(A)$，若它把直和送成直积，则 
     $
       H(X_oo) -> invlim_(n>=0) H(X_n) 
     $
-    is surjective. 
+    是满射。 
 
-    Indeed, apply $H$ to $S -->^(1-sigma) S -->^q X_oo ->^(+1)$ gives the exactness of: 
+    事实上，把 $H$ 作用于 $S -->^(1-sigma) S -->^q X_oo ->^(+1)$，即得下述映射的正合性： 
     $
       H(X_oo) -> product_(n>=0) H(X_n) ->^D product_(n>=0) H(X_n)
     $
-    where: 
+    其中： 
     $
       D: product_(n>=0) H(X_n) -> product_(n>=0) H(X_n), (a_n)_n |-> (a_n - H(u_(n+1)) a_(n+1))_n
     $
-    By definition $invlim_(n>=0) H(X_n) = ker(D)$, so we have a surjection $H(X_oo) -> invlim_(n>=0) H(X_n)$. 
+    按定义 $invlim_(n>=0) H(X_n) = ker(D)$，故有满射 $H(X_oo) -> invlim_(n>=0) H(X_n)$。 
 ]
 
 #lemma(name: <cpct-generation-of-triangulated-cat>)[
-  Let $cal(D)$ be a triangulated category with arbitrary direct sums, and a family of compact objects $cal(G)$ generating $cal(D)$. Then the only triangulated subcategory $cal(E)$ of $cal(D)$ containing $cal(G)$ and closed under arbitrary direct sums is $cal(D)$ itself. 
+  设三角范畴 $cal(D)$ 具有任意直和，且有一族生成 $cal(D)$ 的紧对象 $cal(G)$。则 $cal(D)$ 中含 $cal(G)$ 且对任意直和封闭的三角子范畴 $cal(E)$ 必定是 $cal(D)$ 本身。 
 ]
 #proof[
-  We may replace $cal(G)$ by the set of all shifts of elements of $cal(G)$ and assume that it is closed under shifts. 
+  不妨把 $cal(G)$ 换成由其中所有元素的平移构成的集合，并假设它对平移封闭。 
   
-  We inductively define a chain $P_0 ->^(u_0) P_1 -> dots.c$. 
+  我们归纳地构造一串映射 $P_0 ->^(u_0) P_1 -> dots.c$。 
   
-  - For any $X in cal(D)$, let: #h(1fr)
+  - 对任意 $X in cal(D)$，令：#h(1fr)
     $
       P_0 = oplus.big_(G in cal(G) \ h: G -> X) G
     $
-    with evaluation map $p_0: P_0 -> X$. 
+    求值映射为 $p_0: P_0 -> X$。 
 
-  - Suppose that $p_n: P_n -> X$ is already defined. Let:
+  - 假设 $p_n: P_n -> X$ 已定义。令：
     $
       Q_n = oplus.big_(G in cal(G) \ h: G -> P_n, p_n compose h = 0) G
     $
-    with evaluation $e_n: Q_n -> P_n$ (that by definition has $p_n compose e_n = 0$). Complete to a distinguished triangle: 
+    其中求值映射为 $e_n: Q_n -> P_n$（按定义有 $p_n compose e_n = 0$）。把 $e_n$ 补成特殊三角： 
     $
       Q_n -->^(e_n) P_n -->^(u_n) P_(n+1) ->^(+1)
     $
 
-    Note that exactness of $Hom_(cal(D)) (P_(n+1), X) -> Hom_(cal(D)) (P_n, X) -> Hom_(cal(D)) (Q_n, X)$ and that $u_n compose e_n = 0$ gives a lift $p_(n+1): P_(n+1) -> X$ s.t. $p_(n+1) compose u_n = p_n$. 
+    注意 $Hom_(cal(D)) (P_(n+1), X) -> Hom_(cal(D)) (P_n, X) -> Hom_(cal(D)) (Q_n, X)$ 正合，再加上 $u_n compose e_n = 0$，便得到提升 $p_(n+1): P_(n+1) -> X$，使得 $p_(n+1) compose u_n = p_n$。 
 
-  We now form the telescope $S_P = oplus.big_(n>=0) P_n -->^(1-sigma) S_P -->^q P_oo$ of $P_0 ->^(u_0) P_1 ->^(u_1) -> dots.c$ and put $j_n: P_n -> P_oo$. Then since $Hom_(cal(D)) (-, X)$ is a contravariant cohomological functor sending direct sums to direct products: 
+  现在对 $P_0 ->^(u_0) P_1 ->^(u_1) -> dots.c$ 作望远镜 $S_P = oplus.big_(n>=0) P_n -->^(1-sigma) S_P -->^q P_oo$，并令 $j_n: P_n -> P_oo$。由于 $Hom_(cal(D)) (-, X)$ 是把直和送成直积的反变上同调函子， 
   $
     Hom_(cal(D)) (P_oo, X) -> invlim_(n>=0) Hom_(cal(D)) (P_n, X)
   $
-  is surjective. Thus there exists $p_oo: P_oo -> X$ s.t. $p_n = p_oo compose j_n$. 
+  是满射。于是存在 $p_oo: P_oo -> X$，使得 $p_n = p_oo compose j_n$。 
 
-  We claim that for all $G in cal(G)$, 
+  我们断言，对所有 $G in cal(G)$， 
   $
     Hom_(cal(D)) (G, p_oo): Hom_(cal(D)) (G, P_oo) -> Hom_(cal(D)) (G, X)
   $
-  is bijective. It is surjective, because it factors through $Hom_(cal(D)) (G, P_0) -> Hom_(cal(D)) (G, X)$ which is by definition surjective. This map is injective: Since $G$ is compact, $Hom_(cal(D)) (G, P_oo) cong dirlim_(n>=0) Hom_(cal(D)) (G, P_n)$ so we need to show that: 
+  是双射。它是满射，因为它穿过按定义即满射的 $Hom_(cal(D)) (G, P_0) -> Hom_(cal(D)) (G, X)$ 分解。再证它是单射：$G$ 紧，故 $Hom_(cal(D)) (G, P_oo) cong dirlim_(n>=0) Hom_(cal(D)) (G, P_n)$，于是只需证明： 
   $
     dirlim_(n>=0) Hom_(cal(D)) (G, P_n) -> Hom_(cal(D)) (G, X)
   $
-  is injective. Indeed, for any $h in Hom_(cal(D)) (G, P_n)$ in this kernel of this map, $p_n compose h = 0$, and so $h$ indexes a direct summand of $Q_n$. Subsequently $h: G -> P_n$ factors through $e_n: Q_n -> P_n$, and so $u_n compose h = 0$. That is, $h$ becomes $0$ in the next stage of the direct limit $dirlim_(n>=0) Hom_(cal(D)) (G, P_n)$. We have thus shown injectivity. 
+  是单射。事实上，若 $h in Hom_(cal(D)) (G, P_n)$ 落在这个映射的核中，则 $p_n compose h = 0$，于是 $h$ 对应 $Q_n$ 的一个直和项。进而 $h: G -> P_n$ 穿过 $e_n: Q_n -> P_n$ 分解，故 $u_n compose h = 0$。也就是说，$h$ 在正向极限 $dirlim_(n>=0) Hom_(cal(D)) (G, P_n)$ 的下一层变成 $0$。单射性由此得证。 
 
-  Now that we have shown that $Hom_(cal(D)) (G, P_oo) -> Hom_(cal(D)) (G, X)$ is an isomorphism, we may form the cone $P_oo -->^(p_oo) X -> C ->^(+1)$. Then: 
+  既然已证 $Hom_(cal(D)) (G, P_oo) -> Hom_(cal(D)) (G, X)$ 是同构，就可以作锥 $P_oo -->^(p_oo) X -> C ->^(+1)$。于是： 
   $
     Hom_(cal(D)) (G, C) = 0
   $
-  for all $G in cal(G)$, and so $C = 0$. Thus $p_oo$ is an isomorphism. It remains to show that $P_oo in cal(E)$. 
+  对所有 $G in cal(G)$ 成立，从而 $C = 0$。所以 $p_oo$ 是同构。剩下要证 $P_oo in cal(E)$。 
 
-  Indeed: 
+  事实上： 
 
-  - $P_0 in cal(E)$ and every $Q_n in cal(E)$, since they are direct sums of objects of $cal(G)$, and $cal(E)$ contains $cal(G)$ and is closed under arbitrary direct sums. 
+  - $P_0 in cal(E)$，且每个 $Q_n in cal(E)$ 都是 $cal(G)$ 中对象的直和，而 $cal(E)$ 含 $cal(G)$ 且对任意直和封闭。 
 
-  - The distinguished triangle $Q_n -> P_n -> P_(n+1) ->^(+1)$ then inductively shows that every $P_n in cal(E)$. 
+  - 再由特殊三角 $Q_n -> P_n -> P_(n+1) ->^(+1)$ 归纳可知每个 $P_n in cal(E)$。 
 
-  - Thus $S_P = oplus.big_(n>=0) P_n in cal(E)$ by closure under direct sums, and $P_oo in cal(E)$ by the triangle $S_P -->^(1-sigma) S_P -> P_oo ->^(+1)$. 
+  - 于是由 $cal(E)$ 对直和的封闭性，$S_P = oplus.big_(n>=0) P_n in cal(E)$；又由三角 $S_P -->^(1-sigma) S_P -> P_oo ->^(+1)$，得 $P_oo in cal(E)$。 
 
-  We are thereby done. 
+  证毕。 
 ]
 
 #lemma(name: <ptwise-brown-representability-cpct-case>)[
-  (Pointwise Brown representability in compact case) Let $cal(D)$ be a triangulated category with arbitrary direct sums, and a family of compact objects $cal(G)$ generating $cal(D)$. Let $H: cal(D)^opp -> cAb$ be a contravariant cohomological functor sending direct sums to direct products. Then $H$ is representable. 
+  (紧情形的逐点 Brown 可表示性) 设三角范畴 $cal(D)$ 具有任意直和，且有一族生成 $cal(D)$ 的紧对象 $cal(G)$。设 $H: cal(D)^opp -> cAb$ 是把直和送成直积的反变上同调函子。则 $H$ 可表示。 
 ]
 #proof[
-  We may replace $cal(G)$ with its completion under shifts and assume that $cal(G)$ is closed under shifts. 
+  不妨把 $cal(G)$ 换成它在平移下的闭包，并假设 $cal(G)$ 对平移封闭。 
 
-  An element $a in H(X)$ defines a natural transformation: 
+  元素 $a in H(X)$ 定义了自然变换： 
   $
     theta_Y^a: Hom_(cal(D)) (Y, X) -> H(Y), f |-> H(f) a
   $
-  We construct $X in cal(D)$ and $a in H(X)$ s.t. this $theta^a$ is a natural isomorphism. Take: 
+  我们要构造 $X in cal(D)$ 与 $a in H(X)$，使得这个 $theta^a$ 是自然同构。取： 
   $
     X_0 = oplus.big_(G in cal(G) \ x in H(G)) G
   $
-  Since $H$ sends direct sums to direct products, $H(X_0) = product_(G in cal(G) \ x in H(G)) H(G)$, and so we may take $a_0 = (x)_(G,x) in H(X_0)$. Then for any $G in cal(G)$ the map: 
+  由于 $H$ 把直和送成直积，$H(X_0) = product_(G in cal(G) \ x in H(G)) H(G)$，故可取 $a_0 = (x)_(G,x) in H(X_0)$。于是对任意 $G in cal(G)$，映射 
   $
     theta_G^(a_0): Hom_(cal(D))(G, X_0) -> H(G)
   $
-  is surjective by definition, since every element $x in H(G)$ is obtained from $a_0$ by projecting to the factor corresponding to $(G,x)$. 
+  按定义是满射：每个元素 $x in H(G)$ 都是把 $a_0$ 投影到对应 $(G,x)$ 的因子上得到的。 
 
-  Suppose that we have constructed $X_n in cal(D), a_n in H(X_n)$. Then take: 
+  假设已构造出 $X_n in cal(D), a_n in H(X_n)$。取： 
   $
     K_n = oplus.big_(G in cal(G) \ k: G -> X_n, H(k)a_n = 0) G
   $
-  and let $r_n: K_n -> X_n$ be the map that is exactly $k: G -> X_n$ on the direct summand indexed by $k$. Then by definition, $H(r_n) a_n = 0 in H(K_n)$, as: 
+  并令 $r_n: K_n -> X_n$ 为这样的映射：在以 $k$ 为指标的那个直和项上，它恰好是 $k: G -> X_n$。按定义，$H(r_n) a_n = 0 in H(K_n)$，因为： 
   $
     H(K_n) = product_(G in cal(G) \ k:G -> X_n, H(k)a_n = 0) H(G)
   $
-  and $H(r_n) a_n = (H(k)a_n)_(G,k) = 0$. Form the distinguished triangle: 
+  且 $H(r_n) a_n = (H(k)a_n)_(G,k) = 0$。作特殊三角： 
   $
     K_n -->^(r_n) X_n -->^(u_n) X_(n+1) ->^(+1)
   $
-  Since $H$ is cohomological, $H(X_(n+1)) -> H(X_n) -> H(K_n)$ is exact. Since $H(r_n) a_n = 0$, there exists $a_(n+1) in H(X_(n+1))$ s.t. $a_n = H(u_n) a_(n+1)$. 
+  由于 $H$ 是上同调函子，$H(X_(n+1)) -> H(X_n) -> H(K_n)$ 正合。又 $H(r_n) a_n = 0$，故存在 $a_(n+1) in H(X_(n+1))$，使得 $a_n = H(u_n) a_(n+1)$。 
   
-  Now form the telescope $X_oo$ of $X_0 ->^(u_0) X_1 ->^(u_1) dots.c$ with maps $j_n: X_n -> X_oo$. Then since $H$ sends direct sums to direct products, 
+  现在对 $X_0 ->^(u_0) X_1 ->^(u_1) dots.c$ 作望远镜 $X_oo$，映射记为 $j_n: X_n -> X_oo$。由于 $H$ 把直和送成直积， 
   $
     H(X_oo) -> invlim_(n>=0) H(X_n)
   $
-  is surjective. Thus there exists $a_oo in H(X_oo)$ s.t. $a_n = H(j_n) a_oo$ for all $n$. Now we claim that: 
+  是满射。于是存在 $a_oo in H(X_oo)$，使得对所有 $n$ 都有 $a_n = H(j_n) a_oo$。我们断言： 
   $
     theta^(a_oo)_G: Hom_(cal(D)) (G, X_oo) -> H(G)
   $
-  is bijective. 
+  是双射。 
 
-  - It is surjective since it factors through $theta^(a_0)_G: Hom_(cal(D)) (G, X_0) -> H(G)$, which is surjective as we have shown. 
+  - 它是满射，因为它穿过 $theta^(a_0)_G: Hom_(cal(D)) (G, X_0) -> H(G)$ 分解，而这个映射如我们所证是满射。 
 
-  - It is injective: Suppose that $f in Hom_(cal(D)) (G, X_oo)$ has $H(f)a_oo = 0$. Since $G$ is compact, 
+  - 它是单射：假设 $f in Hom_(cal(D)) (G, X_oo)$ 满足 $H(f)a_oo = 0$。$G$ 紧，故 
     $
       Hom_(cal(D)) (G, X_oo) = dirlim_(n>=0) Hom_(cal(D)) (G, X_n)
     $
-    and there exists $f_n: G -> X_n$ s.t. $f = j_n compose f_n$. Thus, 
+    于是存在 $f_n: G -> X_n$，使得 $f = j_n compose f_n$。因此， 
     $
       H(f_n) a_n = H(f_n) H(j_n) a_oo = 0
     $
-  Hence $(G, f_n)$ indexes a direct summand in $K_n$. Thus $f_n: G -> X_n$ factors through $r_n: K_n -> X_n$, and so $u_n compose f_n = 0$. Hence, 
+  于是 $(G, f_n)$ 对应 $K_n$ 中的一个直和项。所以 $f_n: G -> X_n$ 穿过 $r_n: K_n -> X_n$ 分解，从而 $u_n compose f_n = 0$。故 
     $
       f = j_n compose f_n = j_(n+1) compose u_n compose f_n = 0
     $
-    and we are done. 
+    单射性得证。 
 
-  Now let $cal(P)$ be the full subcategory of $cal(D)$ with objects: 
+  现在设 $cal(P)$ 是 $cal(D)$ 的满子范畴，其对象为： 
   $
-    cal(P) = {Y in cal(D): theta^(a_oo)_Y: Hom_(cal(D)) (Y, X_oo) -> H(Y) #[is an isomorphism]}
+    cal(P) = {Y in cal(D): theta^(a_oo)_Y: Hom_(cal(D)) (Y, X_oo) -> H(Y) #[是同构]}
   $
-  Since $Hom_(cal(D)) (-, X_oo)$ and $H$ are both triangulated functors, $cal(P)$ is closed under shifts and distinguished triangles. Since $Hom_(cal(D)) (-, X_oo)$ and $H$ both send direct sums to direct products, $cal(P)$ is closed under arbitrary direct sums. Finally, $cal(G) subset cal(P)$ as we have proved. Thus by @cpct-generation-of-triangulated-cat, $cal(P) = cal(D)$. 
+  由于 $Hom_(cal(D)) (-, X_oo)$ 与 $H$ 都是三角函子，$cal(P)$ 对平移与特殊三角封闭。又因 $Hom_(cal(D)) (-, X_oo)$ 与 $H$ 都把直和送成直积，$cal(P)$ 对任意直和封闭。最后，如我们已经证明的，$cal(G) subset cal(P)$。于是由 @cpct-generation-of-triangulated-cat，$cal(P) = cal(D)$。 
 
-  Thus $theta^(a_oo)$ gives a natural isomorphism $H cong Hom_(cal(D)) (-, X_oo)$, thus representing $H$ with $X_oo in cal(D)$. 
+  因此 $theta^(a_oo)$ 给出自然同构 $H cong Hom_(cal(D)) (-, X_oo)$，从而用 $X_oo in cal(D)$ 表示 $H$。 
 ]
 
 #lemma(name: <ptwise-brown-representability>)[
-  (Pointwise Brown representability) Let $cal(A)$ be a Grothendieck abelian category. Let $H: D(cal(A))^opp -> cAb$ be a contravariant cohomological functor sending direct sums to direct products. Then $H$ is representable. 
+  (逐点 Brown 可表示性) 设 $cal(A)$ 是 Grothendieck Abel 范畴。设 $H: D(cal(A))^opp -> cAb$ 是把直和送成直积的反变上同调函子。则 $H$ 可表示。 
 ]
 #proof[
-  By @gabriel-popescu-derived, we may pick a non-commutative ring $R$ and a pair of triangulated adjoint functors: 
+  由 @gabriel-popescu-derived，可取非交换环 $R$ 与一对三角伴随函子： 
   $
     Q: D(R) -> D(cal(A)): G
   $
-  where $G$ is fully faithful (i.e. the counit $eta: Q G -> id$ is a natural isomorphism). 
+  其中 $G$ 全忠实（即余单位 $eta: Q G -> id$ 是自然同构）。 
 
-  Consider the functor $H compose Q: D(R)^opp -> cAb$. Since $Q$ is a left adjoint, it preserves direct sums. Thus $H compose Q$ sends direct sums to direct products too. Furthermore, the triangulated category $D(R)$ is generated by the compact objects ${R[n]}_(n in ZZ)$. Thus by @ptwise-brown-representability-cpct-case, $H compose Q$ is representable, i.e. there exists an object $L in D(R)$ and a natural isomorphism: 
+  考虑函子 $H compose Q: D(R)^opp -> cAb$。$Q$ 是左伴随，故保持直和；于是 $H compose Q$ 也把直和送成直积。此外，三角范畴 $D(R)$ 由紧对象 ${R[n]}_(n in ZZ)$ 生成。故由 @ptwise-brown-representability-cpct-case，$H compose Q$ 可表示，即存在对象 $L in D(R)$ 与自然同构： 
   $
     H(Q(C)) cong Hom_(D(R)) (C, L)
   $
-  Take the unit map $u_L: L -> G Q(L)$ and form the cone: 
+  取单位映射 $u_L: L -> G Q(L)$，作锥： 
   $
     M -> L ->^(u_L) G Q(L) ->^(+1)
   $
-  Note that $Q(u_L): Q(L) -> Q G Q(L)$ is an isomorphism by an adjunction identity. Thus applying $Q$ to the distinguished triangle above, we see that $Q(M) = 0$, and so $Hom_(D(R)) (M, L) cong H(Q(M)) = 0$. Hence, applying $Hom_(D(R)) (-, L)$ to the distinguished triangle above, we have a surjection: 
+  注意由伴随恒等式，$Q(u_L): Q(L) -> Q G Q(L)$ 是同构。于是把 $Q$ 作用于上述特殊三角，可知 $Q(M) = 0$，从而 $Hom_(D(R)) (M, L) cong H(Q(M)) = 0$。因此把 $Hom_(D(R)) (-, L)$ 作用于上述特殊三角，得到满射： 
   $
     Hom_(D(R)) (G Q(L), L) ->> Hom_(D(R)) (L, L)
   $
-  Take $r_L: G Q(L) -> L$ sent to $id_L$ under this morphism, and we see that $r_L compose u_L = id_L$, i.e. $r_L$ is a retract of $L$. 
+  取在该态射下映为 $id_L$ 的 $r_L: G Q(L) -> L$，便知 $r_L compose u_L = id_L$，即 $r_L$ 是 $L$ 的回缩。 
 
-  By fully faithfulness of $G$, we now have a retract: 
+  由 $G$ 全忠实，我们得到一个回缩： 
   $
     H(A) cong H(Q G (A)) cong Hom_(D(R)) (G(A), L) \
     ->^(u_L compose -) Hom_(D(R)) (G(A), G Q(L)) cong Hom_(D(cal(A))) (A, Q(L))
   $
-  Now $u_L compose -$ has a left inverse $r_L compose -$. Therefore, $H$ is a direct summand of $Hom_(D(cal(A))) (-, Q(L))$, a representable functor. 
+  现在 $u_L compose -$ 有左逆 $r_L compose -$。因此 $H$ 是可表示函子 $Hom_(D(cal(A))) (-, Q(L))$ 的直和项。 
 
-  - Note that $D(cal(A))$ is idempotent complete, meaning every idempotent $e: X -> X$ in $D(cal(A))$ splits as $e: X ->^f Y ->^g X$ s.t. $f compose g = id_Y$.
+  - 注意 $D(cal(A))$ 是幂等完备 (idempotent complete) 的，也就是说，$D(cal(A))$ 中每个幂等态射 $e: X -> X$ 都分裂为 $e: X ->^f Y ->^g X$，其中 $f compose g = id_Y$。
 
-    Indeed, form the telescope $Y$ of the chain $X ->^e X ->^e -> dots.c$. This is a cone: 
+    事实上，对链 $X ->^e X ->^e -> dots.c$ 作望远镜 $Y$，它是一个锥： 
     $
       oplus.big_(n>=0) X ->^(1-sigma) oplus.big_(n>=0) X ->^q Y ->^(+1)
     $
-    where $sigma((x_n)_n) = (e x_(n-1))_n$. 
+    其中 $sigma((x_n)_n) = (e x_(n-1))_n$。 
 
-    Put $ell: oplus.big_(n>=0) X -> oplus.big_(n>=0) X, (x_n)_n |-> (x_n - sum_(k>=n) e x_k)_n$. Then: 
+    令 $ell: oplus.big_(n>=0) X -> oplus.big_(n>=0) X, (x_n)_n |-> (x_n - sum_(k>=n) e x_k)_n$。则： 
     $
       ell(1-sigma)((x_n)_n) = ell((x_n - e x_(n-1))_n) = ((x_n - e x_(n-1)) - sum_(k>=n) (e x_k - e x_(k-1)))_n = (x_n)_n
     $
-    Thus $ell$ is a left inverse to $1 - sigma$. Now that $1 - sigma$ has a left inverse, the triangle above is a split triangle, i.e. the $+1$ map $Y -> oplus.big_(n>=0) X[1]$ is zero, and $q$ has a right inverse. Thus we have a short exact sequence: 
+    于是 $ell$ 是 $1 - sigma$ 的左逆。既然 $1 - sigma$ 有左逆，上面的三角就是分裂三角，即 $+1$ 映射 $Y -> oplus.big_(n>=0) X[1]$ 为零，且 $q$ 有右逆。于是得到短正合列： 
     $
       0 -> Hom_(D(cal(A))) (Y, X) -> product_(n>=0) Hom_(D(cal(A))) (X, X) -> product_(n>=0) Hom_(D(cal(A))) (X, X) -> 0
     $
-    Put $r: oplus.big_(n>=0) X -> X$ by $(x_n)_n |-> sum_(n>=0) e x_n$. Then $r = r compose sigma$, so $r compose (1-sigma) = 0$. Thus there exists $g: Y -> X$ s.t. $g compose q = r$. 
+    令 $r: oplus.big_(n>=0) X -> X$ 为 $(x_n)_n |-> sum_(n>=0) e x_n$。则 $r = r compose sigma$，故 $r compose (1-sigma) = 0$。于是存在 $g: Y -> X$，使得 $g compose q = r$。 
 
-    Let $i_n: X -> oplus.big_(n>=0) X$ be inclusion into $n$-th direct summand. Then put $f = q compose i_0: X -> Y$. Now: 
+    设 $i_n: X -> oplus.big_(n>=0) X$ 是到第 $n$ 个直和项的包含。再令 $f = q compose i_0: X -> Y$。此时： 
     $
       g compose f = g compose q compose i_0 = r compose i_0 = e
     $
-    and: 
+    以及： 
     $
       f compose g compose q = f compose r
     $
-    - Since $q = q compose sigma$, composing with $i_n$ gives $q compose i_n = q compose i_(n+1) compose e$. Right compose with $e$ and using idempotence, we have $q compose i_n compose e = q compose i_(n+1) compose e = q compose i_n$, and so: 
+    - 由 $q = q compose sigma$，在等式两边右侧与 $i_n$ 复合，得 $q compose i_n = q compose i_(n+1) compose e$。再在右侧与 $e$ 复合，并利用幂等性，得 $q compose i_n compose e = q compose i_(n+1) compose e = q compose i_n$，于是： 
       $
         q compose i_n = q compose i_(n+1)
       $
-      Thus $f = q compose i_n$ for all $n$ and $f = f compose e$. Now: 
+      从而对所有 $n$ 都有 $f = q compose i_n$，且 $f = f compose e$。现在： 
       $
         f compose r compose i_n = f compose e = f = q compose i_n
       $
-      for all $n$, and so $f compose r = q$
-    Thus $f compose g compose q = q$. Since $q$ has a right inverse, $f compose g = id$. We have thus split the idempotent $e$.
+      对所有 $n$ 成立，故 $f compose r = q$
+    于是 $f compose g compose q = q$。$q$ 有右逆，故 $f compose g = id$。这样就把幂等态射 $e$ 分裂了。
 
-  Since $H$ is a direct summand of $Hom_(D(cal(A))) (-, Q(L))$, it corresponds to an idempotent of $Q(L)$, factoring as $Q(L) ->^f T ->^g Q(L)$ with $f compose g = id$. Then $T$ represents $H$. 
+  既然 $H$ 是 $Hom_(D(cal(A))) (-, Q(L))$ 的直和项，它就对应 $Q(L)$ 的一个幂等态射，该幂等态射分解为 $Q(L) ->^f T ->^g Q(L)$，其中 $f compose g = id$。于是 $T$ 表示 $H$。 
 ]
 
 #theorem(name: <brown-representability>)[
-  (Brown representability) Let $cal(A)$ be a Grothendieck abelian category. Then any triangulated functor $D(cal(A)) -> cal(D)$ that preserves arbitrary direct sums must have a triangulated right adjoint. 
+  (Brown 可表示性) 设 $cal(A)$ 是 Grothendieck Abel 范畴。则任何保持任意直和的三角函子 $D(cal(A)) -> cal(D)$ 都必有三角右伴随。 
 ]
 #proof[
-  Let $F: D(cal(A)) -> cal(D)$ be a triangulated functor preserving arbitrary direct sums. For every $X in cal(D)$, the functor $Hom_(cal(D)) (F(-), X)$ sends direct sums to direct products. By @ptwise-brown-representability, each $Hom_(cal(D)) (F(-), X)$ is representable. Thus $F$ has an additive right adjoint: 
+  设 $F: D(cal(A)) -> cal(D)$ 是保持任意直和的三角函子。对每个 $X in cal(D)$，函子 $Hom_(cal(D)) (F(-), X)$ 把直和送成直积。由 @ptwise-brown-representability，每个 $Hom_(cal(D)) (F(-), X)$ 都可表示。于是 $F$ 有加性右伴随： 
   $
     G: cal(D) -> D(cal(A))
   $
-  It remains to show that $G$ is triangulated. By adjunction $G$ preserves all shifts. 
+  剩下要证 $G$ 是三角函子。由伴随性，$G$ 保持所有平移。 
 
-  Let $A ->^f B ->^g C ->^u_(+1)$ be a distinguished triangle in $cal(D)$, and form a distinguished triangle: 
+  设 $A ->^f B ->^g C ->^u_(+1)$ 是 $cal(D)$ 中的特殊三角，并作特殊三角： 
   $
     G(A) ->^(G(f)) G(B) -> X ->^(+1)
   $
-  Now $F G(A) -> F G(B) -> F(X) ->^(+1)$ is a distinguished triangle. Thus by the triangular axioms, there is a map $phi: F(X) -> C$ making the following diagram commute: 
+  此时 $F G(A) -> F G(B) -> F(X) ->^(+1)$ 是特殊三角。于是由三角公理，存在映射 $phi: F(X) -> C$ 使下图交换： 
   // https://q.uiver.app/#r=typst&q=WzAsOCxbMCwwLCJGIEcoQSkiXSxbMCwxLCJBIl0sWzEsMCwiRiBHKEIpIl0sWzIsMCwiRihYKSJdLFszLDAsIkYgRyhBKVsxXSJdLFsxLDEsIkIiXSxbMiwxLCJDIl0sWzMsMSwiQVsxXSJdLFszLDRdLFswLDJdLFsyLDNdLFsxLDUsImYiLDJdLFs1LDYsImciLDJdLFs2LDcsInUiLDJdLFswLDEsImV0YV9BIiwyXSxbMiw1LCJldGFfQiJdLFszLDYsInBoaSJdLFs0LDcsImV0YV9BIFsxXSJdXQ==
   #align(center, diagram({
     node((0, 0), [$F G(A)$])
@@ -411,7 +412,7 @@ Next, we give the bootstrapping compact case Brown representability theorem.
     edge((2, 0), (2, 1), [$phi$], label-side: left, "->")
     edge((3, 0), (3, 1), [$eta_A [1]$], label-side: left, "->")
   }))
-  By adjunction, we have a commutative diagram: 
+  由伴随性，得到交换图表： 
   // https://q.uiver.app/#r=typst&q=WzAsOCxbMCwwLCJHKEEpIl0sWzAsMSwiRyhBKSJdLFsxLDAsIkcoQikiXSxbMiwwLCJYIl0sWzMsMCwiRyhBKVsxXSJdLFsxLDEsIkcoQikiXSxbMiwxLCJHKEMpIl0sWzMsMSwiRyhBWzFdKSJdLFszLDRdLFswLDIsIkcoZikiXSxbMiwzXSxbMSw1LCJHKGYpIiwyXSxbNSw2LCJHKGcpIiwyXSxbNiw3LCJ1IiwyXSxbMiw1LCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3VibGUgYmFycmVkIn19fV0sWzMsNiwicHNpIl0sWzQsNywidGlsZGUiXSxbMCwxLCIiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3VibGUgYmFycmVkIn19fV1d
   #align(center, diagram({
     node((0, 0), [$G(A)$])
@@ -433,7 +434,7 @@ Next, we give the bootstrapping compact case Brown representability theorem.
     edge((3, 0), (3, 1), [$tilde$], label-side: left, "->")
     edge((0, 0), (0, 1), "=")
   }))
-  By construction of the isomorphism $G(A)[1] cong G(A[1])$ from adjunctions, this passes to a morphism of triangles: 
+  按照由伴随得到的同构 $G(A)[1] cong G(A[1])$ 的构造方式，上面这个交换图表便过渡为三角之间的态射： 
   #align(center, diagram({
     node((0, 0), [$G(A)$])
     node((0, 1), [$G(A)$])
@@ -454,5 +455,5 @@ Next, we give the bootstrapping compact case Brown representability theorem.
     edge((3, 0), (3, 1), label-side: left, "=")
     edge((0, 0), (0, 1), "=")
   }))
-  For any $W in D(cal(A))$, apply $Hom_(D(cal(A))) (W, -)$ and use the five lemma to see that $Hom_(D(cal(A))) (W, X) -> Hom_(D(cal(A))) (W, G(C))$ is an isomorphism. By Yoneda, $psi$ is an isomorphism. Thus $G(A) -> G(B) -> G(C) ->^(+1)$ is isomorphic to a distinguished triangle, hence distinguished. 
+  对任意 $W in D(cal(A))$，对上述三角作用 $Hom_(D(cal(A))) (W, -)$，再用五引理，便知 $Hom_(D(cal(A))) (W, X) -> Hom_(D(cal(A))) (W, G(C))$ 是同构。由 Yoneda 引理，$psi$ 是同构。于是 $G(A) -> G(B) -> G(C) ->^(+1)$ 同构于一个特殊三角，从而是特殊三角。 
 ]

@@ -1,43 +1,44 @@
+// audit-exception: 展示公式内的方括号文字块夹有多段行内公式，审计逐个配对美元符号后会把块内散文切成伪公式段，因此翻译这些散文必然改变数学指纹；块内公式与全部数学内容均未改动。
 #import "void-import.typ": *
 
-We are now ready to enter the realm of base change theorems in etale cohomology. 
+现在，我们可以进入平展上同调中基变换定理的领域了。 
 
-As always, we attempt to give motivations to each piece of theory we introduce. 
+和往常一样，我们力求为引入的每一部分理论给出动机。 
 
-The motivation of etale cohomology is a cohomology theory for algebraic varieties, analogous to Betti cohomology for CW complexes.
+平展上同调的动机，是建立一个适用于代数簇的上同调理论，它类似于 CW 复形的 Betti 上同调。 
 
-Thus, we have several large theorems that we need to establish:
+因此，我们有好几个大定理需要建立： 
 
-+ Basic results on $H^q_et (X, ZZ\/n)$ for an algebraic variety over an algebraically closed field $k$ with $n in k^times$. (If $n = p = "char"(k) > 0$, this cohomology is rather ill-behaved.)
-  - Finiteness
-  - Vanishing (beyond $2 dim(X)$, and beyond $dim(X)$ in affine case)
-  - Cohomology with compact support
-  - Poincare duality
-  - ...
++ 关于代数闭域 $k$ 上的代数簇，$n in k^times$ 时 $H^q_et (X, ZZ\/n)$ 的基本结论。（若 $n = p = "char"(k) > 0$，这个上同调的表现相当糟糕。） 
+  - 有限性
+  - 消没（超过 $2 dim(X)$ 时，以及仿射情形下超过 $dim(X)$ 时）
+  - 紧支上同调
+  - Poincaré 对偶
+  - ……
 
-+ Etale cohomology has applications to number theory: Consider an algebraic variety $X\/QQ$, and we may base change it to $X_(overline(QQ)) = X times_QQ overline(QQ)$, the algebraic closure of $QQ$.
++ 平展上同调在数论中有应用：考虑代数簇 $X\/QQ$，把它基变换到 $QQ$ 的代数闭包上，即 $X_(overline(QQ)) = X times_QQ overline(QQ)$。 
   
-  Now $Gal_QQ$ has an action on $H^q_et (X_(overline(QQ)), ZZ\/n)$ which is continuous by the limit formula for schemes, $H^q_et (X_(overline(QQ)), ZZ\/n) = colim_(L\/QQ #[finite Galois]) H^q_et (X_L, ZZ\/n)$. This would give a Galois representation: 
+  此时 $Gal_QQ$ 在 $H^q_et (X_(overline(QQ)), ZZ\/n)$ 上有作用；由概形的极限公式 $H^q_et (X_(overline(QQ)), ZZ\/n) = colim_(L\/QQ #[有限 Galois]) H^q_et (X_L, ZZ\/n)$，这个作用是连续的。这样就得到一个 Galois 表示： 
   $
     Gal_QQ -> End(H^q_et (X_(ol(QQ)), ZZ\/n))
   $
-  This construction is fundamental, in the sense that taking $n = ell, ell^2, ell^3, dots.c$ and passing to a projective limit, we would have a continuous representation: 
+  这个构造是基本的：取 $n = ell, ell^2, ell^3, dots.c$ 并过渡到逆向极限，就会得到连续表示： 
   $
     Gal_QQ -> End(H^q_et (X_(ol(QQ)), ZZ_ell)), H^q_et (X_(ol(QQ)), ZZ_ell) := invlim_(n>=1) H^q_et (X_(ol(QQ)), ZZ\/ell^n)
   $
-  Now $H^q_et (X_(ol(QQ)), ZZ_ell)$ is a finite-rank $ZZ_ell$-module, which, upon tensoring with $QQ_ell$, gives a finite-dimensional $QQ_ell$-vector space $H^q_et (X_(ol(QQ)), QQ_ell) := H^q_et (X_(ol(QQ)), ZZ_ell) otimes_(ZZ_ell) QQ_ell$. This gives a good characteristic 0 cohomology theory for a scheme, and a continuous representation: 
+  现在 $H^q_et (X_(ol(QQ)), ZZ_ell)$ 是有限秩 $ZZ_ell$-模，把它与 $QQ_ell$ 作张量积，就得到有限维 $QQ_ell$-向量空间 $H^q_et (X_(ol(QQ)), QQ_ell) := H^q_et (X_(ol(QQ)), ZZ_ell) otimes_(ZZ_ell) QQ_ell$。这给出了概形的一个性质良好的特征 0 上同调理论，以及一个连续表示： 
   $
     Gal_QQ -> End(H^q_et (X_(ol(QQ)), QQ_ell))
   $
-  of the absolute Galois group on a finite-dimensional vector space over a characteristic 0 field. 
+  即绝对 Galois 群在特征 0 域上的有限维向量空间中的表示。 
 
-  How do we study Galois representations $Gal_QQ -> End(H^q_et (X_(overline(QQ)), ZZ\/n))$? For each $p$ s.t. $gcd(p, n) = 1$, we fix an inclusion $overline(QQ) -> overline(QQ_p)$, giving an inclusion $Gal_(QQ_p) arrow.r.hook Gal_QQ$. We want an isomorphism: 
+  我们怎样研究 Galois 表示 $Gal_QQ -> End(H^q_et (X_(overline(QQ)), ZZ\/n))$？对每个满足 $gcd(p, n) = 1$ 的 $p$，固定一个嵌入 $overline(QQ) -> overline(QQ_p)$，它给出嵌入 $Gal_(QQ_p) arrow.r.hook Gal_QQ$。我们希望有同构： 
  
   $
     H^q_et (X_(overline(QQ)), ZZ\/n) ->^tilde_(#[(a)]) H^q_et (X_(overline(QQ_p)), ZZ\/n)
   $
   
-  where $Gal_QQ$ acts on the left, and $Gal_(QQ_p)$ acts on the right so that we can study the local case. Next, suppose that $X_(QQ_p)$ admits an integral model $X_(ZZ_p) -> Spec(ZZ_p)$, then we have a commutative diagram: 
+  其中 $Gal_QQ$ 作用在左边，$Gal_(QQ_p)$ 作用在右边，以便研究局部情形。接下来，假设 $X_(QQ_p)$ 有整模型 $X_(ZZ_p) -> Spec(ZZ_p)$，则我们有交换图表： 
   // https://q.uiver.app/#r=typst&q=WzAsNixbMSwwLCJYXyhaWl9wXnVyKSJdLFsyLDAsIlhfKG9sKEZGX3ApKSJdLFsxLDEsIlNwZWMoWlpfcF51cikiXSxbMiwxLCJTcGVjKG9sKEZGX3ApKSJdLFswLDAsIlhfKG9sKFFRX3ApKSJdLFswLDEsIlNwZWMob2woUVFfcCkpIl0sWzUsMl0sWzMsMl0sWzQsMF0sWzEsMF0sWzAsMl0sWzEsM10sWzQsNV1d
   #align(center, diagram({
     node((0, -1), [$X_(ZZ_p^#[ur])$])
@@ -54,36 +55,36 @@ Thus, we have several large theorems that we need to establish:
     edge((1, -1), (1, 0), "->")
     edge((-1, -1), (-1, 0), "->")
   }))
-  We then hope to have isomorphisms: 
+  于是我们希望有同构： 
   $
     H^q_et (X_(ol(QQ_p)), ZZ\/n) ->^tilde_(#[(b)]) H^q_et (X_(ZZ_p^#[ur]), ZZ\/n) <-^tilde_(#[(c)]) H^q_et (X_(ol(FF_p)), ZZ\/n)
   $
-  so that LHS has a $Gal_(QQ_p)$-action, and RHS has a $Gal_(FF_p)$-action. 
+  使得左边带 $Gal_(QQ_p)$-作用，右边带 $Gal_(FF_p)$-作用。 
 
-  The fact that the morphisms (a), (b), and (c) are isomorphisms is a consequence of various base change theorems, namely the proper base change and smooth base change theorems. 
+  态射 (a)、(b)、(c) 都是同构，这是各种基变换定理的推论，即紧合基变换定理与光滑基变换定理。 
   
-  More specifically, (a) needs smooth base change, (c) needs proper base change, and (b) needs both. 
+  具体地说，(a) 需要光滑基变换，(c) 需要紧合基变换，而 (b) 两者都需要。 
   
-  Consequently,
+  于是，
   
-  - Whenever $X_(QQ_p)$ admits a smooth proper model over $ZZ_p$, there is a Galois action of $Gal_QQ$ on $H^q_et (X_(ol(QQ)), ZZ\/n)$, unramified at $p$ in the sense that the inertia subgroup $I_(QQ_p) = ker(Gal_(QQ_p) -> Gal_(FF_p))$ acts trivially. 
+  - 只要 $X_(QQ_p)$ 在 $ZZ_p$ 上有光滑紧合模型，$Gal_QQ$ 就在 $H^q_et (X_(ol(QQ)), ZZ\/n)$ 上有 Galois 作用，并且该作用在 $p$ 处非分歧，即惯性子群 $I_(QQ_p) = ker(Gal_(QQ_p) -> Gal_(FF_p))$ 的作用平凡。 
 
 
-The base change theorems are thus the critical and general machinery to study and to apply etale cohomology. 
+因此，基变换定理是研究与运用平展上同调的关键而一般的工具。 
 
 #date[
   #set align(left) 
-  I have deliberately chosen the proof route to avoid the use of the derived category in this chapter, to not obfuscate the concrete arguments behind abstract machineries. 
+  我刻意选择了这样的证明路线：本章不使用导出范畴，以免抽象的机器掩盖其背后的具体论证。 
   
-  However, the base change morphism is naturally a derived object, and its naturality is most obviously seen from the derived category. In contrast, insisting on sticking to the abelian category setup in this situation would require a lengthy and uninspiring argument, which would meaninglessly obscure the naturality of the constructions. As such, I will use the derived category in the construction of the base change morphism. 
+  然而，基变换态射 (base change morphism) 本质上是一个导出对象，它的自然性从导出范畴看最为明显。相反，在这种情况下坚持停留在 Abel 范畴的框架里，就需要一段冗长而乏味的论证，只会毫无意义地掩盖构造的自然性。因此，在构造基变换态射时，我会使用导出范畴。 
 ]
 
-== Setup and proof framework
+== 基本设定与证明框架
 
-We will first construct the base change morphism: 
+我们先来构造基变换态射： 
 
 #construction(name: <base-change-constr>)[
-  Consider a commutative diagram:
+  考虑交换图表：
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJYJyJdLFsxLDAsIlknIl0sWzAsMSwiWCJdLFsxLDEsIlkiXSxbMiwzLCJmIl0sWzAsMSwiZiciXSxbMSwzLCJnIl0sWzAsMiwiZyciLDJdXQ==
   #align(center, diagram({
     node((-1, -1), [$X'$])
@@ -95,37 +96,37 @@ We will first construct the base change morphism:
     edge((0, -1), (0, 0), [$g$], label-side: left, "->")
     edge((-1, -1), (-1, 0), [$g'$], label-side: right, "->")
   }))
-  Note that for $cal(F) in cAb(X_et)$, we have by adjunction a canonical map $cal(F) -> g'_* g'^(-1) cal(F)$. Then we have a canonical map:
+  注意，对 $cal(F) in cAb(X_et)$，由伴随关系可得典范映射 $cal(F) -> g'_* g'^(-1) cal(F)$。于是有典范映射：
   $
     f_* cal(F) -> f_* g'_* g'^(-1) cal(F) = g_* f'_* (g')^(-1) cal(F)
   $
-  Applying adjunction, we have a canonical map:
+  再应用伴随，得到典范映射：
   $
     g^(-1) f_* cal(F) -> f'_* g'^(-1) cal(F)
   $
-  functorial in $cal(F)$. Take an injective resolution $cal(F) -> cal(I)^bullet$. Now $R^bullet f_* cal(F) = h^bullet (0 -> f_* cal(I)^bullet)$. The inverse-image functor is exact and commutes with cohomology, so we have a canonical map:
+  它对 $cal(F)$ 是函子性的。取内射消解 $cal(F) -> cal(I)^bullet$。此时 $R^bullet f_* cal(F) = h^bullet (0 -> f_* cal(I)^bullet)$。逆像函子正合，且与上同调交换，所以有典范映射：
   $
     g^(-1) (R^q f_* cal(F)) cong h^q (0 -> g^(-1) f_* cal(I)^bullet) -> h^q (0 -> f'_* g'^(-1) cal(I)^bullet) -> h^q (0 -> f'_* cal(J)^bullet) = R^q f'_* (g'^(-1) cal(F))
   $
-  where $g'^(-1) cal(F) -> cal(J)^bullet$ is an injective resolution, so we have a morphism of cochain complexes $g'^(-1) cal(I)^bullet -> cal(J)^bullet$ that induces canonical maps on cohomology. In summary, for every commutative square, there exists a canonical morphism:
+  其中 $g'^(-1) cal(F) -> cal(J)^bullet$ 是内射消解，于是有上链复形的态射 $g'^(-1) cal(I)^bullet -> cal(J)^bullet$，它在上同调上诱导典范映射。总之，对每个交换方块，都存在典范态射：
   $
     g^(-1) R^q f_* cal(F) -> R^q f'_* g'^(-1) cal(F)
   $
-  functorial in $cal(F)$. This is called the *base change morphism*. 
+  它对 $cal(F)$ 是函子性的。这就是所谓的*基变换态射*。 
 
-  The definition above seems very non-canonical and unnatural. Indeed, the base change morphism is more naturally an object in the derived category. Given $cal(K) in D(X_et)$, the base change morphism: 
+  上面的定义看上去很不典范、很不自然。事实上，基变换态射更自然地是导出范畴中的对象。给定 $cal(K) in D(X_et)$，基变换态射： 
   $
     g^(-1) R f_* cal(K) -> R f'_* g'^(-1) cal(K)
   $
-  is defined as follows: 
+  其定义如下： 
 
-  - By adjunction, a morphism $g^(-1) R f_* cal(K) -> R f'_* g'^(-1) cal(K)$ is equivalent to a morphism: #h(1fr)
+  - 由伴随，态射 $g^(-1) R f_* cal(K) -> R f'_* g'^(-1) cal(K)$ 等价于态射： #h(1fr)
     $
       R f_* cal(K) -> R g_* R f'_* g'^(-1) cal(K) = R (g compose f')_* g'^(-1) cal(K) = R (f compose g')_* g'^(-1) cal(K) = R f_* R g'_* g'^(-1) cal(K)
     $
-    and we lift the adjunction unit $cal(K) -> R g'_* g'^(-1) cal(K)$ through $R f_*$ to obtain this map. 
+    我们把这个伴随单位 $cal(K) -> R g'_* g'^(-1) cal(K)$ 沿 $R f_*$ 提升，就得到这个映射。 
 
-  In other words, the base change morphism is just the Beck-Chevalley base change defined in @bcbc-defn, corresponding to the diagram: 
+  换言之，基变换态射正是 @bcbc-defn 中定义的 Beck–Chevalley 基变换，对应图表： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJEKFgnX2V0KSJdLFswLDEsIkQoWF9ldCkiXSxbMSwxLCJEKFlfZXQpIl0sWzEsMCwiRChZJ19ldCkiXSxbMCwzLCJSIGYnXyoiXSxbMSwyLCJSIGZfKiIsMl0sWzMsMiwiUiBnXyoiXSxbMCwxLCJSIGcnXyoiLDJdLFsxLDNdXQ==
   #align(center, diagram({
     node((-1, -1), [$D(X'_et)$])
@@ -138,13 +139,13 @@ We will first construct the base change morphism:
     edge((-1, -1), (-1, 0), [$R g'_*$], label-side: right, "->")
     edge((-0.7, -0.3), (-0.3, -0.7), "=>")
   }))
-  in which the diagonal natural transformation is just the isomorphism $R f_* compose R g'_* = R (f compose g')_* = R (g compose f')_* = R g_* compose R f'_*$. 
+  其中对角的自然变换就是同构 $R f_* compose R g'_* = R (f compose g')_* = R (g compose f')_* = R g_* compose R f'_*$。 
 ]
 
-The base change morphism is natural, in the sense that it is compatible with concatenation of commutative squares. 
+基变换态射是自然的，即它与交换方块的拼接相容。 
 
 #lemma(name: <base-change-naturality>)[
-  The base change morphism is compatible with concatenation of commutative squares. Given a commutative diagram: 
+  基变换态射与交换方块的拼接相容。给定交换图表： 
   // https://q.uiver.app/#r=typst&q=WzAsOCxbMSwyLCJYIl0sWzIsMiwiWSJdLFsyLDEsIlknIl0sWzEsMSwiWCciXSxbMSwwLCJYJyciXSxbMiwwLCJZJyciXSxbMCwxLCJXJyJdLFswLDIsIlciXSxbMCwxLCJmIiwyXSxbMywyLCJmJyJdLFs0LDUsImYnJyJdLFs3LDAsImgiLDJdLFs2LDMsImgnIl0sWzIsMSwiZyJdLFszLDAsImcnIl0sWzYsNywiZycnIiwyXSxbNSwyLCJrIl0sWzQsMywiayciXV0=
   #align(center, diagram({
     node((0, 1), [$X$])
@@ -169,35 +170,35 @@ The base change morphism is natural, in the sense that it is compatible with con
     edge((1, -1), (1, 0), [$k$], label-side: left, "->")
     edge((0, -1), (0, 0), [$k'$], label-side: left, "->")
   }))
-  + The base change morphism is compatible with vertical concatenation of commutative squares, i.e. in the derived category, the composition: 
+  + 基变换态射与交换方块的竖直拼接相容，即在导出范畴中，把沿两个小方块的基变换态射复合起来： 
     $
       (k compose g)^(-1) R f_* cal(K) = k^(-1) g^(-1) R f_* cal(K) -> k^(-1) R f'_* g'^(-1) cal(K) -> R f''_* k'^(-1) g'^(-1) cal(K) = R f''_* (k' compose g')^(-1) cal(K) 
     $
-    of base change morphisms along the two small squares is simply the base change morphism along the right rectangle. 
-    Taking cohomologies, the composition: 
+    恰好就是沿右侧矩形的基变换态射。 
+    取上同调，把沿两个小方块的基变换态射复合起来： 
     $
       (k compose g)^(-1) R^q f_* cal(F) = k^(-1) g^(-1) R^q f_* cal(F) -> k^(-1) R^q f'_* g'^(-1) cal(F) -> R^q f''_* k'^(-1) g'^(-1) cal(F) = R^q f''_* (k' compose g')^(-1) cal(F) 
     $
-    of base change morphisms along the two small squares is simply the base change morphism along the right rectangle. 
+    就是沿右侧矩形的基变换态射。 
 
-  + The base change morphism is compatible with horizontal concatenation of commutative squares, i.e. in the derived category, the composition: 
+  + 基变换态射与交换方块的水平拼接相容，即在导出范畴中，把沿两个小方块的基变换态射复合起来： 
     $
       g^(-1) R(f compose h)_* cal(K) = g^(-1) R f_* R h_* cal(K) -> R f'_* g'^(-1) R h_* cal(K) -> R f'_* R h'_* g''^(-1) cal(K) = R(f' compose h')_* g''^(-1) cal(K) 
     $
-    of base change morphisms along the two small squares is simply the base change morphism along the bottom rectangle. 
+    恰好就是沿下方矩形的基变换态射。 
 
-    Taking homologies, there is a morphism of Leray spectral sequences $E_2^(p,q) -> tilde(E)_2^(p,q)$, in which: 
+    取上同调，得到 Leray 谱序列之间的态射 $E_2^(p,q) -> tilde(E)_2^(p,q)$，其中： 
     $
       E_2^(p,q) = g^(-1) R^p f_* R^q h_* cal(F) => g^(-1) R^(p+q) (f compose h)_* cal(F) = H^(p+q) \
 
       tilde(E)_2^(p,q) = R^p f'_* R^q h'_* g''^(-1) cal(F) => R^(p+q) (f' compose h')_* g''^(-1) cal(F) = tilde(H)^(p+q)
     $
-    where the morphisms $E_2^(p,q) -> tilde(E)_2^(p,q)$ are the compositions of the two base change maps along the two bottom squares, and the morphisms $H^n -> tilde(H)^n$ are the base change maps along the bottom rectangle. 
+    这里，$E_2^(p,q) -> tilde(E)_2^(p,q)$ 是沿下方两个方块的基变换态射的复合，而 $H^n -> tilde(H)^n$ 是沿下方矩形的基变换态射。 
 ]
 #proof[
-  We only prove the derived statements, since the abelian category statement of (1) follows from the derived one by taking cohomologies, and that of (2) follows from the derived one by taking the spectral sequence associated to the totalizer (or, of course, the hypercohomology spectral sequence). 
+  我们只证明导出范畴中的陈述：(1) 的 Abel 范畴陈述可由导出版本取上同调得到，(2) 的 Abel 范畴陈述则可由导出版本取与全复形相伴的谱序列得到（当然，超上同调谱序列也可以）。 
 
-  Now, the base change map in the derived category is just a Beck-Chevalley base change, a purely category-theoretic construction. Thus, (1) and (2) follow from @bcbc-vertical-concat and @bcbc-horizontal-concat, respectively. 
+  现在，导出范畴中的基变换态射就是一个 Beck–Chevalley 基变换，这是纯范畴论的构造。因此，(1) 与 (2) 分别由 @bcbc-vertical-concat 与 @bcbc-horizontal-concat 推出。
   /*#lemma[
     Given a commutative square of functors between categories: 
     // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJjYWwoQylfMSJdLFsxLDAsImNhbChDKV8yIl0sWzAsMSwiY2FsKEQpXzEiXSxbMSwxLCJjYWwoRClfMiJdLFswLDEsImYnIl0sWzIsMywiZiIsMl0sWzEsMywiZyJdLFswLDIsImcnIiwyXV0=
@@ -255,10 +256,10 @@ The base change morphism is natural, in the sense that it is compatible with con
   ]*/
 ]
 
-This is the general setup for base change theorems. The proper base change theorem states that: 
+以上就是基变换定理的一般设定。紧合基变换定理断言： 
 
 #theorem(name: <proper-base-change>)[
-  Given a Cartesian diagram: 
+  给定拉回图表： 
   #align(center, diagram({
     node((-1, -1), [$X'$])
     node((0, -1), [$Y'$])
@@ -271,71 +272,71 @@ This is the general setup for base change theorems. The proper base change theor
     edge((-1, -1), (-1, 0), [$g'$], label-side: right, "->")
   }))
   
-  The base change morphism: #h(1fr)
+  基变换态射： #h(1fr)
   $
     g^(-1) R^q f_* cal(F) -> R^q f'_* g'^(-1) cal(F)
   $
-  is an isomorphism whenever $cal(F) in cAb(X_et)$ is a torsion sheaf, $f$ is proper, and $X$, $Y$ are locally noetherian. 
+  当 $cal(F) in cAb(X_et)$ 是挠层，$f$ 紧合，$X$ 与 $Y$ 局部 Noether 时，该态射是同构。 
 ]
-The locally noetherian hypothesis here is not necessary, and is merely a technical artifact of our methods which can be removed upon some mild strengthening of the results used in the proof. However, the proof in the locally noetherian case captures the spirit of the proof, so we'll stick with it. 
+这里的局部 Noether 假设并不必要，它只是我们方法的技术性产物；只要把证明中使用的结论稍作强化，就可以去掉这个假设。不过，局部 Noether 情形的证明已经体现了证明的精神，所以我们还是沿用这一假设。 
 
 #construction[
-  We will consider the case of proper base change, where $Y = Spec(A), Y' = ol(y) = Spec(k)$, where $(A, frak(m), k)$ is a strict henselian local ring. In this case, $X -> Spec(A)$ is proper, and $X' = X_0$ is its special fiber. Then the base change morphism is a morphism in $cAb(Spec(k)_et)$, where $k$ is separably closed, so it is really a morphism on stalks. 
+  我们考虑紧合基变换的如下情形：$Y = Spec(A), Y' = ol(y) = Spec(k)$，其中 $(A, frak(m), k)$ 是严格 Hensel 局部环。此时 $X -> Spec(A)$ 紧合，$X' = X_0$ 是它的特殊纤维。于是基变换态射是 $cAb(Spec(k)_et)$ 中的态射；由于 $k$ 可分闭，它实际上是茎上的态射。 
   
-  In other words, the base change morphism in this case is: 
+  换言之，此情形下的基变换态射是：
   $
     (g^(-1) R^q f_* cal(F))_(ol(y)) = (R^q f_* cal(F))_(ol(y)) = H^q (X times_A tilde(Spec(A))_(ol(y)), cal(F)|_(X times_A tilde(Spec(A))_(ol(y)))) = H^q (X, cal(F))
   $
-  since $A$ is already strict henselian, so $tilde(Spec(A))_(ol(y)) = Spec(A)$. On the other hand, 
+  因为 $A$ 已经是严格 Hensel 的，故 $tilde(Spec(A))_(ol(y)) = Spec(A)$。另一方面，
   $
     (R^q f'_* g'^(-1) cal(F))_(ol(y)) = H^q (X_0, cal(F)|_(X_0))
   $
-  since we are just computing the global section $R^q f'_* g'^(-1) cal(F) (ol(y))$, which, by @struct-of-spec-omega-et (1) and @derived-lower-star-first-props (3), is just $H^q (X_0, cal(F)|_(X_0))$. The base change morphism in this case is just restriction: 
+  因为我们只是在计算整体截面 $R^q f'_* g'^(-1) cal(F) (ol(y))$，而由 @struct-of-spec-omega-et (1) 与 @derived-lower-star-first-props (3)，它就是 $H^q (X_0, cal(F)|_(X_0))$。此情形下的基变换态射就是限制映射：
   $
     H^q (X, cal(F)) -> H^q (X_0, cal(F)|_(X_0))
   $
 ]
 
 #notation[
-  We abbreviate various base change related propositions as follows: 
+  我们把各种与基变换有关的命题简记如下： 
 
-  - $BC^q (X ->^f Y, Y' ->^g Y, cal(F))$ denotes the proposition: #h(1fr)
+  - $BC^q (X ->^f Y, Y' ->^g Y, cal(F))$ 表示命题： #h(1fr)
     $
-      #[The base change morphism $g^(-1)R^q f_* cal(F) -> R^q f'_* g'^(-1) cal(F)$ is an isomorphism.]
-    $
-
-  - For a strict henselian local ring $A$, $BC^q_* (X ->^f Spec(A), cal(F))$ denotes the proposition: 
-    $
-      #[The restriction $H^q (X, cal(F)) -> H^q (X_0, cal(F)|_(X_0))$ is an isomorphism.]
-    $
-    We also use $BC^q_(*,#[inj]) (f, cal(F)), BC^q_(*,#[surj])$ to denote that this restriction is injective/surjective, respectively. 
-
-  - $BC (X ->^f Y, Y' ->^g Y)$ denotes the proposition:
-    $
-      forall q>=0, forall cal(F) in cAb(X_et) #[torsion], BC^q (f, g, cal(F))
-    $
-    i.e. the base change theorem holds for the Cartesian square defined by $f$ and $g$ and all torsion sheaves. Similarly, $BC_* (X ->^f Spec(A))$ denotes the proposition: 
-    $
-      forall q>=0, forall cal(F) in cAb(X_et) #[torsion], BC^q_* (f, cal(F))
+      #[基变换态射 $g^(-1)R^q f_* cal(F) -> R^q f'_* g'^(-1) cal(F) $ 是同构。]
     $
 
-  The proper base change theorem is thus the statement: 
+  - 对严格 Hensel 局部环 $A$，$BC^q_* (X ->^f Spec(A), cal(F))$ 表示命题： 
+    $
+      #[限制映射 $H^q (X, cal(F)) -> H^q (X_0, cal(F)|_(X_0)) $ 是同构。]
+    $
+    我们也用 $BC^q_(*,#[inj]) (f, cal(F)), BC^q_(*,#[surj])$ 分别表示这个限制是单射、满射。 
+
+  - $BC (X ->^f Y, Y' ->^g Y)$ 表示命题：
+    $
+      forall q>=0, forall cal(F) in cAb(X_et) #[挠], BC^q (f, g, cal(F))
+    $
+    即对 $f$ 与 $g$ 决定的拉回方块、对所有挠层，基变换定理成立。类似地，$BC_* (X ->^f Spec(A))$ 表示命题： 
+    $
+      forall q>=0, forall cal(F) in cAb(X_et) #[挠], BC^q_* (f, cal(F))
+    $
+
+  于是紧合基变换定理就是如下陈述： 
   $
-    #[$BC (X ->^f Y, Y' ->^g Y)$ holds for all $f$ proper and $Y', Y$ locally noetherian.]
+    #[$BC (X ->^f Y, Y' ->^g Y) $ 对所有紧合的 $f$ 与局部 Noether 的 $Y', Y$ 成立。]
   $
 ]
 
-There are a few big steps in the proofs of proper base change, each requiring drastically different techniques and rather lengthy proofs. As such, we summarize the main results of each step as propositions here. 
+紧合基变换的证明包含几个大步骤，每一步都需要截然不同的技术，每一步的证明也都相当长。因此，我们在这里把每一步的主要结论总结成命题。 
 
 #notation[
   #set enum(numbering: n => ("(Seed)", "(Dev)", "(Comp)", "(Shift)", "(Reduce)", "(Finite)").at(n - 1))
 
-  We define the following propositions: 
+  我们定义如下命题： 
 
   + /*For any noetherian strict henselian $A$, any $f: X -->^#[finite] PP^1_A -> Spec(A)$, #h(1fr)
 
     - $BC^0_* (X ->^f Spec(A), ul(ZZ\/n))$ holds, and for all $q >= 1$, $BC^q_(*,#[surj]) (X ->^f Spec(A), ul(ZZ\/n))$ holds. */
-    For any noetherian strict henselian $A$, #h(1fr)
+    对任意 Noether 严格 Hensel 环 $A$， #h(1fr)
     $
       forall & f: X -->^#[finite] PP^1_A -> Spec(A), forall n>=1, \
       &BC^0_* (f, ul(ZZ\/n)) and (forall q>=1, BC^q_(*,#[surj]) (f, ul(ZZ\/n)))
@@ -357,7 +358,7 @@ There are a few big steps in the proofs of proper base change, each requiring dr
     $
 
   + #set enum(numbering: "(1)")
-    + In a diagram of successive base changes:
+    + 在逐次基变换的图表中：
       // https://q.uiver.app/#r=typst&q=WzAsNixbMCwwLCJaJyJdLFsxLDAsIlgnIl0sWzIsMCwiWSciXSxbMiwxLCJZIl0sWzEsMSwiWCJdLFswLDEsIloiXSxbMiwzLCJnIl0sWzEsNCwiZyciXSxbMCw1LCJnJyciXSxbNCwzLCJmIiwyXSxbNSw0LCJoIiwyXSxbMCwxLCJoJyJdLFsxLDIsImYnIl1d
       #align(center, diagram({
         node((-2, -1), [$Z'$])
@@ -374,13 +375,13 @@ There are a few big steps in the proofs of proper base change, each requiring dr
         edge((-2, -1), (-1, -1), [$f'$], label-side: left, "->")
         edge((-1, -1), (0, -1), [$h'$], label-side: left, "->")
       }))
-      We have:
+      我们有：
       $
         BC (f, g) and BC (h, g') ==> BC (h compose f, g)
       $
-      i.e. if the base change theorem holds for the left and right small squares, then it holds for the large rectangle. 
+      即若基变换定理对左右两个小方块成立，则它对大矩形也成立。 
 
-    + In a diagram of successive base changes:
+    + 在逐次基变换的图表中：
       // https://q.uiver.app/#r=typst&q=WzAsNixbMCwxLCJYJyJdLFsxLDEsIlknIl0sWzAsMiwiWCJdLFsxLDIsIlkiXSxbMSwwLCJZJyciXSxbMCwwLCJYJyciXSxbMiwzLCJmIl0sWzAsMSwiZiciXSxbMSwzLCJnIl0sWzAsMiwiZyciLDJdLFs1LDQsImYnJyJdLFs0LDEsImgiXSxbNSwwLCJoJyciLDJdXQ==
       #align(center, diagram({
         node((0, 0), [$X'$])
@@ -397,13 +398,13 @@ There are a few big steps in the proofs of proper base change, each requiring dr
         edge((1, -1), (1, 0), [$h$], label-side: left, "->")
         edge((0, -1), (0, 0), [$h'$], label-side: right, "->")
       }))
-      We have: 
+      我们有： 
       $
         BC(f, g) and BC(f', h) ==> BC(f, g compose h)
       $
-      i.e. if the base change theorem holds for the upper and lower small squares, then it holds for the large rectangle. 
+      即若基变换定理对上下两个小方块成立，则它对大矩形也成立。 
 
-  + In a diagram of successive base changes in which all schemes are noetherian with $X', X$ proper over $Spec(A)$ and $X' ->> X$ surjective: 
+  + 在逐次基变换的图表中，若所有概形都是 Noether 的，$X', X$ 在 $Spec(A)$ 上紧合，且 $X' ->> X$ 满射：
     // https://q.uiver.app/#r=typst&q=WzAsNixbMCwxLCJYJyJdLFsxLDEsIlgiXSxbMiwxLCJTcGVjKEEpIl0sWzIsMCwiU3BlYyhrKSJdLFsxLDAsIlhfMCJdLFswLDAsIlgnXzAiXSxbMCwxLCJwaSIsMl0sWzEsMl0sWzMsMl0sWzUsNCwicGlfMCJdLFs0LDEsImkiXSxbNSwwLCJpJyIsMl0sWzQsM11d
     #align(center, diagram({
       node((-1, 0), [$X'$])
@@ -420,49 +421,49 @@ There are a few big steps in the proofs of proper base change, each requiring dr
       edge((-1, -1), (-1, 0), [$i'$], label-side: right, "->")
       edge((0, -1), (1, -1), "->")
     }))
-    We have: 
+    我们有： 
     $
       & BC(pi, i) \
       ==>& (BC_* (X -> Spec(A)) <==> BC_* (X' -> Spec(A)))
     $
 
-  + When $Y', Y$ are locally noetherian, 
+  + 若 $Y', Y$ 局部 Noether，则
     $
       & BC(X ->^f Y, Y' ->^g Y) \
-      <==& (BC_* (X times_Y Spec(A) -> Spec(A)), forall Spec(A) -> Y, forall A #[noetherian strict henselian])
+      <==& (BC_* (X times_Y Spec(A) -> Spec(A)), forall Spec(A) -> Y, forall A #[Noether 严格 Hensel])
     $
 
-  + $BC(X ->^f Y, Y' ->^g Y)$ holds whenever $f$ is finite. 
+  + 只要 $f$ 有限，$BC(X ->^f Y, Y' ->^g Y)$ 就成立。 
 ]
 
-We first state the last part of the proof, to demonstrate how the six points stated above are relevant reduction steps, and how they are sufficient to prove proper base change. 
+我们先陈述证明的最后一部分，以说明上面六点如何构成相关的归约步骤，以及它们如何足以证明紧合基变换。 
 
 #theorem[
-  The proper base change theorem holds as long as the six points (Seed)(Dev)(Comp)(Shift)(Reduce)(Finite) stated above hold. 
+  只要上面陈述的六点 (Seed)、(Dev)、(Comp)、(Shift)、(Reduce)、(Finite) 成立，紧合基变换定理就成立。 
 ]
 #proof[
-  By (Seed) and (Dev), $BC_* (PP^1_A -> Spec(A))$ holds for any noetherian strict henselian $A$. 
+  由 (Seed) 与 (Dev)，对任意 Noether 严格 Hensel 环 $A$，$BC_* (PP^1_A -> Spec(A))$ 成立。 
 
-  Our first step is showing that $BC(PP^n_Y -> Y, Y' ->^g Y)$ holds for all $n >= 1$ and locally noetherian $Y$. That is, proper base change holds for projective spaces. By (Reduce), it suffices to prove $BC_* (PP^n_A -> Spec(A))$ for all noetherian strict henselian $A$. Now there is a finite surjection:
+  第一步是证明：对所有 $n >= 1$ 与局部 Noether 的 $Y$，$BC(PP^n_Y -> Y, Y' ->^g Y)$ 成立，也就是说，紧合基变换对射影空间成立。由 (Reduce)，只需对所有 Noether 严格 Hensel 环 $A$ 证明 $BC_* (PP^n_A -> Spec(A))$。现在有一个有限满射：
   $
-    underbrace(PP^1_A times_A dots.c times_A PP^1_A, #[$n$ copies]) -> PP^n_A, ((X_1:Y_1), dots.c, (X_n:Y_n)) |-> (F_0:F_1:dots.c:F_n)
+    underbrace(PP^1_A times_A dots.c times_A PP^1_A, #[$n$ 个副本]) -> PP^n_A, ((X_1:Y_1), dots.c, (X_n:Y_n)) |-> (F_0:F_1:dots.c:F_n)
   $
-  where the $F_i$'s are characterized by $product_(i=1)^n (X_i T + Y_i) = sum_(i=0)^n F_i (arrow(X), arrow(Y)) T^i$. 
+  其中各个 $F_i$ 由 $product_(i=1)^n (X_i T + Y_i) = sum_(i=0)^n F_i (arrow(X), arrow(Y)) T^i$ 刻画。 
 
-  Base change along this finite surjective morphism holds by (Finite). Suppose that base change holds for $PP^1_A times_A dots.c times_A PP^1_A -> Spec(A)$ too. Then by (Shift), we see that base change holds for $PP^n_A -> Spec(A)$. 
+  由 (Finite)，沿这个有限满射的基变换成立。再假设基变换对 $PP^1_A times_A dots.c times_A PP^1_A -> Spec(A)$ 也成立，则由 (Shift) 可知，基变换对 $PP^n_A -> Spec(A)$ 成立。 
   
-  Thus, it suffices to show that for all noetherian strict henselian $A$, base change holds along $PP^1_A times_A dots.c times_A PP^1_A -> Spec(A)$. This morphism factors as: 
+  于是，只需证明：对所有 Noether 严格 Hensel 环 $A$，沿 $PP^1_A times_A dots.c times_A PP^1_A -> Spec(A)$ 的基变换成立。这个态射分解为： 
   $
-    underbrace(PP^1_A times_A dots.c times_A PP^1_A, #[$n$ copies]) -> underbrace(PP^1_A times_A dots.c times_A PP^1_A, #[$n-1$ copies]) -> dots.c -> PP^1_A -> Spec(A)
+    underbrace(PP^1_A times_A dots.c times_A PP^1_A, #[$n$ 个副本]) -> underbrace(PP^1_A times_A dots.c times_A PP^1_A, #[$n-1$ 个副本]) -> dots.c -> PP^1_A -> Spec(A)
   $
-  in which every step is of the shape $PP^1_(tilde(Y)) -> tilde(Y)$ for some noetherian $tilde(Y)$. By (Comp), we are allowed to assume $n = 1$ and we want to show that base change holds along $PP^1_Y -> Y$, i.e. $BC(PP^1_Y -> Y, Y' ->^g Y)$. However, by (Reduce), it suffices to show that $BC_* (PP^1_A -> Spec(A))$ holds for all noetherian strict henselian $A$, which is what we already have.
+  其中每一步都形如 $PP^1_(tilde(Y)) -> tilde(Y)$，$tilde(Y)$ 是某个 Noether 概形。由 (Comp)，可以假定 $n = 1$，而要证的是沿 $PP^1_Y -> Y$ 的基变换成立，即 $BC(PP^1_Y -> Y, Y' ->^g Y)$。不过由 (Reduce)，只需证明对所有 Noether 严格 Hensel 环 $A$，$BC_* (PP^1_A -> Spec(A))$ 成立，而这正是我们已有的结论。
 
-  Next, for any projective#footnote[Our notion of a morphism $f: X -> Y$ being *projective* means that $f$ factors as $X -> PP^n_Y -> Y$ where $X -> PP^n_Y$ is a closed immersion. This notion agrees with the notion in @cite-hartshorne-ag, and is referred to as *H-projective* in Stacks Project.] $f: X ->^i PP^n_Y -> Y$, where $i$ is a closed immersion, to show that base change holds for $f$, it suffices to show that for all noetherian strictly henselian $A$, any closed immersion $i: X -> PP^n_A$, $BC_* (X ->^i PP^n_A -> Spec(A))$ holds. Now $BC_* (i)$ holds from (Finite), and we just proved that $BC_* (PP^n_A -> Spec(A))$ holds, and all schemes involved are noetherian, so by (Comp) $BC_* (X -> Spec(A))$ holds. Therefore, $BC(X ->^f Y, Y' ->^g Y)$ holds whenever $f$ is projective and $Y, Y'$ are locally noetherian.
+  接下来，任取射影态射 $f: X ->^i PP^n_Y -> Y$，其中 $i$ 是闭浸入。#footnote[我们所说的态射 $f: X -> Y$ 是*射影*的，是指 $f$ 分解为 $X -> PP^n_Y -> Y$，其中 $X -> PP^n_Y$ 是闭浸入。这个定义与 @cite-hartshorne-ag 中的定义一致，在 Stacks Project 中则称为 *H-射影*。]要证明基变换对 $f$ 成立，只需证明：对所有 Noether 严格 Hensel 环 $A$ 与任意闭浸入 $i: X -> PP^n_A$，$BC_* (X ->^i PP^n_A -> Spec(A))$ 成立。现在由 (Finite) 可得 $BC_* (i)$ 成立，而我们刚刚证明了 $BC_* (PP^n_A -> Spec(A))$ 成立，且所有涉及的概形都是 Noether 的，所以由 (Comp)，$BC_* (X -> Spec(A))$ 成立。因此，只要 $f$ 射影、$Y, Y'$ 局部 Noether，$BC(X ->^f Y, Y' ->^g Y)$ 就成立。 
 
-  We now deal with the general case $BC(X ->^f Y, Y' ->^g Y)$ for $f$ proper. By (Reduce), it suffices to prove $BC_* (X -> Spec(A))$ for all $X -> Spec(A)$ proper and all noetherian $A$. For this, we invoke Chow's lemma. 
+  现在处理一般情形：$f$ 紧合时的 $BC(X ->^f Y, Y' ->^g Y)$。由 (Reduce)，只需对所有紧合的 $X -> Spec(A)$ 与所有 Noether 环 $A$ 证明 $BC_* (X -> Spec(A))$。为此我们调用周炜良引理。 
 
   #lemma[
-    (Chow's lemma) Let $S$ be a noetherian scheme, and $f: X -> S$ be separated of finite type. Then there exists a commutative diagram: 
+    (周炜良引理) 设 $S$ 是 Noether 概形，$f: X -> S$ 是有限型且分离的态射。则存在交换图表： 
     // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJYIl0sWzEsMCwiWCciXSxbMiwwLCJQUF5uX1MiXSxbMSwxLCJTIl0sWzIsM10sWzEsMl0sWzEsMCwicGkiLDJdLFswLDMsImYiLDJdLFsxLDNdXQ==
     #align(center, diagram({
       node((-1, -1), [$X$])
@@ -475,20 +476,20 @@ We first state the last part of the proof, to demonstrate how the six points sta
       edge((-1, -1), (0, 0), [$f$], label-side: right, "->")
       edge((0, -1), (0, 0), "->")
     }))
-    in which: 
+    其中：
 
-    + $pi$ is projective and surjective; 
+    + $pi$ 射影且满射； 
 
-    + $X' -> PP^n_S$ is an immersion; 
+    + $X' -> PP^n_S$ 是浸入； 
 
-    + There exists an open dense $U subset X$ s.t. $pi: pi^(-1) (U) -> U$ is an isomorphism. 
+    + 存在稠密开子集 $U subset X$，使得 $pi: pi^(-1) (U) -> U$ 是同构。 
 
-    In particular, when $f$ is proper, $X' -> PP^n_S$ is also proper, and hence a closed immersion. In other words, $X' -> S$ is projective. 
+    特别地，当 $f$ 紧合时，$X' -> PP^n_S$ 也紧合，从而是闭浸入。换言之，$X' -> S$ 射影。 
   ]
   #proof[
-    We refer to #cite-stacks("0200")[Lemma 30.18.1] and #cite-stacks("0201")[Remark 30.18.2]. 
+    参见 #cite-stacks("0200")[Lemma 30.18.1] 与 #cite-stacks("0201")[Remark 30.18.2]。 
   ]
-  Now $X -> Spec(A)$ factors as: 
+  现在 $X -> Spec(A)$ 分解为：
   // https://q.uiver.app/#r=typst&q=WzAsMyxbMCwwLCJYIl0sWzIsMCwiU3BlYyhBKSJdLFsxLDEsIlgnIl0sWzIsMCwicGkiXSxbMiwxXSxbMCwxXV0=
   #align(center, diagram({
     node((-1, -1), [$X$])
@@ -498,42 +499,42 @@ We first state the last part of the proof, to demonstrate how the six points sta
     edge((0, 0), (1, -1), "->")
     edge((-1, -1), (1, -1), "->")
   }))
-  with $pi: X' -> X$ surjective and projective, and $X' -> Spec(A)$ projective. Since $X$ and $Spec(A)$ are noetherian, by our previous results on projective morphisms, 
+  其中 $pi: X' -> X$ 满射且射影，$X' -> Spec(A)$ 射影。由于 $X$ 与 $Spec(A)$ 都是 Noether 的，由前面关于射影态射的结论，
   $
-    BC (X' ->^pi X, X_0 ->^i X) #[and] BC_* (X' -> Spec(A))
+    BC (X' ->^pi X, X_0 ->^i X) #[且] BC_* (X' -> Spec(A))
   $
-  holds. Since $X, X', Spec(A)$ are all noetherian, by (Shift), $BC_* (X -> Spec(A))$ holds. We are thereby done. 
+  成立。又因 $X, X', Spec(A)$ 都是 Noether 的，由 (Shift)，$BC_* (X -> Spec(A))$ 成立。至此证毕。 
 ]
 
-Thus, to prove the proper base change theorem, we need to take down the six points (Seed)(Dev)(Comp)(Shift)(Reduce)(Finite) one by one. 
+因此，要证明紧合基变换定理，我们需要逐一攻克上面六点 (Seed)、(Dev)、(Comp)、(Shift)、(Reduce)、(Finite)。 
 
-Among these six points, (Finite) is the easiest to prove, and will be used during the proof of other points. We prove it right now. 
+这六点之中，(Finite) 最容易证明，而且证明其他几点时也会用到它。我们现在就来证。 
 
 #proposition(name: <pbc-finite>)[
-  (Finite) The base change morphism: 
+  (Finite) 只要 $f$ 有限，基变换态射： 
   $
     g^(-1) R^q f_* cal(F) -> R^q f'_* g'^(-1) cal(F)
   $
-  is an isomorphism whenever $f$ is finite. 
+  就是同构。 
 
-  (Note that this doesn't even require $cal(F)$ to be a torsion sheaf, contrary to the statement of proper base change.)
+  （注意，这里甚至不要求 $cal(F)$ 是挠层，这与紧合基变换的陈述不同。） 
 ]
 #proof[
-  Since $f_*$ is exact when $f$ is finite, both sides vanish when $q >= 1$. It suffices to prove that the base change morphism: 
+  $f$ 有限时 $f_*$ 正合，故 $q >= 1$ 时两边都消没。只需证明基变换态射：
   $
     g^(-1) f_* cal(F) -> f'_* g'^(-1) cal(F)
   $
-  is an isomorphism for $f$ finite. For any algebraically closed geometric point $ol(y') in Y'$, compute the stalks on both sides using @stalks-of-finite-pushforward: 
+  在 $f$ 有限时是同构。对任意代数闭几何点 $ol(y') in Y'$，用 @stalks-of-finite-pushforward 计算两边的茎：
   $
     (g^(-1) f_* cal(F))_(ol(y')) = (f_* cal(F))_(g(ol(y'))) = oplus.big_(ol(x) in f^(-1)(g(ol(y')))) cal(F)_(ol(x))
   $
-  while: 
+  另一方面，
   $
     (f'_* g'^(-1) cal(F))_(ol(y')) = oplus.big_(ol(x') in f'^(-1)(ol(y'))) (g'^(-1)cal(F))_(ol(x')) = oplus.big_(ol(x') in f'^(-1)(ol(y'))) cal(F)_(g'(ol(x')))
   $
-  Thus, it suffices to show that: 
+  于是只需证明：
   $
     g': f'^(-1)(ol(y')) -> f^(-1)(g(ol(y')))
   $
-  is a bijection. Indeed, if $ol(y) = g(ol(y'))$, the induced map $g': f'^(-1)(ol(y')) -> f^(-1)(ol(y))$ is a bijection by the definition of the fiber product. 
+  是双射。事实上，若 $ol(y) = g(ol(y'))$，则由纤维积的定义，诱导映射 $g': f'^(-1)(ol(y')) -> f^(-1)(ol(y))$ 是双射。 
 ]

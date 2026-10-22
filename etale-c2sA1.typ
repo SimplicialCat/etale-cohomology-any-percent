@@ -1,138 +1,138 @@
 #import "void-import.typ": *
 
-== Radicial morphisms
+== 根性态射
 
-This section is a short interlude on radicial morphisms. They are somewhat opposite to etale morphisms, in the sense that etale morphisms feature separable field extensions, while radicial morphisms feature purely inseparable field extensions. 
+本节是对根性态射 (radicial) 的一段简短插叙。这类态射与平展态射有几分相反：平展态射以可分域扩张为特征，根性态射则以纯不可分域扩张为特征。
 
 #proposition(name: <equiv-defns-of-radicial>)[
-  (#cite-stacks("01S4")[Lemma 29.10.2]) Let $f: X -> Y$ be a scheme morphism. TFAE: 
+  （#cite-stacks("01S4")[Lemma 29.10.2]）设 $f: X -> Y$ 是概形态射。以下条件等价：
 
-  + $f$ is universally injective; 
+  + $f$ 是泛单的；
 
-  + $f$ is injective and for every $f(x) = y$, $k(x)\/k(y)$ is a purely inseparable field extension; 
+  + $f$ 是单射，且对每个满足 $f(x) = y$ 的点 $x$，$k(x)\/k(y)$ 都是纯不可分域扩张；
 
-  + For every field $K$, the map: #h(1fr)
+  + 对任意域 $K$，映射： #h(1fr)
     $
       Hom(Spec(K), X) -> Hom(Spec(K), Y)
     $
-    is injective; 
+    是单射；
 
-  + The diagonal map $Delta_(X\/Y): X -> X times_Y X$ is surjective. 
+  + 对角映射 $Delta_(X\/Y): X -> X times_Y X$ 是满射。
 ]
 #proof[
-  (2)$<==>$(3): 
+  (2) $<==>$(3)：
   #proof[
-    It is clear that: 
+    显然：
     $
       Hom(Spec(K), X) = {(x, phi): x in X, phi: k(x) arrow.hook K}
     $
-    Thus, the preimage of some $(y, psi) in Hom(Spec(K), Y)$ is those $(x, phi)$ s.t. $f(x) = y$ and the composition $k(y) -> k(x) ->^phi K$ is exactly $psi$. 
+    因此，某个 $(y, psi) in Hom(Spec(K), Y)$ 的原像，正是那些满足 $f(x) = y$、且使复合 $k(y) -> k(x) ->^phi K$ 恰为 $psi$ 的 $(x, phi)$。
 
-    (3)$==>$(2): Fix $y in Y$. If $f(x_1) = f(x_2) = y$ for different points $x_(1,2) in X$, take a field $K\/k(y)$ containing both $k(x_1)$ and $k(x_2)$ (say a residue field of $k(x_1) otimes_(k(y)) k(x_2)$). Then $k(y) -> K$ factors through both $k(x_1)$ and $k(x_2)$, giving two different lifts of $Hom(Spec(K), Y)$. This is a contradiction. Thus $f$ is injective. 
+    (3) $==>$(2)：固定 $y in Y$。若不同的点 $x_(1,2) in X$ 满足 $f(x_1) = f(x_2) = y$，取一个同时包含 $k(x_1)$ 与 $k(x_2)$ 的域 $K\/k(y)$（例如 $k(x_1) otimes_(k(y)) k(x_2)$ 的某个剩余域）。于是 $k(y) -> K$ 同时穿过 $k(x_1)$ 与 $k(x_2)$ 分解，从而给出 $Hom(Spec(K), Y)$ 中同一元素的两个不同提升。矛盾。因此 $f$ 是单射。
 
-    Suppose that there exists $x in X$ s.t. $f(x) = y$. Then taking $K = ol(k(x))$, we see that $k(x)$ embeds into $ol(k(x))$ in a unique way. This forces $k(x)\/k(y)$ to be purely inseparable, since otherwise its separable component would have nontrivial embeddings. 
+    假设存在 $x in X$ 使 $f(x) = y$。取 $K = ol(k(x))$，则 $k(x)$ 只有唯一一种方式嵌入 $ol(k(x))$。这就迫使 $k(x)\/k(y)$ 纯不可分：否则它的可分部分会有非平凡的嵌入。
 
-    (2)$==>$(3): Suppose that $(y, psi) in Hom(Spec(K), Y)$ has two lifts $(x_(1,2), phi_(1,2))$. Then since $f$ is injective, $x_1 = x_2 = x$, and $phi_(1,2)$ are two embeddings $k(x) -> K$ s.t: 
+    (2) $==>$(3)：设 $(y, psi) in Hom(Spec(K), Y)$ 有两个提升 $(x_(1,2), phi_(1,2))$。由于 $f$ 是单射，$x_1 = x_2 = x$，而 $phi_(1,2)$ 是 $k(x) -> K$ 的两个嵌入，使得：
     $
       k(y) -> k(x) ->^(phi_(1,2)) K
     $
-    are both the embedding $psi$. However, $k(x)\/k(y)$ is purely inseparable. Thus a compatible embedding $k(x) -> K$, if exists, must be unique. (Indeed, $k(x)$ is obtained from $k(y)$ by adjoining $p^m$-th roots. Over characteristic $p$, such roots are unique.)
+    都等于嵌入 $psi$。然而 $k(x)\/k(y)$ 纯不可分。因此相容的嵌入 $k(x) -> K$ 若存在，必定唯一。（事实上，$k(x)$ 是在 $k(y)$ 上添加若干 $p^m$ 次根得到的；在特征 $p$ 下，这样的根唯一。）
   
     #suppress-qed
   ]
 
-  (1)$==>$(2): 
+  (1) $==>$(2)：
   #proof[
-    $f$ is tautologically injective. If $f(x) = y$, base change $f$ along $k(y) -> Y$ yields $f: X_y -> Spec(k(y))$. $X_y$ is necessarily a single point with reduction $Spec(k(x))$. 
+    按定义，$f$ 是单射。若 $f(x) = y$，沿 $k(y) -> Y$ 对 $f$ 作基变换，得到 $f: X_y -> Spec(k(y))$。$X_y$ 必定是单点，其约化为 $Spec(k(x))$。
     
-    Now base change further to $ol(k(y))$, and so $X_y otimes_(k(y)) ol(k(y))$ is a single point. $X_y$ has reduction $Spec(k(x))$, so $Spec(k(x) otimes_(k(y)) ol(k(y)))$ is a closed subscheme of $X_y otimes_(k(y)) ol(k(y))$ defined by a nilpotent ideal, and shares the same underlying space. Thus $Spec(k(x) otimes_(k(y)) ol(k(y)))$ is a single point. 
+    再进一步基变换到 $ol(k(y))$，则 $X_y otimes_(k(y)) ol(k(y))$ 仍是单点。$X_y$ 的约化为 $Spec(k(x))$，所以 $Spec(k(x) otimes_(k(y)) ol(k(y)))$ 是 $X_y otimes_(k(y)) ol(k(y))$ 中由幂零理想定义的闭子概形，并且与后者有相同的底空间。于是 $Spec(k(x) otimes_(k(y)) ol(k(y)))$ 是单点。
     
-    This forces $k(x)\/k(y)$ to be purely inseparable, since otherwise the separable closure of $k(y)$ in $k(x)$ would split into multiple copies of $ol(k(y))$ upon tensoring $ol(k(y))$. 
+    这就迫使 $k(x)\/k(y)$ 纯不可分：否则 $k(x)$ 中 $k(y)$ 的可分闭包在与 $ol(k(y))$ 作张量积之后会分裂成多个 $ol(k(y))$ 的副本。
 
     #suppress-qed
   ]
 
-  (3)$==>$(1): 
+  (3) $==>$(1)：
   #proof[
-    To show that $f$ is universally injective, it suffices to show that every nonempty fiber of a base change of $f$ is a single point. That is, for any $psi: Spec(K) -> Y$, we need to show that the base change: 
+    要证 $f$ 泛单，只需证明 $f$ 的任意基变换的每个非空纤维都是单点。也就是说，对任意 $psi: Spec(K) -> Y$，我们需要证明基变换：
     $
       f_psi: X_K -> Spec(K)
     $
-    has $X_K$ either empty or a single point. Indeed, if $X_K$ has two distinct points $x_1, x_2$, we may pick a field extension $L\/K$ containing both $k(x_1)$ and $k(x_2)$. Then we have distinct maps $Spec(L) -> X_K -> X$ defined by $x_1$ and $x_2$. Upon composing with $f$, they both become the same map $Spec(L) -> Spec(K) -> Y$. This contradicts (3). 
+    中的 $X_K$ 要么为空、要么是单点。事实上，若 $X_K$ 有两个不同的点 $x_1, x_2$，可取同时包含 $k(x_1)$ 与 $k(x_2)$ 的域扩张 $L\/K$。于是由 $x_1$ 与 $x_2$ 得到两个不同的映射 $Spec(L) -> X_K -> X$。与 $f$ 复合后，它们都变成同一个映射 $Spec(L) -> Spec(K) -> Y$。这与 (3) 矛盾。
     #suppress-qed
   ]
 
-  We have thus shown that (1)(2)(3) are all equivalent. 
+  至此我们证明了 (1)(2)(3) 彼此等价。
 
-  (1)$==>$(4): Since $f$ is universally injective, the projection $p_1: X times_Y X -> X$, being a base change of $f$, is injective. Thus $Delta_(X\/Y)$, being a section of $p_1$, is surjective. 
+  (1) $==>$(4)：由于 $f$ 泛单，投影 $p_1: X times_Y X -> X$ 作为 $f$ 的基变换也是单射。于是作为 $p_1$ 的截面，$Delta_(X\/Y)$ 是满射。
 
-  (4)$==>$(2): //Suppose that $(x_(1,2), phi_(1,2)) in Hom(Spec(K), X)$ are both sent to $(y, psi) in Hom(Spec(K), Y)$. Recall that: 
-  Recall that: 
+  (4) $==>$(2)：//假设 $(x_(1,2), phi_(1,2)) in Hom(Spec(K), X) $ 都被送到 $(y, psi) in Hom(Spec(K), Y) $。回忆一下：
+  回忆：
 
-  - Points of $X times_S Y$ correspond to quadruples $(x, y, s, frak(p))$ where $x in X, y in Y$ both lie above $s in S$, and $frak(p) in Spec(k(x) otimes_(k(s)) k(y))$. (#cite-stacks("01JT")[Lemma 26.17.5])
+  - $X times_S Y$ 的点对应四元组 $(x, y, s, frak(p))$，其中 $x in X, y in Y$ 都位于 $s in S$ 之上，且 $frak(p) in Spec(k(x) otimes_(k(s)) k(y))$。（#cite-stacks("01JT")[Lemma 26.17.5]）
 
-  The diagonal $X -> X times_Y X$ then sends $x$ to $(x, x, f(x), ker(k(x) otimes_(k(f(x))) k(x) -> k(x)))$. Since the diagonal is surjective, $x_1, x_2$ with $f(x_1) = f(x_2)$ are necessarily equal, and for every $x in X$ with $y = f(x)$, $k(x) otimes_(k(y)) k(x)$ only has one prime ideal. Thus $ker(k(x) otimes_(k(y)) k(x) -> k(x))$ is the nilradical of $k(x) otimes_(k(y)) k(x)$, and so every element of the form $a otimes 1 - 1 otimes a in k(x) otimes_(k(y)) k(x)$ is nilpotent. 
+  于是对角映射 $X -> X times_Y X$ 把 $x$ 送到 $(x, x, f(x), ker(k(x) otimes_(k(f(x))) k(x) -> k(x)))$。由于对角映射满射，满足 $f(x_1) = f(x_2)$ 的 $x_1, x_2$ 必定相等；并且对每个 $x in X$（记 $y = f(x)$），$k(x) otimes_(k(y)) k(x)$ 只有一个素理想。因此 $ker(k(x) otimes_(k(y)) k(x) -> k(x))$ 就是 $k(x) otimes_(k(y)) k(x)$ 的幂零根，于是每个形如 $a otimes 1 - 1 otimes a in k(x) otimes_(k(y)) k(x)$ 的元素都幂零。
 
-  - For every $a in k(x)$, if $a$ were transcendental over $k(y)$, then $k(y)(a) otimes_(k(y)) k(y)(a)$ is a localization of $k(y)[X, Y]$ and is integral, and $a otimes 1 - 1 otimes a$ corresponds to $X - Y$. Its nilpotence is thus absurd. Thus $a$ is algebraic over $k(y)$, say with minimal polynomial $p(X)$. Then: 
+  - 对每个 $a in k(x)$，若 $a$ 在 $k(y)$ 上超越，则 $k(y)(a) otimes_(k(y)) k(y)(a)$ 是 $k(y)[X, Y]$ 的局部化，从而是整环，而 $a otimes 1 - 1 otimes a$ 对应 $X - Y$，说它幂零就荒谬了。故 $a$ 在 $k(y)$ 上代数；设其极小多项式为 $p(X)$。那么：
     $
       k(y)(a) otimes_(k(y)) k(y)(a) cong (k(y)(a)[T])/((p(T)))
     $
-    and the element $a otimes 1 - 1 otimes a$ corresponds to $T - a$. By nilpotence, $p(T) divides (T-a)^m$ for some power $m$. Thus $p(T)$ has only the root $a$ in $ol(k(y))$. Thus $a$ is inseparable over $k(y)$. 
+    并且元素 $a otimes 1 - 1 otimes a$ 对应 $T - a$。由幂零性，对某个幂次 $m$ 有 $p(T) divides (T-a)^m$。因此 $p(T)$ 在 $ol(k(y))$ 中只有根 $a$。故 $a$ 在 $k(y)$ 上不可分。
 
-  Thus $k(x)\/k(y)$ is purely inseparable. 
+  于是 $k(x)\/k(y)$ 纯不可分。
 ]
 
 #definition(name: <defn-radicial-morphism>)[
-  A morphism $f: X -> Y$ satisfying the four equivalent conditions above is called *radicial*. 
+  满足上述四条等价条件的态射 $f: X -> Y$ 称为*根性的*。
 ]
 
 #properties(name: <radicial-morphism-first-props>)[
-  0. Radicial morphisms are stable under base change and composition. 
+  0. 根性态射对基变换与复合稳定。
 
-  1. Radicial morphisms are separated. 
+  1. 根性态射是分离的。
 
-  2. A morphism $f: X -> Y$ is a universal homeomorphism, if and only if it is surjective, radicial and integral. 
+  2. 态射 $f: X -> Y$ 是泛同胚 (universal homeomorphism)，当且仅当它满射、根性且整。
 
-  3. A morphism $f: X -> Y$ is an open immersion, if and only if it is radicial and etale. 
+  3. 态射 $f: X -> Y$ 是开浸入，当且仅当它根性且平展。
 ]
 #proof[
-  (0) This is trivial under the characterization that radicial $<==>$ universally injective. 
+  (0) 用“根性 $<==>$ 泛单”这一刻画，这是平凡的。
 
-  (1) For a radicial morphism $f: X -> Y$, the diagonal $Delta_(X\/Y): X -> X times_Y X$, automatically known to be an immersion, is surjective. It is thus a closed immersion, hence separated. 
+  (1) 对根性态射 $f: X -> Y$，对角映射 $Delta_(X\/Y): X -> X times_Y X$ 自动是浸入，并且是满射。因此它是闭浸入，从而 $f$ 分离。
 
-  (2)($<==$) Surjectivity is universal, radicial morphisms are universally injective, and integral morphisms are universally closed. Thus $f$ is universally bijective and universally closed, hence a universal homeomorphism. 
+  (2)($<==$) 满射性在基变换下保持，根性态射是泛单的，整态射是泛闭的。于是 $f$ 泛双射且泛闭，从而是泛同胚。
 
-  ($==>$) Universal homeomorphisms are tautologically surjective and universally injective (i.e. radicial), so it remains to check integrality. 
+  ($==>$) 按定义，泛同胚满射且泛单（即根性），故只剩整性待验证。
 
   #lemma[
-    If $f: X -> Y$ is a scheme morphism that is a homeomorphism, then $f$ is affine. 
+    若概形态射 $f: X -> Y$ 是同胚，则 $f$ 是仿射的。
   ]
   #proof[
-    Affineness can be checked locally on base, so we may assume that $Y$ is affine. 
+    仿射性可在底上局部验证，故不妨设 $Y$ 仿射。
 
-    For any $y in Y$ with $x = f^(-1)(y) in X$, we may pick an affine open $x in U subset X$. Now $f(U)$ is open in $f(X)$, so we may pick a function $u in A$ s.t. $y in D(u) subset f(U)$. Consequently, $f^(-1) (D(u)) = D(u) times_Y U = D(u) times_Y U$ is a fiber product of two affine schemes over affine base, and is hence affine. Thus every point of $Y$ has an affine neighborhood pulling back to an affine open of $X$ under $f$. Since affineness is local on base, $f$ is affine. 
+    任取 $y in Y$，令 $x = f^(-1)(y) in X$，可取仿射开集 $x in U subset X$。现在 $f(U)$ 是 $f(X)$ 中的开集，故可取函数 $u in A$ 使 $y in D(u) subset f(U)$。于是 $f^(-1) (D(u)) = D(u) times_Y U = D(u) times_Y U$ 是仿射底上两个仿射概形的纤维积，从而是仿射的。因此 $Y$ 的每个点都有一个仿射邻域，它在 $f$ 下的原像是 $X$ 的仿射开集。既然仿射性可在底上局部验证，$f$ 就是仿射的。
   ]
 
-  Thus $f$ is known to be affine. $f$ is also universally closed. To proceed: 
+  于是 $f$ 仿射，而且还泛闭。接下来还需要一个引理：
   #lemma[
-    An affine universally closed morphism is integral. 
+    仿射且泛闭的态射是整的。
   ]
   #proof[
-    We may check locally on base and assume that $f: X = Spec(B) -> Spec(A) = Y$ is universally closed. We'll reduce to the case that $A, B$ are both integral domains and $A subset B$ first. Assume for contradiction that $b in B$ is not integral over $A$. Then: 
+    该性质可在底上局部验证，故不妨设 $f: X = Spec(B) -> Spec(A) = Y$ 泛闭。我们先化归到 $A, B$ 都是整环且 $A subset B$ 的情形。反设 $b in B$ 不在 $A$ 上整。那么：
     $
       "ev"_b: A[T] ->> C := A[b] subset B, p(T) |-> p(b)
     $
-    has its kernel $I subset A[T]$ containing no monic polynomial. The monic polynomials form a multiplicative subset $S$ of $A[T]$, and so $I$ defines a non-unit ideal of $S^(-1) A[T]$. Thus by taking a prime of $S^(-1) A[T]$ containing $I$, we see that there exists $frak(p) in Spec(A[T])$ s.t. $I subset frak(p)$, and $frak(p)$ contains no monic polynomial. Let $frak(q) = frak(p)\/I in Spec(A[T]\/I) cong Spec(C)$. Then $b in C\/frak(q)$ is still not integral over $A$, otherwise a monic polynomial would be in $frak(p)$. Now: 
+    它的核 $I subset A[T]$ 不含首一多项式。首一多项式构成 $A[T]$ 的乘法子集 $S$，于是 $I$ 定义了 $S^(-1) A[T]$ 的一个非单位理想。因此取 $S^(-1) A[T]$ 中含 $I$ 的素理想，便知存在 $frak(p) in Spec(A[T])$ 使 $I subset frak(p)$，且 $frak(p)$ 不含首一多项式。令 $frak(q) = frak(p)\/I in Spec(A[T]\/I) cong Spec(C)$，则 $b in C\/frak(q)$ 仍然不在 $A$ 上整，否则 $frak(p)$ 中就会出现首一多项式。现在：
 
-    - $Spec(B) -> Spec(A)$ is universally closed and factors as $Spec(B) -> Spec(C) -> Spec(A)$. 
+    - $Spec(B) -> Spec(A)$ 泛闭，且分解为 $Spec(B) -> Spec(C) -> Spec(A)$。
     
-      Now the graph $Spec(B) -> Spec(B otimes_A C)$ of $Spec(B) -> Spec(C)$ is a closed immersion as a base change of the diagonal of $Spec(B) -> Spec(A)$, and is universally closed. $Spec(B otimes_A C) -> Spec(C)$ is a base change of $Spec(B) -> Spec(A)$ and is universally closed. Thus, $Spec(B) -> Spec(C)$ being their composition is universally closed. It is dominant since $C subset B$, so it is surjective. 
+      现在，$Spec(B) -> Spec(C)$ 的图态射 $Spec(B) -> Spec(B otimes_A C)$ 作为 $Spec(B) -> Spec(A)$ 的对角的基变换，是闭浸入，并且泛闭。$Spec(B otimes_A C) -> Spec(C)$ 是 $Spec(B) -> Spec(A)$ 的基变换，也泛闭。而 $Spec(B) -> Spec(C)$ 是二者的复合，因此也泛闭。又因 $C subset B$，它是支配的，从而是满射。
 
-    Hence, we may pick $frak(r) in Spec(B)$ s.t. $frak(q) = C inter frak(r)$. We then have an inclusion $C\/frak(q) arrow.hook B\/frak(r)$. Since $[b] in C\/frak(q)$ is not integral over $A$, neither is $[b] in B\/frak(r)$. Thus if we are done with the case of $B$ integral, then $Spec(B\/frak(r)) -> Spec(A)$ would be integral, raising a contradiction. 
+    于是可取 $frak(r) in Spec(B)$ 使 $frak(q) = C inter frak(r)$，此时有包含 $C\/frak(q) arrow.hook B\/frak(r)$。$[b] in C\/frak(q)$ 不在 $A$ 上整，故 $[b] in B\/frak(r)$ 也不在 $A$ 上整。因此，若 $B$ 为整环的情形已经证完，则 $Spec(B\/frak(r)) -> Spec(A)$ 会是整的，矛盾。
 
-    We may thus assume that $B$ is integral. Now let $frak(p) = ker(A -> B) in Spec(A)$. Then we have a factorization $Spec(B) -> Spec(A\/frak(p)) -> Spec(A)$. By the same argument as done previously for $Spec(B) -> Spec(C) -> Spec(A)$, $Spec(B) -> Spec(A\/frak(p))$ is surjective universally closed. Also it suffices to show that $B$ is integral over $A\/frak(p)$. Thus it is safe to replace $A$ with $A\/frak(p)$, and assume that $A, B$ are both integral, $A subset B$. 
+    于是不妨设 $B$ 是整环。令 $frak(p) = ker(A -> B) in Spec(A)$，则有分解 $Spec(B) -> Spec(A\/frak(p)) -> Spec(A)$。与前面处理 $Spec(B) -> Spec(C) -> Spec(A)$ 的论证相同，$Spec(B) -> Spec(A\/frak(p))$ 满射且泛闭。又只需证明 $B$ 在 $A\/frak(p)$ 上整。因此可以放心把 $A$ 换成 $A\/frak(p)$，并假定 $A, B$ 都是整环且 $A subset B$。
     
-    By the valuative criterion for universal closedness (#cite-stacks("01KF")[Proposition 26.20.6]), for every valuation ring $R$ with fraction field $K$, the dotted diagonal map fitting in the following commutative diagram always exists: 
+    由泛闭性的赋值判别法（#cite-stacks("01KF")[Proposition 26.20.6]），对每个以 $K$ 为分式域的赋值环 $R$，下方交换图表中虚线所示的对角映射总是存在：
     // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJBIl0sWzAsMSwiQiJdLFsxLDEsIksiXSxbMSwwLCJSIl0sWzMsMiwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwxXSxbMCwzXSxbMSwyXSxbMSwzLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
     #align(center, diagram({
       node((0, 0), [$A$])
@@ -145,48 +145,48 @@ This section is a short interlude on radicial morphisms. They are somewhat oppos
       edge((0, 1), (1, 1), "->")
       edge((0, 1), (1, 0), "-->")
     }))
-    Take $K$ to be $Frac(B)$ and $B -> K$ to be the natural inclusion. Then the valuative criterion says that: 
+    取 $K$ 为 $Frac(B)$，并取 $B -> K$ 为自然包含映射。这时赋值判别法告诉我们：
 
-    - For every valuation ring $R$ of $K$ containing $A$, $R$ contains $B$ too. 
+    - 对 $K$ 中每个包含 $A$ 的赋值环 $R$，$R$ 也包含 $B$。
 
-    By the following algebraic fact: 
+    这要用到下述代数事实：
     #lemma[
-      (@cite-atiyah-macdonald[Corollary 5.22]) Let $A$ be a subring of a field $K$. Then the integral closure of $A$ in $K$ is exactly the intersection of all valuation rings of $K$ containing $A$.
+      （@cite-atiyah-macdonald[Corollary 5.22]）设 $A$ 是域 $K$ 的子环，则 $A$ 在 $K$ 中的整闭包恰为 $K$ 中所有包含 $A$ 的赋值环的交。
     ]
 
-    We see that $B$ is contained in the integral closure of $A$ in $K$, thus integral over $A$. 
+    可见 $B$ 含于 $A$ 在 $K$ 中的整闭包，从而在 $A$ 上整。
   ]
 
-  (3)($==>$) is easy, as it is direct to check that open immersions are etale and radicial. It suffices to prove ($<==$). Suppose that $f: X -> Y$ is etale and radicial. Since etale morphisms are open, $f(X) -> Y$ is an open immersion, and $f: X -> f(X)$ is surjective etale radicial. Replacing $Y$ with $f(X)$, we may thus assume that $f$ is additionally surjective. Thus, $f$ is universally injective, surjective, and also universally open since it is etale. Thus $f$ is a universal homeomorphism, hence integral. Etale morphisms are locally of finite presentation. Thus, $f$ is finite. Since $f$ is flat, this shows that $f$ is in fact finite locally free. To conclude the proof, note that: 
+  (3)($==>$) 不难：直接验证即知开浸入既平展又根性。所以只需证明 ($<==$)。设 $f: X -> Y$ 平展且根性。平展态射是开的，故 $f(X) -> Y$ 是开浸入，而 $f: X -> f(X)$ 是满射、平展、根性的。把 $Y$ 换成 $f(X)$，于是不妨设 $f$ 还满射。这时 $f$ 泛单、满射，又因平展而泛开，从而是泛同胚，因此整。平展态射是局部有限展示的，故 $f$ 有限。又因 $f$ 平坦，这说明 $f$ 实际上是有限局部自由的。为完成证明，注意：
   $
     "rk"_(cal(O)_(Y,f(x))) (cal(O)_(X,x)) = dim_(k(f(x))) (cal(O)_(X,x)\/frak(m)_(f(x))cal(O)_(X,x)) = dim_(k(f(x))) (k(x))
   $
-  by etaleness. Since $k(x)\/k(f(x))$ is finite separable by etaleness, and purely inseparable by radicialness, it must be trivial. Thus $dim_(k(f(x))) (k(x)) = 1$ and so every $cal(O)_(Y,f(x)) -> cal(O)_(X,x)$ is an isomorphism. Thus $X -> Y$ is an isomorphism. 
+  这些等式由平展性给出。$k(x)\/k(f(x))$ 因平展而有限可分，又因根性而纯不可分，故必为平凡扩张。于是 $dim_(k(f(x))) (k(x)) = 1$，从而每个 $cal(O)_(Y,f(x)) -> cal(O)_(X,x)$ 都是同构。因此 $X -> Y$ 是同构。
 ]
 
 #corollary(name: <adjoining-pth-root-in-char-p-is-univ-homeo>)[
-  Let $A$ be a ring in which $p = 0$ for a prime number $p$. Then for any $a_1, dots.c, a_t in A$ and $m_1, dots.c, m_t >= 1$, the map: 
+  设 $A$ 是一个环，其中对某个素数 $p$ 有 $p = 0$。则对任意 $a_1, dots.c, a_t in A$ 与 $m_1, dots.c, m_t >= 1$，映射：
   $
     Spec((A[T])/((T^(p^(m_1)) - a_1, dots.c, T^(p^(m_t)) - a_t))) -> Spec(A)
   $
-  is a finite universal homeomorphism. 
+  是有限泛同胚。
 ]
 #proof[
-  By adjoining roots one by one, we may assume that $t = 1$. By taking roots by degree $p$ at a time, we may assume that $m_1 = 1$. Thus we need to show that: 
+  逐个添加根，不妨设 $t = 1$；每次只开一次 $p$ 次根，不妨设 $m_1 = 1$。于是只需证明：
   $
     phi: Spec(A[T]\/(T^p - a)) -> Spec(A)
   $
-  is a finite universal homeomorphism. It is finite as can be seen directly. For every point $frak(p) in Spec(A)$, consider the fiber: 
+  是有限泛同胚。它有限，这可以直接看出。对每个点 $frak(p) in Spec(A)$，考虑纤维：
   $
     Spec(k(frak(p))[T]\/(T^p - a)) -> Spec(k(frak(p)))
   $
-  Now: 
+  现在：
 
-  - If $a$ has a $p$-th root in $k(frak(p))$, then: #h(1fr)
+  - 若 $a$ 在 $k(frak(p))$ 中有 $p$ 次根，则： #h(1fr)
     $
       k(frak(p))[T]\/(T^p - a) cong k(frak(p))[T]\/((T - a^(1\/p))^p)
     $
-    is a single nonreduced point with residue field $k(frak(p))$. Otherwise, $k(frak(p))[T]\/(T^p - a)$ is a purely inseparable extension of $k(frak(p))$. 
+    它对应单个非既约的点，剩余域为 $k(frak(p))$。否则，$k(frak(p))[T]\/(T^p - a)$ 是 $k(frak(p))$ 的纯不可分扩张。
 
-    Thus every fiber of $phi$ is nonempty, making $phi$ surjective. Every fiber of $phi$ also consists of a single point with purely inseparable residue field extension, so $phi$ is radicial by @equiv-defns-of-radicial (2). 
+    于是 $phi$ 的每个纤维非空，故 $phi$ 满射。$phi$ 的每个纤维还都是单点，且剩余域扩张为纯不可分，所以由 @equiv-defns-of-radicial (2) 知 $phi$ 根性。
 ]

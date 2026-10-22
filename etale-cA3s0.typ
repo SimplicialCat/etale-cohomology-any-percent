@@ -1,28 +1,30 @@
+// audit-cjk-exception: 0.17  # 全文八成以上源码是交换图的节点、连线与公式排版代码，散文已全部中译；45% 阈值结构性不适用。
+// audit-exception: 展示公式内的 #[...] 文字块夹着行内公式，审计按相邻美元符号配对会把块内说明文字（原稿的 w.r.t.）切成伪公式段；只译块内说明文字，块内与块外公式逐段核对未变。
 #import "void-import.typ": *
 
-In this appendix, we introduce an abstract and purely categorical construction that will be used repeatedly. We will also prove the naturality of this construction, so that the naturality of many concrete constructions in etale cohomology follows. 
+本附录介绍一个抽象的、纯范畴论的构造，后文会反复用到它。我们还会证明这个构造的自然性，由此可知，平展上同调中许多具体构造也具有自然性。 
 
-The proofs in this appendix are purely formal and categorical, so you are encouraged to skip them. 
+本附录的证明都是纯粹形式化的范畴论推演，因此建议你跳过它们。 
 
 #notation[
-  Given a pair of adjoint functors $g^L tack.l g$, we denote the unit and counit by: 
+  给定一对伴随函子 $g^L tack.l g$，我们把单位与余单位记为： 
   $
     u_g: id -> g g^L \
     eta_g: g^L g -> id
   $
-  Given functors: 
+  给定函子： 
   $
     f: cal(C) -> cal(D), g: cal(A) -> cal(B)\
     h_(1,2): cal(B) -> cal(C)
   $
-  and a natural transformation $q: h_1 -> h_2$, we use the notation $f q g$ to denote the natural transformation $f h_1 g -> f h_2 g$, obtained by lifting $q$ through the functors $f,g$. 
+  以及自然变换 $q: h_1 -> h_2$，我们用记号 $f q g$ 表示自然变换 $f h_1 g -> f h_2 g$，它是把 $q$ 沿函子 $f,g$ 提升得到的。 
 
-  Thus, as an example, the adjunction identities may be denoted as: 
+  举例来说，伴随恒等式可以写成： 
   $
     eta_g g^L compose g^L u_g = id \
     g eta_g compose u_g g = id
   $
-  and the naturality of the unit/counit may be expressed as: Given a natural transformation $q: f_1 -> f_2$, 
+  而单位/余单位的自然性可以表述为：给定自然变换 $q: f_1 -> f_2$， 
   $
     q compose eta_g f_1 = eta_g f_2 compose g^L g q \
     u_g f_2 compose q = g g^L q compose u_g f_1
@@ -30,7 +32,7 @@ The proofs in this appendix are purely formal and categorical, so you are encour
 ]
 
 #definition(name: <bcbc-defn>)[
-  Suppose that we have functors between categories: 
+  假设我们有范畴之间的函子： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJjYWwoQylfMSJdLFswLDEsImNhbChDKV8yIl0sWzEsMCwiY2FsKEQpXzEiXSxbMSwxLCJjYWwoRClfMiJdLFsxLDMsImYiLDJdLFswLDIsImYnIl0sWzIsMywiZyJdLFswLDEsImcnIiwyXSxbMSwyLCJ0IiwxXV0=
   #context align(center, diagram({
     node((-1, -1), [$cal(C)_1$])
@@ -43,15 +45,15 @@ The proofs in this appendix are purely formal and categorical, so you are encour
     edge((-1, -1), (-1, 0), [$g'$], label-side: right, "->")
     edge((-0.7, -0.3), (-0.3, -0.7), [$t$], label-side: center, "=>")
   }, crossing-fill: thm-box-curr-color()))
-  where $t: f g' -> g f'$ is a natural transformation, and $g, g'$ have left adjoints $g^L, g'^L$ respectively. We define the *Beck-Chevalley base change* along this diagram to be the natural transformation: 
+  其中 $t: f g' -> g f'$ 是自然变换，且 $g, g'$ 分别有左伴随 $g^L, g'^L$。我们把沿此图表的 *Beck–Chevalley 基变换* 定义为如下自然变换： 
   $
     g^L f -->^(g^L f u_(g')) g^L f g' g'^L -->^(g^L t g'^L) g^L g f' g'^L -->^(eta_g f' g'^L) f' g'^L
   $
-  and denote it by $BC(f,f',g,g',t)$. 
+  并记作 $BC(f,f',g,g',t)$。 
 ]
 
 #proposition(name: <bcbc-horizontal-concat>)[
-  The Beck-Chevalley base change is compatible with horizontal concatenation of diagrams. That is, given a diagram: 
+  Beck–Chevalley 基变换与图表的水平拼接相容。也就是说，给定图表： 
   // https://q.uiver.app/#r=typst&q=WzAsNixbMCwwLCJjYWwoQylfMSJdLFswLDEsImNhbChDKV8yIl0sWzEsMCwiY2FsKEQpXzEiXSxbMSwxLCJjYWwoRClfMiJdLFsyLDAsImNhbChFKV8xIl0sWzIsMSwiY2FsKEUpXzIiXSxbMSwzLCJoIiwyXSxbMCwyLCJoJyJdLFsyLDMsImdfMiIsMV0sWzAsMSwiZ18xIiwxXSxbMSwyLCJzIiwxXSxbMiw0LCJmJyJdLFszLDUsImYiLDJdLFs0LDUsImdfMyIsMV0sWzMsNCwidCIsMV1d
   #context align(center, diagram({
     node((-1, -1), [$cal(C)_1$])
@@ -70,73 +72,73 @@ The proofs in this appendix are purely formal and categorical, so you are encour
     edge((1, -1), (1, 0), [$g_3$], label-side: center, "->")
     edge((0.3, -0.3), (0.7, -0.7), [$t$], label-side: center, "=>")
   }, crossing-fill: thm-box-curr-color()))
-  in which $g_i$ has left adjoint $g_i^L$, the composition of base changes along the two small squares: 
+  其中每个 $g_i$ 都有左伴随 $g_i^L$。把沿两个小方块所作的基变换复合起来： 
   $
     g_3^L f h -->^(BC(f,f',g_3,g_2,t)h) f'g_2^L h ->^(f'BC(h,h',g_2,g_1,s)) f'h'g_1^L
   $
-  is exactly the base change along the larger rectangle, i.e: 
+  恰好就是沿较大矩形所作的基变换，即： 
   $
     f'BC(h,h',g_2,g_1,s) compose BC(f,f',g_3,g_2,t)h = BC(f h, f'h', g_3, g_1, t h' compose f s)
   $
 ]
 #proof[
   #show math.equation: set block(breakable: true)
-  Let the adjunction unit/counit of each $g_i$ be denoted $u_i, eta_i$, respectively. 
+  把每个 $g_i$ 的伴随单位/余单位分别记为 $u_i, eta_i$。 
 
-  Denote by: 
+  记： 
   $
     B_f := BC(f,f',g_3,g_2,t) = eta_3 f' g_2^L compose g_3^L t g_2^L compose g_3^L f u_2 \
     B_h := BC(h,h',g_2,g_1,s) = eta_2 h' g_1^L compose g_2^L s g_1^L compose g_2^L h u_1
   $
-  and we intend to prove: 
+  我们要证明的是： 
   $
     f' B_h compose B_f h = BC(f h, f'h', g_3, g_1, t h' compose f s)
   $
-  - By naturality of the counit, #h(1fr)
+  - 由余单位的自然性，有#h(1fr)
     $
       f' B_h compose eta_3 g' g_2^L h = eta_3 f' h' g_1^L compose g_3^L g_3 f' B_h
     $
-    so it suffices to prove that: 
+    于是只需证明： 
     $
       g_3^L g_3 f' B_h compose g_3^L t g_2^L h compose g_3^L f u_2 h = g_3^L t h' g_1^L compose g_3^L f s g_1^L compose g_3^L f h u_1
     $
-    lifting $g_3^L$ out, it suffices to prove that: 
+    把 $g_3^L$ 提出来，就只需证明： 
     $
       g_3 f' B_h compose t g_2^L h compose f u_2 h = t h' g_1^L compose f s g_1^L compose f h u_1
     $
 
-  - Write $a = eta_2 h' g_1^L compose g_2^L s g_1^L$ so that $B_h = a compose g_2^L h u_1$, 
+  - 记 $a = eta_2 h' g_1^L compose g_2^L s g_1^L$，则 $B_h = a compose g_2^L h u_1$： 
     $
       & g_3 f' B_h compose t g_2^L h compose f u_2 h \
       =& g_3 f' a compose g_3 f' g_2^L h u_1 compose t g_2^L h compose f u_2 h \
       =& g_3 f' a compose t g_2^L h g_1 g_1^L compose f g_2 g_2^L h u_1 compose f u_2 h \
-      & #[by naturality of $t: f g_2 -> g_3 f'$ w.r.t. $g_2^L h u_1: g_2^L h -> g_2^L h g_1 g_1^L$] \
+      & #[由 $t: f g_2 -> g_3 f'$ 关于 $g_2^L h u_1: g_2^L h -> g_2^L h g_1 g_1^L$ 的自然性] \
       =& g_3 f' a compose t g_2^L h g_1 g_1^L compose f (g_2 g_2^L h u_1 compose u_2 h) \
       =& g_3 f' a compose t g_2^L h g_1 g_1^L compose f (u_2 h g_1 g_1^L compose h u_1) \
-      & #[by naturality of $u_2: id -> g_2 g_2^L$ w.r.t. $h u_1: h -> h g_1 g_1^L$] \
+      & #[由 $u_2: id -> g_2 g_2^L$ 关于 $h u_1: h -> h g_1 g_1^L$ 的自然性] \
       =& t h' g_1^L compose f g_2 a compose f (u_2 h g_1 g_1^L compose h u_1)\ 
-      & #[by naturality of $t: f g_2 -> g_3 f'$ w.r.t. $a: g_2^L h g_1 g_1^L -> h' g_1^L$] \
+      & #[由 $t: f g_2 -> g_3 f'$ 关于 $a: g_2^L h g_1 g_1^L -> h' g_1^L$ 的自然性] \
       =& t h' g_1^L compose f (g_2 a compose u_2 h g_1 g_1^L) compose f h u_1
     $
-    On the other hand, the desired RHS is $t h' g_1^L compose f s g_1^L compose f h u_1$. Therefore, it suffices to prove that: 
+    另一方面，我们需要的右端是 $t h' g_1^L compose f s g_1^L compose f h u_1$。因此只需证明： 
     $
       g_2 a compose u_2 h g_1 g_1^L = s g_1^L
     $
   
-  - Now check: 
+  - 现在来验证： 
     $
       & g_2 a compose u_2 h g_1 g_1^L \
       =& g_2 eta_2 h' g_1^L compose g_2 g_2^L s g_1^L compose u_2 h g_1 g_1^L \
       =& g_2 eta_2 h' g_1^L compose u_2 g_2 h' g_1^L compose s g_1^L \
-      & #[by naturality of $u_2: id -> g_2 g_2^L$ w.r.t. $s g_1^L: h g_1 g_1^L -> g_2 h' g_1^L$] \
+      & #[由 $u_2: id -> g_2 g_2^L$ 关于 $s g_1^L: h g_1 g_1^L -> g_2 h' g_1^L$ 的自然性] \
       =& (g_2 eta_2 compose u_2 g_2) h' g_1^L compose s g_1^L \
       =& s g_1^L \
-      & #[by the adjunction identity $g_2 eta_2 compose u_2 g_2 = id$]
+      & #[由伴随恒等式 $g_2 eta_2 compose u_2 g_2 = id$]
     $
   
-  We are thereby done. 
+  至此证毕。 
 
-  More intuitively, this proof is summarized in the following commutative diagram: 
+  更直观地说，这个证明可概括为下面的交换图： 
   // https://q.uiver.app/#r=typst&q=WzAsMjUsWzAsMCwiZ18zXkwgZiBoIl0sWzAsMiwiZ18zXkwgZiBoIl0sWzAsNiwiZ18zXkwgZiBoIl0sWzYsMCwiZicgZ18yXkwgaCJdLFsxMCwwLCJmJyBoJyBnXzFeTCJdLFs2LDIsImYnIGdfMl5MIGgiXSxbMTAsMiwiZicgaCcgZ18xXkwiXSxbMiwzLCJnXzNeTCBmIGdfMiBnXzJeTCBoIl0sWzQsMywiZ18zXkwgZ18zIGYnIGdfMl5MIGgiXSxbOCwyLCJmJ2dfMl5MIGggZ18xIGdfMV5MIl0sWzcsNCwiZ18zXkwgZ18zIGYnIGdfMl5MIGggZ18xIGdfMV5MIl0sWzksNCwiZ18zXkwgZ18zIGYnIGgnIGdfMV5MIl0sWzQsNSwiZ18zXkwgZiBnXzIgZ18yXkwgaCBnXzEgZ18xXkwiXSxbMiw2LCJnXzNeTCBmIGggZ18xIGdfMV5MIl0sWzEwLDYsImYnaCdnXzFeTCJdLFs4LDYsImdfM15MIGdfMyBmJyBoJyBnXzFeTCJdLFs2LDYsImdfM15MIGYgZ18yIGgnIGdfMV5MIl0sWzUsOCwiZ18zXkwgZiBnXzIgZ18yXkwgZ18yIGgnIGdfMV5MIl0sWzMsOSwiZ18zXkwgZiBnXzIgaCcgZ18xXkwiXSxbNiwxMCwiZ18zXkwgZiBnXzIgaCcgZ18xXkwiXSxbNCwxMCwiZ18zXkwgZiBnXzIgaCcgZ18xXkwiXSxbMCwxMCwiZ18zXkwgZiBoIl0sWzEwLDEwLCJmJ2gnZ18xXkwiXSxbOCwxMCwiZ18zXkwgZ18zIGYnIGgnIGdfMV5MIl0sWzIsMTAsImdfM15MIGYgaCBnXzEgZ18xXkwiXSxbMCwxLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDIsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsNSwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw2LCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFswLDMsIkJfZiBoIiwxXSxbMyw0LCJnJyBCX2giLDFdLFsxLDcsImdfM15MIGYgdV8yIGgiLDFdLFs3LDgsImdfM15MIHQgZ18yXkwgaCIsMV0sWzgsNSwiZXRhXzMgZicgZ18yXkwgaCIsMV0sWzUsOSwiZicgZ18yXkwgaCB1XzEiLDFdLFs5LDYsImYnIGEiLDFdLFs4LDEwLCJnXzNeTCBnXzMgZicgZ18yXkwgaCB1XzEiLDFdLFsxMCw5LCJldGFfMyBmJyBnXzJeTCBoIGdfMSBnXzFeTCIsMV0sWzEwLDExLCJnXzNeTCBnXzMgZicgYSIsMV0sWzExLDYsImV0YV8zIGYnIGgnIGdfMV5MIiwxXSxbNywxMiwiZ18zXkwgZiBnXzIgZ1
   // 8yXkwgaCB1XzEiLDFdLFsxMiwxMCwiZ18zXkwgdCBnXzJeTCBoIGdfMSBnXzFeTCIsMV0sWzIsMTMsImdfM15MIGYgaCB1XzEiLDFdLFsxMywxMiwiZ18zXkwgZiB1XzIgaCBnXzEgZ18xXkwiLDFdLFs2LDE0LCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxMSwxNSwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTUsMTQsImV0YV8zIGYnIGgnIGdfMV5MIiwxXSxbMTIsMTYsImdfM15MIGYgZ18yIGEiLDFdLFsxNiwxNSwiZ18zXkwgdCBoJyBnXzFeTCIsMV0sWzEyLDE3LCJnXzNeTCBmIGdfMiBnXzJeTCBzIGdfMV5MIiwxXSxbMTcsMTYsImdfM15MIGYgZ18yIGV0YV8yIGgnIGdfMV5MIiwxXSxbMTMsMTgsImdfM15MIGYgcyBnXzFeTCIsMV0sWzE4LDE3LCJnXzNeTCBmIHVfMiBnXzIgaCcgZ18xXkwiLDFdLFsxOCwyMCwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTYsMTksIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIwLDE5LCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyLDIxLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNSwyMywiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTQsMjIsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEzLDI0LCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsyMSwyNCwiZ18zXkwgZiBoIHVfMSIsMV0sWzI0LDIwLCJnXzNeTCBmIHMgZ18xXkwiLDFdLFsxOSwyMywiZ18zXkwgdCBoJyBnXzFeTCIsMV0sWzIzLDIyLCJldGFfMyBmJyBoJyBnXzFeTCIsMV0sWzIxLDIyLCJvcChcIkJDXCIpKGYgaCwgZidoJywgZ18zLCBnXzEsIHQgaCcgY29tcG9zZSBmIHMpIiwxLHsiY3VydmUiOjV9XV0=
   #context snap-width(align(center, diagram({
@@ -221,18 +223,18 @@ The proofs in this appendix are purely formal and categorical, so you are encour
     edge((8, 10), (10, 10), [$eta_3 f' h' g_1^L$], label-side: center, "->")
     edge((0, 10), "dd,rrrrrrrrrr,uu", [$BC(f h, f'h', g_3, g_1, t h' compose f s)$], label-side: center, "->")
   }, spacing: 1.5em, crossing-fill: thm-box-curr-color())))
-  where: 
-  - $arrow.ccw_D$ in a cell indicates that this cell commutes by definition; 
+  其中： 
+  - 格子中的 $arrow.ccw_D$ 表示该格子按定义交换； 
 
-  - $arrow.ccw_N$ in a cell indicates that this cell commutes as a naturality square; 
+  - 格子中的 $arrow.ccw_N$ 表示该格子作为自然性方块而交换； 
 
-  - $arrow.ccw_U$ in a cell indicates that this cell commutes by an adjunction identity; 
+  - 格子中的 $arrow.ccw_U$ 表示该格子由伴随恒等式而交换； 
 
-  - An empty cell commutes automatically. 
+  - 没有标记的格子自动交换。 
 ]
 
 #proposition(name: <bcbc-vertical-concat>)[
-  The Beck-Chevalley base change is compatible with horizontal concatenation of diagrams. That is, given a diagram: 
+  Beck–Chevalley 基变换与图表的水平拼接相容。也就是说，给定图表： 
   // https://q.uiver.app/#r=typst&q=WzAsNixbMCwwLCJjYWwoQylfMSJdLFswLDEsImNhbChDKV8yIl0sWzAsMiwiY2FsKEMpXzMiXSxbMSwwLCJjYWwoRClfMSJdLFsxLDEsImNhbChEKV8yIl0sWzEsMiwiY2FsKEQpXzMiXSxbMiw1LCJmXzMiLDJdLFsxLDQsImZfMiIsMV0sWzAsMywiZl8xIl0sWzQsNSwiZ18xIl0sWzMsNCwiZ18yIl0sWzEsMiwiZ18zIiwyXSxbMCwxLCJnXzQiLDJdLFsyLDQsInQiLDFdLFsxLDMsInMiLDFdXQ==
   #context align(center, diagram({
     node((-1, -1), [$cal(C)_1$])
@@ -251,34 +253,34 @@ The proofs in this appendix are purely formal and categorical, so you are encour
     edge((-0.7, 0.7), (-0.3, 0.3), [$t$], label-side: center, "=>")
     edge((-0.7, -0.3), (-0.3, -0.7), [$s$], label-side: center, "=>")
   }, label-size: 0.8em, crossing-fill: thm-box-curr-color()))
-  in which $g_i$ has left adjoint $g_i^L$, the composition of base changes along the two small squares: 
+  其中每个 $g_i$ 都有左伴随 $g_i^L$。把沿两个小方块所作的基变换复合起来： 
   $
     g_2^L g_1^L f_3 -->^(g_2^L BC(f_3, f_2, g_1, g_3, t)) g_2^L f_2 g_3^L ->^(BC(f_2, f_1, g_2, g_4, s) g_3^L) f_1 g_4^L g_3^L
   $
-  is exactly the base change along the larger rectangle, i.e: 
+  恰好就是沿较大矩形所作的基变换，即： 
   $
     BC(f_2, f_1, g_2, g_4, s) g_3^L compose g_2^L BC(f_3, f_2, g_1, g_3, t) = BC(f_3, f_1, g_1 g_2, g_3 g_4, g_1 s compose t g_4)
   $
 ]
 #proof[
   #show math.equation: set block(breakable: true)
-  Let the adjunction unit/counit of each $g_i$ be denoted $u_i, eta_i$, respectively. Compute: 
+  把每个 $g_i$ 的伴随单位/余单位分别记为 $u_i, eta_i$。计算： 
   $
     & BC(f_2, f_1, g_2, g_4, s) g_3^L compose g_2^L BC(f_3, f_2, g_1, g_3, t) \
     =& eta_2 f_1 g_4^L g_3^L compose g_2^L s g_4^L g_3^L compose g_2^L f_2 u_4 g_3^L compose g_2^L eta_1 f_2 g_3^L compose g_2^L g_1^L t g_3^L compose g_2^L g_1^L f_3 u_3 \
     =& eta_2 f_1 g_4^L g_3^L compose g_2^L s g_4^L g_3^L compose g_2^L (f_2 u_4 g_3^L compose eta_1 f_2 g_3^L) compose g_2^L g_1^L t g_3^L compose g_2^L g_1^L f_3 u_3 \
     =& eta_2 f_1 g_4^L g_3^L compose g_2^L s g_4^L g_3^L compose g_2^L (eta_1 f_2 g_4 g_4^L g_3^L compose g_1^L g_1 f_2 u_4 g_3^L) compose g_2^L g_1^L t g_3^L compose g_2^L g_1^L f_3 u_3 \
-    & #[by naturality of $eta_1: id -> g_1 g_1^L$ w.r.t. $f_2 u_4 g_3^L: f_2 g_3^L -> f_2 g_3 g_4^L g_3^L$] \
+    & #[由 $eta_1: id -> g_1 g_1^L$ 关于 $f_2 u_4 g_3^L: f_2 g_3^L -> f_2 g_3 g_4^L g_3^L$ 的自然性] \
     =& eta_2 f_1 g_4^L g_3^L compose g_2^L (s compose eta_1 f_2 g_4) g_4^L g_3^L compose g_2^L g_1^L (g_1 f_2 u_4 compose t) g_3^L compose g_2^L g_1^L f_3 u_3 \
     =& eta_2 f_1 g_4^L g_3^L compose g_2^L (eta_1 g_2 f_1 compose g_1^L g_1 s) g_4^L g_3^L compose g_2^L g_1^L (t g_4 g_4^L compose f_3 g_3 u_4) g_3^L compose g_2^L g_1^L f_3 u_3 \
-    & #[by naturality of $s: f_2 g_4 -> g_2 f_1$ w.r.t. $eta_1: g_1^L g_1 -> id$] \
-    & #[and naturality of $t: f_3 g_3 -> g_1 f_2$ w.r.t. $u_4: id -> g_4 g_4^L$] \
+    & #[由 $s: f_2 g_4 -> g_2 f_1$ 关于 $eta_1: g_1^L g_1 -> id$ 的自然性] \
+    & #[以及 $t: f_3 g_3 -> g_1 f_2$ 关于 $u_4: id -> g_4 g_4^L$ 的自然性] \
     =& (eta_2 compose g_2^L eta_1 g_2) f_1 g_4^L g_3^L compose g_2^L g_1^L (g_1 s compose t g_4) g_4^L g_3^L compose g_2^L g_1^L f_3 (g_3 u_4 g_3^L compose u_3) \
     =& BC(f_3, f_1, g_1 g_2, g_3 g_4, g_1 s compose t g_4)
   $
-  where the unit of $g_3 g_4 tack g_4^L g_3^L$ is $g_3 u_4 g_3^L compose u_3$, and the counit of $g_1 g_2 tack g_2^L g_1^L$ is $eta_2 compose g_2^L eta_1 g_2$. 
+  其中 $g_3 g_4 tack g_4^L g_3^L$ 的单位是 $g_3 u_4 g_3^L compose u_3$，而 $g_1 g_2 tack g_2^L g_1^L$ 的余单位是 $eta_2 compose g_2^L eta_1 g_2$。 
 
-  More intuitively, this proof is summarized in the following commutative diagram: 
+  更直观地说，这个证明可概括为下面的交换图： 
   // https://q.uiver.app/#r=typst&q=WzAsMTIsWzAsMCwiZ18yXkwgZ18xXkwgZl8zIl0sWzMsMCwiZ18yXkwgZl8yIGdfM15MIl0sWzYsMCwiZl8xIGdfNF5MIGdfM15MIl0sWzEsMiwiZ18yXkwgZ18xXkwgZl8zIGdfMyBnXzNeTCJdLFsyLDEsImdfMl5MIGdfMV5MIGdfMSBmXzIgZ18zXkwiXSxbNCwxLCJnXzJeTCBmXzIgZ180IGdfNF5MIGdfM15MIl0sWzUsMiwiZ18yXkwgZ18yIGZfMSBnXzReTCBnXzNeTCJdLFswLDMsImdfMl5MIGdfMV5MIGZfMyJdLFs2LDMsImdfMl5MIGdfMV5MIGZfMyJdLFszLDIsImdfMl5MIGdfMV5MIGdfMSBmXzIgZ180IGdfNF5MIGdfM15MIl0sWzIsMywiZ18yXkwgZ18xXkwgZl8zIGdfMyBnXzQgZ180XkwgZ18zXkwiXSxbNCwzLCJnXzJeTCBnXzFeTCBnXzEgZ18yIGZfMSBnXzReTCBnXzNeTCJdLFswLDcsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzIsOCwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwxLCJnXzJeTCBvcChcIkJDXCIpKGZfMyxmXzIsZ18xLGdfMyx0KSJdLFsxLDIsIm9wKFwiQkNcIikoZl8yLGZfMSxnXzIsZ180LHMpZ18zXkwiXSxbNywzLCJnXzJeTCBnXzFeTCBmXzMgdV8zIiwxXSxbMyw0LCJnXzJeTCBnXzFeTCB0IGdfM15MIiwxXSxbNCwxLCJnXzJeTCBldGFfMSBmXzIgZ18zXkwiLDFdLFsxLDUsImdfMl5MIGZfMiB1XzQgZ18zXkwiLDFdLFs1LDYsImdfMl5MIHMgZ180XkwgZ18zXkwiLDFdLFs2LDgsImV0YV8yIGZfMSBnXzReTCBnXzNeTCIsMV0sWzQsOSwiZ18yXkwgZ18xXkwgZ18xIGZfMiB1XzQgZ18zXkwiLDFdLFs5LDUsImdfMl5MIGV0YV8xIGZfMiBnXzQgZ180XkwgZ18zXkwiLDFdLFszLDEwLCJnXzJeTCBnXzFeTCBmXzMgZ18zIHVfNCBnXzNeTCIsMV0sWzEwLDksImdfMl5MIGdfMV5MIHQgZ180IGdfNF5MIGdfM15MIiwxXSxbOSwxMSwiZ18yXkwgZ18xXkwgZ18xIHMgZ180XkwgZ18zXkwiLDFdLFsxMSw2LCJnXzJeTCBldGFfMSBnXzIgZl8xIGdfNF5MIGdfM15MIiwxXSxbNywxMCwiZ18yXkwgZ18xXkwgZl8zIChnXzMgdV80IGdfM15MIGNvbXBvc2UgdV8zKSIsMix7ImN1cnZlIjozfV0sWzEwLDExLCJnXzJeTCBnXzFeTCAoZ18xIHMgY29tcG9zZSB0IGdfNCkgZ180XkwgZ18zXkwiLDIseyJjdXJ2ZSI6M31dLFsxMSw4LCIoZXRhXzIgY29tcG9zZSBnXzJeTCBldGFfMSBnXzIpIGZfMSBnXzReTCBnXzNeTCIsMix7ImN1cnZlIjo0fV1d
   #context snap-width(align(center, diagram({
     node((0, 0), [$g_2^L g_1^L f_3$])
@@ -322,16 +324,16 @@ The proofs in this appendix are purely formal and categorical, so you are encour
     node((3, 3.5), text(fill: red, $arrow.ccw_D$))
   }, crossing-fill: thm-box-curr-color())))
 
-  where: 
-  - $arrow.ccw_D$ in a cell indicates that this cell commutes by definition; 
+  其中： 
+  - 格子中的 $arrow.ccw_D$ 表示该格子按定义交换； 
 
-  - $arrow.ccw_N$ in a cell indicates that this cell commutes as a naturality square; 
+  - 格子中的 $arrow.ccw_N$ 表示该格子是自然性方块，因而交换； 
 
-  - An empty cell commutes automatically. 
+  - 空格子自动交换。 
 ]
 
 #proposition(name: <bcbc-naturality>)[
-  Beck-Chevalley base change is compatible with natural transformations. That is, in a diagram: 
+  Beck–Chevalley 基变换与自然变换相容。也就是说，给定图表： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJjYWwoQylfMSJdLFswLDEsImNhbChDKV8yIl0sWzEsMSwiY2FsKEQpXzIiXSxbMSwwLCJjYWwoRClfMSJdLFswLDMsImYnIiwxLHsiY3VydmUiOjF9XSxbMSwyLCJmIiwxLHsiY3VydmUiOi0xfV0sWzAsMSwiaCciLDEseyJjdXJ2ZSI6MX1dLFszLDIsImciLDEseyJjdXJ2ZSI6MX1dLFswLDEsImcnIiwxLHsiY3VydmUiOi0xfV0sWzMsMiwiaCIsMSx7ImN1cnZlIjotMX1dLFswLDMsInBoaSciLDEseyJjdXJ2ZSI6LTF9XSxbMSwyLCJwaGkiLDEseyJjdXJ2ZSI6MX1dXQ==
   #context align(center, diagram({
     node((0, 0), [$cal(C)_1$])
@@ -352,37 +354,37 @@ The proofs in this appendix are purely formal and categorical, so you are encour
     edge((0.5, 0.15), (0.5, -0.15), "=>", $p'$, label-side: center, label-size: 0.8em)
     edge((0.5, 1.15), (0.5, 0.85), "=>", $p$, label-side: center, label-size: 0.8em)
   }, crossing-fill: thm-box-curr-color(), spacing: 6em))
-  Then $q, q'$ induce natural transformations $q^L: h^L -> g^L, q'^L: g'^L -> h'^L$, and the composition: 
+  于是 $q, q'$ 诱导自然变换 $q^L: h^L -> g^L, q'^L: g'^L -> h'^L$，其复合为： 
   $
     h^L phi -->^(h^L p) h^L f -->^(q^L f) g^L f -->^(BC(f,f',g,g',s)) f' g'^L -->^(f'q'^L) f' h'^L -->^(p'h'^L) phi' h'^L
   $
-  is exactly the base change $BC(phi, phi', h, h', tilde(s))$, where $tilde(s)$ is the natural transformation: 
+  恰好就是基变换 $BC(phi, phi', h, h', tilde(s))$，其中 $tilde(s)$ 是自然变换： 
   $
     phi h' -->^(p h') f h' -->^(f q') f g' -->^s g f' -->^(q f') h f' -->^(h p') h phi' 
   $
 ]
 #proof[
-  It suffices to apply the natural transformations $p, p', q, q'$ one by one, and assume that the other three are all identities in each step. 
+  只需把自然变换 $p, p', q, q'$ 逐个作用，每一步都假设其余三个全是恒等变换。 
 
-  - Suppose that $q, q'$ are identities. Then the composition given is: #h(1fr)
+  - 假设 $q, q'$ 是恒等变换。那么所给的复合是：#h(1fr)
     $
       g^L phi -->^(g^L p) g^L f -->^(BC(f,f',g,g',s)) f' g'^L -->^(p' g'^L) phi' g'^L 
     $
-    i.e: 
+    即：
     $
       g^L phi -->^(g^L p) g^L f -->^(g^L f u_(g')) g^L f g' g'^L -->^(g^L s g'^L) g^L g f' g'^L -->^(eta_g f' g'^L) f' g'^L -->^(p' g'^L) phi' g'^L
     $
-    Now the first two arrows may be exchanged by naturality, and the last two arrows may be exchanged by naturality, so that this composition is: 
+    由自然性，前两个箭头可以互换位置，后两个箭头也可以互换位置，于是这个复合成为： 
     $
       g^L phi -->^(g^L phi u_(g')) g^L phi g' g'^L -->^(g^L p g' g'^L) g^L f g' g'^L -->^(g^L s g'^L) g^L g f' g'^L -->^(g^L g p' g'^L) g^L g phi' g'^L -->^(eta_g phi' g'^L) phi' g'^L 
     $
-    which is $BC(phi, phi', g, g', g p' compose s compose p g')$ by definition. 
+    按定义，这正是 $BC(phi, phi', g, g', g p' compose s compose p g')$。 
 
-  - Suppose that $p, p', q'$ are identities. First note that $q^L: h^L -> g^L$ is constructed as: 
+  - 假设 $p, p', q'$ 是恒等变换。首先注意 $q^L: h^L -> g^L$ 是这样构造的： 
     $
       h^L -->^(h^L u_g) h^L g g^L -->^(h^L q g^L) h^L h g^L -->^(eta_h g^L) g^L
     $
-    Now the proof is summarized in the following commutative diagram: 
+    接下来，用下面的交换图概括这个证明： 
     // https://q.uiver.app/#r=typst&q=WzAsMTMsWzAsMCwiaF5MIGYiXSxbMiwwLCJnXkwgZiJdLFs1LDEsImdeTCBmIGcnIGcnXkwiXSxbNywxLCJnXkwgZyBmJyBnJ15MIl0sWzksMSwiZicgZydeTCJdLFsxLDEsImheTCBmIGcnIGcnXkwiXSxbNCwyLCJoXkwgaCBnXkwgZiBnJyBnJ15MIl0sWzMsMywiaF5MIGcgZ15MIGYgZycgZydeTCJdLFs2LDIsImheTCBoIGdeTCBnIGYnIGcnXkwiXSxbOCwyLCJoXkwgaCBmJyBnJ15MIl0sWzUsMywiaF5MIGcgZ15MIGcgZiBnJ15MIl0sWzcsMywiaF5MIGcgZicgZydeTCJdLFsyLDQsImheTCBnIGYnIGcnXkwiXSxbMCwxLCJxXkwgZiIsMV0sWzEsMiwiZ15MIGYgdV8oZycpIiwxXSxbMiwzLCJnXkwgcyBnJ15MIiwxXSxbMyw0LCJldGFfZyBmJyBnJ15MIiwxXSxbNSwyLCJxXkwgZiBnJyBnJ15MIiwxXSxbMCw1LCJoXkwgZiB1XyhnJykiLDFdLFs1LDcsImheTCB1X2cgZiBnJyBnJ15MIiwxXSxbNyw2LCJoXkwgcSBnXkwgZiBnJyBnJ15MIiwxXSxbNiwyLCJldGFfaCBnXkwgZiBnJyBnJ15MIiwxXSxbNiw4LCJoXkwgaCBnXkwgcyBnJ15MIiwxXSxbOCwzLCJldGFfaCBnXkwgZyBmJyBnJ15MIiwxXSxbOCw5LCJoXkwgaCBldGFfZyBmJyBnJ15MIiwxXSxbOSw0LCJldGFfaCBmJyBnJ15MIiwxXSxbNywxMCwiaCBnIGdeTCBzIGcnXkwiLDFdLFsxMCw4LCJoXkwgcSBnXkwgZyBmJyBnJ15MIiwxXSxbMTAsMTEsImheTCBnIGV0YV9nIGYnIGcnXkwiLDFdLFsxMSw5LCJoXkwgcSBmJyBnJ15MIiwxXSxbNSwxMiwiaF5MIHMgZydeTCIsMV0sWzEyLDEwLCJoXkwgdV9nIGcgZicgZydeTCIsMV0sWzEyLDExLCIiLDEseyJjdXJ2ZSI6Miwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG91YmxlIGJhcnJlZCJ9fX1dXQ==
     #context snap-width(align(center, diagram({
       node((0, 0), [$h^L f$])
@@ -428,20 +430,20 @@ The proofs in this appendix are purely formal and categorical, so you are encour
       node((2.3, 3), text(fill: red)[$arrow.ccw_N$])
       node((4.5, 3.7), text(fill: red)[$arrow.ccw_U$])
     }, spacing: (2em, 3em), crossing-fill: thm-box-curr-color())))
-    where: 
-    - $arrow.ccw_D$ in a cell indicates that this cell commutes by definition; 
+    其中： 
+    - 格子中的 $arrow.ccw_D$ 表示该格子按定义交换； 
 
-    - $arrow.ccw_N$ in a cell indicates that this cell commutes as a naturality square; 
+    - 格子中的 $arrow.ccw_N$ 表示该格子是自然性方块，因而交换； 
 
-    - $arrow.ccw_U$ in a cell indicates that this cell commutes by an adjunction identity. 
+    - 格子中的 $arrow.ccw_U$ 表示该格子由伴随恒等式而交换。 
 
-  - The proof for nontrivial $q'$ is dual to the proof for nontrivial $q$ and is omitted. 
+  - 当 $q'$ 非平凡时，其证明与 $q$ 非平凡时的证明互为对偶，此处从略。 
 ]
 
-Finally, there is an alternative description for a Beck-Chevalley base change, when $f$ and $f'$ are also right adjoints. 
+最后，若 $f$ 与 $f'$ 同时也是右伴随函子，Beck–Chevalley 基变换还有另一种描述。 
 
 #proposition(name: <bcbc-all-rights>)[
-  Suppose that we have functors between categories: 
+  假设我们有范畴之间的函子： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJjYWwoQylfMSJdLFswLDEsImNhbChDKV8yIl0sWzEsMCwiY2FsKEQpXzEiXSxbMSwxLCJjYWwoRClfMiJdLFsxLDMsImYiLDJdLFswLDIsImYnIl0sWzIsMywiZyJdLFswLDEsImcnIiwyXSxbMSwyLCJ0IiwxXV0=
   #context align(center, diagram({
     node((-1, -1), [$cal(C)_1$])
@@ -454,18 +456,18 @@ Finally, there is an alternative description for a Beck-Chevalley base change, w
     edge((-1, -1), (-1, 0), [$g'$], label-side: right, "->")
     edge((-0.7, -0.3), (-0.3, -0.7), [$t$], label-side: center, "=>")
   }, crossing-fill: thm-box-curr-color()))
-  where $t: f g' -> g f'$ is a natural transformation, and $f, g, f', g'$ have left adjoints $f^L, g^L, f'^L, g'^L$. Then the Beck-Chevalley base change $BC(f,f',g,g',t): g^L f -> f' g'^L$ is the same as the composition: 
+  其中 $t: f g' -> g f'$ 是自然变换，且 $f, g, f', g'$ 有左伴随 $f^L, g^L, f'^L, g'^L$。那么 Beck–Chevalley 基变换 $BC(f,f',g,g',t): g^L f -> f' g'^L$ 等于如下复合： 
   $
     g^L f -->^(u_(f') g^L f) f' f'^L g^L f -->^(f' t^L f) f' g'^L f^L f -->^(f' g'^L eta_f) f' g'^L
   $
 ]
 #proof[
-  The map $t^L: f'^L g^L -> g'^L f^L$ is: 
+  映射 $t^L: f'^L g^L -> g'^L f^L$ 是： 
   $
     f'^L g^L &-->^(f'^L g^L u_f) f'^L g^L f f^L -->^(f'^L g^L f u_(g') f^L) f'^L g^L f g' g'^L f^L -->^(f'^L g^L t g'^L f^L) f'^L g^L g f' g'^L f^L \
     &-->^(f'^L eta_g f' g'^L f^L) f'^L f' g'^L f^L -->^(eta_(f') g'^L f^L) g'^L f^L
   $
-  Now the proof is summarized in the following commutative diagram: 
+  于是，这个证明可概括为下面的交换图： 
   // https://q.uiver.app/#r=typst&q=WzAsMTYsWzAsMSwiZ15MIGYiXSxbMiwwLCJmJyBmJ15MIGdeTCBmIl0sWzQsMSwiZicgZideTCBnXkwgZiBmXkwgZiJdLFs2LDAsImYnIGYnXkwgZ15MIGYgZycgZydeTCBmXkwgZiJdLFs5LDAsImYnIGYnXkwgZ15MIGcgZicgZydeTCBmXkwgZiJdLFsxMSwxLCJmJyBmJ15MIGYnIGcnXkwgZl5MIGYiXSxbMTMsMCwiZicgZydeTCBmXkwgZiJdLFsxNSwxLCJmJyBnJ15MIl0sWzIsMiwiZ15MIGYgZl5MIGYiXSxbNSwzLCJnXkwgZiBnJyBnJ15MIGZeTCBmIl0sWzEzLDIsImYnIGYnXkwgZicgZydeTCJdLFsxMCwzLCJmJyBmJ15MIGdeTCBnIGYnIGcnXkwiXSxbNiw1LCJnXkwgZiBnJyBnJ15MIl0sWzksNSwiZ15MIGcgZicgZydeTCJdLFszLDQsImdeTCBmIl0sWzEyLDQsImYnIGcnXkwiXSxbMSwyLCJmJyBmJ15MIGdeTCB1X2YgZiIsMV0sWzIsMywiZicgZideTCBnXkwgZiB1XyhnJykgZl5MIGYiLDFdLFszLDQsImYnIGYnXkwgZ15MIHQgZydeTCBmXkwgZiIsMV0sWzQsNSwiZicgZideTCBldGFfZyBmJyBnJ15MIGZeTCBmIiwxXSxbNSw2LCJmJyBldGFfKGYnKSBnJ15MIGZeTCBmIiwxXSxbNiw3LCJmJyBnJ15MIGV0YV9mIiwxXSxbMCw4LCJnXkwgdV9mIGYiLDFdLFs4LDIsInVfKGYnKSBnXkwgZiBmXkwgZiIsMV0sWzAsMSwidV8oZicpIGdeTCBmIiwxXSxbOCw5LCJnXkwgZiB1XyhnJykgZl5MIGYiLDFdLFs5LDMsInVfKGYnKSBnXkwgZiBnJyBnJ15MIGZeTCBmIiwxXSxbNSwxMCwiZicgZideTCBmJyBnJ15MIGV0YV9mIiwxXSxbMTAsNywiZicgZXRhXyhmJykgZydeTCIsMV0sWzQsMTEsImYnIGYnXkwgZ15MIGcgZicgZydeTCBldGFfZiIsMV0sWzExLDEwLCJmJyBmJ15MIGV0YV9nIGYnIGcnXkwiLDFdLFs5LDEyLCJnXkwgZiBnJyBnJ15MIGV0YV9mIiwxXSxbMTIsMTMsImdeTCB0IGcnXkwiLDFdLFsxMywxMSwidV8oZicpIGdeTCBnIGYnIGcnXkwiLDFdLFs4LDE0LCJnXkwgZiBldGFfZiIsMV0sWzE0LDEyLCJnXkwgZiB1XyhnJykiLDFdLFsxMywxNSwiZXRhX2cgZicgZydeTCIsMV0sWzE1LDEwLCJ1XyhmJykgZicgZydeTCIsMV0sWzAsMTQsIiIsMSx7ImN1cnZlIjoyLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3VibGUgYmFycmVkIn19fV0sWzE1LDcsIiIsMSx7ImN1cnZlIjoyLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3VibGUgYmFycmVkIn19fV1d
   #context snap-width(align(center, diagram({
     node((0, 0), [$g^L f$])
@@ -519,14 +521,14 @@ Finally, there is an alternative description for a Beck-Chevalley base change, w
     node((2, 2), text(fill: red)[$arrow.ccw_U$])
     node((13, 2), text(fill: red)[$arrow.ccw_U$])
   }, crossing-fill: thm-box-curr-color(), spacing: (2.5em, 3em), label-size: 0.9em)))
-  where: 
+  其中： 
   
-  - $arrow.ccw_N$ in a cell indicates that this cell commutes as a naturality square; 
+  - 格子中的 $arrow.ccw_N$ 表示该格子是自然性方块，因而交换； 
 
-  - $arrow.ccw_U$ in a cell indicates that this cell commutes by an adjunction identity. 
+  - 格子中的 $arrow.ccw_U$ 表示该格子由伴随恒等式而交换。 
 ]
 
-// As a corollary, we obtain the following compatibility result for various base changes, which will be occasionally useful. 
+// 作为推论，我们得到下面这个关于各种基变换的相容性结果，它偶尔会派上用场。 
 
 // #corollary[
 //   Consider the following diagram: 

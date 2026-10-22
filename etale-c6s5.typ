@@ -1,14 +1,15 @@
+// audit-exception: 展示公式中的 #[...] 文字块内嵌 $f$、$g_lambda$、$g'^(-1)_lambda cal(F)$ 等行内公式，审计按相邻美元符号配对会把块内说明文字切成伪公式段；只译块内说明文字，块内与块外公式逐段核对未变。
 #import "void-import.typ": *
-== Proof of (Reduce)
+== (Reduce) 的证明
 
-In this section, we prove (Reduce), another important step in the proof of proper base change. It allows us to reduce base change in a general Cartesian square to base change along $X -> Spec(A)$ and the special point of $Spec(A)$, for $A$ a strict henselian local ring. 
+本节证明 (Reduce)，这是紧合基变换证明中又一个重要步骤。它让我们可以把一般拉回方块中的基变换，归约为沿 $X -> Spec(A)$ 的基变换以及 $Spec(A)$ 特殊点处的基变换，其中 $A$ 是严格 Hensel 局部环。 
 
-The proof of (Reduce) is a highly technical reduction argument, involving reducing Zariski/etale locally, passage to limits and topological invariance. 
+(Reduce) 的证明是一个技术性很强的归约论证，涉及在 Zariski 局部与平展局部上作归约、取极限以及利用拓扑不变性。 
 
-We first need a lemma to establish the etale locality of base change: 
+为了说明基变换的平展局部性，我们首先需要一个引理： 
 
 #lemma(name: <pbc-etale-bc>)[
-  In a Cartesian square: 
+  在拉回方块中： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJYJyJdLFsxLDAsIlknIl0sWzAsMSwiWCJdLFsxLDEsIlkiXSxbMiwzLCJmIl0sWzAsMSwiZiciXSxbMSwzLCJnIl0sWzAsMiwiZyciLDJdXQ==
   #align(center, diagram({
     node((-1, -1), [$X'$])
@@ -20,92 +21,92 @@ We first need a lemma to establish the etale locality of base change:
     edge((0, -1), (0, 0), [$g$], label-side: left, "->")
     edge((-1, -1), (-1, 0), [$g'$], label-side: right, "->")
   }))
-  in which $g$ is etale, the base change map: 
+  其中 $g$ 平展。基变换映射： 
   $
     g^(-1) R^q f_* cal(F) -> R^q f'_* g'^(-1) cal(F)
   $
-  is an isomorphism for all $cal(F) in cAb(X_et)$. 
+  对任意 $cal(F) in cAb(X_et)$ 都是同构。 
 ]
 #proof[
-  We will use @pullback-along-etale-morphism-derived. For all $V' in Et_(Y')$ 
+  我们将用到 @pullback-along-etale-morphism-derived。对任意 $V' in Et_(Y')$，有 
   $
     g^(-1) R^q f_* cal(F) (V') = R^q f_* cal(F) (V') = (V |-> H^q (f^(-1) (V), cal(F)))^\# (V')
   $
-  where $(V |-> H^q (f^(-1) (V), cal(F))) in cPAb(Y_et)$, while: 
+  其中 $(V |-> H^q (f^(-1) (V), cal(F))) in cPAb(Y_et)$；而 
   $
     R^q f'_* g'^(-1) cal(F) (V') = (V' |-> H^q (f'^(-1) (V'), g'^(-1) cal(F)))^\# (V')
   $
-  where $(V' |-> H^q (f^(-1) (V'), g'^(-1) cal(F))) in cPAb(Y'_et)$. Thus, it suffices to prove that: 
+  其中 $(V' |-> H^q (f^(-1) (V'), g'^(-1) cal(F))) in cPAb(Y'_et)$。因此只需证明 
   $
     g^(-1) ((V |-> H^q (f^(-1) (V), cal(F)))^\#) = (V' |-> H^q (f^(-1) (V'), g'^(-1) cal(F)))^\# in cAb(Y'_et)
   $ 
-  Note that: 
+  注意 
   $
     g^(-1)_cPSh (V |-> H^q (f^(-1) (V), cal(F))) = (V' |-> H^q (f'^(-1) (V'), g'^(-1) cal(F)))
   $
-  by @pullback-along-etale-morphism-derived. The result then follows from @pullback-first-props (3). 
+  这里用了 @pullback-along-etale-morphism-derived；结论则由 @pullback-first-props (3) 得到。 
 ]
 
-We also need to establish a limit formula for a later passage to limit argument. 
+我们还需要一条极限公式，供后面取极限的论证使用。 
 
-Firstly, we establish a version of the composite limit formula @limit-formula-composite for presheaves: 
+首先，我们建立复合极限公式 @limit-formula-composite 的预层版本： 
 
 #lemma(name: <limit-formula-composite-pab>)[
-  Let ${X_i}_(i in I)$ be a projective system of qcqs schemes, with all transition maps $u_(i,j): X_i -> X_j$ for $i>=j$ affine. Let:
+  设 ${X_i}_(i in I)$ 是拟紧拟分离概形构成的逆向系统，其中所有过渡映射 $u_(i,j): X_i -> X_j$（$i>=j$）都仿射。令：
   $
     X = invlim_(i in I) X_i
   $
-  with projections $v_i: X -> X_i$. $(cal(P)_i, psi_(i,j))$ is called a *system of presheaves* for the projective system ${X_i}$, if:
+  投影为 $v_i: X -> X_i$。若以下两条成立，则称 $(cal(P)_i, psi_(i,j))$ 为逆向系统 ${X_i}$ 的*预层系统* (system of presheaves)：
   
-  - Each $cal(P)_i in cPAb((X_i)_et)$ is an abelian etale presheaf on $X_i$.
+  - 每个 $cal(P)_i in cPAb((X_i)_et)$ 都是 $X_i$ 上的平展交换群预层。
   
-  - For any $i>=j$, $psi_(i,j): u_(i,j,cPSh)^(-1) cal(P)_j -> cal(P)_i$ is a presheaf morphism satisfying for $i>=j>=k$: #h(1fr)
+  - 对任意 $i>=j$，$psi_(i,j): u_(i,j,cPSh)^(-1) cal(P)_j -> cal(P)_i$ 是预层态射，且对 $i>=j>=k$ 满足： #h(1fr)
     $
       psi_(i,k) = psi_(i,j) compose u_(i,j,cPSh)^(-1) psi_(j,k)
     $
   
-  The *limit presheaf* of this system of presheaves is defined as:
+  这个预层系统的*极限预层* (limit presheaf) 定义为：
   $
     cal(P) := dirlim_(i in I) v_(i,cPSh)^(-1) cal(P)_i
   $
-  where for $i>=j$, the transition morphism $v_(j,cPSh)^(-1) cal(P)_j -> v_(i,cPSh)^(-1) cal(P)_i$ is induced by $v_(i,cPSh)^(-1) psi_(i,j)$. Then any qcqs $U in Et_X$ comes from base changing a qcqs $U_k in Et_(X_k)$ for some $k$, and the canonical morphism:
+  其中对 $i>=j$，过渡映射 $v_(j,cPSh)^(-1) cal(P)_j -> v_(i,cPSh)^(-1) cal(P)_i$ 由 $v_(i,cPSh)^(-1) psi_(i,j)$ 诱导。于是对任何拟紧拟分离的 $U in Et_X$，都存在某个 $k$ 与拟紧拟分离的 $U_k in Et_(X_k)$，使前者可以由后者经基变换得到；典范态射：
   $
     dirlim_(i>=k) cal(P)_i (U_i) -> cal(P)(U)
   $
-  is an isomorphism. 
+  是同构。 
 ]
 #proof[
-  The proof will be similar to @limit-formula-composite, where we use both a limit formula on presheaves and one for schemes. The limit formula for presheaves is not a proposition, but rather the fact that colimits in the category of presheaves are computed section-wise. 
+  证明与 @limit-formula-composite 类似，只是这里要同时用到预层的极限公式与概形的极限公式。预层的极限公式并不是一个命题，而是这样一个事实：预层范畴中的余极限逐截面计算。 
 
-  Now: 
+  现在： 
   $
     cal(P)(U) = dirlim_(j in I) v_(j,cPSh)^(-1) cal(P)_j (U) = dirlim_(j>=k) v_(j,cPSh)^(-1) cal(P)_j (U)
   $
-  By @limit-formula-for-schemes-pab, which should be seen as a limit formula for schemes on presheaves: 
+  由 @limit-formula-for-schemes-pab（应当把它看成预层上的概形极限公式）： 
   $
     v_(j,cPSh)^(-1) cal(P)_j (U) = dirlim_(i>=j) u_(i,j,cPSh)^(-1) cal(P)_j (U_i)
   $
-  Hence, 
+  于是， 
   $
     cal(P)(U) = dirlim_(j>=k) dirlim_(i>=j) u_(i,j,cPSh)^(-1) cal(P)_j (U_i)
   $
-  Since $I$ is a directed set, every pair $(j,i)$ in this double limit is dominated by $(i,i)$. In other words, the objects corresponding to $i = j >= k$ are cofinal in the index category of this colimit. Thus, 
+  由于 $I$ 是正向集，这个二重极限中的每一对 $(j,i)$ 都被 $(i,i)$ 支配。换言之，对应于 $i = j >= k$ 的那些对象在这个余极限的指标范畴中共尾。因此， 
   $
     cal(P)(U) = dirlim_(j>=k) dirlim_(i>=j) u_(i,j,cPSh)^(-1) cal(P)_j (U_i) = dirlim_(i>=k) cal(P)_i (U_i)
   $
-  and we are done. 
+  证毕。 
 ]
 
-Next, we establish a limit formula for base change, involving passage to limit of base changes. 
+接下来我们建立基变换的极限公式，即对基变换取极限。 
 
 #proposition(name: <limit-formula-for-base-change>)[
-  (Limit formula for base change) Let: 
+  (基变换的极限公式) 设： 
   $
     X = invlim_(i in I) X_i, S = invlim_(i in I) S_i
   $
-  be projective limits of qcqs schemes with affine transition morphisms $f_(i,j): X_i -> X_j$ and $h_(i,j): S_i -> S_j$ for $i>=j$. Denote the projections $f_i: X -> X_i, h_i: S -> S_i$. 
+  是拟紧拟分离概形的逆向极限，过渡映射 $f_(i,j): X_i -> X_j$ 与 $h_(i,j): S_i -> S_j$（$i>=j$）都仿射。记投影为 $f_i: X -> X_i, h_i: S -> S_i$。 
 
-  Suppose that we are given morphisms $g_i: X_i -> S_i$ and $g: X -> S$ s.t. the diagram: 
+  假设给定态射 $g_i: X_i -> S_i$ 与 $g: X -> S$，使得下面的图表 
   // https://q.uiver.app/#r=typst&q=WzAsNixbMCwxLCJYX2kiXSxbMSwxLCJTX2kiXSxbMCwyLCJYX2oiXSxbMSwyLCJTX2oiXSxbMCwwLCJYIl0sWzEsMCwiUyJdLFswLDEsImdfaSJdLFsyLDMsImdfaiIsMl0sWzAsMiwiZl8oaSxqKSIsMl0sWzEsMywiaF8oaSxqKSJdLFs0LDUsImciXSxbNSwxLCJoX2kiXSxbNCwwLCJmX2kiLDJdXQ==
   #align(center, diagram({
     node((-1, -1), [$X_i$])
@@ -124,59 +125,59 @@ Next, we establish a limit formula for base change, involving passage to limit o
     edge((0, -2), (0, -1), [$h_i$], label-side: left, "->")
     edge((-1, -2), (-1, -1), [$f_i$], label-side: right, "->")
   }))
-  has Cartesian squares. Then given a system of sheaves (as in @limit-formula-composite) $(cal(F)_i, psi_(i,j))$ for ${X_i}$, there is a canonical isomorphism: 
+  中所有方块都是拉回方块。那么，给定 ${X_i}$ 的一个层系统 $(cal(F)_i, psi_(i,j))$（含义同 @limit-formula-composite），存在典范同构： 
   $
     dirlim_(i in I) h_i^(-1) R^q g_(i,*) cal(F)_i -> R^q g_* cal(F)
   $
-  where the transition morphisms $h_j^(-1) R^q g_(j,*) cal(F)_j -> h_i^(-1) R^q g_(i,*) cal(F)_i$ is the composition: 
+  其中过渡映射 $h_j^(-1) R^q g_(j,*) cal(F)_j -> h_i^(-1) R^q g_(i,*) cal(F)_i$ 是如下复合： 
   $
     h_j^(-1) R^q g_(j,*) cal(F)_j = h_i^(-1) h_(i,j)^(-1) R^q g_(j,*) cal(F)_j ->^BC h_i^(-1) R^q g_(i,*) f_(i,j)^(-1) cal(F)_j ->^(h_i^(-1) R^q g_(i,*) psi_(i,j)) h_i^(-1) R^q g_(i,*) cal(F)_i
   $
-  where $BC$ denotes the base change map. Similarly, this map starting from the directed limit is constructed via: 
+  其中 $BC$ 表示基变换映射。类似地，典范同构中从正向极限出发的映射则由下式构造： 
   $
     h_i^(-1) R^q g_(i,*) cal(F)_i ->^BC R^q g_* f_i^(-1) cal(F)_i ->^(R^q g_* psi_i) R^q g_* cal(F)
   $
 ]
 #proof[
-  Take: 
+  取： 
   $
     cal(P)_i = (V_i |-> H^q (X_i times_(S_i) V_i, cal(F)_i)) in cPAb((S_i)_et) \
     cal(P) = (V |-> H^q (X times_S V, cal(F))) in cPAb(S_et)
   $
-  so that: 
+  于是： 
   $
     R^q g_(i,*) cal(F)_i = cal(P)_i^\#, R^q g_* cal(F) = cal(P)^\#
   $
-  Now: 
+  现在： 
   $
     dirlim_(i in I) h_i^(-1) R^q g_(i,*) cal(F)_i = dirlim_(i in I) h_i^(-1) cal(P)_i^\# = (dirlim_(i in I \ cPAb) h_(i,cPSh)^(-1) cal(P)_i)^\#
   $
-  by @pullback-first-props (3) and the fact that colimits commute with $(-)^\#$, which is a left adjoint. Now to show that: 
+  这里用了 @pullback-first-props (3) 以及 $(-)^\#$ 作为左伴随与余极限交换这一事实。现在要证： 
   $
     (dirlim_(i in I \ cPAb) h_(i,cPSh)^(-1) cal(P)_i)^\# = cal(P)^\#
   $
-  since $S$ is qcqs, it suffices to show that the sections of these two sheaves agree on qcqs $V in Et_S$. Now $caron(H)^0 (V, -)$ is computed using qcqs objects of $Et_S$ only (as in the cofinal system $cal(S)$ in the proof of @limit-formula-for-schemes-0), so it suffices to prove that for qcqs $V in Et_S$, 
+  由于 $S$ 拟紧拟分离，只需证明这两个层在拟紧拟分离的 $V in Et_S$ 上的截面一致。而 $caron(H)^0 (V, -)$ 只用 $Et_S$ 中的拟紧拟分离对象来计算（正如 @limit-formula-for-schemes-0 的证明中那个共尾系统 $cal(S)$），故只需证明：对拟紧拟分离的 $V in Et_S$， 
   $
     (dirlim_(i in I \ cPAb) h_(i,cPSh)^(-1) cal(P)_i)(V) = cal(P)(V)
   $
-  LHS may be computed by @limit-formula-composite-pab: Suppose that $V in Et_S$ is base changed from qcqs $V_k in Et_(S_k)$, then: 
+  左边可以用 @limit-formula-composite-pab 计算：设 $V in Et_S$ 由拟紧拟分离的 $V_k in Et_(S_k)$ 经基变换得到，则： 
   $
     (dirlim_(i in I \ cPAb) h_(i,cPSh)^(-1) cal(P)_i)(V) = dirlim_(i>=k) cal(P)_i (V_i) = dirlim_(i>=k) H^q (X_i times_(S_i) V_i, cal(F)_i)
   $
-  while $cal(P)(V) = H^q (X times_S V, cal(F))$. Now note that $S_i times_(S_k) (X_k times_(S_k) V_k) = X_i times_(S_i) V_i$ and the same goes with the subscript $i$ dropped, so by @limit-formula-composite, the composite limit formula, 
+  而 $cal(P)(V) = H^q (X times_S V, cal(F))$。注意 $S_i times_(S_k) (X_k times_(S_k) V_k) = X_i times_(S_i) V_i$，该式去掉下标 $i$ 后所得的等式同样成立，故由复合极限公式 @limit-formula-composite 即得： 
   $
     dirlim_(i>=k) H^q (X_i times_(S_i) V_i, cal(F)_i) = H^q (X times_S V, cal(F))
   $
-  We are thereby done. 
+  证毕。 
 ]
 
 #theorem(name: <pbc-reduce>)[
-  (Reduce) When $Y', Y$ are locally noetherian,
+  (Reduce) 若 $Y', Y$ 局部 Noether，则
   $
         & BC(X ->^f Y, Y' ->^g Y) \
-    <== & (BC_* (X times_Y Spec(A) -> Spec(A)), forall Spec(A) -> Y, forall A #[noetherian strict henselian])
+    <== & (BC_* (X times_Y Spec(A) -> Spec(A)), forall Spec(A) -> Y, forall A #[Noether 严格 Hensel])
   $
-  In plain English, base change holds for the Cartesian square: 
+  说得直白些：基变换对下面的拉回方块成立， 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJYJyJdLFsxLDAsIlknIl0sWzAsMSwiWCJdLFsxLDEsIlkiXSxbMiwzLCJmIl0sWzAsMSwiZiciXSxbMSwzLCJnIl0sWzAsMiwiZyciLDJdXQ==
   #align(center, diagram({
     node((-1, -1), [$X'$])
@@ -188,11 +189,11 @@ Next, we establish a limit formula for base change, involving passage to limit o
     edge((0, -1), (0, 0), [$g$], label-side: left, "->")
     edge((-1, -1), (-1, 0), [$g'$], label-side: right, "->")
   }))
-  whenever it holds along $X times_Y Spec(A) -> Spec(A)$ and the special point of $Spec(A)$ for every morphism $Spec(A) -> Y$ where $A$ is noetherian strict henselian.  
+  只要对每个态射 $Spec(A) -> Y$（其中 $A$ 是 Noether 严格 Hensel 环），基变换沿 $X times_Y Spec(A) -> Spec(A)$ 成立，且在 $Spec(A)$ 的特殊点上也成立。  
 ]
 #proof[
   #lemma(name: <pbc-reduce-etale-local>)[
-    Base change is etale local in $Y'$. In other words, consider a diagram of successive base changes: 
+    基变换关于 $Y'$ 是平展局部的。换言之，考虑逐次基变换的图表： 
     // https://q.uiver.app/#r=typst&q=WzAsNixbMCwxLCJYJyJdLFsxLDEsIlknIl0sWzAsMiwiWCJdLFsxLDIsIlkiXSxbMSwwLCJZJyciXSxbMCwwLCJYJyciXSxbMiwzLCJmIl0sWzAsMSwiZiciXSxbMSwzLCJnIl0sWzAsMiwiZyciLDJdLFs1LDQsImYnJyJdLFs0LDEsImgiXSxbNSwwLCJoJyciLDJdXQ==
     #align(center, diagram({
       node((0, 0), [$X'$])
@@ -209,24 +210,24 @@ Next, we establish a limit formula for base change, involving passage to limit o
       edge((1, -1), (1, 0), [$h$], label-side: left, "->")
       edge((0, -1), (0, 0), [$h'$], label-side: right, "->")
     }))
-    in which $h: Y'' -> Y'$ is surjective etale. Then base change holds for the lower square if and only if it holds for the whole rectangle. 
+    其中 $h: Y'' -> Y'$ 是满射且平展。则基变换对下方方块成立，当且仅当它对整个大矩形成立。 
   ]
   #proof[
-    ($==>$) is just (Comp) @pbc-comp (2), so it suffices to show ($<==$). For any torsion $cal(F) in cAb(X_et)$, we need to show that the base change map: 
+    ($==>$) 就是 (Comp) @pbc-comp (2)，因此只需证明 ($<==$)。对任意挠层 $cal(F) in cAb(X_et)$，要证基变换映射： 
     $
       g^(-1) R^q f_* cal(F) -> R^q f'_* g'^(-1) cal(F)
     $
-    is an isomorphism. By @surjective-pullback-conservative, it suffices to show that: 
+    是同构。由 @surjective-pullback-conservative，只需证明： 
     $
       h^(-1) g^(-1) R^q f_* cal(F) -> h^(-1) R^q f'_* g'^(-1) cal(F)
     $
-    is an isomorphism. Now by @pbc-etale-bc, the base change morphism $h^(-1) R^q f'_* g'^(-1) cal(F) -> R^q f''_* h'^(-1) g^(-1) cal(F)$ is an isomorphism (where $g'^(-1) cal(F)$ is torsion by @pullback-of-torsion-sheaf). By naturality of the base change morphism, composing this isomorphism with the morphism above gives: 
+    是同构。由 @pbc-etale-bc，基变换态射 $h^(-1) R^q f'_* g'^(-1) cal(F) -> R^q f''_* h'^(-1) g^(-1) cal(F)$ 是同构（这里 $g'^(-1) cal(F)$ 是挠层，依据是 @pullback-of-torsion-sheaf）。由基变换态射的自然性，把这个同构与上面的态射复合，得到： 
     $
       h^(-1) g^(-1) R^q f_* cal(F) -> h^(-1) R^q f'_* g'^(-1) cal(F) ->^tilde R^q f''_* h'^(-1) g^(-1) cal(F)
     $
-    which is the base change morphism for the torsion sheaf $cal(F)$ along the large rectangle, hence an isomorphism. Thus $h^(-1) g^(-1) R^q f_* cal(F) -> h^(-1) R^q f'_* g'^(-1) cal(F)$ is an isomorphism and we are done. 
+    它就是挠层 $cal(F)$ 沿大矩形的基变换态射，从而是同构。于是 $h^(-1) g^(-1) R^q f_* cal(F) -> h^(-1) R^q f'_* g'^(-1) cal(F)$ 是同构，证毕。 
   ]
-  Now pick a cover ${Y''_i}$ of $Y'$ by affine opens $Y''_i$ whose image in $Y'$ is contained in some affine open of $Y'$. Taking $Y'' = union.sq.big_i Y''_i$, and by the previous lemma, we may replace $g: Y' -> Y$ with $Y'' -> Y$. From the disjoint union structure, it suffices to show that base change holds along $f: X -> Y$ and $Y''_i -> Y$ for each $i$. In other words, we are free to assume that $Y'$ is affine with image in $Y$ contained in an affine open $Y_1$. Now $g: Y' -> Y$ factors as $Y' ->^(g_1) Y_1 ->^i Y$. Consider the diagram of successive base changes: 
+  现在取 $Y'$ 的一个覆盖 ${Y''_i}$，其中每个 $Y''_i$ 都是仿射开集，且它在 $Y'$ 中的像含于 $Y'$ 的某个仿射开集。取 $Y'' = union.sq.big_i Y''_i$，则由上一个引理，可以把 $g: Y' -> Y$ 换成 $Y'' -> Y$。由不交并的结构，只需证明对每个 $i$，基变换沿 $f: X -> Y$ 与 $Y''_i -> Y$ 成立。换言之，不妨设 $Y'$ 仿射，且它在 $Y$ 中的像含于某个仿射开集 $Y_1$。现在 $g: Y' -> Y$ 分解为 $Y' ->^(g_1) Y_1 ->^i Y$。考虑逐次基变换的图表： 
   // https://q.uiver.app/#r=typst&q=WzAsNixbMCwxLCJYXzEiXSxbMSwxLCJZXzEiXSxbMCwyLCJYIl0sWzEsMiwiWSJdLFsxLDAsIlknIl0sWzAsMCwiWCciXSxbMiwzLCJmIl0sWzAsMSwiZiciXSxbMSwzLCJpIl0sWzAsMiwiaSciLDJdLFs1LDQsImYnJyJdLFs0LDEsImdfMSJdLFs1LDAsImcnXzEiLDJdXQ==
   #align(center, diagram({
     node((0, 1), [$X_1$])
@@ -244,22 +245,22 @@ Next, we establish a limit formula for base change, involving passage to limit o
     edge((0, 0), (0, 1), [$g'_1$], label-side: right, "->")
   }))
 
-  By @pbc-etale-bc, base change holds for the lower square since $i$ is an open immersion, hence etale. Thus, by (Comp) @pbc-comp (2), it suffices to show that base change holds for the upper square. Since $f_1$ is a base change of $f$, every base change of $f_1$ along some $Spec(A) -> Y_1$, $A$ noetherian strict henselian, is also the base change of $f$ along $Spec(A) -> Y_1 -> Y$. Therefore, the hypothesis still holds for $f_1$. Thus, replacing $f$ with $f_1$, $g$ with $g_1$, we may assume that: 
+  由 @pbc-etale-bc，由于 $i$ 是开浸入，从而是平展的，故基变换对下方方块成立。于是由 (Comp) @pbc-comp (2)，只需证明基变换对上方方块成立。由于 $f_1$ 是 $f$ 的基变换，$f_1$ 沿任一 $Spec(A) -> Y_1$（其中 $A$ 是 Noether 严格 Hensel 环）的基变换，也是 $f$ 沿 $Spec(A) -> Y_1 -> Y$ 的基变换。因此假设对 $f_1$ 依然成立。于是把 $f$ 换成 $f_1$、$g$ 换成 $g_1$，不妨设： 
 
-  - $Y' = Spec(B'), Y = Spec(B)$ are affine, so that $B'$ is a $B$-algebra, and that $B, B'$ are noetherian (since originally $Y, Y'$ are noetherian). 
+  - $Y' = Spec(B'), Y = Spec(B)$ 都仿射，从而 $B'$ 是 $B$-代数，且 $B, B'$ 都 Noether（因为最初 $Y, Y'$ 就是 Noether 的）。 
 
-  We claim that if (Reduce) holds whenever $g: Spec(B') = Y' -> Y = Spec(B)$ is of finite type, then (Reduce) holds in the general case. 
+  我们断言：若 (Reduce) 在 $g: Spec(B') = Y' -> Y = Spec(B)$ 有限型时总成立，则它在一般情形也成立。 
 
-  #proof_[Proof of claim][
-    By our arguments above, we may assume that $g: Spec(B') = Y' -> Y = Spec(B)$ is already between two affine schemes. Now write: 
+  #proof_[断言的证明][
+    由上面的论证，不妨设 $g: Spec(B') = Y' -> Y = Spec(B)$ 已经是两个仿射概形之间的态射。现在写： 
     $
       B' = union.big_lambda B'_lambda = dirlim_(lambda) B'_lambda 
     $
-    where ${B'_lambda}$ runs over all finite type $B$-subalgebras of $B'$, ordered under inclusion. This makes: 
+    其中 ${B'_lambda}$ 跑遍 $B'$ 的所有有限型 $B$-子代数，按包含关系排序。于是： 
     $
       Y' = invlim_lambda Y'_lambda, Y'_lambda = Spec(B'_lambda)
     $
-    We thus have a passage to limit of base changes: 
+    于是基变换可以取极限： 
     // https://q.uiver.app/#r=typst&q=WzAsOCxbMCwwLCJYJyJdLFsxLDAsIlknIl0sWzAsMSwiWCdfbGFtYmRhIl0sWzEsMSwiWSdfbGFtYmRhIl0sWzAsMiwiWCdfbXUiXSxbMSwyLCJZJ19tdSJdLFsxLDMsIlkiXSxbMCwzLCJYIl0sWzcsNiwiZiIsMl0sWzQsNSwiZidfbXUiXSxbMiwzLCJmJ19sYW1iZGEiXSxbMCwxLCJmJyJdLFsxLDMsImhfbGFtYmRhIl0sWzMsNSwiZ18obGFtYmRhLG11KSJdLFs1LDYsImdfbXUiXSxbNCw3LCJnJ19tdSIsMl0sWzIsNCwiZydfKGxhbWJkYSxtdSkiLDJdLFswLDIsImgnX2xhbWJkYSIsMl1d
     #align(center, diagram({
       node((0, -2), [$X'$])
@@ -284,33 +285,33 @@ Next, we establish a limit formula for base change, involving passage to limit o
       edge((0, -1), (0, 0), [$g'_(lambda,mu)$], label-side: right, "->")
       edge((0, -2), (0, -1), [$h'_lambda$], label-side: right, "->")
     }))
-    where each $g_mu$ is finite type. Since (Reduce) holds when $g$ is finite type, we see that base change along $f$ and $g_mu$, i.e. along the bottom square in the diagram above holds. We now invoke the limit formula for base change (@limit-formula-for-base-change): 
+    其中每个 $g_mu$ 都有限型。由于 $g$ 有限型时 (Reduce) 成立，可知沿 $f$ 与 $g_mu$（即上图最下方的方块）的基变换成立。现在应用基变换的极限公式（@limit-formula-for-base-change）： 
     $
-      R^q f'_* g'^(-1) cal(F) &= dirlim_lambda h_lambda^(-1) R^q f'_(lambda,*) g'^(-1)_lambda cal(F) #[by limit formula for base change] \
+      R^q f'_* g'^(-1) cal(F) &= dirlim_lambda h_lambda^(-1) R^q f'_(lambda,*) g'^(-1)_lambda cal(F) #[由基变换的极限公式] \
       &= dirlim_lambda h_lambda^(-1) g_lambda^(-1) R^q f_* cal(F) \
-      & #[since base change holds along $f$ and $g_lambda$, and $g'^(-1)_lambda cal(F)$ is torsion by @pullback-of-torsion-sheaf] \
+      & #[因为基变换沿 $f$ 与 $g_lambda$ 成立，且 $g'^(-1)_lambda cal(F) $ 是挠层，这里用到 @pullback-of-torsion-sheaf] \
       &= dirlim_lambda g^(-1) R^q f_* cal(F) = g^(-1) R^q f_* cal(F)
     $
-    Hence base change holds along $f$ and $g$. 
+    于是基变换沿 $f$ 与 $g$ 成立。 
     #suppress-qed
   ]
-  We may thus assume that $g$ is of finite type. By @stalks-detects-properties and @very-dense-sets-of-pts, it suffices to prove that for any finite type point $y' in Y'$, the base change map $g^(-1) R^q f_* cal(F) -> R^q f'_* g'^(-1) cal(F)$ for torsion $cal(F)$ is an isomorphism at $ol(y') = Spec(k(y')^sep)$ where $k(y')^sep$ is a fixed separable closure of $k(y')$. Let $y = g(y')$, and $ol(y) = Spec(k(y)^sep)$ where $k(y)^sep$ is the separable closure of $k(y)$ in $k(y')^sep$. (This explicit choice is so that the stalk of $R^q f_* cal(F)$ at $g(ol(y'))$ is explicitly computed using the strict henselization of $cal(O)_(Y,g(y))$ w.r.t. $k(y) -> k(y)^sep$.)
+  因此不妨设 $g$ 有限型。由 @stalks-detects-properties 与 @very-dense-sets-of-pts，只需证明：对任意有限型点 $y' in Y'$，挠层 $cal(F)$ 的基变换映射 $g^(-1) R^q f_* cal(F) -> R^q f'_* g'^(-1) cal(F)$ 在 $ol(y') = Spec(k(y')^sep)$ 处是同构，其中 $k(y')^sep$ 是 $k(y')$ 的一个固定可分闭包。令 $y = g(y')$，再令 $ol(y) = Spec(k(y)^sep)$，其中 $k(y)^sep$ 是 $k(y)$ 在 $k(y')^sep$ 中的可分闭包。（之所以显式选取，是为了能用 $cal(O)_(Y,g(y))$ 关于 $k(y) -> k(y)^sep$ 的严格 Hensel 化，具体算出 $R^q f_* cal(F)$ 在 $g(ol(y'))$ 处的茎。）
 
-  Now compute: 
+  现在来计算： 
   $
     (g^(-1) R^q f_* cal(F))_(ol(y')) &= (R^q f_* cal(F))_(g(ol(y'))) = H^q (X times_Y tilde(Y)_(ol(y)), cal(F)|_(X times_Y tilde(Y)_(ol(y)))) \
     &= H^q (X times_Y ol(y), cal(F)|_(X times_Y ol(y)))
   $
-  since $tilde(Y)_(ol(y)) = Spec(cal(O)_(Y,y)^#[sh])$ is the spectrum of a strict henselian local ring, which is noetherian by @permanence-of-properties-under-henselization (0) since $Y$ is noetherian, and so by hypothesis, the restriction $H^q (X times_Y tilde(Y)_(ol(y)), cal(F)|_(X times_Y tilde(Y)_(ol(y)))) -> H^q (X times_Y ol(y), cal(F)|_(X times_Y ol(y)))$ is an isomorphism. Similarly, 
+  由于 $tilde(Y)_(ol(y)) = Spec(cal(O)_(Y,y)^#[sh])$ 是严格 Hensel 局部环的谱；由 @permanence-of-properties-under-henselization (0)（这里用到 $Y$ 是 Noether 的）可知该严格 Hensel 局部环也是 Noether 的。于是按假设，限制映射 $H^q (X times_Y tilde(Y)_(ol(y)), cal(F)|_(X times_Y tilde(Y)_(ol(y)))) -> H^q (X times_Y ol(y), cal(F)|_(X times_Y ol(y)))$ 是同构。同样地， 
   $
     (R^q f'_* g'^(-1) cal(F))_(ol(y')) &= H^q (X' times_(Y') tilde(Y')_(ol(y')), cal(F)|_(X' times_(Y') tilde(Y')_(ol(y')))) = H^q (X times_Y tilde(Y')_(ol(y')), cal(F)|_(X times_Y tilde(Y')_(ol(y')))) \
     &= H^q (X times_Y ol(y'), cal(F)|_(X times_Y ol(y')))
   $
-  by our strict henselian hypothesis. 
+  这里用了严格 Hensel 的假设。 
   
-  Finally, note that since $y'$ is a finite type point, $y': Spec(k(y')) -> Y'$ is finite type. Since $g$ is finite type, $Spec(k(y')) -> Y' ->^g Y$ is finite type. Now taking the fiber at $y in Y$, we see that $Spec(k(y')) -> Spec(k(y))$ is finite type. In other words, $k(y')\/k(y)$ is a field extension that is finite type as a ring extension. By Hilbert's strong nullstellensatz, $k(y')\/k(y)$ is a finite extension. Hence, $k(y')^sep\/k(y)^sep$ is a purely inseparable algebraic extension. Therefore, $ol(y') -> ol(y)$ is a universal homeomorphism, and so: 
+  最后注意，因 $y'$ 是有限型点，$y': Spec(k(y')) -> Y'$ 有限型。又因 $g$ 有限型，$Spec(k(y')) -> Y' ->^g Y$ 有限型。取该复合态射在 $y in Y$ 上的纤维，便知 $Spec(k(y')) -> Spec(k(y))$ 有限型。换言之，$k(y')\/k(y)$ 是域扩张，且作为环扩张是有限型的。由 Hilbert 强零点定理，$k(y')\/k(y)$ 是有限扩张。于是 $k(y')^sep\/k(y)^sep$ 是纯不可分代数扩张。因此 $ol(y') -> ol(y)$ 是泛同胚，从而： 
   $
     (g^(-1) R^q f_* cal(F))_(ol(y')) = H^q (X times_Y ol(y), cal(F)|_(X times_Y ol(y))) = H^q (X times_Y ol(y'), cal(F)|_(X times_Y ol(y'))) = (R^q f'_* g'^(-1) cal(F))_(ol(y'))
   $
-  by topological invariance. We are thereby done. 
+  这里用了拓扑不变性。证毕。 
 ]

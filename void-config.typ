@@ -1,24 +1,24 @@
 #let compile-cfg = {
-  // version number
-  // odd minor version number  = beta build
-  // even minor version number = release build
+  // 版本号
+  // 次版本号为奇数 = 测试版
+  // 次版本号为偶数 = 正式版
   let version = (1, 1, 0)
-  // When print-mode is true, all theorem boxes will be white for printing on white paper
+  // print-mode 为真时，所有定理框都改为白色，便于在白纸上打印
   let print-mode = false
-  // When html-mode is true, we will #set page(height: auto) and emit one continuous large page
+  // html-mode 为真时，把页面设为自动高度，输出一整页连续内容
   let html-mode = false
-  // When ide-mode is true, we will only compile a few sections
+  // ide-mode 为真时，只编译少数几节
   let ide-mode = "tinymist-vscode" in sys.inputs
-  // Embed source code as PDF metadata for distribution
+  // 把源码嵌入 PDF 元数据以便分发
   let distribute-sources = true
-  // include a copy of the license
+  // 附上一份许可证副本
   let license = true
-  // include a copy of the cover page image
+  // 附上封面图
   let censor-cover-pic = false
   let cover-pic-name = "cover-page-image-v1.0.png"
-  let cover-pic-comment = [illustration _Smooth Base Change_ by Irisu]
+  let cover-pic-comment = [《光滑基变换》，Irisu 绘]
   let cover-pic-bounds = (height: 40%)
-  // include a notice for this file being an internal build
+  // 为内部构建添加提示
   let internal-build = false
 
   (

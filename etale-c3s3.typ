@@ -1,96 +1,96 @@
 #import "void-import.typ": *
 
-== Etale fundamental group $pi_1^et (X)$
+== 平展基本群 $pi_1^et (X)$
 
-Mimicking the topological case, we define the etale fundamental group: 
+仿照拓扑情形，我们定义平展基本群：
 
 #definition(name: <defn-etale-fundamental-group>)[
-  The *etale fundamental group* of $X$ w.r.t. base point $ol(x)$ is defined as:
+  $X$ 关于基点 $ol(x)$ 的*平展基本群*，定义为：
   $
     pi_1^et (X, ol(x)) := Aut(F_(ol(x)))
   $
-  which is the automorphism group of the fiber functor $F_(ol(x)) : FEt_X -> cSet^"fin"$. That is, it is the group of natural isomorphisms $gamma: F_(ol(x)) -> F_(ol(x))$. 
+  它是纤维函子 $F_(ol(x)) : FEt_X -> cSet^"fin"$ 的自同构群。也就是说，它是由自然同构 $gamma: F_(ol(x)) -> F_(ol(x))$ 构成的群。
 ]
 
 #lemma(name: <galois-grp-exact-seq>)[
-  Let $f: Z -> Y$ be a morphism in $FEt_X$ where $Y, Z$ are both finite. Assuming $Z\/X$ and $Y\/X$ are both Galois, $Z\/Y$ must also be Galois with a natural exact sequence: 
+  设 $f: Z -> Y$ 是 $FEt_X$ 中的态射，其中 $Y, Z$ 都有限。假定 $Z\/X$ 与 $Y\/X$ 都是 Galois 的，则 $Z\/Y$ 也必是 Galois 的，且有自然的正合列：
   $
     1 -> Aut(Z\/Y) -> Aut(Z\/X) -> Aut(Y\/X) -> 1
   $
 ]
 #proof[
-  We first construct the morphism $Phi: Aut(Z\/X) -> Aut(Y\/X)$. Pick compatible geometric points $ol(z)$ of $Z$, $ol(y)$ of $Y$ and $ol(x)$ of $X$. For any fixed $sigma in Aut(Z\/X)$, consider the geometric point $f(sigma(ol(z)))$ of $Y$. This geometric point lies above $ol(x)$ and $Aut(Y\/X)$ acts faithfully and transitively on the fiber $F_(ol(x)) (Y)$ since $Y\/X$ is Galois. Therefore, there exists a unique $tau in Aut(Y\/X)$ s.t. $tau(ol(y)) = f(sigma(ol(z)))$. We then define $Phi(sigma) = tau$. 
+  我们先构造态射 $Phi: Aut(Z\/X) -> Aut(Y\/X)$。取 $Z$ 的几何点 $ol(z)$、$Y$ 的几何点 $ol(y)$ 与 $X$ 的几何点 $ol(x)$，使三者相容。任取 $sigma in Aut(Z\/X)$，考虑 $Y$ 的几何点 $f(sigma(ol(z)))$。这个几何点位于 $ol(x)$ 之上；又因 $Y\/X$ 是 Galois 的，$Aut(Y\/X)$ 在纤维 $F_(ol(x)) (Y)$ 上忠实且传递地作用。因此存在唯一的 $tau in Aut(Y\/X)$ 使得 $tau(ol(y)) = f(sigma(ol(z)))$。于是定义 $Phi(sigma) = tau$。
 
-  In other words, $tau = Phi(sigma)$ is the unique element of $Aut(Y\/X)$ s.t. $tau(f(ol(z))) = f(sigma(ol(z)))$. Since $Z$ is connected, any $X$-morphism $Z -> Y$ agreeing on a single geometric point must be equal, so this condition is equivalent to $tau compose f = f compose sigma$. In particular, $Phi$ is independent from the choice of $ol(z),ol(y),ol(x)$. Furthermore, $Phi$ is indeed a group homomorphism: 
+  换言之，$tau = Phi(sigma)$ 是 $Aut(Y\/X)$ 中唯一满足 $tau(f(ol(z))) = f(sigma(ol(z)))$ 的元素。由于 $Z$ 连通，任何 $X$-态射 $Z -> Y$ 只要在单个几何点上一致就必须相等，故这个条件等价于 $tau compose f = f compose sigma$。特别地，$Phi$ 与 $ol(z),ol(y),ol(x)$ 的选取无关。此外，$Phi$ 确实是群同态：
   $
     f compose sigma_1 compose sigma_2 = Phi(sigma_1) compose f compose sigma_2 = Phi(sigma_1) compose Phi(sigma_2) compose f
   $
-  and so $Phi(sigma_1 compose sigma_2) = Phi(sigma_1) compose Phi(sigma_2)$. We now consider the kernel of $Phi$. $sigma in Aut(Z\/X)$ is in $ker(Phi)$ if and only if $f = f compose sigma$, i.e. when $sigma$ is an $Y$-morphism. In other words, we have obtained an exact sequence: 
+  从而 $Phi(sigma_1 compose sigma_2) = Phi(sigma_1) compose Phi(sigma_2)$。下面看 $Phi$ 的核。$sigma in Aut(Z\/X)$ 属于 $ker(Phi)$，当且仅当 $f = f compose sigma$，也就是说 $sigma$ 是 $Y$-态射。换言之，我们得到了正合列：
   $
     1 -> Aut(Z\/Y) -> Aut(Z\/X) ->^Phi Aut(Y\/X)
   $
-  We then prove right exactness and that $Z\/Y$ is Galois simultaneously. First note that $abs(F_(ol(x))(Z)) = abs(F_(ol(x))(Y)) abs(F_(ol(y))(Z))$, since for any other geometric point $ol(y')$ of $Y$ above $ol(x)$, $abs(F_(ol(y'))(Z)) = abs(F_(ol(y))(Z))$ by flatness. Now: 
+  接着我们同时证明右正合性与 $Z\/Y$ 是 Galois 的。首先注意 $abs(F_(ol(x))(Z)) = abs(F_(ol(x))(Y)) abs(F_(ol(y))(Z))$，因为对 $Y$ 的任一其他几何点 $ol(y')$，只要它同样位于 $ol(x)$ 之上，根据平坦性就有 $abs(F_(ol(y'))(Z)) = abs(F_(ol(y))(Z))$。现在：
   $
     abs(F_(ol(x))(Y)) = abs(Aut(Y\/X)) >= abs(im(Phi)) = (abs(Aut(Z\/X)))/(abs(Aut(Z\/Y))) = (abs(F_(ol(x))(Z)))/(abs(Aut(Z\/Y)))
   $
-  and so $abs(Aut(Z\/Y)) >= abs(F_(ol(x))(Z))\/abs(F_(ol(x))(Y)) = abs(F_(ol(y))(Z))$. Meanwhile, $<=$ holds automatically since $Aut(Z\/Y)$ acts faithfully on $F_(ol(y))(Z)$. Thus equality holds, $Z\/Y$ is Galois and $im(Phi) = Aut(Y\/X)$. We then see that $Z\/Y$ is Galois and also get the exact sequence: 
+  从而 $abs(Aut(Z\/Y)) >= abs(F_(ol(x))(Z))\/abs(F_(ol(x))(Y)) = abs(F_(ol(y))(Z))$。与此同时，由于 $Aut(Z\/Y)$ 在 $F_(ol(y))(Z)$ 上忠实作用，$<=$ 自动成立。于是等号成立，且 $im(Phi) = Aut(Y\/X)$；这既说明 $Z\/Y$ 是 Galois 的，又给出正合列：
   $
     1 -> Aut(Z\/Y) -> Aut(Z\/X) ->^Phi Aut(Y\/X) -> 1
   $
 ]
 
 #theorem(name: <pi1et-as-invlim>)[
-  The etale fundamental group is the limit of a projective system of Galois groups. More explicitly, let $I$ be the directed set of pointed Galois covering spaces $(X_i, ol(x_i)) -> (X, ol(x))$. Then:
+  平展基本群是 Galois 群逆向系统的极限。更明确地说，设 $I$ 是带基点 Galois 覆叠空间 $(X_i, ol(x_i)) -> (X, ol(x))$ 构成的正向集。则：
   $
     pi_1^et (X, ol(x)) = invlim_(i in I) Aut(X_i\/X)^opp
   $
-  is a projective limit under the transition maps given by @galois-grp-exact-seq. 
+  也就是说，这个逆向极限的过渡映射由 @galois-grp-exact-seq 给出。
 
-  In particular, this equips $pi_1^et (X, ol(x))$ with the structure of a profinite group. 
+  特别地，这给 $pi_1^et (X, ol(x))$ 赋予了投射有限群的结构。
   
   #example[
-    In the example $X = Spec(K)$, $I$ is the category of all intermediate Galois extensions $K subset L subset K^sep$. We then see that:
+    在 $X = Spec(K)$ 这个例子里，$I$ 是全体中间 Galois 扩张 $K subset L subset K^sep$ 构成的范畴。于是：
     $
       pi_1^et (Spec(K), Spec(K^sep)) = invlim_(i in I) Gal(L\/K) = Gal(K^sep\/K)
     $
-    is the absolute Galois group of $K$.
+    它是 $K$ 的绝对 Galois 群。
   ]
 ]
 #proof[
-  We first show that this projective limit is well-defined. The index category $I$ is cofiltered.
+  先说明这个逆向极限是良定义的。指标范畴 $I$ 是余滤过的。
 
-  For every Galois covering space $(X_i, ol(x_i))$, its automorphism group $Aut(X_i\/X)$ acts on $F_(ol(x)) (X_i)$ transitively and faithfully. Thus there exists an isomorphism: 
+  对每个 Galois 覆叠空间 $(X_i, ol(x_i))$，其自同构群 $Aut(X_i\/X)$ 在 $F_(ol(x)) (X_i)$ 上传递且忠实地作用。因此存在同构：
   $
     eta_i: Aut(X_i\/X) -> F_(ol(x)) (X_i), g |-> g(ol(x_i))
   $
 
-  We construct a map: 
+  我们构造映射：
   $
     Psi: pi_1^et (X, ol(x)) = Aut(F_(ol(x))) &-> invlim_(i in I) Aut(X_i\/X)^opp \
 
     gamma &|-> (eta_i^(-1) (gamma(ol(x_i))))_(i in I)
   $
-  In other words, for each $X_i$, we send $gamma$ to the unique $sigma_i in Aut(X_i\/X)$ s.t. $sigma_i (ol(x_i)) = gamma(ol(x_i))$. 
+  换言之，对每个 $X_i$，我们都把 $gamma$ 送到唯一满足 $sigma_i (ol(x_i)) = gamma(ol(x_i))$ 的 $sigma_i in Aut(X_i\/X)$。
   
-  Each $pi_1^et (X, ol(x)) -> Aut(X_i\/X)^opp, gamma |-> eta_i^(-1) (gamma(ol(x_i)))$ is a group homomorphism. Indeed, given $gamma, delta in pi_1^et (X, ol(x))$ with images $sigma_gamma, sigma_delta$ under this map, 
+  每个映射 $pi_1^et (X, ol(x)) -> Aut(X_i\/X)^opp, gamma |-> eta_i^(-1) (gamma(ol(x_i)))$ 都是群同态。事实上，取 $gamma, delta in pi_1^et (X, ol(x))$，设它们在该映射下的像分别为 $sigma_gamma, sigma_delta$，则
   $
     sigma_gamma sigma_delta (ol(x_i)) = sigma_gamma (delta(ol(x_i))) = delta (sigma_gamma (ol(x_i))) = delta(gamma(ol(x_i)))
   $
-  (Note that the order of $gamma$ and $delta$ is reversed. This is the purpose of the opposite group in $Aut(X_i\/X)^opp$.)
+  （注意 $gamma$ 与 $delta$ 的次序颠倒了。这正是要在 $Aut(X_i\/X)^opp$ 里取反群的原因。）
   
-  They are compatible with the projective system $I$. Indeed, given a morphism $f: (X_j, ol(x_j)) -> (X_i, ol(x_i))$. Let $sigma_i (ol(x_i)) = gamma(ol(x_i))$ and $sigma_j (ol(x_j)) = gamma(ol(x_j))$. Then: 
+  这些同态与逆向系统 $I$ 相容。事实上，给定态射 $f: (X_j, ol(x_j)) -> (X_i, ol(x_i))$，令 $sigma_i (ol(x_i)) = gamma(ol(x_i))$、$sigma_j (ol(x_j)) = gamma(ol(x_j))$。则：
   $
     sigma_i (f(ol(x_j))) = sigma_i (ol(x_i)) = gamma(ol(x_i)) = gamma(f(ol(x_j))) = f(gamma(ol(x_j))) = f(sigma_j (ol(x_j)))
   $
-  where $gamma(f(ol(x_j))) = f(gamma(ol(x_j)))$ by naturality of $gamma$. Thus $sigma_j |-> sigma_i$ under the map $Aut(X_j\/X) -> Aut(X_i\/X)$. 
+  其中 $gamma(f(ol(x_j))) = f(gamma(ol(x_j)))$ 来自 $gamma$ 的自然性。于是在过渡映射 $Aut(X_j\/X) -> Aut(X_i\/X)$ 下 $sigma_j |-> sigma_i$，这正是所需的相容性。
   
-  It suffices to show that $Psi$ is injective and surjective. For injectivity, if $gamma in ker(Psi)$, then it is sent to $id_(X_i)$ for each $i$, i.e. $gamma(ol(x_i)) = ol(x_i)$ for each $i$. Then for every pointed etale covering space $(Y, ol(y)) -> (X, ol(x))$, we may form its Galois closure, which is one of the $X_i$'s: 
+  只需证明 $Psi$ 是单射兼满射。先看单射性。若 $gamma in ker(Psi)$，则它在每个 $i$ 处都映到 $id_(X_i)$，即对每个 $i$ 都有 $gamma(ol(x_i)) = ol(x_i)$。于是对每个带基点平展覆叠空间 $(Y, ol(y)) -> (X, ol(x))$，都可以取它的 Galois 闭包，那是某个 $X_i$：
   $
     (X_i, ol(x_i)) ->^f (Y, ol(y)) -> (X, ol(x))
   $
-  and then $gamma(ol(y)) = gamma(f(ol(x_i))) = f(gamma(ol(x_i))) = f(ol(x_i)) = ol(y)$. That is, $gamma(ol(y)) = ol(y)$ for every $Y in FEt_X$ and every $ol(y) in F_(ol(x)) (Y)$. Thus $gamma$ as a natural automorphism of $F_(ol(x))$ is the identity morphism. 
+  由此 $gamma(ol(y)) = gamma(f(ol(x_i))) = f(gamma(ol(x_i))) = f(ol(x_i)) = ol(y)$。也就是说，对每个 $Y in FEt_X$ 与每个 $ol(y) in F_(ol(x)) (Y)$，都有 $gamma(ol(y)) = ol(y)$。因此作为 $F_(ol(x))$ 的自然自同构，$gamma$ 就是恒等态射。
 
-  It remains to prove surjectivity. Fix an element $(sigma_i)_(i in I) in invlim_(i in I) Aut(X_i\/X)^opp$. We define a candidate $gamma in Aut(F_(ol(x)))$ as follows: For every $Y in FEt_X$ and every $ol(y) in F_(ol(x)) (Y)$, pick a Galois covering space $X_i$ with a covering $(X_i, ol(x_i)) ->^f (Y, ol(y)) -> (X, ol(x))$. We then define $gamma(ol(y)) := f(sigma_i (ol(x_i)))$. This construction is independent from the choice of $i$. Indeed, for two choices $i,j$, there exists a third $k in I$ with a commutative diagram: 
+  剩下要证满射性。固定元素 $(sigma_i)_(i in I) in invlim_(i in I) Aut(X_i\/X)^opp$。如下定义候选的 $gamma in Aut(F_(ol(x)))$：对每个 $Y in FEt_X$ 与每个 $ol(y) in F_(ol(x)) (Y)$，取 Galois 覆叠空间 $X_i$，并取分解 $(X_i, ol(x_i)) ->^f (Y, ol(y)) -> (X, ol(x))$，然后令 $gamma(ol(y)) := f(sigma_i (ol(x_i)))$。这个构造与 $i$ 的选取无关。事实上，若选了两个下标 $i,j$，则存在第三个 $k in I$，使下图交换：
   // https://q.uiver.app/#r=typst&q=WzAsNSxbMCwxLCIoWF9rLG9sKHhfaykpIl0sWzEsMCwiKFhfaSxvbCh4X2kpKSJdLFsxLDIsIihYX2osb2woeF9qKSkiXSxbMiwxLCIoWSxvbCh5KSkiXSxbMywxLCIoWCxvbCh4KSkiXSxbMCwxLCJnX2kiXSxbMCwyLCJnX2oiLDJdLFsxLDMsImZfaSJdLFsyLDMsImZfaiIsMl0sWzMsNF1d
   #context align(center, diagram({
     node((-2, 0), [$(X_k,ol(x_k))$])
@@ -105,13 +105,13 @@ Mimicking the topological case, we define the etale fundamental group:
     edge((0, 0), (1, 0), "->")
     edge((-2, 0), (0, 0), "->", [$f_k$], label-side: center)
   }, crossing-fill: thm-box-curr-color()))
-  Thus to prove that $gamma(ol(y))$ defined with $i$ and $j$ agrees, it suffices to prove that the definition with $i$ and $k$ agrees. Indeed, 
+  因此要说明用 $i$ 和用 $j$ 分别定义的 $gamma(ol(y))$ 相同，只需说明用 $i$ 和用 $k$ 分别定义的结果相同。事实上，
   $
     f_k (sigma_k (ol(x_k))) &= f_i (g_i (sigma_k (ol(x_k)))) \
-    &= f_i (sigma_i (g_i (ol(x_k)))) #[by definition of the transition morphisms] \
+    &= f_i (sigma_i (g_i (ol(x_k)))) #[由过渡映射的定义] \
     &= f_i (sigma_i (ol(x_i)))
   $
-  It then remains to prove that $gamma$ defined this way, a priori a set map $F_(ol(x)) (Y) -> F_(ol(x)) (Y)$ for every $Y in FEt_X$, is a natural automorphism of $F_(ol(x))$. For every morphism $f: (Z, ol(z)) -> (Y, ol(y))$ in $FEt_X$, we aim to show that $f(gamma(ol(z))) = gamma(ol(y)) = gamma(f(ol(z)))$. Indeed, pick a Galois closure $(X_i, ol(x_i)) -> (Y, ol(y))$, and then pick by existence of composite covering space (@fet-first-props (2)) and existence of Galois closure (@galois-closure-exists) some $(X_j, ol(x_j))$ fitting in a commutative diagram: 
+  接下来要证的是：这样定义出的 $gamma$ 先验地只是对每个 $Y in FEt_X$ 给出集合映射 $F_(ol(x)) (Y) -> F_(ol(x)) (Y)$，而它实际上是 $F_(ol(x))$ 的自然自同构。对 $FEt_X$ 中的每个态射 $f: (Z, ol(z)) -> (Y, ol(y))$，我们要证 $f(gamma(ol(z))) = gamma(ol(y)) = gamma(f(ol(z)))$。事实上，先取 Galois 闭包 $(X_i, ol(x_i)) -> (Y, ol(y))$，再依复合覆叠空间的存在性（@fet-first-props (2)）与 Galois 闭包的存在性（@galois-closure-exists），取 $(X_j, ol(x_j))$ 使下图交换：
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCIoWF9qLG9sKHhfaikpIl0sWzIsMCwiKFhfaSxvbCh4X2kpKSJdLFswLDIsIihaLCBvbCh6KSkiXSxbMiwyLCIoWSwgb2woeSkpIl0sWzIsMywiZiIsMl0sWzEsMywiZl9pIl0sWzAsMSwiZyJdLFswLDIsImZfaiIsMl1d
   #align(center, diagram({
     node((-1, -1), [$(X_j,ol(x_j))$])
@@ -123,41 +123,41 @@ Mimicking the topological case, we define the etale fundamental group:
     edge((-1, -1), (1, -1), [$g$], label-side: left, "->")
     edge((-1, -1), (-1, 1), [$f_j$], label-side: right, "->")
   }))
-  Now: 
+  现在：
   $
-    gamma(ol(y)) &= f_i (sigma_i (ol(x_i))) #[by definition of $gamma$] \
+    gamma(ol(y)) &= f_i (sigma_i (ol(x_i))) #[由 $gamma$ 的定义] \
     &= f_i (sigma_i (g(ol(x_j)))) \
-    &= f_i (g(sigma_j (ol(x_j)))) #[by definition of the transition morphisms] \
+    &= f_i (g(sigma_j (ol(x_j)))) #[由过渡映射的定义] \
     &= f(f_j (sigma_j (ol(x_j)))) \
-    &= f(gamma(ol(z))) #[by definition of $gamma$]
+    &= f(gamma(ol(z))) #[由 $gamma$ 的定义]
   $
-  We are thereby done showing that $Psi$ is surjective. In summary, we have constructed a canonical isomorphism: 
+  至此 $Psi$ 的满射性证完。总之，我们构造了典范同构：
   $
     Psi: pi_1^et (X, ol(x)) &-> invlim_(i in I) Aut(X_i\/X)^opp \
-    gamma &|-> (sigma_i)_(i in I) #[where] sigma_i (ol(x_i)) = gamma(ol(x_i))
+    gamma &|-> (sigma_i)_(i in I) #[其中] sigma_i (ol(x_i)) = gamma(ol(x_i))
   $
 ]
 
 #corollary[
-  Under the profinite topology on $pi_1^et (X, ol(x))$ given by:
+  给 $pi_1^et (X, ol(x))$ 装上由下式给出的投射有限拓扑：
   $
     pi_1^et (X, ol(x)) = invlim_(i in I) Aut(X_i\/X)^opp
   $
-  For every $Z in FEt_X$, the action of $pi_1^et (X, ol(x))$ on $F_(ol(x)) (Z)$ is continuous. This defines a functor: 
+  在这个拓扑下，对每个 $Z in FEt_X$，$pi_1^et (X, ol(x))$ 在 $F_(ol(x)) (Z)$ 上的作用是连续的。这定义了一个函子：
   $
     F_(ol(x)): FEt_X -> GSet(pi_1^et (X, ol(x)))^#[fin,cont]
   $
-  from $FEt_X$ to the category of finite sets with a continuous $pi_1^et (X, ol(x))$-action. 
+  即从 $FEt_X$ 到带连续 $pi_1^et (X, ol(x))$-作用的有限集构成的范畴。
 ]
 #proof[
-  The only thing left to show is that $pi_1^et (X, ol(x))$ acts continuously on $F_(ol(x)) (Z)$. Indeed, pick any Galois closure $X_i -> Z$ and by construction of the isomorphism $pi_1^et (X, ol(x)) = invlim_(i in I) Aut(X_i\/X)^opp$, the action of an element $(sigma_i)_(i in I) in pi_1^et (X, ol(x))$ on $F_(ol(x)) (Z)$ is determined by $sigma_i$. Thus a normal subgroup of $pi_1^et (X, ol(x))$ of finite index fixes $F_(ol(x))(Z)$. 
+  剩下只需说明 $pi_1^et (X, ol(x))$ 在 $F_(ol(x)) (Z)$ 上的作用连续。事实上，任取 Galois 闭包 $X_i -> Z$；按上面建立同构 $pi_1^et (X, ol(x)) = invlim_(i in I) Aut(X_i\/X)^opp$ 的方式，元素 $(sigma_i)_(i in I) in pi_1^et (X, ol(x))$ 在 $F_(ol(x)) (Z)$ 上的作用由 $sigma_i$ 决定。于是 $pi_1^et (X, ol(x))$ 的一个有限指数的正规子群固定 $F_(ol(x))(Z)$。
 ]
 
 #theorem[
   $
     F_(ol(x)): FEt_X -> GSet(pi_1^et (X, ol(x)))^#[fin,cont]
   $
-  defines an equivalence of categories, fitting in the diagram: 
+  定义了范畴等价，并与下图相容：
   // https://q.uiver.app/#r=typst&q=WzAsMyxbMCwwLCJGRXRfWCJdLFsyLDAsIkdTZXQocGlfMV5ldCAoWCwgb2woeCkpKV4jW2Zpbixjb250XSJdLFsxLDIsImNTZXReI1tmaW5dIl0sWzAsMSwiRl8ob2woeCkpIl0sWzAsMiwiRl8ob2woeCkpIiwyXSxbMSwyLCIjW2ZvcmdldF0iXV0=
   #align(center, diagram({
     node((-1, -1), [$FEt_X$])
@@ -170,112 +170,112 @@ Mimicking the topological case, we define the etale fundamental group:
   }, spacing: 2em))
 ]
 #proof[
-  For essential surjectivity: 
+  本质满性：
   #proof[
-    Let $T$ be a finite set with a continuous $pi_1^et (X, ol(x))$-action. We may decompose $T$ into its $pi_1^et (X, ol(x))$-orbits ${T_s}$. If for each $T_s$ we may find some $Z_s in FEt_X$ s.t. $F_(ol(x)) (Z_s) cong T_s$ as $pi_1^et (X, ol(x))$-sets, then $F_(ol(x)) (union.sq.big_s Z_s) cong T$ as $pi_1^et (X, ol(x))$-sets. Thus, we are reduced to the case that $T$ is transitive under the action. 
+    设 $T$ 是带连续 $pi_1^et (X, ol(x))$-作用的有限集。可把 $T$ 按 $pi_1^et (X, ol(x))$-轨道分解为 ${T_s}$。若对每个 $T_s$ 都能找到 $Z_s in FEt_X$，使得 $F_(ol(x)) (Z_s) cong T_s$（作为 $pi_1^et (X, ol(x))$-集），则 $F_(ol(x)) (union.sq.big_s Z_s) cong T$（同样作为 $pi_1^et (X, ol(x))$-集）。于是问题归到 $T$ 在该作用下传递的情形。
 
-    Since $G = pi_1^et (X, ol(x))$ is profinite and acts transitively on $T$, $T cong G\/H$ as $G$-sets for some finite index subgroup $H <= G$. By the construction of $G$ as a projective limit, there exists some $i$ and a normal subgroup $N$ of $G$ s.t. $N <= H$ and $G\/N = Aut(X_i\/X)$. Let $ol(H)$ be the image of $H$ in $G\/N = Aut(X_i\/X)$. Then as $G$-sets, $T cong G\/H cong Aut(X_i\/X)\/ol(H)$. 
+    由于 $G = pi_1^et (X, ol(x))$ 是投射有限群，且传递地作用在 $T$ 上，故作为 $G$-集有 $T cong G\/H$，其中 $H <= G$ 是某个有限指数子群。按把 $G$ 表成逆向极限的构造方式，存在某个 $i$ 与 $G$ 的正规子群 $N$，使得 $N <= H$ 且 $G\/N = Aut(X_i\/X)$。设 $ol(H)$ 是 $H$ 在 $G\/N = Aut(X_i\/X)$ 中的像。则作为 $G$-集，$T cong G\/H cong Aut(X_i\/X)\/ol(H)$。
 
-    We may take $Z = X_i\/ol(H)$, constructed according to @galois-theory-of-coverings (2). By @affine-sch-quotient (2), the fibers of $X_i -> Z$ are precisely $ol(H)$-orbits, i.e. $Spec(k(z)) = (X_i)_z\/ol(H)$. Then passing to the geometric fiber is a flat base change and preserves the quotient, so $F_(ol(x))(Z) cong F_(ol(x))(X_i)\/ol(H) cong Aut(X_i\/X)\/ol(H) cong T$ as $Aut(X_i\/X)$-sets, hence as $G$-sets. 
+    可以取 $Z = X_i\/ol(H)$，其构造依 @galois-theory-of-coverings (2)。由 @affine-sch-quotient (2)，$X_i -> Z$ 的纤维恰好是 $ol(H)$-轨道，即 $Spec(k(z)) = (X_i)_z\/ol(H)$。过渡到几何纤维这一步是平坦基变换，因此保持商，于是作为 $Aut(X_i\/X)$-集有 $F_(ol(x))(Z) cong F_(ol(x))(X_i)\/ol(H) cong Aut(X_i\/X)\/ol(H) cong T$，从而作为 $G$-集也同构。
 
     #suppress-qed
   ]
 
-  For full faithfulness:
+  全忠实性：
   #proof[
-    For any $Z, Y in FEt_X$, consider: 
+    对任意 $Z, Y in FEt_X$，考虑：
     $
       F_(ol(x)): Hom_X (Z, Y) -> Hom_(pi_1^et (X, ol(x))) (F_(ol(x)) (Z), F_(ol(x)) (Y))
     $
-    We want to show that this map is bijective. Write $Z, Y$ as a union of their connected components: $Z = union.sq.big_t Z_t, Y = union.sq.big_s Y_s$, and then we will be dealing with: 
+    要证这个映射是双射。把 $Z, Y$ 写成各自连通分支的并：$Z = union.sq.big_t Z_t, Y = union.sq.big_s Y_s$，于是需要处理：
     $
       Hom_X (Z, Y) = product_t union.sq.big_s Hom_X (Z_t, Y_s) -> Hom_(pi_1^et (X, ol(x))) (F_(ol(x)) (Z), F_(ol(x)) (Y)) = product_t union.sq.big_s Hom_(pi_1^et (X, ol(x))) (F_(ol(x)) (Z_t), F_(ol(x)) (Y_s))
     $
-    Thus, we are reduced to proving bijectivity for each $Z_t$ and $Y_s$, and are reduced to the case where $Z, Y$ are connected. 
+    这样只需对每对 $Z_t$ 与 $Y_s$ 证明双射性，问题就归到 $Z, Y$ 连通的情形。
 
-    - Injectivity: Suppose that two maps $f,g: Z -> Y$ have $F_(ol(x)) (f) = F_(ol(x)) (g)$. Pick some $ol(z) in F_(ol(x)) (Z)$. Since $f(ol(z)) = g(ol(z))$ and $Z$ is connected, by @fet-first-props (1), $f = g$. 
+    - 单射性：设两个映射 $f,g: Z -> Y$ 满足 $F_(ol(x)) (f) = F_(ol(x)) (g)$。取 $ol(z) in F_(ol(x)) (Z)$。由 $f(ol(z)) = g(ol(z))$ 及 $Z$ 连通，依 @fet-first-props (1) 得 $f = g$。
 
-    - Surjectivity: By the universal property of the fiber product, we have: 
+    - 满射性：由纤维积的泛性质，有：
       $
         F_(ol(x)) (Y times_X Z) = F_(ol(x)) (Y) times F_(ol(x)) (Z)
       $
-      Given any element $phi in Hom_(pi_1^et (X, ol(x))) (F_(ol(x)) (Z), F_(ol(x)) (Y))$, consider its graph $Gamma_phi subset F_(ol(x)) (Y) times F_(ol(x)) (Z) = F_(ol(x)) (Y times_X Z)$. Since $phi$ is $pi_1^et (X, ol(x))$-equivariant, the subset $Gamma_phi$ is $pi_1^et (X, ol(x))$-invariant. From the construction for essential surjectivity, there exists an open-and-closed subscheme $W subset Y times_X Z$ s.t. $F_(ol(x)) (W) cong Gamma_phi$ as $pi_1^et (X, ol(x))$-sets. 
+      任取元素 $phi in Hom_(pi_1^et (X, ol(x))) (F_(ol(x)) (Z), F_(ol(x)) (Y))$，考虑它的图 $Gamma_phi subset F_(ol(x)) (Y) times F_(ol(x)) (Z) = F_(ol(x)) (Y times_X Z)$。由于 $phi$ 是 $pi_1^et (X, ol(x))$-等变的，子集 $Gamma_phi$ 是 $pi_1^et (X, ol(x))$-不变的。按上面证明本质满性时所用的构造，存在开闭子概形 $W subset Y times_X Z$，使得作为 $pi_1^et (X, ol(x))$-集有 $F_(ol(x)) (W) cong Gamma_phi$。
 
-      Consider the projection map $p_Z: W -> Z$. Then by definition, $F_(ol(x)) (p_Z): Gamma_phi -> F_(ol(x)) (Z)$ is projection of a graph to the second factor, hence a bijection. By @fet-first-props (4), $p_Z$ is an isomorphism. Then the morphism: 
+      考虑投影映射 $p_Z: W -> Z$。按定义，$F_(ol(x)) (p_Z): Gamma_phi -> F_(ol(x)) (Z)$ 就是把图投影到第二个因子，因而是双射。由 @fet-first-props (4) 知 $p_Z$ 是同构。于是态射：
       $
         Z -->^(p_Z^(-1)) W -->^(p_Y) Y
       $
-      is a morphism in $FEt_X$, and induces the map $F_(ol(x)) (Z) -> Gamma_phi -> F_(ol(x)) (Y)$ on fibers, which is just the map $phi$. 
+      是 $FEt_X$ 中的态射，在纤维上诱导映射 $F_(ol(x)) (Z) -> Gamma_phi -> F_(ol(x)) (Y)$，而这就是 $phi$。
 
     #suppress-qed
   ]
-  With full faithfulness and essential surjectivity proved, we have seen that $F_(ol(x)): FEt_X -> GSet(pi_1^et (X, ol(x)))^#[fin,cont]$ is indeed an equivalence of categories. 
+  全忠实性与本质满性都已证，可见 $F_(ol(x)): FEt_X -> GSet(pi_1^et (X, ol(x)))^#[fin,cont]$ 确实是范畴等价。
 ]
 
-We have thus obtained the full analog of the statement for the topological fundamental group, that $bold("Cov")(X) -> GSet(pi_1^"top" (X, x)), 
-(p: X' -> X) |-> p^(-1) (x)$ is an equivalence of categories. We have established Galois theory for schemes and classified $FEt_X$ using the group $pi_1^et (X, ol(x))$. 
+这样我们就得到了与拓扑基本群情形完全对应的结论：$bold("Cov")(X) -> GSet(pi_1^"top" (X, x)), 
+(p: X' -> X) |-> p^(-1) (x)$ 是范畴等价。我们为概形建立了 Galois 理论，并用群 $pi_1^et (X, ol(x))$ 对 $FEt_X$ 作了分类。
 
 #corollary(name: <fet-trivializes-fet-locally>)[
-  Every finite etale covering $X' -> X$ is finite etale locally trivial. 
+  每个有限平展覆叠 $X' -> X$ 都在有限平展局部意义下平凡。
 ]
 #proof[
-  There are a few options for this proof, but the fastest way is through the etale fundamental group. 
-  Assume that $X$ is connected, since we can trivialize $X'$ separately over each connected component of $X$. Fixing a base point $ol(x)$ of $X$, and from the theory of etale fundamental groups, $X'$ corresponds to an object: 
+  这个证明有好几种做法，最快的还是走平展基本群。
+  不妨设 $X$ 连通，因为可以在 $X$ 的每个连通分支上分别把 $X'$ 平凡化。固定 $X$ 的一个基点 $ol(x)$；由平展基本群的理论，$X'$ 对应于一个对象：
   $
     S in GSet(pi_1^et (X, ol(x)))^#[fin,cont]
   $
-  The action of $pi_1^et (X, ol(x))$ thus factors through a finite quotient, corresponding to a Galois $(Z, ol(z)) in FEt_X$. In other words, $pi_1^et (Z, ol(z))$ acts trivially on $S$. Now $S$, as a $pi_1^et (Z, ol(z))$-set, corresponds to the base change $X' times_X Z -> Z$ in $FEt_Z$, so $X' times_X Z -> Z$ is a trivial covering space, i.e. $X' times_X Z$ is a disjoint union of copies of $Z$. 
+  于是 $pi_1^et (X, ol(x))$ 的作用经过一个有限商，这个有限商对应某个 Galois 覆叠 $(Z, ol(z)) in FEt_X$。换言之，$pi_1^et (Z, ol(z))$ 平凡地作用在 $S$ 上。现在，作为 $pi_1^et (Z, ol(z))$-集，$S$ 对应于 $FEt_Z$ 中的基变换 $X' times_X Z -> Z$，因此 $X' times_X Z -> Z$ 是平凡覆叠空间，即 $X' times_X Z$ 是若干份 $Z$ 的不交并。
 ]
 
 /*
 #date[
-  Lecture 5, 2025/10/22
+  第 5 讲，2025/10/22
   #set align(left)
 
   /*
-  Recall that last lecture, we introduced $pi_1^et (X, ol(x))$, the etale fundamental group. Let $X$ be a connected noetherian scheme, and fix a geometric point $ol(x): Spec(Omega) -> X$. We then have a functor $FEt_X -> cSet^"fin", (f: Z -> X) |-> f^(-1)(ol(x))$. We equipped $pi_1^et (X, ol(x))$ with a topology by:
+  回忆上一讲，我们介绍了平展基本群 $pi_1^et (X, ol(x))$。设 $X$ 是连通的 Noether 概形，并固定几何点 $ol(x): Spec(Omega) -> X$。于是有函子 $FEt_X -> cSet^"fin", (f: Z -> X) |-> f^(-1)(ol(x))$。我们按下式给 $pi_1^et (X, ol(x))$ 装上拓扑：
   $
     pi_1^et (X, ol(x)) := Aut(F_(ol(x))) < product_(Z in FEt_X) Aut(F_(ol(x)) (Z))
   $
-  by the subspace topology of the product topology on the product on the right.
+  即取右端那个乘积上的积拓扑所诱导的子空间拓扑。
   
-  We also concluded that:
+  我们还得到：
   #theorem[
-    (Galois theory for $(X, ol(x))$) There is a natural equivalence of categories of $FEt_X$ with $pi_1^et (X, ol(X))"-"cSet^("fin,cont")$, finite sets equipped with a continuous action of $pi_1^et (X, ol(X))$, compatible with $F_(ol(x)) : FEt_X -> cSet^"fin"$ and the forgetful functor $pi_1^et (X, ol(X))"-"cSet^("fin,cont")-> cSet^"fin"$.
+    （$(X, ol(x))$ 的 Galois 理论）$FEt_X$ 与 $pi_1^et (X, ol(X))"-"cSet^("fin,cont")$（即带 $pi_1^et (X, ol(X))$ 连续作用的有限集）之间有自然的范畴等价，且与 $F_(ol(x)) : FEt_X -> cSet^"fin"$ 以及遗忘函子 $pi_1^et (X, ol(X))"-"cSet^("fin,cont")-> cSet^"fin"$ 相容。
   ]
   
-  We also gave another description of $pi_1^et$ via Galois covers. Recall that $(f: Z -> X) in FEt_X$ connected is called Galois $:<==> \#Aut(Z\/X) = \#F_(ol(x)) (Z) <==> Z\/Aut(Z\/X)^opp cong X$. Then consider:
+  我们还用 Galois 覆叠给出了 $pi_1^et$ 的另一种描述。回忆：$(f: Z -> X) in FEt_X$ 连通时称为 Galois 的 $:<==> \#Aut(Z\/X) = \#F_(ol(x)) (Z) <==> Z\/Aut(Z\/X)^opp cong X$。接着考虑：
   $
-    I = {(X_i, ol(x_i)) "pointed Galois coverings over" (X, ol(x))}
+    I = {(X_i, ol(x_i)) "为" (X, ol(x)) "上的带基点 Galois 覆叠"}
   $
-  and proved that:
+  并证明了：
   $
     dirlim_(i in I) Hom_X (X_i, Z) cong F_(ol(x)) (Z) \
     pi_1^et (X, ol(x)) cong invlim_(i in I) Aut(X_i\/X)^opp
   $
   #example[
-    Let $X = Spec(K)$, and fix a separable closure $K^sep\/K$. Then:
+    设 $X = Spec(K)$，并固定可分闭包 $K^sep\/K$。则：
     $
-      pi_1^et (Spec(K), Spec(K^sep)) cong invlim_(L\/K "fin Galois") Gal(L\/K) cong Gal(K^sep\/K)
+      pi_1^et (Spec(K), Spec(K^sep)) cong invlim_(L\/K "有限 Galois") Gal(L\/K) cong Gal(K^sep\/K)
     $
-    is the absolute Galois group.
+    它就是绝对 Galois 群。
   ]*/
   
-  The key to this description is that:
+  这一描述的关键在于：
   
-  + Given connected $(Z, ol(z)), (Z', ol(z'))$ pointed etale covering spaces over $(X, ol(x))$, there is at most one map between them compatible with the covering.
+  + 给定 $(X, ol(x)) $ 上连通的带基点平展覆叠空间 $(Z, ol(z)), (Z', ol(z')) $，它们之间与覆叠相容的映射至多有一个。
   
-  + Let $Z$ be a connected etale covering space over $X$, and $G <= Aut(Z\/X)^opp$ be a finite subgroup. Then $Z -> Z\/G$ is a Galois covering with $G cong Aut(Z\/(Z\/G))^opp$.
+  + 设 $Z$ 是 $X$ 上连通的平展覆叠空间，$G <= Aut(Z\/X)^opp$ 是有限子群。则 $Z -> Z\/G$ 是 Galois 覆叠，且 $G cong Aut(Z\/(Z\/G))^opp$。
   
-  To see etaleness of $Z -> Z\/G$. We need to check that for any $z in Z$, the inertia subgroup:
+  为看出 $Z -> Z\/G$ 平展，需要对任意 $z in Z$ 验证惯性子群：
   $
-    G_i (z) := {g in G: g(z) = z, g "acts by the identity on" κ(z)}
+    G_i (z) := {g in G: g(z) = z, g "固定" κ(z)}
   $
-  is trivial. But indeed,
+  是平凡的。而事实上，
   $
-    G_i (z) & = {g in G: g dot ol(z) = ol(z) "where" ol(z) = Spec(κ(z)^sep) -> {z} subset Z}
+    G_i (z) & = {g in G: g dot ol(z) = ol(z) "其中" ol(z) = Spec(κ(z)^sep) -> {z} subset Z}
   $
-  can only have a single element by (1).
+  由 (1) 可知它只能有一个元素。
   
-  The point (2) is useful in showing that $FEt_X -> pi_1^et (X, ol(X))"-"cSet^("fin,cont")$ is essentially surjective. Indeed, for any $pi_1^et$-set $T$, we may perform an orbit decomposition. We must then associate an etale covering space with any transitive $pi_1^et$-set $T$. Let $S$ be the stablizer of a point, and $N$ be a finite index normal subgroup of $pi_1^et$ s.t. $N <= S <= pi_1^et$. Then $pi_1^et\/N$ corresponds to a Galois covering $X_i$, and $pi_1^et\/S$ corresponds to the covering $X_i -> X_i\/(S\/N)$.
+  第 (2) 条在证明 $FEt_X -> pi_1^et (X, ol(X))"-"cSet^("fin,cont") $ 本质满时很有用。事实上，对任意 $pi_1^et$-集 $T$ 都可以作轨道分解，于是只需为每个传递的 $pi_1^et$-集 $T$ 配上相应的平展覆叠空间。设 $S$ 是某点的稳定子群，$N$ 是 $pi_1^et$ 的有限指数正规子群，使得 $N <= S <= pi_1^et$。则 $pi_1^et\/N$ 对应 Galois 覆叠 $X_i$，$pi_1^et\/S$ 对应覆叠 $X_i -> X_i\/(S\/N) $。
 ]*/

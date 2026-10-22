@@ -1,69 +1,69 @@
 #import "void-import.typ": *
 
-Recall that for a scheme $X$, we have $Et_X$, the category of all etale maps ${f: Z -> X}$. We then introduced the notion of an etale #furi[recouvrement][cover]. We also have the category $FEt_X$ consisting of all finite etale maps ${f: Z -> X}$. In this setting, the notion of etale #furi[revêtement][covering] space refers to a morphism in $FEt_X$.
+回忆一下：对概形 $X$，有 $Et_X$，即全体平展映射 ${f: Z -> X}$ 构成的范畴。随后我们引入了#furi[recouvrement][平展覆盖] (étale cover) 的概念。此外还有范畴 $FEt_X$，由全体有限平展映射 ${f: Z -> X}$ 构成。在这个语境下，所谓平展#furi[revêtement][覆叠空间]，指的是 $FEt_X$ 中的一个态射。
 
-The etale fundamental group aims to solve the following classification problem: 
+平展基本群要解决的，正是下面这个分类问题：
 #question[
-  Classify and describe $FEt_X$ in a Galois-theoretic way.
+  用 Galois 理论的方式，对 $FEt_X$ 进行分类与描述。
 ]
 
-The intuition goes as follows. In algebraic topology, given a good#footnote[Don't ask me what good means. Maybe a CW complex.] path-connected topological space $X$, we defined its (topological) fundamental group $pi_1^"top" (X, x)$ as homotopy equivalence classes of $x$-based loops. Such a space has a universal covering space $tilde(X) ->> X$. $pi_1^"top" (X)$ can be defined as the automorphism group of $tilde(X)$ over $X$, and there is an equivalence of categories: 
+直观想法如下。在代数拓扑中，给定一个好的#footnote[别问我什么叫“好”。大概是指 CW 复形。]道路连通拓扑空间 $X$，我们把它的（拓扑）基本群 $pi_1^"top" (X, x)$ 定义为以 $x$ 为基点的回路的同伦等价类。这样的空间有万有覆叠空间 $tilde(X) ->> X$。$pi_1^"top" (X)$ 可以定义为 $tilde(X)$ 在 $X$ 上的自同构群，并且有范畴等价：
 $
   bold("Cov")(X) &-> GSet(pi_1^"top" (X, x)) \
   (p: X' -> X) &|-> p^(-1) (x)
 $
-between the covering spaces of $X$ under which the finite covering spaces corresponds to finite $pi_1^"top" (X)$-sets. 
+即 $X$ 的覆叠空间与 $pi_1^"top" (X, x)$-集合之间的范畴等价，其中有限覆叠空间对应同一个群 $pi_1^"top" (X)$ 上的有限集。
 
-In the same way, for a suitable scheme $X$, we hope to define the etale fundamental group $pi_1^et (X)$ as the automorphism of _something_. There is no universal etale covering space, so we need to get creative. It turns out that the finite etale covering spaces of $X$ form a filtered system. This allows us to define $pi_1^et (X)$ as the projective limit of automorphism groups of various etale covering spaces, a profinite group. 
+同样地，对适当的概形 $X$，我们希望把平展基本群 $pi_1^et (X)$ 定义为_某个东西_的自同构群。平展情形没有万有覆叠空间，所以得另想办法。事实证明，$X$ 的有限平展覆叠空间构成一个滤过系统。于是可以取各个平展覆叠空间的自同构群，作逆向极限，以此定义 $pi_1^et (X)$，得到的是一个投射有限群。
 
-We would then hope to obtain a classification: 
+于是我们期望得到如下分类：
 $
   FEt_X &-> GSet(pi_1^et (X, ol(x)))^"fin,cont" \
   (p: X' -> X) &|-> p^(-1)(ol(x))
 $
-(whatever $ol(x)$ means). This is an equivalence of categories, between the finite etale coverings of $X$, and finite $pi_1^et (X, ol(x))$-sets with a continuous group action. 
+（$ol(x)$ 是什么意思先不管。）这是 $X$ 的有限平展覆叠与带连续群作用的有限 $pi_1^et (X, ol(x))$-集之间的范畴等价。
 
-One might imagine what the group $pi_1^et (X, ol(x))$ could possibly look like. The intuition comes from the case where $X = Spec(K)$ is the spectrum of a field. 
+可以想象一下，群 $pi_1^et (X, ol(x))$ 究竟可能长什么样。直观来自 $X = Spec(K)$、$K$ 是域的情形。
 #example(name: <pi1et-motivation-eg>)[
-  When $X = Spec(K)$ is a field, any object $Z in FEt_X$ is a disjoint union $union.sq.big_i Spec(L_i)$, where $L_i\/K$ is a finite separable extension. From Galois theory, a finite separable extension $L\/K$ corresponds to the open subgroup $Gal(K^sep\/L)$ of the absolute Galois group $Gal(K^sep\/K)$. Thus, 
+  若 $X = Spec(K)$，其中 $K$ 是域，则 $FEt_X$ 中任何对象 $Z$ 都是不交并 $union.sq.big_i Spec(L_i)$，其中 $L_i\/K$ 是有限可分扩张。由 Galois 理论，有限可分扩张 $L\/K$ 对应于绝对 Galois 群 $Gal(K^sep\/K)$ 的开子群 $Gal(K^sep\/L)$。于是
   $
     FEt_X &-> GSet(Gal(K^sep\/K))^#[fin,cont] \
     union.sq.big_i Spec(L_i) &|-> union.sq.big_i Gal(K^sep\/K)\/Gal(K^sep\/L_i)
   $
-  is an equivalence of categories. In other words, we would expect $pi_1^et (Spec(K)) = Gal(K^sep\/K)$, to be the absolute Galois group. 
+  是范畴等价。换言之，我们期望 $pi_1^et (Spec(K)) = Gal(K^sep\/K)$，也就是说，平展基本群就是绝对 Galois 群。
 ]
-This example suggests that we should establish the theory of the etale fundamental group in a Galois-theoretic way, by establishing suitable generalizations of Galois theory for finite etale coverings. 
+这个例子提示我们，应当用 Galois 理论的方式建立平展基本群的理论，也就是把 Galois 理论适当推广到有限平展覆叠上。
 
-In this chapter, we assume that $X$ is a connected noetherian scheme, and all schemes appearing are assumed to be noetherian. The noetherian hypothesis is here because without it, connected components may behave pathologically. 
+本章假定 $X$ 是连通的 Noether 概形，并且出现的概形都假定是 Noether 的。这里之所以需要 Noether 假设，是因为一旦没有它，连通分支的行为就可能很病态。
 
-The theory of etale fundamental groups can still be developed in a non-noetherian context. However we try to keep this material concise and self-contained, so we won't bother. 
+非 Noether 的情形下，平展基本群的理论同样可以发展。不过我们希望这份材料保持简洁、自足，就不去折腾了。
 
 #notation(name: <terminology-etale-coverings>)[
-  The French word for the #furi[recouvrement][cover] and the #furi[revêtement][covering] looks very different, but unfortunately they look similar in English. Try to distinguish between these notions. In this document, we will use the following notation for disambiguation:
-  - An _etale cover_ refers to a jointly surjective family of etale morphisms ${f_i: Z_i -> X}$
-  - A _finite etale covering space_ refers to a finite etale morphism $f: Z -> X$.
-  However I am not perfect and may forget whether to use 'cover' and 'covering' every now and then. 'Finite etale covering spaces' are 4 words and I won't bother to write all 4 words in most cases. The rule of thumb is that whenever you see 'finite' or 'covering space', I am referring to the second concept. If you see 'etale cover', I am referring to the first. If you see 'etale covering' without the word 'finite' or 'space', you need to use the context to disambiguate, and you should probably contact me. 
+  #furi[recouvrement][平展覆盖] 与 #furi[revêtement][覆叠空间] 这两个法语词看上去差别很大，可惜它们在中文和英文里长得都很像。请务必分清这两个概念。本书用下面这套记号来消除歧义：
+  - _平展覆盖_指的是一族联合满射的平展态射 ${f_i: Z_i -> X}$；
+  - _有限平展覆叠空间_指的是有限平展态射 $f: Z -> X$。
+  不过我本人也不完美，隔三岔五就会忘记该用“cover”还是“covering”。“有限平展覆叠空间”有八个字，多数情况下我懒得写全。经验法则是：看到“有限”或“覆叠空间”，我说的就是第二个概念；看到“平展覆盖”，指的就是第一个；若看到“平展覆叠”却既没有“有限”也没有“空间”，就得靠上下文判断，而且多半该来问我了。
 ]
 
-== Etale covering spaces
+== 平展覆叠空间
 /*#date[
-  Lecture 4, 2025/10/15
+  第 4 讲，2025/10/15
   #align(left)[
-    Today, we will introduce: 
-    - Etale covering spaces
-    - Quotient by finite group
-    - Galois theory
-    and introduce the etale fundamental group. 
+    今天我们介绍：
+    - 平展覆叠空间
+    - 对有限群取商
+    - Galois 理论
+    并引入平展基本群。
 
-    Warning: Be careful about left and right. 
+    提醒：注意左右。
   ]
 ]*/
 
 
 #definition(name: <defn-geometric-points>)[
-  A *geometric point* of $X$ is a morphism $ol(x) : Spec(Omega) -> X$ for a separably closed field $Omega$. We say $ol(x)$ *lies above* a usual point $x in X$, if $x$ is the image of $ol(x)$. 
+  概形 $X$ 的*几何点*，指的是一个态射 $ol(x) : Spec(Omega) -> X$，其中 $Omega$ 是可分闭域。若普通的点 $x in X$ 是 $ol(x)$ 的像，则称 $ol(x)$ *位于* $x$ 之上。
 
-  A *pointed scheme* $(X,ol(x))$ refers to simply a scheme $X$ together with a geometric point $ol(x)$ of $X$. A morphism $f: (X, ol(x)) -> (Y, ol(y))$ of pointed schemes refers to a commutative diagram: 
+  *带基点概形* (pointed scheme) $(X,ol(x))$，说的不过是一个概形 $X$ 连同它的一个几何点 $ol(x)$。带基点概形之间的态射 $f: (X, ol(x)) -> (Y, ol(y))$，指的是使下图交换的态射：
   // https://q.uiver.app/#r=typst&q=WzAsMyxbMSwwLCJTcGVjKE9tZWdhKSJdLFswLDIsIlgiXSxbMiwyLCJZIl0sWzAsMSwib3ZlcmxpbmUoeCkiXSxbMCwyLCJvdmVybGluZSh5KSIsMl0sWzEsMiwiZiJdXQ==
   #align(center, diagram({
     node((0, -1), [$Spec(Omega)$])
@@ -74,31 +74,31 @@ The theory of etale fundamental groups can still be developed in a non-noetheria
     edge((-1, 1), (1, 1), [$f$], label-side: right, "->")
   }, spacing: 1.5em))
   #example[
-    - For $X = Spec(K)$, a geometric point of $X$ is nothing but the choice of an inclusion $K arrow.r.hook Omega$ into a separably closed field. Usually, we take $Omega = K^sep$ or $ol(K)$ to be a separable/algebraic closure. 
+    - 对 $X = Spec(K)$，$X$ 的几何点不过是选定一个落入可分闭域的嵌入 $K arrow.r.hook Omega$。通常取 $Omega = K^sep$ 为可分闭包，或取 $ol(K)$ 为代数闭包。
 
-    - For a general scheme $X$, a geometric point $ol(x)$ above $x in X$ is also simply an inclusion $k(x) -> Omega$ of the residue field into a separably closed field. We also usually take $Omega = k(x)^sep$ or $ol(k(x))$ to be a separable/algebraic closure. 
+    - 对一般的概形 $X$，位于 $x in X$ 之上的几何点 $ol(x)$ 也不过是剩余域到可分闭域的一个嵌入 $k(x) -> Omega$。通常同样取 $Omega = k(x)^sep$ 为可分闭包，或取 $ol(k(x))$ 为代数闭包。
 
-    It will turn out that the choice of $Omega$ is not of much importance, and simply picking $Omega = k(x)^sep$ or $ol(k(x))$ will capture all essential information. However, we will not make a precise meaning out of it until much later in the course. 
+    后面会看到，$Omega$ 的选取并不太重要，直接取 $Omega = k(x)^sep$ 或 $ol(k(x))$ 就足以抓住全部本质信息。不过要到课程很后面，我们才会把这层意思说精确。
   ]
 ]
 
 #definition(name: <defn-fiber-functor>)[
-  For a fixed geometric point $ol(x): Spec(Omega) -> X$, we define the *fiber functor*: 
+  固定几何点 $ol(x): Spec(Omega) -> X$，定义*纤维函子* (fiber functor)：
   $
     F_(ol(x)): FEt_X &-> cSet^"fin" \
     (p: Z -> X) &|-> p^(-1)(ol(x))
   $
-  sending an etale covering space to the fiber of the geometric point $ol(x)$, a finite set. 
+  它把平展覆叠空间送到几何点 $ol(x)$ 处的纤维，即一个有限集。
   
-  In other words, this is equivalent to the set of pairs $(z, psi)$, where $z in p^(-1)(x)$ is a usual point and $psi: k(z) -> Omega$ is an inclusion compatible with $k(x) -> Omega$. In particular, 
+  换言之，这等同于全体二元组 $(z, psi)$ 构成的集合，其中 $z in p^(-1)(x)$ 是普通的点，$psi: k(z) -> Omega$ 是与 $k(x) -> Omega$ 相容的嵌入。特别地，
   $
     abs(F_(ol(x)) (Z)) = dim_(k(x)) (cal(O)_(Z_x) (Z_x)) = deg(p)
   $
-  is independent from $x$ since $p$ is flat. 
+  这个数与 $x$ 的选取无关，因为 $p$ 平坦。
 ]
 
 #properties(name: <fet-first-props>)[
-  0. If we have a diagram: 
+  0. 若有图表：
   // https://q.uiver.app/#r=typst&q=WzAsMyxbMCwwLCJaIl0sWzIsMCwiWiciXSxbMSwxLCJYIl0sWzAsMiwiZiJdLFsxLDIsImYnIiwyXSxbMCwxLCJnIl1d
     #align(center, diagram({
       node((-1, -1), [$Z$])
@@ -108,14 +108,14 @@ The theory of etale fundamental groups can still be developed in a non-noetheria
       edge((1, -1), (0, 0), [$f'$], label-side: left, "->")
       edge((-1, -1), (1, -1), [$g$], label-side: left, "->")
     }, spacing: 1.5em))
-    for $(f: Z -> X), (f': Z' -> X) in FEt_X$, then $g$ is finite etale. 
+    其中 $(f: Z -> X), (f': Z' -> X) in FEt_X$，则 $g$ 有限平展。
     #proof[
-      $g$ being etale follows from @etale-first-props. The finiteness of $g$ is not easy to check from the definition. However we see that $g$ is proper here, and $g^(-1)(z') subset f^(-1)(f'(z'))$ is finite and so $g$ is quasi-finite. Thus $g$ is finite by Zariski's main theorem.#footnote[Zariski's main theorem is definitely not necessary here. Finiteness of $g$ can definitely be checked manually here, but I want a short proof aimed at convincing you quickly.]
+      $g$ 是平展的，这由 @etale-first-props 可得。$g$ 的有限性则不容易从定义验证。不过这里 $g$ 是紧合的，而 $g^(-1)(z') subset f^(-1)(f'(z'))$ 有限，故 $g$ 拟有限。于是由 Zariski 主定理，$g$ 有限。#footnote[这里完全不需要 Zariski 主定理。$g$ 的有限性在这里当然可以手工验证，但我想要一个能快速说服你的简短证明。]
     ]
 
-  1. Suppose we have pointed schemes $(Z, ol(z)), (Z', ol(z'))$ etale over $(X, ol(x))$. If $Z$ is connected and $Z'$ is separated over $X$ (which of course holds for finite etale coverings), then there is at most one map $g: (Z, ol(z)) -> (Z', ol(z'))$ over $(X, ol(x))$. 
+  1. 设带基点概形 $(Z, ol(z)), (Z', ol(z'))$ 在 $(X, ol(x))$ 上平展。若 $Z$ 连通、$Z'$ 在 $X$ 上分离（有限平展覆叠自然满足这一点），则在 $(X, ol(x))$ 上至多存在一个映射 $g: (Z, ol(z)) -> (Z', ol(z'))$。
     #proof[
-      Such a map $g$ makes the graph $Gamma_g$ fit into the diagram: 
+      这样的映射 $g$ 使图像 $Gamma_g$ 出现在如下图表中：
       // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwxLCJaIl0sWzIsMSwiWiB0aW1lc19YIFonIl0sWzIsMiwiWiJdLFswLDAsIlNwZWMoT21lZ2EpIl0sWzAsMSwiR2FtbWFfZyIsMV0sWzEsMiwiXCJwclwiX1oiLDFdLFswLDIsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFszLDAsIm92ZXJsaW5lKHopIiwxXSxbMywxLCIob3ZlcmxpbmUoeiksIG92ZXJsaW5lKHonKSkiLDFdXQ==
       #context align(center, diagram({
         node((0, 0), [$Z$])
@@ -128,12 +128,12 @@ The theory of etale fundamental groups can still be developed in a non-noetheria
         edge((0, -1), (0, 0), [$ol(z)$], label-side: center, "->")
         edge((0, -1), (2, 0), [$(ol(z), ol(z'))$], label-side: center, "->")
       }, crossing-fill: thm-box-curr-color()))
-      $Gamma_g$ is the base change of the diagonal $Delta_(Z'\/X): Z' -> Z' times_X Z'$ along $g: Z -> Z'$, hence locally an open immersion since $Z' -> X$ is etale. Since $"pr"_Z compose Gamma_g = id_Z$, $Gamma_g$ is injective, hence it must be an open immersion. It is also a closed immersion since $Z' -> X$ is separated. 
+      $Gamma_g$ 是对角态射 $Delta_(Z'\/X): Z' -> Z' times_X Z'$ 沿 $g: Z -> Z'$ 的基变换；由于 $Z' -> X$ 平展，$Gamma_g$ 局部是开浸入。又因 $"pr"_Z compose Gamma_g = id_Z$，$Gamma_g$ 是单射，从而必是开浸入。由 $Z' -> X$ 分离，$Gamma_g$ 也是闭浸入。
       
-      As such, $Gamma_g: Z -> Z times_X Z'$ must be the inclusion of $Z$ as a connected component of $Z times_X Z'$. There is only one connected component of $Z times_X Z'$ containing $(ol(z), ol(z'))$, so $Gamma_g$ is unique if it exists. Then $g = "pr"_(Z') compose Gamma_g$ is unique if it exists. 
+      于是 $Gamma_g: Z -> Z times_X Z'$ 只能是这样的嵌入：把 $Z$ 嵌入 $Z times_X Z'$，作为它的一个连通分支。而 $Z times_X Z'$ 中含 $(ol(z), ol(z'))$ 的连通分支只有一个，故 $Gamma_g$ 若存在则唯一。进而 $g = "pr"_(Z') compose Gamma_g$ 若存在也唯一。
     ]
 
-  + Given finite etale coverings $(Z, ol(z))$ and $(Z', ol(z'))$ of $(X, ol(x))$, there exists a connected finite etale covering $(tilde(Z), ol(tilde(z)))$ fitting in the commutative diagram: 
+  + 给定 $(X, ol(x))$ 的有限平展覆叠 $(Z, ol(z))$ 与 $(Z', ol(z'))$，存在连通的有限平展覆叠 $(tilde(Z), ol(tilde(z)))$，使它落在如下交换图表中：
     // https://q.uiver.app/#r=typst&q=WzAsNCxbMSwwLCIodGlsZGUoWiksIG92ZXJsaW5lKHRpbGRlKHopKSkiXSxbMCwxLCIoWiwgb3ZlcmxpbmUoeikpIl0sWzIsMSwiKFonLCBvdmVybGluZSh6JykpIl0sWzEsMiwiKFgsIG92ZXJsaW5lKHgpKSJdLFswLDEsImV4aXN0cyIsMV0sWzAsMiwiZXhpc3RzIiwxXSxbMSwzXSxbMiwzXV0=
     #context align(center, diagram({
       node((0, -1), [$(tilde(Z), ol(tilde(z)))$])
@@ -145,36 +145,36 @@ The theory of etale fundamental groups can still be developed in a non-noetheria
       edge((-1, 0), (0, 1), "->")
       edge((1, 0), (0, 1), "->")
     }, crossing-fill: thm-box-curr-color(), spacing: 2em))
-    This is to be seen as the generalization of the existence of a composite field. 
+    这应当看作合成域存在性的推广。
     #proof[
-      Take a connected component of $Z times_X Z'$ containing the image of $(ol(z), ol(z')))$
+      取 $Z times_X Z'$ 中含 $(ol(z), ol(z')))$ 的像的连通分支。
     ]
   
-  + Fix a geometric point $ol(x)$ of $X$. For a morphism $g: Z -> Z'$ in $FEt_X$, if $F_(ol(x)) (g): F_(ol(x)) (Z) -> F_(ol(x)) (Z')$ is a bijection, then $g$ is an isomorphism. 
+  + 固定 $X$ 的一个几何点 $ol(x)$。对 $FEt_X$ 中的态射 $g: Z -> Z'$，若 $F_(ol(x)) (g): F_(ol(x)) (Z) -> F_(ol(x)) (Z')$ 是双射，则 $g$ 是同构。
 
     #proof[
-      Since $g$ is finite etale, $g$ is an isomorphism $<==>$ $deg(g) = 1$, which is equivalent to the cardinality of geometric fibers of $g$ being $1$, i.e. fibers of $F_(ol(x)) (g)$ having cardinality $1$. 
+      由于 $g$ 有限平展，$g$ 是同构 $<==>$ $deg(g) = 1$，这等价于 $g$ 的几何纤维基数都是 $1$，即 $F_(ol(x)) (g)$ 的各纤维基数都是 $1$。
     ]
   
-  + If $Z in FEt_X$ is connected, then any $X$-endomorphism $g: Z -> Z$ is an isomorphism. 
+  + 若 $Z in FEt_X$ 连通，则任何 $X$-自态射 $g: Z -> Z$ 都是同构。
     #proof[
-      Since $Z$ is connected, by (1), $F_(ol(x)) (g): F_(ol(x)) (Z) -> F_(ol(x)) (Z)$ is injective. There's a deep theorem that a map between two finite sets of the same cardinality is injective $<==>$ surjective $<==>$ bijective. Thus $F_(ol(x)) (g)$ is bijective, and by (3) $g$ is an isomorphism. 
+      由于 $Z$ 连通，由 (1)，$F_(ol(x)) (g): F_(ol(x)) (Z) -> F_(ol(x)) (Z)$ 是单射。有个深刻定理说：基数相同的两个有限集之间的映射，单射 $<==>$ 满射 $<==>$ 双射。于是 $F_(ol(x)) (g)$ 是双射，再由 (3) 知 $g$ 是同构。
     ]
 ]
 
 #notation[
-  For every $Z in FEt_X$, define the group: 
+  对每个 $Z in FEt_X$，定义群：
   $
-    Aut(Z\/X) = {g: Z overset(->, tilde) Z "automorphism in" FEt_X}
+    Aut(Z\/X) = {g: Z overset(->, tilde) Z "是" FEt_X #[中的自同构]}
   $
-  Then $Aut(Z\/X)$ has a left action on $Z$. Consider the opposite group $Aut(Z\/X)^opp$, having a right action on $Z$. 
+  于是 $Aut(Z\/X)$ 在 $Z$ 上有左作用。考虑反群 $Aut(Z\/X)^opp$，它在 $Z$ 上有右作用。
   
-  /*Today when we see a finite abstract group $G$ acting on $Z$, we will always consider right actions. */
+  /*今天起，每当我们看到有限抽象群 $G$ 作用在 $Z$ 上，都一律考虑右作用。*/
   #remark[
-    Mentally, the reason for considering the opposite group is that: 
+    从心理上说，之所以考虑反群，是因为：
     $
       Aut(Spec(K^sep)\/Spec(K))^opp cong Gal(K^sep\/K)
     $
-    ($K^sep$ is not _finite_ etale over $K$. However, this relation holds whenever you replace $K^sep$ with a finite Galois extension $L\/K$.) We mentally want the absolute Galois group, since in @pi1et-motivation-eg, we expect $pi_1^et (Spec(K)) = Gal(K^sep\/K)$ to be the absolute Galois group. 
+    （$K^sep$ 在 $K$ 上并非 _有限_ 平展。不过只要把 $K^sep$ 换成有限 Galois 扩张 $L\/K$，这个关系就成立。）我们真正想要的是绝对 Galois 群，因为在 @pi1et-motivation-eg 中，我们期望 $pi_1^et (Spec(K)) = Gal(K^sep\/K)$，也就是说，平展基本群就是绝对 Galois 群。
   ]
 ]

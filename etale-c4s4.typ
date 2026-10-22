@@ -1,48 +1,48 @@
 #import "void-import.typ": *
-== Functoriality <sect-functoriality-of-etale-topos>
+== 函子性 <sect-functoriality-of-etale-topos>
 
-In this section, we will establish: 
+本节我们要建立： 
 
-- The direct and inverse image functors $f_*: cSh(X_et) arrows.rl cSh(Y_et): f^(-1)$ for any scheme morphism $f: X -> Y$; 
+- 对任意概形态射 $f: X -> Y$，直像 (direct image) 函子与逆像 (inverse image) 函子 $f_*: cSh(X_et) arrows.rl cSh(Y_et): f^(-1)$； 
 
 #construction[
-  Let $f: X -> Y$ be a morphism of schemes. We then have a functor:
+  设 $f: X -> Y$ 是概形态射，则有函子：
   $
     f^(-1): Et_Y -> Et_X, (V -> Y) |-> f^(-1) (V) = (X times_Y V -> X)
   $
   
-  It has the properties: 
+  它满足以下性质： 
 
-  - $f^(-1) (Y) = X$;
+  - $f^(-1) (Y) = X$；
 
-  - $f^(-1) (V_1 times_V V_2) = f^(-1) (V_1) times_(f^(-1) (V)) f^(-1) (V_2)$. 
+  - $f^(-1) (V_1 times_V V_2) = f^(-1) (V_1) times_(f^(-1) (V)) f^(-1) (V_2)$。 
   
-  Therefore, $cal(V) = {V_i -> V}$ is a cover in $Y_et$ implies that ${f^(-1) (V_i) -> f^(-1) (V)}$ is a covering in $X_et$. 
+  因此，若 $cal(V) = {V_i -> V}$ 是 $Y_et$ 中的覆盖，则 ${f^(-1) (V_i) -> f^(-1) (V)}$ 是 $X_et$ 中的覆盖。 
 ]
 
 #definition(name: <defn-etale-direct-image>)[
-  Define the *direct image* functor: 
+  定义*直像*函子： 
   $
     f_* = f_(et,*): cPSh(X_et) -> cPSh(Y_et), cal(F) |-> (V |-> cal(F)(f^(-1) (V)) = cal(F)(X times_Y V))
   $
 ]
 #lemma[
-  $f_*$ is a functor $cSh(X_et) -> cSh(Y_et), cPAb(X_et) -> cPAb(Y_et), cAb(X_et) -> cAb(Y_et)$. 
+  $f_*$ 是函子 $cSh(X_et) -> cSh(Y_et), cPAb(X_et) -> cPAb(Y_et), cAb(X_et) -> cAb(Y_et)$。 
 ]
 #proof[
-  Indeed, it suffices to show that if $cal(F)$ is a sheaf, so is $f_* cal(F)$. Indeed, the sheaf condition for $f_* cal(F)$ requires that: 
+  事实上，只需证明：若 $cal(F)$ 是层，则 $f_* cal(F)$ 也是层。具体地说，$f_* cal(F)$ 的层条件要求 
   $
     f_* cal(F) (V) -> product_i f_* cal(F)(V_i) -> product_(i,j) f_* cal(F) (V_i times_V V_j)
   $
-  is an equalizer for every cover $cal(V) = {V_i -> V}$ in $Et_Y$. However, using the properties of $f^(-1)$ given above, this translates to the sheaf conditions for $cal(F)$ for the cover $f^(-1) (cal(V)) = {f^(-1) (V_i) -> f^(-1) (V)}$ in $Et_X$, which holds since $cal(F)$ is a sheaf. 
+  对 $Et_Y$ 中的每个覆盖 $cal(V) = {V_i -> V}$ 都是等化子。然而，利用前面给出的 $f^(-1)$ 的性质，这恰好化为 $cal(F)$ 关于 $Et_X$ 中覆盖 $f^(-1) (cal(V)) = {f^(-1) (V_i) -> f^(-1) (V)}$ 的层条件；而 $cal(F)$ 是层，所以该条件成立。 
 ]
 
 #definition[
-  Define the *presheaf inverse image* functor: 
+  定义*预层逆像* (presheaf inverse image) 函子： 
   $
     f_(cPSh)^(-1): cPSh(Y_et) -> cPSh(X_et), cPAb(Y_et) -> cPAb(X_et), cal(G) |-> (U |-> dircolim_((V,phi)) cal(G)(V))
   $
-  where the filtered colimit is taken over all commutative diagrams of the shape: 
+  其中滤余极限取遍所有如下形状的交换图表： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJVIl0sWzEsMCwiViJdLFswLDEsIlgiXSxbMSwxLCJZIl0sWzIsMywiZiIsMl0sWzAsMSwicGhpIl0sWzEsM10sWzAsMl1d
   #align(center, diagram({
     node((-1, -1), [$U$])
@@ -54,7 +54,7 @@ In this section, we will establish:
     edge((0, -1), (0, 0), "->")
     edge((-1, -1), (-1, 0), "->")
   }, spacing: 1.5em))
-  where $(V -> Y) in Et_Y$. This is indeed a filtered system, as explained in the following two diagrams: 
+  其中 $(V -> Y) in Et_Y$。这确实是滤过系统，如下两张图表所示： 
   // https://q.uiver.app/#r=typst&q=WzAsNixbMCwxLCJWXzEiXSxbMiwxLCJWXzIiXSxbMSwwLCJVIl0sWzEsMiwiWSJdLFsxLDEsIlZfMSB0aW1lc19ZIFZfMiJdLFs0LDEsIlgiXSxbMCwzXSxbMSwzXSxbMiwwLCJwaGlfMSIsMl0sWzIsMSwicGhpXzIiXSxbNCwwXSxbNCwxXSxbMiw0XSxbNCwzXSxbMiw1XSxbNSwzLCJmIl1d
   #align(center, diagram({
     node((-1, -1), [$V_1$])
@@ -108,14 +108,14 @@ In this section, we will establish:
 ]
 
 #lemma[
-  $f_(cPSh)^(-1)$ is the left adjoint to $f_*$ on $cPSh(X_et)$ and $cPAb(X_et)$, i.e:
+  在 $cPSh(X_et)$ 与 $cPAb(X_et)$ 上，$f_(cPSh)^(-1)$ 是 $f_*$ 的左伴随，即：
   $
     Hom_cPSh (f_cPSh^(-1) cal(G), cal(F)) = Hom_cPSh (cal(G), f_* cal(F))
   $
-  and the same goes for $cPAb$. 
+  对 $cPAb$ 而言，同样的伴随关系成立。 
 ]
 #proof[
-  We prove for $cPSh$ since the proof for $cPAb$ is the same. We only construct the unit and counit morphisms: 
+  我们只对 $cPSh$ 证明，$cPAb$ 的情形完全相同。这里只构造单位与余单位态射： 
   $
     alpha_(cal(F)): f^(-1)_cPSh f_* cal(F) -> cal(F), beta_(cal(G)): cal(G) -> f_* f^(-1)_cPSh cal(G)
   $
@@ -124,36 +124,36 @@ In this section, we will establish:
     alpha_(cal(F)): f^(-1)_cPSh f_* cal(F) (U) = dirlim_((V,phi)) cal(F)(f^(-1) (V)) &-> cal(F)(U) \
     (s in cal(F) (f^(-1)(V))) &|-> s|_U
   $
-  where the morphism $U -> f^(-1)(V) = V times_Y X$ is obtained from $U -> X$ and $phi: U -> V$. 
+  其中态射 $U -> f^(-1)(V) = V times_Y X$ 由 $U -> X$ 与 $phi: U -> V$ 给出。 
 
   $
     beta_(cal(G)): cal(G)(W) &-> f_* f^(-1)_cPSh cal(G) (W) = dirlim_((V,phi:f^(-1)(W)->V)) cal(G)(V) \
     s &|-> s 
   $
-  where we send $s$ to $s$ in the pair $(W, f^(-1)(W) = W times_Y X -> W)$. 
+  其中我们把 $s$ 送到序对 $(W, f^(-1)(W) = W times_Y X -> W)$ 中的 $s$。 
 
-  That this pair of unit and counit indeed satisfies all natural properties is routine to check. It is analogous to the adjunction of $f^(-1)$ and $f_*$ on the topological site. 
+  这对单位与余单位确实满足所有自然性条件，验证起来是例行公事。这一伴随关系与拓扑景上 $f^(-1)$ 与 $f_*$ 的伴随类似。 
 ]
 
 #definition(name: <defn-etale-sheaf-inverse-image>)[
-  Define the *sheaf inverse image* functor: 
+  定义*层逆像* (sheaf inverse image) 函子： 
   $
     f^(-1) = f_et^(-1) := (f_cPSh^(-1))^\#: cSh(Y_et) -> cSh(X_et), cAb(Y_et) -> cAb(X_et), cal(G) |-> (f^(-1)_cPSh cal(G))^\#
   $
-  When $f: X -> Y$ is clear from the context, we also use $cal(F)|_X$ to denote $f^(-1) cal(F)$. 
+  若 $f: X -> Y$ 在上下文中已经明确，我们也用 $cal(F)|_X$ 表示 $f^(-1) cal(F)$。 
 ]
 
 #proposition(name: <pullback-first-props>)[
-  + $f^(-1)$ is left adjoint to $f_*$ on $cSh(Y_et) -> cSh(X_et)$ and $cAb(Y_et) -> cAb(X_et)$;#footnote[
-    This pair $f_et: (f^(-1)_et, f_(et,*)): cSh(X_et) arrows.rl cSh(Y_et)$ is called a morphism of etale topoi. You don't need to know what that means. 
+  + $f^(-1)$ 在 $cSh(Y_et) -> cSh(X_et)$ 与 $cAb(Y_et) -> cAb(X_et)$ 这两种情形下都是 $f_*$ 的左伴随；#footnote[
+    这一对 $f_et: (f^(-1)_et, f_(et,*)): cSh(X_et) arrows.rl cSh(Y_et)$ 称为平展意象的态射 (morphism of étale topoi)。你不需要知道这是什么意思。 
   ]
   
-  + $f^(-1)_cPSh$ and $f^(-1)$ commute with finite limits, and hence $f^(-1): cAb(Y_et) -> cAb(X_et)$ is exact. 
+  + $f^(-1)_cPSh$ 与 $f^(-1)$ 都与有限极限交换，因此 $f^(-1): cAb(Y_et) -> cAb(X_et)$ 正合。 
 
-  + For all $cal(F) in cPSh(Y_et)$ or $cPAb(Y_et)$, there is a canonical isomorphism: $f^(-1) cal(F)^\# -> (f^(-1)_cPSh cal(F))^\#$ in $cSh(X_et)$ or $cAb(X_et)$. 
+  + 对任意 $cal(F) in cPSh(Y_et)$ 或 $cPAb(Y_et)$，都存在 $cSh(X_et)$ 或 $cAb(X_et)$ 中的典范同构：$f^(-1) cal(F)^\# -> (f^(-1)_cPSh cal(F))^\#$。 
 ]
 #proof[
-  (1) Indeed: 
+  (1) 事实上： 
   $
     Hom_(cSh(X_et)) (f^(-1) cal(F), cal(G)) &= Hom_(cSh(X_et)) ((f^(-1)_cPSh cal(F))^\#, cal(G)) \
     &= Hom_(cPSh(X_et)) (f^(-1)_cPSh cal(F), cal(G)) \
@@ -161,92 +161,92 @@ In this section, we will establish:
     &= Hom_(cSh(Y_et)) (cal(F), f_* cal(G))
   $
 
-  (2) $f^(-1)$ is $f^(-1)_cPSh$ followed by $(-)^\#$, where $(-)^\#$ is known to preserve finite limits. Thus, it suffices to show that $f^(-1)_cPSh$ preserves finite limits. We can check section-wise, but section-wise $f^(-1)_cPSh$ is a filtered colimit, which commutes with finite limits. 
+  (2) $f^(-1)$ 是先取 $f^(-1)_cPSh$ 再取 $(-)^\#$ 得到的，而 $(-)^\#$ 已知保持有限极限。因此只需证明 $f^(-1)_cPSh$ 保持有限极限。这可以逐截面验证：在每个截面上，$f^(-1)_cPSh$ 的取值都是滤余极限，而滤余极限与有限极限交换。 
 
-  $f^(-1): cAb(Y_et) -> cAb(X_et)$ is thus left exact since it preserves finite limits, and right exact since it is a left adjoint. It is thus exact. 
+  于是 $f^(-1): cAb(Y_et) -> cAb(X_et)$ 左正合，因为它保持有限极限；又右正合，因为它是左伴随。故它正合。 
 
-  (3) Note that: 
+  (3) 注意： 
   $
     Hom_cSh (f^(-1) cal(F)^\#, cal(G)) &= Hom_cSh (cal(F)^\#, f_* cal(G)) \
     &= Hom_cPSh (cal(F), f_* cal(G)) \
     &= Hom_cPSh (f^(-1)_cPSh cal(F), cal(G)) \
     &= Hom_cSh ((f_cPSh^(-1) cal(F))^\#, cal(G))
   $
-  and we are done by Yoneda's lemma. 
+  由 Yoneda 引理即得。 
 ]
 
 #corollary[
-  Given a constant sheaf $ul(M)_Y in cAb(Y_et)$, there is a canonical isomorphism $ul(M)_X cong f^(-1) ul(M)_Y$. 
+  给定常值层 $ul(M)_Y in cAb(Y_et)$，存在典范同构 $ul(M)_X cong f^(-1) ul(M)_Y$。 
 ]
 #proof[
-  By (3) of the previous properties, we see that there is a canonical isomorphism: 
+  由上一条命题中的 (3)，存在典范同构： 
   $
     f^(-1) ul(M)_Y = f^(-1) ul(M)_(Y,0)^\# cong (f^(-1)_cPSh ul(M)_(Y,0))^\#
   $
-  However, $f^(-1)_cPSh ul(M)_(Y,0)$ is trivial to describe, since every term in the colimit defining its sections is $M$, and so $f^(-1)_cPSh ul(M)_(Y,0) cong ul(M)_(X,0)$ canonically. 
+  不过，$f^(-1)_cPSh ul(M)_(Y,0)$ 很容易描述：用来计算其截面的那个余极限，每一项都是 $M$，因此有典范同构 $f^(-1)_cPSh ul(M)_(Y,0) cong ul(M)_(X,0)$。 
 ]
 
-// The same constructions and properties continue to hold for $cPAb, cAb$. 
+// 同样的构造与性质对 $cPAb, cAb$ 继续成立。 
 
-Since $f_*$ is a left exact functor, we may right derive it. 
+由于 $f_*$ 是左正合函子，我们可以对它取右导出。 
 
 #definition(name: <defn-higher-direct-image>)[
-  Define the $q$-th *higher direct image* functor $R^q f_*$ to be the $q$-th right derived functor of the left exact functor $f_*: cAb(X_et) -> cAb(Y_et)$. 
+  把左正合函子 $f_*: cAb(X_et) -> cAb(Y_et)$ 的第 $q$ 个右导出函子称为第 $q$ 个*高阶直像* (higher direct image) 函子 $R^q f_*$。 
 ]
 
 #properties(name: <derived-lower-star-first-props>)[
-  Since $f_*$ has an exact left adjoint $f^(-1)$, $f_*$ sends injectives to injectives. Consequently: 
+  由于 $f_*$ 有正合的左伴随 $f^(-1)$，它把内射对象送到内射对象。因此： 
 
-  + $X overset(->, f) Y overset(->, g) Z$ has: 
+  + 对 $X overset(->, f) Y overset(->, g) Z$，有： 
     $
       f^(-1) compose g^(-1) cong (g compose f)^(-1), g_* compose f_* = (g compose f)_*
     $
-    Passing to the Grothendieck-Leray spectral sequence: 
+    过渡到 Grothendieck–Leray 谱序列： 
     $
       E_2^(p,q) = R^p g_* (R^q f_* (cal(F))) => R^(p+q) (g compose f)_* cal(F)
     $
 
-  + (Leray spectral sequence) $Gamma(Y, f_*(-)) = Gamma(f^(-1)(Y), -)$, and passing to the Grothendieck-Leray spectral sequence: 
+  + （Leray 谱序列）$Gamma(Y, f_*(-)) = Gamma(f^(-1)(Y), -)$，再过渡到 Grothendieck–Leray 谱序列： 
     $
       E_2^(p,q) = H^p_et (Y, R^q f_* cal(F)) => H^(p+q)_et (X, cal(F))
     $
 
-  + $R^q f_* (cal(F))$ is simply $(V |-> H^q (f^(-1) (V), cal(F)))^\#$. 
+  + $R^q f_* (cal(F))$ 就是 $(V |-> H^q (f^(-1) (V), cal(F)))^\#$。 
 ]
 #proof[
-  (1) $g_* compose f_* = (g compose f)_*$ can be verified directly with ease. $f^(-1) compose g^(-1) = (g compose f)^(-1)$ is hard to verify directly, but $f^(-1) compose g^(-1)$ is the left adjoint of $g_* compose f_*$, while $(g compose f)^(-1)$ is the left adjoint of $(g compose f)_*$. 
+  (1) $g_* compose f_* = (g compose f)_*$ 很容易直接验证。$f^(-1) compose g^(-1) = (g compose f)^(-1)$ 却难以直接验证；不过 $f^(-1) compose g^(-1)$ 是 $g_* compose f_*$ 的左伴随，而 $(g compose f)^(-1)$ 也是 $(g compose f)_*$ 的左伴随，故二者一致。 
 
-  That $E_2^(p,q) = R^p g_* (R^q f_* (cal(F))) => R^(p+q) (g compose f)_* cal(F)$ is just the Grothendieck-Leray spectral sequence applied to $g_*$ and $f_*$, where $f_*$ preserves injectives. 
+  $E_2^(p,q) = R^p g_* (R^q f_* (cal(F))) => R^(p+q) (g compose f)_* cal(F)$ 不过是把 Grothendieck–Leray 谱序列应用于 $g_*$ 与 $f_*$，其中 $f_*$ 保持内射对象。 
 
-  (2) is self-explanatory. 
+  (2) 不言自明。 
 
-  (3) Take an injective resolution $0 -> cal(F) -> cal(I)^bullet$, and so: 
+  (3) 取内射消解 $0 -> cal(F) -> cal(I)^bullet$，于是： 
   $
     R^q f_* cal(F) = h^q (0 -> f_* cal(I)^bullet)
   $
-  Now the sheaf kernel is just the presheaf kernel, and the sheaf cokernel is the presheaf cokernel sheafified. Thus, 
+  现在，层的核就是预层的核，层的余核则是预层余核的层化。故 
   $
     R^q f_* cal(F) &= h^q (0 -> f_* cal(I)^bullet) \
     &= h^q (0 -> iota(f_* cal(I)^bullet))^\# 
   $
-  Meanwhile, $h^q (0 -> iota(f_* cal(I)^bullet))$ can be computed section-wise: Its sections on $V$ are just $h^q (0 -> iota(f_* cal(I)^bullet) (V)) = h^q (0 -> cal(I)^bullet (f^(-1)(V))) = H^q (f^(-1)(V), cal(F))$. Hence, 
+  另一方面，$h^q (0 -> iota(f_* cal(I)^bullet))$ 可以逐截面计算：它在 $V$ 上的截面正是 $h^q (0 -> iota(f_* cal(I)^bullet) (V)) = h^q (0 -> cal(I)^bullet (f^(-1)(V))) = H^q (f^(-1)(V), cal(F))$。于是 
   $
     R^q f_* cal(F) = (V |-> H^q (f^(-1) (V), cal(F)))^\#
   $
 ]
 
-Finally, we prove a simple description of $f^(-1)$ when $f$ is etale: 
+最后，我们证明当 $f$ 平展时，$f^(-1)$ 有一个简单的刻画： 
 #lemma(name: <pullback-along-etale-morphism>)[
-  If $f: X -> Y$ is etale, then $f^(-1) = f^(-1)_cPSh|_cSh(Y_et)$, and has the following simple description: 
+  若 $f: X -> Y$ 平展，则 $f^(-1) = f^(-1)_cPSh|_cSh(Y_et)$，且有如下简单刻画： 
   $
     f^(-1)_cPSh: cPSh(Y_et) &-> cPSh(X_et) \
     cal(G) &|-> ((psi: U -> X) |-> cal(G)(f compose psi))
   $
-  The same goes for $cPAb(Y_et)$ and $cAb(Y_et)$. 
+  对 $cPAb(Y_et)$ 与 $cAb(Y_et)$ 也一样。 
 ]
 #proof[
-  The simple description for $f^(-1)_cPSh$ follows from the definition directly, since $f compose psi$ is terminal in the indexing category of the colimit for $f^(-1)_cPSh cal(G) (psi)$. The colimit thus collapses into simply $cal(G)(f compose psi)$. 
+  $f^(-1)_cPSh$ 的简单刻画可以直接由定义得到：在定义 $f^(-1)_cPSh cal(G) (psi)$ 的余极限里，指标范畴中的 $f compose psi$ 是终对象，于是该余极限退化为 $cal(G)(f compose psi)$。 
 
-  It is routine to check that in this case, $f^(-1)_cPSh$ already sends sheaves to sheaves, making $f^(-1)$ a restriction of $f^(-1)_cPSh$ to $cSh(Y_et)$. 
-  // The derived statement follows from taking an injective resolution and computing, but we need to show that $f^(-1) cal(I)$ is acyclic on $X$ for any injective $cal(I) in f^(-1) $
+  例行验证表明：此时 $f^(-1)_cPSh$ 已经把层送到层，因此 $f^(-1)$ 就是 $f^(-1)_cPSh$ 在 $cSh(Y_et)$ 上的限制。 
+  // 导出层面的陈述可以由取内射消解并计算得到，但我们需要证明：对任意内射 $cal(I) in f^(-1) $，$f^(-1) cal(I)$ 在 $X$ 上零调
 ]

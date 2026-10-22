@@ -1,11 +1,11 @@
 #import "void-import.typ": *
 
-== Infinitesimal lifting criterion
+== 无穷小提升判别法
 
-The shape of the statements in @etale-first-props might remind you of something: the behavior of unramified/etale morphisms under composition, base change, and cancellation resembles that of separated/proper morphisms, although they are geometrically totally different types of morphisms. Now separated/proper morphisms can be detected using the valuative criterion, so it is not that surprising that a similar criterion exists for unramified/etale morphisms. Indeed, that is the infinitesimal lifting criterion. 
+看到 @etale-first-props 里那些命题的样子，你或许会想起什么：非分歧/平展态射在复合、基变换与消去下的表现，和分离/紧合态射颇为相似——尽管这两类态射在几何上截然不同。而分离/紧合态射可以用赋值判别法检验，因此非分歧/平展态射有类似的判别法，也就不那么令人意外了。事实上，这就是无穷小提升判别法。 
 
 #definition(name: <defn-formal-morphisms>)[
-  Let $f: X -> Y$ be a morphism of schemes. For any ring $A$ and any ideal $I subset A$ with $I^2 = 0$, and any diagram in which the outer square commutes: 
+  设 $f: X -> Y$ 是概形态射。对任意环 $A$、任意满足 $I^2 = 0$ 的理想 $I subset A$，以及任意外侧方块交换的图表： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMSwwLCJYIl0sWzEsMSwiWSJdLFswLDAsIlNwZWMoQVxcL0kpIl0sWzAsMSwiU3BlYyhBKSJdLFswLDEsImYiXSxbMiwzXSxbMywxXSxbMiwwXSxbMywwLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
   #align(center, diagram({
     node((1, 0), [$X$])
@@ -18,19 +18,19 @@ The shape of the statements in @etale-first-props might remind you of something:
     edge((0, 0), (1, 0), "->")
     edge((0, 1), (1, 0), "-->")
   }))
-  we question the existence and the uniqueness of the dashed arrow fitting in the commutative diagram. 
+  我们要考察的是：使图表交换的虚线箭头是否存在、是否唯一。 
 
-  - $f$ is called *formally smooth*, if such a dashed arrow always exists; 
+  - 若这样的虚线箭头总是存在，则称 $f$ 为*形式光滑* (formally smooth)； 
 
-  - $f$ is called *formally unramified*, if such a dashed arrow is unique if it exists; 
+  - 若这样的虚线箭头只要存在就唯一，则称 $f$ 为*形式非分歧* (formally unramified)； 
 
-  - $f$ is called *formally etale*, if such a dashed arrow always exists and is unique. 
+  - 若这样的虚线箭头总是存在且唯一，则称 $f$ 为*形式平展* (formally étale)。 
 ]
 
-The infinitesimal lifting criterion states that, whenever $f$ is locally of finite presentation, formally smooth/unramified/etale morphisms are exactly smooth/unramified/etale morphisms. To establish this theorem, we first need some general discussions on possible lifts. 
+无穷小提升判别法断言：只要 $f$ 是局部有限展示的，形式光滑/非分歧/平展态射就恰好是光滑/非分歧/平展态射。为证明这一定理，我们先要对可能的提升作一些一般性讨论。 
 
 #lemma(name: <classifying-diff-of-infinitesimal-lifts>)[
-  Let $f: X -> Y$ be a morphism of schemes. Let $T$ be a scheme and $T_0$ be a closed subscheme of $T$ defined by a sheaf of ideals $cal(I) subset cal(O)_T$ with $cal(I)^2 = 0$. Consider a commutative square: 
+  设 $f: X -> Y$ 是概形态射。设 $T$ 是概形，$T_0$ 是 $T$ 的闭子概形，由满足 $cal(I)^2 = 0$ 的理想层 $cal(I) subset cal(O)_T$ 定义。考虑交换方块： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMSwwLCJYIl0sWzEsMSwiWSJdLFswLDAsIlNwZWMoQVxcL0kpIl0sWzAsMSwiU3BlYyhBKSJdLFswLDEsImYiXSxbMiwzXSxbMywxXSxbMiwwLCJ1XzAiXV0=
   #align(center, diagram({
     node((1, 0), [$X$])
@@ -42,18 +42,18 @@ The infinitesimal lifting criterion states that, whenever $f$ is locally of fini
     edge((0, 1), (1, 1), "->", $v$, label-side: right)
     edge((0, 0), (1, 0), [$u_0$], label-side: left, "->")
   }))
-  Let $cal(L)$ be the topological sheaf of sets on $T$ defined by: 
+  设 $cal(L)$ 是拓扑空间 $T$ 上由下式定义的集合层： 
   $
     cal(L)(U) = {u: U -> X: u compose i|_(U_0) = u_0|_(U_0), f compose u = v|_U}
   $ 
-  Then there is a canonical action: 
+  则有典范作用： 
   $
     HHom_(cal(O)_(T_0)) (u_0^* Omega_(X\/Y), cal(I)) times cal(L) -> cal(L)
   $
-  that is simply transitive on sections on an open $U$ whenever $cal(L)(U) != emptyset$. 
+  只要 $cal(L)(U) != emptyset$，这个作用在 $U$ 上的截面上就是单传递的。 
 ]
 #proof[
-  We construct this sheaf action locally. Let $U = Spec(A) subset T$ be an affine open s.t. $v(U)$ is contained in an affine open $Spec(B)$ of $Y$, and $u_0 (U_0)$ is contained in an affine open $Spec(C)$ of $X$. Then on $U$, the sections $cal(L)(U)$ of lifts are exactly those lifts fitting in the following commutative diagram: 
+  我们局部地构造这个层作用。取仿射开集 $U = Spec(A) subset T$，使得 $v(U)$ 含于 $Y$ 的某个仿射开集 $Spec(B)$ 中，$u_0 (U_0)$ 含于 $X$ 的某个仿射开集 $Spec(C)$ 中。于是在 $U$ 上，截面 $cal(L)(U)$ 恰好由使下图交换的那些提升组成： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJTcGVjKEFcXC9JKSJdLFswLDEsIlNwZWMoQSkiXSxbMSwwLCJTcGVjKEMpIl0sWzEsMSwiU3BlYyhCKSJdLFswLDIsInVfMCJdLFsyLDMsImYiXSxbMSwzLCJ2IiwyXSxbMCwxXSxbMSwyLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
   #align(center, diagram({
     node((0, 0), [$Spec(A\/I)$])
@@ -66,44 +66,44 @@ The infinitesimal lifting criterion states that, whenever $f$ is locally of fini
     edge((0, 0), (0, 1), "->")
     edge((0, 1), (1, 0), "-->")
   }))
-  where $tilde(I) = cal(I)|_(Spec(A))$. For two such lifts $u_(1,2): Spec(A) -> Spec(C)$ induced from maps $u_(1,2)^\#: C -> A$, by definition: 
+  其中 $tilde(I) = cal(I)|_(Spec(A))$。对两个这样的提升 $u_(1,2): Spec(A) -> Spec(C)$，设它们由映射 $u_(1,2)^\#: C -> A$ 诱导，则按定义有： 
   $
     u_1^\# compose f^\# = v^\# = u_2^\# compose f^\#: B -> A
   $
-  and $u_(1,2)^\#$ agrees after reduction to $A\/I$. Thus $delta = u_2^\# - u_1^\#: C -> A$ has its image in $I$. We claim that $delta$ is a $B$-derivation. Indeed, 
+  并且 $u_(1,2)^\#$ 约化到 $A\/I$ 之后彼此一致。于是 $delta = u_2^\# - u_1^\#: C -> A$ 的像落在 $I$ 中。我们断言 $delta$ 是 $B$-导子。事实上： 
   $
     delta(f^\# (b)) = u_2^\# (f(b)) - u_1^\# (f(b)) = 0
   $
-  and: 
+  并且：
   $
     delta(c_1 c_2) &= u_2^\# (c_1) u_2^\# (c_2) - u_1^\# (c_1) u_1^\# (c_2) \
     &= u_2^\# (c_1) delta(c_2) + u_1^\# (c_2) delta(c_1) \
-    &= u_0^\# (c_1) delta(c_2) + u_0^\# (c_2) delta(c_1) #[since $I^2 = 0$]
+    &= u_0^\# (c_1) delta(c_2) + u_0^\# (c_2) delta(c_1) #[因为 $I^2 = 0$]
   $
-  Thus, $delta: C -> I$ is a $B$-derivation, i.e. an $C$-linear map $Omega_(C\/B) -> I$. Conversely, if $delta$ is such a derivation, then by the computation above, given any $u_1^\#: C -> A$ inducing a lift, $u_1^\# + delta$ also induces a lift. Thus we have constructed a simply transitive action: 
+  因此 $delta: C -> I$ 是 $B$-导子，即 $C$-线性映射 $Omega_(C\/B) -> I$。反之，若 $delta$ 是这样的导子，则由上面的计算，任取诱导出提升的 $u_1^\#: C -> A$，$u_1^\# + delta$ 也诱导出提升。于是我们构造出了单传递作用： 
   $
     Hom_C (Omega_(C\/B), I) times cal(L)(U) -> cal(L)(U)
   $
-  Now: 
+  现在： 
   $
     Hom_C (Omega_(C\/B), I) cong Hom_(A\/I) (Omega_(C\/B) otimes_C A\/I, I) cong Gamma(U, HHom_(cal(O)_(T_0)) (u_0^* Omega_(X\/Y), cal(I)))
   $
-  Thus we have constructed a simply transitive action: 
+  于是我们构造出了单传递作用： 
   $
     Gamma(U, HHom_(cal(O)_(T_0)) (u_0^* Omega_(X\/Y), cal(I))) times cal(L)(U) -> cal(L)(U)
   $
-  This action is defined on those sufficiently small affine opens $U subset T$. It is routine to check that they are compatible with restrictions from $Spec(A)$ to $Spec(A_f)$. Now the intersection of any two affine opens can be covered by affine opens principal on both sides (#cite-stacks("01IW")[Lemma 26.11.5]). Thus these actions glue compatibly to a sheaf action: 
+  这些作用定义在充分小的仿射开集 $U subset T$ 上。容易验证，它们与从 $Spec(A)$ 到 $Spec(A_f)$ 的限制相容。而任意两个仿射开集的交，都可以用两侧均为主仿射开集的仿射开集覆盖（#cite-stacks("01IW")[Lemma 26.11.5]）。于是这些作用相容地粘成层作用： 
   $
     HHom_(cal(O)_(T_0)) (u_0^* Omega_(X\/Y), cal(I)) times cal(L) -> cal(L)
   $
-  simply transitive on sections on an open $U$ whenever $cal(L)(U) != emptyset$. 
+  只要 $cal(L)(U) != emptyset$，这个作用在 $U$ 上的截面上就是单传递的。 
 ]
 
 #lemma[
-  For morphisms locally of finite presentation, smoothness is Zariski local on source. That is, for every open cover ${X_i}$ of $X$, a morphism $f: X -> Y$ locally of finite presentation is formally smooth if and only if $f|_(X_i): X_i -> Y$ is formally smooth. 
+  对局部有限展示的态射，光滑性在源上是 Zariski 局部的。也就是说，对 $X$ 的任意开覆盖 ${X_i}$，局部有限展示的态射 $f: X -> Y$ 形式光滑，当且仅当 $f|_(X_i): X_i -> Y$ 形式光滑。 
 ]
 #proof[
-  ($==>$) is easy, so we only prove ($<==$). For any commutative diagram: 
+  ($==>$) 方向不难，故只证 ($<==$) 方向。对任意交换图表： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJTcGVjKEFcXC9JKSJdLFswLDEsIlNwZWMoQSkiXSxbMSwxLCJZIl0sWzEsMCwiWCJdLFszLDIsImYiXSxbMCwxXSxbMSwyLCJ2IiwyXSxbMCwzLCJ1XzAiXV0=
   #align(center, diagram({
     node((0, 0), [$Spec(A\/I)$])
@@ -115,7 +115,7 @@ The infinitesimal lifting criterion states that, whenever $f$ is locally of fini
     edge((0, 1), (1, 1), [$v$], label-side: right, "->")
     edge((0, 0), (1, 0), [$u_0$], label-side: left, "->")
   }))
-  where $I^2 = 0$. Let ${X_i}$ be an open cover of $X$ with each $f_i = f|_(X_i): X_i -> Y$ formally smooth. Each $u_0^(-1) (X_i)$ is open in $Spec(A\/I)$ which is homeomorphic to $Spec(A)$. Thus we may pick elements $f_(i,j) in A$ s.t. $u_0^(-1) (X_i) = union.big_j Spec(A_(f_(i,j))\/I_(f_(i,j)))$. Consider the following commutative diagram: 
+  其中 $I^2 = 0$。设 ${X_i}$ 是 $X$ 的开覆盖，每个 $f_i = f|_(X_i): X_i -> Y$ 都形式光滑。每个 $u_0^(-1) (X_i)$ 都是 $Spec(A\/I)$ 的开集，而 $Spec(A\/I)$ 同胚于 $Spec(A)$。于是可以选取元素 $f_(i,j) in A$，使得 $u_0^(-1) (X_i) = union.big_j Spec(A_(f_(i,j))\/I_(f_(i,j)))$。考虑下述交换图表： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJTcGVjKEFfKGZfKGksaikpXFwvSV8oZl8oaSxqKSkpIl0sWzAsMSwiU3BlYyhBXyhmXyhpLGopKSkiXSxbMSwxLCJZIl0sWzEsMCwiWF9pIl0sWzMsMiwiZl9pIl0sWzAsMV0sWzEsMiwidiIsMl0sWzAsMywidV8wIl0sWzEsMywidV9pIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
   #context align(center, diagram({
     node((0, 0), [$Spec(A_(f_(i,j))\/I_(f_(i,j)))$])
@@ -128,53 +128,53 @@ The infinitesimal lifting criterion states that, whenever $f$ is locally of fini
     edge((0, 0), (1, 0), [$u_0$], label-side: left, "->")
     edge((0, 1), (1, 0), [$u_i$], label-side: center, "-->")
   }, crossing-fill: thm-box-curr-color()))
-  By formal smoothness of $f_i$, the dotted lift $u_i$ exists. Now $u_i: Spec(A_(f_(i,j))) ->^(u_i) X_i -> X$ lifts $u_0: Spec(A_(f_(i,j))\/I_(f_(i,j))) -> X_i$. Thus, let $cal(L)$ be the sheaf of lifts as in the previous lemma, 
+  由 $f_i$ 的形式光滑性，虚线提升 $u_i$ 存在。此时 $u_i: Spec(A_(f_(i,j))) ->^(u_i) X_i -> X$ 是 $u_0: Spec(A_(f_(i,j))\/I_(f_(i,j))) -> X_i$ 的提升。于是，取 $cal(L)$ 为上一引理中的提升层，则 
   $
     cal(L)(Spec(A_(f_(i,j)))) != emptyset
   $
   
-  In other words, we have obtained an open cover ${U_alpha}$ of $Spec(A)$ by principal affines, s.t. each $cal(L)(U_alpha) != emptyset$. Let $cal(H) = HHom_(cal(O)_(Spec(A\/I))) (u_0^* Omega_(X\/Y), tilde(I))$ with the simply transitive action: 
+  换言之，我们得到了 $Spec(A)$ 的一个开覆盖 ${U_alpha}$，其中每个都是主仿射开集，并且每个 $cal(L)(U_alpha) != emptyset$ 都成立。令 $cal(H) = HHom_(cal(O)_(Spec(A\/I))) (u_0^* Omega_(X\/Y), tilde(I))$，带有单传递作用： 
   $
     Phi: cal(H) times cal(L) -> cal(L)
   $
-  as indicated in the previous lemma. Now: 
+  如上一引理所示。现在： 
 
-  - There exists a unique $h_(alpha,beta) in cal(H)(U_(alpha,beta))$ s.t. $u_alpha|_(U_(alpha,beta)) = Phi(h_(alpha,beta)) (u_beta|_(U_(alpha,beta)))$. They formally satisfy the cocycle condition, thus defining a Cech cocycle: 
+  - 存在唯一的 $h_(alpha,beta) in cal(H)(U_(alpha,beta))$，使得 $u_alpha|_(U_(alpha,beta)) = Phi(h_(alpha,beta)) (u_beta|_(U_(alpha,beta)))$。它们形式上满足余圈条件，从而定义出 Čech 余圈： 
     $
       (h_(alpha,beta)) in caron(H)^1_#[Zar] ({U_alpha}, cal(H))
     $
 
-  - Now $Spec(A)$ is an affine scheme, ${U_alpha}$ is an affine cover. Since $f$ is locally of finite presentation, $Omega_(X\/Y)$ is a quasi-coherent sheaf on $X$ of finite presentation. Thus: 
+  - 现在 $Spec(A)$ 是仿射概形，${U_alpha}$ 是仿射覆盖。由于 $f$ 是局部有限展示的，$Omega_(X\/Y)$ 是 $X$ 上有限展示的拟凝聚层。因此： 
     $
       cal(H) = HHom_(cal(O)_(Spec(A\/I))) (u_0^* Omega_(X\/Y), tilde(I))
     $
-    is a quasi-coherent sheaf on $Spec(A)$. Thus, 
+    是 $Spec(A)$ 上的拟凝聚层。于是： 
     $
       caron(H)^1_#[Zar] ({U_alpha}, cal(H)) cong H^1_#[Zar] (Spec(A), cal(H)) = 0
     $
   
-  - Hence, there exist sections ${h_alpha in cal(H)(U_alpha)}$ s.t. $h_(alpha,beta) = h_(beta)|_(U_(alpha,beta)) - h_(alpha)|_(U_(alpha,beta))$. Put $u'_alpha = Phi(h_alpha) u_alpha$. Then on $U_(alpha,beta)$, 
+  - 于是存在截面 ${h_alpha in cal(H)(U_alpha)}$，使得 $h_(alpha,beta) = h_(beta)|_(U_(alpha,beta)) - h_(alpha)|_(U_(alpha,beta))$。令 $u'_alpha = Phi(h_alpha) u_alpha$。则在 $U_(alpha,beta)$ 上， 
     $
       u'_beta = Phi(h_beta) u_beta = Phi(h_alpha) Phi(h_(alpha,beta)) u_beta = Phi(h_alpha) u_alpha = u'_alpha
     $
-    Thus the lifts $u'_alpha: U_alpha -> X$ are compatible and glue to a global lift $Spec(A) -> X$. 
+    于是这些提升 $u'_alpha: U_alpha -> X$ 彼此相容，粘成整体提升 $Spec(A) -> X$。 
 ]
 
 #theorem(name: <infinitesimal-lifting-criterion>)[
-  Let $f: X -> Y$ be a morphism locally of finite presentation. Then: 
+  设 $f: X -> Y$ 是局部有限展示的态射。则： 
 
-  + $f$ is smooth if and only if it is formally smooth; 
+  + $f$ 光滑，当且仅当它形式光滑； 
 
-  + $f$ is unramified if and only if it is formally unramified; 
+  + $f$ 非分歧，当且仅当它形式非分歧； 
 
-  + $f$ is etale if and only if it is formally etale. 
+  + $f$ 平展，当且仅当它形式平展。 
 ]
 #proof[
-  (3) is formal from (1) and (2), since (formal) etaleness is just (formal) unramifiedness and smoothness. Thus we only need to prove (1) and (2). 
+  (3) 由 (1) 和 (2) 形式推出：（形式的）平展性不过是（形式的）非分歧性与光滑性二者。因此只需证明 (1) 和 (2)。 
   
   (1)($==>$) 
   #proof[
-    Since formal smoothness has been shown to be local on source, it suffices to prove that standard smooth morphisms are formally smooth. Now for $AA^d_Y -> Y$, 
+    既然已经证明形式光滑性在源上是局部的，只需证明标准光滑态射都形式光滑。现在取 $AA^d_Y -> Y$，考虑下述交换图表： 
     // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJTcGVjKEFcXC9JKSJdLFswLDEsIlNwZWMoQSkiXSxbMSwxLCJZIl0sWzEsMCwiQUFeZF9ZIl0sWzMsMiwicCJdLFswLDFdLFsxLDIsInYiLDJdLFswLDMsInVfMCJdXQ==
     #align(center, diagram({
       node((0, 0), [$Spec(A\/I)$])
@@ -186,11 +186,11 @@ The infinitesimal lifting criterion states that, whenever $f$ is locally of fini
       edge((0, 1), (1, 1), [$v$], label-side: right, "->")
       edge((0, 0), (1, 0), [$u_0$], label-side: left, "->")
     }))
-    a lift $u: Spec(A) -> AA^d_Y$ is equivalent to $d$ sections $a_1, dots.c, a_d in A$ reducing to the $d$ functions in $A\/I$ defining $u_0$. Thus we may lift them arbitrarily. Since formal smoothness is formally known to be compatible with composition, it suffices to prove that etale morphisms are formally smooth. By locality on source again, we may assume that $X = Spec(C), Y = Spec(B)$, and: 
+    提升 $u: Spec(A) -> AA^d_Y$ 等价于 $d$ 个截面 $a_1, dots.c, a_d in A$，它们在 $A\/I$ 中约化为定义 $u_0$ 的那 $d$ 个函数。因此可以随意提升它们。既然已知形式光滑性与复合相容，就只需证明平展态射都形式光滑。再由源上的局部性，不妨设 $X = Spec(C), Y = Spec(B)$，并且： 
     $
       C = (B[T]_(h(T)))/((g(T)))
     $
-    s.t. $(g(T), g'(T)) = (1)$ as ideals of $B[T]_(h(T))$. Consider a commutative diagram: 
+    其中，作为 $B[T]_(h(T))$ 的理想，$(g(T), g'(T)) = (1)$。考虑交换图表： 
     // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJBXFwvSSJdLFswLDEsIkEiXSxbMSwwLCJDIl0sWzEsMSwiQiJdLFszLDIsImciLDJdLFsxLDBdLFsyLDAsInVfMCIsMl0sWzMsMSwidiJdXQ==
     #align(center, diagram({
       node((0, 0), [$A\/I$])
@@ -202,36 +202,36 @@ The infinitesimal lifting criterion states that, whenever $f$ is locally of fini
       edge((1, 0), (0, 0), [$alpha_0$], label-side: right, "->")
       edge((1, 1), (0, 1), [$beta$], label-side: left, "->")
     }))
-    Put $g_beta, h_beta in A[T]$ be $g,h$ with $beta$ applied on coefficients. Then $alpha_0$ is defined by a section $[a] in A\/I$ s.t. $g_beta ([a]) = 0 in A\/I, h_beta ([a]) in (A\/I)^times$. All we need to do is to construct a section $a in A$ s.t. $g_beta (a) = 0, h_beta (a) in A^times$. 
+    令 $g_beta, h_beta in A[T]$ 为 $g, h$ 的系数经 $beta$ 作用后得到的多项式。于是 $alpha_0$ 由截面 $[a] in A\/I$ 定义，满足 $g_beta ([a]) = 0 in A\/I, h_beta ([a]) in (A\/I)^times$。我们只需构造截面 $a in A$，使得 $g_beta (a) = 0, h_beta (a) in A^times$。 
     
-    Pick an arbitrary lift $a in A$ of the class $[a]$, so $g_beta (a) in I$. Note that since $I^2 = 0$, $[h_beta (a)] in (A\/I)^times$ implies $h_beta (a) in A^times$. Then for $epsilon in I$, since $epsilon^2 = 0$: 
+    任取 $[a]$ 的一个提升 $a in A$，则 $g_beta (a) in I$。注意，由于 $I^2 = 0$，$[h_beta (a)] in (A\/I)^times$ 蕴含 $h_beta (a) in A^times$。于是对 $epsilon in I$，由 $epsilon^2 = 0$ 得： 
     $
       g_beta (a + epsilon) = g_beta (a) + g'_beta (a) epsilon
     $
-    Since $(g(T), g'(T)) = (1)$ as ideals of $B[T]_(h(T))$, we may choose polynomials $p_0 (T), p_1 (T) in B[T]$ s.t: 
+    由于在 $B[T]_(h(T))$ 中作为理想有 $(g(T), g'(T)) = (1)$，可以选取多项式 $p_0 (T), p_1 (T) in B[T]$，使得： 
     $
       p_0 (T) g(T) + p_1 (T) g'(T) = h(T)^N
     $
-    Thus, 
+    于是， 
     $
       p_(0,beta) (a) g_beta (a) + p_(1,beta) (a) g'_beta (a) = h_beta (a)^N
     $
-    Put $epsilon = -h_beta (a)^(-N) p_(1,beta) (a) dot g_beta (a) in I$. Now: 
+    令 $epsilon = -h_beta (a)^(-N) p_(1,beta) (a) dot g_beta (a) in I$。现在： 
     $
       g_beta (a + epsilon) &= g_beta (a) + g'_beta (a) epsilon = g_beta (a) (1 - h_beta (a)^(-N) p_(1,beta) (a) g'_beta (a)) \
       &= g_beta (a)^2 h_beta (a)^(-N) p_(0,beta) (a) in I^2 = 0
     $
-    and $h_beta (a+epsilon)$ reduces to a unit in $A\/I$, hence is a unit in $A^times$. Thus the representative $a+epsilon$ would work. 
+    而 $h_beta (a+epsilon)$ 在 $A\/I$ 中约化为单位，从而是 $A^times$ 中的单位。因此代表元 $a+epsilon$ 合乎要求。 
     #suppress-qed
   ]
 
   ($<==$)
   #proof[
-    For every $x in X$, it suffices to check smoothness locally. Thus (by locality of formal smoothness), shrinking $X$ around $x$ and $Y$ around $f(x)$, we may assume that $X = Spec(C), Y = Spec(B)$ are affine. Choose a presentation: 
+    对每个 $x in X$，只需局部地检验光滑性。于是（利用形式光滑性的局部性）适当缩小 $X$（在 $x$ 附近）与 $Y$（在 $f(x)$ 附近），不妨设 $X = Spec(C), Y = Spec(B)$ 都是仿射的。选取一个展示： 
     $
       C = (B[T_1, dots.c, T_n])/((f_1, dots.c, f_m)) = P\/I
     $
-    with $P = B[T_1, dots.c, T_n], I = (f_1, dots.c, f_m) subset P$. Consider the diagram: 
+    其中 $P = B[T_1, dots.c, T_n], I = (f_1, dots.c, f_m) subset P$。考虑图表： 
     // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJQXFwvSyJdLFswLDEsIlBcXC9LXjIiXSxbMSwwLCJDID0gUFxcL0siXSxbMSwxLCJCIl0sWzEsMF0sWzIsMCwiIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG91YmxlIGJhcnJlZCJ9fX1dLFszLDJdLFszLDFdXQ==
     #align(center, diagram({
       node((0, 0), [$P\/I$])
@@ -243,11 +243,11 @@ The infinitesimal lifting criterion states that, whenever $f$ is locally of fini
       edge((1, 1), (1, 0), "->")
       edge((1, 1), (0, 1), "->")
     }))
-    By formal smoothness, the quotient $P\/I^2 -> P\/I$ has a section $sigma: C = P\/I -> P\/I^2$. Define: 
+    由形式光滑性，商映射 $P\/I^2 -> P\/I$ 有截面 $sigma: C = P\/I -> P\/I^2$。定义： 
     $
       delta: P -> I\/I^2, F |-> [F mod I^2] - sigma([F mod I])
     $
-    Then: 
+    则： 
 
     - #h(1fr)
       $
@@ -255,30 +255,30 @@ The infinitesimal lifting criterion states that, whenever $f$ is locally of fini
         &= [p_1 mod I^2] delta(p_2) + sigma([p_2 mod I]) delta(p_1) = p_1 delta(p_2) + p_2 delta(p_1)
       $
     
-    - For $b in B$, 
+    - 对 $b in B$， 
       $
         delta(b) = [b mod I^2] - sigma([b mod I]) = 0
       $
-      since every morphism here is a $B$-algebra homomorphism. 
+      因为这里每个态射都是 $B$-代数同态。 
 
-    Thus $delta$ is a $B$-derivation, thus defining a $P$-linear map $rho: Omega_(P\/B) -> I\/I^2$ s.t. $rho(d F) = [F mod I^2] - sigma([F mod I])$. We thus have a $C$-linear map: 
+    于是 $delta$ 是 $B$-导子，从而定义 $P$-线性映射 $rho: Omega_(P\/B) -> I\/I^2$，满足 $rho(d F) = [F mod I^2] - sigma([F mod I])$。这样就得到 $C$-线性映射： 
     $
       rho: Omega_(P\/B) otimes_P C -> I\/I^2, d F |-> [F mod I^2]
     $
-    since $C = P\/I$ and so the $sigma([F mod I])$ term vanishes. In the second exact sequence: 
+    由于 $C = P\/I$，$sigma([F mod I])$ 这一项消失。在第二个正合列中： 
     $
       I\/I^2 -> Omega_(P\/B) otimes_P C -> Omega_(C\/B) -> 0
     $
-    the first map sends $[F mod I^2] |-> d F$. Thus $rho$ retracts this map, making this right exact sequence split exact. 
+    第一个映射为 $[F mod I^2] |-> d F$。于是 $rho$ 是这个映射的回缩，从而这个右正合列分裂正合。 
 
-    By @equiv-defns-of-smooth (5), $f$ is a smooth morphism. 
+    由 @equiv-defns-of-smooth (5)，$f$ 是光滑态射。 
     
     #suppress-qed
   ]
 
-  (2)($==>$) If $f$ is unramified, $Omega_(X\/Y) = 0$ and so the sheaf $HHom_(cal(O)_(T_0)) (u_0^* Omega_(X\/Y), cal(I))$ in @classifying-diff-of-infinitesimal-lifts  always vanishes. Thus an infinitesimal lift is unique if any exists. 
+  (2)($==>$) 若 $f$ 非分歧，则 $Omega_(X\/Y) = 0$，于是 @classifying-diff-of-infinitesimal-lifts 中的层 $HHom_(cal(O)_(T_0)) (u_0^* Omega_(X\/Y), cal(I))$ 总是消没。因此这样的无穷小提升只要存在就唯一。 
 
-  ($<==$) Suppose that $f$ is formally unramified. It is formal to check that we can verify locally, so we may assume that $X = Spec(C), Y = Spec(B)$ are affine. For any $C$-module $M$, take the square-zero algebra $C_M = C oplus M$ (with multiplication $(c_1,m_1) times (c_2, m_2) := (c_1 c_2, c_1 m_2 + c_2 m_1)$). Then $M subset C_M$ is a square-zero ideal and $C_M\/M cong C$. Thus in the following diagram: 
+  ($<==$) 设 $f$ 形式非分歧。这一点形式上即可验证：只需局部地检验，故不妨设 $X = Spec(C), Y = Spec(B)$ 都是仿射的。对任意 $C$-模 $M$，取平方零代数 $C_M = C oplus M$（乘法为 $(c_1,m_1) times (c_2, m_2) := (c_1 c_2, c_1 m_2 + c_2 m_1)$）。则 $M subset C_M$ 是平方零理想，且 $C_M\/M cong C$。于是在下述图表中： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMSwwLCJDIl0sWzEsMSwiQiJdLFswLDEsIkNfTSJdLFswLDAsIkMiXSxbMiwzXSxbMSwwXSxbMSwyXSxbMCwzLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3VibGUgYmFycmVkIn19fV0sWzAsMiwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
   #align(center, diagram({
     node((1, 0), [$C$])
@@ -291,26 +291,26 @@ The infinitesimal lifting criterion states that, whenever $f$ is locally of fini
     edge((1, 0), (0, 0), "=")
     edge((1, 0), (0, 1), "-->")
   }))
-  if a lift exists, then it is unique. However, $B$-linear sections to $C_M -> C$ are classified by $B$-derivations $C -> M$. The zero derivation always exists, so every other derivation is equal to that one. That is: 
+  这样的提升只要存在就唯一。然而，映射 $C_M -> C$ 的 $B$-线性截面由 $B$-导子 $C -> M$ 分类。零导子总是存在，所以其他任何导子都等于它。也就是说： 
   $
     Hom_C (Omega_(C\/B), M) = 0
   $
-  for every $C$-module $M$. Thus $Omega_(C\/B) = 0$ and so $Spec(C) -> Spec(B)$ is unramified. 
+  对每个 $C$-模 $M$ 成立。因此 $Omega_(C\/B) = 0$，故 $Spec(C) -> Spec(B)$ 非分歧。 
 ]
 
 #corollary(name: <etale-map-with-stable-residue-field-preserves-completions>)[
-  Let $f: X -> Y$ be a morphism etale at $x$ with $y = f(x)$, and suppose that $k(x) = k(y)$. Then the natural maps: 
+  设 $f: X -> Y$ 是在 $x$ 处平展的态射，$y = f(x)$，并假设 $k(x) = k(y)$。则自然映射： 
   $
     cal(O)_(Y,y)\/frak(m)_y^N -> cal(O)_(X,x)\/frak(m)_x^N
   $
-  are all isomorphisms, and consequently, the natural map: 
+  全都是同构；于是自然映射： 
   $
     hat(cal(O)_(Y,y)) -> hat(cal(O)_(X,x))
   $
-  on the completions of the local rings is an isomorphism. 
+  在局部环的完备化上是同构。 
 ]
 #proof[
-  Since $k(x) = k(y)$, we have a map $s_0: Spec(k(y)) = Spec(cal(O)_(Y,y)\/frak(m)_y) -> X$ by including $x$ to $X$. Now for $N >= 1$, each $Spec(cal(O)_(Y,y)\/frak(m)_y^N) -> Spec(cal(O)_(Y,y)\/frak(m)_y^(N+1))$ is a square-zero closed immersion, so by formal smoothness, there is a unique lift $s_N$ fitting in the following commutative diagram: 
+  由于 $k(x) = k(y)$，把 $x$ 包含进 $X$ 的含入映射就给出映射 $s_0: Spec(k(y)) = Spec(cal(O)_(Y,y)\/frak(m)_y) -> X$。现在对 $N >= 1$，每个 $Spec(cal(O)_(Y,y)\/frak(m)_y^N) -> Spec(cal(O)_(Y,y)\/frak(m)_y^(N+1))$ 都是平方零闭浸入，故由形式光滑性，存在唯一的提升 $s_N$，补全下述交换图表： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJTcGVjKGNhbChPKV8oWSx5KVxcL2ZyYWsobSlfeV5OKSJdLFsxLDAsIlgiXSxbMSwxLCJZIl0sWzAsMSwiU3BlYyhjYWwoTylfKFkseSlcXC9mcmFrKG0pX3leKE4rMSkpIl0sWzAsMSwic18oTi0xKSJdLFsxLDIsImYiXSxbMywyXSxbMCwzXSxbMywxLCJzX04iLDFdXQ==
   #context align(center, diagram({
     node((0, 0), [$Spec(cal(O)_(Y,y)\/frak(m)_y^N)$])
@@ -324,19 +324,19 @@ The infinitesimal lifting criterion states that, whenever $f$ is locally of fini
     edge((0, 1), (1, 0), [$s_N$], label-side: center, "->")
   }, crossing-fill: thm-box-curr-color()))
 
-  The unique point of $Spec(cal(O)_(Y,y)\/frak(m)_y^(N+1))$ is sent to $x$ under $s_N$, so $s_N$ is induced by a local homomorphism $phi_N: cal(O)_(X,x) -> cal(O)_(Y,y)\/frak(m)_y^(N+1)$, all of them being compatible. 
+  $s_N$ 把 $Spec(cal(O)_(Y,y)\/frak(m)_y^(N+1))$ 的唯一点送到 $x$，因此 $s_N$ 由局部同态 $phi_N: cal(O)_(X,x) -> cal(O)_(Y,y)\/frak(m)_y^(N+1)$ 诱导，并且这些同态彼此相容。 
 
-  Its reduction mod $frak(m)_x = frak(m)_y cal(O)_(X,x)$ is the residue map $k(x) = k(y)$, and so $phi_N (frak(m)_x) subset frak(m)_y\/frak(m)_y^(N+1)$. Thus $phi_N$ kills $frak(m)_x^(N+1)$, inducing a map $psi_N: cal(O)_(X,x)\/frak(m)_x^(N+1) -> cal(O)_(Y,y)\/frak(m)_y^(N+1)$. Everything here is a $cal(O)_(Y,y)$-algebra homomorphism, so for the structure map $g_N: cal(O)_(Y,y)\/frak(m)_y^(N+1) -> cal(O)_(X,x)\/frak(m)_x^(N+1)$, at least we have $psi_N compose g_N = id$. 
+  它模 $frak(m)_x = frak(m)_y cal(O)_(X,x)$ 的约化是剩余映射 $k(x) = k(y)$，因此 $phi_N (frak(m)_x) subset frak(m)_y\/frak(m)_y^(N+1)$。于是 $phi_N$ 消去 $frak(m)_x^(N+1)$，诱导出映射 $psi_N: cal(O)_(X,x)\/frak(m)_x^(N+1) -> cal(O)_(Y,y)\/frak(m)_y^(N+1)$。这里出现的都是 $cal(O)_(Y,y)$-代数同态，故对结构映射 $g_N: cal(O)_(Y,y)\/frak(m)_y^(N+1) -> cal(O)_(X,x)\/frak(m)_x^(N+1)$，至少成立 $psi_N compose g_N = id$。 
 
-  It remains to verify that the composition in the other direction is the identity. $g_0 compose psi_0$ is the identity since $k(x) = k(y)$. Suppose that we have already shown that $g_(N-1) compose psi_(N-1) = id$. Compare the two $cal(O)_(Y,y)$-algebra homomorphisms: The reduction: 
+  剩下要验证的是反方向的复合为恒等映射。由于 $k(x) = k(y)$，$g_0 compose psi_0$ 是恒等映射。假设已经证明 $g_(N-1) compose psi_(N-1) = id$。比较两个 $cal(O)_(Y,y)$-代数同态：其一是约化映射： 
   $
     cal(O)_(X,x) -> cal(O)_(X,x)\/frak(m)_x^(N+1)
   $
-  versus: 
+  其二是： 
   $
     cal(O)_(X,x) -->^(phi_N) cal(O)_(Y,y)\/frak(m)_y^(N+1) -->^(g_N) cal(O)_(X,x)\/frak(m)_x^(N+1)
   $
-  By construction of $s_N$, after reduction mod $frak(m)_x^N\/frak(m)_x^(N+1)$, the second map becomes $cal(O)_(X,x) -->^(phi_(N-1)) cal(O)_(Y,y)\/frak(m)_y^N -->^(g_(N-1)) cal(O)_(X,x)\/frak(m)_x^N$, which is equal to the plain reduction by the inductive hypothesis. Thus, the two maps $cal(O)_(X,x) -> cal(O)_(X,x)\/frak(m)_x^(N+1)$ are both lifts in: 
+  按 $s_N$ 的构造，模 $frak(m)_x^N\/frak(m)_x^(N+1)$ 约化之后，第二个映射变成 $cal(O)_(X,x) -->^(phi_(N-1)) cal(O)_(Y,y)\/frak(m)_y^N -->^(g_(N-1)) cal(O)_(X,x)\/frak(m)_x^N$，由归纳假设它等于普通的约化映射。于是这两个映射 $cal(O)_(X,x) -> cal(O)_(X,x)\/frak(m)_x^(N+1)$ 都是下述图表中的提升： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJTcGVjKGNhbChPKV8oWCx4KVxcL2ZyYWsobSlfeF5OKSJdLFsxLDAsIlgiXSxbMSwxLCJZIl0sWzAsMSwiU3BlYyhjYWwoTylfKFgseClcXC9mcmFrKG0pX3heKE4rMSkpIl0sWzAsMV0sWzEsMiwiZiJdLFszLDJdLFswLDNdLFszLDEsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
   #align(center, diagram({
     node((0, 0), [$Spec(cal(O)_(X,x)\/frak(m)_x^N)$])
@@ -349,5 +349,5 @@ The infinitesimal lifting criterion states that, whenever $f$ is locally of fini
     edge((0, 0), (0, 1), "->")
     edge((0, 1), (1, 0), "-->")
   }))
-  They are thus equal by formal unramifiedness. Hence $g_N compose psi_N = id$, and we have constructed the inverse for each $g_N$. Thus every $g_N$ is an isomorphism and we are done. 
+  由形式非分歧性，它们相等。因此 $g_N compose psi_N = id$，我们为每个 $g_N$ 构造出了逆映射。于是每个 $g_N$ 都是同构，证毕。 
 ]

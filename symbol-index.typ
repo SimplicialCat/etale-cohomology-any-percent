@@ -48,8 +48,8 @@
     index-entry([Kähler 微分], qualifier: [$Omega_(X\/Y)$], sort-key: "kahler wei fen", <kahler-differentials>)
     index-entry([非分歧态射], sort-key: "fei fen qi tai she", <defn-unramified-and-etale-morphisms>)
     index-entry([平展态射], sort-key: "ping zhan tai she", <defn-unramified-and-etale-morphisms>)
-    index-entry([Kummer 覆盖], sort-key: "kummer fu gai", <kummer-and-artin-schreier-coverings>)
-    index-entry([Artin–Schreier 覆盖], sort-key: "artin schreier fu gai", <kummer-and-artin-schreier-coverings>)
+    index-entry([Kummer 覆叠], sort-key: "kummer fu die", <kummer-and-artin-schreier-coverings>)
+    index-entry([Artin–Schreier 覆叠], sort-key: "artin schreier fu die", <kummer-and-artin-schreier-coverings>)
     index-entry([Jacobi 判别法], qualifier: [平展性], sort-key: "jacobi pan bie fa", <jacobian-criterion-for-etaleness>)
     index-entry([光滑态射], sort-key: "guang hua tai she", <defn-smooth-morphisms>)
 
@@ -113,9 +113,9 @@
     index-entry([平展上同调], qualifier: [$H^(bullet)_(et)(X, -)$], sort-key: "ping zhan shang tong diao", <defn-etale-cohomology>)
 
     // Section 4.4: Derived functors
-    index-entry([直接像], qualifier: [$f_*$], sort-key: "zhi jie xiang", <defn-etale-direct-image>)
+    index-entry([直像], qualifier: [$f_*$], sort-key: "zhi xiang", <defn-etale-direct-image>)
     index-entry([逆像], qualifier: [$f^(-1)$], sort-key: "ni xiang", <defn-etale-sheaf-inverse-image>)
-    index-entry([高阶直接像], qualifier: [$R^q f_*$], sort-key: "gao jie zhi jie xiang", <defn-higher-direct-image>)
+    index-entry([高阶直像], qualifier: [$R^q f_*$], sort-key: "gao jie zhi xiang", <defn-higher-direct-image>)
     index-entry([谱序列], qualifier: [Leray], sort-key: "pu xu lie", <derived-lower-star-first-props>)
 
     // Section 4.5: Stalks
@@ -152,7 +152,7 @@
     index-entry([极限公式], qualifier: [概形], sort-key: "ji xian gong shi", <limit-formula-for-schemes>)
     index-entry([严格局部化], qualifier: [$cal(O)_(X, ol(x))$], sort-key: "yan ge ju bu hua", <strict-local-ring-and-localization>)
     index-entry([严格局部化], qualifier: [$tilde(X)_(ol(x))$], sort-key: "yan ge ju bu hua", <strict-local-ring-and-localization>)
-    index-entry([茎], qualifier: [导出直接像], sort-key: "jing", <stalks-of-derived-lowerstar>)
+    index-entry([茎], qualifier: [导出直像], sort-key: "jing", <stalks-of-derived-lowerstar>)
 
     // Section 5.2: Etale cohomology of quasi-coherent sheaves
     index-entry([平展上同调], qualifier: [拟凝聚层], sort-key: "ping zhan shang tong diao", <etale-cohom-of-qcoh-sheaf>)
@@ -208,7 +208,7 @@
     index-entry([紧化], qualifier: [态射], sort-key: "jin hua", <defn-compactification>)
     index-entry([紧支导出推前], qualifier: [$R f_!$], sort-key: "jin zhi dao chu tui qian", <defn-derived-pushforward-with-proper-support>)
     index-entry([紧支上同调], qualifier: [$R Gamma_(c)(X, -)$], sort-key: "jin zhi shang tong diao", <defn-cohomology-with-proper-support>)
-    index-entry([紧支高阶直接像], qualifier: [$R^q f_!$], sort-key: "jin zhi gao jie zhi jie xiang", <proper-support-cohomology-notation>)
+    index-entry([紧支高阶直像], qualifier: [$R^q f_!$], sort-key: "jin zhi gao jie zhi xiang", <proper-support-cohomology-notation>)
     index-entry([紧支上同调], qualifier: [$H^(q)_(c)(X, -)$], sort-key: "jin zhi shang tong diao", <proper-support-cohomology-notation>)
 
     // Section 7.3: Projection and Kunneth formulas
@@ -238,10 +238,10 @@
     // Section 9.2: Poincare duality
     index-entry([杯积配对], qualifier: [$smile$], sort-key: "bei ji pei dui", <defn-cup-product-pairing>)
     index-entry([例外逆像], qualifier: [$R f^!$], sort-key: "li wai ni xiang", <existence-of-upper-shriek>)
-    index-entry([纯度映射], qualifier: [$t_(X\/Y)$], sort-key: "chun du ying she", <purity-map>)
+    index-entry([纯性映射], qualifier: [$t_(X\/Y)$], sort-key: "chun xing ying she", <purity-map>)
     index-entry([Poincaré 对偶], qualifier: [相对], sort-key: "poincare dui ou", <relative-poincare-duality>)
     index-entry([Poincaré 对偶], qualifier: [绝对], sort-key: "poincare dui ou", <absolute-poincare-duality>)
-    index-entry([纯度], qualifier: [相对], sort-key: "chun du", <relative-purity>)
+    index-entry([纯性], qualifier: [相对], sort-key: "chun xing", <relative-purity>)
 
     // Section 9.3: Generic base change and finiteness
     index-entry([泛基变换定理], sort-key: "fan ji bian huan ding li", <generic-base-change>)

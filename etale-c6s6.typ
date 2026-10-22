@@ -1,234 +1,235 @@
+// audit-exception: 长正合列内 #[...] 文字说明块内的 $0$ 与 @引用，审计按相邻 $ 配对会把文字说明切成伪公式段；只译说明文字，公式未动。
 #import "void-import.typ": *
-== Vanishing theorems in dimension 1
+== 一维的消没定理
 
 #lemma[
-  Let $X$ be a noetherian scheme, and $E subset X$ be a subset closed under specialization. Let $cal(F) in cAb(X_et)$ be a torsion sheaf with $supp(cal(F)) subset E$. Then $cal(F)$ can be written as a directed limit: 
+  设 $X$ 是 Noether 概形，$E subset X$ 是对特殊化封闭的子集。设 $cal(F) in cAb(X_et)$ 是挠层，其支集 $supp(cal(F)) subset E$。则 $cal(F)$ 可写成正向极限： 
   $
     cal(F) = dirlim_(lambda) cal(F)_lambda
   $
-  in which every $cal(F)_lambda$ is a torsion sheaf supported on a closed subset of $E$. 
+  其中每个 $cal(F)_lambda$ 都是支集含于 $E$ 的某个闭子集的挠层。 
 ]
 #proof[
-  By @constructible-sheaves-first-props (6), $cal(F)$ is the directed limit of its constructible subsheaves ${cal(F)_lambda}$. By @supp-of-constructible-sheaf, each: 
+  由 @constructible-sheaves-first-props (6)，$cal(F)$ 是其可构造子层 ${cal(F)_lambda}$ 的正向极限。由 @supp-of-constructible-sheaf，对每一项都有： 
   $
     supp(cal(F)_lambda) subset E
   $
-  is a constructible subset of $E$. The closure of a constructible set consists of all points specializing a point in it. Since $E$ is closed under specialization, $ol(supp(cal(F)_lambda)) subset E$, and we are done. 
+  而每一项的支集都是 $E$ 的可构造子集。可构造集的闭包，恰由该集合中某个点的所有特殊化组成。由于 $E$ 对特殊化封闭，故 $ol(supp(cal(F)_lambda)) subset E$，证毕。 
 ]
 
 #notation(name: <notation-supp-on-dim-a>)[
-  Let $X$ be a finite type scheme over a field $K$. We denote the set of *points of $X$ of dimension $<=a$* by: 
+  设 $X$ 是域 $K$ 上的有限型概形。我们把 $X$ 中*维数 $<=a$ 的点*构成的集合记为： 
   $
     E_a (X) := {x in X : dim(ol({x})) <= a}
   $
   
-  For $cal(F) in cAb(X_et)$, we say that it is *supported on dimension $<=a$*, if $supp(cal(F)) subset E_a (X)$. 
+  对 $cal(F) in cAb(X_et)$，若 $supp(cal(F)) subset E_a (X)$，则称它*支撑在维数 $<=a$ 上*。 
 ]
 
 #corollary(name: <supp-of-torsion-sheaf-dim>)[
-  Let $X$ be a finite type scheme over a field $K$, and $cal(F) in cAb(X_et)$ be a torsion sheaf supported on dimension $<=a$. Then $cal(F)$ can be written as a directed limit: 
+  设 $X$ 是域 $K$ 上的有限型概形，$cal(F) in cAb(X_et)$ 是支撑在维数 $<=a$ 上的挠层。则 $cal(F)$ 可写成正向极限： 
   $
     cal(F) = dirlim_(lambda) cal(F)_lambda
   $
-  in which every $cal(F)_lambda$ is a torsion sheaf supported on a closed subscheme of $X$ of dimension $<=a$. 
+  其中每个 $cal(F)_lambda$ 都是挠层，其支集含于 $X$ 的某个闭子概形，且该子概形的维数 $<=a$。 
 ]
 #proof[
-  Taking $E = E_a (X)$ in the previous lemma concludes the proof. 
+  在上一个引理中取 $E = E_a (X)$，证明便完成了。 
 ]
 
 #corollary(name: <supp-of-torsion-sheaf-dim-0>)[
-  Let $X$ be a finite type scheme over a separably closed field $k$, and $cal(F) in cAb(X_et)$ be a torsion sheaf supported on dimension $<=0$. Then for all $q >= 1$, 
+  设 $X$ 是可分闭域 $k$ 上的有限型概形，$cal(F) in cAb(X_et)$ 是支撑在维数 $<=0$ 上的挠层。则对一切 $q >= 1$， 
   $
     H^q (X_et, cal(F)) = 0
   $
 ]
 #proof[
-  By @supp-of-torsion-sheaf-dim, 
+  由 @supp-of-torsion-sheaf-dim， 
   $
     cal(F) = dirlim_lambda cal(F)_lambda
   $
-  in which every $supp(cal(F)_lambda) subset Z$ for a dimension $0$ subscheme of $X$, i.e. a finite set of closed points. By @pushforward-by-closed-immersion (1), @pushforward-by-finite-morphism and @struct-of-spec-omega-et, 
+  其中每一项都满足 $supp(cal(F)_lambda) subset Z$，这里的子概形是 $X$ 中某个维数为 $0$ 的子概形，而这样的子概形无非是有限个闭点。由 @pushforward-by-closed-immersion (1)、@pushforward-by-finite-morphism 与 @struct-of-spec-omega-et， 
   $
     H^q (X, cal(F)_lambda) = 0, forall q>=1
   $
-  We may conclude the proof by the limit formula @limit-formula-for-sheaves. 
+  再由极限公式 @limit-formula-for-sheaves 即可完成证明。 
 ]
 
 #proposition(name: <grothendieck-vanishing-for-curves>)[
-  Let $X$ be any curve over a separably closed field $k$, and $cal(F) in cAb(X_et)$ be a torsion sheaf. Then for all $q >= 3$, 
+  设 $X$ 是可分闭域 $k$ 上的任意曲线，$cal(F) in cAb(X_et)$ 是挠层。则对一切 $q >= 3$， 
   $
     H^q (X, cal(F)) = 0
   $
 ]
 #proof[
-  By topological invariance, since $ol(k)\/k$ is a purely inseparable extension, we may base change to $ol(k)$ and assume that $k$ is algebraically closed. 
+  由于 $ol(k)\/k$ 是纯不可分扩张，由拓扑不变性，可以基变换到 $ol(k)$，从而不妨设 $k$ 代数闭。 
 
-  Let $j: eta = Spec(K(X)) -> X$ be the inclusion of the generic point. Consider the natural morphism: 
+  设 $j: eta = Spec(K(X)) -> X$ 是泛点的包含映射。考虑自然态射： 
   $
     gamma: cal(F) -> j_* j^(-1) cal(F)
   $
-  We claim that $gamma$ is an isomorphism on stalks at $ol(eta)$. Indeed, $tilde(X)_(ol(eta)) = Spec(cal(O)_(X,eta)^#[sh]) = Spec(K(X)^#[sh]) = Spec(K(X)^sep) = ol(eta)$, and so: 
+  我们断言 $gamma$ 在 $ol(eta)$ 处的茎上是同构。事实上，$tilde(X)_(ol(eta)) = Spec(cal(O)_(X,eta)^#[sh]) = Spec(K(X)^#[sh]) = Spec(K(X)^sep) = ol(eta)$，于是： 
   $
     (R^q j_* j^(-1) cal(F))_(ol(eta)) = H^q (eta times_X ol(eta), j^(-1) cal(F)|_(eta times_X ol(eta))) = H^q (ol(eta), cal(F)_(ol(eta))) = cases(
       cal(F)_(ol(eta)) &\, q = 0, 
       0 &\, q >= 1
     )
   $
-  In other words, $ker(gamma)_(ol(eta)) = coker(gamma)_(ol(eta)) = 0$, and $(R^q j_* j^(-1) cal(F))_(ol(eta)) = 0$ for $q >= 1$. By @supp-of-torsion-sheaf-dim-0, 
+  换言之，$ker(gamma)_(ol(eta)) = coker(gamma)_(ol(eta)) = 0$，且对 $q >= 1$ 有 $(R^q j_* j^(-1) cal(F))_(ol(eta)) = 0$。由 @supp-of-torsion-sheaf-dim-0， 
   $
     H^p (X, ker(gamma)) = H^p (X, coker(gamma)) = 0, forall p >= 1 \
     H^p (X, R^q j_* j^(-1) cal(F)) = 0, forall p >= 1
   $
-  Since $H^p (X, ker(gamma)) = H^p (X, coker(gamma)) = 0, forall p >= 1$, using short exact sequences, we see that for all $p >= 2$, 
+  由于 $H^p (X, ker(gamma)) = H^p (X, coker(gamma)) = 0, forall p >= 1$，借助短正合列可知，对一切 $p >= 2$， 
   $
     H^p (X, cal(F)) cong H^p (X, im(gamma)) cong H^p (X, j_* j^(-1) cal(F))
   $
-  and so it suffices to show for $p >= 3$, $H^p (X, j_* j^(-1) cal(F)) = 0$. For this, we use the Leray spectral sequence @derived-lower-star-first-props (2): 
+  因此只需对 $p >= 3$ 证明 $H^p (X, j_* j^(-1) cal(F)) = 0$。为此使用 Leray 谱序列 @derived-lower-star-first-props (2)： 
   $
     E_2^(p,q) = H^p (X, R^q j_* j^(-1) cal(F)) ==> H^(p+q) (eta, j^(-1) cal(F)) 
   $
-  Now for $q >= 2$ and $x in abs(X)$, 
+  现在对 $q >= 2$、$x in abs(X)$，有 
   $
     (R^q j_* j^(-1) cal(F))_x = H^q (eta times_X tilde(X)_x, cal(F)|_(eta times_X tilde(X)_x))
   $
-  As in the proof of @gm-generic-pushforward-higher-vanishing, $eta times_X tilde(X)_x = Spec(L)$, where $L$ is an extension field of $k$ of transcendence degree $1$. Thus, this cohomology is $H^q_#[cont] (Gal_L, -)$ applied to a discrete torsion $Gal_L$-module, since $cal(F)$ is torsion. By @tsen-thm-in-galois-cohom (1), a consequence of Tsen's theorem, this cohomology vanishes. Thus, $(R^q j_* j^(-1) cal(F))_x = 0$. Hence $R^q j_* j^(-1) cal(F) = 0$ for all $q >= 2$. 
+  如 @gm-generic-pushforward-higher-vanishing 的证明中那样，$eta times_X tilde(X)_x = Spec(L)$，其中 $L$ 是 $k$ 的超越次数为 $1$ 的扩域。于是这个上同调是把 $H^q_#[cont] (Gal_L, -)$ 作用在离散挠 $Gal_L$-模上所得，因为 $cal(F)$ 是挠的。由 @tsen-thm-in-galois-cohom (1)（曾炯定理的推论），该上同调消没。因此 $(R^q j_* j^(-1) cal(F))_x = 0$。从而对一切 $q >= 2$，$R^q j_* j^(-1) cal(F) = 0$。 
   
-  We also have proved $H^p (X, R^1 j_* j^(-1) cal(F)) = 0$ for $p >= 1$. Thus, in the Leray spectral sequence: 
+  我们还证明了对 $p >= 1$ 有 $H^p (X, R^1 j_* j^(-1) cal(F)) = 0$。于是在 Leray 谱序列中： 
   $
     E_2^(p,q) = H^p (X, R^q j_* j^(-1) cal(F)) ==> H^(p+q) (eta, j^(-1) cal(F)) 
   $
-  the only nonzero terms on the $E_2$-page are $E_2^(p,0)$ and $E_2^(0,1)$. The only surviving differential is $d_2: E_2^(0,1) -> E_2^(2,0)$, and the spectral sequence stabilizes on the $E_3$-page. Thus for all $p >= 3$, this spectral sequence induces an isomorphism: 
+  $E_2$-页上只有 $E_2^(p,0)$ 与 $E_2^(0,1)$ 非零。唯一存活的微分是 $d_2: E_2^(0,1) -> E_2^(2,0)$，谱序列在 $E_3$-页上稳定。于是对一切 $p >= 3$，这个谱序列诱导出同构： 
   $
     H^p (X, j_* j^(-1) cal(F)) = H^p (eta, j^(-1) cal(F))
   $
-  which vanishes by @tsen-thm-in-galois-cohom (1), as a consequence of Tsen's theorem, where $eta = Spec(K(X))$ is the spectrum of a transcendence degree 1 extension of $k$, and $j^(-1) cal(F)$ is a torsion $Gal_(K(X))$-module as $cal(F)$ is a torsion sheaf. 
+  右端由 @tsen-thm-in-galois-cohom (1) 消没（这是曾炯定理的推论），因为 $eta = Spec(K(X))$ 是 $k$ 的某个超越次数为 1 的扩域的谱，而 $j^(-1) cal(F)$ 是挠 $Gal_(K(X))$-模，因为 $cal(F)$ 是挠层。 
 
-  Thus, we have shown for $p >= 3$, 
+  这样我们就证明了对一切 $p >= 3$， 
   $
     H^p (X, cal(F)) cong H^p (X, j_* j^(-1) cal(F)) cong H^p (eta, j^(-1) cal(F)) = 0
   $
-  and we are done. 
+  证毕。 
 ]
 
-We are now ready to prove Grothendieck vanishing in dimension 1. 
+现在可以证明一维的 Grothendieck 消没定理了。 
 
 #theorem(name: <grothendieck-vanishing-in-dim-1>)[
-  Let $X$ be any finite type scheme of dimension $<=1$ over a separably closed field $k$, and $cal(F) in cAb(X_et)$ be a torsion sheaf. Then for all $q >= 3$, 
+  设 $X$ 是可分闭域 $k$ 上维数 $<=1$ 的任意有限型概形，$cal(F) in cAb(X_et)$ 是挠层。则对一切 $q >= 3$， 
   $
     H^q (X, cal(F)) = 0
   $
 ]
 #proof[
-  We run induction on the number of irreducible components of $X$. 
+  我们对 $X$ 的不可约分支个数作归纳。 
 
-  Suppose that $X$ is irreducible. By topological invariance, we may replace $X$ by its reduction and assume that $X$ is integral. Then $X$ is either a point $Spec(k)$ or a curve. The case of a point is done by @struct-of-spec-omega-et, and the case of a curve is done by the previous proposition. 
+  先设 $X$ 不可约。由拓扑不变性，可以把 $X$ 换成它的约化，从而不妨设 $X$ 是整的。此时 $X$ 要么是点 $Spec(k)$，要么是曲线：点情形由 @struct-of-spec-omega-et 解决，曲线情形由上一个命题解决。 
 
-  For the inductive step, suppose that the theorem holds for all $X$ with $<n$ irreducible components, and $X$ has $n$ irreducible components. Let $Z$ be an irreducible component of $X$ equipped with reduced induced subscheme structure, and $U = X - Z$ its complement, with $n-1$ irreducible components. Let $i: Z -> X, j: U -> X$ be the inclusions. By @etale-lower-shriek-first-props (3), we have a short exact sequence: 
+  归纳步：设定理对所有不可约分支个数 $<n$ 的 $X$ 都成立；现在 $X$ 有 $n$ 个不可约分支。取 $X$ 的一个不可约分支 $Z$，赋以诱导的既约子概形结构，令 $U = X - Z$ 为其补集，它有 $n-1$ 个不可约分支。设 $i: Z -> X, j: U -> X$ 是包含映射。由 @etale-lower-shriek-first-props (3)，有短正合列： 
   $
     0 -> j_! j^(-1) cal(F) -> cal(F) -> i_* i^(-1) cal(F) -> 0
   $
-  Now for $q >= 3$: 
+  现在设 $q >= 3$： 
 
-  - $H^q (X, i_* i^(-1) cal(F)) = H^q (Z, i^(-1) cal(F)) = 0$ by the irreducible case; 
+  - 由不可约情形，$H^q (X, i_* i^(-1) cal(F)) = H^q (Z, i^(-1) cal(F)) = 0$； 
 
-  - $supp(j_! j^(-1) cal(F)) subset U subset Y := ol(U)$. $Y$ has $n-1$ irreducible components, and we equip it with the reduced induced subscheme structure and consider the inclusion $h: Y -> X$. 
+  - $supp(j_! j^(-1) cal(F)) subset U subset Y := ol(U)$。$Y$ 有 $n-1$ 个不可约分支；给它赋以诱导的既约子概形结构，并考虑包含映射 $h: Y -> X$。 
 
-    Then $j_! j^(-1) cal(F) = h_* cal(G)$ for some $cal(G) in cAb(Y_et)$. For any $ol(y) in Y_et$, $cal(G)_(ol(y)) = (h_* cal(G))_(ol(y)) = (j_! j^(-1) cal(F))_(ol(y))$ is torsion, and so $cal(G)$ is a torsion sheaf by @torsion-sheaves-first-props. As such, 
+    于是存在 $cal(G) in cAb(Y_et)$，使 $j_! j^(-1) cal(F) = h_* cal(G)$。对任意 $ol(y) in Y_et$，$cal(G)_(ol(y)) = (h_* cal(G))_(ol(y)) = (j_! j^(-1) cal(F))_(ol(y))$ 都是挠群，故由 @torsion-sheaves-first-props，$cal(G)$ 是挠层。于是由 $n-1$ 个不可约分支的情形， 
     $
       H^q (X, j_! j^(-1) cal(F)) = H^q (Y, cal(G)) = 0
     $
-    by the case of $n-1$ irreducible components. 
+    即得。 
 
-  Using the long exact sequence, $H^q (X, cal(F)) = 0$ for all $q >= 3$, and we are done. 
+  再由长正合列，对一切 $q >= 3$ 都有 $H^q (X, cal(F)) = 0$，证毕。 
 ]
 
-Next, we deal with Artin vanishing in dimension 1. 
+接下来处理一维的 Artin 消没定理。 
 
 #proposition(name: <artin-vanishing-of-zn>)[
-  Let $X$ be any finite type affine scheme of dimension $<=1$ over a separably closed field $k$. Then for all $q >= 2$ and all $n >= 1$, 
+  设 $X$ 是可分闭域 $k$ 上维数 $<=1$ 的任意有限型仿射概形。则对一切 $q >= 2$ 与一切 $n >= 1$， 
   $
     H^q (X, ul(ZZ\/n)) = 0
   $
 ]
 #proof[
-  Vanishing for $q >= 3$ is given by @grothendieck-vanishing-in-dim-1, so it suffices to deal with vanishing for $q = 2$. 
+  $q >= 3$ 的消没由 @grothendieck-vanishing-in-dim-1 给出，故只需处理 $q = 2$ 的消没。 
 
-  By topological invariance, since $ol(k)\/k$ is a purely inseparable extension, we may base change to $ol(k)$ and assume that $k$ is algebraically closed. We have proved this proposition for $X$ an affine smooth curve in @h2-zn-of-affine-smooth-curve. Next, when $X$ is an arbitrary affine curve, we take its normalization: 
+  由于 $ol(k)\/k$ 是纯不可分扩张，由拓扑不变性，可以基变换到 $ol(k)$，从而不妨设 $k$ 代数闭。当 $X$ 是仿射光滑曲线时，本命题已在 @h2-zn-of-affine-smooth-curve 中证明。接下来设 $X$ 是任意的仿射曲线，取它的正规化： 
   $
     nu: tilde(X) -> X
   $
-  which is a finite map. Consider the canonical map: 
+  这是一个有限映射。考虑典范映射： 
   $
     ul(ZZ\/n)_X -> nu_* ul(ZZ\/n)_(tilde(X))
   $
-  Since there exists a dense open $U subset X$ s.t. $nu: nu^(-1) (U) -> U$ is an isomorphism, $ul(ZZ\/n)_X -> nu_* ul(ZZ\/n)_(tilde(X))$ is an isomorphism when restricted to $U$. Hence, its kernel and cokernel are supported on finitely many closed points, and so are acyclic.#footnote[This morphism should be injective, but we do not need this here.] Thus, using short exact sequences, 
+  由于存在稠密开集 $U subset X$，使 $nu: nu^(-1) (U) -> U$ 是同构，$ul(ZZ\/n)_X -> nu_* ul(ZZ\/n)_(tilde(X))$ 限制到 $U$ 上便是同构。于是它的核与余核都支撑在有限多个闭点上，从而是零调的。#footnote[这个态射应当是单射，但我们这里并不需要这一点。] 于是用短正合列， 
   $
     H^2 (X, ul(ZZ\/n)) = H^2 (X, im(ul(ZZ\/n)_X -> nu_* ul(ZZ\/n)_(tilde(X)))) = H^2 (X, nu_* ul(ZZ\/n)_(tilde(X))) = H^2 (tilde(X), ul(ZZ\/n))
   $
-  where the last step is due to @pushforward-by-finite-morphism. Now $tilde(X)$ is a smooth affine curve, so this cohomology vanishes and we are done. 
+  最后一步用到 @pushforward-by-finite-morphism。现在 $tilde(X)$ 是光滑仿射曲线，故该上同调消没，仿射曲线情形即得。 
 
-  Finally, for $X$ a general finite type affine scheme of dimension $<=1$ over $k$, let $Z_1, dots.c, Z_m$ be its irreducible components, equipped with the reduced induced subscheme structure. Thus, each $Z_i$ is either a curve or a point $Spec(k)$, and so $H^q (Z_i, ul(ZZ\/n)) = 0$ as proved above. Let $h_i: Z_i -> X$ be the closed immersions, and let $h: Z := union.sq.big_(i=1)^m Z_i -> X$ be the disjoint union, a finite map. Consider the canonical map: 
+  最后设 $X$ 是 $k$ 上一般的有限型仿射概形，维数 $<=1$，$Z_1, dots.c, Z_m$ 是它的不可约分支，均赋以诱导的既约子概形结构。于是每个 $Z_i$ 要么是曲线，要么是点 $Spec(k)$，故如前面所证 $H^q (Z_i, ul(ZZ\/n)) = 0$。设 $h_i: Z_i -> X$ 是相应的闭浸入，并令 $h: Z := union.sq.big_(i=1)^m Z_i -> X$ 为不交并，它是有限映射。考虑典范映射： 
   $
     ul(ZZ\/n)_X -> h_* ul(ZZ\/n)_Z
   $
-  The set of points in $X$ contained in exactly one irreducible component forms a dense open $U$, s.t. $h^(-1) (U) -> U$ is an isomorphism. As such, $ul(ZZ\/n)_X -> h_* ul(ZZ\/n)_Z$ is an isomorphism upon restriction to $U$, and its kernel and cokernel are supported on finitely many closed points.#footnote[This morphism should also be injective, but we do not need this here.] Similarly, 
+  $X$ 中恰好落在一个不可约分支里的点构成稠密开集 $U$，并且 $h^(-1) (U) -> U$ 是同构。于是 $ul(ZZ\/n)_X -> h_* ul(ZZ\/n)_Z$ 限制到 $U$ 上是同构，其核与余核都支撑在有限多个闭点上。#footnote[这个态射也应当是单射，但我们这里并不需要这一点。] 同理， 
   $
     H^2 (X, ul(ZZ\/n)) = H^2 (Z, ul(ZZ\/n)) = oplus.big_(i=1)^m H^2 (Z_i, ul(ZZ\/n)) = 0
   $
-  and we are done. 
+  证毕。 
 ]
 
 #theorem(name: <artin-vanishing-in-dim-1>)[
-  Let $X$ be any finite type affine scheme of dimension $<=1$ over a separably closed field $k$, and $cal(F) in cAb(X_et)$ be a torsion sheaf. Then for all $q >= 2$,  
+  设 $X$ 是可分闭域 $k$ 上维数 $<=1$ 的任意有限型仿射概形，$cal(F) in cAb(X_et)$ 是挠层。则对一切 $q >= 2$，  
   $
     H^q (X, cal(F)) = 0
   $
 ]
 #proof[
-  The case $q >= 3$ is dealt with in @grothendieck-vanishing-in-dim-1, so we may take $q = 2$. 
+  $q >= 3$ 的情形已在 @grothendieck-vanishing-in-dim-1 中处理，故不妨取 $q = 2$。 
 
-  By the same induction on the number of irreducible components as in the proof of @grothendieck-vanishing-in-dim-1, we may assume that $X$ is irreducible. By replacing $X$ with its reduction according to topological invariance, we may assume that $X$ is integral, i.e. a curve. By the limit formula @limit-formula-for-sheaves, and constructible sheaf devissage @constructible-sheaves-first-props (6), we may assume that $cal(F)$ is a constructible sheaf. 
+  仿照 @grothendieck-vanishing-in-dim-1 的证明，对不可约分支个数作同样的归纳，不妨设 $X$ 不可约。由拓扑不变性把 $X$ 换成其约化，不妨设 $X$ 是整的，即一条曲线。再由极限公式 @limit-formula-for-sheaves 以及对可构造层作 devissage（@constructible-sheaves-first-props (6)），不妨设 $cal(F)$ 是可构造层。 
 
-  By @constructible-sheaves-first-props (2), there exists a dense open $j: U -> X$ s.t. $cal(F)|_U$ is l.c.c. Take the complement $i: Z -> X$ where $Z$ is a finite set of closed points with reduced induced subscheme structure. Now in the exact sequence from @etale-lower-shriek-first-props (3): 
+  由 @constructible-sheaves-first-props (2)，存在稠密开集 $j: U -> X$，使 $cal(F)|_U$ 是 l.c.c.。取补集 $i: Z -> X$，其中 $Z$ 是有限个闭点，赋以诱导的既约子概形结构。现在看 @etale-lower-shriek-first-props (3) 给出的正合列： 
   $
     0 -> j_! (cal(F)|_U) -> cal(F) -> i_* (cal(F)|_Z) -> 0
   $
-  we have $H^2 (X, i_* (cal(F)|_Z)) = H^2 (Z, cal(F)|_Z) = 0$. As such, it suffices to prove $H^2 (X, j_! (cal(F)|_U)) = 0$ to obtain the desired vanishing. 
+  其中有 $H^2 (X, i_* (cal(F)|_Z)) = H^2 (Z, cal(F)|_Z) = 0$。因此，要得到所要的消没，只需证明 $H^2 (X, j_! (cal(F)|_U)) = 0$。 
 
-  Since $cal(F)|_U = j^(-1) cal(F)$ is l.c.c, we may pick a finite etale covering $pi: V -> U$ s.t. $pi^(-1) j^(-1) cal(F) cong ul(G)_V$ where $G$ is a finite group. 
+  由于 $cal(F)|_U = j^(-1) cal(F)$ 是 l.c.c.，可以取有限平展覆叠 $pi: V -> U$，使 $pi^(-1) j^(-1) cal(F) cong ul(G)_V$，其中 $G$ 是有限群。 
 
   #lemma[
-    Let $f: X -> Y$ be surjective etale. Then the canonical morphism: 
+    设 $f: X -> Y$ 是平展满射。则由伴随余单位给出的典范态射： 
     $
       f_! f^(-1) cal(F) -> cal(F)
     $
-    given by the adjunction counit is surjective. 
+    是满射。 
   ]
   #proof[
-    The adjunction unit and counit: 
+    伴随的单位与余单位 
     $
       epsilon_(cal(F)): f_! f^(-1) cal(F) -> cal(F) \
       eta_(cal(G)): cal(G) -> f^(-1) f_! cal(G)
     $
-    satisfy an identity: the composition: 
+    满足一个恒等式：其复合 
     $
       f^(-1) cal(F) ->^(eta_(f^(-1) cal(F))) f^(-1) f_! f^(-1) cal(F) ->^(f^(-1) epsilon_(cal(F))) f^(-1) cal(F)
     $
-    is the identity morphism. Thus, $f^(-1) epsilon_(cal(F))$ is surjective, and by @surjective-pullback-conservative, $epsilon_(cal(F))$ is surjective. 
+    是恒等态射。于是 $f^(-1) epsilon_(cal(F))$ 是满射，再由 @surjective-pullback-conservative，$epsilon_(cal(F))$ 也是满射。 
   ]
-  Thus, we have a surjective morphism: 
+  于是得到满射： 
   $
     pi_* ul(G)_V = pi_* pi^(-1) j^(-1) cal(F) ->> j^(-1) cal(F)
   $
-  Since $j_!$ is exact, we have a surjective morphism $j_! pi_* ul(G)_V -> j_! j^(-1) cal(F)$. Forming its kernel, we have a short exact sequence: 
+  由于 $j_!$ 正合，$j_! pi_* ul(G)_V -> j_! j^(-1) cal(F)$ 是满射。取其核，得短正合列： 
   $
     0 -> cal(K) -> j_! pi_* ul(G)_V -> j_! j^(-1) cal(F) -> 0
   $
-  inducing a long exact sequence: 
+  它诱导长正合列： 
   $
-    dots.c -> H^2 (X, j_! pi_* ul(G)_V) -> H^2 (X, j_! j^(-1) cal(F)) -> underbrace(H^3 (X, cal(K)), #[$0$ by @grothendieck-vanishing-in-dim-1]) -> dots.c
+        dots.c -> H^2 (X, j_! pi_* ul(G)_V) -> H^2 (X, j_! j^(-1) cal(F)) -> underbrace(H^3 (X, cal(K)), #[由 @grothendieck-vanishing-in-dim-1 得 $0$]) -> dots.c
   $
-  and so it suffices to prove that $H^2 (X, j_! pi_* ul(G)_V) = 0$. Now $j compose pi: V -> X$ is quasi-finite separated, so by Zariski's main theorem, we may factor it as: 
+  因此只需证明 $H^2 (X, j_! pi_* ul(G)_V) = 0$。现在 $j compose pi: V -> X$ 拟有限且分离，故由 Zariski 主定理，可将它分解为： 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJWIl0sWzEsMSwiWCJdLFswLDEsIlUiXSxbMSwwLCJXIl0sWzIsMSwiaiIsMl0sWzAsMiwicGkiLDJdLFswLDMsImpfMSJdLFszLDEsInBpXzEiXV0=
   #align(center, diagram({
     node((-1, -1), [$V$])
@@ -240,33 +241,33 @@ Next, we deal with Artin vanishing in dimension 1.
     edge((-1, -1), (0, -1), [$h$], label-side: left, "->")
     edge((0, -1), (0, 0), [$pi.alt$], label-side: left, "->")
   }))
-  where $pi.alt$ is finite and $h$ is an open immersion. We claim that $j_! pi_* ul(G)_V cong pi.alt_* h_! ul(G)_V$. Indeed, a natural map $j_! pi_* ul(G)_V -> pi.alt_* h_! ul(G)_V$ may be constructed from adjunction and base change, and that it is an isomorphism can be checked on stalks according to @stalks-of-finite-pushforward and @etale-lower-shriek-first-props (2). Thus, it suffices to prove that: 
+  其中 $pi.alt$ 有限，$h$ 是开浸入。我们断言 $j_! pi_* ul(G)_V cong pi.alt_* h_! ul(G)_V$。事实上，由伴随与基变换可以构造出自然映射 $j_! pi_* ul(G)_V -> pi.alt_* h_! ul(G)_V$；它是否为同构，可按 @stalks-of-finite-pushforward 与 @etale-lower-shriek-first-props (2) 在茎上检验。因此只需证明： 
   $
     H^2 (X, j_! pi_* ul(G)_V) = H^2 (X, pi.alt_* h_! ul(G)_V) = H^2 (W, h_! ul(G)_V)
   $
-  vanishes. 
+  上式中每一项都消没。 
 
-  Taking $Z$ to be the schematic image of $h: V -> W$, $h$ may be factored as: 
+  取 $Z$ 为 $h: V -> W$ 的概形像，则 $h$ 可分解为： 
   $
     h: V ->^g Z ->^i W
   $ 
-  In which $g$ is a dominant open immersion and $i$ is a closed immersion. Now $h_! ul(G)_V = i_* g_! ul(G)_V$, as a natural map may be constructed from base change and adjunction, and it can be checked to be an isomorphism by taking stalks according to @stalks-of-finite-pushforward and @etale-lower-shriek-first-props (2). 
+  其中 $g$ 是支配开浸入，$i$ 是闭浸入。而 $h_! ul(G)_V = i_* g_! ul(G)_V$：自然映射可由基变换与伴随构造出来，再按 @stalks-of-finite-pushforward 与 @etale-lower-shriek-first-props (2) 在茎上检验，便知它是同构。 
   
-  Thus, $H^2 (W, h_! ul(G)_V) = H^2 (W, i_* g_! ul(G)_V) = H^2 (Z, g_! ul(G)_V)$. 
+  因此 $H^2 (W, h_! ul(G)_V) = H^2 (W, i_* g_! ul(G)_V) = H^2 (Z, g_! ul(G)_V)$。 
 
-  Now take $g': Y := Z - V -> Z$ be the complementary closed immersion, where $Y$ is given the reduced induced subscheme structure. Since $V subset Z$ is a dense open, $Y$ is a finite set of closed points. Now consider the exact sequence: 
+  现在令 $g': Y := Z - V -> Z$ 为补闭浸入，其中 $Y$ 赋以诱导的既约子概形结构。由于 $V subset Z$ 是稠密开集，$Y$ 是有限个闭点。考虑正合列： 
   $
     0 -> g_! ul(G)_V -> ul(G)_Z -> g'_* ul(G)_Y -> 0
   $
-  inducing a long exact sequence: 
+  它诱导长正合列： 
   $
     dots.c -> H^1 (Z, g'_* ul(G)_Y) -> H^2 (Z, g_! ul(G)_V) -> H^2 (Z, ul(G)_Z) -> dots.c
   $
-  Now: 
+  现在： 
 
-  - $H^1 (Z, g'_* ul(G)_Y) = H^1 (Y, ul(G)_Y)$ since $Y$ is a finite set of closed points; 
+  - 由于 $Y$ 是有限个闭点，$H^1 (Z, g'_* ul(G)_Y) = H^1 (Y, ul(G)_Y)$； 
 
-  - $H^2 (Z, ul(G)_Z) = 0$ by @artin-vanishing-of-zn, since $G$ is a finite abelian group, and $Z ->^i W ->^(pi.alt) X$ is finite, making $Z$ a finite type affine scheme over $k$ of dimension $<=1$. 
+  - 由 @artin-vanishing-of-zn，$H^2 (Z, ul(G)_Z) = 0$：这里 $G$ 是有限交换群，且 $Z ->^i W ->^(pi.alt) X$ 有限，故 $Z$ 是 $k$ 上维数 $<=1$ 的有限型仿射概形。 
 
-  As such, $H^2 (Z, g_! ul(G)_V) = 0$, and we are done. 
+  于是 $H^2 (Z, g_! ul(G)_V) = 0$，证毕。 
 ]

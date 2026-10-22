@@ -1,79 +1,79 @@
 #import "void-import.typ": *
 
-== Proof of (Shift)
+== (Shift) 的证明
 
-In this section, we prove (Shift), an intermediate step that allows us to transfer base change results between schemes. The method of this section comes from #cite-stacks("095S")[Section 59.91]. 
+本节证明 (Shift)。这是一个中间步骤，使我们能在不同概形之间转移基变换的结论。本节的方法取自 #cite-stacks("095S")[Section 59.91]。 
 
 #proposition(name: <pbc-seed-precursor-0>)[
-  For any noetherian henselian $A$ and proper $f: X -> Spec(A)$ and any torsion $cal(F) in cAb(X_et)$, the natural map on connected components: 
+  对任意 Noether 的 Hensel 局部环 $A$、紧合态射 $f: X -> Spec(A)$ 以及任意挠层 $cal(F) in cAb(X_et)$，连通分支上的自然映射： 
   $
     pi_0 (X_0) -> pi_0 (X)
   $
-  is a bijection. 
+  是双射。 
 ]
 #proof[
-  By Stein factorization, $f: X -> Spec(A)$ factors as $f: X ->^g Y ->^h Spec(A)$, where $g$ is surjective with connected fibers and $h$ is finite. Now $f_0$ factors as $f_0: X_0 ->^(g_0) Y_0 ->^(h_0) Spec(k)$, where $g_0$ has connected fibers and $h_0$ is finite. 
+  由 Stein 分解，$f: X -> Spec(A)$ 分解为 $f: X ->^g Y ->^h Spec(A)$，其中 $g$ 满射且纤维连通，$h$ 有限。此时 $f_0$ 分解为 $f_0: X_0 ->^(g_0) Y_0 ->^(h_0) Spec(k)$，其中 $g_0$ 的纤维连通，$h_0$ 有限。 
 
   #lemma[
-    If $f: X -> Y$ is a surjective closed map with connected fibers between locally connected topological spaces, then $pi_0 (f): pi_0 (X) -> pi_0 (Y)$ is a bijection. 
+    设 $f: X -> Y$ 是局部连通拓扑空间之间的满射闭映射，且纤维连通，则 $pi_0 (f): pi_0 (X) -> pi_0 (Y)$ 是双射。 
   ]
   #proof[
-    For a connected component $C subset Y$, $f^(-1) (C)$ is open and closed in $X$, hence a disjoint union of connected components of $X$. Replacing $X -> Y$ with $f^(-1) (C) -> C$, we may assume that $Y$ is connected and aim to prove that $X$ is connected. 
+    对连通分支 $C subset Y$，$f^(-1) (C)$ 在 $X$ 中既开又闭，从而是 $X$ 的若干连通分支的不交并。把 $X -> Y$ 换成 $f^(-1) (C) -> C$，便可假设 $Y$ 连通，此时只需证 $X$ 连通。 
 
-    Assume the contrary that $X = X_1 union.sq X_2$ for closed and open $X_1, X_2 subset X$. Since $f$ is closed, $f(X_1), f(X_2) subset Y$ are closed. Since $f$ is surjective, $Y = f(X_1) union f(X_2)$. Had this union been disjoint, $Y$ is the disjoint union of two proper closed and open subsets, a contradiction to the connectivity of $Y$. Thus there exists $y in Y$ s.t. $y in f(X_1) ∩ f(X_2)$. Now by hypothesis, $f^(-1)(y)$ is connected. However, $f^(-1)(y) = (X_1 ∩ f^(-1)(y)) union.sq (X_2 ∩ f^(-1)(y))$ is the disjoint union of two proper open and closed subsets, a contradiction to connectivity of $f^(-1)(y)$. 
+    反设 $X = X_1 union.sq X_2$，其中 $X_1, X_2 subset X$ 既闭又开。由于 $f$ 闭，$f(X_1), f(X_2) subset Y$ 都是闭集；由于 $f$ 满射，$Y = f(X_1) union f(X_2)$。若这两个闭集互不相交，则 $Y$ 就是两个真开闭子集的不交并，与 $Y$ 的连通性矛盾。于是存在 $y in Y$ 使得 $y in f(X_1) ∩ f(X_2)$。按假设，$f^(-1)(y)$ 连通。然而 $f^(-1)(y) = (X_1 ∩ f^(-1)(y)) union.sq (X_2 ∩ f^(-1)(y))$ 是两个真开闭子集的不交并，与 $f^(-1)(y)$ 的连通性矛盾。 
   ]
 
-  Thus, $pi_0 (g): pi_0 (X) -> pi_0 (Y)$ and $pi_0 (g_0): pi_0 (X_0) -> pi_0 (Y_0)$ are bijective. Thus it suffices to show that $pi_0 (Y_0) -> pi_0 (Y)$ is bijective. Replacing $X$ with $Y$, we may assume that $X -> Spec(A)$ is finite, i.e. $X = Spec(B)$ for a finite $A$-algebra $B$. By @equiv-defns-of-henselian (1), since $A$ is henselian, $B = B_1 times dots.c times B_m$ is a direct product of finite local $A$-algebras, and $Spec(B) = union.sq.big_(i=1)^m Spec(B_i)$ is a connected-component decomposition. Now $X_0 = Spec(B_0), B_0 = B\/frak(m) B$, and so $B_0 = B_(1,0) times dots.c times B_(m,0)$ where each $B_(i,0) = B_i\/frak(m) B_i$ is a finite local $k$-algebra. Thus $Spec(B_0) = union.sq.big_(i=1)^m Spec(B_(i,0))$ is a connected-component decomposition, with $pi_0 (Spec(B_0)) -> pi_0 (Spec(B))$ sending $Spec(B_(i,0))$ to $Spec(B_i)$. Thus, $pi_0 (X_0) -> pi_0 (X)$ is a bijection in this case, and we are done. 
+  于是 $pi_0 (g): pi_0 (X) -> pi_0 (Y)$ 与 $pi_0 (g_0): pi_0 (X_0) -> pi_0 (Y_0)$ 都是双射。因此只需证明 $pi_0 (Y_0) -> pi_0 (Y)$ 是双射。把 $X$ 换成 $Y$，不妨设 $X -> Spec(A)$ 有限，即 $X = Spec(B)$，其中 $B$ 是有限 $A$-代数。因 $A$ 是 Hensel 局部环，由 @equiv-defns-of-henselian (1) 知 $B = B_1 times dots.c times B_m$ 是有限局部 $A$-代数的直积，而 $Spec(B) = union.sq.big_(i=1)^m Spec(B_i)$ 给出其连通分支分解。现在 $X_0 = Spec(B_0), B_0 = B\/frak(m) B$，故 $B_0 = B_(1,0) times dots.c times B_(m,0)$，其中每个 $B_(i,0) = B_i\/frak(m) B_i$ 都是有限局部 $k$-代数。于是 $Spec(B_0) = union.sq.big_(i=1)^m Spec(B_(i,0))$ 给出其连通分支分解，且 $pi_0 (Spec(B_0)) -> pi_0 (Spec(B))$ 把 $Spec(B_(i,0))$ 送到 $Spec(B_i)$。可见在这个情形下 $pi_0 (X_0) -> pi_0 (X)$ 是双射，证毕。 
 ]
 
 #lemma(name: <pbc-point-deg0>)[
-  For any noetherian strict henselian $A$ and proper $X -> Spec(A)$ and any torsion $cal(F) in cAb(X_et)$, the natural restriction: 
+  对任意 Noether 的严格 Hensel 局部环 $A$、紧合态射 $X -> Spec(A)$ 以及任意挠层 $cal(F) in cAb(X_et)$，自然限制映射： 
   $
     Gamma(X, cal(F)) -> Gamma(X_0, cal(F)|_(X_0))
   $
-  is bijective. In other words, proper base change along $X -> Spec(A)$ always holds in degree $0$. 
+  是双射。换言之，沿 $X -> Spec(A)$ 的紧合基变换在 $0$ 次上总成立。 
 ]
 #proof[
-  By @pbc-dev-lem3, it suffices to prove when $cal(F) = ul(ZZ\/n)$. Now: 
+  由 @pbc-dev-lem3，只需对 $cal(F) = ul(ZZ\/n)$ 的情形证明。此时： 
   $
     Gamma(X, ul(ZZ\/n)) = (ZZ\/n)^(oplus pi_0 (X)), Gamma(X_0, ul(ZZ\/n)) = (ZZ\/n)^(oplus pi_0 (X_0))
   $
-  where the natural restriction is induced by the morphism $pi_0 (X_0) -> pi_0 (X)$ on connected components, which is a bijection by @pbc-seed-precursor-0. We are thereby done. 
+  其中自然限制映射由连通分支上的态射 $pi_0 (X_0) -> pi_0 (X)$ 诱导，而由 @pbc-seed-precursor-0，它是双射。于是证毕。 
 ]
 
 #lemma(name: <pbc-and-injectives-of-ab-zn>)[
-  For any noetherian strict henselian $A$ and proper $f: X -> Spec(A)$, TFAE: 
+  对任意 Noether 的严格 Hensel 局部环 $A$ 与紧合态射 $f: X -> Spec(A)$，下列条件等价： 
   
-  - Base change holds along $X -> Spec(A)$, i.e. for all torsion $cal(F) in cAb(X_et)$, the natural restriction: 
+  - 沿 $X -> Spec(A)$ 的基变换成立，即对所有挠层 $cal(F) in cAb(X_et)$，自然限制映射： 
     $
       H^q (X, cal(F)) -> H^q (X_0, cal(F)|_(X_0))
     $
-    is bijective. 
+    是双射。 
 
-  - For any injective object $cal(I) in cAb(X_et, ZZ\/n)$, $H^q (X_0, cal(I)|_(X_0)) = 0$ for $q >= 1$. 
+  - 对任意内射对象 $cal(I) in cAb(X_et, ZZ\/n)$，当 $q >= 1$ 时都有 $H^q (X_0, cal(I)|_(X_0)) = 0$。 
 ]
 #proof[
-  ($==>$) is automatic by @etale-zn-sheaves-first-props (3), so it suffices to prove ($<==$). By @pbc-dev-lem1, we may assume that $cal(F)$ is constructible, hence $n$-torsion for some $n>=1$. Now pick an injective resolution: 
+  ($==>$) 由 @etale-zn-sheaves-first-props (3) 自动成立，因此只需证明 ($<==$)。由 @pbc-dev-lem1，不妨设 $cal(F)$ 可构造，从而存在 $n>=1$ 使它是 $n$-挠的。现取 $cal(F)$ 在 $cAb(X_et, ZZ\/n)$ 中的一个内射消解： 
   $
     0 -> cal(F) -> cal(I)^bullet
   $
-  of $cal(F)$ in $cAb(X_et, ZZ\/n)$. By @etale-zn-sheaves-first-props (3), each $cal(I)^i$ is $Gamma(X, -)$-acyclic, so: 
+  由 @etale-zn-sheaves-first-props (3)，每个 $cal(I)^i$ 都是 $Gamma(X, -)$-零调的，故： 
   $
     H^q (X, cal(F)) = h^q (0 -> Gamma(X, cal(I)^bullet))
   $
-  Since pullback is exact, we have an exact sequence in $cAb((X_0)_et)$: 
+  由于拉回正合，我们在 $cAb((X_0)_et)$ 中有正合列： 
   $
     0 -> cal(F)|_(X_0) -> cal(I)^bullet|_(X_0)
   $
-  By hypothesis, each $cal(I)^bullet|_(X_0)$ is $Gamma(X_0, -)$-acyclic, and so: 
+  按假设，每个 $cal(I)^bullet|_(X_0)$ 都是 $Gamma(X_0, -)$-零调的，因此： 
   $
     H^q (X_0, cal(F)|_(X_0)) = h^q (0 -> Gamma(X_0, cal(I)^bullet|_(X_0)))
   $
-  The natural restriction $H^q (X, cal(F)) -> H^q (X_0, cal(F)|_(X_0))$ is induced by the restriction maps of cochain complexes $Gamma(X, cal(I)^bullet) -> Gamma(X_0, cal(I)^bullet|_(X_0))$. These maps are termwise isomorphisms by @pbc-point-deg0, and so the natural restriction $H^q (X, cal(F)) -> H^q (X_0, cal(F)|_(X_0))$ is an isomorphism. 
+  自然限制映射 $H^q (X, cal(F)) -> H^q (X_0, cal(F)|_(X_0))$ 由复形之间的限制映射 $Gamma(X, cal(I)^bullet) -> Gamma(X_0, cal(I)^bullet|_(X_0))$ 诱导。由 @pbc-point-deg0，这些映射逐项同构，因此自然限制映射 $H^q (X, cal(F)) -> H^q (X_0, cal(F)|_(X_0))$ 也是同构。 
 ]
 
 #theorem[
-  (Shift) In a diagram of successive base changes in which all schemes are noetherian and $A$ is strict henselian with $X', X$ proper over $Spec(A)$:
+  (Shift) 考虑一个逐次基变换的图表，其中所有概形都是 Noether 的，$A$ 是严格 Hensel 局部环，且 $X', X$ 在 $Spec(A)$ 上紧合：
   // https://q.uiver.app/#r=typst&q=WzAsNixbMCwxLCJYJyJdLFsxLDEsIlgiXSxbMiwxLCJTcGVjKEEpIl0sWzIsMCwiU3BlYyhrKSJdLFsxLDAsIlhfMCJdLFswLDAsIlgnXzAiXSxbMCwxLCJwaSIsMl0sWzEsMl0sWzMsMl0sWzUsNCwicGlfMCJdLFs0LDEsImkiXSxbNSwwLCJpJyIsMl0sWzQsM11d
   #align(center, diagram({
     node((-1, 0), [$X'$])
@@ -90,71 +90,71 @@ In this section, we prove (Shift), an intermediate step that allows us to transf
     edge((-1, -1), (-1, 0), [$i'$], label-side: right, "->")
     edge((0, -1), (1, -1), "->")
   }))
-  We have:
+  我们有：
   $
         & BC(pi, i) \
     ==> & (BC_* (X -> Spec(A)) <==> BC_* (X' -> Spec(A)))
   $
-  In plain English, if base change holds for the left square, then it holds for the right square if and only if it holds for the large rectangle. 
+  说得直白些：若基变换对左边的方块成立，则“对右边的方块成立”与“对整个大矩形成立”等价。 
 ]
 #proof[
-  We first prove a technical lemma: 
+  我们先证明一个技术性引理： 
   #lemma(name: <surjection-has-injective-unit>)[
-    If $f: X -> Y$ is surjective, then for all $cal(F) in cAb(Y_et)$, the unit map: 
+    设 $f: X -> Y$ 满射，则对所有 $cal(F) in cAb(Y_et)$，单位映射： 
     $
       eta_(cal(F)): cal(F) -> f_* f^(-1) cal(F)
     $
-    is injective. 
+    是单射。 
   ]
   #proof[
-    /*Let $cal(K) = ker(cal(F) -> f_* f^(-1) cal(F))$, and form the exact sequence: 
+    /*令 $cal(K) = ker(cal(F) -> f_* f^(-1) cal(F))$，并构造正合列： 
     $
       0 -> cal(K) -> cal(F) ->^eta f_* f^(-1) cal(F)
     $
-    Applying $f^(-1)$, we get an exact sequence: 
+    对之应用 $f^(-1)$，得到正合列： 
     $
       0 -> f^(-1) cal(K) -> f^(-1) cal(F) -->^(f^(-1) eta_(cal(F))) f^(-1) f_* f^(-1) cal(F)
     $
-    However, */From category theory, the counit $epsilon_(cal(G)): f^(-1) f_* cal(G) -> cal(G)$ and the unit $eta_(cal(F))$ satisfy an identity: the composition: 
+    然而，*/从范畴论可知，余单位 $epsilon_(cal(G)): f^(-1) f_* cal(G) -> cal(G)$ 与单位 $eta_(cal(F))$ 满足恒等式，即复合 
     $
       f^(-1) cal(F) -->^(f^(-1) eta_(cal(F))) f^(-1) f_* f^(-1) cal(F) -->^(epsilon_(f^(-1) cal(F))) f^(-1) cal(F)
     $
-    is the identity. In particular, $f^(-1) eta_(cal(F)): f^(-1) cal(F) -> f^(-1) f_* f^(-1) cal(F)$ is injective. Now from @surjective-pullback-conservative, $eta_(cal(F))$ is injective. 
+    是恒等映射。特别地，$f^(-1) eta_(cal(F)): f^(-1) cal(F) -> f^(-1) f_* f^(-1) cal(F)$ 是单射。而由 @surjective-pullback-conservative 知，$eta_(cal(F))$ 是单射。 
   ]
-  By @pbc-and-injectives-of-ab-zn, it suffices to show that for every injective object $cal(I) in cAb(X_et, ZZ\/n)$, $H^q (X_0, cal(I)|_(X_0)) = 0$ for $q >= 1$. Pick an injective map $pi^(-1) cal(I) -> cal(J)$ for an injective object $cal(J) in cAb(X'_et, ZZ\/n)$. Since $pi_*$ is left exact and the unit $cal(I) -> pi_* pi^(-1) cal(I)$ is injective by the previous lemma, the morphism from adjunction: 
+  由 @pbc-and-injectives-of-ab-zn，只需证明：对每个内射对象 $cal(I) in cAb(X_et, ZZ\/n)$，当 $q >= 1$ 时 $H^q (X_0, cal(I)|_(X_0)) = 0$。取一个单射 $pi^(-1) cal(I) -> cal(J)$，其中 $cal(J) in cAb(X'_et, ZZ\/n)$ 是内射对象。由于 $pi_*$ 左正合，而单位映射 $cal(I) -> pi_* pi^(-1) cal(I)$ 由上一个引理知是单射，故伴随给出的态射： 
   $
     cal(I) -> pi_* pi^(-1) cal(I) -> pi_* cal(J)
   $
-  is an injective morphism in $cAb(X_et, ZZ\/n)$. Since $cal(I) in cAb(X_et, ZZ\/n)$ is an injective object, it is a direct summand of $pi_* cal(J)$. Thus, to prove $H^q (X_0, cal(I)|_(X_0)) = 0$ for $q>=1$, it remains to prove $H^q (X_0, pi_* cal(J)|_(X_0)) = 0$. 
+  是 $cAb(X_et, ZZ\/n)$ 中的单射。由于 $cal(I) in cAb(X_et, ZZ\/n)$ 是内射对象，它是 $pi_* cal(J)$ 的直和项。因此，要证明 $q>=1$ 时 $H^q (X_0, cal(I)|_(X_0)) = 0$，只需证明 $H^q (X_0, pi_* cal(J)|_(X_0)) = 0$。 
 
-  Since $cal(J)$ is $n$-torsion and base change holds for the left square, $pi_* cal(J)|_(X_0) = pi_(0,*) (cal(J)|_(X'_0))$. Thus, we need to show that: 
+  由于 $cal(J)$ 是 $n$-挠的，且基变换对左边方块成立，故 $pi_* cal(J)|_(X_0) = pi_(0,*) (cal(J)|_(X'_0))$。于是只需证明： 
   $
     H^q (X_0, pi_(0,*) (cal(J)|_(X'_0))) = 0, forall q >= 1
   $
-  For any $q >= 1$, 
+  对任意 $q >= 1$，有 
   $
     R^q pi_(0,*) (cal(J)|_(X'_0)) cong (R^q pi_* cal(J))|_(X_0) = 0
   $
-  since base change holds for the left square, and $R^q pi_* cal(J) = 0$ by @etale-zn-sheaves-first-props (3). Thus, the Leray spectral sequence (@derived-lower-star-first-props (2)): 
+  这是因为基变换对左边方块成立，而 $R^q pi_* cal(J) = 0$ 由 @etale-zn-sheaves-first-props (3) 得到。于是有 Leray 谱序列（@derived-lower-star-first-props (2)）： 
   $
     H^p (X_0, R^q pi_(0,*) (cal(J)|_(X'_0))) ==> H^(p+q) (X'_0, cal(J)|_(X'_0))
   $
-  degenerates, inducing isomorphisms: 
+  该谱序列退化，诱导出同构： 
   $
     H^q (X_0, pi_(0,*) (cal(J)|_(X'_0))) cong H^q (X'_0, cal(J)|_(X'_0))
   $
-  which is $0$ for $q>=1$ by the second point of @pbc-and-injectives-of-ab-zn, since base change holds for the large rectangle. Thus $H^q (X_0, pi_* cal(J)|_(X_0)) = 0$ for all $q >= 1$ and we are done. 
+  由 @pbc-and-injectives-of-ab-zn 的第二条（此处基变换对大矩形成立），$q>=1$ 时同构的右端为 $0$。于是对所有 $q >= 1$ 都有 $H^q (X_0, pi_* cal(J)|_(X_0)) = 0$，证毕。 
 ]
-// We give two essentially identical proofs of this result, one phrased using explicit resolutions and complexes, and one phrased in the derived category. The second proof is merely the first one with some details encapsulated in the mechanisms of derived categories. However, I think that we haven't used derived categories up to now, and we probably shouldn't require readers to digress to a hard categorical construction in the middle of a lengthy proof. Therefore, the manual proof will be the main line, and I will write how to abbreviate the long manual proof using derived category vocabulary in nested proof boxes. 
+// 我们对这个结果给出两个本质相同的证明：一个用显式的消解与复形来表述，另一个在导出范畴中表述。第二个证明本质上就是第一个，只是把一些细节封装进了导出范畴的机制。不过，我认为我们到目前为止还没有用到导出范畴，大概也不该要求读者在一个冗长证明的中途绕去啃一个困难的范畴论构造。因此，手写证明将是主线；至于如何用导出范畴的语言把这段冗长的手写证明缩短，我会写在嵌套的证明框里。 
 
-// This proof requires the theory/language of derived categories in an essential way. Readers should read the appendix on derived categories before reading this proof. 
+// 这个证明本质上需要导出范畴的理论与语言。读者在读这个证明之前，应当先阅读关于导出范畴的附录。 
 
 // #proof[
-//   ($==>$) is just (Comp) (@pbc-comp), so we only need to prove ($<==$), that if base change holds for the left square and large rectangle, it holds for the right square. 
+//   ($==>$) 就是 (Comp)（@pbc-comp），所以我们只需证明 ($<==$)，即：若基变换对左边方块与大矩形成立，则它对右边方块成立。 
 
-//   // By @pbc-dev-lem1, it suffices to show that base change holds for all constructible sheaves $cal(F) in cAb(X_et)$. In particular, $cal(F)$ is $n$-torsion for some fixed $n>=1$, so by the acyclic Godement resolution (@acyclic-godement-resolution), there exists a $Gamma(X, -)$-acyclic resolution: 
+//   // 由 @pbc-dev-lem1，只需证明基变换对所有可构造层 $cal(F) in cAb(X_et)$ 成立。特别地，$cal(F)$ 对某个固定的 $n>=1$ 是 $n$-挠的，于是由零调 Godement 消解（@acyclic-godement-resolution），存在一个 $Gamma(X, -)$-零调消解： 
 //   // $
 //   //   0 -> cal(F) -> cal(I)^bullet
 //   // $
-//   // in which every $cal(I)^p$ is $n$-torsion. 
+//   // 其中每个 $cal(I)^p$ 都是 $n$-挠的。 
 // ]
