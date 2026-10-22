@@ -67,7 +67,7 @@ In this introduction, we briefly give motivation for developing the theory of et
     The following comparison theorem really just says that etale cohomology is a good analog of Betti cohomology for algebraic varieties. 
 
     #theorem[
-      (Artin; @cite-SGA4[Expos\'e XI, Th\'eor\`eme 4.4]) If $k = CC$, then there exists a natural isomorphism:
+      (Artin; @cite-SGA4[Exposé XI, Théorème 4.4]) If $k = CC$, then there exists a natural isomorphism:
       $
         H^n_B (X(CC), ZZ) otimes_ZZ ZZ_ell cong H^n_et (X, ZZ_ell)
       $
@@ -121,7 +121,7 @@ The construction of etale cohomology defines a good cohomology theory for algebr
   This allows us to count points. 
 
   #theorem[
-    (Grothendieck-Lefschetz trace formula) If $X$ is proper#footnote[This is a technical assumption to avoid compactly supported cohomologies.] over $FF_q$, 
+    (Grothendieck-Lefschetz trace formula) If $X$ is proper#footnote[This is a technical assumption to avoid compactly supported cohomology.] over $FF_q$, 
     $
       \# X_0 (FF_(q^n)) = \# (X(overline(FF_q)))^(F^n) = sum_(m=0)^(2 dim(X)) (-1)^m tr((F^*)^n\; H^m_et (X, QQ_ell))
     $
@@ -164,7 +164,7 @@ The construction of etale cohomology defines a good cohomology theory for algebr
     Moreover, if we write $P_m (t) = product_i (1 - alpha_(m, i) t)$ in $CC[t]$, then every $abs(alpha_(m,i)) =q^(m\/2)$. 
   ]
 
-  The Weil conjectures should really be thought of as the Riemann hypothesis over a function field, and are a solved analog of the Riemann hypothesis! They have profound applications in analytic number theory, giving optimal cancellation and uncorrelation for families of algebraic exponential sums. Such techniques, known as _applied $ell$-adic cohomology_, have far-reaching uses, such as in Yitang Zhang's proof of bounded prime gaps.#footnote[This use case has been optimized away though, according to my knowledge.]   
+  The Weil conjectures should really be thought of as the Riemann hypothesis over a function field, and form a solved analog of the Riemann hypothesis! They have profound applications in analytic number theory, giving optimal cancellation and uncorrelation for families of algebraic exponential sums. Such techniques, known as _applied $ell$-adic cohomology_, have far-reaching uses, such as in Yitang Zhang's proof of bounded prime gaps.#footnote[This use case has been optimized away though, according to my knowledge.]   
 ]
 
 Etale cohomology also constructs Galois representations.  
@@ -178,7 +178,7 @@ Etale cohomology also constructs Galois representations.
 
 As a final bonus, etale cohomology is also related to algebraic de Rham cohomology, via an algebraic analog of the de Rham isomorphism. A theorem from $p$-adic Hodge theory is: 
 #theorem[
-  (Tsuji, Faltings, Niziol, ..., \~2000) Let $k$ be a finite extension of $QQ_p$, and $X$ be a smooth proper algebraic variety. There exists a canonical isomorphism: 
+  (Tsuji, Faltings, Niziol, ..., \~2000) Let $k$ be a finite extension of $QQ_p$, and $X$ be a smooth proper algebraic variety over $k$. There exists a canonical isomorphism: 
   $
     H^n_et (X_(overline(k)), QQ_p) otimes_(QQ_p) B_("dR") cong H^n_"dR" (X\/k) otimes_k B_("dR")
   $

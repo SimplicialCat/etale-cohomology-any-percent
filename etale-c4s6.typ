@@ -67,7 +67,7 @@
 
     - $g_(j_s): V_(j_s) -> U_(lambda(j_s))$ for $k < s <= p-1$. 
 
-    By the same argument as that of the simplicial identities, $h$ is a chain homotopy between the chain maps induced by the refinements $g_1$ and $g_2$. 
+    By the same argument as that of the simplicial identities, $h$ is a chain homotopy between the chain maps induced by the refinements $mu$ and $lambda$. 
   ]
   The $p$-th *Cech cohomology* of $cal(G) in cPAb(X_et)$ on $U$ is then defined as: 
   $
@@ -89,11 +89,11 @@
   $
     0 -> product_(i_0 in I) cal(I) (U_(i_0)) -> dots.c -> product_(i_0,dots.c,i_p in I) cal(I) (U_(i_0,dots.c,i_p)) -> product_(i_0,dots.c,i_(p+1) in I) cal(I) (U_(i_0,dots.c,i_(p+1))) -> dots.c
   $
-  is exact at every $p >= 1$. Now $cal(I)(U^((p))) = Hom_(cPAb)(ul(ZZ)_(!,U^((p)),0), cal(I))$ and $cal(I)$ is injective so $Hom_(cPAb) (-, cal(I))$ is contravariant exact. As such, it suffices to show that the sequence: 
+  is exact at every $p >= 1$. Now $cal(I)(U^((p))) = Hom_(cPAb)(ul(ZZ)_(!,U^((p)),0), cal(I))$ and $cal(I)$ is injective so $Hom_(cPAb) (-, cal(I))$ is contravariant exact. As such, it suffices to show that we have an exact sequence: 
   $
     dots.c -> product_(i_0,dots.c,i_(p+1) in I) ul(ZZ)_(!,U_(i_0,dots.c,i_(p+1)),0) ->^partial product_(i_0,dots.c,i_p in I) ul(ZZ)_(!,U_(i_0,dots.c,i_p),0)  -> dots.c -> product_(i_0 in I) ul(ZZ)_(!,U_(i_0),0)
   $
-  where $d$ is: 
+  where $partial$ is: 
   $
     partial: ul(ZZ)_(!,U^((p+1)),0) (V) = oplus.big_(Hom(U^((p+1)),V)) ZZ &-> ul(ZZ)_(!,U^((p)),0) (V) = oplus.big_(Hom(U^((p)), V)) ZZ \
 

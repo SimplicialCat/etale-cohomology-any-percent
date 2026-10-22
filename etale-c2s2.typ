@@ -61,7 +61,7 @@ The arguments in this section mostly follow from Stacks Project.
       $
         ker(A[T] -->^("ev"_b) B\/frak(m)_(x_i) B) in Spec(A[T])
       $
-      This ideal contains $T$ since $b |-> 0 in T_i$ and is contained in $frak(m)_(x_i)$ by definition. Meanwhile, $ker(A -> B\/frak(m)_(x_i) B)$ is $frak(p)$ since $x_i$ lies above $y = frak(p)$. In summary, $x_2, dots.c, x_m$ all lie above the prime ideal $(frak(p), T) subset A[T]$. 
+      This ideal contains $T$ since $b |-> 0 in T_i$. Meanwhile, $ker(A -> B\/frak(m)_(x_i) B)$ is $frak(p)$ since $x_i$ lies above $y = frak(p)$. Thus, this kernel is exactly $(frak(p), T)$. In summary, $x_2, dots.c, x_m$ all lie above the prime ideal $(frak(p), T) subset A[T]$. 
 
       On the other hand, $b in.not frak(m)_x$ since it reduces to $0 != alpha$ in its residue field. Thus $x = frak(q)$ lies above a prime of $A[T]$ not containing $T$. This completes the proof that $x = frak(q) in Spec(B)$ is the only prime lying above $frak(r) in Spec(D)$. 
 
@@ -87,7 +87,7 @@ The arguments in this section mostly follow from Stacks Project.
   $
     B = (A[T]\/I)_(h(T))
   $
-  has $Spec(B) -> Spec(A)$ etale, with $h(T) in A[T]$ and $I subset A[T]$ an ideal containing a monic polynomial in $A[T]$ that does not contain $h(T)$. 
+  has $Spec(B) -> Spec(A)$ etale, with $h(T) in A[T]$, and $I subset A[T]$ being an ideal containing a monic polynomial in $A[T]$ that does not contain $h(T)$. 
 
   Step 2. Reduce $I$ to one monic relation. 
 

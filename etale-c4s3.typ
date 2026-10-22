@@ -365,18 +365,20 @@ By the previous lemma, $(cal(G)^+)^+$ is always a sheaf for any presheaf $cal(G)
 
     + Use the Godement resolution. 
 
-    The Godement resolution, option (2), has the advantage of being an explicit construction and of being functorial. However, it requires defining stalks of etale sheaves on geometric points. We will thus introduce it in a later section. 
+    The Godement resolution, option (2), has the advantage of being an explicit construction that is explicitly functorial. However, it requires defining stalks of etale sheaves on geometric points. We will thus introduce it in a later section. 
     
-    Meanwhile, albeit being abstract, (1) has the advantage of working on not only the etale site, but also sites like fppf, fpqc and crystalline#footnote[...whatever that means.] sites, in which there are not enough points. We are going with (1) for now, and discuss (2) when we introduce stalks. 
+    Meanwhile, albeit being abstract, (1) is in fact also a functorial construction, and has the advantage of working on not only the etale site, but also sites like fppf, fpqc and crystalline#footnote[...whatever that means.] sites, in which there are not enough points. We are going with (1) for now, and discuss (2) when we introduce stalks. 
   ]
 
   We use the following theorem from @cite-grothendieck-tohoku:
   #theorem[
-    In an abelian category $cal(A)$ satisfying: 
+    Suppose that $cal(A)$ is an abelian category satisfying: 
 
     + (Ab5) condition: $cal(A)$ has arbitrary coproducts, and filtered colimits are exact. 
 
     + $cal(A)$ has a generator $G$, i.e. there exists an object $G in cal(A)$ s.t. $Hom(G, -): cal(A) -> cAb$ is faithful. 
+
+    Then $cal(A)$ has enough injective objects, and in fact has functorial injective resolutions. 
   ]
 
   We thus need to show that $cAb(X_et)$ satisfies (Ab5) and has a generator. 
@@ -497,7 +499,7 @@ By the previous lemma, $(cal(G)^+)^+$ is always a sheaf for any presheaf $cal(G)
   This follows from exactness of $(-)^\#$. 
 ]
 
-About 60 pages in, after establishing the abelian category $cAb(X_et)$ with enough injectives, and the left exact functor $Gamma(U, -)$, we are finally able to introduce the central object of this course: 
+After establishing the abelian category $cAb(X_et)$ with enough injectives, and the left exact functor $Gamma(U, -)$, we are finally able to introduce the central object of this course: 
 
 #definition(name: <defn-etale-cohomology>)[
   We define the $n$-th *etale cohomology* functor $H^n (U, -)$ to be the $n$-th right derived functor of the left exact functor $Gamma(U, -): cAb(X_et) -> cAb$. 

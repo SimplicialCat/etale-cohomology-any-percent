@@ -58,7 +58,7 @@ It will turn out that such rings are a special type of local rings characterized
 
     Fix a $k$-point $x_0: Spec(k) -> X_0$. Then any section $x: Spec(A) -> X$ lifting $x_0$ must have image contained in any neighborhood $U$ of $x_0$. Thus it suffices to prove for a fixed arbitrary neighborhood $U$ of $x_0$ that there is a unique section $Spec(A) -> U$ lifting $x_0: Spec(k) -> U_0$. 
 
-    By @local-struct-of-etale-morphisms the local structure of etale morphisms, upon shrinking $X$ around $x_0$ and $Spec(A)$ around $frak(m)$, we may make $alpha$ standard etale. Now the only open of $Spec(A)$ containing $frak(m)$ is $Spec(A)$ itself, so we only need to shrink $X$ around $x_0$. Thus we may assume that: 
+    By @local-struct-of-etale-morphisms (the local structure of etale morphisms), upon shrinking $X$ around $x_0$ and $Spec(A)$ around $frak(m)$, we may make $alpha$ standard etale. Now the only open of $Spec(A)$ containing $frak(m)$ is $Spec(A)$ itself, so we only need to shrink $X$ around $x_0$. Thus we may assume that: 
     $
       X = Spec(B), B = (A[T]_(h(T)))/((g(T)))
     $
@@ -319,7 +319,7 @@ We now prove the first properties of (strict) henselizations.
   $
   In the first limit, every $k(frak(q)) = k$, so $k(A^#[h]) = k$. In the second limit, $k(A^#[sh])$ is the union of the $k(frak(q))$'s in $k^sep$. Thus, to show that $k(A^#[sh]) = k^sep$, it remains to show that every finite separable extension $L\/k$ occurs as the residue field of an etale $A$-algebra at a prime above $frak(m)$. 
 
-  - Pick a primitive element $L = k(alpha)$ so that $alpha$ has monic minimal polynomial $ol(p)(T) in k[T]$. Lift $ol(p)(T)$ arbitrarily to a monic $p(T) in A[T]$ of the same degree. Now since $ol(p)(T) in k[T]$ is separable, we may pick $ol(a_0)(T), ol(a_1)(T) in k[T]$ s.t: 
+  - Pick a primitive element $alpha$ so that $L = k(alpha)$, and $alpha$ has monic minimal polynomial $ol(p)(T) in k[T]$. Lift $ol(p)(T)$ arbitrarily to a monic $p(T) in A[T]$ of the same degree. Now since $ol(p)(T) in k[T]$ is separable, we may pick $ol(a_0)(T), ol(a_1)(T) in k[T]$ s.t: 
     $
       ol(p)(T) ol(a_0)(T) + ol(p)'(T) ol(a_1) (T) = 1 in k[T]
     $

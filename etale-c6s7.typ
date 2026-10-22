@@ -367,7 +367,7 @@ We are finally ready to prove (Seed).
       edge((1, -1), (1, 0), "->")
       edge((0, 0), (1, 0), "hook->")
     }))
-    commutes. Indeed, the morphism $GG_(m,X) -> i_* GG_(m,X_0)$ is $cal(O)_X(U)^times -> cal(O)_(X_0)(U_0)^times$ on sections, induced by the structure maps $U_0 -> U$, and the same goes for $mu_(n,X) -> i_* mu_(n,X_0)$. Passing to long exact sequences, we get a commutative diagram: 
+    commutes. Indeed, the morphism $GG_(m,X) -> i_* GG_(m,X_0)$ is $cal(O)_X (U)^times -> cal(O)_(X_0) (U_0)^times$ on sections, induced by the structure maps $U_0 -> U$, and the same goes for $mu_(n,X) -> i_* mu_(n,X_0)$. Passing to long exact sequences, we get a commutative diagram: 
     // https://q.uiver.app/#r=typst&q=WzAsMTUsWzAsMCwiZG90cy5jIl0sWzQsMCwiZG90cy5jIl0sWzEsMCwiSF4xIChYLCBHR19tKSJdLFsyLDAsIkheMiAoWCwgbXVfbikiXSxbMywwLCJIXjIgKFgsIEdHX20pIl0sWzAsMSwiZG90cy5jIl0sWzAsMiwiZG90cy5jIl0sWzQsMSwiZG90cy5jIl0sWzQsMiwiZG90cy5jIl0sWzEsMSwiSF4xIChYXzAsIGleKC0xKSBHR19tKSJdLFsyLDEsIkheMiAoWF8wLCBtdV9uKSJdLFszLDEsIkheMiAoWF8wLCBpXigtMSkgR0dfbSkiXSxbMSwyLCJIXjEgKFhfMCwgR0dfbSkiXSxbMywyLCJIXjIgKFhfMCwgR0dfbSkiXSxbMiwyLCJIXjIgKFhfMCwgbXVfbikiXSxbMCwyXSxbMiwzXSxbMyw0XSxbNCwxXSxbNSw5XSxbOSwxMF0sWzEwLDExXSxbMTEsN10sWzYsMTJdLFsxMiwxNF0sWzE0LDEzXSxbMTMsOF0sWzIsOV0sWzksMTJdLFszLDEwXSxbMTAsMTQsIiIsMSx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFs0LDExXSxbMTEsMTNdXQ==
     #align(center, diagram({
       node((-2, -1), [$dots.c$])

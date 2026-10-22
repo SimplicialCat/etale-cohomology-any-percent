@@ -176,7 +176,7 @@ However, the choice of compactification is highly non-unique and non-canonical, 
     edge((0, -1), (0, 0), [$Gamma_(h_1)$], label-side: left, "->")
     edge((-1, 0), (0, 0), [$Gamma_(h_2)$], label-side: right, "->")
   }))
-  in which every morphism is an open immersion. Denote the projection $q: ol(X)_1 times_Y ol(X)_2 -> ol(X)_1$. Note: 
+  in which every morphism is a closed immersion. Denote the projection $q: ol(X)_1 times_Y ol(X)_2 -> ol(X)_1$. Note: 
   $
     p_1 = p_1 compose Gamma_(h_1) compose q = p_2 compose Gamma_(h_2) compose q = p_2
   $

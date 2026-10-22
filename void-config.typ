@@ -2,7 +2,7 @@
   // version number
   // odd minor version number  = beta build
   // even minor version number = release build
-  let version = (1, 0, 1)
+  let version = (1, 1, 0)
   // When print-mode is true, all theorem boxes will be white for printing on white paper
   let print-mode = false
   // When html-mode is true, we will #set page(height: auto) and emit one continuous large page

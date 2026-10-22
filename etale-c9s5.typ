@@ -149,8 +149,7 @@ As a final gift, the next page contains a cheat sheet for etale cohomology for y
   stack(
     dir: ttb, 
     box(stroke: black, width: 100%, height: auto, inset: (x: 0pt, y: 7.5pt))[#align(center)[
-      #text(size: 17.5pt)[Etale Cohomology#text(size: 15pt)[ (Any%)]] \
-      #text(size: 10pt)[a crash course for the reluctant geometer]
+      #text(size: 17.5pt)[Etale Cohomology#text(size: 15pt)[ (Any%)]]
     ]],
     box(stroke: black, width: 100%, height: auto, inset: (x: 0pt, y: 6pt))[
       #align(center)[#text(size: 13pt)[Etale morphisms]]

@@ -22,8 +22,7 @@
 
       // title
       #place(center, dy: 15%)[
-        #text(size: 26pt)[Etale Cohomology#text(size: 15pt)[ (Any%)]] \ #v(0pt)
-        #text(size: 14pt)[a crash course for the reluctant geometer]
+        #text(size: 26pt)[Etale Cohomology#text(size: 15pt)[ (Any%)]]
       ]
       
       // cover image
