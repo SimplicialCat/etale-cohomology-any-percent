@@ -14,3 +14,19 @@ display-typo.typ
 sketchy.json
 typo-counts.csv
 tmp/*
+
+# build output
+.build/
+
+# QA intermediate state
+qa/findings/
+qa/findings.json
+qa/decisions.json
+qa/checked_versions.json
+qa/vetoed/
+qa/renders/
+qa/*.tmp
+
+# Python
+__pycache__/
+*.pyc
