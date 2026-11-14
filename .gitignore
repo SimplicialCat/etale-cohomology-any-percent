@@ -25,6 +25,8 @@ qa/decisions.json
 qa/checked_versions.json
 qa/vetoed/
 qa/renders/
+qa/raw/
+qa/.render-tmp/
 qa/*.tmp
 
 # Python

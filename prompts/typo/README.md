@@ -9,6 +9,21 @@ This directory contains the review protocol for the English source. The goal is 
 - `math.md` — mathematical errors, both minor and serious.
 - `verify-math.md` — independent check of math findings; may veto false positives.
 - `apply.md` — apply reviewed decisions after the author has seen every finding.
+- `CONTROL.md` — the orchestrator's control flow.
+- `START.md` — one-line entry point for a complete review.
+
+## Tools
+
+- `tools/qa_gui.py` — local review UI.
+- `tools/qa_render.py` — Typst before/after crops using `locate()`.
+
+## Start
+
+Give the orchestrator this prompt:
+
+> Read `prompts/typo/START.md` and follow it.
+
+`START.md` sends it to `CONTROL.md`, which owns the review flow.
 
 ## Models
 
@@ -32,7 +47,7 @@ Use Codex with ChatGPT models:
 python3 tools/qa_gui.py --findings qa/findings.json --decisions qa/decisions.json
 ```
 
-`F` accepts, `J` rejects. Findings can be filtered and sorted by pass or severity. Optional `render.old` / `render.new` images are served from `qa/renders/`.
+`F` accepts, `J` rejects. Findings can be filtered and sorted by pass or severity. Rendered `old` / `new` crops are served from `qa/renders/` when the runner was called with `--render`.
 
 Do not edit source files during steps 1–4. Do not run a separate mechanical spellcheck pass; these prompts are the review.
 
