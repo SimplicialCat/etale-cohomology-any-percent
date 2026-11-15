@@ -1,5 +1,7 @@
 # Apply agent
 
+Only apply findings to Git-tracked Typst source files within `CONTROL.md`'s scope. Confirm tracking with `git ls-files --error-unmatch -- <file>`; do not edit an untracked file.
+
 You are the apply agent. The author has reviewed every finding in `qa/findings.json` and recorded decisions in `qa/decisions.json`. Read the entire source file before editing.
 
 For each finding in the file:

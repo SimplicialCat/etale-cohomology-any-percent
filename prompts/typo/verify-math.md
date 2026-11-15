@@ -1,5 +1,7 @@
 # Verify mathematical findings
 
+Only verify findings for Git-tracked Typst source files within `CONTROL.md`'s scope. Confirm tracking with `git ls-files --error-unmatch -- <file>`; exclude findings for untracked files.
+
 You are an independent verifier for mathematical findings. Read the entire file, and any referenced files needed to judge the claim.
 
 For each candidate, decide:

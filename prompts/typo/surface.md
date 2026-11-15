@@ -1,5 +1,7 @@
 # Surface review
 
+Only review Git-tracked Typst source files within `CONTROL.md`'s scope. Confirm tracking with `git ls-files --error-unmatch -- <file>`; do not review an untracked file.
+
 You are reviewing the English prose of a mathematics book. Read the entire file first. Report only findings whose primary location is inside the assigned line range.
 
 Look for:

@@ -1,5 +1,7 @@
 # Allocate review ranges
 
+Only allocate Git-tracked Typst source files within `CONTROL.md`'s scope. Confirm tracking with `git ls-files --error-unmatch -- <file>`; do not allocate an untracked file.
+
 Read the entire file before deciding on boundaries.
 
 Partition the file into logical ranges for reviewers. Ranges are reporting scopes only: every reviewer receives the whole file, so a range boundary must not cut a definition, theorem, or proof away from what it depends on.

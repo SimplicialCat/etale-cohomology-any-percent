@@ -14,6 +14,7 @@ import difflib
 import html
 import json
 import os
+import subprocess
 import sys
 import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -65,20 +66,88 @@ def save_decisions(data: dict) -> None:
     os.replace(tmp, DECISIONS_PATH)
 
 
-def diff_html(old: str, new: str) -> tuple[str, str]:
+def diff_parts(old: str, new: str) -> tuple[list, list]:
     sm = difflib.SequenceMatcher(None, old, new, autojunk=False)
-    left: list[str] = []
-    right: list[str] = []
+    left, right = [], []
     for tag, i1, i2, j1, j2 in sm.get_opcodes():
         if tag == "equal":
-            left.append(html.escape(old[i1:i2]))
-            right.append(html.escape(new[j1:j2]))
+            left.append((old[i1:i2], None))
+            right.append((new[j1:j2], None))
         else:
-            if i2 > i1:
-                left.append("<del>" + html.escape(old[i1:i2]) + "</del>")
-            if j2 > j1:
-                right.append("<ins>" + html.escape(new[j1:j2]) + "</ins>")
-    return "".join(left), "".join(right)
+            left.append((old[i1:i2], "del"))
+            right.append((new[j1:j2], "ins"))
+    return left, right
+
+
+def diff_html(old: str, new: str) -> tuple[str, str]:
+    def render(parts):
+        return "".join(f"<{tag}>{html.escape(text)}</{tag}>" if tag else html.escape(text)
+                       for text, tag in parts if text)
+    left, right = diff_parts(old, new)
+    return render(left), render(right)
+
+
+def numbered_source_html(parts: list, first_line: int) -> tuple[str, int]:
+    rows: list[list[str]] = [[]]
+    changed = [False]
+    ends_with_newline = False
+    for text, tag in parts:
+        if text:
+            ends_with_newline = text.endswith("\n")
+        chunks = text.split("\n")
+        for i, chunk in enumerate(chunks):
+            if tag and (chunk or i < len(chunks) - 1 or not text):
+                changed[-1] = True
+            if chunk:
+                escaped = html.escape(chunk)
+                rows[-1].append(f"<{tag}>{escaped}</{tag}>" if tag else escaped)
+            if i < len(chunks) - 1:
+                rows.append([])
+                changed.append(False)
+    if ends_with_newline and len(rows) > 1 and not rows[-1] and not changed[-1]:
+        rows.pop()
+        changed.pop()
+    result = []
+    for i, row in enumerate(rows):
+        number = first_line + i
+        css = "source-line changed" if changed[i] else "source-line"
+        result.append(f'<div class="{css}" data-line="{number}">'
+                      f'<span class="line-number" aria-hidden="true">{number}</span>'
+                      f'<span class="line-code">{"".join(row) or "<br>"}</span></div>')
+    return "".join(result), first_line + len(rows) - 1
+
+
+def source_context(item: dict, source: str, context_lines: int | None = 5) -> dict:
+    """Patch the exact recorded occurrence, retaining unchanged surrounding text."""
+    lines = source.splitlines(keepends=True)
+    start, end = int(item["line_start"]) - 1, int(item["line_end"])
+    if not 0 <= start < end <= len(lines):
+        raise ValueError("Recorded lines are outside the current file. Showing the original quote.")
+    old = item.get("old", "")
+    scope = "".join(lines[start:end])
+    if not old or scope.count(old) != 1:
+        raise ValueError("The quote no longer matches uniquely at its recorded lines. Showing the original quote.")
+    before = 0 if context_lines is None else max(0, start - context_lines)
+    after = len(lines) if context_lines is None else min(len(lines), end + context_lines)
+    offset = scope.index(old)
+    prefix = "".join(lines[before:start]) + scope[:offset]
+    suffix = scope[offset + len(old):] + "".join(lines[end:after])
+    left, right = diff_parts(old, item.get("new", ""))
+    left_html, old_end = numbered_source_html([(prefix, None), *left, (suffix, None)], before + 1)
+    right_html, new_end = numbered_source_html([(prefix, None), *right, (suffix, None)], before + 1)
+    return {"old_html": left_html, "new_html": right_html, "line_start": before + 1,
+            "old_line_end": old_end, "new_line_end": new_end, "total_lines": len(lines)}
+
+
+def load_source_context(item: dict, context_lines: int | None = 5) -> dict:
+    path = (ROOT / item["file"]).resolve()
+    if ROOT not in path.parents or path.suffix != ".typ":
+        raise ValueError("Source context is available only for tracked Typst files in this repository.")
+    tracked = subprocess.run(["git", "ls-files", "--error-unmatch", "--", str(path.relative_to(ROOT))],
+                             cwd=ROOT, capture_output=True)
+    if tracked.returncode:
+        raise ValueError("This source file is no longer Git-tracked. Showing the original quote.")
+    return source_context(item, path.read_text(encoding="utf-8"), context_lines)
 
 
 def item_for_client(item: dict, decisions: dict) -> dict:
@@ -113,6 +182,7 @@ main { max-width:1180px; margin:16px auto 88px; padding:0 16px; }
 .meta { display:flex; gap:10px; flex-wrap:wrap; color:var(--muted); font-size:13px; margin-bottom:8px; }
 .meta b { color:var(--ink); }
 .grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.grid > div { min-width:0; }
 .label { font-size:12px; color:var(--muted); margin:6px 0 4px; }
 .text { white-space:pre-wrap; overflow-wrap:anywhere; border-radius:7px; padding:9px 10px;
         font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace; font-size:13.5px; }
@@ -120,6 +190,15 @@ main { max-width:1180px; margin:16px auto 88px; padding:0 16px; }
 .new { background:var(--greenbg); border:1px solid #abefc6; }
 del { background:#fda29b; color:#7a271a; text-decoration:line-through; }
 ins { background:#75e0a7; color:#054f31; text-decoration:none; }
+.source-toolbar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:8px 0; }
+.source-context { padding:0; white-space:normal; background:#fff; max-height:36rem; overflow:auto; }
+.source-line { display:grid; grid-template-columns:3.5em minmax(0,1fr); }
+.line-number { color:var(--muted); user-select:none; text-align:right; padding:0 8px;
+               border-right:1px solid var(--line); font-variant-numeric:tabular-nums; }
+.line-code { display:block; white-space:pre-wrap; overflow-wrap:anywhere; padding:0 8px; }
+.old .source-line.changed { background:var(--redbg); }
+.new .source-line.changed { background:var(--greenbg); }
+.source-line.changed .line-number { color:var(--ink); }
 .reason { white-space:pre-wrap; color:#344054; }
 textarea { width:100%; min-height:72px; resize:vertical; padding:9px 10px; border:1px solid var(--line);
            border-radius:7px; font:14px/1.5 inherit; }
@@ -142,6 +221,7 @@ img.render { max-width:100%; border:1px solid var(--line); border-radius:6px; ba
   <h1>Typo review</h1>
   <span class="progress" id="progress">loading…</span>
   <span class="pill" id="counts"></span>
+  <span class="hint" id="review-status"></span>
   <span class="hint">F accept · J reject · ←/→ navigate</span>
 </header>
 <main>
@@ -165,7 +245,8 @@ img.render { max-width:100%; border:1px solid var(--line); border-radius:6px; ba
   <button id="next">Next (→)</button>
 </div>
 <script>
-let items = [], view = [], idx = 0;
+let items = [], view = [], idx = 0, reviewStatus = null;
+let contextLines = '5', contextRequest = 0;
 const app = document.getElementById('app');
 const actions = document.getElementById('actions');
 const rank = {typo:0, grammar:1, 'minor-math':2, 'serious-math':3, unknown:9};
@@ -199,15 +280,22 @@ function refreshView(keepId) {
   }
 }
 function render() {
+  contextRequest++;
   counts();
-  if (!items.length) { app.innerHTML = '<div class="card">No findings. Put them in qa/findings.json.</div>'; return; }
+  const reviewRunning = reviewStatus && reviewStatus.files_reviewed < reviewStatus.total_files;
+  document.getElementById('review-status').textContent = reviewRunning
+    ? `Review in progress: ${reviewStatus.files_reviewed} / ${reviewStatus.total_files} files verified. Refresh for new findings.` : '';
   const pending = items.filter(x=>x.decision==='pending').length;
   document.getElementById('progress').textContent = `${items.length - pending} / ${items.length} reviewed`;
+  if (!items.length) {
+    app.innerHTML = `<div class="card">${reviewRunning ? 'Review is running. Refresh for new findings.' : 'No findings.'}</div>`;
+    return;
+  }
   if (!view.length) { actions.style.display='none'; app.innerHTML = '<div class="card done"><h2>No findings in this filter</h2></div>'; return; }
   if (!pending) {
     actions.style.display='none';
-    app.innerHTML = `<div class="card done"><h2>Review complete</h2>
-      <p>${items.length} findings reviewed. Run the apply agent next.</p></div>`;
+    app.innerHTML = `<div class="card done"><h2>${reviewRunning ? 'Current findings reviewed' : 'Review complete'}</h2>
+      <p>${items.length} findings reviewed. ${reviewRunning ? 'The review is still running; refresh for new findings.' : 'Run the apply agent next.'}</p></div>`;
     return;
   }
   if (idx < 0) idx = 0;
@@ -217,7 +305,10 @@ function render() {
     ? `<div class="label">Rendered</div><div class="grid">
          <div>${it.render.old ? `<img class="render" src="/api/render?path=${encodeURIComponent(it.render.old)}">` : ''}</div>
          <div>${it.render.new ? `<img class="render" src="/api/render?path=${encodeURIComponent(it.render.new)}">` : ''}</div>
-       </div>` : '';
+       </div>` : (it.render_error
+         ? `<p class="hint">${it.render_error.includes('commented-out')
+             ? 'This finding is in commented-out source; review the source diff.'
+             : 'Rendered preview unavailable; review the source diff.'}</p>` : '');
   app.innerHTML = `
     <div class="card">
       <div class="meta">
@@ -229,9 +320,19 @@ function render() {
         <span>${idx+1} / ${view.length}</span>
         <span>${esc(it.decision)}</span>
       </div>
+      <div class="source-toolbar">
+        <label for="context-lines">Source context</label>
+        <select id="context-lines">
+          <option value="5">5 lines each side</option>
+          <option value="10">10 lines each side</option>
+          <option value="20">20 lines each side</option>
+          <option value="all">Whole file</option>
+        </select>
+        <span class="hint" id="context-note" role="status">Loading surrounding source…</span>
+      </div>
       <div class="grid">
-        <div><div class="label">Source · old</div><div class="text old">${it.old_html}</div></div>
-        <div><div class="label">Source · new</div><div class="text new">${it.new_html || '<i>(no direct replacement)</i>'}</div></div>
+        <div><div class="label" id="source-old-label">Source · old</div><div class="text old" id="source-old">${it.old_html}</div></div>
+        <div><div class="label" id="source-new-label">Source · new${it.new ? '' : ' · no direct replacement'}</div><div class="text new" id="source-new">${it.new_html || '<i>(no direct replacement)</i>'}</div></div>
       </div>
       <div class="label">Reason</div><div class="reason">${esc(it.reason)}</div>
       ${renderBlock}
@@ -239,12 +340,48 @@ function render() {
       <textarea id="comment" placeholder="Optional: describe the exact change you want.">${esc(it.comment || '')}</textarea>
     </div>`;
   actions.style.display='flex';
-  document.getElementById('comment').focus({preventScroll:true});
+  const contextSelect = document.getElementById('context-lines');
+  contextSelect.value = contextLines;
+  contextSelect.onchange = ()=>{ contextLines = contextSelect.value; loadSourceContext(it); };
+  loadSourceContext(it);
+}
+
+async function loadSourceContext(it) {
+  const request = ++contextRequest;
+  document.getElementById('context-note').textContent = 'Loading surrounding source…';
+  try {
+    const params = new URLSearchParams({id:it.id, lines:contextLines});
+    const response = await fetch('/api/context?' + params, {cache:'no-store'});
+    const data = await response.json();
+    if (request !== contextRequest || selected()?.id !== it.id) return;
+    if (!response.ok) throw new Error(data.error || 'Source context unavailable. Showing the original quote.');
+    for (const side of ['old', 'new']) {
+      const panel = document.getElementById('source-' + side);
+      panel.classList.add('source-context');
+      panel.innerHTML = data[side + '_html'];
+      document.getElementById('source-' + side + '-label').textContent =
+        `Source · ${side} · lines ${data.line_start}–${data[side + '_line_end']}`
+        + (side === 'new' && !it.new ? ' · no direct replacement' : '');
+      const change = panel.querySelector('.changed');
+      if (change) panel.scrollTop += change.getBoundingClientRect().top - panel.getBoundingClientRect().top - panel.clientHeight / 3;
+    }
+    document.getElementById('context-note').textContent = `Showing original lines ${data.line_start}–${data.old_line_end} of ${data.total_lines}.`;
+  } catch (error) {
+    if (request !== contextRequest || selected()?.id !== it.id) return;
+    for (const side of ['old', 'new']) {
+      const panel = document.getElementById('source-' + side);
+      panel.classList.remove('source-context');
+      panel.innerHTML = it[side + '_html'] || '<i>(no direct replacement)</i>';
+      document.getElementById('source-' + side + '-label').textContent = `Source · ${side}`;
+    }
+    document.getElementById('context-note').textContent = error.message;
+  }
 }
 async function load() {
   const r = await fetch('/api/findings', {cache:'no-store'});
   const raw = await r.json();
   items = raw.findings;
+  reviewStatus = raw.review_status ?? null;
   for (const key of ['filter-pass','filter-severity','filter-file']) {
     const sel = document.getElementById(key);
     const field = key.replace('filter-','');
@@ -285,7 +422,7 @@ for (const id of ['filter-pass','filter-severity','filter-file','sort']) {
   document.getElementById(id).onchange = ()=>{ refreshView(); render(); };
 }
 document.addEventListener('keydown', e=>{
-  if (e.target && e.target.tagName === 'TEXTAREA') return;
+  if (e.target && ['TEXTAREA','INPUT','SELECT'].includes(e.target.tagName)) return;
   if (e.key==='f'||e.key==='F') { e.preventDefault(); decide('accepted'); }
   if (e.key==='j'||e.key==='J') { e.preventDefault(); decide('rejected'); }
   if (e.key==='ArrowLeft') { e.preventDefault(); if(idx>0){idx--; render();} }
@@ -316,8 +453,35 @@ class Handler(BaseHTTPRequestHandler):
         if parsed.path == "/":
             self._send(200, HTML, "text/html; charset=utf-8")
         elif parsed.path == "/api/findings":
-            items = [item_for_client(x, load_decisions()) for x in load_findings()]
-            self._send(200, json.dumps({"findings": items}, ensure_ascii=False))
+            decisions = load_decisions()
+            items = [item_for_client(x, decisions) for x in load_findings()]
+            result = {"findings": items}
+            progress_path = FINDINGS_PATH.parent / "raw" / "progress.json"
+            if progress_path.exists():
+                try:
+                    progress = json.loads(progress_path.read_text(encoding="utf-8"))
+                    result["review_status"] = {"files_reviewed": len(progress["complete"]),
+                                               "total_files": progress["total"]}
+                except (OSError, ValueError, KeyError, TypeError):
+                    pass
+            self._send(200, json.dumps(result, ensure_ascii=False))
+        elif parsed.path == "/api/context":
+            params = parse_qs(parsed.query)
+            item_id = params.get("id", [""])[0]
+            item = next((x for x in load_findings() if x["id"] == item_id), None)
+            if item is None:
+                self._send(404, json.dumps({"error": "Finding not found."}))
+                return
+            try:
+                requested = params.get("lines", ["5"])[0]
+                context_lines = None if requested == "all" else int(requested)
+                if context_lines is not None and not 0 <= context_lines <= 100:
+                    raise ValueError("Choose between 0 and 100 context lines, or the whole file.")
+                context = load_source_context(item, context_lines)
+            except (OSError, ValueError, TypeError) as exc:
+                self._send(409, json.dumps({"error": str(exc)}))
+                return
+            self._send(200, json.dumps(context, ensure_ascii=False))
         elif parsed.path == "/api/render":
             rel = parse_qs(parsed.query).get("path", [""])[0]
             path = (RENDER_DIR / rel).resolve()

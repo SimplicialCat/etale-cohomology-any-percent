@@ -2,6 +2,10 @@
 
 This directory contains the review protocol for the English source. The goal is to find typos, English errors, and mathematical errors without editing the source during review.
 
+## Scope
+
+Only Git-tracked Typst chapter sources are eligible. Enumerate them with `git ls-files -z -- 'etale-c*.typ'`, and review their current working-tree contents. Do not use a filesystem glob as the review list. Untracked files, including ignored `*-defunct*.typ` copies, must not be reviewed or retained in QA findings or state. `CONTROL.md` defines the corresponding cleanup and eligibility checks.
+
 ## Files
 
 - `allocate.md` — partition a file into logical review ranges.
