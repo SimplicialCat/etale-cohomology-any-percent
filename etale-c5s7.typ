@@ -382,7 +382,7 @@ Next, we explicitly compute the cohomology for a projective smooth curve.
   $
     H^2_et (X, mu_n) = coker(Pic(X) ->^((-)^(otimes n)) Pic(X)) = Pic(X)\/n Pic(X)
   $
-  From the theory of abelian varieties: 
+  Next, we explicitly compute these cohomology groups in the case that $X$ is a smooth curve over $k$. From the theory of abelian varieties: 
   #fact[
     If $X$ is a smooth projective curve over an algebraically closed field $k$, there exists an exact sequence: 
     $

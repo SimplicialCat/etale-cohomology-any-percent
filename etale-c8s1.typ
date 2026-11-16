@@ -204,23 +204,32 @@ Proper base change gives a condition on $f$ so that the relative base change map
 To establish the main result, we need some preliminary statements. 
 
 #lemma(name: <constructible-godement-resolution>)[
-  Let $X$ be a noetherian scheme and $cal(F) in cAb(X_et, ZZ\/n)$ be an $n$-torsion constructible sheaf. Then there exists a finite list of geometric points $ol(x_1), dots.c, ol(x_m) in X$ and an injection: 
+  Let $Lambda$ be a noetherian ring, $X$ be a noetherian scheme, and $cal(F) in cAb(X_et, Lambda)$ be a constructible sheaf of $Lambda$-modules. Then there exist a finite list of algebraic geometric points $ol(x_1), dots.c, ol(x_m)$ of $X$, finite $Lambda$-modules $M_1, dots.c, M_m$, and an injection:
   $
-    cal(F) -> oplus.big_(i=1)^m ol(x_i)_* ul(ZZ\/n)
+    cal(F) -> oplus.big_(i=1)^m ol(x_i)_* ul(M_i)
   $
+  If every finite $Lambda$-module embeds into a finite free $Lambda$-module, we may take every $M_i = Lambda$. 
 ]
 #proof[
-  By @finite-morphisms-and-constructible-sheaves, there exists finite $h: X' -> X$ and an injection $cal(F) -> h_* ul(ZZ\/n)$. Note that since $h$ is finite, $h_*$ is exact and by the Leray spectral sequence @derived-lower-star-first-props (1), $h_* ol(x')_* ul(ZZ\/n) = (h(ol(x')))_* ul(ZZ\/n)$. Thus by replacing $X$ with $X'$, we may assume that $cal(F) = ul(ZZ\/n)$. 
+  By @finite-morphisms-and-constructible-sheaves (2), there exist a finite morphism $h: X' -> X$, a finite $Lambda$-module $M$, and an injection $cal(F) -> h_* ul(M)_(X')$.
 
-  Let $x_1, dots.c, x_m in X$ be generic points of all irreducible components of $X$, and $ol(x_i)$ be a geometric point above $x_i$. We claim that the canonical map: 
+  Since $X'$ is noetherian, it has finitely many irreducible components. Let $x'_1, dots.c, x'_m$ be their generic points, and choose an algebraic geometric point $ol(x'_i)$ above each $x'_i$. We claim that the canonical map:
   $
-    ul(ZZ\/n)_X -> oplus.big_(i=1)^m ol(x_i)_* ul(ZZ\/n)
+    ul(M)_(X') -> oplus.big_(i=1)^m ol(x'_i)_* ul(M)
   $
-  is injective. Indeed, for any connected affine $U in Et_X$, this map induces the following map on sections on $U$: 
+  is injective. The nonempty connected affine objects $U in Et_(X')$ form a basis, and on such a $U$ this is the diagonal map:
   $
-    ZZ\/n -> oplus.big_(i=1)^m (ZZ\/n)^(oplus pi_0 (U_(ol(x_i))))
+    M -> oplus.big_(i=1)^m product_(pi_0 (U_(ol(x'_i)))) M.
   $
-  This diagonal map is injective, since the image of $U$ in $X$ must contain the generic point of some irreducible component of $X$, making $U_(ol(x_i))$ nonempty, and the direct sum on the RHS nonzero. We are thereby done. 
+  The image of $U$ in $X'$ is nonempty and open, hence contains some $x'_i$. Thus $U_(ol(x'_i))$ is nonempty, and projection onto any corresponding coordinate recovers the original element of $M$. This proves injectivity.
+
+  Applying $h_*$, which preserves injections and finite direct sums, and using composition of direct images gives:
+  $
+    cal(F) -> h_* ul(M)_(X') -> oplus.big_(i=1)^m (h compose ol(x'_i))_* ul(M).
+  $
+  Put $ol(x_i) = h compose ol(x'_i)$ and $M_i = M$. Since $h$ is finite, these are algebraic geometric points of $X$, proving the first assertion.
+
+  Under the additional hypothesis, choose injections $M_i -> Lambda^(oplus r_i)$. Taking constant sheaves and pushing forward along $ol(x_i)$ preserves these injections. Splitting each finite direct sum and repeating each $ol(x_i)$ by $r_i$ times proves the last assertion.
 ]
 
 #proposition(name: <finite-bc-in-the-limit>)[
@@ -282,7 +291,7 @@ To establish the main result, we need some preliminary statements.
   $
     g^(-1) f_* cal(F) = dirlim_i f'_(i,*) g'_i^(-1) cal(F)_i = f'_* g'^(-1) cal(F)
   $
-  i.e. standard base change for an integral pushforward is an isomorphism. For a relative base change, it suffices to prove that the projection part is an isomorphism. This follows from the base change part, the compatibility of projection with base change, and @projection-formula-for-global-sections. (Here, geometric fibers of an integral morphism are finite, so the finite type hypothesis of @projection-formula-for-global-sections is satisfied.)
+  i.e. standard base change for an integral pushforward is an isomorphism. For a relative base change, it suffices to prove that the projection part is an isomorphism. This follows from the base change part, the compatibility of projection with base change, and @projection-formula-for-global-sections. (Here, geometric fibers of an integral morphism are integral over a separably closed field, hence affine. Furthermore, these fibers have etale cohomological dimension $0$ by @cohom-dim-of-rings-props (2)(3). Thus, the qcqs and bounded above global sections assumptions in @projection-formula-for-global-sections are satisfied.)
 ]
 
 The main reduction result is now stated in the following theorem. 

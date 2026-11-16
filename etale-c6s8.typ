@@ -55,6 +55,11 @@ There is also a historical reason for Artin vanishing, for it to hold a natural 
       cd(A) <= sup_i cd(A_i)
     $
 
+  + Let $B$ be a finite $A$-algebra, then: 
+    $
+      cd(B) <= cd(A)
+    $
+
   + Let $L\/K$ be a field extension of transcendence degree $d$. Then: 
     $
       cd(L) <= cd(K) + d
@@ -89,7 +94,15 @@ There is also a historical reason for Artin vanishing, for it to hold a natural 
     cd(A) = cd(X) <= sup_i cd(A_i)
   $
 
-  (3) We may pick a chain of field extensions $L = L_d\/L_(d-1)\/dots.c\/L_0 = K$ in which each step is of transcendence degree 1. If we are done with the degree 1 case, we may apply it inductively to obtain the general case. Thus, we may assume $d = 1$ and $L\/K$ is of transcendence degree 1. Now: 
+  (3) Let $pi: Spec(B) -> Spec(A)$ be a finite map. Then for every $cal(F) in cAb(Spec(B)_et)$ torsion, 
+  $
+    H^q (Spec(B), cal(F)) cong H^q (Spec(A), pi_* cal(F))
+  $
+  with $pi_* cal(F)$ torsion. Thus this cohomology group vanishes for $q > cd(A)$. We may conclude that $cd(B) <= cd(A)$. 
+
+  (4) For $d = 0$, $L\/K$ is an algebraic extension, so $L = dirlim_lambda K_lambda$ for finite intermediate extensions $K_lambda\/K$. Thus by (2)(3), $cd(L) <= sup_lambda cd(K_lambda) <= cd(K)$. 
+  
+  In the case $d >= 1$, we may pick a chain of field extensions $L = L_d\/L_(d-1)\/dots.c\/L_0 = K$ in which each step is of transcendence degree 1. If we are done with the degree 1 case, we may apply it inductively to obtain the general case. Thus, we may assume $d = 1$ and $L\/K$ is of transcendence degree 1. Now: 
   $
     L = dirlim_lambda A_lambda
   $
@@ -162,7 +175,7 @@ We are now ready to start the induction required to prove Artin vanishing. We wi
   $
 ]
 #proof[
-  The case $d = 0$ is dealt with in @cohom-dim-of-rings-props (3) applied to a finite extension, and the case $d = 1$ is dealt with in @cohom-dim-of-rings-props (1). We thus assume that $d >= 2$, and Artin vanishing already holds in dimensions $<= d - 1$. 
+  The case $d = 0$ is dealt with in @cohom-dim-of-rings-props (4) applied to a finite extension, and the case $d = 1$ is dealt with in @cohom-dim-of-rings-props (1). We thus assume that $d >= 2$, and Artin vanishing already holds in dimensions $<= d - 1$. 
 
   #lemma[
     Suppose that Artin vanishing holds in dimensions $<= d - 1$. 
@@ -230,7 +243,7 @@ We are now ready to start the induction required to prove Artin vanishing. We wi
     $
       cd(A_lambda) <= d - a - 1 + cd(K(t_1, dots.c, t_a)^sep (s)) <= d - a
     $
-    where the last inequality is due to @cohom-dim-of-rings-props (3). By @cohom-dim-of-rings-props (2), 
+    where the last inequality is due to @cohom-dim-of-rings-props (4). By @cohom-dim-of-rings-props (2), 
     $
       cd(cal(O)_(Y,y)^#[sh] [f^(-1)]) <= sup_lambda cd(A_lambda) <= d - a
     $

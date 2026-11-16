@@ -99,7 +99,7 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
 
   - $f: X -> Y$ is an open immersion between finite type $S$-schemes with $dim(X_sigma) = d$, $Y$ affine and $f$ dominant; 
 
-  - For every general $f: X -> Y$ between finite type $S$-schemes with $dim(X_sigma) <= d-1$, every complex $cal(K) in D^b_c (X_et, Lambda)$ admits an $(f, cal(K), S)$-good dense open of $S$. 
+  - For every noetherian $ZZ[n^(-1)]$-scheme $S$, every general $f: X -> Y$ between finite type $S$-schemes with $dim(X_sigma) <= d-1$, every complex $cal(K) in D^b_c (X_et, Lambda)$ admits an $(f, cal(K), S)$-good dense open of $S$. 
 
   In the $d <= 0$ case, we claim that $X_sigma = Y_sigma$. 
   
@@ -224,9 +224,16 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
     $
       trd_(K(t)) (k(x)) = trd_K (k(x)) - trd_K (K(t)) <= d - 1
     $
-    Thus the dimension of the generic fiber of $g_j$ satisfies $dim(g_j^(-1) (tau)) <= d-1$. The inductive hypothesis may thus be applied to $g_j$ and so:
+    // Thus the dimension of the generic fiber of $g_j$ satisfies $dim(g_j^(-1) (tau)) <= d-1$. The inductive hypothesis may thus be applied to $g_j$ and so:
     
-    - There exists a dense $(i_j compose f_j, cal(K), AA^1_S)$-good open $U_j subset AA^1_S$ for each $j$. 
+    // - There exists a dense $(i_j compose f_j, cal(K), AA^1_S)$-good open $U_j subset AA^1_S$ for each $j$. 
+
+    Thus the dimension of the generic fiber of $g_j$ satisfies $dim(g_j^(-1) (tau)) <= d-1$. Regard $X$ and $AA^m_S$ as finite type $AA^1_S$-schemes via $g_j$ and $pi_j$,
+    respectively. Applying the inductive hypothesis to $i compose f: X -> AA^m_S$ over this base gives:
+
+    - For each $j$, there exists a dense
+      $(i compose f, cal(K), AA^1_S)$-good open
+      $U_j subset AA^1_S$.
 
       Put $V_j = i^(-1) (pi_j^(-1) (U_j)) subset Y$, and base change $X ->^f Y ->^i AA^m_S ->^(pi_j) AA^1_S$ along $U_j -> AA^1_S$ to get: #h(1fr)
       $
@@ -264,7 +271,7 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
         edge((2, 0), (3, 0), [$pi'_j$], label-side: left, "->")
         edge((3, 0), (4, 0), "->")
       }))
-      Then $g''_j$ is the base change of the morphism $g'_j: U'_j -> U_j$, so by $(f_j, cal(K)|_(X_j), AA^1_S)$-goodness of $U_j$, we have a base change isomorphism:
+      Then $g''_j$ is the base change of the morphism $g'_j: U'_j -> U_j$, so by $(i compose f, cal(K), AA^1_S)$-goodness of $U_j$, we have a base change isomorphism:
       $
         g''_j^(-1) i_* R f_(j,*) (cal(K)|_(X_j)) cong i'_* R f'_(j,*) g_(X_j)^(-1) (cal(K)|_(X_j))
       $
@@ -854,13 +861,13 @@ Finally, as an application, we prove the preservation of $D^b_#[ctf]$ under the 
 
     - Since $R j_* j^(-1)$ preserves $D^b_#[ctf]$ as argued above, so does $i_* R i^!$. Applying $i^(-1)$ thus shows that $R i^!$ preserves $D^b_#[ctf]$. 
 
-  - For a general separated morphism $f: X -> Y$ of finite type, cover $X$ by finitely many affine opens ${X_i}$, each lying over an affine open of $Y$. Take $X' = union.big_i X_i$ and take the local isomorphism $j: X' -> X$. Then $f compose j$ factors as $X ->^i AA^d_Y ->^p Y$ for a closed immersion $i$. Thus, 
+  - For a general separated morphism $f: X -> Y$ of finite type, cover $X$ by finitely many affine opens ${X_i}$, each lying over an affine open of $Y$. Take $X' = union.sq.big_i X_i$ and take the local isomorphism $j: X' -> X$. Then $f compose j$ factors as $X' ->^i AA^d_Y ->^p Y$ for a closed immersion $i$. Thus, 
     $
       j^(-1) R f^! cal(K) cong R i^! R p^! cal(K)
     $
-    By relative Poincare duality, $R p^! cal(K) cong cal(K)(d)[2d]$. Thus $j^(-1) R f^! cal(K) cong R i^! R p^! cal(K) cong R i^! cal(K) (d)[2d]$. Since $R i^!$ is bounded and preserves $D^b_#[ctf]$, so does $j^(-1) R f^! cal(K)$. 
+    By relative Poincare duality, $R p^! cal(K) cong p^(-1) cal(K)(d)[2d]$. Thus $j^(-1) R f^! cal(K) cong R i^! R p^! cal(K) cong R i^! p^(-1) cal(K) (d)[2d]$. Since $R i^!$ is bounded and preserves $D^b_#[ctf]$, so does $j^(-1) R f^!$. 
 
-    Now constructibility can be checked locally, so $R f^!$ preserves $D^b_c$. By checking stalks, $R f^!$ preserves $D^b_#[ctf]$. 
+    Now constructibility can be checked locally, so $R f^!$ preserves $D^b_c$. By checking stalks, $R f^!$ preserves $D^b_#[ctf]$. Cohomological dimension can be checked on stalks, so $R f^!$ is bounded. 
 
   The last functor to check is $RHHom_Lambda (-, -)$. 
 

@@ -261,7 +261,7 @@ We now establish Galois theory for etale covering spaces:
   #proof[
     This question is local in nature, so we may assume that $Z = Spec(B)$ is affine and $Y = Spec(A), A = B^G$. However, etaleness can be checked on the local rings only, so it suffices to show that every base change of $pi: Z -> Y$ along $Spec(cal(O)_(Y,y)) -> Y$ is etale. Since $Spec(cal(O)_(Y,y)) -> Y$ is flat, the base change of $pi$ still has trivial inertia groups. 
     
-    As such, it suffices to consider the case where $Y = Spec(A)$ where $A$ is local. Take the strict henselization $Y' = Spec(A^"sh")$ and then $Y' -> Y$ is faithfully flat. Etaleness descends along faithfully flat base change by @fpqc-descent-of-properties (5), so by base changing along $Y' -> Y$ we are reduced to the strict henselian case. 
+    As such, it suffices to consider the case where $Y = Spec(A)$ where $A$ is local. Take the strict henselization $Y' = Spec(A^"sh")$ and then $Y' -> Y$ is faithfully flat. Etaleness descends along faithfully flat base change by @fpqc-descent-of-properties (6), so by base changing along $Y' -> Y$ we are reduced to the strict henselian case. 
   ]
 
   Now assume that $Y = Spec(A)$ with $(A, frak(m))$ strict henselian, and $Z = Spec(B)$. 
@@ -315,7 +315,7 @@ We now establish Galois theory for etale covering spaces:
 
   The structure morphism $Z -> X$ is $G$-invariant, so by the quotient property of @affine-sch-quotient (4), it descends uniquely to a morphism $q: Z\/G -> X$ with $Z -> Z\/G ->^q X$ equal to the original map $Z -> X$. We aim to show that $q$ is finite etale. 
   
-  - Since the claim is local on $X$, fix $x in X$ and base change to $X' = Spec(cal(O)_(X,x)^#[sh])$. The morphism $X' -> Spec(cal(O)_(X,x))$ is faithfully flat. By the flat base-change lemma above, the base change of $Z\/G$ is the quotient of $Z times_X X'$ by $G$. Since $X'$ is strict henselian, the finite etale covering $Z times_X X' -> X'$ is a finite disjoint union of copies of $X'$, on which $G$ acts by permuting the components. Its quotient is therefore again a finite disjoint union of copies of $X'$, so the base change of $q$ is finite etale. By @fpqc-descent-of-properties (2) and (5), $q: Z\/G -> X$ is finite etale.
+  - Since the claim is local on $X$, fix $x in X$ and base change to $X' = Spec(cal(O)_(X,x)^#[sh])$. The morphism $X' -> Spec(cal(O)_(X,x))$ is faithfully flat. By the flat base-change lemma above, the base change of $Z\/G$ is the quotient of $Z times_X X'$ by $G$. Since $X'$ is strict henselian, the finite etale covering $Z times_X X' -> X'$ is a finite disjoint union of copies of $X'$, on which $G$ acts by permuting the components. Its quotient is therefore again a finite disjoint union of copies of $X'$, so the base change of $q$ is finite etale. By @fpqc-descent-of-properties (2) and (6), $q: Z\/G -> X$ is finite etale.
 
   Thus, $Z\/G in FEt_X$ and $pi: Z -> Z\/G$ is a morphism in $FEt_X$. 
 

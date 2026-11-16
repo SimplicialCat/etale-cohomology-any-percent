@@ -409,7 +409,8 @@ Next, we list some useful properties that can be descended along fpqc base chang
   }))
   in which $g$ is fpqc. Then any of the following properties holds for $f$ if and only if it holds for $f'$. 
   + affine;
-  + finite; 
+  + finite;
+  + of finite presentation;
   + flat; 
   + unramified; 
   + etale. 
@@ -450,17 +451,19 @@ Next, we list some useful properties that can be descended along fpqc base chang
 
   (2) By (1) we know that $f$ is affine, so we may assume $X = Spec(B)$ and $Y = Spec(A)$. Now $B'$ is finite over $A'$ and $A'$ is faithfully flat over $A$, so $B$ is finite over $A$ (say by #cite-stacks("03C4")[Lemma 10.83.2]). 
 
-  (3)(4)(5) are all Zariski local on source, so we may assume that $X = Spec(B)$ is affine and $X' = Spec(B')$. 
+  (3) Finite presentation descends along fpqc base change by #cite-stacks("02L0")[Lemma 35.23.15]. The same holds for local finite presentation by #cite-stacks("02KY")[Lemma 35.23.13].
 
-  (3) Since $B'$ is flat over $A'$, $B$ is flat over $A$ by @cite-matsumura-ca[(4.E)(1)]. Thus $f$ is flat.
+  (4)(5)(6) are all Zariski local on source, so we may assume that $X = Spec(B)$ is affine and $X' = Spec(B')$. 
 
-  (4) Note that: 
+  (4) Since $B'$ is flat over $A'$, $B$ is flat over $A$ by @cite-matsumura-ca[(4.E)(1)]. Thus $f$ is flat.
+
+  (5) By the local finite presentation case of (3), $f$ is locally of finite presentation. Note that: 
   $
     0 = Omega_(B'\/A') = Omega_(B\/A) otimes_B B'
   $
   Since $B'$ is faithfully flat over $B$, this proves $Omega_(B\/A) = 0$. Thus $f$ is unramified. 
 
-  (5) is just (3) and (4) combined. 
+  (6) is just (4) and (5) combined. 
 ]
 
 Finally, as a corollary of fpqc descent for quasi-coherent sheaves, we prove fpqc descent for relatively affine schemes. 

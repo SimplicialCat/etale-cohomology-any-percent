@@ -67,7 +67,7 @@ We first classify etale $G$-torsors over $X$ by $Hom_#[cont] (pi_1^et (X, ol(x))
     $
     Thus $rho_(Y,ol(y)) (gamma) rho_(Y,ol(y)) (delta) = rho_(Y,ol(y)) (gamma delta)$, and so $rho_(Y,ol(y))$ is a group homomorphism; 
 
-  - Pick a Galois closure $tilde(Y) -> X$ of the finite etale cover $Y -> X$, so that $Aut(tilde(Y)\/X)$ is a finite quotient of $pi_1^et (X, ol(x))$. If $gamma in pi_1^et (X, ol(x))$ maps to $id in Aut(tilde(Y)\/X)$, then $gamma(ol(y)) = ol(y)$ and so $rho_(Y,ol(y)) (gamma) = 1_G in G$. Hence, $rho_(Y,ol(y))$ factors through a finite quotient of $pi_1^et (X, ol(x))$, so its kernel is open. It is thus continuous. 
+  - Since $pi_1^et (X, ol(x))$ acts on $F_(ol(x)) (Y)$ continuously, the bijection $q_(Y,ol(y)): G -> F_(ol(x)) (Y)$ identifies $rho_(Y,ol(y))$ as a continuous homomorphism. 
 
   Step 2. Inverse construction. 
 

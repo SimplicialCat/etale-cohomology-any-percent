@@ -47,11 +47,11 @@ is a perfect pairing.
   $
   Therefore, what we are really trying to prove is that the map:
   $
-    Hom_Lambda (R g_! cal(K), ul(Lambda)) cong Hom_Lambda (cal(K), ul(Lambda)(d)[2d])
+    Hom_Lambda (cal(K), ul(Lambda)(d)[2d]) -> Hom_Lambda (R g_! cal(K), ul(Lambda)) 
   $
   induced by the trace:
   $
-    Hom_Lambda (R g_! cal(K), ul(Lambda)) -->^(Tr_(X\/k)) Hom_Lambda (cal(K)(-d)[-2d], ul(Lambda)) = Hom_Lambda (cal(K), ul(Lambda)(d)[2d])
+    Hom_Lambda (cal(K), ul(Lambda)(d)[2d]) -> Hom_Lambda (R g_! cal(K), R g_! ul(Lambda)(d)[2d]) -->^(Tr_g) Hom_Lambda (R g_! cal(K), ul(Lambda))
   $
   is an isomorphism.
 

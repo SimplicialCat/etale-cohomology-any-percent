@@ -259,7 +259,7 @@ We now start the proof. We first prove a lemma for limit arguments.
 
     We now define an isomorphism $eta: B_1 otimes_A A_1 -> A_1 otimes_A B_1$ as follows. A morphism $s$ suffixed by a permutation will denote a permutation of tensor factors. A suffix to a morphism denotes the tensor factors it acts on. We first define it up to tensoring with $A'$: 
     $
-      eta': B_1 otimes_A A_1 otimes_A A' &->^(phi_(1,3)) B' otimes_A A_1 otimes_A A_1 ->^(s_((1,2))) A_1 otimes_A B' otimes_A A_1 ->^(phi_(2,3)^(-1)) A_1 otimes_A B_1 otimes_A A'
+      eta': B_1 otimes_A A_1 otimes_A A' &->^(phi_(1,3)) B' otimes_A A_1 otimes_A A_1 ->^(phi_(1,2)^(-1)) B_1 otimes_A A' otimes_A A_1 ->^(s_((1,2,3))) A_1 otimes_A B_1 otimes_A A'
     $
     Now $B_1 otimes_A A_1$ and $A_1 otimes_A B_1$ are etale $A$-algebras. Thus, by full faithfulness, $eta'$ descends to an isomorphism: 
     $
@@ -269,22 +269,17 @@ We now start the proof. We first prove a lemma for limit arguments.
 
     - By full faithfulness, it suffices to verify the cocycle conditions tensoring $A'$. Expanding, we need to show that the following composition is exactly $eta'_(1,3,4)$: 
       $
-        B_1 otimes_A A_1 otimes_A A_1 otimes_A A' &-->^(phi_(1,4)) B' otimes_A A_1 otimes_A A_1 otimes_A A_1 -->^(s_((1,2))) A_1 otimes_A B' otimes_A A_1 otimes_A A_1 \
-        &-->^(phi_(2,4)^(-1)) A_1 otimes_A B_1 otimes_A A_1 otimes_A A' -->^(phi_(2,4)) A_1 otimes_A B' otimes_A A_1 otimes_A A_1 \
-        &-->^(s_((2,3))) A_1 otimes_A A_1 otimes_A B' otimes_A A_1 -->^(phi_(3,4)^(-1)) A_1 otimes_A A_1 otimes_A B_1 otimes_A A'
+        B_1 otimes_A A_1 otimes_A A_1 otimes_A A' &-->^(phi_(1,4)) B' otimes_A A_1 otimes_A A_1 otimes_A A_1 -->^(phi_(1,2)^(-1)) B_1 otimes_A A' otimes_A A_1 otimes_A A_1 \
+        &-->^(s_((1,2,4))) A_1 otimes_A B_1 otimes_A A_1 otimes_A A' -->^(phi_(2,4)) A_1 otimes_A B' otimes_A A_1 otimes_A A_1 \
+        &-->^(phi_(2,3)^(-1)) A_1 otimes_A B_1 otimes_A A' otimes_A A_1 -->^(s_((2,3,4))) A_1 otimes_A A_1 otimes_A B_1 otimes_A A'
       $
-      We may cancel $phi_(2,4)^(-1)$ and $phi_(2,4)$, and then fuse $s_((2,3)) compose s_((1,2)) = s_((1,3))$. Then the composition becomes: 
-      $
-        B_1 otimes_A A_1 otimes_A A_1 otimes_A A' &-->^(phi_(1,4)) B' otimes_A A_1 otimes_A A_1 otimes_A A_1 -->^(s_((1,3))) A_1 otimes_A A_1 otimes_A B' otimes_A A_1 \
-        &-->^(phi_(3,4)^(-1)) A_1 otimes_A A_1 otimes_A B_1 otimes_A A'
-      $
-      which is just $eta_(1,3,4)$. 
+      Note that $phi_(2,4) compose s_((1,2,4)) = s_((1,2,4)) compose phi_(1,2)$, so this composition is just $s_((2,3,4)) compose phi_(2,3)^(-1) compose s_((1,2,4)) compose phi_(1,4) = phi_(3,4)^(-1) compose s_((2,3,4)) compose s_((1,2,4)) compose phi_(1,4) = phi_(3,4)^(-1) compose s_((1,3,4)) compose phi_(1,4) = s_((1,3,4)) compose phi_(1,3)^(-1) compose phi_(1,4)$, which is just $eta'_(1,3,4)$. 
 
     Thus, by fpqc descent, there exists an $A$-module $B$ and an isomorphism $delta: B otimes_A A_1 cong B_1$. Furthermore, by descending the multiplication map on $B_1 otimes_(A_1) B_1 -> B_1$ to a map $B otimes_A B -> B$, we may equip $B$ with the structure of an $A$-algebra, making $delta$ a ring homomorphism. Now we have isomorphisms: 
     $
       B otimes_A A' otimes_A A_1 ->^(delta_(1,3)) B_1 otimes_A A' ->^phi B' otimes_A A_1 
     $
-    Since $A -> A_1$ is faithfully flat, this gives an isomorphism $B otimes_A A' cong B'$, thus descending $B'$ to an $A$-algebra $B$. It remains to show that $B$ is an etale $A$-algebra. Indeed, $B otimes_A A_1 cong B_1$ is an etale $A_1$-algebra, and by faithfully flat descent of etaleness (@fpqc-descent-of-properties (5)), $B$ is an etale $A$-algebra. Taking $Y = Spec(B) in Et_X$, we have $Y' cong X' times_X Y$ and we are done. 
+    Since $A -> A_1$ is faithfully flat, this gives an isomorphism $B otimes_A A' cong B'$, thus descending $B'$ to an $A$-algebra $B$. It remains to show that $B$ is an etale $A$-algebra. Indeed, $B otimes_A A_1 cong B_1$ is an etale $A_1$-algebra, and by faithfully flat descent of etaleness (@fpqc-descent-of-properties (6)), $B$ is an etale $A$-algebra. Taking $Y = Spec(B) in Et_X$, we have $Y' cong X' times_X Y$ and we are done. 
   ]
 
   Next, observe that: 

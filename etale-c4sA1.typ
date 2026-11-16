@@ -334,11 +334,15 @@ We now start by translating results from @sect-ab-x-et-as-abelian-cat, @sect-fun
     is a quasi-isomorphism. 
   ]
   #proof[
-    The forward implication is immediate. Conversely, suppose the displayed morphism is a quasi-isomorphism for all $U$. Pick quasi-isomorphic K-injective resolutions $cal(K) -> cal(I), cal(L) -> cal(J)$. Now $Hom_K (cal(K), cal(J)) = Hom_K (cal(I), cal(J))$ since $cal(J)$ is K-injective, so $cal(K) -> cal(L)$ lifts to a morphism $cal(I) -> cal(J)$. Then the morphisms 
+    Form the cone $cal(K) -> cal(L) -> cal(M) ->^(+1)$, and it suffices to prove that TFAE: 
+    - $cal(M) = 0$; 
+    - $R Gamma(U, cal(M)) = 0$ for every $U in Et_X$. 
+
+    The forward implication is obvious. For the backward implication, pick a K-injective resolution $cal(I)^bullet$ of $cal(M)$. Then by computing directly, 
     $
-      Gamma(U, cal(I)) -> Gamma(U, cal(J))
+      h^q (cal(M)) cong h^q (cal(I)^bullet) = (U |-> h^q (R Gamma(U, cal(I)^bullet)))^\# cong (U |-> h^q (R Gamma(U, cal(M))))^\#
     $
-    i.e. $h^q (R Gamma(U, cal(I))) ->^tilde h^q (R Gamma(U, cal(J)))$, i.e. $Gamma(U, h^q (cal(I))) ->^tilde Gamma(U, h^q (cal(J)))$. Thus, the morphisms $h^q (cal(I)) -> h^q (cal(J))$ are isomorphisms, i.e. $cal(I) -> cal(J)$ is a quasi-isomorphism. 
+    If each $R Gamma(U, cal(M)) = 0$ is exact, then each $(U |-> h^q (R Gamma(U, cal(M))))^\# = 0$ and so each $h^q (cal(M)) = 0$.Thus $cal(M)$ is exact. 
   ]
   Note that $R f_*, j_!, R i^!$ and $RHHom$ all commute with etale base change. By (5d), $R Gamma(U, RHHom_Lambda (cal(K), cal(L))) = RHom_Lambda (cal(K)|_U, cal(L)|_U)$. Thus, it suffices to prove the $RHom$ version of (3a)(3c). Now: 
   $

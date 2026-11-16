@@ -503,23 +503,25 @@ We continue the setup to turn @artin-approx-smoothing-reduction into a more usab
   $
   We claim that it is safe to replace the equations $(f_1, dots.c, f_r)$ by just $(f_1, dots.c, f_(m-d))$. We aim to find $h in R[arrow(X), arrow(Y)] - frak(r)$ s.t. $h frak(p) subset (f_1, dots.c, f_(m-d))$. 
 
-  - Take the local ring $C = R[arrow(X), arrow(Y)]_(frak(r))$. Then $C$ is regular, and by smoothness of $D = R[arrow(X), arrow(Y)]\/frak(p)$ at $ol(frak(r))$, $C\/frak(p) C$ is regular. 
+  - Put $C = R[arrow(X), arrow(Y)]_(frak(r))$. Recall that $D cong R[arrow(X), arrow(Y)]\/frak(p)$, and since $D$ is smooth over $R[arrow(X)]$ at $frak(r)$, by @equiv-defns-of-smooth (4), the localized second exact sequence
+    $
+      0 -> frak(p) C\/frak(p)^2 C -> oplus.big_(j=1)^m D_(ol(frak(r))) d Y_j -> Omega_(D\/R[arrow(X)]) otimes_D D_(ol(frak(r))) -> 0
+    $
+    is split exact. By the local freeness part of @equiv-defns-of-smooth, $Omega_(D\/R[arrow(X)]) otimes_D D_(ol(frak(r)))$ is free of rank $d$. Thus $frak(p) C\/frak(p)^2 C$ is a finite projective $D_(ol(frak(r)))$-module, hence finite rank. Its rank is thus $m-d$. 
 
-    Since $R[arrow(X), arrow(Y)]$ is smooth over $R[arrow(X)]$ of relative dimension $m$, and $D$ is smooth over $R[arrow(X)]$ at $ol(frak(r))$ of relative dimension $d$, 
-    $
-      m = dim(C) + trd_(k(arrow(X))) (C\/frak(r) C) \
+    The classes of $f_1, dots.c, f_(m-d)$ map to their gradients under the first arrow. Since the Jacobian minor $delta$ is a unit in $D_(ol(frak(r)))$, their images are linearly independent after reducing to $D_(ol(frak(r)))\/ol(frak(r)) D_(ol(frak(r)))$. Therefore, $f_1, dots.c, f_(m-d) in frak(p) C\/frak(p)^2 C$ form a basis after reducing to $D_(ol(frak(r)))\/ol(frak(r)) D_(ol(frak(r)))$. By Nakayama, they form a basis of $frak(p) C\/frak(p)^2 C$ over $D_(ol(frak(r)))$. 
 
-      d = dim(C\/frak(p) C) + trd_(k(arrow(X))) (C\/frak(r) C)
+    Consequently,
     $
-    Thus $dim(C) - dim(C\/frak(p) C) = m - d$. Thus, $frak(p) C = (a_1, dots.c, a_(m-d))$ for a regular sequence $a_1, dots.c, a_(m-d)$ in $C$. By #cite-stacks("061P")[Definition 10.69.1] and #cite-stacks("00LN")[Lemma 10.69.2], $frak(p)C\/frak(p)^2 C$ is a free $C\/frak(p)$-module of rank $m-d$. 
-
-    Then the invertible minor $delta(arrow(X), arrow(Y))$ shows that $f_1, dots.c, f_(m-d) in frak(p)$, when reduced to $frak(p)C\/frak(p)^2 C$, form a basis. By Nakayama's lemma, 
+      frak(p) C = (f_1, dots.c, f_(m-d)) C + frak(p)^2 C
     $
-      frak(p) C = (f_1, dots.c, f_(m-d)) + frak(p)^2 C
+    By Nakayama, the forces:
     $
-    and by Nakayama again, $frak(p) C = (f_1, dots.c, f_(m-d))$. Thus for every generator $f_i in frak(p)$, there exists $g_i in C = R[arrow(X), arrow(Y)]_(frak(r))$ s.t. $f_i in g_i (f_1, dots.c, f_(m-d)) subset C$. Clearing finitely many denominators in $R[arrow(X), arrow(Y)] - frak(r)$, we have constructed $h in R[arrow(X), arrow(Y)] - frak(r)$ s.t.: 
+      frak(p) C = (f_1, dots.c, f_(m-d)) C
     $
-      h frak(p) subset (f_1, dots.c, f_(m-d))
+    Clearing denominators in expressions for the finitely many generators $f_1, dots.c, f_r$ of $frak(p)$, we obtain $h in R[arrow(X), arrow(Y)] - frak(r)$ such that: 
+    $
+      h frak(p) subset (f_1, dots.c, f_(m-d)) R[arrow(X), arrow(Y)]
     $
 
   Let $M = "ord"_(frak(m)_n) (h(arrow(X), hat(y)))$. Then: 

@@ -61,7 +61,15 @@
   $
 ]
 #proof[
-  By topological invariance, since $ol(k)\/k$ is a purely inseparable extension, we may base change to $ol(k)$ and assume that $k$ is algebraically closed. 
+  By topological invariance, since $ol(k)\/k$ is a purely inseparable extension, we may base change to $ol(k)$ and assume that $k$ is algebraically closed. Take the normalization $nu: tilde(X) -> X$, which is a finite surjection. Then $tilde(X)$ is a smooth curve over $k$, and $nu$ is an isomorphism over the regular locus of $X$. Thus, the unit map $cal(F) -> nu_* nu^(-1) cal(F)$ is injective, and an isomorphism over the regular locus of $X$. we may thus form an exact sequence: 
+  $
+    0 -> cal(F) -> nu_* nu^(-1) cal(F) -> cal(R) -> 0
+  $
+  in which $cal(R)$ is supported on finitely many closed points of $X$. Thus, $cal(R)$ is acyclic, and for $q >= 3$, 
+  $
+    H^q (X, cal(F)) cong H^q (X, nu_* nu^(-1) cal(F)) cong H^q (tilde(X), nu^(-1) cal(F))
+  $
+  Thus, replacing $X$ with $tilde(X)$ and $cal(F)$ with $nu^(-1) cal(F)$, we may assume that $X$ is a smooth curve. 
 
   Let $j: eta = Spec(K(X)) -> X$ be the inclusion of the generic point. Consider the natural morphism: 
   $
@@ -91,7 +99,7 @@
   $
     (R^q j_* j^(-1) cal(F))_x = H^q (eta times_X tilde(X)_x, cal(F)|_(eta times_X tilde(X)_x))
   $
-  As in the proof of @gm-generic-pushforward-higher-vanishing, $eta times_X tilde(X)_x = Spec(L)$, where $L$ is an extension field of $k$ of transcendence degree $1$. Thus, this cohomology is $H^q_#[cont] (Gal_L, -)$ applied to a discrete torsion $Gal_L$-module, since $cal(F)$ is torsion. By @tsen-thm-in-galois-cohom (1), a consequence of Tsen's theorem, this cohomology vanishes. Thus, $(R^q j_* j^(-1) cal(F))_x = 0$. Hence $R^q j_* j^(-1) cal(F) = 0$ for all $q >= 2$. 
+  Since $X$ is a smooth curve over $k$, as in the proof of @gm-generic-pushforward-higher-vanishing, $eta times_X tilde(X)_x = Spec(L)$, where $L$ is an extension field of $k$ of transcendence degree $1$. Thus, this cohomology is $H^q_#[cont] (Gal_L, -)$ applied to a discrete torsion $Gal_L$-module, since $cal(F)$ is torsion. By @tsen-thm-in-galois-cohom (1), a consequence of Tsen's theorem, this cohomology vanishes. Thus, $(R^q j_* j^(-1) cal(F))_x = 0$. Hence $R^q j_* j^(-1) cal(F) = 0$ for all $q >= 2$. 
   
   We also have proved $H^p (X, R^1 j_* j^(-1) cal(F)) = 0$ for $p >= 1$. Thus, in the Leray spectral sequence: 
   $

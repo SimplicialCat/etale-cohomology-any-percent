@@ -104,7 +104,7 @@ For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lam
   $
   satisfying the cocycle condition. 
 
-  In other words, $union.sq.big_i (U_i times G_i)$ is a finite etale covering over $union.sq.big_i U_i -> X$, equipped with a transition isomorphism satisfying the cocycle condition. By fpqc descent of relatively affine schemes (@fpqc-descent-of-relatively-affine-schemes), it comes from base changing a scheme $X' -> X$ along $union.sq.big_i U_i -> X$, which is finite and etale by @fpqc-descent-of-properties (2)(5). 
+  In other words, $union.sq.big_i (U_i times G_i)$ is a finite etale covering over $union.sq.big_i U_i -> X$, equipped with a transition isomorphism satisfying the cocycle condition. By fpqc descent of relatively affine schemes (@fpqc-descent-of-relatively-affine-schemes), it comes from base changing a scheme $X' -> X$ along $union.sq.big_i U_i -> X$, which is finite and etale by @fpqc-descent-of-properties (2)(6). 
 
   Now that we have compatible isomorphisms $cal(F)|_(U_i) cong h_(X' times_X U_i)$, we have obtained an isomorphism: 
   $

@@ -157,7 +157,7 @@ Next, we will demonstrate the power of constructible sheaves, when we perform th
     - For all torsion $cal(F) in cAb(X_et)$, $res^(q,X)_(cal(F))$ is injective. 
   ]
   #proof[
-    By @pbc-dev-lem1, it suffices to prove that for all constructible $cal(F) in cAb(X_et)$, $res^(q,X)_(cal(F))$ is injective. Suppose that $cal(F)$ is $n$-torsion. Then by @acyclic-godement-resolution, there exists an $n$-torsion $Gamma(X, -)$-acyclic sheaf $cal(C)$ and an injection $cal(F) -> cal(C)$. Forming the cokernel, we have an exact sequence: 
+    By @pbc-dev-lem1, it suffices to prove that for all constructible $cal(F) in cAb(X_et)$, $res^(q,X)_(cal(F))$ is injective. Suppose that $cal(F)$ is $n$-torsion. Then by @etale-zn-sheaves-first-props (3), by embedding $cal(F)$ into an injective object of $cAb(X_et, ZZ\/n)$, there exists an $n$-torsion $Gamma(X, -)$-acyclic sheaf $cal(C)$ and an injection $cal(F) -> cal(C)$. Forming the cokernel, we have an exact sequence: 
     $
       0 -> cal(F) -> cal(C) -> cal(R) -> 0
     $

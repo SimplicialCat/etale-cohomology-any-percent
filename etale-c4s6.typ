@@ -89,19 +89,37 @@
   $
     0 -> product_(i_0 in I) cal(I) (U_(i_0)) -> dots.c -> product_(i_0,dots.c,i_p in I) cal(I) (U_(i_0,dots.c,i_p)) -> product_(i_0,dots.c,i_(p+1) in I) cal(I) (U_(i_0,dots.c,i_(p+1))) -> dots.c
   $
-  is exact at every $p >= 1$. Now $cal(I)(U^((p))) = Hom_(cPAb)(ul(ZZ)_(!,U^((p)),0), cal(I))$ and $cal(I)$ is injective so $Hom_(cPAb) (-, cal(I))$ is contravariant exact. As such, it suffices to show that we have an exact sequence: 
+  is exact at every $p >= 1$. Now $cal(I)(U_(i_0,dots.c,i_p)) = Hom_(cPAb)(ul(ZZ)_(!,U_(i_0,dots.c,i_p),0), cal(I))$, and $Hom_(cPAb)(-, cal(I))$ sends direct sums to products and is contravariant exact since $cal(I)$ is injective. As such, it suffices to show that the following chain complex is exact in positive degrees, with the rightmost term in degree $0$:
   $
     dots.c -> oplus.big_(i_0,dots.c,i_(p+1) in I) ul(ZZ)_(!,U_(i_0,dots.c,i_(p+1)),0) ->^partial oplus.big_(i_0,dots.c,i_p in I) ul(ZZ)_(!,U_(i_0,dots.c,i_p),0) -> dots.c -> oplus.big_(i_0 in I) ul(ZZ)_(!,U_(i_0),0)
   $
-  where $partial$ is: 
+  where, after evaluating at $V in Et_X$, we write $[i_0,dots.c,i_p; f]$ for the generator indexed by $f in Hom_X (V, U_(i_0,dots.c,i_p))$ in the corresponding summand. The boundary is defined on generators and extended linearly by:
   $
-    partial: ul(ZZ)_(!,U^((p+1)),0) (V) = oplus.big_(Hom(U^((p+1)),V)) ZZ &-> ul(ZZ)_(!,U^((p)),0) (V) = oplus.big_(Hom(U^((p)), V)) ZZ \
-
-    (s(f))_(f in Hom(U^((p+1)), V)) &|-> (sum_(k=0)^p (-1)^k s(g compose #[pr]_(0,dots.c,cancel(k),dots.c,p)))_(g in Hom(U^((p)), V))
+    partial [i_0,dots.c,i_(p+1); f] = sum_(k=0)^(p+1) (-1)^k [i_0,dots.c,cancel(i_k),dots.c,i_(p+1); #[pr]_k compose f]
   $
-  where $#[pr] _(0,dots.c,cancel(k),dots.c,p): U^((p+1)) -> U^((p))$ is the projection onto all but the $k$-th component of $U^((p+1))$. 
+  where $#[pr]_k: U_(i_0,dots.c,i_(p+1)) -> U_(i_0,dots.c,cancel(i_k),dots.c,i_(p+1))$ omits the $k$-th factor.
 
-  We know this chain complex very well from topology: This is the singular chain complex of a simplex. We may thus accept that it is exact. 
+  We recognize this complex from topology - it is essentially the simplicial chain complex of a simplex. We thus admits its exactness, where a homotopy to zero is constructed in the same way as in topology./*More explicitly, fix $V in Et_X$ and, for each $a: V -> U$, put:
+  $
+    S_a = union.sq.big_(i in I) {t in Hom_X (V, U_i): u_i compose t = a},
+  $
+  where $u_i: U_i -> U$ are the covering maps. Grouping generators by their composite $a: V -> U$, the evaluated chain complex is the direct sum of complexes with terms:
+  $
+    C_(a,p) = ZZ[S_a^(p+1)], quad p >= 0,
+  $
+  whose boundary is alternating deletion of entries. If $S_a = emptyset$, this summand is zero. Otherwise, choose $s_a in S_a$. Let $epsilon: C_(a,bullet) -> ZZ[0]$ send every degree-$0$ generator to $1$ and vanish in positive degrees, where $ZZ[0]$ is concentrated in degree $0$. Define $iota: ZZ[0] -> C_(a,bullet)$ by $1 |-> [s_a]$. These are chain maps with $epsilon compose iota = id$.
+
+  Define a homotopy by prepending the chosen vertex:
+  $
+    h_p: C_(a,p) &-> C_(a,p+1), \
+    [s_0,dots.c,s_p] &|-> [s_a,s_0,dots.c,s_p].
+  $
+  In $partial h_p$, deleting the first entry gives the original generator, while the remaining terms cancel those of $h_(p-1) partial$. Thus:
+  $
+    partial h_0 &= id - iota compose epsilon, \
+    partial h_p + h_(p-1) partial &= id quad (p >= 1).
+  $
+  This exhibits a retraction up to chain homotopy onto $ZZ[0]$, so every summand is exact in positive degrees. Their direct sum is therefore exact in positive degrees as well. The choices need not be natural in $V$, since exactness of presheaves is checked objectwise.*/
 
   (2) follows from (1), where $caron(H)^p (U, -)$ is a $delta$-functor, by taking the direct limit of the long exact sequences for each $caron(H)^p (cal(U), -)$ and using (Ab5) of $cAb$, and for injective $cal(I) in cPAb(X_et)$, $caron(H)^p (U, cal(I)) = 0$ as a direct limit of zeroes. 
 ]

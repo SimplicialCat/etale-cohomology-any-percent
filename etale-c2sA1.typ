@@ -20,19 +20,9 @@ This section is a short interlude on radicial morphisms. They are somewhat oppos
   + The diagonal map $Delta_(X\/Y): X -> X times_Y X$ is surjective. 
 ]
 #proof[
-  (2)$<==>$(3): 
-  #proof[
-    It is clear that: 
-    $
-      Hom(Spec(K), X) = {(x, phi): x in X, phi: k(x) arrow.hook K}
-    $
-    Thus, the preimage of some $(y, psi) in Hom(Spec(K), Y)$ is those $(x, phi)$ s.t. $f(x) = y$ and the composition $k(y) -> k(x) ->^phi K$ is exactly $psi$. 
-
-    (3)$==>$(2): Fix $y in Y$. If $f(x_1) = f(x_2) = y$ for different points $x_(1,2) in X$, take a field $K\/k(y)$ containing both $k(x_1)$ and $k(x_2)$ (say a residue field of $k(x_1) otimes_(k(y)) k(x_2)$). Then $k(y) -> K$ factors through both $k(x_1)$ and $k(x_2)$, giving two different lifts of $Hom(Spec(K), Y)$. This is a contradiction. Thus $f$ is injective. 
-
-    Suppose that there exists $x in X$ s.t. $f(x) = y$. Then taking $K = ol(k(x))$, we see that $k(x)$ embeds into $ol(k(x))$ in a unique way. This forces $k(x)\/k(y)$ to be purely inseparable, since otherwise its separable component would have nontrivial embeddings. 
-
-    (2)$==>$(3): Suppose that $(y, psi) in Hom(Spec(K), Y)$ has two lifts $(x_(1,2), phi_(1,2))$. Then since $f$ is injective, $x_1 = x_2 = x$, and $phi_(1,2)$ are two embeddings $k(x) -> K$ s.t: 
+  (2)$==>$(3): 
+  #proof[ 
+    Suppose that $(y, psi) in Hom(Spec(K), Y)$ has two lifts $(x_(1,2), phi_(1,2))$. Then since $f$ is injective, $x_1 = x_2 = x$, and $phi_(1,2)$ are two embeddings $k(x) -> K$ s.t: 
     $
       k(y) -> k(x) ->^(phi_(1,2)) K
     $
@@ -41,17 +31,28 @@ This section is a short interlude on radicial morphisms. They are somewhat oppos
     #suppress-qed
   ]
 
-  (1)$==>$(2): 
+  To proceed, we establish a lemma: 
+  #lemma(name: <field-ext-one-point-diagonal-implies-purely-insep>)[
+    Let $L\/K$ be a field extension s.t. $Spec(L otimes_K L)$ consists of a single point. Then $L\/K$ is algebraic and purely inseparable. 
+  ]
   #proof[
-    $f$ is tautologically injective. If $f(x) = y$, base changing $f$ along $k(y) -> Y$ yields $f: X_y -> Spec(k(y))$. $X_y$ is necessarily a single point with reduction $Spec(k(x))$. 
-    
-    Now base change further to $ol(k(x))$, and so $X_y otimes_(k(y)) ol(k(x))$ is a single point. $X_y$ has reduction $Spec(k(x))$, so $Spec(k(x) otimes_(k(y)) ol(k(x)))$ is a closed subscheme of $X_y otimes_(k(y)) ol(k(x))$ defined by a nil ideal, and shares the same underlying space. Thus $Spec(k(x) otimes_(k(y)) ol(k(x)))$ is a single point. 
-    
-    This forces $k(x)\/k(y)$ to be purely inseparable, since otherwise the separable closure of $k(y)$ in $k(x)$ would split into multiple copies of $ol(k(y))$ upon tensoring $ol(k(y))$. 
+    Consider the multiplication map: 
+    $
+      mu: L otimes_K L -> L
+    $
+    which is surjective, and so $ker(mu) subset L otimes_K L$ is a maximal ideal. Since $Spec(L otimes_K L)$ is a single point, $ker(mu)$ must be the only prime ideal of $L otimes_K L$, hence its nilradical. 
 
-    #todo() // remind me to put a lemma here later, and I will later request you to search which arguments in later sections can be replaced by an application of such a lemma
+    For every $a in L$, $a otimes 1 - 1 otimes a in ker(mu)$, and so it must be nilpotent. Since $L otimes_K K[a]$ is a subring of $L otimes_K L$, $a otimes 1 - 1 otimes a$ must be nilpotent in $L otimes_K K[a]$. 
 
-    #suppress-qed
+    - If $a$ is transcendental over $K$, then $K[a]$ is a polynomial ring and $L otimes_K K[a] cong L otimes_K K[T] cong L[T]$, with $a otimes 1 - 1 otimes a$ corresponding to $a - T$, which is not nilpotent. This is a contradiction. 
+
+    Thus, $a$ is algebraic over $K$. Let $f(T) in K[T]$ be its minimal polynomial, so that: 
+    $
+      L otimes_K K[a] cong L otimes_K K[T]\/f(T) cong L[T]\/f(T)
+    $
+    Thus $T-a$ is nilpotent in this quotient, and so there exists $n$ s.t. $f(T) divides (T-a)^n$. Since $f$ is monic, this implies $f(T) = (T-a)^m$ for some $m$, which splits completely and only has one distinct root in $L$. Thus, $a$ is purely inseparable over $K$. 
+
+    Since $a in L$ is arbitrary, we have shown that $L\/K$ is algebraic and purely inseparable. 
   ]
 
   (3)$==>$(1): 
@@ -73,15 +74,11 @@ This section is a short interlude on radicial morphisms. They are somewhat oppos
 
   - Points of $X times_S Y$ correspond to quadruples $(x, y, s, frak(p))$ where $x in X, y in Y$ both lie above $s in S$, and $frak(p) in Spec(k(x) otimes_(k(s)) k(y))$. (#cite-stacks("01JT")[Lemma 26.17.5])
 
-  The diagonal $X -> X times_Y X$ then sends $x$ to $(x, x, f(x), ker(k(x) otimes_(k(f(x))) k(x) -> k(x)))$. Since the diagonal is surjective, $x_1, x_2$ with $f(x_1) = f(x_2)$ are necessarily equal, and for every $x in X$ with $y = f(x)$, $k(x) otimes_(k(y)) k(x)$ only has one prime ideal. Thus $ker(k(x) otimes_(k(y)) k(x) -> k(x))$ is the nilradical of $k(x) otimes_(k(y)) k(x)$, and so every element of the form $a otimes 1 - 1 otimes a in k(x) otimes_(k(y)) k(x)$ is nilpotent. 
+  The diagonal $X -> X times_Y X$ then sends $x$ to $(x, x, f(x), ker(k(x) otimes_(k(f(x))) k(x) -> k(x)))$. Since the diagonal is surjective, $x_1, x_2$ with $f(x_1) = f(x_2)$ are necessarily equal, and for every $x in X$ with $y = f(x)$, $k(x) otimes_(k(y)) k(x)$ only has one prime ideal. 
 
-  - For every $a in k(x)$, if $a$ were transcendental over $k(y)$, then $k(y)(a) otimes_(k(y)) k(y)(a)$ is a localization of $k(y)[X, Y]$ and is integral, and $a otimes 1 - 1 otimes a$ corresponds to $X - Y$. Its nilpotence is thus absurd. Thus $a$ is algebraic over $k(y)$, say with minimal polynomial $p(X)$. Then: 
-    $
-      k(y)(a) otimes_(k(y)) k(y)(a) cong (k(y)(a)[T])/((p(T)))
-    $
-    and the element $a otimes 1 - 1 otimes a$ corresponds to $T - a$. By nilpotence, $p(T) divides (T-a)^m$ for some power $m$. Thus $p(T)$ has only the root $a$ in $ol(k(y))$. Thus $a$ is purely inseparable over $k(y)$. 
+  Thus by @field-ext-one-point-diagonal-implies-purely-insep, $k(x)\/k(y)$ is purely inseparable. 
 
-  Thus $k(x)\/k(y)$ is purely inseparable. 
+  Now that we have shown $(2)==>(3)==>(1)==>(4)==>(2)$, the desired equivalence is established. 
 ]
 
 #definition(name: <defn-radicial-morphism>)[

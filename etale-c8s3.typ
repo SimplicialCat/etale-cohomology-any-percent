@@ -580,13 +580,21 @@ We now develop the algebraic engine required for spreading the finite etale cove
       where we identify both sides as subsets of $Frac(A)$. However, $U$ contains all height $1$ primes of $A$, so by @normal-hartogs, the intersection on the RHS is exactly $A$ itself. 
     ]
 
-    Now: 
+    Put $p_m = g compose i_m: Spec(A[T]\/T^(m+1)) -> Spec(A)$ and $p'_m = g' compose i'_m$. Then $p'_m: W_m -> V$ is the base change of $p_m$. Thus,
     $
-      Gamma(W_m, cal(O)_(W_m)) cong Gamma(V, i'_(m,*) cal(O)_(W_m)) cong Gamma(V, i_(m,*) cal(O)_(Spec(A[T]\/T^(m+1))))
+      p'_(m,*) cal(O)_(W_m)
+      cong (p_(m,*) cal(O)_(Spec(A[T]\/T^(m+1))))|_V
+      cong cal(O)_V [T]\/T^(m+1)
     $
-    Since $i_(m,*) cal(O)_(Spec(A[T]\/T^(m+1)))$ is finite free over $cal(O)_(Spec(A))$ and $V subset Spec(A)$ is of codimension $>=2$, by the previous lemma, 
+    is a finite free sheaf of $cal(O)_V$-modules. 
+
+    Since $Spec(A) - V$ has codimension $>=2$, the previous lemma gives $Gamma(V, cal(O)_V) cong A$. Consequently,
     $
-      Gamma(V, i_(m,*) cal(O)_(Spec(A[T]\/(T^(m+1))))) cong Gamma(Spec(A), i_(m,*) cal(O)_(Spec(A[T]\/T^(m+1)))) cong A[T]\/T^(m+1)
+      Gamma(W_m, cal(O)_(W_m)) cong Gamma(V, p'_(m,*) cal(O)_(W_m)) cong Gamma(V, cal(O)_V [T]\/T^(m+1)) cong A[T]\/T^(m+1)
+    $
+    These identifications are compatible with the truncation maps, so: 
+    $
+      invlim_(m>=0) Gamma(W_m, cal(O)_(W_m)) cong A fps(T)
     $
     Thus, $Phi$ is identified as: 
     $
@@ -618,7 +626,7 @@ We now develop the algebraic engine required for spreading the finite etale cove
     $
       hat(B) cong Gamma(hat(W), cal(O)_(Spec(A fps(T))))^n cong A fps(T)^n
     $
-    By fpqc descent of properties (@fpqc-descent-of-properties (2)(5)), since $hat(B)$ is a finite etale $A fps(T)$-algebra, and $A{T} -> A fps(T)$ is faithfully flat, $B$ is a finite etale $A{T}$-algebra. Since $A{T}$ is strict henselian, $Spec(A{T})$ has no nontrivial finite etale coverings, and so necessarily $B cong A{T}^n$. We are thereby done. 
+    By fpqc descent of properties (@fpqc-descent-of-properties (2)(6)), since $hat(B)$ is a finite etale $A fps(T)$-algebra, and $A{T} -> A fps(T)$ is faithfully flat, $B$ is a finite etale $A{T}$-algebra. Since $A{T}$ is strict henselian, $Spec(A{T})$ has no nontrivial finite etale coverings, and so necessarily $B cong A{T}^n$. We are thereby done. 
   ]
 ]
 

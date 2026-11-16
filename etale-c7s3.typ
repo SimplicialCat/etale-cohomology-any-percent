@@ -376,9 +376,9 @@ With the projection map defined, we are now ready to prove the projection formul
   $
     R Gamma(X_(ol(y)), cal(K)|_(X_(ol(y)))) Lotimes_Lambda cal(L)_(ol(y)) -> R Gamma(X_(ol(y)), cal(K)|_(X_(ol(y))) Lotimes_Lambda ul(cal(L)_(ol(y))))
   $
-  is a quasi-isomorphism. This follows from the following lemma: 
+  is a quasi-isomorphism. This follows from the following lemma, where each fiber $X_(ol(y))$ is qcqs, and $R Gamma(X_(ol(y)), -)$ is bounded above on torsion complexes by Grothendieck vanishing: 
   #lemma(name: <projection-formula-for-global-sections>)[
-    (Projection formula for global sections) Let $X$ be a finite type scheme over a separably closed field $k$. Then for any $cal(K) in D_#[tor] (X_et, Lambda), M in D (Lambda)$, the projection map: 
+    (Projection formula for global sections) Let $X$ be a qcqs scheme s.t. $R Gamma(X, -)$ is bounded above on $D_#[tor] (X_et, Lambda)$. Then for any $cal(K) in D_#[tor] (X_et, Lambda), M in D (Lambda)$, the projection map: 
     $
       R Gamma(X, cal(K)) Lotimes_Lambda M -> R Gamma(X, cal(K) Lotimes_Lambda ul(M))
     $
@@ -440,7 +440,7 @@ With the projection map defined, we are now ready to prove the projection formul
           R Gamma(X, oplus.big_i cal(K)_i) = oplus.big_i R Gamma(X, cal(K)_i)
         $
       ]
-      The lemma above is applicable because $X$ is of finite type over a separably closed field $k$, and so $R Gamma(X, -)$ is bounded above on torsion complexes by Grothendieck vanishing. Now $Lotimes_Lambda$ is a left adjoint, and hence commutes with all direct sums. Hence: 
+      The lemma above is applicable since $R Gamma(X, -)$ is bounded above on torsion complexes by Grothendieck vanishing. Now $Lotimes_Lambda$ is a left adjoint, and hence commutes with all direct sums. Hence: 
       $
         R Gamma(X, cal(K)) Lotimes_Lambda (oplus.big_i M_i) = oplus.big_i (R Gamma(X, cal(K)) Lotimes_Lambda M_i)
       $

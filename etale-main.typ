@@ -38,7 +38,7 @@
   cA6: "Brown representability"
 )
 #let active-sections = if (compile-cfg.ide-mode) {
-  all-sections.filter(chap => (chap.at(0) in (4,)) or (false and type(chap.at(0)) == str and "A" in chap.at(0)))
+  all-sections.filter(chap => chap.at(0) in (9,))
 } else {all-sections}
 
 #let doc-body = for (chap-name, chap-arr, chap-lab) in active-sections {

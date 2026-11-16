@@ -283,6 +283,27 @@ Finally, there is this alternative method of proving that $cAb(X_et)$ has enough
   #proof[
     If $x$ does not generalize $y$, pick a Zariski open $V subset X$ s.t. $y in V, x in.not V$. For any etale neighborhood $(U, ol(u)) -> (X, ol(y))$, if the image of $U$ in $X$ does not contain $x$, then $ol(x)_* M (U) = ul(M)_(ol(x)) (U_(ol(x))) = 0$. However, any etale neighborhood $(U, ol(u)) -> (X, ol(y))$ is refined by $(U times_X V, ol(u))$, whose image in $X$ does not contain $x$, so the filtered colimit defining the stalk is $0$. 
   ]
+
+  The construction of skyscraper sheaves is also exact in its values, as can be seen in the following lemma: 
+
+  #lemma(name: <geom-point-pushforward-exact>)[
+    Let $ol(x): Spec(Omega) -> X$ be a geometric point. Then $ol(x)_*$ is an exact functor.
+  ]
+  #proof[
+    Recall that $cAb(Spec(Omega)_et) cong cAb$ by @struct-of-spec-omega-et. Now given an exact sequence of abelian groups:
+    $
+      0 -> A -> B -> C -> 0
+    $
+    consider the sequence after $ol(x)_*$:
+    $
+      0 -> ol(x)_* A -> ol(x)_* B -> ol(x)_* C -> 0
+    $
+    When viewed on sections on $(f: U -> X) in Et_X$, this is:
+    $
+      0 -> product_(ol(u) in f^(-1)(ol(x))) A -> product_(ol(u) in f^(-1)(ol(x))) B -> product_(ol(u) in f^(-1)(ol(x))) C -> 0
+    $
+    which is exact, as a direct product of exact sequences $0 -> A -> B -> C -> 0$. Thus $0 -> ol(x)_* A -> ol(x)_* B -> ol(x)_* C -> 0$ is exact.
+  ]
   
   Given any sheaf $cal(F) in cAb(X_et)$, given a morphism $cal(F)_(ol(x)) -> M$, i.e. a morphism $ol(x)^(-1) cal(F) -> M$, there exists a unique morphism $cal(F) -> ol(x)_* M$ inducing this morphism by adjunction. 
 ]
@@ -315,62 +336,43 @@ Finally, there is this alternative method of proving that $cAb(X_et)$ has enough
   is injective. If $s in cal(F)(U)$ is sent to zero, then for every $ol(u) in f^(-1)(ol(x))$, the germ $s_(ol(u)) = 0$. Every point of $U$ has a geometric point $ol(u)$ of this shape lying above it, so by @vanishing-stalks-spreads-out, $s = 0$. Thus, $gamma$ is injective. 
 ]
 
-Other than this injective Godement resolution, there is in fact an acyclic Godement resolution: 
+// Other than this injective Godement resolution, there is in fact an acyclic Godement resolution: 
 
-#lemma(name: <geom-point-pushforward-exact>)[
-  Let $ol(x): Spec(Omega) -> X$ be a geometric point. Then $ol(x)_*$ is an exact functor.
-]
-#proof[
-  Recall that $cAb(Spec(Omega)_et) cong cAb$ by @struct-of-spec-omega-et. Now given an exact sequence of abelian groups:
-  $
-    0 -> A -> B -> C -> 0
-  $
-  consider the sequence after $ol(x)_*$:
-  $
-    0 -> ol(x)_* A -> ol(x)_* B -> ol(x)_* C -> 0
-  $
-  When viewed on sections on $(f: U -> X) in Et_X$, this is:
-  $
-    0 -> product_(ol(u) in f^(-1)(ol(x))) A -> product_(ol(u) in f^(-1)(ol(x))) B -> product_(ol(u) in f^(-1)(ol(x))) C -> 0
-  $
-  which is exact, as a direct product of exact sequences $0 -> A -> B -> C -> 0$. Thus $0 -> ol(x)_* A -> ol(x)_* B -> ol(x)_* C -> 0$ is exact.
-]
-
-#proposition(name: <acyclic-godement-resolution>)[
-  For any scheme $X$, fix a system of geometric points ${ol(x)}$ above each $x in X$. For any $cal(F) in cAb(X_et)$,
-  $
-    cal(C)^0 (cal(F)) := product_(x in X) ol(x)_* cal(F)_(ol(x))
-  $
-  satisfies that the canonical map $cal(F) -> cal(C)^0 (cal(F))$ induced by adjunction between $ol(x)_*$ and $ol(x)^(-1)$ is injective, and is acyclic in the sense that:
-  $
-    H^q (X, cal(C)^0 (cal(F))) = 0, forall q >= 1
-  $
-  Thus, taking $cal(C)^1 (cal(F)) = cal(C)^0 (coker(cal(F) -> cal(C)^0 (cal(F))))$ and so on, we have inductively constructed an acyclic resolution:
-  $
-    0 -> cal(F) -> cal(C)^0 (cal(F)) -> cal(C)^1 (cal(F)) -> dots.c -> cal(C)^p (cal(F)) -> dots.c
-  $
-  functorial in $cal(F)$.
-]
-#proof[
-  For acyclicity, we use the Leray spectral sequence @derived-lower-star-first-props (2) and exactness of $ol(x)_*$ proved above. Since $R^q ol(x)_* = 0$ for $q >= 1$ by exactness of $ol(x)_*$, the spectral sequence:
-  $
-    H^p (X, R^q ol(x)_* A) ==> H^(p+q) (ol(x), A)
-  $
-  degenerates, giving isomorphisms:
-  $
-    H^q (X, ol(x)_* A) cong H^q (ol(x), A) = 0
-  $
-  for all $q >= 1$. Thus, $cal(C)^0 (cal(F))$ as a direct product of sheaves of the shape $ol(x)_* A$ is acyclic.
+// #proposition(name: <acyclic-godement-resolution>)[
+//   For any scheme $X$, fix a system of geometric points ${ol(x)}$ above each $x in X$. For any $cal(F) in cAb(X_et)$,
+//   $
+//     cal(C)^0 (cal(F)) := product_(x in X) ol(x)_* cal(F)_(ol(x))
+//   $
+//   satisfies that the canonical map $cal(F) -> cal(C)^0 (cal(F))$ induced by adjunction between $ol(x)_*$ and $ol(x)^(-1)$ is injective, and is acyclic in the sense that:
+//   $
+//     H^q (X, cal(C)^0 (cal(F))) = 0, forall q >= 1
+//   $
+//   Thus, taking $cal(C)^1 (cal(F)) = cal(C)^0 (coker(cal(F) -> cal(C)^0 (cal(F))))$ and so on, we have inductively constructed an acyclic resolution:
+//   $
+//     0 -> cal(F) -> cal(C)^0 (cal(F)) -> cal(C)^1 (cal(F)) -> dots.c -> cal(C)^p (cal(F)) -> dots.c
+//   $
+//   functorial in $cal(F)$.
+// ]
+// #proof[
+//   For acyclicity, we use the Leray spectral sequence @derived-lower-star-first-props (2) and exactness of $ol(x)_*$ proved above. Since $R^q ol(x)_* = 0$ for $q >= 1$ by exactness of $ol(x)_*$, the spectral sequence:
+//   $
+//     H^p (X, R^q ol(x)_* A) ==> H^(p+q) (ol(x), A)
+//   $
+//   degenerates, giving isomorphisms:
+//   $
+//     H^q (X, ol(x)_* A) cong H^q (ol(x), A) = 0
+//   $
+//   for all $q >= 1$. Thus, $cal(C)^0 (cal(F))$ as a direct product of sheaves of the shape $ol(x)_* A$ is acyclic.
   
-  Next, we show that the natural map:
-  $
-    gamma: cal(F) -> cal(C)^0 (cal(F)) = product_(x in X) ol(x)_* cal(F)_(ol(x))
-  $
-  is injective. This is the same proof as in @injective-godement-resolution. Indeed, given any $(f: U -> X) in Et_X$, we want to show that:
-  $
-    cal(F)(U) -> product_(x in X) (ol(x)_* cal(F)_(ol(x)))(U) = product_(x in X) product_(ol(u) in f^(-1)(ol(x))) cal(F)_(ol(x))
-  $
-  is injective. If $s in cal(F)(U)$ is sent to zero, then for every $ol(u) in f^(-1)(ol(x))$, the germ $s_(ol(u)) = 0$. Every point of $U$ has a geometric point $ol(u)$ of this shape lying above it, so by @vanishing-stalks-spreads-out, $s = 0$. Thus, $gamma$ is injective.
-]
+//   Next, we show that the natural map:
+//   $
+//     gamma: cal(F) -> cal(C)^0 (cal(F)) = product_(x in X) ol(x)_* cal(F)_(ol(x))
+//   $
+//   is injective. This is the same proof as in @injective-godement-resolution. Indeed, given any $(f: U -> X) in Et_X$, we want to show that:
+//   $
+//     cal(F)(U) -> product_(x in X) (ol(x)_* cal(F)_(ol(x)))(U) = product_(x in X) product_(ol(u) in f^(-1)(ol(x))) cal(F)_(ol(x))
+//   $
+//   is injective. If $s in cal(F)(U)$ is sent to zero, then for every $ol(u) in f^(-1)(ol(x))$, the germ $s_(ol(u)) = 0$. Every point of $U$ has a geometric point $ol(u)$ of this shape lying above it, so by @vanishing-stalks-spreads-out, $s = 0$. Thus, $gamma$ is injective.
+// ]
 
-The advantage of this acyclic Godement resolution is that, if $cal(F)$ is $n$-torsion, then so are its stalks, and so $cal(C)^0 (cal(F))$ is $n$-torsion. This may make some results that only work for torsion sheaves applicable.
+// The advantage of this acyclic Godement resolution is that, if $cal(F)$ is $n$-torsion, then so are its stalks, and so $cal(C)^0 (cal(F))$ is $n$-torsion. This may make some results that only work for torsion sheaves applicable.
