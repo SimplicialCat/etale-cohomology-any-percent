@@ -14,7 +14,7 @@ We now introduce first properties of etale fundamental groups.
       $
         eta' compose delta compose (eta')^(-1) = eta compose (gamma delta gamma^(-1)) compose eta^(-1)
       $
-      differs from the one defined by $eta$ by an inner automorphism of $pi_1^et (X, ol(x))$. 
+      which differs from the one defined by $eta$ by an inner automorphism of $pi_1^et (X, ol(x))$. 
 
       It remains to show that there indeed exists a path, i.e. a natural isomorphism $eta: F_(ol(x)) -> F_(ol(x'))$. We first construct $eta$ on the full subcategory of $FEt_X$ consisting of the Galois covering spaces. 
       
@@ -55,7 +55,7 @@ We now introduce first properties of etale fundamental groups.
         $
         Equip each $X_i$ with the discrete topology and $product_(i in I) X_i$ with the product topology. Then by Tychonoff's theorem, since each $X_i$ is compact (by finiteness), $product_(i in I) X_i$ must be compact. $C_(i,j)$ is the preimage of the diagonal of $X_i times X_i$ under the map $product_(i in I) X_i -> X_i times X_i, (x_i)_(i in I) |-> (x_i, f_(i,j) (x_j))$. Since $X_i times X_i$ is discrete, the diagonal is closed, so $C_(i,j)$ is closed in $product_(i in I) X_i$. 
 
-        Now that $product_(i in I) X_i$ is compact, to show that the intersection of the closed sets $C_(i,j)$ is nonempty, it suffices to show that the intersection of every finite collection of them is nonempty. Let $i_1 <= j_1, dots.c, i_t <= j_t$ be finitely such pairs, and pick an upper bound $k$ of $j_1, dots.c, j_t$. Since $X_k$ is nonempty, pick any $x_k in X_k$, and pick $(x_i)_(i in I)$ so that $x_i = f_(i,k)(x_k)$ whenever $i<=k$ (and pick $x_i$ arbitrarily otherwise). Then one may easily see that $(x_i)_(i in I) in inter.big_(s=1)^t C_(i_s,j_s)$. We are thereby done. 
+        Now that $product_(i in I) X_i$ is compact, to show that the intersection of the closed sets $C_(i,j)$ is nonempty, it suffices to show that the intersection of every finite collection of them is nonempty. Let $i_1 <= j_1, dots.c, i_t <= j_t$ be finitely many such pairs, and pick an upper bound $k$ of $j_1, dots.c, j_t$. Since $X_k$ is nonempty, pick any $x_k in X_k$, and pick $(x_i)_(i in I)$ so that $x_i = f_(i,k)(x_k)$ whenever $i<=k$ (and pick $x_i$ arbitrarily otherwise). Then one may easily see that $(x_i)_(i in I) in inter.big_(s=1)^t C_(i_s,j_s)$. We are thereby done. 
         #suppress-qed
       ]
       Since each $F_(ol(x')) (X_i)$ is nonempty, such a compatible choice $(ol(x'_i))_(i in I)$ exists. In other words, we have constructed natural bijections: 
@@ -66,7 +66,7 @@ We now introduce first properties of etale fundamental groups.
 
       The rest of the proof that passes from Galois coverings to general coverings is identical to the last part of the proof for @pi1et-as-invlim. As such, you can skip the rest of the proof if you want. 
 
-      Finally, for an arbitrary covering $Y in FEt_X$, pick a Galois covering $f: Z -> Y$. Then we define: 
+      Finally, first let $Y in FEt_X$ be connected and pick a Galois covering $f: Z -> Y$. For a general $Y$, apply the construction to each connected component. Then we define: 
       $
         eta_Y: F_(ol(x)) (Y) -> F_(ol(x')) (Y), f(ol(z)) |-> f(eta_Z (ol(z)))
       $
@@ -77,7 +77,7 @@ We now introduce first properties of etale fundamental groups.
           &= f(sigma(eta_Z (ol(z_1)))) #[by definition or naturality of $eta$] \
           &= f(eta_Z (ol(z_1))) #[since $sigma in Aut(Z\/Y)$]
         $
-        We must also show that $eta_Y$ is independent from the choice of Galois covering $Z$. By passing to the Galois closure of the composite covering, we are reduced to showing that $eta_Y$ defined using Galois coverings $W$ and $Z$ are the same when given $W ->^g Z ->^f Y -> X$. Under the definition with $W$, 
+        We must also show that $eta_Y$ is independent from the choice of Galois covering $Z$. By passing to the Galois closure of the composite covering, we are reduced to showing that $eta_Y$ defined using Galois coverings $W$ and $Z$ is the same when given $W ->^g Z ->^f Y -> X$. Under the definition with $W$, 
         $
           f(g(ol(w))) |-> f(g(eta_W (ol(w))))
         $
@@ -139,7 +139,7 @@ We now introduce first properties of etale fundamental groups.
     }, spacing: 2em))
     commutative, where $alpha^(-1)$ sends $Y' -> Y$ to $X times_Y Y' -> X$.
     #proof[
-      By universal property of the fiber product, for any $Y' in FEt_Y$,
+      By the universal property of the fiber product, for any $Y' in FEt_Y$,
       $
         F_(ol(x)) (X times_Y Y') = F_(ol(y)) (Y')
       $
@@ -174,7 +174,7 @@ We now introduce first properties of etale fundamental groups.
       
       Continuity is also easy: For every pointed Galois covering $(Z, ol(z)) -> (Y, ol(y))$, we need to prove that: 
       $
-        pi_1^et (X, ol(x)) ->^(alpha_*) pi_1^et (Y, ol(y)) ->> Aut(Z\/Y)
+        pi_1^et (X, ol(x)) ->^(alpha_*) pi_1^et (Y, ol(y)) ->> Aut(Z\/Y)^opp
       $
       has kernel containing an open subgroup of $pi_1^et (X, ol(x))$. From our construction of $alpha_*$, the kernel consists of elements $sigma in pi_1^et (X, ol(x))$ acting trivially on $F_(ol(x)) (Z times_Y X) in GSet(pi_1^et (X, ol(x)))^#[fin,cont]$. It must contain an open normal subgroup of $pi_1^et (X, ol(x))$ immediately from the equivalence $FEt_X cong GSet(pi_1^et (X, ol(x)))^#[fin,cont]$. 
     ]
@@ -201,7 +201,7 @@ Note that $FEt_X cong GSet(pi_1^et (X, ol(X)))^#[fin,cont]$. As such, this is re
   and: 
   $
     & alpha #[injective] <==> #[there exists a $G$-equivariant map $G\/ker(alpha) -> G$] \
-    <==>& #[$forall T in GSet(G)^#[fin]$,  $exists S in GSet(H)^#[fin]$ and a $G$-equivariant map $S_0 -> T$ where $S_0$ is a $G$-orbit of $alpha^(-1)(S)$]
+    <==>& #[$forall emptyset != T in GSet(G)^#[fin]$,  $exists S in GSet(H)^#[fin]$ and a $G$-equivariant map $S_0 -> T$ where $S_0$ is a $G$-orbit of $alpha^(-1)(S)$]
   $
 ]
 
@@ -275,7 +275,7 @@ By translating these algebraic results into the language of etale covering space
   
   + $alpha_*$ is trivial if and only if for all $Y' in FEt_Y$, $X times_Y Y' in FEt_X$ is the disjoint union of some copies of $X$.
   
-  + $alpha_*$ is injective if and only if for any $(Z -> X) in FEt_X$, there exists a $(W -> Y) in FEt_Y$ and a morphism in $FEt_X$ from a connected component of $X times_Y W$ to $Z$. 
+  + $alpha_*$ is injective if and only if for any nonempty $(Z -> X) in FEt_X$, there exists a $(W -> Y) in FEt_Y$ and a morphism in $FEt_X$ from a connected component of $X times_Y W$ to $Z$. 
 
   + Given a third scheme $(Z, ol(z))$ with $beta: (Y, ol(y)) -> (Z, ol(z))$ s.t. $beta_*$ is surjective, 
     $
@@ -287,7 +287,7 @@ By translating these algebraic results into the language of etale covering space
   
   + $alpha_*$ is trivial if and only if for all $Y' in FEt_Y$, $X times_Y Y' in FEt_X$ is the disjoint union of some copies of $X$.
   
-  + $alpha_*$ is injective if and only if for any $T in GSet(pi_1 (X))^"f.c"$, there exists $S in GSet(pi_1 (Y))^"f.c"$ transitive, and a $pi_1 (X)$-equivariant map from a $pi_1 (X)$-orbit in $alpha_*^(-1) (S) -> T$. This is equivalent to for any $(Z -> X) in FEt_X$, there exists a connected $(W -> Y) in FEt_Y$ and a morphism in $FEt_X$ from a connected component of $X times_Y W$ to $Z$.*/
+  + $alpha_*$ is injective if and only if for any $T in GSet(pi_1 (X))^"f.c"$, there exists $S in GSet(pi_1 (Y))^"f.c"$ transitive, and a $pi_1 (X)$-equivariant map from a $pi_1 (X)$-orbit in $alpha_*^(-1) (S) -> T$. This is equivalent to the following: for any $(Z -> X) in FEt_X$, there exists a connected $(W -> Y) in FEt_Y$ and a morphism in $FEt_X$ from a connected component of $X times_Y W$ to $Z$.*/
 ]
 #proof[
   This is a simple translation of @profin-grp-action-props (1)(2)(3)(4), where finite continuous $pi_1^et (X, ol(x))$-sets are translated into elements of $FEt_X$ under the equivalence $F_(ol(x)): FEt_X -> GSet(pi_1^et (X, ol(x)))^#[fin,cont]$. The translations are: 
@@ -299,12 +299,12 @@ By translating these algebraic results into the language of etale covering space
   - Taking a connected component of $Z in FEt_X$ is equivalent to taking a $pi_1^et (X, ol(x))$-orbit of $F_(ol(x)) (Z)$. 
 ]
 
-Using the functoriality for $pi_1^et$, we may obtain various methods to obtain information on $pi_1^et$ for various types of schemes. The first case we'll deal with is base changes that separably closes the base field. 
+Using the functoriality for $pi_1^et$, we may obtain various methods to obtain information on $pi_1^et$ for various types of schemes. The first case we'll deal with is base changes that separably close the base field. 
 
 #corollary[
   Let $k$ be a field, and fix a separable closure $k^sep$. Let $X$ be a geometrically connected#footnote[The equivalence of the two statements for geometric connectivity is an exercise in @cite-hartshorne-ag[Section II.4].] (i.e. $X_(k^sep) = X otimes_k k^sep$ connected, or $X_L = X otimes_k L$ connected for every field extension $L\/k$) scheme of finite type over $k$.
   
-  Fix a geometric point $ol(x): Spec(k^sep) -> X_(k^sep) -> X -> Spec(k)$. Then the morphisms $X_(k^sep) -> X -> Spec(k)$ induce an exact sequence: 
+  Fix a geometric point $ol(x): Spec(Omega) -> X_(k^sep) -> X -> Spec(k)$ for a separably closed extension $Omega$ of $k^sep$. Then the morphisms $X_(k^sep) -> X -> Spec(k)$ induce an exact sequence: 
   $
     1 -> pi_1^et (X_(k^sep), ol(x)) -> pi_1^et (X, ol(x)) -> underbrace(Gal(k^sep\/k), pi_1^et (Spec(k), Spec(k^sep))) -> 1
   $
@@ -330,7 +330,7 @@ Using the functoriality for $pi_1^et$, we may obtain various methods to obtain i
     $
       X' otimes_k k^sep = X'_(k^sep) = union.sq.big_(Gal(k^sep\/k)\/H) X_(k^sep) cong X_L otimes_k k^sep
     $
-    Furthermore, the descent datum from $X_(k^sep)$ to $X$ for both $X'$ and $X_L$ agrees, as can be checked directly. Thus by @fpqc-descent-of-morphisms, $X' cong X_L$. 
+    Furthermore, the descent data from $X_(k^sep)$ to $X$ for both $X'$ and $X_L$ agree, as can be checked directly. Thus by @fpqc-descent-of-morphisms, $X' cong X_L$. 
 
     #suppress-qed
   ]
@@ -353,9 +353,9 @@ Using the functoriality for $pi_1^et$, we may obtain various methods to obtain i
   $
     1 -> pi_1^et (X_(k^sep), ol(x)) -> pi_1^et (X, ol(x)) ->^q underbrace(Gal(k^sep\/k), pi_1^et (Spec(k), Spec(k^sep))) -> 1
   $
-  If $y in X(k)$ is a $k$-point of $X$, then $y_*: Gal(k^sep\/k) -> pi_1^et (X, ol(x))$ is a section of $q$ compatible with $pi_1$-conjugation.
+  if $y in X(k)$ is a $k$-point of $X$, then $y_*: Gal(k^sep\/k) -> pi_1^et (X, ol(x))$ is a section of $q$ compatible with $pi_1$-conjugation.
   
-  There is a conjecture that if $X$ is so-called "hyperbolic", then this is the only way to get sections of $q$. This is called Grothendieck's section conjecture.
+  There is a conjecture that if $X$ is a so-called "smooth proper hyperbolic curve" over a number field $k$, then all sections of $q$, up to conjugation by the geometric fundamental group, arise from $k$-points. This is called Grothendieck's section conjecture.
 ]
 
 The next case we'll deal with is computing $pi_1^et$ for a normal scheme. 
@@ -369,7 +369,7 @@ The next case we'll deal with is computing $pi_1^et$ for a normal scheme.
   $
     eta_*: underbrace(Gal(K^sep\/K), pi_1^et (Spec(K), Spec(K^sep))) -> pi_1^et (X, ol(eta))
   $
-  is surjective with kernel $Gal(K^sep\/K^"ur" (X))$. Here $K^sep\/K^"ur" (X)\/K$ is an intermediate field characterized by two equivalent ways: 
+  is surjective with kernel $Gal(K^sep\/K^"ur" (X))$. Here $K^sep\/K^"ur" (X)\/K$ is an intermediate field characterized in two equivalent ways: 
 
   - $K^"ur" (X)$ is the union of all finite separable $L\/K$ s.t. the normalization $X_L$ of $X$ in $L$ (a priori finite over $X$ due to #cite-stacks("032L")[Lemma 10.161.8]) is etale over $X$; 
 
@@ -458,7 +458,7 @@ Finally, we consider one more case: the etale fundamental group of the two simpl
   $
   where $deg(cal(F))$ is the degree of the ramification divisor.
 
-  In the case of a connected finite etale covering $Z -> X$ where $X$ is a nonsingular curve over $k$, $Z$ is automatically a nonsingular curve (since normality is etale local). Etale morphisms are unramified, so Riemann-Hurwitz is applicable here with: 
+  In the case of a connected finite etale covering $Z -> X$ where $X$ is a nonsingular projective curve over $k$, $Z$ is automatically a nonsingular curve (since normality is etale local). Etale morphisms are unramified, so Riemann-Hurwitz is applicable here with: 
   $
     2 - 2g(Z) = n (2 - 2g(X))
   $

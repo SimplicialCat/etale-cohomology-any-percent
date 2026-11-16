@@ -51,7 +51,7 @@ We first classify etale $G$-torsors over $X$ by $Hom_#[cont] (pi_1^et (X, ol(x))
   $
     F_(ol(x)) (Y) times G -> F_(ol(x)) (Y) times F_(ol(x)) (Y), (ol(u), g) |-> (ol(u), ol(u) g)
   $
-  Thus, $G$ acts on the right of $F_(ol(x)) (Y)$-simply transitively. The base point $ol(y)$ thus defines a bijection $q_(Y,ol(y)): G -> F_(ol(x)) (Y), g |-> ol(y) g$. 
+  Thus, $G$ acts on the right of $F_(ol(x)) (Y)$ simply transitively. The base point $ol(y)$ thus defines a bijection $q_(Y,ol(y)): G -> F_(ol(x)) (Y), g |-> ol(y) g$. 
   
   Also, note that the right $G$-action on $F_(ol(x)) (Y)$ is compatible with the left $pi_1^et (X, ol(x))$-action. Each $g in G$ induces an automorphism $Y -> Y$, and so by functoriality of any $gamma in pi_1^et (X, ol(x))$, we have $gamma (ol(u) g) = (gamma ol(u)) g$. 
 
@@ -163,9 +163,9 @@ Next, we classify etale $G$-torsors over $X$ by $caron(H)^1_et (X, ul(G))$.
     psi^((1))_(i,j) = psi_i|_(U_(i,j) times G): U_(i,j) times G cong Y_(i,j) \
     psi^((2))_(i,j) = psi_j|_(U_(i,j) times G): U_(i,j) times G cong Y_(i,j)
   $
-  Now $(psi_(i,j)^((2)))^(-1) compose psi_(i,j)^((1)): U_(i,j) times G -> U_(i,j) times G$ is a $G$-equivariant $U_(i,j)$-morphism. It is thus right action (i.e. addition) by a locally constant function $U_(i,j) -> G$, i.e. a section $alpha_(i,j) in ul(G)(U_(i,j))$. 
+  Now $(psi_(i,j)^((2)))^(-1) compose psi_(i,j)^((1)): U_(i,j) times G -> U_(i,j) times G$ is a $G$-equivariant $U_(i,j)$-morphism. It is thus a right action (i.e. addition) by a locally constant function $U_(i,j) -> G$, i.e. a section $alpha_(i,j) in ul(G)(U_(i,j))$. 
 
-  - ${alpha_(i,j)}$ satisfies the cocycle conditions. Indeed, let $psi_(i,j,k)^((1,2,3))$ be the restriction of $psi_i, psi_j, psi_k$ to $U_(i,j,k) times G -> Y_(i,j,k)$. Then: 
+  - ${alpha_(i,j)}$ satisfies the cocycle conditions. Indeed, let $psi_(i,j,k)^((1,2,3))$ be the restrictions of $psi_i, psi_j, psi_k$ to $U_(i,j,k) times G -> Y_(i,j,k)$. Then: 
 
     - $alpha_(i,j)|_(U_(i,j,k)) + alpha_(j,k)|_(U_(i,j,k))$ corresponds to the map: #h(1fr)
       $
@@ -212,7 +212,7 @@ Next, we classify etale $G$-torsors over $X$ by $caron(H)^1_et (X, ul(G))$.
 
     By comparing any two etale covers against a new etale cover admitting refinements to both, we see that the construction of the class $alpha in caron(H)^1 (X, ul(G))$ is independent from the choice of trivializing cover. 
 
-  Denote by this class $alpha = alpha(Y) in caron(H)^1 (X, ul(G))$. We have now defined the forward map: 
+  Denote this class by $alpha = alpha(Y) in caron(H)^1 (X, ul(G))$. We have now defined the forward map: 
   $
     {#[etale $G$-torsor $Y$ over $X$]}/cong -> caron(H)^1_et (X, ul(G)), Y |-> alpha(Y)
   $
@@ -260,7 +260,7 @@ Next, we classify etale $G$-torsors over $X$ by $caron(H)^1_et (X, ul(G))$.
       edge((0, 0), (0, 1), [$beta$], label-side: right, "->")
       edge((1, 0), (1, 1), [$beta$], label-side: left, "->")
     }))
-    That is, $beta$ intertwines the descent map $eta, tilde(eta): X'_G times_X X' -> X' times_X X'_G$ defined by $alpha_(X'), tilde(alpha)_(X')$. 
+    That is, $beta$ intertwines the descent maps $eta, tilde(eta): X'_G times_X X' -> X' times_X X'_G$ defined by $alpha_(X'), tilde(alpha)_(X')$. 
     
     By fpqc descent, $beta$ descends to an isomorphism $Y -> tilde(Y)$ between the two etale $G$-torsors over $X$ defined by $alpha_(X'), tilde(alpha)_(X')$. Since $beta$ is $G$-equivariant, the isomorphism $Y -> tilde(Y)$ is $G$-equivariant, thus is an isomorphism of $G$-torsors. 
 
@@ -276,7 +276,7 @@ Next, we classify etale $G$-torsors over $X$ by $caron(H)^1_et (X, ul(G))$.
     $
     along $tilde(X)'' -> X''$. Thus, $Y$ defined by $eta$ induces the same descent datum as $tilde(eta)$, and so $Y cong tilde(Y)$. 
 
-  We have now constructed a well-defined isomorphism class $Y_alpha$ of etale $G$-torsor over $X$ from $alpha in caron(H)^1 (X, ul(G))$. 
+  We have now constructed a well-defined isomorphism class $Y_alpha$ of etale $G$-torsors over $X$ from $alpha in caron(H)^1 (X, ul(G))$. 
 
   Step 3. These two constructions invert each other. 
 
@@ -292,7 +292,7 @@ Next, we classify etale $G$-torsors over $X$ by $caron(H)^1_et (X, ul(G))$.
     $
     is identified with the descent datum $eta: X'_G times_X X' -> X' times_X X'_G$, and is hence addition of $alpha_(X') in ul(G)(X'')$. Thus $alpha(Y_alpha) = [alpha_(X')] = alpha$ by definition. 
 
-  - For a torsor $Y$, by refining a trivializing cover, we may assume that $Y$ is trivialized by an etale cover $X' ->> X$ for $X'$ noetherian, giving $psi: X' times_X Y cong X' times G$. The map: 
+  - For a torsor $Y$, by refining a trivializing cover, we may assume that $Y$ is trivialized by an etale cover $X' ->> X$ for $X'$ noetherian, giving $psi: X' times G cong X' times_X Y$. The map: 
     $
       (psi|_(p_2))^(-1) compose psi|_(p_1): X''_G -> X''_G
     $
@@ -318,7 +318,7 @@ Next, we classify etale $G$-torsors over $X$ by $caron(H)^1_et (X, ul(G))$.
   $
   We still need to show that this is an abelian group homomorphism. For this, we devise an explicit description of this map. 
 
-  - Take $rho in Hom_#[cont] (pi_1^et (X, ol(x)), G)$, let $N <= pi_1^et (X, ol(x))$ be a finite index open subgroup contained in $ker(rho)$. Then $N$ corresponds to a Galois covering $(X', ol(x')) -> (X, ol(x))$ so that $rho$ factors through the finite quotient $Q = Aut(X'\/X)$ as $rho_Q: Q -> G$. 
+  - Take $rho in Hom_#[cont] (pi_1^et (X, ol(x)), G)$, and let $N <= pi_1^et (X, ol(x))$ be an open normal subgroup contained in $ker(rho)$. Then $N$ corresponds to a Galois covering $(X', ol(x')) -> (X, ol(x))$ so that $rho$ factors through the finite quotient $Q = Aut(X'\/X)^opp$ as $rho_Q: Q -> G$. 
 
     On the other hand, let $Y_rho$ be the $G$-torsor to which $rho$ corresponds. By construction, $F_(ol(x)) (Y_rho) cong G_rho$ has left $pi_1^et (X, ol(x))$-action by $rho$, and right regular $G$-action. 
 
@@ -344,7 +344,7 @@ Next, we classify etale $G$-torsors over $X$ by $caron(H)^1_et (X, ul(G))$.
       Q times Q times G &-> Q times Q times G \
       (q_1, q_2, g) &|-> (q_1, q_2, g + rho_Q (q_1)) |-> (q_1, q_2, g + rho_Q (q_1) - rho_Q (q_2))
     $
-    is addition by the element $rho_Q (q_1) - rho_Q (q_2) in G$. Thus, for $q_1, q_2 in Q$, $c_rho in caron(H)^1 (X, ul(G))$ is represented by the class $alpha_rho in ul(G)(X'')$, which is a locally constant function $alpha_rho: X'' = X' times_X X' -> G$ characterized by: 
+    which is addition by the element $rho_Q (q_1) - rho_Q (q_2) in G$. Thus, for $q_1, q_2 in Q$, $c_rho in caron(H)^1 (X, ul(G))$ is represented by the class $alpha_rho in ul(G)(X'')$, which is a locally constant function $alpha_rho: X'' = X' times_X X' -> G$ characterized by: 
     $
       alpha_rho (q_1 ol(x'), q_2 ol(x')) = rho_Q (q_1) - rho_Q (q_2)
     $
@@ -357,7 +357,7 @@ Next, we classify etale $G$-torsors over $X$ by $caron(H)^1_et (X, ul(G))$.
         alpha_rho (q_1 ol(x'), q_2 ol(x')) = rho_Q (q_1) - rho_Q (q_2)
       $
 
-    Now to show that $rho |-> c_rho$ is additive, given $rho_(1,2)$, pick a finite index subgroup $N subset ker(rho_1) inter ker(rho_2)$, and the characterization above immediately gives additivity. 
+    Now to show that $rho |-> c_rho$ is additive, given $rho_(1,2)$, pick an open normal subgroup $N subset ker(rho_1) inter ker(rho_2)$, and the characterization above immediately gives additivity. 
 
   We thus have constructed an abelian group isomorphism: 
   $

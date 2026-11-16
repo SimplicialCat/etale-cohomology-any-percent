@@ -31,7 +31,7 @@
 
   - Given any class $alpha in caron(H)^1_et (cal(U), GG_m)$, represented by $u in (A'')^times$, $(times u): A'' -> A''$ is an isomorphism satisfying the cocycle conditions. This is some descent datum of $A'$ to $A$. By fpqc descent, there exists a unique $A$-module $M$, with an isomorphism $phi: M' := M otimes_A A' -> A'$, identifying the canonical descent datum $eta: M' otimes_A A' -> A' otimes_A M'$ with multiplication by $u$. 
 
-    Since local freedom descends along faithfully flat morphisms, $M$ is a locally free $A$-module of rank 1, defining an element $[M] in Pic(X)$. 
+    Since local freeness descends along faithfully flat morphisms, $M$ is a locally free $A$-module of rank 1, defining an element $[M] in Pic(X)$. 
 
   In other words, $Phi_(cal(U)) ([u]) = [M]$, where $[M] in Pic(X)$ is the unique element for which there exists an isomorphism $phi: M' -> A'$ s.t. the canonical descent datum $eta: M' otimes_A A' -> A' otimes_A M'$ is the composition: 
   $
@@ -52,7 +52,7 @@
       node((1, 1), [$A''$])
       node((3, 1), [$A''$])
       edge((-1, -1), (1, -1), [$id_(M_1) otimes eta_2$], label-side: left, "->")
-      edge((1, -1), (3, -1), [$eta_1 otimes id_(M_1)$], label-side: left, "->")
+      edge((1, -1), (3, -1), [$eta_1 otimes id_(M_2)$], label-side: left, "->")
       edge((-1, -1), (-1, 1), [$psi otimes id$], label-side: right, "->")
       edge((1, -1), (1, 1), [$phi_1 otimes phi_2$], label-side: right, "->")
       edge((3, -1), (3, 1), "->", $id otimes psi$)
@@ -77,7 +77,7 @@
 
   - $Phi_(cal(U))$ is compatible with the direct system. 
 
-    Suppose that $Spec(tilde(A)')$ refines $Spec(A') -> Spec(A)$ as etale covers, i.e. we have etale ring maps $A -> A' -> tilde(A)'$. Given an element $u in A''$ mapping to $tilde(u) in tilde(A)''$, we need to show that the element of $Pic(Spec(A))$ given by $u$ and $tilde(u)$ are equal. For this, suppose that $[M] in Pic(Spec(A))$ is the image of $u$. In other words, we have an isomorphism $phi: M otimes_A A' -> A'$ s.t. the canonical descent datum $eta: (M otimes_A A') otimes_A A' -> A' otimes_A (M otimes_A A')$ is given by:
+    Suppose that $Spec(tilde(A)')$ refines $Spec(A') -> Spec(A)$ as etale covers, i.e. we have etale ring maps $A -> A' -> tilde(A)'$. Given an element $u in A''$ mapping to $tilde(u) in tilde(A)''$, we need to show that the elements of $Pic(Spec(A))$ given by $u$ and $tilde(u)$ are equal. For this, suppose that $[M] in Pic(Spec(A))$ is the image of $u$. In other words, we have an isomorphism $phi: M otimes_A A' -> A'$ s.t. the canonical descent datum $eta: (M otimes_A A') otimes_A A' -> A' otimes_A (M otimes_A A')$ is given by:
     $
       (M otimes_A A') otimes_A A' -->^(phi otimes id) A' otimes_A A' -->^(times u) A' otimes_A A' -->^(id otimes phi^(-1)) A' otimes_A (M otimes_A A')
     $
@@ -101,11 +101,11 @@
   $
     u in caron(H)^1_et (cal(U), GG_m), cal(U) = {X' = Spec(A') ->> X}
   $
-  In particular, $A -> A'$ is faithfully flat. Expanding definitions, $u$ is represented by an element of $(A'')^times$ satisfying the cocycle condition when pulled in three ways to an automorphism of $A'''$. In other words, it determines some descent datum for the $A'$-module $A'$ to $A$. By fpqc descent, this descends to an $A$-module $M$ s.t. $M otimes_A A' cong A'$, with the isomorphism in the descent datum being multiplication by $u$. Since local freedom descends along faithfully flat ring maps, $M$ is locally free of rank 1. We then send $u$ to the element $[M] in Pic(Spec(A))$. 
+  In particular, $A -> A'$ is faithfully flat. Expanding definitions, $u$ is represented by an element of $(A'')^times$ satisfying the cocycle condition when pulled in three ways to an automorphism of $A'''$. In other words, it determines some descent datum for the $A'$-module $A'$ to $A$. By fpqc descent, this descends to an $A$-module $M$ s.t. $M otimes_A A' cong A'$, with the isomorphism in the descent datum being multiplication by $u$. Since local freeness descends along faithfully flat ring maps, $M$ is locally free of rank 1. We then send $u$ to the element $[M] in Pic(Spec(A))$. 
 
   - This map is well-defined. 
 
-    Suppose that $Spec(tilde(A)')$ refines $Spec(A') -> Spec(A)$ as etale covers, i.e. we have etale ring maps $A -> A' -> tilde(A)'$. Given an element $u in A''$ mapping to $tilde(u) in tilde(A)''$, we need to show that the element of $Pic(Spec(A))$ given by $u$ and $tilde(u)$ are equal. For this, suppose that $[M] in Pic(Spec(A))$ is the image of $u$. In other words, we have an isomorphism $phi: M otimes_A A' -> A'$ s.t. the canonical descent datum $eta: (M otimes_A A') otimes_A A' -> A' otimes_A (M otimes_A A')$ is given by: 
+    Suppose that $Spec(tilde(A)')$ refines $Spec(A') -> Spec(A)$ as etale covers, i.e. we have etale ring maps $A -> A' -> tilde(A)'$. Given an element $u in A''$ mapping to $tilde(u) in tilde(A)''$, we need to show that the elements of $Pic(Spec(A))$ given by $u$ and $tilde(u)$ are equal. For this, suppose that $[M] in Pic(Spec(A))$ is the image of $u$. In other words, we have an isomorphism $phi: M otimes_A A' -> A'$ s.t. the canonical descent datum $eta: (M otimes_A A') otimes_A A' -> A' otimes_A (M otimes_A A')$ is given by: 
     $
       (M otimes_A A') otimes_A A' -->^(phi otimes id) A' otimes_A A' -->^(times u) A' otimes_A A' -->^(id otimes phi^(-1)) A' otimes_A (M otimes_A A')
     $
@@ -117,7 +117,7 @@
 
   - This map is a group homomorphism: 
 
-    Suppose that $u_1, u_2 in A''$ are sent to $[M_1], [M_2] in Pic(Spec(A))$, respectively, with isomorphisms $phi_(1,2): M_(1,2) otimes_A A' -> A'$ relating canonical descent datum of $M_1, M_2$ with $u_1, u_2$ in the way described above. Then consider $N = M_1 otimes_A M_2$ with an isomorphism $psi: N otimes_A A' -->^(id_(M_1) otimes phi_2) M_1 otimes A' -->^(phi_1) A'$. Now the canonical descent datum for $N$ is: 
+    Suppose that $u_1, u_2 in A''$ are sent to $[M_1], [M_2] in Pic(Spec(A))$, respectively, with isomorphisms $phi_(1,2): M_(1,2) otimes_A A' -> A'$ relating canonical descent data of $M_1, M_2$ with $u_1, u_2$ in the way described above. Then consider $N = M_1 otimes_A M_2$ with an isomorphism $psi: N otimes_A A' -->^(id_(M_1) otimes phi_2) M_1 otimes A' -->^(phi_1) A'$. Now the canonical descent datum for $N$ is: 
     $
       (M_1 otimes_A M_2 otimes_A A') otimes_A A' -->^(id_(M_1) otimes eta_2) (M_1 otimes_A A') otimes_A (M_2 otimes_A A') -->^(eta_1 otimes id_(M_2)) A' otimes_A (M_1 otimes_A M_2 otimes_A A')
     $
@@ -129,7 +129,7 @@
 
   - This morphism is injective. 
 
-    Given $u in (A'')^times$*/
+    */
 ]
 
 #theorem(name: <h1-of-gm-is-pic>)[
@@ -165,5 +165,5 @@
   $
     cal(R)_x = dirlim_(x in U #[affine]) H^1_et (U, GG_m) cong dirlim_(x in U #[affine]) Pic(U)
   $
-  by the previous proposition, where the transition morphisms are just restriction $Pic(U) -> Pic(V)$ for $x in V subset U$. However, for any $[cal(L)] in Pic(U)$, there exists a smaller affine neighborhood $x in V subset U$ s.t. $cal(L)|_V cong cal(O)_V$, i.e. $cal(L)$ goes to the identity upon passing to $Pic(V)$. Therefore, every element in the direct limit $dirlim_(x in U #[affine]) Pic(U)$ is zero. Thus, $cal(R)_x = 0$ for all $x in X$, and so $cal(R) = 0$. Now $R^1 epsilon (GG_m)$, as the Zariski sheafification of $cal(R)$, must be zero. 
+  by the previous proposition, where the transition morphisms are just restrictions $Pic(U) -> Pic(V)$ for $x in V subset U$. However, for any $[cal(L)] in Pic(U)$, there exists a smaller affine neighborhood $x in V subset U$ s.t. $cal(L)|_V cong cal(O)_V$, i.e. $cal(L)$ goes to the identity upon passing to $Pic(V)$. Therefore, every element in the direct limit $dirlim_(x in U #[affine]) Pic(U)$ is zero. Thus, $cal(R)_x = 0$ for all $x in X$, and so the Zariski sheafification of $cal(R)$ is zero. Now $R^1 epsilon (GG_m)$, as the Zariski sheafification of $cal(R)$, must be zero. 
 ]

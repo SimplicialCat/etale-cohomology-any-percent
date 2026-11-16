@@ -119,6 +119,8 @@ We are now ready to prove Grothendieck vanishing in dimension 1.
   $
 ]
 #proof[
+  By topological equivalence, we may base change from the separably closed field $k$ to $ol(k)$, and assume that $k$ is algebraically closed.
+
   We run induction on the number of irreducible components of $X$. 
 
   Suppose that $X$ is irreducible. By topological invariance, we may replace $X$ by its reduction and assume that $X$ is integral. Then $X$ is either a point $Spec(k)$ or a curve. The case of a point is done by @struct-of-spec-omega-et, and the case of a curve is done by the previous proposition. 
@@ -171,7 +173,7 @@ Next, we deal with Artin vanishing in dimension 1.
   $
     ul(ZZ\/n)_X -> h_* ul(ZZ\/n)_Z
   $
-  The set of points in $X$ contained in exactly one irreducible component forms a dense open $U$, s.t. $h^(-1) (U) -> U$ is an isomorphism. As such, $ul(ZZ\/n)_X -> h_* ul(ZZ\/n)_Z$ is an isomorphism upon restriction to $U$, and its kernel and cokernel are supported on finitely many closed points.#footnote[This morphism should also be injective, but we do not need this here.] Similarly, 
+  The set of points in $X$ contained in exactly one irreducible component forms a dense open $U$, s.t. $h^(-1) (U) -> U$ is a universal homeomorphism. As such, $ul(ZZ\/n)_X -> h_* ul(ZZ\/n)_Z$ is an isomorphism upon restriction to $U$, and its kernel and cokernel are supported on finitely many closed points.#footnote[This morphism should also be injective, but we do not need this here.] Similarly, 
   $
     H^2 (X, ul(ZZ\/n)) = H^2 (Z, ul(ZZ\/n)) = oplus.big_(i=1)^m H^2 (Z_i, ul(ZZ\/n)) = 0
   $
@@ -250,11 +252,11 @@ Next, we deal with Artin vanishing in dimension 1.
   $
     h: V ->^g Z ->^i W
   $ 
-  In which $g$ is a dominant open immersion and $i$ is a closed immersion. Now $h_! ul(G)_V = i_* g_! ul(G)_V$, as a natural map may be constructed from base change and adjunction, and it can be checked to be an isomorphism by taking stalks according to @stalks-of-finite-pushforward and @etale-lower-shriek-first-props (2). 
+  in which $g$ is a dominant open immersion and $i$ is a closed immersion. Now $h_! ul(G)_V = i_* g_! ul(G)_V$, as a natural map may be constructed from base change and adjunction, and it can be checked to be an isomorphism by taking stalks according to @stalks-of-finite-pushforward and @etale-lower-shriek-first-props (2). 
   
   Thus, $H^2 (W, h_! ul(G)_V) = H^2 (W, i_* g_! ul(G)_V) = H^2 (Z, g_! ul(G)_V)$. 
 
-  Now take $g': Y := Z - V -> Z$ be the complementary closed immersion, where $Y$ is given the reduced induced subscheme structure. Since $V subset Z$ is a dense open, $Y$ is a finite set of closed points. Now consider the exact sequence: 
+  Now let $g': Y := Z - V -> Z$ be the complementary closed immersion, where $Y$ is given the reduced induced subscheme structure. Since $V subset Z$ is a dense open, $Y$ is a finite set of closed points. Now consider the exact sequence: 
   $
     0 -> g_! ul(G)_V -> ul(G)_Z -> g'_* ul(G)_Y -> 0
   $

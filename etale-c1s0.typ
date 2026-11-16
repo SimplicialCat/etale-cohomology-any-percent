@@ -19,7 +19,7 @@ In this introduction, we briefly give motivation for developing the theory of et
         #set enum(numbering: "(11a)")
         + (de Rham isomorphism)
           $
-            H^*_B (M, ZZ) otimes CC cong H^*_B (M, CC) cong H^*_"dR" (M)
+            H^bullet_B (M, CC) cong H^bullet_"dR" (M)
           $
           (This is proved using the holomorphic Poincare lemma.)
 
@@ -97,7 +97,7 @@ In this introduction, we briefly give motivation for developing the theory of et
 
   Note that $pi_1 (M) = Aut(tilde(M)\/M)$ where $tilde(M) -> M$ is the universal covering. This is Galois theory of covering spaces. Thus, we need to perform Galois theory on suitable notions of covering spaces of algebraic varieties. 
 
-  - The first step to algebraize this theory is to define algebraic notions for local isomorphisms. This notion is *etale morphisms*. 
+  - The first step to algebraize this theory is to define algebraic notions for local isomorphisms. This is the notion of *etale morphisms*. 
 
   Etale morphisms will serve as a sort of analog of open subsets of a topological space. Thus, 
 
@@ -110,7 +110,7 @@ In this introduction, we briefly give motivation for developing the theory of et
 
 The construction of etale cohomology defines a good cohomology theory for algebraic varieties in char $p$. 
 #construction[
-  Let $X_0$ be a smooth algebraic variety over $k = FF_q$ of char $p$. Define $F_(X_0): X_0 -> X_0$ to be the $q$-th absolute Frobenius, a morphism that is identity on the space level, and acts as $f |-> f^q$ on the sheaf/function level. 
+  Let $X_0$ be a smooth algebraic variety over $k = FF_q$ of char $p$. Define $F_(X_0): X_0 -> X_0$ to be the $q$-th absolute Frobenius, a morphism that is the identity on the space level, and acts as $f |-> f^q$ on the sheaf/function level. 
 
   Now base change to the algebraic closure $X = X_0 times_(FF_q) overline(FF_q)$, so that $F_(X_0)$ base changes to $F = F_(X_0) times id_(Spec(overline(FF_q))): X -> X$, an $overline(FF_q)$ scheme endomorphism. 
 
@@ -121,7 +121,7 @@ The construction of etale cohomology defines a good cohomology theory for algebr
   This allows us to count points. 
 
   #theorem[
-    (Grothendieck-Lefschetz trace formula) If $X$ is proper#footnote[This is a technical assumption to avoid compactly supported cohomology.] over $FF_q$, 
+    (Grothendieck-Lefschetz trace formula) If $X_0$ is proper#footnote[This is a technical assumption to avoid compactly supported cohomology.] over $FF_q$, 
     $
       \# X_0 (FF_(q^n)) = \# (X(overline(FF_q)))^(F^n) = sum_(m=0)^(2 dim(X)) (-1)^m tr((F^*)^n\; H^m_et (X, QQ_ell))
     $
@@ -143,14 +143,14 @@ The construction of etale cohomology defines a good cohomology theory for algebr
   $
     product_(x in abs(X_0) "closed pt") 1/(1-t^(deg(x)))
   $
-  where $deg(x) = [k(x):FF_q]$, $k(x)$ is the residue field at $x$. 
+  where $deg(x) = [k(x):FF_q]$, and $k(x)$ is the residue field at $x$. 
   Now: 
   $
     Z(X_0\/FF_q, t) = product_(x in abs(X_0)) 1/(1-t^deg(x))
   $
   gives a $zeta$-function for $X_0$: 
   $
-    Z(X_0\/FF_q, q^(-s)) = product_(x in abs(X_0)) 1/(1-abs(k(x)^(-s)))
+    Z(X_0\/FF_q, q^(-s)) = product_(x in abs(X_0)) 1/(1-abs(k(x))^(-s))
   $
 
   By analyzing the properties of etale cohomology in detail, we will be able to formulate and prove the Weil conjectures. 
@@ -171,9 +171,9 @@ Etale cohomology also constructs Galois representations.
 #construction[
   Let $X\/k$ be a variety, and $ell != "char"(k)$. Then the absolute Galois group $Gal_k$ acts on $H^n_et (X_(overline(k)), QQ_ell)$, by acting on $overline(k)$ in $X_(overline(k)) = X times_k overline(k)$. 
 
-  This gives an $ell$-adic Galois representation $Gal_k -> GL_n (QQ_ell)$. It is usually hard to construct examples of Galois representations of $k$ (e.g. when $k = QQ$). 
+  This gives an $ell$-adic Galois representation $Gal_k -> GL(H^n_et (X_(overline(k)), QQ_ell))$. It is usually hard to construct examples of Galois representations of $k$ (e.g. when $k = QQ$). 
 
-  This is important in Langlands Program. For example, Weil conjecture implies Ramanujan conjecture, by interpreting Fourier coefficients of modular forms as certain traces on etale cohomologies. 
+  This is important in the Langlands Program. For example, the Weil conjecture implies the Ramanujan conjecture, by interpreting Fourier coefficients of modular forms as certain traces on etale cohomologies. 
 ]
 
 As a final bonus, etale cohomology is also related to algebraic de Rham cohomology, via an algebraic analog of the de Rham isomorphism. A theorem from $p$-adic Hodge theory is: 

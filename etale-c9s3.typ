@@ -49,7 +49,7 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
 
   Note that: 
 
-  - Let $S$ have irreducible components $S_1, dots.c, S_m$, and let $U = S - union.big_(i<j) (S_i inter S_j)$. Then $U$ is a dense open of $S$ that is a disjoint union of its irreducible components. By shrinking $S$ to $U$ we may argue on each irreducible component separately, and thus assume that $S$ is irreducible. Base change to the reduction of $S$ and use topological invariance, we may thus from now on assume that $S$ is integral with generic point $sigma = Spec(K(S))$. By shrinking $S$ to any affine open, we may also assume that $S$ is affine. 
+  - Let $S$ have irreducible components $S_1, dots.c, S_m$, and let $U = S - union.big_(i<j) (S_i inter S_j)$. Then $U$ is a dense open of $S$ that is a disjoint union of its irreducible components. By shrinking $S$ to $U$ we may argue on each irreducible component separately, and thus assume that $S$ is irreducible. Base changing to the reduction of $S$ and using topological invariance, we may thus from now on assume that $S$ is integral with generic point $sigma = Spec(K(S))$. By shrinking $S$ to any affine open, we may also assume that $S$ is affine. 
 
   - This problem is local in $Y$. Indeed, for an affine cover ${Y_i}$ of $Y$ consisting of finitely many opens, base change $f$ to $f_i: X_i -> Y_i$ and $cal(K)_i := cal(K)|_(X_i)$. Then if dense opens $U_i subset S$ are $(f_i, cal(K)_i, S)$-good, one can easily check that $inter.big_i U_i$ is $(f, cal(K), S)$-good. Hence, we may base change $f$ to an affine open of $Y$ whenever necessary. 
 
@@ -88,11 +88,11 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
 
     - $f: X -> Y$ has $X$ affine and $dim(X_sigma) <= d$. 
 
-    Assume the first case. Then in the second case, $f$ is separated of finite type, so $f$ has a compactification $X ->^j ol(X) ->^(ol(f)) Y$ with $j$ open immersion and $ol(f)$ proper. Since $ol(f)$ is proper, $S$ is $(ol(f), cal(L), S)$-good for all $cal(L) in D^b_c (ol(X)_et, Lambda)$. Now $dim(X_sigma) <= d$, so the first open immersion case may be applied and there exists a dense open $U subset S$ that is $(j, cal(K), S)$-good. Then $U$ is $(ol(f) compose j, cal(K), S)$-good and we are done. 
+    Assume the first case. Then in the second case, $f$ is separated of finite type, so $f$ has a compactification $X ->^j ol(X) ->^(ol(f)) Y$ with $j$ an open immersion and $ol(f)$ proper. Since $ol(f)$ is proper, $S$ is $(ol(f), cal(L), S)$-good for all $cal(L) in D^b_c (ol(X)_et, Lambda)$. Now $dim(X_sigma) <= d$, so the first open immersion case may be applied and there exists a dense open $U subset S$ that is $(j, cal(K), S)$-good. Then $U$ is $(ol(f) compose j, cal(K), S)$-good and we are done. 
 
     Thus it remains to deal with the case that $f: X -> Y$ is an open immersion with $dim(X_sigma) <= d$. By locality of the problem in $Y$, we may further assume that $Y$ is affine. 
 
-    Finally, factor the open immersion $f$ through its schematic image, we may factor it into an open immersion with dense image, and a closed immersion. The closed immersion is dealt with by proper base change, so we may assume that $f$ has dense image. This reduces to the hypothesis. 
+    Finally, factoring the open immersion $f$ through its schematic image, we may factor it into an open immersion with dense image, and a closed immersion. The closed immersion is dealt with by proper base change, so we may assume that $f$ has dense image. This reduces to the hypothesis. 
   ]
 
   Hence, by induction on $d$, we may assume that: 
@@ -116,7 +116,7 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
 
     Then as in the proof of @finiteness-of-lower-shriek, we may write: 
     $
-      Spec(L) = dirlim_lambda T_lambda
+      Spec(L) = invlim_lambda T_lambda
     $
     where each $T_lambda$ is an integral affine $S$-scheme s.t. there exists a principal affine open $S_lambda subset S$ s.t. $T_lambda -> S_lambda$ is finite surjective radicial, hence a universal homeomorphism. Now the morphisms: 
     $
@@ -136,7 +136,7 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
 
     - $X'_lambda -> X_lambda$ is a surjective closed immersion, in particular a universal homeomorphism by @passage-to-limit-of-properties (2b)(3g). 
 
-    - Finally, $W_lambda -> X'_lambda$ can also be taken to be dominant. Indeed, take its schematic image $W_lambda -> ol(W_lambda) -> X'_lambda$. Now since $W_L -> X'_L$ is dominant, by base changing to $L$ we see that $(ol(W)_lambda)_L -> (X'_lambda)_L$ is the identity. Now $L\/Frac(T_lambda)$ is a purely inseparable extension and defines a universal homeomorphism, so $ol(W_lambda) -> X'_lambda$ is dominant on generic fiber over $T_lambda$. Thus there exists a principal affine open $T_mu subset T_lambda$ (also being a scheme in the family ${T_lambda}$) s.t. $(ol(W)_lambda) times_(T_lambda) T_mu -> X'_mu$ is the identity. However this closed immersion is exactly the schematic image of $W_mu -> X'_mu$, so $W_mu -> X'_mu$ must be dominant. 
+    - Finally, $W_lambda -> X'_lambda$ can also be taken to be dominant. Indeed, take its schematic image $W_lambda -> ol(W_lambda) -> X'_lambda$. Now since $W_L -> X'_L$ is dominant, by base changing to $L$ we see that $(ol(W)_lambda)_L -> (X'_lambda)_L$ is the identity. Now $L\/Frac(T_lambda)$ is a purely inseparable extension and defines a universal homeomorphism, so $ol(W_lambda) -> X'_lambda$ is dominant on the generic fiber over $T_lambda$. Thus there exists a principal affine open $T_mu subset T_lambda$ (also being a scheme in the family ${T_lambda}$) s.t. $(ol(W)_lambda) times_(T_lambda) T_mu -> X'_mu$ is the identity. However this closed immersion is exactly the schematic image of $W_mu -> X'_mu$, so $W_mu -> X'_mu$ must be dominant. 
 
     Now shrinking $S$ to $S_lambda$, we may assume that $T_lambda -> S$ is surjective. It is also finite radicial, hence a universal homeomorphism. By topological invariance, we may further base change $S$ to $T_lambda$ and replace $X_lambda$ with $X'_lambda$ without changing the problem. That is, we replace $S$ with $T_lambda$ and $f: X -> Y$ with $X'_lambda -> Y'_lambda$ (and note that $W_lambda$ is a dense open of $X'_lambda$ smooth over $T_lambda$), and we are done. 
   ]
@@ -204,7 +204,7 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
     $
       j'^(-1) ol(g)'^(-1) R j_* R f_* cal(F) cong g'^(-1) j^(-1) R j_* R f_* cal(F) cong g'^(-1) R f_* cal(F)
     $
-    while $j'^(-1) R j'_* R f'_* g''^(-1) cal(F) cong R f'_* g''^(-1) cal(F)$. Hence we have obtained an isomorphism $ol(g)'^(-1) R j_* R f_* cal(F) cong g'^(-1) R f_* cal(F)$, which can be checked to be the base change map by naturality. Thus $S$ is $(f, cal(F), S)$-good. 
+    while $j'^(-1) R j'_* R f'_* g''^(-1) cal(F) cong R f'_* g''^(-1) cal(F)$. Hence we have obtained an isomorphism $g'^(-1) R f_* cal(F) cong R f'_* g''^(-1) cal(F)$, which can be checked to be the base change map by naturality. Thus $S$ is $(f, cal(F), S)$-good. 
 
   Thus, we may in addition assume that $Y$ is proper over $S$. To proceed in the induction, we need the following lemma: 
   
@@ -220,7 +220,7 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
     $
       trd_(K) (k(x)) <= dim(X_sigma) <= d
     $
-    Let $tau = Spec(K(t))$ be the generic point of $AA^1_S$. Thus suppose that $x in g_j^(-1) (tau)$, then: 
+    Let $tau = Spec(K(t))$ be the generic point of $AA^1_S$. Thus, if $x in g_j^(-1) (tau)$, then: 
     $
       trd_(K(t)) (k(x)) = trd_K (k(x)) - trd_K (K(t)) <= d - 1
     $
@@ -235,7 +235,7 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
 
       Then: 
       $
-        i_(j,*) R f_(j,*) (cal(K)|_(X_j)) in D^b_c ((U_j)_et, Lambda)
+        i_(j,*) R f_(j,*) (cal(K)|_(X_j)) in D^b_c ((AA^(m-1)_(U_j))_et, Lambda)
       $
       By @finite-morphisms-and-constructible-sheaves, $R f_(j,*) (cal(K)|_(X_j)) in D^b_c ((V_j)_et, Lambda)$. Furthermore, for any $g: S' -> S$, form the Cartesian diagram: 
       // https://q.uiver.app/#r=typst&q=WzAsMTAsWzAsMSwiWF9qIl0sWzEsMSwiVl9qIl0sWzIsMSwicGlfal4oLTEpIChVX2opIl0sWzMsMSwiVV9qIl0sWzQsMSwiUyJdLFs0LDAsIlMnIl0sWzMsMCwiVSdfaiJdLFsyLDAsInBpJ19qIChVJ19qKSJdLFsxLDAsIlYnX2oiXSxbMCwwLCJYJ19qIl0sWzUsNCwiZyJdLFs2LDMsImcnX2oiXSxbNywyLCJnJydfaiJdLFs4LDEsImdfKFZfaikiXSxbOSwwLCJnXyhYX2opIiwyXSxbMCwxLCJmX2oiLDJdLFsxLDIsImkiLDJdLFsyLDMsInBpX2oiLDJdLFszLDRdLFs5LDgsImYnX2oiXSxbOCw3LCJpJyJdLFs3LDYsInBpJ19qIl0sWzYsNV1d
@@ -247,7 +247,7 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
         node((4, 1), [$S$])
         node((4, 0), [$S'$])
         node((3, 0), [$U'_j$])
-        node((2, 0), [$pi'_j (U'_j)$])
+        node((2, 0), [$pi'_j^(-1) (U'_j)$])
         node((1, 0), [$V'_j$])
         node((0, 0), [$X'_j$])
         edge((4, 0), (4, 1), [$g$], label-side: left, "->")
@@ -296,7 +296,7 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
 
     Put $V = union.big_i V_i$. Now: 
 
-    - $Y_sigma - V_sigma = union.big_i ((Y_i)_sigma - (V_i)_sigma)$ is a finite set, since each $Y_i - V_i -> S$ is finite. Thus by @passage-to-limit-of-properties (2a), upon shrinking $S$ we may assume that $Y - V -> S$ is finite; 
+    - $Y_sigma - V_sigma subset union.big_i ((Y_i)_sigma - (V_i)_sigma)$ is a finite set, since each $Y_i - V_i -> S$ is finite. Thus by @passage-to-limit-of-properties (2a), upon shrinking $S$ we may assume that $Y - V -> S$ is finite; 
 
     - By checking locally, $S$ is $(f_V, cal(K)|_(X_V), S)$-good. 
 
@@ -307,7 +307,7 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
 
   - $f: X -> Y$ be a dominant open immersion of finite type $S$-schemes in which $X$ is smooth over $S$ with $dim(X_sigma) <= d$ and $Y$ is proper over $S$. 
 
-  - $cal(F) in cAb(X_et, Lambda)$ is an l.c.c. sheaf of $Lambda$-modules with a finite etale covering $pi: X_1 -> X$ s.t. $cal(F)|_(X_1)$ is constant on each connected component of $X_1$. 
+  - $cal(F) in cAb(X_et, Lambda)$ be an l.c.c. sheaf of $Lambda$-modules with a finite etale covering $pi: X_1 -> X$ s.t. $cal(F)|_(X_1)$ is constant on each connected component of $X_1$. 
 
   We aim to show that there exists an $(f, cal(F), S)$-good dense open of $S$. By the previous lemma, choose an open $V subset Y$ with complementary immersions $j: V -> Y, i: W = Y - V -> Y$. Form the commutative diagram: 
   // https://q.uiver.app/#r=typst&q=WzAsNixbMCwxLCJYIl0sWzEsMSwiWSJdLFsxLDAsIlYiXSxbMSwyLCJTIl0sWzIsMSwiVi1ZIl0sWzAsMCwiWF9WIl0sWzIsMSwiaiJdLFs0LDEsImkiLDJdLFswLDEsImYiXSxbMCwzLCJhIiwyXSxbMSwzLCJiIiwxXSxbNCwzLCJjIl0sWzUsMiwiZl9WIl0sWzUsMCwiaiciLDJdXQ==
@@ -327,7 +327,7 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
     edge((0, 0), (1, 0), [$f_V$], label-side: left, "->")
     edge((0, 0), (0, 1), [$j_X$], label-side: right, "->")
   }, crossing-fill: thm-box-curr-color()))
-  with upper left square Cartesian. Then by our assumptions and the choice of $V$, after suitably shrinking $S$ to an affine open: 
+  with the upper left square Cartesian. Then by our assumptions and the choice of $V$, after suitably shrinking $S$ to an affine open: 
 
   - $a$ is smooth, $b$ is proper, $c$ is finite; 
 
@@ -351,7 +351,7 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
 
     Since $S$ is $(f_V, cal(F)|_(X_V), S)$-good, we have $R f_(V,*) (cal(F)|_(X_V)) in D^b_c (V_et, Lambda)$. Since $b$ is proper, by the finiteness of $R(b compose j)_!$ (according to @finiteness-of-lower-shriek), $R b_* j_! R f_(V,*) (cal(F)|_(X_V)) in D^b_c (S_et, Lambda)$. 
 
-    Thus, from the distinguished triangle, $c_* i^(-1) R f_* cal(F) in D^b_c (S_et, Lambda)$. By @finite-morphisms-and-constructible-sheaves, $i^(-1) R f_* cal(F) in D^b_c (W_et, Lambda)$ and hence $i_* R f_* cal(F) in D^b_c (Y_et, Lambda)$. Meanwhile $j_! j^(-1) R f_* cal(F) = j_! R f_(V,*) (cal(F)|_(X_V)) in D^b_c (Y_et, Lambda)$, so by the extension by zero triangle: 
+    Thus, from the distinguished triangle, $c_* i^(-1) R f_* cal(F) in D^b_c (S_et, Lambda)$. By @finite-morphisms-and-constructible-sheaves, $i^(-1) R f_* cal(F) in D^b_c (W_et, Lambda)$ and hence $i_* i^(-1) R f_* cal(F) in D^b_c (Y_et, Lambda)$. Meanwhile $j_! j^(-1) R f_* cal(F) = j_! R f_(V,*) (cal(F)|_(X_V)) in D^b_c (Y_et, Lambda)$, so by the extension by zero triangle: 
     $
       R f_* cal(F) in D^b_c (Y_et, Lambda)
     $
@@ -401,7 +401,7 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
     $
     and the same triangle for the base changed maps: 
     $
-      R b'_* j'_! R f'_(V,*) (cal(F)'|_(X_V)) -> R a'_* cal(F)' -> c'_* i'^(-1) R f'_* cal(F)' ->^(+1)
+      R b'_* j'_! R f'_(V,*) (cal(F)'|_(X'_V)) -> R a'_* cal(F)' -> c'_* i'^(-1) R f'_* cal(F)' ->^(+1)
     $
     Now apply $g^(-1)$ to the first triangle: 
 
@@ -413,7 +413,7 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
         &cong R b'_* j'_! R f'_(V,*) (cal(F')|_(X'_V)) #[since $S$ is $(f_V, cal(F)|_(X_V), S)$-good] 
       $
     
-    Thus using the two distinguished triangles, the base change map on the third term must be an isomorphism since the one on the first and second term is. That is, the base change map: 
+    Thus using the two distinguished triangles, the base change map on the third term must be an isomorphism since those on the first and second terms are. That is, the base change map: 
     $
       g^(-1) c_* i^(-1) R f_* cal(F) -> c'_* i'^(-1) R f'_* cal(F)'
     $
@@ -421,7 +421,7 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
     $
       c'_* g_W^(-1) i^(-1) R f_* cal(F) -> c'_* i'^(-1) R f'_* cal(F)'
     $ 
-    is an isomorphism. Now $c'$ is finite, so by checking stalks, $g_W^(-1) i^(-1) R f_* cal(F) -> i'^(-1) R f'_* cal(F)'$ is an isomorphism. Applying $i'_*$ and use base change for $i_*$ shows that the base change: 
+    is an isomorphism. Now $c'$ is finite, so by checking stalks, $g_W^(-1) i^(-1) R f_* cal(F) -> i'^(-1) R f'_* cal(F)'$ is an isomorphism. Applying $i'_*$ and using base change for $i_*$ shows that the base change: 
     $
       g_Y^(-1) i_* i^(-1) R f_* cal(F) -> i'_* i'^(-1) R f'_* cal(F)'
     $
@@ -439,7 +439,7 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
     $
       j'_! R f'_(V,*) (cal(F)'|_(X'_V)) -> R f'_* cal(F)' -> i'_* i'^(-1) R f'_* cal(F)' ->^(+1)
     $
-    Applying $g_Y^(-1)$ to the first triangle gives it a base change map to the second triangle, which we have shown to be an isomorphism on the first and third position. Thus it is an isomorphism on the second position, i.e: 
+    Applying $g_Y^(-1)$ to the first triangle gives it a base change map to the second triangle, which we have shown to be an isomorphism on the first and third positions. Thus it is an isomorphism on the second position, i.e: 
     $
       g_Y^(-1) R f_* cal(F) cong R f'_* cal(F)'
     $
@@ -451,11 +451,11 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
 
   By taking each connected component of $X$, we may assume that $X$ is connected. Then any connected component of $X_1$ maps surjectively to $X$, so we may take $X_1$ to be surjective as well. By taking a Galois closure, we may assume that $pi: X_1 -> X$ is a Galois covering. Since $X$ is assumed to be connected, the smooth map $X -> S$ is of some pure relative dimension $d$ (being the rank of the locally free coherent sheaf $Omega_(X\/S)$ on $X$). 
 
-  By the filtrations $0 -> ell cal(F) -> cal(F) -> cal(F)\/ell cal(F) -> 0$, we see that it suffices to show for those $cal(F)$ that are $ell$-torsion for a prime number $ell in cal(O)_S^times$. By replacing $Lambda$ with $Lambda\/ell Lambda$, we may assume that $Lambda$ is $ell$-torsion too. Now by @finiteness-of-lower-shriek, $R f_! ul(ZZ\/ell) in D^b_c (S_et, Lambda)$. Thus by shrinking $S$, we may further assume that: 
+  By the filtrations $0 -> ell cal(F) -> cal(F) -> cal(F)\/ell cal(F) -> 0$, we see that it suffices to show for those $cal(F)$ that are $ell$-torsion for a prime number $ell in cal(O)_S^times$. By replacing $Lambda$ with $Lambda\/ell Lambda$, we may assume that $Lambda$ is $ell$-torsion too. Put $f_1=f compose pi$. Now by @finiteness-of-lower-shriek, $R f_(1,!) ul(ZZ\/ell) in D^b_c (S_et, ZZ\/ell)$. Thus by shrinking $S$, we may further assume that:
 
-  - Every $R^q f_(1,!) ul(ZZ\/ell)$ is a l.c.c. sheaf of $ZZ\/ell$-modules. 
+  - Every $R^q f_(1,!) ul(ZZ\/ell)$ is an l.c.c. sheaf of $ZZ\/ell$-modules. 
 
-  We claim that in this case $S$ is $(f_1, ul(ZZ\/ell), S)$-good and every $R^q f_* ul(ZZ\/ell)$ is l.c.c. 
+  We claim that in this case $S$ is $(f_1, ul(ZZ\/ell), S)$-good and every $R^q f_(1,*) ul(ZZ\/ell)$ is l.c.c. 
 
   #proof_[Proof of claim][
     Replace $f$ with $f_1$ and we may assume that every $R^q f_! ul(ZZ\/ell)$ is l.c.c. Now $f$ remains smooth of relative dimension $d$. 
@@ -507,7 +507,7 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
   
   - Suppose that $f: X -> S$ is a separated smooth morphism of pure relative dimension with $X$ connected, and $Lambda$ is an $ell$-torsion noetherian ring for a prime number $ell$. Suppose that we have a Galois etale covering space $pi: X_1 -> X$, with $f_1: X_1 ->^pi X -> S$. 
   
-    Then after shrinking $S$ so that every $R^q f_(1,!) ul(ZZ\/ell)$ is l.c.c, for any $cal(F) in cAb(X_et, Lambda)$ a l.c.c. sheaf of $Lambda$-modules trivialized by $pi$, $S$ is $(f_1, pi^(-1) cal(F), S)$-good. 
+    Then after shrinking $S$ so that every $R^q f_(1,!) ul(ZZ\/ell)$ is l.c.c, for any $cal(F) in cAb(X_et, Lambda)$ an l.c.c. sheaf of $Lambda$-modules trivialized by $pi$, $S$ is $(f_1, pi^(-1) cal(F), S)$-good. 
 
   To proceed, we essentially need to use a sort of group cohomology for the group $Aut(X_1\/X)$ on etale sheaves. I don't want to write a long construction for that, so I replaced it with a janky four lemma induction that you have seen multiple times. 
 
@@ -584,17 +584,17 @@ The proof method used in this section closely follows that of @cite-lei-fu[Secti
 
     - By $T'(q)$, the fifth arrow is injective. Now by the surjective four lemma, the third arrow is bijective. Since $cal(F)$ is arbitrary, this proves $T(q)$. 
 
-  Now start with $T(-1)$ and perform induction, we have all $T(q)$ verified. Now suppose that $f$ has fiber dimensions $<=d$. Then for any l.c.c. sheaf $cal(F) in cAb(X_et, Lambda)$ trivialized by $pi$, any $s in S$, by compatibility with base change, 
+  Now starting with $T(-1)$ and performing induction, we have all $T(q)$ verified. Now suppose that $f$ has fiber dimensions $<=d$. Then for any l.c.c. sheaf $cal(F) in cAb(X_et, Lambda)$ trivialized by $pi$, any geometric point $ol(s)$ of $S$, by compatibility with base change, 
   $
-    s^(-1) R^q f_* cal(F) = R^q f_(s,*) s^(-1) cal(F) = 0 
+    (R^q f_* cal(F))_(ol(s)) = H^q (X_(ol(s)), cal(F)|_(X_(ol(s)))) = 0
   $
-  whenever $q > 2dim(X_s)$, by @relative-artin-grothendieck-vanishing (2). In this case, for any geometric point $ol(s)$ above $s$, $(R^q f_* cal(F))_(ol(s)) = 0$. Hence, if we take $q > 2d$, we have $(R^q f_* cal(F))_(ol(s)) = 0$ for every geometric point $ol(s)$ of $S$, hence $R^q f_* cal(F) = 0$. 
+  whenever $q > 2dim(X_(ol(s)))$, by @relative-artin-grothendieck-vanishing (2). Hence, if we take $q > 2d$, we have $(R^q f_* cal(F))_(ol(s)) = 0$ for every geometric point $ol(s)$ of $S$, hence $R^q f_* cal(F) = 0$. 
 
   Summarizing the discussion above, this shows that: 
 
   - Suppose that $f: X -> S$ is a separated smooth morphism of pure relative dimension with $X$ connected, and $Lambda$ is an $ell$-torsion noetherian ring for a prime number $ell$. Suppose that we have a Galois etale covering space $pi: X_1 -> X$, with $f_1: X_1 ->^pi X -> S$. 
   
-    Then after shrinking $S$ so that every $R^q f_(1,!) ul(ZZ\/ell)$ is l.c.c, for any $cal(F) in cAb(X_et, Lambda)$ a l.c.c. sheaf of $Lambda$-modules trivialized by $pi$, $S$ is $(f, cal(F), S)$-good. 
+    Then after shrinking $S$ so that every $R^q f_(1,!) ul(ZZ\/ell)$ is l.c.c, for any $cal(F) in cAb(X_et, Lambda)$ an l.c.c. sheaf of $Lambda$-modules trivialized by $pi$, $S$ is $(f, cal(F), S)$-good. 
 
   This concludes the proof. 
 ]
@@ -628,13 +628,13 @@ The generic base change theorem has profound implications.
     $
     is an isomorphism for all $cal(K) in D^b_c (X_et, Lambda)$. 
 
-  // + Setup as in (2), and assume that every finite $Lambda$-module embeds into a finite free $Lambda$-module. Also assume that  Then we have an isomorphism of relative base change for all $cal(K) in D^b_c (X_et, Lambda), cal(L) in D^b_#[ctf] (S'_et, Lambda)$: 
+  // + Use the setup of (2), and assume that every finite $Lambda$-module embeds into a finite free $Lambda$-module. Then we have an isomorphism of relative base change for all $cal(K) in D^b_c (X_et, Lambda), cal(L) in D^b_#[ctf] (S'_et, Lambda)$: 
   //   $
   //     g_Y^(-1) R f_* cal(K) Lotimes_Lambda cal(L)|_(Y') -> R f'_* (g_X^(-1) cal(K) Lotimes_Lambda cal(L)|_(X'))
   //   $
 ]
 #proof[
-  Finite cohomological dimension of $R f_*$ follows from @relative-artin-grothendieck-vanishing. The rest of statements (1) and the plain base change in statement (2) follow from generic base change applied to $S = Spec(k)$, where since $S$ is a single point, its only dense open is itself. 
+  Finite cohomological dimension of $R f_*$ follows from @relative-artin-grothendieck-vanishing. The rest of statement (1) and the plain base change in statement (2) follow from generic base change applied to $S = Spec(k)$, where since $S$ is a single point, its only dense open is itself. 
 
   // (3) By truncation, we may assume that $cal(K) = cal(F)$ is a constructible sheaf. Fix $a$, and we perform induction on the following statement $T(r)$: 
 
@@ -667,7 +667,7 @@ The generic base change theorem has profound implications.
     edge((2, 0), (2, 1), [$g$], label-side: left, "->")
     edge((0, 0), (0, 1), [$g_X$], label-side: right, "->")
   }))
-  in which $X_0 -> Y_0$ is an open immersion of finite type $k$-schemes, and every constructible sheaf $cal(F) in cAb((X_0)_et, Lambda)$, with $cal(K)_Y = cal(K)|_Y$, the relative base change: 
+  in which $X_0 -> Y_0$ is an open immersion of finite type $k$-schemes, and for every constructible sheaf $cal(F) in cAb((X_0)_et, Lambda)$, with $cal(K)_Y = cal(K)|_Y$, the relative base change: 
   $
     g_Y^(-1) R f_(0,*) cal(F) Lotimes_Lambda cal(K)_Y -> R f_* (g_X^(-1) cal(F) Lotimes_Lambda f^(-1) cal(K)_Y)
   $
@@ -686,13 +686,13 @@ The generic base change theorem has profound implications.
       R f_* (g_X^(-1) cal(F) Lotimes_Lambda f^(-1) (oplus.big_i cal(K)_(i,Y))) &cong R f_* (oplus.big_i g_X^(-1) cal(F) Lotimes_Lambda f^(-1) cal(K)_(i,Y)) \
       &cong oplus.big_i R f_* (g_X^(-1) cal(F) Lotimes_Lambda f^(-1) cal(K)_(i,Y))
     $
-    Here, the last step is due to @relative-limit-formula-for-sheaves and the boundedness of $R f_*$. The argument is truncation then applying limit formula that is pretty much the same as the proof of @derived-bounded-limit-formula-for-direct-sum. 
+    Here, the last step is due to @relative-limit-formula-for-sheaves and the boundedness of $R f_*$. The argument is truncating, then applying the limit formula that is pretty much the same as the proof of @derived-bounded-limit-formula-for-direct-sum. 
 
     Hence, both sides of $g_Y^(-1) R f_(0,*) cal(F) Lotimes_Lambda cal(K)_Y -> R f_* (g_X^(-1) cal(F) Lotimes_Lambda f^(-1) cal(K)_Y)$ are compatible with direct sums in $cal(K) in D(S_et, Lambda)$. 
 
   - Consider the family of objects ${j_! ul(Lambda)}$ of $D(S_et, Lambda)$ for $j: U -> S$ etale with $U$ affine. Then: 
 
-    - If $cal(K) in D(S_et, Lambda)$ has $Hom_Lambda (j_! ul(Lambda)[q], cal(K)) = 0$ for all $j: U -> S$ etale with $U$ affine and all $q in ZZ$, then upon replacing $cal(K)$ with a K-injective resolution $cal(I)^bullet$, we see that $Gamma(U, h^q (cal(I))) = 0$ for all affine $U in Et_S$. Every object of $Et_S$ can be covered with affines, so this shows that $h^q (cal(I)) = 0$ for all $q$, and so $cal(K) = 0$. 
+    - If $cal(K) in D(S_et, Lambda)$ has $Hom_Lambda (j_! ul(Lambda)[q], cal(K)) = 0$ for all affine etale $j: U -> S$ and all $q in ZZ$, then $h^q (R Gamma(U, cal(K))) = 0$ for all such $U$ and $q$. The sheafification of $U |-> h^q (R Gamma(U, cal(K)))$ is $h^q (cal(K))$ (by taking a K-injective resolution and computing), so all cohomology sheaves vanish and $cal(K)=0$.
 
     - Each $j_! ul(Lambda)$ is a compact object. Indeed, for $j: U -> S$ etale with $U$ affine, 
       $
@@ -737,7 +737,7 @@ The generic base change theorem has profound implications.
   and note $cal(K)_Y cong pi_(Y,*) ul(Lambda), f^(-1) cal(K)_Y cong pi_(X,*) ul(Lambda)$. Compute: 
   $
     g_Y^(-1) R f_(0,*) cal(F) Lotimes_Lambda pi_(Y,*) ul(Lambda) &cong pi_(Y,*) pi_Y^(-1) g_Y^(-1) R f_(0,*) cal(F) #[by projection formula] \
-    &cong pi_(Y,*) R f'_* pi_X^(-1) g_X^(-1) cal(F) #[by generic base change as in (2) of previous corollary] \
+    &cong pi_(Y,*) R f'_* pi_X^(-1) g_X^(-1) cal(F) #[by generic base change as in (2) of the previous corollary] \
     &cong R f_* pi_(X,*) pi_X^(-1) g_X^(-1) cal(F) \
     &cong R f_* (g_X^(-1) cal(F) Lotimes_Lambda pi_(X,*) ul(Lambda)) #[by projection formula]
   $
@@ -781,7 +781,7 @@ We also establish a sort of generic base change for $R f^!$.
   $
   which is saying $(g_X^(-1) R f^! cal(K))|_(X'_i) cong (R f'^! g_Y^(-1) cal(K))|_(X'_i)$. Thus $g_X^(-1) R f^! cal(K) cong R f'^! g_Y^(-1) cal(K)$ by @surjective-pullback-conservative. 
 
-  Hence, we may assume that $Y$ is affine. Now pick an affine cover ${j_i: X_i -> Y}$ of $X$. Then suppose that $U$ is $(f compose j_i, cal(K), S)$-good for all $i$. Then this is saying that for $g: S' -> S$ with $g(S') subset U$, 
+  Hence, we may assume that $Y$ is affine. Now pick an affine cover ${j_i: X_i -> X}$ of $X$. Then suppose that $U$ is $(f compose j_i, cal(K), S)$-good for all $i$. Then this is saying that for $g: S' -> S$ with $g(S') subset U$, 
   $
     j'_i^(-1) g_X^(-1) R f^! cal(K) cong g_(X_i)^(-1) j_i^(-1) R f^! cal(K) cong j'_i^(-1) R f'^! g_Y^(-1) cal(K)
   $
@@ -790,24 +790,24 @@ We also establish a sort of generic base change for $R f^!$.
     g_X^(-1) R f^! cal(K) cong g_X^(-1) R i^! p^(-1) cal(K)(m)[2m] \
     R f'^! g_Y^(-1) cal(K) cong R i'^! p'^(-1) g_Y^(-1) cal(K)(m)[2m] cong R i'^! g_(AA^m_Y)^(-1) p^(-1) cal(K)(m)[2m]
   $
-  by relative Poincare duality. Hence, replacing $f$ with $i$ and $cal(K)$ with $p^(-1) cal(K)(m)[2m]$, we may assume that $f=i$ is a closed immersion. Now take the complementary open immersion $j: U -> Y$ use the sections with support triangle: 
+  by relative Poincare duality. Hence, replacing $f$ with $i$ and $cal(K)$ with $p^(-1) cal(K)(m)[2m]$, we may assume that $f=i$ is a closed immersion. Now take the complementary open immersion $j: U -> Y$ and use the sections with support triangle: 
   $
     R i^! cal(K) -> i^(-1) cal(K) -> i^(-1) R j_* j^(-1) cal(K) ->^(+1)
   $
-  By generic base change, we may shrink $S$ so that the formation of $R j_* j^(-1) cal(K)$ commutes with arbitrary base change. Now the second and third term of the triangle is compatible with base change, and so is the first. We are thereby done. 
+  By generic base change, we may shrink $S$ so that the formation of $R j_* j^(-1) cal(K)$ commutes with arbitrary base change. Now the second and third terms of the triangle are compatible with base change, and so is the first. We are thereby done. 
 ]
 
-Finally, as an application, we prove the preservation of $D^b_#[ctf]$ under the six fundamental constructions on etale sheaves we have defined, known as _Grothedieck's six functors_. 
+Finally, as an application, we prove the preservation of $D^b_#[ctf]$ under the six fundamental constructions on etale sheaves we have defined, known as _Grothendieck's six functors_. 
 
 #theorem(name: <finiteness-of-six-functors>)[
-  (Finiteness of six functors) Let $f: X -> Y$ be a morphism between separated $k$-schemes for a field $k$, and $Lambda$ be an $n$-torsion noetherian ring with $n in k^times$. Then the functors: 
+  (Finiteness of six functors) Let $f: X -> Y$ be a morphism between separated finite type $k$-schemes for a field $k$, and $Lambda$ be an $n$-torsion noetherian ring with $n in k^times$. Then the functors: 
   $
     R f_*, R f_! : D(X_et, Lambda) -> D(Y_et, Lambda) \
     f^(-1), R f^!: D(Y_et, Lambda) -> D(X_et, Lambda) \
     - Lotimes_Lambda -: D(X_et, Lambda) times D(X_et, Lambda) -> D(X_et, Lambda) \
     RHHom_Lambda (-, -): D(X_et, Lambda)^opp times D(X_et, Lambda) -> D(X_et, Lambda)
   $
-  all sends $D^b_#[ctf]$ to $D^b_#[ctf]$, with the first four being bounded above and below. 
+  all send $D^b_#[ctf]$ to $D^b_#[ctf]$, with the first four being bounded above and below. 
 ]
 #proof[
   Three of these statements are already known: 
@@ -818,7 +818,7 @@ Finally, as an application, we prove the preservation of $D^b_#[ctf]$ under the 
     $
       R f_! cal(K) Lotimes_Lambda cal(L) cong R f_! (cal(K) Lotimes_Lambda f^(-1) cal(L))
     $
-    Indeed, suppose that $cal(K)$ has Tor-amplitude in $[a,b]$, and $cal(L)$ is concentrated in $[a',b']$. Then $cal(K) Lotimes_Lambda f^(-1) cal(L)$ is concentrated in $[a+a', b+b']$, and so $R f_! (cal(K) Lotimes_Lambda f^(-1) cal(L))$ is concentrated in $[a+a', b+b'+2d]$, where $d$ is the maximum fiber dimension of $f$. Hence, $R f_! cal(K)$ is Tor-amplitude in $[a, b+2d]$. 
+    Indeed, suppose that $cal(K)$ has Tor-amplitude in $[a,b]$, and $cal(L)$ is concentrated in $[a',b']$. Then $cal(K) Lotimes_Lambda f^(-1) cal(L)$ is concentrated in $[a+a', b+b']$, and so $R f_! (cal(K) Lotimes_Lambda f^(-1) cal(L))$ is concentrated in $[a+a', b+b'+2d]$, where $d$ is the maximum fiber dimension of $f$. Hence, $R f_! cal(K)$ has Tor-amplitude in $[a, b+2d]$. 
 
   - $- Lotimes_Lambda -$ preserves $D^b_#[ctf]$. Indeed, for $cal(K)_(1,2) in D^b_#[ctf] (X_et, Lambda)$, we may pick bounded flat resolutions $cal(P)_(1,2)^bullet$ of them by @resolution-of-ctf-complexes, in which every term $cal(P)^q_(1,2)$ is constructible and flat. Then $Lotimes$ may be computed termwise: 
     $
@@ -860,7 +860,7 @@ Finally, as an application, we prove the preservation of $D^b_#[ctf]$ under the 
     $
     By relative Poincare duality, $R p^! cal(K) cong cal(K)(d)[2d]$. Thus $j^(-1) R f^! cal(K) cong R i^! R p^! cal(K) cong R i^! cal(K) (d)[2d]$. Since $R i^!$ is bounded and preserves $D^b_#[ctf]$, so does $j^(-1) R f^! cal(K)$. 
 
-    Now constructiblity can be checked locally, so $R f^!$ preserves $D^b_c$. By checking stalks, $R f^!$ preserves $D^b_#[ctf]$. 
+    Now constructibility can be checked locally, so $R f^!$ preserves $D^b_c$. By checking stalks, $R f^!$ preserves $D^b_#[ctf]$. 
 
   The last functor to check is $RHHom_Lambda (-, -)$. 
 
@@ -890,7 +890,7 @@ Finally, as an application, we prove the preservation of $D^b_#[ctf]$ under the 
 
     - If every proper closed subset $Z subset.neq X$ is in $cal(S)_X$, then $X in cal(S)_X$. 
 
-    We now start to check this point. For any flat constructible sheaf $cal(F), cal(G) in cAb(X_et, Lambda)$, pick a nonempty open $U subset X$ s.t. $cal(F)|_U$ is constant. Take the complementary immersions $j: U -> X$ and $i: Z = X - U -> X$, and we have the extension by zero triangle: 
+    We now start to check this point. For any flat constructible sheaves $cal(F), cal(G) in cAb(X_et, Lambda)$, pick a nonempty open $U subset X$ s.t. $cal(F)|_U$ is l.c.c.. Take the complementary immersions $j: U -> X$ and $i: Z = X - U -> X$, and we have the extension by zero triangle: 
     $
       j_! j^(-1) cal(F) -> cal(F) -> i_* i^(-1) cal(F) ->^(+1)
     $ 
@@ -904,9 +904,9 @@ Finally, as an application, we prove the preservation of $D^b_#[ctf]$ under the 
 
     Pick an etale cover $j: U -> X$ with $U$ affine s.t. $j^(-1) cal(F)$ is constant. Now suppose that we can show that $j^(-1) RHHom_Lambda (cal(F), cal(G)) in D^b_#[ctf]$. Then: 
 
-    - $j^(-1) EExt^q_Lambda (cal(F), cal(G))$ are constructible and vanishes outside finitely many values of $q$. 
+    - $j^(-1) EExt^q_Lambda (cal(F), cal(G))$ are constructible and vanish outside finitely many values of $q$. 
 
-      Since $j$ is surjective, by @surjective-pullback-conservative, $EExt^q_Lambda (cal(F), cal(G))$ vanishes outside finitely many values of $q$. Furthermore, $cal(H) -> j_! j^(-1) cal(H)$ is injective for all $cal(H)$, and so $EExt^q_Lambda (cal(F), cal(G))$ are all constructible. 
+      Since $j$ is surjective, by @surjective-pullback-conservative, $EExt^q_Lambda (cal(F), cal(G))$ vanishes outside finitely many values of $q$. Furthermore, the counits $j_! j^(-1) EExt^q_Lambda (cal(F), cal(G)) -> EExt^q_Lambda (cal(F), cal(G))$ are surjective from a constructible sheaf, and so $EExt^q_Lambda (cal(F), cal(G))$ are all constructible.
 
       Thus, $RHHom_Lambda (cal(F), cal(G)) in D^b_c$. 
 
@@ -925,7 +925,7 @@ Finally, as an application, we prove the preservation of $D^b_#[ctf]$ under the 
       $
     ]
     #proof[
-      We first prove for $N$ injective. That is, we need to show that for all $q >= 1$, $EExt^q_Lambda (ul(M)_X, ul(N)_X) = 0$. Pick a resolution $dots.c -> P^(-1) -> P^0 -> M -> 0$ by finite free $Lambda$-modules. Then $HHom_Lambda (ul(P^(-p)), -)$ is exact, and so $EExt^q_Lambda (ul(M)_X, -)$ may be computed as: 
+      We first prove this for $N$ injective. That is, we need to show that for all $q >= 1$, $EExt^q_Lambda (ul(M)_X, ul(N)_X) = 0$. Pick a resolution $dots.c -> P^(-1) -> P^0 -> M -> 0$ by finite free $Lambda$-modules. Then $HHom_Lambda (ul(P^(-p)), -)$ is exact, and so $EExt^q_Lambda (ul(M)_X, -)$ may be computed as: 
       $
         EExt^q_Lambda (ul(M)_X, -) &cong h^q (0 -> HHom_Lambda (ul(P^0)_X, ul(N)_X) -> HHom_Lambda (ul(P^(-1))_X, ul(N)_X) -> dots.c) \
         &cong h^q (0 -> ul(Hom_Lambda (P^0, N))_X -> ul(Hom_Lambda (P^(-1), N))_X -> dots.c) \
@@ -947,7 +947,7 @@ Finally, as an application, we prove the preservation of $D^b_#[ctf]$ under the 
     $
     for $N^q$ finite $Lambda$-modules and $r_q: X_q -> X$ finite. Now: 
     $
-      EExt^q_Lambda (ul(M), r_(p,*) ul(N^p)) = r_(p,*) EExt^q_Lambda (ul(M)_(X_q), ul(N^p)_(X_q)) 
+      EExt^q_Lambda (ul(M), r_(p,*) ul(N^p)) = r_(p,*) EExt^q_Lambda (ul(M)_(X_p), ul(N^p)_(X_p)) 
     $
     which vanishes for $q>=1$ by the previous lemma, since $M$ is a projective $Lambda$-module. Therefore, the resolution of $cal(G)$ above is suitable for computing $EExt^q_Lambda (ul(M), cal(G))$, and: 
 

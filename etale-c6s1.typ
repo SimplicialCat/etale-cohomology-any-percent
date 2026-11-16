@@ -10,7 +10,7 @@ Thus, we have several large theorems that we need to establish:
 
 + Basic results on $H^q_et (X, ZZ\/n)$ for an algebraic variety over an algebraically closed field $k$ with $n in k^times$. (If $n = p = "char"(k) > 0$, this cohomology is rather ill-behaved.)
   - Finiteness
-  - Vanishing (beyond $2 dim(X)$, and beyond $dim(X)$ in affine case)
+  - Vanishing (beyond $2 dim(X)$, and beyond $dim(X)$ in the affine case)
   - Cohomology with compact support
   - Poincare duality
   - ...
@@ -37,7 +37,7 @@ Thus, we have several large theorems that we need to establish:
     H^q_et (X_(overline(QQ)), ZZ\/n) ->^tilde_(#[(a)]) H^q_et (X_(overline(QQ_p)), ZZ\/n)
   $
   
-  where $Gal_QQ$ acts on the left, and $Gal_(QQ_p)$ acts on the right so that we can study the local case. Next, suppose that $X_(QQ_p)$ admits an integral model $X_(ZZ_p) -> Spec(ZZ_p)$, then we have a commutative diagram: 
+  where $Gal_QQ$ acts on the left, and $Gal_(QQ_p)$ acts on the right so that we can study the local case. Next, if $X_(QQ_p)$ admits an integral model $X_(ZZ_p) -> Spec(ZZ_p)$, then we have a commutative diagram: 
   // https://q.uiver.app/#r=typst&q=WzAsNixbMSwwLCJYXyhaWl9wXnVyKSJdLFsyLDAsIlhfKG9sKEZGX3ApKSJdLFsxLDEsIlNwZWMoWlpfcF51cikiXSxbMiwxLCJTcGVjKG9sKEZGX3ApKSJdLFswLDAsIlhfKG9sKFFRX3ApKSJdLFswLDEsIlNwZWMob2woUVFfcCkpIl0sWzUsMl0sWzMsMl0sWzQsMF0sWzEsMF0sWzAsMl0sWzEsM10sWzQsNV1d
   #align(center, diagram({
     node((0, -1), [$X_(ZZ_p^#[ur])$])
@@ -56,7 +56,7 @@ Thus, we have several large theorems that we need to establish:
   }))
   We then hope to have isomorphisms: 
   $
-    H^q_et (X_(ol(QQ_p)), ZZ\/n) ->^tilde_(#[(b)]) H^q_et (X_(ZZ_p^#[ur]), ZZ\/n) <-^tilde_(#[(c)]) H^q_et (X_(ol(FF_p)), ZZ\/n)
+    H^q_et (X_(ol(QQ_p)), ZZ\/n) <-^tilde_(#[(b)]) H^q_et (X_(ZZ_p^#[ur]), ZZ\/n) ->^tilde_(#[(c)]) H^q_et (X_(ol(FF_p)), ZZ\/n)
   $
   so that LHS has a $Gal_(QQ_p)$-action, and RHS has a $Gal_(FF_p)$-action. 
 
@@ -73,7 +73,7 @@ The base change theorems are thus the critical and general machinery to study an
 
 #date[
   #set align(left) 
-  I have deliberately chosen the proof route to avoid the use of the derived category in this chapter, to not obfuscate the concrete arguments behind abstract machineries. 
+  I have deliberately chosen the proof route to avoid the use of the derived category in this chapter, to not obfuscate the concrete arguments behind abstract machinery. 
   
   However, the base change morphism is naturally a derived object, and its naturality is most obviously seen from the derived category. In contrast, insisting on sticking to the abelian category setup in this situation would require a lengthy and uninspiring argument, which would meaninglessly obscure the naturality of the constructions. As such, I will use the derived category in the construction of the base change morphism. 
 ]
@@ -171,12 +171,12 @@ The base change morphism is natural, in the sense that it is compatible with con
   }))
   + The base change morphism is compatible with vertical concatenation of commutative squares, i.e. in the derived category, the composition: 
     $
-      (k compose g)^(-1) R f_* cal(K) = k^(-1) g^(-1) R f_* cal(K) -> k^(-1) R f'_* g'^(-1) cal(K) -> R f''_* k'^(-1) g'^(-1) cal(K) = R f''_* (k' compose g')^(-1) cal(K) 
+      (g compose k)^(-1) R f_* cal(K) = k^(-1) g^(-1) R f_* cal(K) -> k^(-1) R f'_* g'^(-1) cal(K) -> R f''_* k'^(-1) g'^(-1) cal(K) = R f''_* (g' compose k')^(-1) cal(K) 
     $
     of base change morphisms along the two small squares is simply the base change morphism along the right rectangle. 
     Taking cohomologies, the composition: 
     $
-      (k compose g)^(-1) R^q f_* cal(F) = k^(-1) g^(-1) R^q f_* cal(F) -> k^(-1) R^q f'_* g'^(-1) cal(F) -> R^q f''_* k'^(-1) g'^(-1) cal(F) = R^q f''_* (k' compose g')^(-1) cal(F) 
+      (g compose k)^(-1) R^q f_* cal(F) = k^(-1) g^(-1) R^q f_* cal(F) -> k^(-1) R^q f'_* g'^(-1) cal(F) -> R^q f''_* k'^(-1) g'^(-1) cal(F) = R^q f''_* (g' compose k')^(-1) cal(F) 
     $
     of base change morphisms along the two small squares is simply the base change morphism along the right rectangle. 
 
@@ -251,7 +251,7 @@ The base change morphism is natural, in the sense that it is compatible with con
       $
         h_3^L g_3^L f -> h_3^L f' g_2^L -> f'' h_2^L g_2^L
       $
-      of successive base changes along the two right squares is just base change along the right ==rectangle. 
+      of successive base changes along the two right squares is just base change along the right rectangle. 
   ]*/
 ]
 
@@ -271,7 +271,7 @@ This is the general setup for base change theorems. The proper base change theor
     edge((-1, -1), (-1, 0), [$g'$], label-side: right, "->")
   }))
   
-  The base change morphism: #h(1fr)
+  the base change morphism: #h(1fr)
   $
     g^(-1) R^q f_* cal(F) -> R^q f'_* g'^(-1) cal(F)
   $
@@ -357,7 +357,7 @@ There are a few big steps in the proofs of proper base change, each requiring dr
     $
 
   + #set enum(numbering: "(1)")
-    + In a diagram of successive base changes:
+    + In a diagram of successive base changes with $f$ and $h$ qcqs:
       // https://q.uiver.app/#r=typst&q=WzAsNixbMCwwLCJaJyJdLFsxLDAsIlgnIl0sWzIsMCwiWSciXSxbMiwxLCJZIl0sWzEsMSwiWCJdLFswLDEsIloiXSxbMiwzLCJnIl0sWzEsNCwiZyciXSxbMCw1LCJnJyciXSxbNCwzLCJmIiwyXSxbNSw0LCJoIiwyXSxbMCwxLCJoJyJdLFsxLDIsImYnIl1d
       #align(center, diagram({
         node((-2, -1), [$Z'$])
@@ -374,7 +374,7 @@ There are a few big steps in the proofs of proper base change, each requiring dr
         edge((-2, -1), (-1, -1), [$f'$], label-side: left, "->")
         edge((-1, -1), (0, -1), [$h'$], label-side: left, "->")
       }))
-      We have:
+      we have:
       $
         BC (f, g) and BC (h, g') ==> BC (h compose f, g)
       $
@@ -397,7 +397,7 @@ There are a few big steps in the proofs of proper base change, each requiring dr
         edge((1, -1), (1, 0), [$h$], label-side: left, "->")
         edge((0, -1), (0, 0), [$h'$], label-side: right, "->")
       }))
-      We have: 
+      we have: 
       $
         BC(f, g) and BC(f', h) ==> BC(f, g compose h)
       $
@@ -420,13 +420,13 @@ There are a few big steps in the proofs of proper base change, each requiring dr
       edge((-1, -1), (-1, 0), [$i'$], label-side: right, "->")
       edge((0, -1), (1, -1), "->")
     }))
-    We have: 
+    we have: 
     $
       & BC(pi, i) \
       ==>& (BC_* (X -> Spec(A)) <==> BC_* (X' -> Spec(A)))
     $
 
-  + When $Y', Y$ are locally noetherian, 
+  + When $f$ is qcqs and $Y', Y$ are locally noetherian, 
     $
       & BC(X ->^f Y, Y' ->^g Y) \
       <==& (BC_* (X times_Y Spec(A) -> Spec(A)), forall Spec(A) -> Y, forall A #[noetherian strict henselian])
@@ -457,7 +457,7 @@ We first state the last part of the proof, to demonstrate how the six points sta
   $
   in which every step is of the shape $PP^1_(tilde(Y)) -> tilde(Y)$ for some noetherian $tilde(Y)$. By (Comp), we are allowed to assume $n = 1$ and we want to show that base change holds along $PP^1_Y -> Y$, i.e. $BC(PP^1_Y -> Y, Y' ->^g Y)$. However, by (Reduce), it suffices to show that $BC_* (PP^1_A -> Spec(A))$ holds for all noetherian strict henselian $A$, which is what we already have.
 
-  Next, for any projective#footnote[Our notion of a morphism $f: X -> Y$ being *projective* means that $f$ factors as $X -> PP^n_Y -> Y$ where $X -> PP^n_Y$ is a closed immersion. This notion agrees with the notion in @cite-hartshorne-ag, and is referred to as *H-projective* in Stacks Project.] $f: X ->^i PP^n_Y -> Y$, where $i$ is a closed immersion, to show that base change holds for $f$, it suffices to show that for all noetherian strictly henselian $A$, any closed immersion $i: X -> PP^n_A$, $BC_* (X ->^i PP^n_A -> Spec(A))$ holds. Now $BC_* (i)$ holds from (Finite), and we just proved that $BC_* (PP^n_A -> Spec(A))$ holds, and all schemes involved are noetherian, so by (Comp) $BC_* (X -> Spec(A))$ holds. Therefore, $BC(X ->^f Y, Y' ->^g Y)$ holds whenever $f$ is projective and $Y, Y'$ are locally noetherian.
+  Next, for any projective#footnote[Our notion of a morphism $f: X -> Y$ being *projective* means that $f$ factors as $X -> PP^n_Y -> Y$ where $X -> PP^n_Y$ is a closed immersion. This notion agrees with the notion in @cite-hartshorne-ag, and is referred to as *H-projective* in the Stacks Project.] $f: X ->^i PP^n_Y -> Y$, where $i$ is a closed immersion, to show that base change holds for $f$, it suffices to show that for all noetherian strictly henselian $A$, any closed immersion $i: X -> PP^n_A$, $BC_* (X ->^i PP^n_A -> Spec(A))$ holds. Now $BC_* (i)$ holds from (Finite), and we just proved that $BC_* (PP^n_A -> Spec(A))$ holds, and all schemes involved are noetherian, so by (Comp) $BC_* (X -> Spec(A))$ holds. Therefore, $BC(X ->^f Y, Y' ->^g Y)$ holds whenever $f$ is projective and $Y, Y'$ are locally noetherian.
 
   We now deal with the general case $BC(X ->^f Y, Y' ->^g Y)$ for $f$ proper. By (Reduce), it suffices to prove $BC_* (X -> Spec(A))$ for all $X -> Spec(A)$ proper and all noetherian $A$. For this, we invoke Chow's lemma. 
 
@@ -502,7 +502,7 @@ We first state the last part of the proof, to demonstrate how the six points sta
   $
     BC (X' ->^pi X, X_0 ->^i X) #[and] BC_* (X' -> Spec(A))
   $
-  holds. Since $X, X', Spec(A)$ are all noetherian, by (Shift), $BC_* (X -> Spec(A))$ holds. We are thereby done. 
+  hold. Since $X, X', Spec(A)$ are all noetherian, by (Shift), $BC_* (X -> Spec(A))$ holds. We are thereby done. 
 ]
 
 Thus, to prove the proper base change theorem, we need to take down the six points (Seed)(Dev)(Comp)(Shift)(Reduce)(Finite) one by one. 

@@ -7,7 +7,7 @@ In this section, we use devissage arguments with constructible sheaves to prove 
 #theorem(name: <pbc-comp>)[
   (Comp) 
   
-  + In a diagram of successive base changes:
+  + In a diagram of successive base changes with $f$ and $h$ qcqs:
     // https://q.uiver.app/#r=typst&q=WzAsNixbMCwwLCJaJyJdLFsxLDAsIlgnIl0sWzIsMCwiWSciXSxbMiwxLCJZIl0sWzEsMSwiWCJdLFswLDEsIloiXSxbMiwzLCJnIl0sWzEsNCwiZyciXSxbMCw1LCJnJyciXSxbNCwzLCJmIiwyXSxbNSw0LCJoIiwyXSxbMCwxLCJoJyJdLFsxLDIsImYnIl1d
     #align(center, diagram({
       node((-2, -1), [$Z'$])
@@ -24,7 +24,7 @@ In this section, we use devissage arguments with constructible sheaves to prove 
       edge((-2, -1), (-1, -1), [$f'$], label-side: left, "->")
       edge((-1, -1), (0, -1), [$h'$], label-side: left, "->")
     }))
-    We have:
+    we have:
     $
       BC (f, g) and BC (h, g') ==> BC (h compose f, g)
     $
@@ -47,7 +47,7 @@ In this section, we use devissage arguments with constructible sheaves to prove 
       edge((1, -1), (1, 0), [$h$], label-side: left, "->")
       edge((0, -1), (0, 0), [$h'$], label-side: right, "->")
     }))
-    We have: 
+    we have: 
     $
       BC(f, g) and BC(f', h) ==> BC(f, g compose h)
     $
@@ -128,7 +128,7 @@ Next, we will demonstrate the power of constructible sheaves, when we perform th
   The main idea is that we perform dimension reduction along two exact sequences. 
 
   #lemma(name: <pbc-dev-lem1>)[
-    Given any noetherian $X -> Spec(A)$ and fixed $q >= 0$, if $res_(cal(F))^(q,tilde(X))$ is injective/surjective/bijective for all constructible $cal(F) in cAb(X_et)$, the same holds for all torsion $cal(F) in cAb(X_et)$. 
+    Given any noetherian $X -> Spec(A)$ and fixed $q >= 0$, if $res_(cal(F))^(q,X)$ is injective/surjective/bijective for all constructible $cal(F) in cAb(X_et)$, the same holds for all torsion $cal(F) in cAb(X_et)$. 
   ]
   #proof[
     By @constructible-sheaves-first-props (6), every torsion $cal(F)$ can be written as a direct limit of its constructible subsheaves: 
@@ -144,7 +144,7 @@ Next, we will demonstrate the power of constructible sheaves, when we perform th
     $
       res^(q,X)_(cal(F)) = dirlim_(i in I) res^(q,X)_(cal(F)_i)
     $
-    By (Ab5) of $cAb$, the injective/surjective/bijective properties of $res^(q,X)_(cal(F)_i)$ passes to $res^(q,X)_(cal(F))$. 
+    By (Ab5) of $cAb$, the injective/surjective/bijective properties of $res^(q,X)_(cal(F)_i)$ pass to $res^(q,X)_(cal(F))$. 
   ]
 
   #lemma(name: <pbc-dev-lem2>)[
@@ -197,7 +197,7 @@ Next, we will demonstrate the power of constructible sheaves, when we perform th
     }, spacing: (2.4em, 3em)))
     where: 
 
-    - The first two vertical arrows are bijective by inductive hypothesis, since $cal(C), cal(R)$ are $n$-torsion; 
+    - The first two vertical arrows are bijective by the inductive hypothesis, since $cal(C), cal(R)$ are $n$-torsion; 
 
     - The fourth vertical arrow is injective since $H^q (X, cal(C)) = 0$ due to acyclicity of $cal(C)$. 
 
@@ -209,14 +209,14 @@ Next, we will demonstrate the power of constructible sheaves, when we perform th
 
     - For all $p < q$, all finite $tilde(X) -> X$ and all torsion $cal(F) in cAb(tilde(X)_et)$, $res_(cal(F))^(p,tilde(X))$ is bijective. 
 
-    - For all finite $tilde(X) -> X$, $res_(ul(ZZ\/n))^(q,tilde(X))$ is surjective, and in addition bijective when $q = 0$. 
+    - For all finite $tilde(X) -> X$ and all $n >= 1$, $res_(ul(ZZ\/n))^(q,tilde(X))$ is surjective, and in addition bijective when $q = 0$. 
 
     Then: 
 
     - For all finite $tilde(X) -> X$ and all torsion $cal(F) in cAb(tilde(X)_et)$, $res_(cal(F))^(q,tilde(X))$ is bijective. 
   ]
   #proof[
-    By @pbc-dev-lem1, it suffices to prove when $cal(F)$ is constructible. By replacing $X$ with $tilde(X)$ we may also assume that $cal(F) in cAb(X_et)$. Now by @finite-morphisms-and-constructible-sheaves (2), there exists a finite morphism $g: tilde(X) -> X$ and an injection $cal(F) -> g_* ul(ZZ\/n)_(tilde(X))$. Forming the cokernel, we have an exact sequence of constructible sheaves: 
+    By @pbc-dev-lem1, it suffices to prove this when $cal(F)$ is constructible. By replacing $X$ with $tilde(X)$ we may also assume that $cal(F) in cAb(X_et)$. Now by @finite-morphisms-and-constructible-sheaves (2), there exists a finite morphism $g: tilde(X) -> X$ and an injection $cal(F) -> g_* ul(ZZ\/n)_(tilde(X))$. Forming the cokernel, we have an exact sequence of constructible sheaves: 
     $
       0 -> cal(F) -> g_* ul(ZZ\/n)_(tilde(X)) -> cal(R) -> 0
     $
@@ -297,7 +297,7 @@ Next, we will demonstrate the power of constructible sheaves, when we perform th
       where: 
       - The first vertical arrow is bijective by the inductive hypothesis; 
 
-      - The second, third and fourth arrow are injective, since we have proved using @pbc-dev-lem2 that for all finite $tilde(X) -> X$ and all torsion $cal(F) in cAb(tilde(X)_et)$, $res_(cal(F))^(q,tilde(X))$ is injective. 
+      - The second, third and fourth arrows are injective, since we have proved using @pbc-dev-lem2 that for all finite $tilde(X) -> X$ and all torsion $cal(F) in cAb(tilde(X)_et)$, $res_(cal(F))^(q,tilde(X))$ is injective. 
 
       - The third arrow is surjective by our hypothesis on $res^(q,tilde(X))_(ul(ZZ\/n))$. 
 

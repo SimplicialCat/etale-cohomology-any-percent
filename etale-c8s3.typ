@@ -104,7 +104,7 @@ We first perform some reductions.
   $
   Thus, if we can show that each $R Gamma(Spec(ol(Frac(A_lambda)) otimes_(A_lambda) A_lambda {T}), ul(ZZ\/n)) = ZZ\/n$, then $R Gamma(Frac(A) otimes_A A{T}, ul(ZZ\/n)) = ZZ\/n$ and we are done. Hence, it suffices to show that: 
 
-  - For $A$ the strict henselization of a finite type $ZZ[n^(-1)]$-algebra at a prime with $K = Frac(A)$, #h(1fr)
+  - For $A$ the strict henselization of an integral normal finite type $ZZ[n^(-1)]$-algebra at a prime with $K = Frac(A)$, #h(1fr)
     $
       H^q (Spec(ol(K) otimes_A A{T}), ul(ZZ\/n)) = cases(
         ZZ\/n &\, q = 0, 
@@ -117,11 +117,11 @@ We first perform some reductions.
   //   H^0 (Spec(ol(K) otimes_A A{T}), ul(ZZ\/n)) = ZZ\/n
   // $ 
   // Now the case $q = 1$ is the hypothesis, so it suffices to deal with the case $q = 2$. However, 
-  The case $q = 0,1$ is the hypothesis. For $q >= 2$, $A{T}$ is a directed limit of etale $A[T]$-algebras. Thus, $ol(K) otimes_A A{T}$ is a directed limit of etale $ol(K)[T]$-algebras $B_lambda$. Then: 
+  The cases $q = 0,1$ are the hypothesis. For $q >= 2$, $A{T}$ is a directed limit of etale $A[T]$-algebras. Thus, $ol(K) otimes_A A{T}$ is a directed limit of etale $ol(K)[T]$-algebras $B_lambda$. Then: 
   $
     H^q (Spec(ol(K) otimes_A A{T}), ul(ZZ\/n)) = dirlim_lambda H^q (Spec(B_lambda), ul(ZZ\/n))
   $
-  Each $B_lambda$ is finite type over $ol(K)$ of dimension $<=1$. Thus by Artin vanishing (@artin-vanishing), every term in the limit on RHS vanishes as $q >= 2$. Thus $H^q (Spec(ol(K) otimes_A A{T}), ul(ZZ\/n)) = 0$. We are thereby done. 
+  Each $B_lambda$ is finite type over $ol(K)$ of dimension $<=1$. Thus by Artin vanishing (@artin-vanishing), every term in the limit on the RHS vanishes as $q >= 2$. Thus $H^q (Spec(ol(K) otimes_A A{T}), ul(ZZ\/n)) = 0$. We are thereby done. 
 ]
 
 We now start computing the desired $H^0$ and $H^1$, which boils down to connected components and finite etale coverings. 
@@ -173,10 +173,10 @@ The $H^1$ case is a lot more involved, and requires a special case of the so-cal
   $
 ]
 
-We now develop some algebraic engine to spread the finite etale covering on the generic fiber to a codimension $>=2$ open subset.  
+We now develop the algebraic engine required for spreading the finite etale covering on the generic fiber to a codimension $>=2$ open subset.  
 
 #lemma(name: <zariski-nagata-purity-in-dim-2>)[
-  (Zariski-Nagata purity in dimension $2$) Let $(A, frak(m))$ be a regular local domain of dimension $2$, with an inclusion $A arrow.hook B$ for $B$ a normal finite $A$-algebra. 
+  (Zariski-Nagata purity in dimension $2$) Let $(A, frak(m))$ be a regular local domain of dimension $2$, with an inclusion $A arrow.hook B$ for $B$ a normal domain finite over $A$. 
   
   If $B$ is etale over the punctured spectrum $Spec(A) - {frak(m)}$, then it is etale over $A$. 
 ]
@@ -193,7 +193,7 @@ We now develop some algebraic engine to spread the finite etale covering on the 
 
   Choose a regular system of parameters $frak(m) = (x, y)$. Now: 
 
-  - Multiplication of $y$ on $B\/x B$ is injective. Indeed, suppose that $b_1, b_2 in B$ has $b_1 y = b_2 x$. Then: #h(1fr)
+  - Multiplication of $y$ on $B\/x B$ is injective. Indeed, suppose that $b_1, b_2 in B$ have $b_1 y = b_2 x$. Then: #h(1fr)
     $
       z = b_1/x = b_2/y in Frac(B)
     $
@@ -218,23 +218,23 @@ We now develop some algebraic engine to spread the finite etale covering on the 
 
     ($<==$) Suppose that the trace pairing is perfect. Pick a basis $u_1, dots.c, u_r in B$ with dual basis $v_1, dots.c, v_r in B$, and put $e = sum_(i=1)^r u_i otimes v_i in B otimes_A B$. The element $e$ has the following property: 
     $
-      (b otimes 1)e &= sum_(i=1)^n b u_i otimes v_i = sum_(i=1)^n sum_(j=1)^n Tr_(B\/A) (b u_i v_j) u_j otimes v_i \
-      &= sum_(i=1)^n sum_(j=1)^n u_i otimes Tr_(B\/A) (b u_j v_i) v_j = sum_(i=1)^n u_i otimes b v_i = (1 otimes b)e
+      (b otimes 1)e &= sum_(i=1)^r b u_i otimes v_i = sum_(i=1)^r sum_(j=1)^r Tr_(B\/A) (b u_i v_j) u_j otimes v_i \
+      &= sum_(i=1)^r sum_(j=1)^r u_i otimes Tr_(B\/A) (b u_j v_i) v_j = sum_(i=1)^r u_i otimes b v_i = (1 otimes b)e
     $
     Take the multiplication map $mu: B otimes_A B -> B$. Then for every element $t in B otimes_A B$, 
     $
       t e = (mu(t) otimes 1) e = (1 otimes mu(t)) e
     $
 
-    Meanwhile $b in B$, 
+    Meanwhile, for $b in B$, 
     $
-      Tr_(B\/A) (b mu(e)) = sum_(i=1)^n Tr_(B\/A) (b u_i v_i) = Tr_(B\/A) (b)
+      Tr_(B\/A) (b mu(e)) = sum_(i=1)^r Tr_(B\/A) (b u_i v_i) = Tr_(B\/A) (b)
     $
     and so by perfectness of the trace pairing, $mu(e) = 1$. Now let $I = ker(mu)$ and $z in I$. Then: 
     $
       z e = (mu(z) otimes 1) e = 0
     $
-    and so $z = z(1-e)$. However, $mu(e) = 1$ so $1-e in I^2$. Thus $z = z(1-e) = I^2$, so $I = I^2$. Thus, 
+    and so $z = z(1-e)$. However, $mu(e) = 1$ so $1-e in I$. Thus $z = z(1-e) in I^2$, so $I = I^2$. Thus, 
     $
       Omega_(B\/A) cong I\/I^2 = 0
     $
@@ -251,7 +251,7 @@ We now develop some algebraic engine to spread the finite etale covering on the 
   $
   Thus, 
   $
-    Delta = inter.big_(frak(p) in Spec(A) \ "ht"(frak(p)) = 1) A_(frak(p))^times = A^times
+    Delta in inter.big_(frak(p) in Spec(A) \ "ht"(frak(p)) = 1) A_(frak(p))^times = A^times
   $
   by @normal-hartogs. Thus by the previous lemma, $B$ is an etale $A$-algebra. 
 ]
@@ -286,7 +286,7 @@ We now develop some algebraic engine to spread the finite etale covering on the 
 
     Consequently, for any open subset $U' subset X'$, $U'_(eta') subset U'$ is a dense open. 
 
-  Hence, by the previous rigidity lemma, $pi_i$ and $pi_j$ agrees over $X'_(i,j)$ since they agree over $X'_(i,j,eta')$. Hence, we may glue the $pi_i$'s to a finite etale covering $pi: Z' -> X'$. */
+  Hence, by the previous rigidity lemma, $pi_i$ and $pi_j$ agree over $X'_(i,j)$ since they agree over $X'_(i,j,eta')$. Hence, we may glue the $pi_i$'s to a finite etale covering $pi: Z' -> X'$. */
   Since $X$ is smooth over $R$, it is regular. Thus the connected components of $X$ are integral. We may replace $X$ by its connected components and assume that $X$ is integral affine. 
 
   Since $X$ is integral affine, put $X = Spec(A)$. Fix notation by: 
@@ -318,12 +318,12 @@ We now develop some algebraic engine to spread the finite etale covering on the 
 
   - $Z'_(eta') -> X'_(eta')$ and $Z_eta -> X_eta$ are nontrivial etale $ZZ\/n$-torsors. 
 
-    $ZZ\/n$ acts transitively on the connected components of $Z'_(eta')$ and $Z_eta$. Since $n$ is a prime, they necessarily have $1$ or $n$ connected components. However, a $ZZ\/n$-torsor with $n$ connected components are trivial. Thus, $Z_eta, Z'_(eta')$ are necessarily connected, hence integral regular. Thus $C_1, C'_1$ are regular domains of dimension 1. Put: 
+    $ZZ\/n$ acts transitively on the connected components of $Z'_(eta')$ and $Z_eta$. Since $n$ is a prime, they necessarily have $1$ or $n$ connected components. However, a $ZZ\/n$-torsor with $n$ connected components is trivial. Thus, $Z_eta, Z'_(eta')$ are necessarily connected, hence integral regular. Thus $C_1, C'_1$ are regular domains of dimension 1. Put: 
     $
       L = Frac(C_1), L' = Frac(C'_1)
     $
     
-  The $n$ automorphisms in $Aut(C_1\/A_1)$ passes to the generic fiber. Thus $L\/F$ is a degree $n$ cyclic Galois extension. Similarly $L'\/F'$ is degree $n$ cyclic Galois. 
+  The $n$ automorphisms in $Aut(C_1\/A_1)$ pass to the generic fiber. Thus $L\/F$ is a degree $n$ cyclic Galois extension. Similarly $L'\/F'$ is cyclic Galois of degree $n$. 
 
   Since $C'_1$ is finite over $A'_1$ and a domain, it is necessary that: 
   $
@@ -353,7 +353,7 @@ We now develop some algebraic engine to spread the finite etale covering on the 
     (e, f, g) = (1, 1, n), (1, n, 1), (n, 1, 1)
   $
 
-  - In the first two cases $e = 1$. The residue field extensions are of degree $1$ or $n$, which are coprime to residue characteristic. Hence the residue field extensions are all finite separable. 
+  - In the first two cases $e = 1$. The residue field extensions are of degree $1$ or $n$, which are coprime to the residue characteristic. Hence the residue field extensions are all finite separable. 
   
     Thus $W$ is unramified over $V$. It is also finite free, so $Spec(W) -> Spec(V)$ is finite etale. Thus $D = W otimes_V V'$ is finite etale over $V'$. Meanwhile, 
     $
@@ -363,13 +363,13 @@ We now develop some algebraic engine to spread the finite etale covering on the 
     $
       C' otimes_(A') V' cong D
     $
-    Hence, $C' otimes_(A') V'$ is finite etale over $V'$. Since localization on base does not change etaleness, $Spec(C') -> Spec(A')$ is etale at points above $xi$. 
+    Hence, $C' otimes_(A') V'$ is finite etale over $V'$. Since localization on the base does not change etaleness, $Spec(C') -> Spec(A')$ is etale at points above $xi$. 
 
   - In the case $(e, f, g) = (n, 1, 1)$, $W$ itself is a DVR with the same residue field as $V$, and with ramification index $n$. Pick a uniformizer $delta in W$, so that $pi.alt = delta^n u$ for $u in W^times$. Take: 
     $
       D = W[T]\/(T^n - u) = W[u^(1\/n)]
     $
-    and endow $D$ with the structure of a $V'$-algebra by $V' -> D, pi.alt^(1\/n) |-> delta u^(1\/n)$. This is well-defined since $(delta u^(1\/n))^n = delta^n u = pi.alt$. $D$ is free over $W$, hence torsion free. Thus, $delta in W$ is a nonzerodivisor of $D$. Now in $D$, $u^(1\/n)$ is a unit, so $pi.alt^(1\/n) = delta u^(1\/n)$ remains a nonzerodivisor. Thus $D$ is finite and torsion free, hence finite over the DVR $V'$. We claim that $Spec(D) -> Spec(V')$ is finite etale. Indeed, 
+    and endow $D$ with the structure of a $V'$-algebra by $V' -> D, pi.alt^(1\/n) |-> delta u^(1\/n)$. This is well-defined since $(delta u^(1\/n))^n = delta^n u = pi.alt$. $D$ is free over $W$, hence torsion free. Thus, $delta in W$ is a nonzerodivisor of $D$. Now in $D$, $u^(1\/n)$ is a unit, so $pi.alt^(1\/n) = delta u^(1\/n)$ remains a nonzerodivisor. Thus $D$ is finite and torsion free, hence finite free over the DVR $V'$. We claim that $Spec(D) -> Spec(V')$ is finite etale. Indeed, 
     $
       D\/pi.alt^(1\/n) D = D\/delta D = k(W)[T]\/(T^n - u)
     $
@@ -383,13 +383,13 @@ We now develop some algebraic engine to spread the finite etale covering on the 
       &= L[T]\/(T^n - pi.alt) #[by changing $T |-> delta T$] \
       &= L(pi.alt^(1\/n)) = L'
     $ 
-    Thus $C' otimes_(A') V' = D$ is finite etale over $V'$. Since localization on base does not change etaleness, $Spec(C') -> Spec(A')$ is etale at points above $xi$. 
+    Thus $C' otimes_(A') V' = D$ is finite etale over $V'$. Since localization on the base does not change etaleness, $Spec(C') -> Spec(A')$ is etale at points above $xi$. 
 
-  Thus, $pi': Spec(C') -> Spec(A')$ is etale at all points above a height $<=1$ point of $Spec(A')$. For any height $2$ point $frak(p) in Spec(A')$, the finite morphism $Spec(C'_(frak(p))) -> Spec(A'_(frak(p)))$ is etale over the punctured spectrum $Spec(A'_(frak(p))) - {frak(p) A'_(frak(p))}$, with $C'_(frak(p))$ normal. By Zariski-Nagata purity in dimension $2$ (@zariski-nagata-purity-in-dim-2), $Spec(C'_(frak(p))) -> Spec(A'_(frak(p)))$ is finite etale. Since localization on base does not change etaleness, $Spec(C') -> Spec(A')$ is etale at points above $frak(p)$. Thus we have shown that $Spec(C') -> Spec(A')$ is finite etale. 
+  Thus, $pi': Spec(C') -> Spec(A')$ is etale at all points above a height $<=1$ point of $Spec(A')$. For any height $2$ point $frak(p) in Spec(A')$, the finite morphism $Spec(C'_(frak(p))) -> Spec(A'_(frak(p)))$ is etale over the punctured spectrum $Spec(A'_(frak(p))) - {frak(p) A'_(frak(p))}$, with $C'_(frak(p))$ normal. By Zariski-Nagata purity in dimension $2$ (@zariski-nagata-purity-in-dim-2), $Spec(C'_(frak(p))) -> Spec(A'_(frak(p)))$ is finite etale. Since localization on the base does not change etaleness, $Spec(C') -> Spec(A')$ is etale at points above $frak(p)$. Thus we have shown that $Spec(C') -> Spec(A')$ is finite etale. 
 ]
 
 #proposition(name: <sbc-core-h1>)[
-  Let $A$ be a noetherian strict henselian normal local domain with $K = Frac(A)$. Then $Spec(ol(K) otimes_A A{T})$ has no nontrivial finite etale covering of degree $n in A^times$. In particular, 
+  Let $A$ be a noetherian strict henselian normal local domain with $K = Frac(A)$. Then for every $n in A^times$, 
   $
     H^1 (Spec(ol(K) otimes_A A{T}), ul(ZZ\/n)) = 0
   $
@@ -419,7 +419,7 @@ We now develop some algebraic engine to spread the finite etale covering on the 
     $
       Spec(K otimes_A A{T}) = invlim_(U subset Spec(A) #[open]) U times_A Spec(A{T})
     $
-    By the same limit argument, we may assume that there exists a dense open $U subset Spec(A)$ and an etale $ZZ\/n$-torsor: 
+    by the same limit argument, we may assume that there exists a dense open $U subset Spec(A)$ and an etale $ZZ\/n$-torsor: 
     $
       pi^((2)): Z^((2)) -> Y^((2)) := U times_A Spec(A{T})
     $
@@ -427,7 +427,7 @@ We now develop some algebraic engine to spread the finite etale covering on the 
 
   - Since: 
     $
-      U times_A Spec(A{T}) = invlim_((Spec(B),ol(u)) -> (Spec(A[T]),Spec(K(T)^sep)) #[etale]) U times_A Spec(B)
+      U times_A Spec(A{T}) = invlim_((Spec(B),ol(u)) -> (Spec(A[T]),Spec(k(A))) #[etale]) U times_A Spec(B)
     $
     by the same limit argument, we may assume that there exists an etale $A[T]$-algebra $B$ and an etale $ZZ\/n$-torsor: 
     $
@@ -450,7 +450,7 @@ We now develop some algebraic engine to spread the finite etale covering on the 
     $
       A_(frak(p)_i) arrow.hook A_(frak(p)_i) [pi.alt_i^(1\/n)] arrow.hook A'_(frak(q))
     $
-    $B$ is a smooth $A$-algebra of relative dimension $1$. By @abhyankar-lemma-special-case, the generic fiber $Spec(K(pi.alt_i^(1\/n))) times_(U') Z'-> Spec(K(pi.alt_i^(1\/n))) times_A Spec(B)$ extends to a finite etale covering above $Spec(A_(frak(p)_i) [pi.alt_i^(1\/n)]) times_A Spec(B)$. 
+    $B$ is a smooth $A$-algebra of relative dimension $1$. By @abhyankar-lemma-special-case, the generic fiber $Spec(K(pi.alt_i^(1\/n))) times_U Z^((3))-> Spec(K(pi.alt_i^(1\/n))) times_A Spec(B)$ extends to a finite etale covering above $Spec(A_(frak(p)_i) [pi.alt_i^(1\/n)]) times_A Spec(B)$. 
 
     Hence, $pi'_1: Z'_1 -> Spec(K') times_(A') Spec(B')$ extends to a finite etale covering above $Spec(A'_(frak(q))) times_(A') Spec(B')$. By @passage-to-limit-of-morphisms (1), it extends to a finite etale covering above $V_(frak(q)) times_(A') Spec(B')$ for an open neighborhood $frak(q) in V_(frak(q)) subset Spec(A')$. By @passage-to-limit-of-morphisms (3), this extension agrees with $pi': Z'_1 -> U' times_(A') Spec(B')$ over the intersection $(U' inter V_(frak(q))) times_(A') Spec(B')$, upon shrinking $V_(frak(q))$ around $frak(q)$. 
 
@@ -458,13 +458,13 @@ We now develop some algebraic engine to spread the finite etale covering on the 
     $
       pi^((4)): Z^((4)) -> V times_(A') Spec(B')
     $
-    for an open subset $V subset Spec(A')$ of codimension $>=2$, s.t. $pi^((4))$ extends a base change of $pi^((3))$. Over the generic fiber, it base changes to $pi$. 
+    for an open subset $V subset Spec(A')$ whose complement has codimension $>=2$, s.t. $pi^((4))$ extends a base change of $pi^((3))$. Over the generic fiber, it base changes to $pi$. 
 
   - Replace $A$ with $A'$. Base changing $pi^((4))$ along $Spec(A{T}) -> Spec(B)$, we may replace it with a finite etale covering: 
     $
       pi^((5)): Z^((5)) -> V times_A Spec(A{T})
     $
-    for $V subset Spec(A)$ a codimension $>=2$ open subset, s.t. $pi^((5))$ base changes to $pi$. 
+    for $V subset Spec(A)$ an open subset whose complement has codimension $>=2$, s.t. $pi^((5))$ base changes to $pi$. 
 
   - Take the zero section $i: Spec(A) -> Spec(A{T})$. Base changing $pi^((5))$ along the zero section yields a finite etale covering $Z_V -> V$, where $V subset Spec(A)$ and $A$ is normal. Thus, a finite etale covering of $V$ is characterized by a discrete finite $pi_1^et (V) cong Gal(K^"ur" (V)\/K)$-set. There thus exists a finite separable extension $K'\/K$ s.t. the normalization $V'$ of $V$ in $K'$ is finite etale over $V$ and $Z_V times_V V' -> V'$ is a trivial finite etale covering. 
   
@@ -481,7 +481,7 @@ We now develop some algebraic engine to spread the finite etale covering on the 
   Now $pi^((6))$ is trivial by the following lemma. 
 
   #lemma[
-    Let $A$ be a noetherian strict henselian normal local domain, $V subset Spec(A)$ be an open subset of codimension $>=2$, and: 
+    Let $A$ be a noetherian strict henselian normal local domain, $V subset Spec(A)$ be an open subset whose complement has codimension $>=2$, and: 
     $
       pi: Z -> V times_A Spec(A{T})
     $
@@ -563,10 +563,10 @@ We now develop some algebraic engine to spread the finite etale covering on the 
     $
       Phi: hat(B) -> invlim_(m>=0) Gamma(Z_m, cal(O)_(Z_m)) cong (invlim_(m>=0) Gamma(W_m, cal(O)_(W_m)))^n
     $
-    To identify the projective limit on RHS, we need a version of normal Hartogs for sheaves. 
+    To identify the projective limit on the RHS, we need a version of normal Hartogs for sheaves. 
 
     #lemma[
-      (Normal Hartogs for sheaves) Let $X = Spec(A)$ be a noetherian integral normal scheme, and $U subset X$ be a subset of codimension $>=2$. Then for any coherent sheaf $cal(F)$ on $X$ that is free over $cal(O)_X$, the restriction map: 
+      (Normal Hartogs for sheaves) Let $X = Spec(A)$ be a noetherian integral normal scheme, and $U subset X$ be an open subset whose complement has codimension $>=2$. Then for any coherent sheaf $cal(F)$ on $X$ that is free over $cal(O)_X$, the restriction map: 
       $
         Gamma(X, cal(F)) -> Gamma(U, cal(F))
       $
@@ -577,7 +577,7 @@ We now develop some algebraic engine to spread the finite etale covering on the 
       $
         A -> inter.big_(frak(p) in U) A_(frak(p))
       $
-      where we identify both sides as subsets of $Frac(A)$. However, $U$ contains all height $1$ primes of $A$, so by @normal-hartogs, the intersection on RHS is exactly $A$ itself. 
+      where we identify both sides as subsets of $Frac(A)$. However, $U$ contains all height $1$ primes of $A$, so by @normal-hartogs, the intersection on the RHS is exactly $A$ itself. 
     ]
 
     Now: 
@@ -602,7 +602,7 @@ We now develop some algebraic engine to spread the finite etale covering on the 
       $
         Phi_0: hat(B)\/T hat(B) = B\/T B -> Gamma(Z_0, cal(O)_(Z_0)) cong Gamma(W_0, cal(O)_(W_0))^n cong A^n
       $
-      Thus the $t$-th coordinate map is the restriction $Gamma(Z_0, cal(O)_(Z_0)) -> A$ along the $t$-th component of the chosen trivialization $Z_0 cong union.sq.big_(j=1)^n W_0$. Under the identifications: 
+      Thus the $t$-th coordinate map is the composite of $B\/T B -> Gamma(Z_0, cal(O)_(Z_0))$ and the restriction $Gamma(Z_0, cal(O)_(Z_0)) -> A$ along the $t$-th component of the chosen trivialization $Z_0 cong union.sq.big_(j=1)^n W_0$. Under the identifications: 
       $
         Z_0 = W_0 times_A Spec(Gamma(Z_0, cal(O)_(Z_0)))
       $
@@ -614,7 +614,7 @@ We now develop some algebraic engine to spread the finite etale covering on the 
     $
       hat(B) cong Gamma(hat(Z), cal(O)_(hat(Z))) cong Gamma(hat(W), cal(O)_(hat(W)))^n = Gamma(hat(W), cal(O)_(Spec(A fps(T))))^n
     $
-    as $A fps(T)$-algebras. Since $A -> A fps(T)$ is flat, going down holds, and a point in $Spec(A fps(T))$ has height at least the height of its image in $Spec(A)$. Thus $hat(W)$ is of codimension $>=2$ in $Spec(A fps(T))$. $A fps(T)$ is also a normal domain, so by the previous lemma: 
+    as $A fps(T)$-algebras. Since $A -> A fps(T)$ is flat, going down holds, and a point in $Spec(A fps(T))$ has height at least the height of its image in $Spec(A)$. Thus $Spec(A fps(T)) - hat(W)$ has codimension $>=2$. $A fps(T)$ is also a normal domain, so by the previous lemma: 
     $
       hat(B) cong Gamma(hat(W), cal(O)_(Spec(A fps(T))))^n cong A fps(T)^n
     $
@@ -664,7 +664,7 @@ We now develop some algebraic engine to spread the finite etale covering on the 
 As a consequence of smooth base change, we show that etale cohomology of torsion sheaves over a separably closed field, with torsion coefficients coprime to base characteristic, is inert to base change along an extension of separably closed fields. 
 
 #corollary(name: <bc-along-extension-of-sep-cl-fields>)[
-  Let $Omega\/K$ be an extension of separably closed field, $X$ be a qcqs scheme over $K$, and $X_Omega = X otimes_K Omega$. 
+  Let $Omega\/K$ be an extension of separably closed fields, $X$ be a qcqs scheme over $K$, and $X_Omega = X otimes_K Omega$. 
 
   Then for any complex $cal(K) in D^+_(#[tor]\/K) (X_et, Lambda)$ (i.e. a bounded below complex whose cohomology sheaves are torsion with torsion orders invertible in $K$), the restriction morphism: 
   $
@@ -677,7 +677,7 @@ As a consequence of smooth base change, we show that etale cohomology of torsion
 
   By topological invariance, it is safe to replace $Omega$ with an algebraic closure $ol(Omega)$ and $K$ with its algebraic closure $ol(K)$ in $ol(Omega)$. We may thus assume that $Omega\/K$ are both algebraically closed. 
 
-  Writing $Omega = dirlim_(I subset Omega #[finite]) ol(K(I))$ as its algebraically closed subfields with finite transcendence degree, and using @limit-formula-for-schemes to write: 
+  Writing $Omega = dirlim_(I subset Omega #[finite]) ol(K(I))$ as the direct limit of its algebraically closed subfields with finite transcendence degree, and using @limit-formula-for-schemes to write: 
   $
     H^q (X_Omega, cal(F)|_(X_Omega)) = dirlim_(I subset Omega #[finite]) H^q (X_(ol(K(I))), cal(F)|_(X_(ol(K(I)))))
   $
@@ -685,7 +685,7 @@ As a consequence of smooth base change, we show that etale cohomology of torsion
 
 
   
-  It suffices to show that $Omega = ol(K(t))$ is a direct limit $dirlim_lambda A_lambda$ of smooth $K$-algebras $A_lambda$. Since in that case, we may form the Cartesian diagram: 
+  It suffices to show that $Omega = ol(K(t))$ is a direct limit $dirlim_lambda A_lambda$ of smooth $K$-algebras $A_lambda$. In that case, we may form the Cartesian diagram: 
   // https://q.uiver.app/#r=typst&q=WzAsNixbMCwyLCJYIl0sWzEsMiwiU3BlYyhLKSJdLFswLDEsIlhfKEFfbGFtYmRhKSJdLFsxLDEsIlNwZWMoQV9sYW1iZGEpIl0sWzEsMCwiU3BlYyhPbWVnYSkiXSxbMCwwLCJYX09tZWdhIl0sWzUsNCwiZl9PbWVnYSJdLFsyLDMsImZfbGFtYmRhIl0sWzAsMSwiZiJdLFs1LDIsImgnX2xhbWJkYSIsMl0sWzIsMCwiZydfbGFtYmRhIiwyXSxbNCwzLCJoX2xhbWJkYSJdLFszLDEsImdfbGFtYmRhIl1d
   #align(center, diagram({
     node((-1, 1), [$X$])
@@ -712,7 +712,7 @@ As a consequence of smooth base change, we show that etale cohomology of torsion
   $
     H^q (X_Omega, cal(F)|_(X_Omega)) = H^q (X, cal(F))
   $
-  Now it remains to prove that $ol(K(t))$ is a directed limit of smooth $K$-algebras. For any subfield $K(t) subset L subset ol(K(t))$, let $A_L$ be the normalization of $K[t]$ in $L$, so that $L = Frac(A_L)$. Then since $K[t]$ is Nagata (by @cite-matsumura-ca[Theorem 31.H]), $A_L$ is a finite $K[t]$-algebra. It is thus a finite type integral $K$-algebra of dimension $1$ that is integrally closed. Since $A_L$ has dimension $1$ and is integrally closed, all of its local rings are fields or DVRs, hence $A_L$ is regular. Recall that for an algebraically closed field $K$, a finite type $K$-scheme is smooth if and only if it is regular (by @cite-hartshorne-ag[Theorem III.10.2]). Thus, $A_L$ is a smooth $K$-algebra with $Frac(A_L) = L$.
+  Now it remains to prove that $ol(K(t))$ is a directed limit of smooth $K$-algebras. For any finite subextension $K(t) subset L subset ol(K(t))$, let $A_L$ be the normalization of $K[t]$ in $L$, so that $L = Frac(A_L)$. Then since $K[t]$ is Nagata (by @cite-matsumura-ca[Theorem 31.H]), $A_L$ is a finite $K[t]$-algebra. It is thus a finite type integral $K$-algebra of dimension $1$ that is integrally closed. Since $A_L$ has dimension $1$ and is integrally closed, all of its local rings are fields or DVRs, hence $A_L$ is regular. Recall that for an algebraically closed field $K$, a finite type $K$-scheme is smooth if and only if it is regular (by @cite-hartshorne-ag[Theorem III.10.2]). Thus, $A_L$ is a smooth $K$-algebra with $Frac(A_L) = L$.
 
   Now: 
   $

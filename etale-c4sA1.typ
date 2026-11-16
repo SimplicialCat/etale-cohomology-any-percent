@@ -39,7 +39,7 @@ However, there is an important lemma that we will constantly use, and thus state
   $
     F, G: D^bullet_(cal(A)') (cal(A)) -> D(cal(B))
   $
-  and a natural transformation $eta: F -> G$. Suppose that $eta_X: F(X) -> G(X)$ is an isomorphism for all objects $X in cal(A)'$ regarded as an object of $D^bullet_(cal(A)') (cal(A))$, and one of the following holds: 
+  and a natural transformation $eta: F -> G$ compatible with the triangulated structures. Suppose that $eta_X: F(X) -> G(X)$ is an isomorphism for all objects $X in cal(A)'$ regarded as objects of $D^bullet_(cal(A)') (cal(A))$, and one of the following holds: 
 
   + $bullet = b$; 
   + $bullet = +$ and $F,G$ are bounded below; 
@@ -62,7 +62,7 @@ We begin by defining the derived categories of etale sheaves.
     $
       Hom_Lambda (G otimes_ZZ Lambda, -) = Hom_ZZ (G, -): cAb(X_et, Lambda) -> cAb
     $
-    is faithful since $G$ is a generator of $cAb(X_et, Lambda)$. Thus $G otimes_ZZ Lambda$ is a generator of $cAb(X_et, Lambda)$. 
+    is faithful since $G$ is a generator of $cAb(X_et)$ and the forgetful functor is faithful. Thus $G otimes_ZZ Lambda$ is a generator of $cAb(X_et, Lambda)$. 
   
   Thus $cAb(X_et, Lambda)$ is indeed a Grothendieck category. 
 
@@ -80,7 +80,7 @@ We begin by defining the derived categories of etale sheaves.
 
   Thus, $D^bullet_#[tor] (X_et, Lambda)$ are triangulated subcategories of $D^bullet (X_et, Lambda)$ for $bullet in {#`blank`, -, +, b}$. 
 
-  Recall that we have argued that $cAb(X_et, Lambda)$ is a Grothendieck category. Thus, every complex in the unbounded derived category $D(X_et, Lambda)$ admits a quasi-isomorphism to a K-injective complex of injective objects. (See #cite-stacks("079P", [Theorem 19.12.6]).) This allows right derived functors of any left exact functor from $cAb(X_et, Lambda)$ to be defined, not only on the bounded below derived category $D^+ (X_et, Lambda)$, but also on the unbounded derived category $D(X_et, Lambda)$.#footnote[This generalization is essential when we eventually state the projection and Kunneth formula, which involves a (right) derived push forward together with a (left) derived tensor. The tensor is defined for $D^-$, so it is absolutely necessary that we are able to apply a right derived functor to a complex in $D^-$.]
+  Recall that we have argued that $cAb(X_et, Lambda)$ is a Grothendieck category. Thus, every complex in the unbounded derived category $D(X_et, Lambda)$ admits a quasi-isomorphism to a K-injective complex of injective objects. (See #cite-stacks("079P", [Theorem 19.12.6]).) This allows right derived functors of any left exact functor from $cAb(X_et, Lambda)$ to be defined, not only on the bounded below derived category $D^+ (X_et, Lambda)$, but also on the unbounded derived category $D(X_et, Lambda)$.#footnote[This generalization is essential when we eventually state the projection and Kunneth formulas, which involve a (right) derived push forward together with a (left) derived tensor. The tensor is defined for $D^-$, so it is absolutely necessary that we are able to apply a right derived functor to a complex in $D^-$.]
 
   /*We thus have functors: 
   $
@@ -91,11 +91,11 @@ We begin by defining the derived categories of etale sheaves.
   $
   obtained as derived functors. 
 
-  There is one functor that needs to be left derived: the tensor product. The category of sheaves do not have enough projectives, but it does have enough flat objects (see @flat-resolution-of-et-sheaf). This allows a left derived tensor product to be derived on the bounded above derived category: 
+  There is one functor that needs to be left derived: the tensor product. The category of sheaves does not have enough projectives, but it does have enough flat objects (see @flat-resolution-of-et-sheaf). This allows a left derived tensor product to be derived on the bounded above derived category: 
   $
     - Lotimes_Lambda -: D^- (X_et, Lambda) times D^- (X_et, Lambda) -> D^- (X_et, Lambda)
   $
-  To define it on the unbounded derived category, one need to use K-flat complexes, complexes whose tensor product with an exact complex remain exact. The existence of K-flat resolutions is due to #cite-stacks("06YS")[Lemma 21.17.11]. */
+  To define it on the unbounded derived category, one needs to use K-flat complexes, complexes whose tensor product with an exact complex remains exact. The existence of K-flat resolutions is due to #cite-stacks("06YS")[Lemma 21.17.11]. */
 ]
 
 /*
@@ -105,7 +105,7 @@ To proceed, we make one more general abstract remark:
   $
     cal(A) ->^F cal(B) ->^G cal(C)
   $
-  between abelian categories in which $cal(A)$ and $cal(B)$ has enough injectives, s.t. $F$ sends injectives in $cal(A)$ to $G$-acyclics in $cal(B)$. Then the Grothendieck-Leray spectral sequence gives a natural spectral sequence: 
+  between abelian categories in which $cal(A)$ and $cal(B)$ have enough injectives, s.t. $F$ sends injectives in $cal(A)$ to $G$-acyclics in $cal(B)$. Then the Grothendieck-Leray spectral sequence gives a natural spectral sequence: 
   $
     E_2^(p,q) = R^p G (R^q F (X)) ==> R^(p+q) (G compose F) (X)
   $
@@ -113,7 +113,7 @@ To proceed, we make one more general abstract remark:
   $
     R G compose R F cong R (G compose F): D^+ (cal(A)) -> D^+ (cal(C))
   $
-  Now assuming that $cal(A), cal(B)$ are Grothendieck categories, so that every complex in $D(cal(A)), D(cal(B))$ may be (functorially) resolved by a K-injective complex, and so right derived functors are defined on the unbounded derived categories. In this case, that $F$ sends injectives to $G$-acyclics is no longer enough to guarantee: 
+  Now assume that $cal(A), cal(B)$ are Grothendieck categories, so that every complex in $D(cal(A)), D(cal(B))$ may be (functorially) resolved by a K-injective complex, and so right derived functors are defined on the unbounded derived categories. In this case, that $F$ sends injectives to $G$-acyclics is no longer enough to guarantee: 
   $
     R G compose R F cong R (G compose F): D(cal(A)) -> D(cal(C))
   $
@@ -144,7 +144,7 @@ We now start by translating results from @sect-ab-x-et-as-abelian-cat, @sect-fun
     $
     in which $f^(-1)$ is applied termwise, $Lotimes_Lambda$ is the left derived functor of $otimes_Lambda$ (and is symmetric monoidal), and the rest are right derived functors. 
 
-    For $j: U -> X$ etale and $i: Z -> X$ closed immersion, there are also triangulated functors: 
+    For $j: U -> X$ etale and $i: Z -> X$ a closed immersion, there are also triangulated functors: 
     $
       j_!: D(U_et, Lambda) -> D(X_et, Lambda) \
       R i^!: D(X_et, Lambda) -> D(Z_et, Lambda)
@@ -158,7 +158,7 @@ We now start by translating results from @sect-ab-x-et-as-abelian-cat, @sect-fun
         f^(-1) tack.l R f_*
       $
     
-    + For $j$ etale and $i$ closed immersion: 
+    + For $j$ etale and $i$ a closed immersion: 
       $
         j_! tack.l j^(-1) \
         i_* tack.l R i^!
@@ -181,7 +181,7 @@ We now start by translating results from @sect-ab-x-et-as-abelian-cat, @sect-fun
         RHHom_Lambda (cal(K) Lotimes_Lambda cal(L), cal(M)) ->^tilde RHHom_Lambda (cal(K), RHHom_Lambda (cal(L), cal(M)))
       $
 
-    + For $j: U -> X$ etale, $i: Z -> X$ closed immersion: 
+    + For $j: U -> X$ etale, $i: Z -> X$ a closed immersion: 
       $
         RHHom_Lambda (j_! cal(K), cal(L)) ->^tilde R j_* RHHom_Lambda (cal(K), j^(-1) cal(L)) \
 
@@ -253,12 +253,12 @@ We now start by translating results from @sect-ab-x-et-as-abelian-cat, @sect-fun
   For hom-tensor, we need to be slightly more careful. 
 
   #lemma(name: <hhom-from-kflat-to-kinj-is-kinj>)[
-    Let $cal(P) in K(X_et, Lambda)$ be K-flat and $cal(I) in K(X_et, Lambda)$ be K-injective. Then $RHHom_Lambda (cal(P), cal(I)) in K(X_et, Lambda)$ is K-injective. 
+    Let $cal(P) in K(X_et, Lambda)$ be K-flat and $cal(I) in K(X_et, Lambda)$ be K-injective. Then $HHom_Lambda (cal(P), cal(I)) in K(X_et, Lambda)$ is K-injective. 
   ]
   #proof[
     Let $cal(K) in K(X_et, Lambda)$ be any exact complex. Now: 
     $
-      Hom_K (cal(K), RHHom_Lambda (cal(P), cal(I))) = Hom_K (cal(K) otimes_Lambda cal(P), cal(I)) = 0
+      Hom_K (cal(K), HHom_Lambda (cal(P), cal(I))) = Hom_K (cal(K) otimes_Lambda cal(P), cal(I)) = 0
     $
     where $cal(K) otimes_Lambda cal(P)$ is exact since $cal(K)$ is exact and $cal(P)$ is K-flat, and the last hom is zero since $cal(I)$ is K-injective. 
   ]
@@ -283,7 +283,7 @@ We now start by translating results from @sect-ab-x-et-as-abelian-cat, @sect-fun
     $
       cal(A) ->^F cal(B) ->^G cal(C)
     $
-    between abelian categories in which $cal(A)$ and $cal(B)$ has enough injectives, s.t. $F$ sends injectives in $cal(A)$ to $G$-acyclics in $cal(B)$. Then the Grothendieck-Leray spectral sequence gives a natural spectral sequence: 
+    between abelian categories in which $cal(A)$ and $cal(B)$ have enough injectives, s.t. $F$ sends injectives in $cal(A)$ to $G$-acyclics in $cal(B)$. Then the Grothendieck-Leray spectral sequence gives a natural spectral sequence: 
     $
       E_2^(p,q) = R^p G (R^q F (X)) ==> R^(p+q) (G compose F) (X)
     $
@@ -291,7 +291,7 @@ We now start by translating results from @sect-ab-x-et-as-abelian-cat, @sect-fun
     $
       R G compose R F cong R (G compose F): D^+ (cal(A)) -> D^+ (cal(C))
     $
-    Now assuming that $cal(A), cal(B)$ are Grothendieck categories, so that every complex in $D(cal(A)), D(cal(B))$ may be (functorially) resolved by a K-injective complex, and so right derived functors are defined on the unbounded derived categories. In this case, that $F$ sends injectives to $G$-acyclics is no longer enough to guarantee: 
+    Now assume that $cal(A), cal(B)$ are Grothendieck categories, so that every complex in $D(cal(A)), D(cal(B))$ may be (functorially) resolved by a K-injective complex, and so right derived functors are defined on the unbounded derived categories. In this case, that $F$ sends injectives to $G$-acyclics is no longer enough to guarantee: 
     $
       R G compose R F cong R (G compose F): D(cal(A)) -> D(cal(C))
     $
@@ -388,7 +388,7 @@ We now start by translating results from @sect-ab-x-et-as-abelian-cat, @sect-fun
 
   - As right derived functors to $f_*: cAb(X_et, Lambda) -> cAb(Y_et, Lambda)$; 
 
-  - By first forgetting to sheaves of abelian groups, then right deriving $f_*: cAb(X_et) -> cAb(Y_et)$, and finally equip with a $Lambda$-module structure by functoriality. 
+  - By first forgetting to sheaves of abelian groups, then right deriving $f_*: cAb(X_et) -> cAb(Y_et)$, and finally equipping with a $Lambda$-module structure by functoriality. 
 
   Why do these two approaches commute? In other words, why do we have diagrams 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJEKFhfZXQsIExhbWJkYSkiXSxbMCwxLCJEKFhfZXQpIl0sWzEsMCwiRChMYW1iZGEpIl0sWzEsMSwiRChaWikiXSxbMSwzLCJSIEdhbW1hXlpaIChVLCAtKSIsMl0sWzAsMiwiUiBHYW1tYV5MYW1iZGEgKFUsIC0pIl0sWzAsMSwiaW90YSIsMl0sWzIsMywiaW90YSJdXQ==
@@ -426,13 +426,13 @@ We now start by translating results from @sect-ab-x-et-as-abelian-cat, @sect-fun
   $
   These two left adjoints are identical by @derived-functoriality-etale (4a). Thus, we have a natural isomorphism $iota compose R f^Lambda_* cong R f_*^ZZ compose iota$. 
 
-  Similarly, let $g: U -> X$, and $R Gamma(U, -): D(X_et, Lambda) -> D(Lambda)$ has the left adjoint $g_! compose a_X$, where $a_X: D(Lambda) -> D(X_et, Lambda)$ is the constant sheaf functor. Thus, 
+  Similarly, let $g: U -> X$, and $R Gamma(U, -): D(X_et, Lambda) -> D(Lambda)$ has the left adjoint $g_! compose a_U$, where $a_U: D(Lambda) -> D(U_et, Lambda)$ is the constant sheaf functor. Thus, 
   $
-    iota compose R Gamma^Lambda (U, -) tack g_! a_X (Lambda Lotimes_ZZ -)
+    iota compose R Gamma^Lambda (U, -) tack g_! a_U (Lambda Lotimes_ZZ -)
   $
   while: 
   $
-    R Gamma^ZZ (U, -) compose iota tack ul(Lambda) Lotimes_ZZ g_! a_X (-)
+    R Gamma^ZZ (U, -) compose iota tack ul(Lambda) Lotimes_ZZ g_! a_U (-)
   $
   The two left adjoints are identical by @derived-functoriality-etale (4b). Thus, we have a natural isomorphism $iota compose R Gamma^Lambda (U, -) cong R Gamma^ZZ (U, -) compose iota$. 
 ]
@@ -508,4 +508,4 @@ Next, we translate @sect-stalks, the theory of stalks.
   Just apply @stalks-detects-properties to the morphism on cohomology groups. 
 ]
 
-Next,
+

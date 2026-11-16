@@ -14,7 +14,7 @@ Let $Omega$ be a separably closed field.
     $
       cal(G) (Spec(Omega)) = cal(G)^\# (Spec(Omega))
     $
-    and $cal(G)^\# (Spec(Omega))$ is the constant sheaf associated with $cal(G)(Spec(Omega))$. 
+    and $cal(G)^\#$ is the constant sheaf associated with $cal(G)(Spec(Omega))$. 
 
   + Taking global sections $Gamma (Spec(Omega), -)$ induces an equivalence of categories: 
     $
@@ -26,7 +26,7 @@ Let $Omega$ be a separably closed field.
   
   For any etale $X -> Spec(Omega)$ and any point $x in X$, by definition $k(x)\/Omega$ is a finite separable extension. Since $Omega$ is separably closed, it can only be that $k(x) = Omega$. Thus, the inclusion $Spec(k(x)) -> X -> Spec(Omega)$ is an isomorphism, and so $Spec(k(x)) -> X$ is a closed immersion. Thus $x$ is a closed point of $X$ with residue field $Omega$. 
 
-  On the other hand, fix $x in X$, let $U = Spec(A) subset X$ be any affine open around $x$. Then $U$ has only closed points. Since $A\/Omega$ is finite type, $A$ is noetherian. This combined with that $U$ has only closed points shows that $A$ is artinian. Thus $U$ is a finite discrete scheme, and so ${x}$ is an open subset of $U$, hence an open subset of $X$. 
+  On the other hand, fix $x in X$, let $U = Spec(A) subset X$ be any affine open around $x$. Then $U$ has only closed points. Since $A\/Omega$ is finite type, $A$ is noetherian. This combined with the fact that $U$ has only closed points shows that $A$ is artinian. Thus $U$ is a finite discrete scheme, and so ${x}$ is an open subset of $U$, hence an open subset of $X$. 
 
   In other words, every point of $X$ is open and closed, and has residue field $Omega$. Thus, 
   $
@@ -43,7 +43,7 @@ Let $Omega$ be a separably closed field.
   $
   Taking $(-)^+$ twice, we see that $cal(G)^\# (Spec(Omega)) = cal(G) (Spec(Omega))$. 
 
-  (2) From (0), we see that every etale sheaf $cal(G)$ over $Spec(Omega)$ is determined by its sections on $Spec(Omega)$, since its sections on $union.sq.big_(i in I) Spec(Omega)$ is just $product_(i in I) Gamma(Spec(Omega), cal(G))$. In other words, every etale sheaf on $Spec(Omega)$ is a constant sheaf. The equivalence of categories is thus evident. 
+  (2) From (0), we see that every etale sheaf $cal(G)$ over $Spec(Omega)$ is determined by its sections on $Spec(Omega)$, since its sections on $union.sq.big_(i in I) Spec(Omega)$ are just $product_(i in I) Gamma(Spec(Omega), cal(G))$. In other words, every etale sheaf on $Spec(Omega)$ is a constant sheaf. The equivalence of categories is thus evident. 
 ]
 
 #definition(name: <defn-etale-stalk>)[
@@ -93,8 +93,10 @@ Let $Omega$ be a separably closed field.
   (3) This follows from $ol(x)^(-1) compose f^(-1) = (f compose ol(x))^(-1) = ol(y)^(-1)$. 
 ]
 
+We state the rest of this section in terms of $cAb(X_et)$ only. You should keep in mind that analogs of these results exist for $cSh(X_et)$, but in this course we mainly deal with sheaves of abelian groups. 
+
 #definition(name: <defn-germs-and-support>)[
-  Let $cal(F) in cSh(X_et)$, $U in Et_X$ and $ol(u)$ be a geometric point of $U$. Then $(U, ol(u))$ is an etale neighborhood of $(X, ol(u))$, thus inducing a natural morphism: 
+  Let $cal(F) in cAb(X_et)$, $U in Et_X$ and $ol(u)$ be a geometric point of $U$. Then $(U, ol(u))$ is an etale neighborhood of $(X, ol(u))$, thus inducing a natural morphism: 
   $
     (-)_(ol(u)): cal(F)(U) -> cal(F)_(ol(u))
   $
@@ -105,8 +107,6 @@ Let $Omega$ be a separably closed field.
     supp(s) := {u in U: exists#[a geometric point $ol(u)$ above $u$ s.t. $s_(ol(u)) != 0$]}
   $
 ]
-
-We state the rest of this section in terms of $cAb(X_et)$ only. You should keep in mind that analogs of these results exist for $cSh(X_et)$, but in this course we mainly deal with sheaves of abelian groups. 
 
 #lemma(name: <vanishing-stalks-spreads-out>)[
   Let $cal(F) in cAb(X_et)$, $s in cal(F)(U)$ and $ol(u)$ be a geometric point of $U$ lying above $u in U$ s.t. $s_(ol(u)) = 0$. Then there exists a Zariski neighborhood $u in V subset U$ s.t. $s|_V = 0$. 
@@ -124,7 +124,7 @@ We state the rest of this section in terms of $cAb(X_et)$ only. You should keep 
   $
     cal(F)_(ol(u)) = dircolim_((V,ol(v)) -> (X,ol(u))) cal(F)(V)
   $
-  The image of $s in cal(F)(U)$ in this filtered colimit is $0$ means that there exists an etale neighborhood $phi: (W, ol(w)) -> (U, ol(u))$ s.t. $s|_W = 0$. Now $phi(W)$ is an open subset of $U$ containing $u$, and $phi: W -> phi(W)$ is surjective etale, hence an etale cover of $phi(W)$. Thus, 
+  the fact that the image of $s in cal(F)(U)$ in this filtered colimit is $0$ means that there exists an etale neighborhood $phi: (W, ol(w)) -> (U, ol(u))$ s.t. $s|_W = 0$. Now $phi(W)$ is an open subset of $U$ containing $u$, and $phi: W -> phi(W)$ is surjective etale, hence an etale cover of $phi(W)$. Thus, 
   $
     s|_W = (s|_(phi(W)))|_W = 0
   $
@@ -147,7 +147,7 @@ We state the rest of this section in terms of $cAb(X_et)$ only. You should keep 
   + Taking stalks commutes with kernels, cokernels and images. 
 
   + The following are equivalent: 
-    + A morphism $cal(F) -> cal(G)$ of etale sheaves on $X$ is injective/surjective/isomorphism/zero, or $cal(F) -> cal(G) -> cal(H)$ is exact in the middle. 
+    + A morphism $cal(F) -> cal(G)$ of etale sheaves on $X$ is injective/surjective/an isomorphism/zero, or $cal(F) -> cal(G) -> cal(H)$ is exact in the middle. 
     + The same condition holds for $cal(F)_(ol(x)) -> cal(G)_(ol(x))$ or $cal(F)_(ol(x)) -> cal(G)_(ol(x)) -> cal(H)_(ol(x))$ for every geometric point $ol(x)$ of $X$; 
     + There exists a subset $E subset X$ intersecting every nonempty locally closed subset of $X$, and for each $x in E$ some geometric point $ol(x)$ of $X$ lying above $x$ s.t. the same condition holds for $cal(F)_(ol(x)) -> cal(G)_(ol(x))$ or $cal(F)_(ol(x)) -> cal(G)_(ol(x)) -> cal(H)_(ol(x))$. 
 ]
@@ -168,15 +168,15 @@ We state the rest of this section in terms of $cAb(X_et)$ only. You should keep 
   $
     0 -> ker(f)_(ol(x)) -> cal(F)_(ol(x)) ->^(f_(ol(x))) cal(G)_(ol(x)) -> coker(f)_(ol(x)) -> 0
   $
-  This shows that $ker(f)_(ol(x)) = ker(f_(ol(x)))$ and $coker(f)_(ol(x)) = coker(f_(ol(x)))$. The image is the kernel of cokernel, and hence also commutes with taking stalks. 
+  This shows that $ker(f)_(ol(x)) = ker(f_(ol(x)))$ and $coker(f)_(ol(x)) = coker(f_(ol(x)))$. The image is the kernel of the cokernel, and hence also commutes with taking stalks. 
 
   (1) (a)$==>$(b)$==>$(c) is obvious, so we only prove that (c)$==>$(a). 
 
   Given any $(f: U -> X) in Et_X$ and any section $s in cal(F)(U)$, we would like to prove that $s = 0$. We additionally assume that $U$ is affine and $f(U)$ is contained in an affine open of $X$. Suppose that $s != 0$. Let $Z = supp(s) subset U$, which is a closed subset of $U$. Since $s != 0$, $Z$ must be nonempty. 
 
-  Let $X_0$ be an affine open of $X$ containing $f(U)$, so that $f$ factors as $f: U ->^(f_0) X_0 -> X$. Now $f_0$ is affine (hence quasi-compact), and of finite presentation. By Chevalley's theorem (say the version in #cite-stacks("054K", [Theorem 29.22.3])), $f(Z)$ is a nonempty constructible subset of $X_0$. It thus contains a nonempty locally closed subset of $X_0$, hence a nonempty locally closed subset of $X$. 
+  Equip $Z$ with its reduced closed subscheme structure and choose a finite type point $z$ of the nonempty scheme $Z$, which exists by #cite-stacks("02J4", [Lemma 29.16.7]). Since $Z -> U$ is a closed immersion and $f: U -> X$ is locally of finite type, the composite $Spec(k(z)) -> Z -> U -> X$ is of finite type. Hence $x = f(z)$ is a finite type point of $X$, so ${x}$ is locally closed in $X$ by #cite-stacks("01T9", [Section 29.16]). Thus $f(Z)$ contains a nonempty locally closed subset of $X$.
 
-  By our assumption on $E$, there exists $x in E$ s.t. $x in f(Z)$. Pick any geometric point $ol(x)$ above $x$ and (by (0)) $cal(F)_(ol(x)) = 0$, and any $z in Z$ s.t. $x = f(z)$. Since $f$ is etale, there exists a geometric point $ol(z)$ above $z$ s.t. $ol(x) = f(ol(z))$. Then $s_(ol(z)) != 0$ is an element of $cal(F)_(ol(x)) = 0$, a contradiction. 
+  By our assumption on $E$, there exists $x in E$ s.t. $x in f(Z)$. Pick any geometric point $ol(x)$ above $x$ (so, by (0), $cal(F)_(ol(x)) = 0$), and any $z in Z$ s.t. $x = f(z)$. Since $f$ is etale, there exists a geometric point $ol(z)$ above $z$ s.t. $ol(x) = f(ol(z))$. Then $s_(ol(z)) != 0$ is an element of $cal(F)_(ol(x)) = 0$, a contradiction. 
 
   In other words, for any affine $U in Et_X$ whose image in $X$ is contained in an affine open, $cal(F)(U) = 0$. Since any $U in Et_X$ can be covered by sufficiently small affine opens satisfying this condition, using the sheaf conditions, $cal(F)(U) = 0$ for all $U in Et_X$. Hence $cal(F) = 0$. 
 
@@ -220,10 +220,10 @@ We state the rest of this section in terms of $cAb(X_et)$ only. You should keep 
 ]
 
 #corollary(name: <surjective-pullback-conservative>)[
-  For any surjective morphism $f: X -> Y$ of schemes, $f^(-1): cAb(Y_et) -> cAb(X_et)$ is a conservative functor. That is, any morphism $phi: cal(F) -> cal(G)$ in $cAb(Y_et)$ is injective/surjective/isomorphism/zero, if and only if the same holds for $f^(-1) phi: f^(-1) cal(F) -> f^(-1) cal(G)$. 
+  For any surjective morphism $f: X -> Y$ of schemes, $f^(-1): cAb(Y_et) -> cAb(X_et)$ is a conservative functor. That is, any morphism $phi: cal(F) -> cal(G)$ in $cAb(Y_et)$ is injective/surjective/an isomorphism/zero, if and only if the same holds for $f^(-1) phi: f^(-1) cal(F) -> f^(-1) cal(G)$. 
 ]
 #proof[
-  ($==>$) is exactness of $f^(-1)$, so we verify ($<==$) only. It suffices to show that for every $y in Y$, there exists a geometric point $ol(y)$ above $y$ s.t. $cal(F)_(ol(y)) -> cal(G)_(ol(y))$ is injective/surjective/isomorphism/zero. Since $f$ is surjective, we may pick $x in X$ s.t. $f(x) = y$. Pick any geometric point $ol(x)$ above $x$, and take $ol(y) = f(ol(x))$ to be a geometric point above $y$. Since $f^(-1) phi: f^(-1) cal(F) -> f^(-1) cal(G)$ is injective/surjective/isomorphism/zero, the same property holds for $(f^(-1) cal(F))_(ol(x)) -> (f^(-1) cal(G))_(ol(x))$, which is just $cal(F)_(ol(y)) -> cal(G)_(ol(y))$ by @stalks-first-props (3). We are thereby done. 
+  ($==>$) is exactness of $f^(-1)$, so we verify ($<==$) only. It suffices to show that for every $y in Y$, there exists a geometric point $ol(y)$ above $y$ s.t. $cal(F)_(ol(y)) -> cal(G)_(ol(y))$ is injective/surjective/an isomorphism/zero. Since $f$ is surjective, we may pick $x in X$ s.t. $f(x) = y$. Pick any geometric point $ol(x)$ above $x$, and take $ol(y) = f(ol(x))$ to be a geometric point above $y$. Since $f^(-1) phi: f^(-1) cal(F) -> f^(-1) cal(G)$ is injective/surjective/an isomorphism/zero, the same property holds for $(f^(-1) cal(F))_(ol(x)) -> (f^(-1) cal(G))_(ol(x))$, which is just $cal(F)_(ol(y)) -> cal(G)_(ol(y))$ by @stalks-first-props (3). We are thereby done. 
 ]
 
 #example[
@@ -257,7 +257,7 @@ We state the rest of this section in terms of $cAb(X_et)$ only. You should keep 
     $
       C(U; ZZ\/p) -> A, f |-> sum_(a in FF_p) e_a a
     $
-    Suppose that $x in A$ s.t. $x^p - x = 0$, i.e. $product_(a in FF_p) (x-a) = 0$. Now ${x-a}_(a in FF_p)$ are pairwise coprime with product $0$, so by Chinese remainder theorem, we have an isomorphism: 
+    Suppose that $x in A$ s.t. $x^p - x = 0$, i.e. $product_(a in FF_p) (x-a) = 0$. Now ${x-a}_(a in FF_p)$ are pairwise coprime with product $0$, so by the Chinese remainder theorem, we have an isomorphism: 
     $
       A cong product_(a in FF_p) A\/(x-a)
     $
@@ -274,7 +274,7 @@ We state the rest of this section in terms of $cAb(X_et)$ only. You should keep 
 Finally, there is this alternative method of proving that $cAb(X_et)$ has enough injectives, that we promised earlier. 
 
 #example[
-  Let $ol(x)$ be a geometric point of $X$, and $M in cAb$. We may regard $M$ as a constant sheaf in $cAb(ol(x)_et)$, and push it forward to $ol(x)_* M in cAb(X_et)$. This sheaf is called the *skyscraper sheaf* associated with $M$ at $ol(x)$. //It is easy to check that the canonical map $ol(x)^(-1) ol(x)_* M -> M$ is an isomorphism, i.e. $(ol(x)_* M)_(ol(x)) = M$.
+  Let $ol(x)$ be a geometric point of $X$, and $M in cAb$. We may regard $M$ as a constant sheaf in $cAb(ol(x)_et)$, and push it forward to $ol(x)_* M in cAb(X_et)$. This sheaf is called the *skyscraper sheaf* associated with $M$ at $ol(x)$. 
 
   The stalks of a skyscraper sheaf can be hard to compute explicitly, but at least we know where it vanishes: 
   #lemma(name: <stalks-of-skyscraper-sheaves>)[
@@ -310,7 +310,7 @@ Finally, there is this alternative method of proving that $cAb(X_et)$ has enough
 
   We claim that this morphism is injective. Indeed, given any $(f: U -> X) in Et_X$, we want to show that: 
   $
-    cal(F)(U) -> product_(x in X) (ol(x)_* I (cal(F)_(ol(x))))(U) = product_(x in X) product_(ol(u) in f^(-1)(ol(x))) cal(F)_(ol(x))
+    cal(F)(U) -> product_(x in X) (ol(x)_* I (cal(F)_(ol(x))))(U) = product_(x in X) product_(ol(u) in f^(-1)(ol(x))) I(cal(F)_(ol(x)))
   $
   is injective. If $s in cal(F)(U)$ is sent to zero, then for every $ol(u) in f^(-1)(ol(x))$, the germ $s_(ol(u)) = 0$. Every point of $U$ has a geometric point $ol(u)$ of this shape lying above it, so by @vanishing-stalks-spreads-out, $s = 0$. Thus, $gamma$ is injective. 
 ]

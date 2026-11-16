@@ -2,7 +2,7 @@
 
 Last chapter, we introduced the etale site and etale sheaves, and established fundamental operations on sheaves. 
 
-As discussed earlier, etale cohomology, as defined by right deriving the global section functor on etale sheaves, is the central object to our study. 
+As discussed earlier, etale cohomology, as defined by right deriving the global section functor on etale sheaves, is the central object of our study. 
 
 In this chapter, we will establish basic results of etale cohomology, and explore first examples. We will introduce: 
 
@@ -24,9 +24,9 @@ In this chapter, we will establish basic results of etale cohomology, and explor
     $
       H^1 (X_et, GG_m) cong Pic(X)
     $
-    This is crucial in further developments of theory, as it allows for computation of cohomology of $ul(ZZ\/n)$ on curves, when combined with the Kummer and Artin-Schreier sequence. They will, in turn, prove to be critical input to very general results like proper base change. 
+    This is crucial in further developments of theory, as it allows for computation of cohomology of $ul(ZZ\/n)$ on curves, when combined with the Kummer and Artin-Schreier sequences. They will, in turn, prove to be critical input to very general results like proper base change. 
 
-  - For a constant sheaf $ul(M)$: 
+  - For a constant sheaf $ul(M)$ with $M$ a finite abelian group on a connected noetherian scheme $X$: 
     $
       H^1 (X_et, ul(M)) cong Hom_#[cont] (pi_1^et (X), M)
     $
@@ -85,11 +85,11 @@ We first discuss the limit formula for sheaves on a fixed scheme.
 
     Next, we prove that $cal(P)^\# (U) = cal(P)^+ (U) = cal(P)(U)$ for qcqs $U in Et_X$. Similarly, the directed system of etale covers of $U$ has a cofinal subsystem $cal(S)$ consisting of etale covers of the form ${U_i -> U}_(1<=i<=n)$ with finitely many maps in which each $U_i$ is affine. Now for each $cal(U) in cal(S)$, we have an exact sequence: 
     $
-      0 -> caron(H)^0 (cal(U), cal(P)^+) -> product_(1<=j<=n) cal(P)^+ (U_j) -> product_(1<=j,k<=n) cal(P)^+ (U_j times_U U_k) -> 0
+      0 -> caron(H)^0 (cal(U), cal(P)^+) -> product_(1<=j<=n) cal(P)^+ (U_j) -> product_(1<=j,k<=n) cal(P)^+ (U_j times_U U_k)
     $
     Since $U$ is quasi-separated, each $U_j times_U U_k$ is quasi-compact. Each $U_j$ is itself quasi-compact, so by our result that $cal(P)^+ (U) = cal(P) (U)$ whenever $U$ is quasi-compact, this sequence is just: 
     $
-      0 -> caron(H)^0 (cal(U), cal(P)^+) -> product_(1<=j<=n) cal(P) (U_j) -> product_(1<=j,k<=n) cal(P) (U_j times_U U_k) -> 0
+      0 -> caron(H)^0 (cal(U), cal(P)^+) -> product_(1<=j<=n) cal(P) (U_j) -> product_(1<=j,k<=n) cal(P) (U_j times_U U_k)
     $
     i.e. $caron(H)^0 (cal(U), cal(P)^+) = caron(H)^0 (cal(U), cal(P)) = cal(P)(U)$. Hence, 
     $
@@ -104,7 +104,7 @@ We first discuss the limit formula for sheaves on a fixed scheme.
   $
 
   #proof[
-    As usual, the directed system of etale covers of $U$ has a cofinal subsystem $cal(S)$ consisting of etale covers of the form ${U_i -> U}_(1<=i<=n)$ with finitely many maps in which each $U_i$ is affine. For each such $cal(U) = {U_i -> U}_(1<=i<=n) in cal(S)$, $U$ is qcqs and every $U_i$ is affine, each: 
+    As usual, the directed system of etale covers of $U$ has a cofinal subsystem $cal(S)$ consisting of etale covers of the form ${U_i -> U}_(1<=i<=n)$ with finitely many maps in which each $U_i$ is affine. For each such $cal(U) = {U_i -> U}_(1<=i<=n) in cal(S)$, since $U$ is qcqs and every $U_i$ is affine, each: 
     $
       U_(i_0,dots.c,i_p) = U_(i_0) times_U dots.c times_U U_(i_p)
     $
@@ -119,7 +119,7 @@ We first discuss the limit formula for sheaves on a fixed scheme.
     $
       caron(H)^p (cal(U), cal(F)) = dircolim_i caron(H)^p (cal(U), cal(F)_i)
     $
-    Taking a direct limit w.r.t. $cal(U) in cal(S)$ and commute two colimits on RHS, we get: 
+    Taking a direct limit w.r.t. $cal(U) in cal(S)$ and commuting two colimits on RHS, we get: 
     $
       caron(H)^p (U, cal(F)) = dircolim_i caron(H)^p (U, cal(F)_i)
     $
@@ -142,7 +142,7 @@ We first discuss the limit formula for sheaves on a fixed scheme.
     $
       E_2^(p,q) = caron(H)^p (U, ul(H)^q (cal(I))) => H^(p+q) (U, cal(I))
     $
-    By the inductive hypothesis, for $0 < q < n$ and any qcqs $U in Et_X$, $ul(H)^q (cal(I))(U) = H^q (U, cal(I)) = 0$. As usual, the directed system of etale covers of $U$ has a cofinal subsystem $cal(S)$ consisting of etale covers of the form ${U_i -> U}_(1<=i<=n)$ with finitely many maps in which each $U_i$ is affine. For each such $cal(U) = {U_i -> U}_(1<=i<=n) in cal(S)$, $U$ is qcqs and every $U_i$ is affine, each:
+    By the inductive hypothesis, for $0 < q < n$ and any qcqs $U in Et_X$, $ul(H)^q (cal(I))(U) = H^q (U, cal(I)) = 0$. As usual, the directed system of etale covers of $U$ has a cofinal subsystem $cal(S)$ consisting of etale covers of the form ${U_i -> U}_(1<=i<=n)$ with finitely many maps in which each $U_i$ is affine. For each such $cal(U) = {U_i -> U}_(1<=i<=n) in cal(S)$, since $U$ is qcqs and every $U_i$ is affine, each:
     $
       U_(i_0,dots.c,i_p) = U_(i_0) times_U dots.c times_U U_(i_p)
     $
@@ -152,7 +152,7 @@ We first discuss the limit formula for sheaves on a fixed scheme.
     $
     In other words, the Cech-to-derived-functor spectral sequence has a horizontal vanishing strip. We use the following cohomological lemma: 
     #lemma[
-      Let $E_2^(p,q) => H^(p+q)$ be a first quadrant spectral sequence with a horizontal vanishing strip. Then there exists a modified five term exact sequence: 
+      Let $E_2^(p,q) => H^(p+q)$ be a first quadrant spectral sequence with $E_2^(p,q)=0$ for every $p>=0$ and $0<q<n$. Then there exists a modified five term exact sequence: 
       $
         0 -> E_2^(n,0) -> H^n -> E_2^(0,n) -> E_2^(n+1,0) -> H^(n+1)
       $
@@ -161,11 +161,11 @@ We first discuss the limit formula for sheaves on a fixed scheme.
     $
       0 -> caron(H)^n (U, cal(I)) -> H^n (U, cal(I)) -> caron(H)^0 (U, ul(H)^n (cal(I))) -> dots.c
     $
-    However, $caron(H)^n (U, cal(I)) = dircolim_i caron(H)^n (U, cal(I)_i) = 0$ by Step 2, and $caron(H)^0 (U, ul(H)^n (cal(I))) = 0$ by @cech-h0-of-hq-psh-vanish. As such, $H^n (U, cal(I))$, being sandwiched in two zeros in an exact sequence, must be $0$. 
+    However, $caron(H)^n (U, cal(I)) = dircolim_i caron(H)^n (U, cal(I)_i) = 0$ by Step 2, and $caron(H)^0 (U, ul(H)^n (cal(I))) = 0$ by @cech-h0-of-hq-psh-vanish. As such, $H^n (U, cal(I))$, being sandwiched between two zeros in an exact sequence, must be $0$. 
     #suppress-qed
   ]
 
-  Step 4. Proof for general case. Fix a set of geometric points ${ol(x)}_(x in X)$ above each point of $X$. For each $cal(F)_i$, we may then construct the Godement resolution: 
+  Step 4. Proof for the general case. Fix a set of geometric points ${ol(x)}_(x in X)$ above each point of $X$. For each $cal(F)_i$, we may then construct the Godement resolution: 
   $
     0 -> cal(F)_i -> cal(I)_i^bullet
   $
@@ -186,7 +186,7 @@ We first discuss the limit formula for sheaves on a fixed scheme.
   ]
 ]
 
-Next, we deal with limit formula for schemes. 
+Next, we deal with the limit formula for schemes. 
 
 #theorem(name: <limit-formula-for-schemes-0>)[
   (Limit formula for schemes) Let ${Z_i}_(i in I)$ be a projective system of qcqs schemes, with all transition maps affine, with a final object $0 in I$. 
@@ -228,7 +228,7 @@ Next, we deal with limit formula for schemes.
 
     (2) Since $U$ is of finite presentation over the qcqs scheme $Z$, it is itself qcqs. Given any etale cover $cal(U) = {U_alpha -> U}$, we may first refine it by a cover in which every $U_alpha$ is affine. Since $U$ is quasi-compact, we may further refine by a finite subcover, so the index set for $alpha$'s is finite. 
     
-    Since $U_alpha$ and $U$ are both qcqs, the morphism $U_alpha -> U$ is qcqs. Since it is also etale (and so locally of finite presentation), it is of finite presentation. By @passage-to-limit-of-morphisms and @passage-to-limit-of-properties, for each $alpha$, there exists some $j <= i_alpha in I$ s.t. $U_alpha -> U$ comes from base changing a morphism $U_(alpha,i_alpha) -> U_(i_alpha)$ in $Et_(Z_(i_alpha))$. By picking a common upper bound for all $alpha$'s, there exists some $j <= k in I$ and morphisms ${U_(alpha,k) -> U_k}_alpha$ in $Et_(Z_k)$ whose base change to $Z$ is ${U_alpha -> U}$. Since $union.sq.big_alpha U_alpha -> U$ is surjective, up to replacing $k$ with some further stage, we may assume that $union.sq.big_alpha U_(alpha,k) -> U$ is surjective, and so ${U_(alpha,k) -> U_k}_alpha$ is jointly surjective, hence an affine cover. We are thereby done. 
+    Since $U_alpha$ and $U$ are both qcqs, the morphism $U_alpha -> U$ is qcqs. Since it is also etale (and so locally of finite presentation), it is of finite presentation. By @passage-to-limit-of-morphisms and @passage-to-limit-of-properties, for each $alpha$, there exists some $j <= i_alpha in I$ s.t. $U_alpha -> U$ comes from base changing a morphism $U_(alpha,i_alpha) -> U_(i_alpha)$ in $Et_(Z_(i_alpha))$. By picking a common upper bound for all $alpha$'s, there exists some $j <= k in I$ and morphisms ${U_(alpha,k) -> U_k}_alpha$ in $Et_(Z_k)$ whose base change to $Z$ is ${U_alpha -> U}$. Since $union.sq.big_alpha U_alpha -> U$ is surjective, up to replacing $k$ with some further stage, we may assume that $union.sq.big_alpha U_(alpha,k) -> U_k$ is surjective, and so ${U_(alpha,k) -> U_k}_alpha$ is jointly surjective, hence an affine cover. We are thereby done. 
   ]
 
   We now prove the result in 3 steps: For $H^0$, for Cech cohomology, and with the Cech-to-derived-functor spectral sequence, analogous to the proof for the limit formula for sheaves. 
@@ -237,7 +237,7 @@ Next, we deal with limit formula for schemes.
   $
     cal(F) (U) = dirlim_(j >= k) cal(F)_j (U_j)
   $
-  for any $U in Et_Z$ obtained from base changing some qcqs (i.e. of finite presentation over $Z_k$) $U_k in Et_(Z_k)$, whenever $U$ is qcqs. (Such $U_k$ always exists by previous lemma.)
+  for any $U in Et_Z$ obtained from base changing some qcqs (i.e. of finite presentation over $Z_k$) $U_k in Et_(Z_k)$, whenever $U$ is qcqs. (Such $U_k$ always exists by the previous lemma.)
 
   #proof[
     We first prove a lemma: 
@@ -276,14 +276,14 @@ Next, we deal with limit formula for schemes.
       $
       Similarly, 
       $
-        dirlim_(j>=k) u_(i,cPSh)^(-1) cal(F)_0 (U_j) = dirlim_(j>=k) dircolim_(V_0 in Et_(Z_0) \ phi_j in Hom_(Z_j) (U_j, Z_j times_(Z_0) V_0)) cal(F)_0 (V_0)
+        dirlim_(j>=k) u_(j,cPSh)^(-1) cal(F)_0 (U_j) = dirlim_(j>=k) dircolim_(V_0 in Et_(Z_0) \ phi_j in Hom_(Z_j) (U_j, Z_j times_(Z_0) V_0)) cal(F)_0 (V_0)
       $
 
       However, by @passage-to-limit-of-morphisms, 
       $
         Hom_Z (U, Z times_(Z_0) V_0) = dirlim_(j>=k) Hom_(Z_j) (U_j, Z_j times_(Z_0) V_0)
       $
-      so $(j, V_0, phi_j) |-> (V_0, Z times_(Z_j) phi_j)$ is a cofinal functor between the index categories between the two filtered colimits. Thus, the natural map: 
+      so $(j, V_0, phi_j) |-> (V_0, Z times_(Z_j) phi_j)$ is a cofinal functor between the index categories of the two filtered colimits. Thus, the natural map: 
       $
         dirlim_(j>=k) dircolim_(V_0 in Et_(Z_0) \ phi_j in Hom_(Z_j) (U_j, Z_j times_(Z_0) V_0)) cal(F)_0 (V_0) -> dircolim_(V_0 in Et_(Z_0) \ phi in Hom_Z (U, Z times_(Z_0) V_0)) cal(F)_0 (V_0)
       $
@@ -323,7 +323,7 @@ Next, we deal with limit formula for schemes.
       =& ker(product_alpha dirlim_(j>=k') u_(j,cPSh)^(-1) cal(F)_0 (U_(alpha,j)) -> product_(alpha,beta) dirlim_(j>=k') u_(j,cPSh)^(-1) cal(F)_0 (U_(alpha,j) times_(U_j) U_(beta,j))) \
       & #[by our description of $v_(0,cPSh)^(-1) cal(F)_0$] \
       =& ker(dirlim_(j>=k') product_alpha u_(j,cPSh)^(-1) cal(F)_0 (U_(alpha,j)) -> dirlim_(j>=k') product_(alpha,beta) u_(j,cPSh)^(-1) cal(F)_0 (U_(alpha,j) times_(U_j) U_(beta,j))) \
-      & #[as finite lims commutes with filtered colims] \
+      & #[as finite lims commute with filtered colims] \
       =& dirlim_(j>=k') ker(product_alpha u_(j,cPSh)^(-1) cal(F)_0 (U_(alpha,j)) -> product_(alpha,beta) u_(j,cPSh)^(-1) cal(F)_0 (U_(alpha,j) times_(U_j) U_(beta,j))) #[by (Ab5) of $cAb$] \
       =& dirlim_(j>=k') caron(H)^0 (cal(U), u_(j,cPSh)^(-1) cal(F)_0)
     $
@@ -349,7 +349,7 @@ Next, we deal with limit formula for schemes.
   is an isomorphism for all qcqs $U in Et_Z$, coming from a qcqs $U_k in Et_(Z_k)$. 
 
   #proof[
-    Given any $cal(U) in cal(S)$, say $cal(U) = {U_alpha -> U}$ coming from $cal(U)_(k') = {U_(alpha,k') -> U_(k')}$ for $k' >= k$, an etale cover in $Et_(Z_(k'))$. Consider the Cech complex: 
+    Take any $cal(U) in cal(S)$, say $cal(U) = {U_alpha -> U}$ coming from $cal(U)_(k') = {U_(alpha,k') -> U_(k')}$ for $k' >= k$, an etale cover in $Et_(Z_(k'))$. Consider the Cech complex: 
     $
       C^p (cal(U), cal(F)) &= product_(alpha_0,dots.c,alpha_p) cal(F)(U_(alpha_0,dots.c,alpha_p)) #[by definition] \
       &= product_(alpha_0,dots.c,alpha_p) dirlim_(j>=k') cal(F)_j (U_(j,alpha_0,dots.c,alpha_p)) #[by Step 1] \
@@ -360,14 +360,14 @@ Next, we deal with limit formula for schemes.
     $
       caron(H)^p (cal(U), cal(F)) = dirlim_(j>=k') caron(H)^p (cal(U)_j, cal(F)_j)
     $
-    Next, we would like to take the direct limit w.r.t. $cal(U) in cal(S)$ and commute two direct limits. However, $k'$ depends on $cal(U)$ and there's some categorical subtleties: We get an isomorphism
+    Next, we would like to take the direct limit w.r.t. $cal(U) in cal(S)$ and commute two direct limits. However, $k'$ depends on $cal(U)$ and there are some categorical subtleties: We get an isomorphism
     $
       caron(H)^p (U, cal(F)) = dirlim_(cal(U)) dirlim_(j>=k') caron(H)^p (cal(U)_j, cal(F)_j) = dirlim_((k', cal(U),j) \ j>=k'>=k) caron(H)^p (cal(U)_j, cal(F)_j) = dirlim_(j>=k) caron(H)^p (U_j, cal(F)_j)
     $
     where the last two equalities follow by abstract categorical arguments. 
   ]
 
-  Step 3. Proof for general case. The case $q = 0$ is Step 1, and the case $q = 1$ follows from Step 2 and $caron(H)^1 = H^1$. Suppose that the theorem holds whenever $q < n$, and we want to deal with degree $n$ cohomology. 
+  Step 3. Proof for the general case. The case $q = 0$ is Step 1, and the case $q = 1$ follows from Step 2 and $caron(H)^1 = H^1$. Suppose that the theorem holds whenever $q < n$, and we want to deal with degree $n$ cohomology. 
   
   Take the Cech-to-derived-functor spectral sequence for each $cal(F)_j$: 
   $
@@ -383,7 +383,7 @@ Next, we deal with limit formula for schemes.
   $
   The filtered system induces a canonical morphism $Phi: tilde(E)_2^(p,q) -> E_2^(p,q)$ of spectral sequences. 
 
-  Since $U$ is qcqs, its Cech cohomologies may be computed using covers in $cal(S)$, involving only qcqs objects of $Et_Z$. As such, computing $caron(H)^p (U, ul(H)^q (cal(F)))$ only involves evaluating $ul(H)^q (cal(F))$ on qcqs objects, on which the inductive hypothesis may be applied. Since covers in $cal(S)$ involves only finitely many maps, for any $cal(U) in cal(S)$ and any $0 <= q < n$, we have: 
+  Since $U$ is qcqs, its Cech cohomologies may be computed using covers in $cal(S)$, involving only qcqs objects of $Et_Z$. As such, computing $caron(H)^p (U, ul(H)^q (cal(F)))$ only involves evaluating $ul(H)^q (cal(F))$ on qcqs objects, on which the inductive hypothesis may be applied. Since covers in $cal(S)$ involve only finitely many maps, for any $cal(U) in cal(S)$ and any $0 <= q < n$, we have: 
   $
     caron(H)^p (cal(U), ul(H)^q (cal(F))) &= h^p (0 -> C^bullet (cal(U), ul(H)^q (cal(F)))) \
     &= h^p (dirlim_(j>=k') (0 -> C^bullet (cal(U)_j, ul(H)^q (cal(F)_j)))) #[by commuting finite lims and filtered colims] \
@@ -401,11 +401,11 @@ Next, we deal with limit formula for schemes.
 
   - Assume $q < n$. 
 
-    - If this differential fires from $(p, q)$, its signature is $d^r: E_2^(p,q) -> E_2^(p+r,q-r+1)$. Then $q - r + 1 < q < n$, so this differential is in the region $0 <= q < n$, so it is isomorphic to $tilde(d)^r: tilde(E)_2^(p,q) -> tilde(E)_2^(p+r,q-r+1)$. 
+    - If this differential fires from $(p, q)$, its signature is $d^r: E_r^(p,q) -> E_r^(p+r,q-r+1)$. Then $q - r + 1 < q < n$, so this differential is in the region $0 <= q < n$, so it is isomorphic to $tilde(d)^r: tilde(E)_r^(p,q) -> tilde(E)_r^(p+r,q-r+1)$. 
 
-    - If this differential fires into $(p, q)$, its signature is $d^r: E_2^(p-r,q+r-1) -> E_2^(p,q)$. Since we have a first quadrant spectral sequence, for this differential to be nonzero, it is required that $r <= p$, and so $q + r - 1 <= q + p - 1 = n - 1$. As such, this differential is in the region $0 <= q < n$, so it is isomorphic to $tilde(d)^r: tilde(E)_2^(p-r,q+r-1) -> tilde(E)_2^(p,q)$. 
+    - If this differential fires into $(p, q)$, its signature is $d^r: E_r^(p-r,q+r-1) -> E_r^(p,q)$. Since we have a first quadrant spectral sequence, for this differential to be nonzero, it is required that $r <= p$, and so $q + r - 1 <= q + p - 1 = n - 1$. As such, this differential is in the region $0 <= q < n$, so it is isomorphic to $tilde(d)^r: tilde(E)_r^(p-r,q+r-1) -> tilde(E)_r^(p,q)$. 
 
-    As such, $Phi$ induces isomorphisms on all differentials involving the bi-degree $(p, q)$, and induces an isomorphism $tilde(E)_oo^(p,q) -> E_oo^(p,q)$. 
+    Inducting over the pages using these incoming and outgoing differentials, $Phi$ induces an isomorphism $tilde(E)_oo^(p,q) -> E_oo^(p,q)$. 
 
   Finally, there exist filtrations: 
   $
@@ -440,7 +440,7 @@ Next, we deal with limit formula for schemes.
     edge((0, -1), (0, 0), [$Phi$], label-side: left, "->")
     edge((1, -1), (1, 0), [$Phi$], label-side: left, "->")
   }))
-  for each $0 <= p <= n$. By five lemma, since $Phi$ induces isomorphisms $tilde(E)^(p,n-p)_oo -> E^(p,n-p)_oo$, we see that: 
+  for each $0 <= p <= n$. By the five lemma, since $Phi$ induces isomorphisms $tilde(E)^(p,n-p)_oo -> E^(p,n-p)_oo$, we see that: 
   $
     Phi: tilde(F)^(p+1) ->^tilde F^(p+1) ==> Phi: tilde(F)^p ->^tilde F^p
   $
@@ -495,7 +495,7 @@ We apply these limit formulas to compute stalks of push forwards of etale sheave
   $
     dircolim_(j->k) H^q (U_j, u_j^(-1) cal(F)_0) -> H^q (U, v_0^(-1) cal(F)_0)
   $
-  is an isomorphism. */Then there is a canonical isomorphism:
+  is an isomorphism. */For any $cal(F)_0 in cAb((Z_0)_et)$, there is a canonical isomorphism:
   $
     dircolim_(i in I) H^q (Z_i, u_i^(-1) cal(F)_0) -> H^q (Z, v_0^(-1) cal(F)_0)
   $
@@ -537,7 +537,7 @@ We apply these limit formulas to compute stalks of push forwards of etale sheave
   $
     lim_((U,ol(u)) -> (Y,ol(y)) \ #[affine etale nbhds]) X times_Y U = X times_Y lim_((U,ol(u)) -> (Y,ol(y)) \ #[affine etale nbhds]) U = X times_Y tilde(Y)_(ol(y))
   $
-  with transition morphisms all affine, and each $X times_Y U$ qcqs over the affine scheme $U$, hence qcqs. As such, limit formula of schemes (@limit-formula-for-schemes) may be applied, and we see that:
+  with transition morphisms all affine, and each $X times_Y U$ qcqs over the affine scheme $U$, hence qcqs. As such, the limit formula of schemes (@limit-formula-for-schemes) may be applied, and we see that:
   $
     (R^q f_* cal(F))_(ol(y)) = H^q (X times_Y tilde(Y)_(ol(y)), cal(F)|_(X times_Y tilde(Y)_(ol(y))))
   $
@@ -553,11 +553,11 @@ We apply these limit formulas to compute stalks of push forwards of etale sheave
 #proof[
   By @strict-henselization-and-finite-base-change,
   $
-    X times_Y tilde(Y)_(ol(y)) = product_(ol(x) in f^(-1)(ol(y))) tilde(X)_(ol(x))
+    X times_Y tilde(Y)_(ol(y)) = union.sq.big_(ol(x) in f^(-1)(ol(y))) tilde(X)_(ol(x))
   $
   Hence,
   $
-    (f_* cal(F))_(ol(y)) &= Gamma(X times_Y tilde(Y)_(ol(y)), cal(F)|_(X times_Y tilde(Y)_(ol(y)))) = Gamma(product_(ol(x) in f^(-1)(ol(y))) tilde(X)_(ol(x)), cal(F)|_(product_(ol(x) in f^(-1)(ol(y))) tilde(X)_(ol(x)))) \
+    (f_* cal(F))_(ol(y)) &= Gamma(X times_Y tilde(Y)_(ol(y)), cal(F)|_(X times_Y tilde(Y)_(ol(y)))) = Gamma(union.sq.big_(ol(x) in f^(-1)(ol(y))) tilde(X)_(ol(x)), cal(F)|_(union.sq.big_(ol(x) in f^(-1)(ol(y))) tilde(X)_(ol(x)))) \
     &= oplus.big_(ol(x) in f^(-1)(ol(y))) Gamma(tilde(X)_(ol(x)), cal(F)|_(tilde(X)_(ol(x)))) = oplus.big_(ol(x) in f^(-1)(ol(y))) cal(F)_(ol(x))
   $
 ]
@@ -721,7 +721,7 @@ We also have relative versions of limit formulas:
   $
     dirlim_(i in I) rho^q (g_i, cal(F)_i) -> rho^q (g, cal(F))
   $
-  are isomorphisms on sections on qcqs $U in Et_X$. Since colimits of sheaves may be computed by computing as colimits of presheaves, then sheafify, and that for $U in Et_X$ qcqs, $caron(H)^0 (U, -)$ may be computed using qcqs sections only, we have: 
+  is an isomorphism on sections on qcqs $U in Et_X$. Since colimits of sheaves may be computed by computing as colimits of presheaves, then sheafifying, and that for $U in Et_X$ qcqs, $caron(H)^0 (U, -)$ may be computed using qcqs sections only, we have: 
   $
     R^q g_(i,*) cal(F)_i -> R^q g_* cal(F)
   $
@@ -760,5 +760,5 @@ Finally, we state @stalks-of-derived-lowerstar in the derived category.
   This quasi-isomorphism holds for all $cal(K) in D(X_et, Lambda)$ if $R f_*$ and $R Gamma (X times_Y tilde(Y)_(ol(y)), -)$ are bounded above. 
 ]
 #proof[
-  We apply @stalks-of-derived-lowerstar and way-out lemma. 
+  We apply @stalks-of-derived-lowerstar and the way-out lemma. 
 ]

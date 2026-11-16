@@ -7,11 +7,11 @@
 
 In this chapter, we want to construct compactly supported cohomology, i.e. the functors $R Gamma_c$ and $R f_!$. As usual, we will first explain the motivations behind a concept, before introducing it. 
 
-Etale cohomology was introduced as an analog of singular cohomology in positive characteristics, and to solve the Weil conjectures. For this, we need an analog of Poincare duality, and an analog of Lefschetz trace formula. 
+Etale cohomology was introduced as an analog of singular cohomology in positive characteristics, and to solve the Weil conjectures. For this, we need an analog of Poincare duality, and an analog of the Lefschetz trace formula. 
 
-We recall the statements of Poincare duality and Lefschetz trace formula in singular cohomology, and replace all homologies with cohomologies since in the etale setting, we only have a cohomology theory. 
+We recall the statements of Poincare duality and the Lefschetz trace formula in singular cohomology, and replace all homologies with cohomologies since in the etale setting, we only have a cohomology theory. 
 
-Let $X$ be an $n$-dimensional orientable manifold. 
+Let $X$ be a compact connected orientable smooth $n$-dimensional manifold without boundary. 
 
 - Singular Poincare duality says that the natural map: #h(1fr)
   $
@@ -23,7 +23,7 @@ Let $X$ be an $n$-dimensional orientable manifold.
   $
   is a perfect pairing. 
 
-- Singular Lefschetz trace formula says that if a map $f: X -> X$ has the Lefschetz number: 
+- For compact $X$, the singular Lefschetz trace formula says that if a map $f: X -> X$ has the Lefschetz number: 
   $
     Lambda_f = sum_(i=0)^n (-1)^i tr(f_*: H_i (X, QQ))
   $
@@ -32,7 +32,7 @@ Let $X$ be an $n$-dimensional orientable manifold.
     Lambda_f = sum_(i=0)^n (-1)^i tr(f^*: H^i_c (X, QQ))
   $
 
-As such, to establish analogs of Poincare duality and Lefschetz trace formula for etale cohomology, it is essential to establish the notion of $H^q_c (X, -)$ or $R Gamma_c (X, -)$, a kind of compactly supported cohomology. 
+As such, to establish analogs of Poincare duality and the Lefschetz trace formula for etale cohomology, it is essential to establish the notion of $H^q_c (X, -)$ or $R Gamma_c (X, -)$, a kind of compactly supported cohomology. 
 
 We will also need a relative notion of compactly supported cohomology, namely $R f_!$. Briefly speaking, $R f_!$ is to $R f_*$ what $R Gamma_c (X, -)$ is to $R Gamma(X, -)$. The significance of $R f_!$ can be seen as follows: 
 
@@ -57,7 +57,7 @@ Finally, we bring some insight to the construction of $R Gamma_c (X, -)$ (and $R
 - If we view singular cohomology from the perspective of considering it as a derived functor cohomology, $H^q_(#[sing],c) (X, Lambda)$ may be reinterpreted as follows. Suppose for now that there is an open inclusion $j: X -> ol(X)$ in which $ol(X)$ is a compact manifold. Then: 
   $
     H^q_(#[sing],c) (X, Lambda) &= dirlim_(K subset X #[compact]) H^q_#[sing] (X, X - K, Lambda) = dirlim_(K subset X #[compact]) H^q (ol(X), ol(X) - K, Lambda) #[by excision] \
-    &= dirlim_(K subset X #[compact]) H^q (ol(X), i_K^! ul(Lambda)_K) = H^q (ol(X), dirlim_(K subset X #[compact]) i_K^! ul(Lambda)_K) = H^q (ol(X), j_! ul(Lambda)_X)
+    &= H^q (ol(X), j_! ul(Lambda)_X)
   $
   Therefore, we see that singular cohomology with compact support may be defined using an external compactification. 
 
@@ -163,7 +163,7 @@ However, the choice of compactification is highly non-unique and non-canonical, 
   $
     Gamma_(h_1), Gamma_(h_2): ol(X)_1 -> ol(X)_1 times_Y ol(X)_2
   $
-  These morphisms are the base changes of the diagonal $Delta_(ol(X)_1\/Y): ol(X)_2 -> ol(X)_2 times_Y ol(X)_2$ along $h_(1,2): ol(X)_1 -> ol(X)_2$ respectively, hence are closed immersions. We now form the Cartesian square: 
+  These morphisms are the base changes of the diagonal $Delta_(ol(X)_2\/Y): ol(X)_2 -> ol(X)_2 times_Y ol(X)_2$ along $h_(1,2): ol(X)_1 -> ol(X)_2$ respectively, hence are closed immersions. We now form the Cartesian square: 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJXIl0sWzEsMCwib2woWClfMSJdLFswLDEsIm9sKFgpXzEiXSxbMSwxLCJvbChYKV8xIHRpbWVzX1kgb2woWClfMiJdLFswLDEsInBfMSJdLFswLDIsInBfMiIsMl0sWzEsMywiR2FtbWFfKGhfMSkiXSxbMiwzLCJHYW1tYV8oaF8yKSIsMl1d
   #align(center, diagram({
     node((-1, -1), [$W$])
@@ -176,9 +176,9 @@ However, the choice of compactification is highly non-unique and non-canonical, 
     edge((0, -1), (0, 0), [$Gamma_(h_1)$], label-side: left, "->")
     edge((-1, 0), (0, 0), [$Gamma_(h_2)$], label-side: right, "->")
   }))
-  in which every morphism is a closed immersion. Denote the projection $q: ol(X)_1 times_Y ol(X)_2 -> ol(X)_1$. Note: 
+  in which every morphism is a closed immersion. Consider the projection $q: ol(X)_1 times_Y ol(X)_2 -> ol(X)_1$. Note: 
   $
-    p_1 = p_1 compose Gamma_(h_1) compose q = p_2 compose Gamma_(h_2) compose q = p_2
+    p_1 = q compose Gamma_(h_1) compose p_1 = q compose Gamma_(h_2) compose p_2 = p_2
   $
   and so we may denote $p = p_1 = p_2: W -> ol(X)_1$. We claim that $p$ is the equalizer of $h_(1,2): ol(X)_1 -> ol(X)_2$ in the category of $Y$-schemes. Indeed, a $Y$-morphism $k: Z -> W$ is equivalent to two $Y$-morphisms $k_(1,2): Z -> ol(X)_1$ s.t. $Gamma_(h_1) compose k_1 = Gamma_(h_2) compose k_2$. Applying the two projections, we see that this condition is equivalent to: 
   $
@@ -203,9 +203,9 @@ However, the choice of compactification is highly non-unique and non-canonical, 
     edge((-1, 0), (0, 1), [$j_2$], label-side: right, "->")
     edge((0, 1), (1, 0), [$ol(f)_2$], label-side: right, "->")
   }))
-  there exists a $Y$-morphism $j_0: X -> W$ s.t. $p compose j_0 = j_1$, by the universal properties. Now that $j_1$ is an open immersion and $p$ is a closed immersion, so $j_0$ must be an open immersion. Now $ol(f)_1 compose p$ is proper, so: 
+  there exists a $Y$-morphism $j_0: X -> W$ s.t. $p compose j_0 = j_1$, by the universal properties. Now that $j_1$ is an open immersion and $p$ is a closed immersion, $j_0$ must be an open immersion. Now $ol(f)_1 compose p$ is proper, so: 
   $
-    X ->^(j_0) W ->^(ol(f)_1 compose f) Y
+    X ->^(j_0) W ->^(ol(f)_1 compose p) Y
   $
   is a compactification with a morphism $p: W -> ol(X)_1$ of compactifications equalizing $h_(1,2)$. 
 ]
@@ -226,7 +226,7 @@ However, the choice of compactification is highly non-unique and non-canonical, 
   in which vertical morphisms are open immersions and horizontal morphisms are proper. 
   
   #lemma[
-    Setup as above, the base change map: 
+    With the setup as above, the base change map: 
     $
       j_Y^(-1) R f_(2,*) j_(X,!) -> R f_(1,*) j_X^(-1) j_(X,!) = R f_(1,*)
     $
@@ -251,13 +251,13 @@ However, the choice of compactification is highly non-unique and non-canonical, 
       edge((0, -1), (0, 0), "=")
       node((-0.7, 0.3), $cart$)
     }))
-    where $f_1, tilde(f), f_2$ are proper and $tilde(j)$ is an open immersion. Now $j_X = tilde(j) compose p$ where $j_X, tilde(j)$ are open immersions, so $p$ is also an open immersion. On the other hand, since $f_1 = tilde(f) compose p$ where $f_1, tilde(f)$ is proper, $p$ is proper. As such, $p$ is an open and closed immersion. 
+    where $f_1, tilde(f), f_2$ are proper and $tilde(j)$ is an open immersion. Now $j_X = tilde(j) compose p$ where $j_X, tilde(j)$ are open immersions, so $p$ is also an open immersion. On the other hand, since $f_1 = tilde(f) compose p$ where $f_1, tilde(f)$ are proper, $p$ is proper. As such, $p$ is an open and closed immersion. 
 
     Then the base change $j_Y^(-1) R f_(2,*) j_(X,!) -> R f_(1,*) j_X^(-1) j_(X,!)$ factors into base changes along the two squares, according to the naturality of base change: 
     $
       j_Y^(-1) R f_(2,*) j_(X,!) -> R tilde(f)_* tilde(j)^(-1) j_(X,!) -> R f_(1,*) j_X^(-1) j_(X,!)
     $
-    Here, the first base change is an isomorphism by @pbc-etale-bc. For the second base change, note that $p$ is an open and closed immersion, so $R p_* = p_!$, and so $R f_(1,*) j_X^(-1) j_(X,!)= R tilde(f)_* p_! p^(-1) tilde(j) j_(X,!)$. Under this identification, the second base change is just the adjunction unit: 
+    Here, the first base change is an isomorphism by @pbc-etale-bc. For the second base change, note that $p$ is an open and closed immersion, so $R p_* = p_!$, and so $R f_(1,*) j_X^(-1) j_(X,!)= R tilde(f)_* p_! p^(-1) tilde(j)^(-1) j_(X,!)$. Under this identification, the second base change is just the adjunction unit: 
     $
       R tilde(f)_* tilde(j)^(-1) j_(X,!) -> R f_(1,*) j_X^(-1) j_(X,!)= R tilde(f)_* p_! p^(-1) tilde(j)^(-1) j_(X,!)
     $
@@ -289,7 +289,7 @@ However, the choice of compactification is highly non-unique and non-canonical, 
     edge((-0.7, -0.3), (-0.3, -0.7), $t$, "=>", label-side: center)
   }, crossing-fill: thm-box-curr-color()))
   
-  Here, the diagonal map $t$ is defined as follows. Setup as in previous lemma: 
+  Here, the diagonal map $t$ is defined as follows. Use the setup of the previous lemma: 
   #align(center, diagram({
     node((-1, 1), [$X_2$])
     node((0, 1), [$Y_2$])
@@ -345,7 +345,7 @@ However, the choice of compactification is highly non-unique and non-canonical, 
     $
       j_(X,!) j_X^(-1) cal(K) -> cal(K) -> i_* i^(-1) cal(K) ->^(+1)
     $
-    Note that $j_X^(-1) i_* i^(-1) cal(K) = 0$. Thus, $u$ is $0$ on $i_* i^(-1) cal(K)$, and so $u$ is determined by its action on objects of the form $j_(X,!) cal(L)$ for $cal(L) in D(tilde(X)_(1,et), Lambda)$. 
+    Note that $j_X^(-1) i_* i^(-1) cal(K) = 0$. Thus, $u$ is $0$ on $i_* i^(-1) cal(K)$, and so $u$ is determined by its action on objects of the form $j_(X,!) cal(L)$ for $cal(L) in D(X_(1,et), Lambda)$. 
 
   - For such objects, $b_2 j_(X,!)$ is the base change $R tilde(f)_* tilde(j)^(-1) j_(X,!) -> R f_(1,*) j_X^(-1) j_(X,!) = R f_(1,*)$, proven to be an isomorphism by the previous lemma. In other words, $b_2$ is an isomorphism on objects of the form $j_(X,!) cal(L)$, so $u$ acts on these objects by the inverse of $b_2$ and is determined. 
 
@@ -378,7 +378,7 @@ However, the choice of compactification is highly non-unique and non-canonical, 
   $
     j_Y^(-1) R f_(2,*) j_(X,!) cal(K) -> R f_(1,*) j_X^(-1) j_(X,!) cal(K) = R f_(1,*) cal(K)
   $
-  and hence an isomorphism. Thus, take the complementary closed immersion $i: Z -> Y_2$ of $j_Y: Y_1 -> Y_2$, it suffices to show that $j_(Y,!) R f_(1,*) cal(K) -> R f_(2,*) j_(X,!) cal(K)$ when pulled back along $i$ is still an isomorphism. 
+  and hence an isomorphism. Thus, take the complementary closed immersion $i: Z -> Y_2$ of $j_Y: Y_1 -> Y_2$, and it suffices to show that $j_(Y,!) R f_(1,*) cal(K) -> R f_(2,*) j_(X,!) cal(K)$ when pulled back along $i$ is still an isomorphism. 
 
   Note that $i^(-1) j_(Y,!) = 0$, and so $i^(-1) j_(Y,!) R f_(1,*) cal(K) = 0$. On the other hand, since $cal(K) in D_#[tor] (X_(1,et), Lambda)$, by @torsion-sheaves-first-props, $j_(X,!) cal(K) in D_#[tor] (X_(2,et), Lambda)$ is torsion. Since $f_2$ is proper and all schemes involved are noetherian, proper base change is applicable. We form the Cartesian square by $f_2$ and $i$: 
   // https://q.uiver.app/#r=typst&q=WzAsNixbMCwwLCJYXzEiXSxbMCwxLCJYXzIiXSxbMSwxLCJZXzIiXSxbMSwwLCJZXzEiXSxbMSwyLCJaIl0sWzAsMiwiVyJdLFswLDMsImZfMSJdLFsxLDIsImZfMiIsMl0sWzAsMSwial9YIiwyXSxbMywyLCJqX1kiXSxbNSw0LCJmJyIsMl0sWzQsMiwiaSIsMl0sWzUsMSwiaSciXV0=
@@ -501,7 +501,7 @@ We are now ready to prove the well-definedness of $R f_!$.
     with horizontal morphisms being proper, and vertical morphisms being open immersions. 
 
 
-    By @open-proper-compat, the left/right squares and the large rectangle induces natural isomorphisms: 
+    By @open-proper-compat, the left/right squares and the large rectangle induce natural isomorphisms: 
     $
       q_1: j_(2,!) -> R phi_* j_(1,!): D_#[tor] (X_et, Lambda) -> D(ol(X)_(2,et), Lambda) \
 
@@ -524,10 +524,10 @@ We are now ready to prove the well-definedness of $R f_!$.
 
     For any two compactifications $ol(X)_1, ol(X)_2$, by @compactification-filtered, there is a third compactification $ol(X)_3$ and morphisms $phi_i: ol(X)_3 -> ol(X)_i, i=1,2$ between compactifications. We intend to construct the canonical isomorphism as: 
     $
-      R ol(f)_1 j_(1,!) -->^(R(phi_1)^(-1)) R ol(f)_3 j_(3,!) -->^(R(phi_2)) R ol(f)_2 j_(2,!)
+      R ol(f)_(1,*) j_(1,!) -->^(R(phi_1)^(-1)) R ol(f)_(3,*) j_(3,!) -->^(R(phi_2)) R ol(f)_(2,*) j_(2,!)
     $
 
-    However, the choice of $ol(X)_3$ and $phi_(1,2)$ might be non-unique, so currently this isomorphism is non-canonical. Given a fourth compactification $ol(X)_4$ and morphisms $psi_i: ol(X)_4 -> ol(X)_i, i=1,2$ between compactifications, we must show that $R(phi_1)^(-1) compose R(phi_2) = R(psi_1)^(-1) compose R(psi_2)$. 
+    However, the choice of $ol(X)_3$ and $phi_(1,2)$ might be non-unique, so currently this isomorphism is non-canonical. Given a fourth compactification $ol(X)_4$ and morphisms $psi_i: ol(X)_4 -> ol(X)_i, i=1,2$ between compactifications, we must show that $R(phi_2) compose R(phi_1)^(-1) = R(psi_2) compose R(psi_1)^(-1)$. 
 
     For this, we pick a fifth compactification $ol(X)_5$ with morphisms $chi'_i: ol(X)_5 -> ol(X)_i, i = 3,4$. We thus have pairs of morphisms between compactifications: 
     $

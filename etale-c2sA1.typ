@@ -36,18 +36,20 @@ This section is a short interlude on radicial morphisms. They are somewhat oppos
     $
       k(y) -> k(x) ->^(phi_(1,2)) K
     $
-    are both the embedding $psi$. However, $k(x)\/k(y)$ is purely inseparable. Thus a compatible embedding $k(x) -> K$, if exists, must be unique. (Indeed, $k(x)$ is obtained from $k(y)$ by adjoining $p^m$-th roots. Over characteristic $p$, such roots are unique.)
+    are both the embedding $psi$. However, $k(x)\/k(y)$ is purely inseparable. Thus a compatible embedding $k(x) -> K$, if it exists, must be unique. (Indeed, $k(x)$ is obtained from $k(y)$ by adjoining $p^m$-th roots. Over characteristic $p$, such roots are unique.)
   
     #suppress-qed
   ]
 
   (1)$==>$(2): 
   #proof[
-    $f$ is tautologically injective. If $f(x) = y$, base change $f$ along $k(y) -> Y$ yields $f: X_y -> Spec(k(y))$. $X_y$ is necessarily a single point with reduction $Spec(k(x))$. 
+    $f$ is tautologically injective. If $f(x) = y$, base changing $f$ along $k(y) -> Y$ yields $f: X_y -> Spec(k(y))$. $X_y$ is necessarily a single point with reduction $Spec(k(x))$. 
     
-    Now base change further to $ol(k(y))$, and so $X_y otimes_(k(y)) ol(k(y))$ is a single point. $X_y$ has reduction $Spec(k(x))$, so $Spec(k(x) otimes_(k(y)) ol(k(y)))$ is a closed subscheme of $X_y otimes_(k(y)) ol(k(y))$ defined by a nilpotent ideal, and shares the same underlying space. Thus $Spec(k(x) otimes_(k(y)) ol(k(y)))$ is a single point. 
+    Now base change further to $ol(k(x))$, and so $X_y otimes_(k(y)) ol(k(x))$ is a single point. $X_y$ has reduction $Spec(k(x))$, so $Spec(k(x) otimes_(k(y)) ol(k(x)))$ is a closed subscheme of $X_y otimes_(k(y)) ol(k(x))$ defined by a nil ideal, and shares the same underlying space. Thus $Spec(k(x) otimes_(k(y)) ol(k(x)))$ is a single point. 
     
     This forces $k(x)\/k(y)$ to be purely inseparable, since otherwise the separable closure of $k(y)$ in $k(x)$ would split into multiple copies of $ol(k(y))$ upon tensoring $ol(k(y))$. 
+
+    #todo() // remind me to put a lemma here later, and I will later request you to search which arguments in later sections can be replaced by an application of such a lemma
 
     #suppress-qed
   ]
@@ -77,7 +79,7 @@ This section is a short interlude on radicial morphisms. They are somewhat oppos
     $
       k(y)(a) otimes_(k(y)) k(y)(a) cong (k(y)(a)[T])/((p(T)))
     $
-    and the element $a otimes 1 - 1 otimes a$ corresponds to $T - a$. By nilpotence, $p(T) divides (T-a)^m$ for some power $m$. Thus $p(T)$ has only the root $a$ in $ol(k(y))$. Thus $a$ is inseparable over $k(y)$. 
+    and the element $a otimes 1 - 1 otimes a$ corresponds to $T - a$. By nilpotence, $p(T) divides (T-a)^m$ for some power $m$. Thus $p(T)$ has only the root $a$ in $ol(k(y))$. Thus $a$ is purely inseparable over $k(y)$. 
 
   Thus $k(x)\/k(y)$ is purely inseparable. 
 ]
@@ -110,7 +112,7 @@ This section is a short interlude on radicial morphisms. They are somewhat oppos
   #proof[
     Affineness can be checked locally on base, so we may assume that $Y$ is affine. 
 
-    For any $y in Y$ with $x = f^(-1)(y) in X$, we may pick an affine open $x in U subset X$. Now $f(U)$ is open in $f(X)$, so we may pick a function $u in A$ s.t. $y in D(u) subset f(U)$. Consequently, $f^(-1) (D(u)) = D(u) times_Y U = D(u) times_Y U$ is a fiber product of two affine schemes over affine base, and is hence affine. Thus every point of $Y$ has an affine neighborhood pulling back to an affine open of $X$ under $f$. Since affineness is local on base, $f$ is affine. 
+    For any $y in Y$ with $x = f^(-1)(y) in X$, we may pick an affine open $x in U subset X$. Now $f(U)$ is open in $f(X)$, so we may pick a function $u in A$ s.t. $y in D(u) subset f(U)$. Consequently, $f^(-1) (D(u)) = D(u) times_Y U = D(u) times_Y U$ is a fiber product of two affine schemes over an affine base, and is hence affine. Thus every point of $Y$ has an affine neighborhood pulling back to an affine open of $X$ under $f$. Since affineness is local on base, $f$ is affine. 
   ]
 
   Thus $f$ is known to be affine. $f$ is also universally closed. To proceed: 
@@ -126,7 +128,7 @@ This section is a short interlude on radicial morphisms. They are somewhat oppos
 
     - $Spec(B) -> Spec(A)$ is universally closed and factors as $Spec(B) -> Spec(C) -> Spec(A)$. 
     
-      Now the graph $Spec(B) -> Spec(B otimes_A C)$ of $Spec(B) -> Spec(C)$ is a closed immersion as a base change of the diagonal of $Spec(B) -> Spec(A)$, and is universally closed. $Spec(B otimes_A C) -> Spec(C)$ is a base change of $Spec(B) -> Spec(A)$ and is universally closed. Thus, $Spec(B) -> Spec(C)$ being their composition is universally closed. It is dominant since $C subset B$, so it is surjective. 
+      Now the graph $Spec(B) -> Spec(B otimes_A C)$ of $Spec(B) -> Spec(C)$ is a closed immersion as a base change of the diagonal of $Spec(C) -> Spec(A)$, and is universally closed. $Spec(B otimes_A C) -> Spec(C)$ is a base change of $Spec(B) -> Spec(A)$ and is universally closed. Thus, $Spec(B) -> Spec(C)$ being their composition is universally closed. It is dominant since $C subset B$, so it is surjective. 
 
     Hence, we may pick $frak(r) in Spec(B)$ s.t. $frak(q) = C inter frak(r)$. We then have an inclusion $C\/frak(q) arrow.hook B\/frak(r)$. Since $[b] in C\/frak(q)$ is not integral over $A$, neither is $[b] in B\/frak(r)$. Thus if we are done with the case of $B$ integral, then $Spec(B\/frak(r)) -> Spec(A)$ would be integral, raising a contradiction. 
 
@@ -167,12 +169,12 @@ This section is a short interlude on radicial morphisms. They are somewhat oppos
 #corollary(name: <adjoining-pth-root-in-char-p-is-univ-homeo>)[
   Let $A$ be a ring in which $p = 0$ for a prime number $p$. Then for any $a_1, dots.c, a_t in A$ and $m_1, dots.c, m_t >= 1$, the map: 
   $
-    Spec((A[T])/((T^(p^(m_1)) - a_1, dots.c, T^(p^(m_t)) - a_t))) -> Spec(A)
+    Spec((A[T_1,dots.c,T_t])/((T_1^(p^(m_1)) - a_1, dots.c, T_t^(p^(m_t)) - a_t))) -> Spec(A)
   $
   is a finite universal homeomorphism. 
 ]
 #proof[
-  By adjoining roots one by one, we may assume that $t = 1$. By taking roots by degree $p$ at a time, we may assume that $m_1 = 1$. Thus we need to show that: 
+  By adjoining roots one by one, we may assume that $t = 1$. By taking roots of degree $p$ at a time, we may assume that $m_1 = 1$. Thus we need to show that: 
   $
     phi: Spec(A[T]\/(T^p - a)) -> Spec(A)
   $

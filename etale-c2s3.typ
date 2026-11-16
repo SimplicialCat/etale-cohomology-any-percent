@@ -70,7 +70,7 @@ The infinitesimal lifting criterion states that, whenever $f$ is locally of fini
   $
     u_1^\# compose f^\# = v^\# = u_2^\# compose f^\#: B -> A
   $
-  and $u_(1,2)^\#$ agrees after reduction to $A\/I$. Thus $delta = u_2^\# - u_1^\#: C -> A$ has its image in $I$. We claim that $delta$ is a $B$-derivation. Indeed, 
+  and $u_(1,2)^\#$ agree after reduction to $A\/I$. Thus $delta = u_2^\# - u_1^\#: C -> A$ has its image in $I$. We claim that $delta$ is a $B$-derivation. Indeed, 
   $
     delta(f^\# (b)) = u_2^\# (f(b)) - u_1^\# (f(b)) = 0
   $
@@ -80,7 +80,7 @@ The infinitesimal lifting criterion states that, whenever $f$ is locally of fini
     &= u_2^\# (c_1) delta(c_2) + u_1^\# (c_2) delta(c_1) \
     &= u_0^\# (c_1) delta(c_2) + u_0^\# (c_2) delta(c_1) #[since $I^2 = 0$]
   $
-  Thus, $delta: C -> I$ is a $B$-derivation, i.e. an $C$-linear map $Omega_(C\/B) -> I$. Conversely, if $delta$ is such a derivation, then by the computation above, given any $u_1^\#: C -> A$ inducing a lift, $u_1^\# + delta$ also induces a lift. Thus we have constructed a simply transitive action: 
+  Thus, $delta: C -> I$ is a $B$-derivation, i.e. a $C$-linear map $Omega_(C\/B) -> I$. Conversely, if $delta$ is such a derivation, then by the computation above, given any $u_1^\#: C -> A$ inducing a lift, $u_1^\# + delta$ also induces a lift. Thus we have constructed a simply transitive action: 
   $
     Hom_C (Omega_(C\/B), I) times cal(L)(U) -> cal(L)(U)
   $
@@ -92,7 +92,7 @@ The infinitesimal lifting criterion states that, whenever $f$ is locally of fini
   $
     Gamma(U, HHom_(cal(O)_(T_0)) (u_0^* Omega_(X\/Y), cal(I))) times cal(L)(U) -> cal(L)(U)
   $
-  This action is defined on those sufficiently small affine opens $U subset T$. It is routine to check that they are compatible with restrictions from $Spec(A)$ to $Spec(A_f)$. Now the intersection of any two affine opens can be covered by affine opens principal on both sides (#cite-stacks("01IW")[Lemma 26.11.5]). Thus these actions glue compatibly to a sheaf action: 
+  This action is defined on those sufficiently small affine opens $U subset T$. It is routine to check that it is compatible with restrictions from $Spec(A)$ to $Spec(A_f)$. Now the intersection of any two affine opens can be covered by affine opens principal on both sides (#cite-stacks("01IW")[Lemma 26.11.5]). Thus these actions glue compatibly to a sheaf action: 
   $
     HHom_(cal(O)_(T_0)) (u_0^* Omega_(X\/Y), cal(I)) times cal(L) -> cal(L)
   $
@@ -144,7 +144,7 @@ The infinitesimal lifting criterion states that, whenever $f$ is locally of fini
       (h_(alpha,beta)) in caron(H)^1_#[Zar] ({U_alpha}, cal(H))
     $
 
-  - Now $Spec(A)$ is an affine scheme, ${U_alpha}$ is an affine cover. Since $f$ is locally of finite presentation, $Omega_(X\/Y)$ is a quasi-coherent sheaf on $X$ of finite presentation. Thus: 
+  - Now $Spec(A)$ is an affine scheme, and ${U_alpha}$ is an affine cover. Since $f$ is locally of finite presentation, $Omega_(X\/Y)$ is a quasi-coherent sheaf on $X$ of finite presentation. Thus: 
     $
       cal(H) = HHom_(cal(O)_(Spec(A\/I))) (u_0^* Omega_(X\/Y), tilde(I))
     $
@@ -202,7 +202,7 @@ The infinitesimal lifting criterion states that, whenever $f$ is locally of fini
       edge((1, 0), (0, 0), [$alpha_0$], label-side: right, "->")
       edge((1, 1), (0, 1), [$beta$], label-side: left, "->")
     }))
-    Put $g_beta, h_beta in A[T]$ be $g,h$ with $beta$ applied on coefficients. Then $alpha_0$ is defined by a section $[a] in A\/I$ s.t. $g_beta ([a]) = 0 in A\/I, h_beta ([a]) in (A\/I)^times$. All we need to do is to construct a section $a in A$ s.t. $g_beta (a) = 0, h_beta (a) in A^times$. 
+    Let $g_beta, h_beta in A[T]$ be $g,h$ with $beta$ applied on coefficients. Then $alpha_0$ is defined by a section $[a] in A\/I$ s.t. $g_beta ([a]) = 0 in A\/I, h_beta ([a]) in (A\/I)^times$. All we need to do is to construct a section $a in A$ s.t. $g_beta (a) = 0, h_beta (a) in A^times$. 
     
     Pick an arbitrary lift $a in A$ of the class $[a]$, so $g_beta (a) in I$. Note that since $I^2 = 0$, $[h_beta (a)] in (A\/I)^times$ implies $h_beta (a) in A^times$. Then for $epsilon in I$, since $epsilon^2 = 0$: 
     $
@@ -263,9 +263,9 @@ The infinitesimal lifting criterion states that, whenever $f$ is locally of fini
 
     Thus $delta$ is a $B$-derivation, thus defining a $P$-linear map $rho: Omega_(P\/B) -> I\/I^2$ s.t. $rho(d F) = [F mod I^2] - sigma([F mod I])$. We thus have a $C$-linear map: 
     $
-      rho: Omega_(P\/B) otimes_P C -> I\/I^2, d F |-> [F mod I^2]
+      rho: Omega_(P\/B) otimes_P C -> I\/I^2, d F |-> [F mod I^2] - sigma([F mod I])
     $
-    since $C = P\/I$ and so the $sigma([F mod I])$ term vanishes. In the second exact sequence: 
+    For $F in I$, the second term is zero, so $rho(d F) = [F mod I^2]$. In the second exact sequence: 
     $
       I\/I^2 -> Omega_(P\/B) otimes_P C -> Omega_(C\/B) -> 0
     $
@@ -278,7 +278,7 @@ The infinitesimal lifting criterion states that, whenever $f$ is locally of fini
 
   (2)($==>$) If $f$ is unramified, $Omega_(X\/Y) = 0$ and so the sheaf $HHom_(cal(O)_(T_0)) (u_0^* Omega_(X\/Y), cal(I))$ in @classifying-diff-of-infinitesimal-lifts  always vanishes. Thus an infinitesimal lift is unique if any exists. 
 
-  ($<==$) Suppose that $f$ is formally unramified. It is formal to check that we can verify locally, so we may assume that $X = Spec(C), Y = Spec(B)$ are affine. For any $C$-module $M$, take the square-zero algebra $C_M = C oplus M$ (with multiplication $(c_1,m_1) times (c_2, m_2) := (c_1 c_2, c_1 m_2 + c_2 m_1)$). Then $M subset C_M$ is a square-zero ideal and $C_M\/M cong C$. Thus in the following diagram: 
+  ($<==$) Suppose that $f$ is formally unramified. It is formal to check that we can verify unramifiedness locally, so we may assume that $X = Spec(C), Y = Spec(B)$ are affine. For any $C$-module $M$, take the square-zero algebra $C_M = C oplus M$ (with multiplication $(c_1,m_1) times (c_2, m_2) := (c_1 c_2, c_1 m_2 + c_2 m_1)$). Then $M subset C_M$ is a square-zero ideal and $C_M\/M cong C$. Thus in the following diagram: 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMSwwLCJDIl0sWzEsMSwiQiJdLFswLDEsIkNfTSJdLFswLDAsIkMiXSxbMiwzXSxbMSwwXSxbMSwyXSxbMCwzLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3VibGUgYmFycmVkIn19fV0sWzAsMiwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
   #align(center, diagram({
     node((1, 0), [$C$])
@@ -291,7 +291,7 @@ The infinitesimal lifting criterion states that, whenever $f$ is locally of fini
     edge((1, 0), (0, 0), "=")
     edge((1, 0), (0, 1), "-->")
   }))
-  if a lift exists, then it is unique. However, $B$-linear sections to $C_M -> C$ are classified by $B$-derivations $C -> M$. The zero derivation always exists, so every other derivation is equal to that one. That is: 
+  if a lift exists, then it is unique. However, $B$-algebra sections to $C_M -> C$ are classified by $B$-derivations $C -> M$. The zero derivation always exists, so every other derivation is equal to that one. That is: 
   $
     Hom_C (Omega_(C\/B), M) = 0
   $
@@ -310,7 +310,7 @@ The infinitesimal lifting criterion states that, whenever $f$ is locally of fini
   on the completions of the local rings is an isomorphism. 
 ]
 #proof[
-  Since $k(x) = k(y)$, we have a map $s_0: Spec(k(y)) = Spec(cal(O)_(Y,y)\/frak(m)_y) -> X$ by including $x$ to $X$. Now for $N >= 1$, each $Spec(cal(O)_(Y,y)\/frak(m)_y^N) -> Spec(cal(O)_(Y,y)\/frak(m)_y^(N+1))$ is a square-zero closed immersion, so by formal smoothness, there is a unique lift $s_N$ fitting in the following commutative diagram: 
+  Since $k(x) = k(y)$, we have a map $s_0: Spec(k(y)) = Spec(cal(O)_(Y,y)\/frak(m)_y) -> X$ by including $x$ in $X$. Now for $N >= 1$, each $Spec(cal(O)_(Y,y)\/frak(m)_y^N) -> Spec(cal(O)_(Y,y)\/frak(m)_y^(N+1))$ is a square-zero closed immersion, so by formal etaleness, there is a unique lift $s_N$ fitting in the following commutative diagram: 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJTcGVjKGNhbChPKV8oWSx5KVxcL2ZyYWsobSlfeV5OKSJdLFsxLDAsIlgiXSxbMSwxLCJZIl0sWzAsMSwiU3BlYyhjYWwoTylfKFkseSlcXC9mcmFrKG0pX3leKE4rMSkpIl0sWzAsMSwic18oTi0xKSJdLFsxLDIsImYiXSxbMywyXSxbMCwzXSxbMywxLCJzX04iLDFdXQ==
   #context align(center, diagram({
     node((0, 0), [$Spec(cal(O)_(Y,y)\/frak(m)_y^N)$])

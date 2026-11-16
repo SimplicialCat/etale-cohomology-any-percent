@@ -4,26 +4,26 @@ In this appendix, we prove the Artin approximation theorem, a critical input to 
 
 - Let $A$ be the henselization at a prime ideal of a finite type algebra over a field or an excellent DVR, and $hat(A)$ the completion of $A$ w.r.t. its maximal ideal $frak(m)$. 
 
-  Given polynomial equations $f_1, dots.c, f_m in A[Y_1, dots.c, Y_n]$, suppose that there exist formal solutions $hat(a)_1, dots.c, hat(a)_n in hat(A)$, i.e: 
+  Given polynomial equations $f_1, dots.c, f_m in A[Y_1, dots.c, Y_n]$, suppose that there exist formal solutions $hat(a)_1, dots.c, hat(a)_n in hat(A)$, i.e.: 
   $
     f_1 (hat(a)_1, dots.c, hat(a)_n) = dots.c = f_m (hat(a)_1, dots.c, hat(a)_n) = 0
   $
-  Then for each $N >= 1$, there exist actual solutions $a_1, dots.c, a_n in A$ s.t: 
+  Then for each $N >= 1$, there exist actual solutions $a_1, dots.c, a_n in A$ s.t.: 
   $
     f_1 (a_1, dots.c, a_n) = dots.c = f_m (a_1, dots.c, a_n) = 0
   $
   and each $hat(a)_i equiv a_i (mod frak(m)^N)$. 
 
-The proof method that we shall adopt is that of @cite-Art69, instead of the more modern proof adopted by Stacks Project based on Popescu's theorem. This is to make the proof more self-contained. The proof is very lengthy and technical, so we divided this appendix into three sections.
+The proof method that we shall adopt is that of @cite-Art69, instead of the more modern proof adopted by the Stacks Project based on Popescu's theorem. This is to make the proof more self-contained. The proof is very lengthy and technical, so we divided this appendix into three sections.
 
 == Preliminary reductions
 
 #notation[
-  For a noetherian henselian local ring $(A, frak(m))$, we say *Artin approximation holds* for $A$ if, for every system of polynomial equations $f_1, dots.c, f_m in A[Y_1, dots.c, Y_n]$, there exist formal solutions $hat(a)_1, dots.c, hat(a)_n in hat(A)$, i.e: 
+  For a noetherian henselian local ring $(A, frak(m))$, we say *Artin approximation holds* for $A$ if, whenever a system of polynomial equations $f_1, dots.c, f_m in A[Y_1, dots.c, Y_n]$ has formal solutions $hat(a)_1, dots.c, hat(a)_n in hat(A)$, i.e.: 
   $
     f_1 (hat(a)_1, dots.c, hat(a)_n) = dots.c = f_m (hat(a)_1, dots.c, hat(a)_n) = 0
   $
-  Then for each $N >= 1$, there exist actual solutions $a_1, dots.c, a_n in A$ s.t: 
+  then for each $N >= 1$, there exist actual solutions $a_1, dots.c, a_n in A$ s.t.: 
   $
     f_1 (a_1, dots.c, a_n) = dots.c = f_m (a_1, dots.c, a_n) = 0
   $
@@ -75,7 +75,7 @@ The proof method that we shall adopt is that of @cite-Art69, instead of the more
 
   + Artin approximation holds for the henselization of any finite type algebra $A$ over a field or an excellent DVR $R$ at a prime; 
 
-  + For any excellent DVR $R$, let $A = R{X_1, dots.c, X_n}$. For any $N >= 1$, if a system of polynomial equations $f_1, dots.c, f_r in R[Y_1, dots.c, Y_m]$ has a formal solution $hat(a)_1, dots.c, hat(a)_m in hat(A)$, where $hat(A) = hat(R) fps(X_1\, dots.c\, X_n)$: 
+  + For any excellent DVR $R$, let $A = R{X_1, dots.c, X_n}$. For any $N >= 1$, if a system of polynomial equations $f_1, dots.c, f_r in R[X_1, dots.c, X_n, Y_1, dots.c, Y_m]$ has a formal solution $hat(a)_1, dots.c, hat(a)_m in hat(A)$, where $hat(A) = hat(R) fps(X_1\, dots.c\, X_n)$: 
     $
       f_1 (hat(a)_1, dots.c, hat(a)_m) = dots.c = f_r (hat(a)_1, dots.c, hat(a)_m) = 0
     $
@@ -107,7 +107,7 @@ The proof method that we shall adopt is that of @cite-Art69, instead of the more
   $
     R[X_1,dots.c,X_n] -> C_0, X_i |-> x_i
   $
-  Now every generator $z_i in C_0$ has $P_i (z_i) = x_i$, so $C_0$ is integral hence finite over $R[X_1,dots.c,X_n]$. Furthermore, the pullback of $frak(m)_0$ contains the maximal ideal $(pi.alt, X_1, dots.c, X_n)$ since $pi.alt in frak(m)_0$ and $x_i in frak(m)_0$. Thus, $frak(m)_0$ lies above $(pi.alt, X_1, dots.c, X_n)$, giving a finite map: 
+  Now every generator $z_i in C_0$ has $P_i (z_i) = x_i$, so $C_0$ is integral hence finite over $R[X_1,dots.c,X_n]$. Furthermore, the pullback of $frak(m)_0$ contains the maximal ideal $(pi.alt, X_1, dots.c, X_n)$ since $pi.alt in frak(m)_0$ and $x_i in frak(m)_0$. Thus, $frak(m)_0$ lies above $(pi.alt, X_1, dots.c, X_n)$, giving a local map: 
   $
     R[X_1,dots.c,X_n]_((pi.alt, X_1, dots.c, X_n)) -> C_(0,frak(m)_0)
   $
@@ -118,7 +118,7 @@ The proof method that we shall adopt is that of @cite-Art69, instead of the more
     $
       A_n := R{X_1, dots.c, X_n}
     $
-    for $R$ an excellent DVR clear from the context. Denote $frak(m)_n = (pi.alt, X_1, dots.c, X_n) A_n$ the maximal ideal of $A_n$. 
+    for $R$ an excellent DVR clear from the context. Let $frak(m)_n = (pi.alt, X_1, dots.c, X_n) A_n$ be the maximal ideal of $A_n$. 
   ]
 
   Now $A\/frak(m)_n A$ is a finite local algebra over the field $k(R)$. It is thus a local artinian ring. This shows that $sqrt(frak(m)_n A) = frak(m)_A$, and so the $frak(m)_n A$-adic and $frak(m)_A$-adic topologies on $A$ are equivalent. In other words, 
@@ -133,7 +133,7 @@ The proof method that we shall adopt is that of @cite-Art69, instead of the more
 
   In summary, it suffices to prove Artin approximation for the ring $A_n$. We already assumed Artin approximation on $A_n$ for those systems over $R[X_1,dots.c,X_n]$, so it suffices to reduce to such systems. 
 
-  Let $f_1,dots.c,f_r in A_n [Y_1,dots.c,Y_m]$ be a system over $A_n$ with solution $hat(y) in hat(A_n)$. Enlarge the system so that $(f_1,dots.c,f_r)$ generates: 
+  Let $f_1,dots.c,f_r in A_n [Y_1,dots.c,Y_m]$ be a system over $A_n$ with a solution $hat(y) in hat(A_n)$. Enlarge the system so that $(f_1,dots.c,f_r)$ generates: 
   $
     frak(p) = ker(A_n [arrow(Y)], Y_i |-> hat(y)_i) in Spec(A_n [arrow(Y)])
   $

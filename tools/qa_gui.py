@@ -276,7 +276,8 @@ function refreshView(keepId) {
   else { idx = Math.min(idx, Math.max(0, view.length-1)); }
   if (view.length && view[idx]?.decision !== 'pending') {
     const n = view.findIndex((x,i)=>i>idx && x.decision==='pending');
-    if (n < 0) { const any = view.findIndex(x=>x.decision==='pending'); if (any >= 0) idx = any; }
+    if (n >= 0) idx = n;
+    else { const any = view.findIndex(x=>x.decision==='pending'); if (any >= 0) idx = any; }
   }
 }
 function render() {

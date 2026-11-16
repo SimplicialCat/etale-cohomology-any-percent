@@ -46,7 +46,7 @@
       (R f_! (-))_(ol(y)) cong R Gamma_c (X_(ol(y)), (-)|_(X_(ol(y))))
     $
 
-  + (Extension by zero sequence) Suppose that $f: X -> Y$ is a separated morphism of finite type between noetherian schemes, and that $j: U -> X, i: Z -> X$ is a pair of complementary open and closed immersions. Form: 
+  + (Extension by zero sequence) Suppose that $f: X -> Y$ is a separated morphism of finite type between noetherian schemes, and that $j: U -> X, i: Z -> X$ are a pair of complementary open and closed immersions. Form: 
     $
       f_U: U ->^j X ->^f Y \
       f_Z: Z ->^i X ->^f Y
@@ -217,21 +217,21 @@
     edge((7, 1), (8, 2), [$tilde(f)$], label-side: center, "->")
   }, crossing-fill: thm-box-curr-color(), spacing: 1.6em))
 
-  Denote by $T(f_1, f_2, j_X, j_Y)$ the isomorphism constructed in @open-proper-compat. Then identifying $R f_! = R ol(f)_* compose j_!, R g_! = R ol(g)_* compose k_!$ and $R(g compose f)_! = R(ol(g) compose ol(f))_* compose (ell compose j)_!$, the isomorphism $R g_! compose R f_! -> R(g compose f)_!$ defined by the lower compactification is: 
+  Denote by $T(f_1, f_2, j_X, j_Y)$ the isomorphism constructed in @open-proper-compat. Then identifying $R f_! = R ol(f)_* compose j_!, R g_! = R ol(g)_* compose k_!$ and $R(g compose f)_! = R(ol(g) compose tilde(f))_* compose (ell compose j)_!$, the isomorphism $R g_! compose R f_! -> R(g compose f)_!$ defined by the lower compactification is: 
   $
-    R ol(g)_* k_! R ol(f)_* j_! -->^(R ol(g)_* T(tilde(f), ol(f), ell, k) j_!) R ol(g)_* R ol(f)_* ell_! j_!
+    R ol(g)_* k_! R ol(f)_* j_! -->^(R ol(g)_* T(ol(f), tilde(f), ell, k) j_!) R ol(g)_* R tilde(f)_* ell_! j_!
   $
   while the isomorphism defined by the upper compactification is: 
   $
-    R ol(g)_* k_! R ol(f)_* j_! &-->^(R ol(g)_* k_! T(phi, id_X, j', j)) R ol(g)_* k_! R ol(f)_* R phi_* j'_! = R ol(g)_* k_! R ol(f)'_* j'_! \
-    &-->^(T(psi, id_Y, k', k) R ol(f)'_* j'_!) R ol(g)_* psi_* k'_! R ol(f)'_* j'_! = R ol(g)'_* k'_! R ol(f)'_* j'_! \
-    &-->^(R ol(g)'_* T(tilde(f)', ol(f)', ell', k') j'_!) R ol(g)'_* R tilde(f)'_* ell'_! j'_! = R ol(g)_* R tilde(f)_* R chi_* ell'_! j'_! \
-    &-->^(R ol(g)'_* R ol(f)'_* T(chi, id_X, ell' compose j', ell compose j)^(-1)) R ol(g)_* R tilde(f)_* ell_! j_!
+    R ol(g)_* k_! R ol(f)_* j_! &-->^(R ol(g)_* k_! T(id_X, phi, j', j)) R ol(g)_* k_! R ol(f)_* R phi_* j'_! = R ol(g)_* k_! R ol(f)'_* j'_! \
+    &-->^(R ol(g)_* T(id_Y, psi, k', k) R ol(f)'_* j'_!) R ol(g)_* R psi_* k'_! R ol(f)'_* j'_! = R ol(g)'_* k'_! R ol(f)'_* j'_! \
+    &-->^(R ol(g)'_* T(ol(f)', tilde(f)', ell', k') j'_!) R ol(g)'_* R tilde(f)'_* ell'_! j'_! = R ol(g)_* R tilde(f)_* R chi_* ell'_! j'_! \
+    &-->^(R ol(g)_* R tilde(f)_* T(id_X, chi, ell' compose j', ell compose j)^(-1)) R ol(g)_* R tilde(f)_* ell_! j_!
   $
   In other words, we need to prove the equality: 
   $
-    & R ol(g)'_* R ol(f)'_* T(chi, id_X, ell' compose j', ell compose j) compose R ol(g)_* T(tilde(f), ol(f), ell, k) j_! \
-    =& R ol(g)'_* T(tilde(f)', ol(f)', ell', k') j'_! compose T(psi, id_Y, k', k) R ol(f)'_* j'_! compose R ol(g)_* k_! T(phi, id_X, j', j)
+    & R ol(g)_* R tilde(f)_* T(id_X, chi, ell' compose j', ell compose j) compose R ol(g)_* T(ol(f), tilde(f), ell, k) j_! \
+    =& R ol(g)'_* T(ol(f)', tilde(f)', ell', k') j'_! compose R ol(g)_* T(id_Y, psi, k', k) R ol(f)'_* j'_! compose R ol(g)_* k_! T(id_X, phi, j', j)
   $
   Abbreviating $D_#[tor] (X_et, Lambda)$ by $D(X)$, we may form the following diagram: 
   // https://q.uiver.app/#r=typst&q=WzAsMTIsWzAsMiwiRChYKSJdLFszLDIsIkQoWSkiXSxbNiwyLCJEKFopIl0sWzIsMSwiRChvbChYKScpIl0sWzUsMSwiRChvbChZKScpIl0sWzQsMCwiRCh0aWxkZShYKScpIl0sWzAsNiwiRChYKSJdLFszLDYsIkQoWSkiXSxbNiw2LCJEKFopIl0sWzIsNSwiRChvbChYKSkiXSxbNSw1LCJEKG9sKFkpKSJdLFs0LDQsIkQodGlsZGUoWCkpIl0sWzAsMSwiUiBmXyEiLDFdLFsxLDIsIlIgZ18hIiwxXSxbMCwzLCJqJ18hIiwxXSxbMyw1LCJlbGwnXyEiLDFdLFszLDEsIlIgb2woZiknXyoiLDFdLFsxLDQsImsnXyEiLDFdLFs0LDIsIlIgb2woZyknXyoiLDFdLFs1LDQsIlIgdGlsZGUoZiknXyoiLDFdLFs2LDcsIlIgZl8hIiwxXSxbNyw4LCJSIGdfISIsMV0sWzYsOSwial8hIiwxXSxbOSwxMSwiZWxsXyEiLDFdLFs5LDcsIlIgb2woZilfKiIsMV0sWzcsMTAsImtfISIsMV0sWzEwLDgsIlIgb2woZylfKiIsMV0sWzExLDEwLCJSIHRpbGRlKGYpXyoiLDFdLFswLDYsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdWJsZSBiYXJyZWQifX19XSxbMSw3LCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3VibGUgYmFycmVkIn19fV0sWzIsOCwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG91YmxlIGJhcnJlZCJ9fX1dLFszLDksInBoaSIsMV0sWzQsMTAsInBzaSIsMV0sWzUsMTEsImNoaSIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo4MH1dXQ==
@@ -282,14 +282,14 @@
   }, crossing-fill: thm-box-curr-color(), node-fill: thm-box-curr-color(), node-inset: 4pt, spacing: 1.6em))
   Both sides of the desired equality go from the magenta path to the green path. By compatibility of the construction of $T$ with concatenation of squares, as in @open-proper-compat-naturality, we have: 
   $
-    T(chi, id_X, ell' compose j', ell compose j) = T(chi, phi, ell', ell) j'_! compose ell_! T(phi, id_X, j', j)
+    T(id_X, chi, ell' compose j', ell compose j) = T(phi, chi, ell', ell) j'_! compose ell_! T(id_X, phi, j', j)
   $
-  In other words, the natural transformation on LHS of the desired equality is just the red path, while the natural transformation on RHS of the desired equality is the blue path, as drawn on the diagram. 
+  In other words, the natural transformation on the LHS of the desired equality is just the red path, while the natural transformation on the RHS of the desired equality is the blue path, as drawn on the diagram. 
 
-  By naturality, step 1 and 2 of the red path can be applied in either order. Now step 2 of red path is just step 1 of blue path, so we may cancel it off. We then only need to show that step 1 then 3 of red path, is the same as step 2 then 3 of the blue path. Indeed, both paths roll up the middle cube using the natural transformation $T$. They are thus equal since $T$ is compatible with concatenation of squares: 
+  By naturality, steps 1 and 2 of the red path can be applied in either order. Now step 2 of the red path is just step 1 of the blue path, so we may cancel it off. We then only need to show that steps 1 then 3 of the red path are the same as steps 2 then 3 of the blue path. Indeed, both paths roll up the middle cube using the natural transformation $T$. They are thus equal since $T$ is compatible with concatenation of squares: 
   $
-    & R tilde(f)_* T(chi, psi, ell', ell) compose T(tilde(f), ol(f), ell, k) R phi_* = T(tilde(f) compose chi, ol(f) compose phi, ell', k) \
-    =& T(psi compose tilde(f)', ol(f)', ell', k) = R psi_* T(tilde(f)', ol(f)', ell', k') compose T(psi, id_Y, k', k) R ol(f)'_*
+    & R tilde(f)_* T(phi, chi, ell', ell) compose T(ol(f), tilde(f), ell, k) R phi_* = T(ol(f) compose phi, tilde(f) compose chi, ell', k) \
+    =& T(ol(f)', psi compose tilde(f)', ell', k) = R psi_* T(ol(f)', tilde(f)', ell', k') compose T(id_Y, psi, k', k) R ol(f)'_*
   $
   We have thus proved independence from the choice of compactification of $(f, g)$ when one dominates the other. The independence thus follows from the following lemma: 
 
@@ -315,7 +315,7 @@
       edge((5, 1), (6, 2), [$ol(g)_i$], label-side: center, "->")
       edge((4, 0), (5, 1), [$tilde(f)_i$], label-side: center, "->")
     }, crossing-fill: thm-box-curr-color(), spacing: 1.6em))
-    where $i = 1, 2$. By @compactification-filtered, we may pick a compactification $X ->^j ol(X) ->^(ol(f)) Y$ of $f$, and a compactification $Y ->^k ol(Y) ->^(ol(g)) Z$ of $g$, with morphisms of compactifications $phi_i: ol(X) -> ol(X)_i, psi_i: ol(Y) -> ol(Y)_i$ for $i=1,2$. Then to obtain a compactification of $(f,  g)$ dominating both given compactifications, it suffices to find a compactification $ol(X) ->^ell tilde(X) ->^(tilde(f)) ol(Y)$ of $k compose ol(f): ol(X) -> ol(Y)$, and morphisms $chi_i: tilde(X) -> tilde(X)_i, i = 1,2$ that makes the following diagram commute: 
+    where $i = 1, 2$. By @compactification-filtered, we may pick a compactification $X ->^j ol(X) ->^(ol(f)) Y$ of $f$, and a compactification $Y ->^k ol(Y) ->^(ol(g)) Z$ of $g$, with morphisms of compactifications $phi_i: ol(X) -> ol(X)_i, psi_i: ol(Y) -> ol(Y)_i$ for $i=1,2$. Then to obtain a compactification of $(f,  g)$ dominating both given compactifications, it suffices to find a compactification $ol(X) ->^ell tilde(X) ->^(tilde(f)) ol(Y)$ of $k compose ol(f): ol(X) -> ol(Y)$, and morphisms $chi_i: tilde(X) -> tilde(X)_i, i = 1,2$ that make the following diagram commute: 
     // https://q.uiver.app/#r=typst&q=WzAsOSxbMCwwLCJvbChYKV8xIl0sWzEsMCwidGlsZGUoWClfMSJdLFsyLDAsIm9sKFkpXzEiXSxbMCwxLCJvbChYKSJdLFsxLDEsInRpbGRlKFgpIl0sWzIsMSwib2woWSkiXSxbMCwyLCJvbChYKV8yIl0sWzEsMiwidGlsZGUoWClfMiJdLFsyLDIsIm9sKFkpXzIiXSxbMCwxLCJlbGxfMSJdLFsxLDIsInRpbGRlKGYpXzEiXSxbMywwLCJwaGlfMSJdLFszLDYsInBoaV8yIiwyXSxbNSwyLCJwc2lfMSIsMl0sWzUsOCwicHNpXzIiXSxbNiw3LCJlbGxfMiIsMl0sWzcsOCwidGlsZGUoZilfMiIsMl0sWzMsNCwiZWxsIiwyXSxbNCw1LCJ0aWxkZShmKSIsMl0sWzQsMSwiY2hpXzEiLDJdLFs0LDcsImNoaV8yIl1d
     #align(center, diagram({
       node((-1, -1), [$ol(X)_1$])
@@ -340,7 +340,7 @@
       edge((0, 0), (0, -1), [$chi_1$], label-side: right, "-->")
       edge((0, 0), (0, 1), [$chi_2$], label-side: left, "-->")
     }))
-    For $i = 1, 2$, form the fiber product $T_i = tilde(X)_i times_(ol(Y)_i) ol(Y)$ and projections $t_i: T_i -> ol(Y), s_i: T_i -> tilde(X)_1$. Then $s_i, t_i$ are proper. Consider the morphisms $ell_i compose phi_i: ol(X) -> tilde(X)_i$ and $k compose ol(f): ol(X) -> ol(Y)$. Then: 
+    For $i = 1, 2$, form the fiber product $T_i = tilde(X)_i times_(ol(Y)_i) ol(Y)$ and projections $t_i: T_i -> ol(Y), s_i: T_i -> tilde(X)_i$. Then $s_i, t_i$ are proper. Consider the morphisms $ell_i compose phi_i: ol(X) -> tilde(X)_i$ and $k compose ol(f): ol(X) -> ol(Y)$. Then: 
     $
       psi_i compose k compose ol(f) = tilde(f)_i compose ell_i compose phi_i
     $
@@ -361,7 +361,7 @@
       edge((0, 0), (1, 0), [$t_i$], label-side: left, "->")
       edge((0, 0), (0, 1), [$s_i$], label-side: left, "->")
     }))
-    Now $phi_i, s_i$ are proper and $ell_i$ is an open immersion, so $q_i$ is a morphism between $tilde(X)_i$ schemes that are separated of finite type. Thus $q_i$ is separated of finite type, and we may form a compactification $ol(X) ->^(ell'_i) tilde(X)'_i ->^(h_i) T_i$ of $q_i$. Take $tilde(f)'_i = t_i compose h_i: tilde(X)'_i -> ol(Y)_i$ and $chi_i = s_i compose h_i: tilde(X)'_i -> tilde(X)_i$. Then since $t_i$ is proper, $ol(X) ->^(ell'_i) tilde(X)'_i ->^(t_i compose h_i) ol(Y)$ is a compactification of $k compose ol(f): ol(X) -> ol(Y)$ that fits in the commutative diagram: 
+    Now $phi_i, s_i$ are proper and $ell_i$ is an open immersion, so $q_i$ is a morphism between $tilde(X)_i$ schemes that are separated of finite type. Thus $q_i$ is separated of finite type, and we may form a compactification $ol(X) ->^(ell'_i) tilde(X)'_i ->^(h_i) T_i$ of $q_i$. Take $tilde(f)'_i = t_i compose h_i: tilde(X)'_i -> ol(Y)$ and $chi_i = s_i compose h_i: tilde(X)'_i -> tilde(X)_i$. Then since $t_i$ is proper, $ol(X) ->^(ell'_i) tilde(X)'_i ->^(t_i compose h_i) ol(Y)$ is a compactification of $k compose ol(f): ol(X) -> ol(Y)$ that fits in the commutative diagram: 
     // https://q.uiver.app/#r=typst&q=WzAsNixbMCwwLCJvbChYKSJdLFsxLDAsInRpbGRlKFgpJ19pIl0sWzIsMCwib2woWSkiXSxbMCwxLCJvbChYKV9pIl0sWzEsMSwidGlsZGUoWClfaSJdLFsyLDEsIm9sKFkpX2kiXSxbMCwzLCJwaGlfaSIsMl0sWzIsNSwicHNpX2kiXSxbMyw0LCJlbGxfaSIsMl0sWzQsNSwidGlsZGUoZilfaSIsMl0sWzAsMSwiZWxsIl0sWzEsMiwidGlsZGUoZiknX2kiXSxbMSw0LCJjaGlfaSJdXQ==
     #align(center, diagram({
       node((-1, 0), [$ol(X)$])
@@ -378,7 +378,7 @@
       edge((0, 0), (1, 0), [$tilde(f)'_i$], label-side: left, "->")
       edge((0, 0), (0, 1), [$chi_i$], label-side: left, "->")
     }))
-    Picking a compactification $tilde(X)$ of $ol(X) -> ol(Y)$ dominating both $tilde(X)_1$ and $tilde(X)_2$ concludes the proof. 
+    Picking a compactification $tilde(X)$ of $ol(X) -> ol(Y)$ dominating both $tilde(X)'_1$ and $tilde(X)'_2$ concludes the proof. 
   ]
 
   (2) We construct a base change isomorphism as follows: Pick a compactification $X ->^j ol(X) ->^(ol(f)) Y$ of $f$, and form a Cartesian diagram: 
@@ -461,7 +461,7 @@
     }, spacing: (6.5em, 4em), label-size: 0.8em, crossing-fill: thm-box-curr-color()))
   ]
   #proof[
-    Note that all arrows on the hexagonal diagram above are natural isomorphisms. Let $i'_Y: W' -> Y'_2$ be a complementary closed immersion to $j'_Y$. Note that $i'_Y^(-1) j'_(Y,!) g_1^(-1) R f_(1,*) = 0$, and so if we apply $i'_Y^(-1)$ to the diagram above, we get a diagram full of zeros. Hence, by the extension by zero triangle, it suffices to prove the commutativity of the diagram upon applying $j_Y^(-1)$. 
+    Note that all arrows on the hexagonal diagram above are natural isomorphisms. Let $i'_Y: W' -> Y'_2$ be a complementary closed immersion to $j'_Y$. Note that $i'_Y^(-1) j'_(Y,!) g_1^(-1) R f_(1,*) = 0$, and so if we apply $i'_Y^(-1)$ to the diagram above, we get a diagram full of zeros. Hence, by the extension by zero triangle, it suffices to prove the commutativity of the diagram upon applying $j'_Y^(-1)$. 
 
     In the argument that follows, we identify $id$ with $j_X^(-1) j_(X,!)$ (and do not track the natural isomorphism for that) for convenience. 
 
@@ -499,7 +499,7 @@
       edge((-2, 1), (0, 1), [$BC(g'_1,g_1,f'_1,f_1)$], label-side: right, "->")
       edge((-2, -1), (0, -1), [$j'_Y^(-1) BC(g'_2,g_2,f'_2,f_2) j_(X,!)$], label-side: left, "->")
       edge((-2, -1), (-2, 1), [$g_1^(-1) BC(j_X, j_Y, f_1, f_2) j_(X,!)$], label-side: center, "->")
-      edge((0, -1), (2, 0), [$j_Y^(-1) R f_(2,*) BC_! (g_1', g_2', j'_X, j'_Y)$], label-side: center, "->")
+      edge((0, -1), (2, 0), [$j'_Y^(-1) R f'_(2,*) BC_! (g_1', g_2', j'_X, j_X)$], label-side: center, "->")
       edge((2, 0), (0, 1), [$BC(j'_X, j'_Y, f'_1, f'_2) j'_(X,!) g'_1^(-1)$], label-side: center, "->")
     }, label-size: 0.8em, spacing: (3.5em, 3em), crossing-fill: thm-box-curr-color()))
 
@@ -510,12 +510,12 @@
       node((2, 0), [$j'_Y^(-1) R f'_(2,*) j'_(X,!) g'_1^(-1)$])
       node((0, -1), [$j'_Y^(-1) R f'_(2,*) g'_2^(-1) j_(X,!)$])
       node((-2, 0), [$R f'_(1,*) j'_X^(-1) g'_2^(-1) j_(X,!)$])
-      edge((0, -1), (2, 0), [$j_Y^(-1) R f_(2,*) BC_! (g_1', g_2', j'_X, j'_Y)$], label-side: center, "->")
+      edge((0, -1), (2, 0), [$j'_Y^(-1) R f'_(2,*) BC_! (g_1', g_2', j'_X, j_X)$], label-side: center, "->")
       edge((2, 0), (0, 1), [$BC(j'_X, j'_Y, f'_1, f'_2) j'_(X,!) g'_1^(-1)$], label-side: center, "->")
-      edge((0, -1), (-2, 0), [$BC(j'_X, j'_Y, f'_1, f'_2) j'_(X,!) g'_1^(-1)$], label-side: center, "->")
-      edge((-2, 0), (0, 1), [$R f'_(1,*) j'_X^(-1) BC_!  (g'_1, g'_2, j'_X, j'_Y)$], label-side: center, "->")
+      edge((0, -1), (-2, 0), [$BC(j'_X, j'_Y, f'_1, f'_2) g'_2^(-1) j_(X,!)$], label-side: center, "->")
+      edge((-2, 0), (0, 1), [$R f'_(1,*) j'_X^(-1) BC_!  (g'_1, g'_2, j'_X, j_X)$], label-side: center, "->")
     }, crossing-fill: thm-box-curr-color(), label-size: 0.8em))
-    As argued above, once we identify $j'_X^(-1) g'_2^(-1) j_(X,!) = j'_X^(-1) j'_(X,!) g'_1^(-1) = g'_1^(-1)$, the morphism $j'_X^(-1) BC_!  (g'_1, g'_2, j'_X, j'_Y)$ becomes the identity. Hence, we may replace the two rightmost arrows by a single arrow. By inserting a $j_X^(-1) j_(X,!)$ on the bottom arrow, it suffices to prove the commutativity of the following square: 
+    As argued above, once we identify $j'_X^(-1) g'_2^(-1) j_(X,!) = j'_X^(-1) j'_(X,!) g'_1^(-1) = g'_1^(-1)$, the morphism $j'_X^(-1) BC_!  (g'_1, g'_2, j'_X, j_X)$ becomes the identity. Hence, we may replace the two rightmost arrows by a single arrow. By inserting a $j_X^(-1) j_(X,!)$ on the bottom arrow, it suffices to prove the commutativity of the following square: 
     // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJqJ19ZXigtMSkgZ18yXigtMSkgUiBmXygyLCopIGpfKFgsISkiXSxbMCwyLCJnXzFeKC0xKSBSIGZfKDEsKikiXSxbMiwyLCJSIGYnXygxLCopIGcnXzFeKC0xKSJdLFsyLDAsImonX1leKC0xKSBSIGYnXygyLCopIGcnXzJeKC0xKSBqXyhYLCEpIl0sWzEsMiwiQkMoZydfMSxnXzEsZidfMSxmXzEpIGpfWF4oLTEpIGpfKFgsISkiLDJdLFswLDMsImonX1leKC0xKSBCQyhnJ18yLGdfMixmJ18yLGZfMikgal8oWCwhKSJdLFswLDEsImdfMV4oLTEpIEJDKGpfWCwgal9ZLCBmXzEsIGZfMikgal8oWCwhKSIsMV0sWzMsMiwiQkMoaidfWCwgaidfWSwgZidfMSwgZidfMikgZydfMl4oLTEpIGpfKFgsISkiLDFdXQ==
     #context align(center, diagram({
       node((0, 0), [$j'_Y^(-1) g_2^(-1) R f_(2,*) j_(X,!)$])
@@ -566,9 +566,9 @@
 
   Then we have the following identifications for $R f_!$ and $R f'_!$ defined by different compactifications: 
   $
-    R f_(1,*) j_(1,!) -->^(R f_(1,*) T(phi, id_X, j_2, j_1)) R f_(1,*) R phi_* j_(2,!) = R f_(2,*) j_(2,!) \
+    R ol(f)_(1,*) j_(1,!) -->^(R ol(f)_(1,*) T(id_X, phi, j_2, j_1)) R ol(f)_(1,*) R phi_* j_(2,!) = R ol(f)_(2,*) j_(2,!) \
 
-    R f'_(1,*) j'_(1,!) -->^(R f'_(1,*) T(phi', id_(X'), j'_2, j'_1)) R f'_(1,*) R phi'_* j'_(2,!) = R f'_(2,*) j'_(2,!)
+    R ol(f)'_(1,*) j'_(1,!) -->^(R ol(f)'_(1,*) T(id_(X'), phi', j'_2, j'_1)) R ol(f)'_(1,*) R phi'_* j'_(2,!) = R ol(f)'_(2,*) j'_(2,!)
   $
 
   // To prove independence from the choice of a compactification, it suffices to prove the commutativity of the following diagram: 
@@ -608,7 +608,7 @@
     edge((1, 5), (2, 3), [$R phi_*$], label-side: center, "->")
     edge((1, 2), (2, 0), [$R phi'_*$], label-side: center, "->")
   }, crossing-fill: thm-box-curr-color(),  spacing: (3.125em, 2em)))
-  Then base changes defined by both compactifications are paths from the magenta functor to the green functor. The red path is the base change defined by $ol(X)_1$, and the blue path is the base change defined by $ol(X)_2$ (where we used the naturality of base change here to split the base change along $R ol(f)_(2,*)$ into two steps). Now by naturality, step 1 and 2 of the blue path may be exchanged, and so it suffices to compare step 2, 3 of the red path with step 1, 3, 4 of the blue path, i.e. the part of the paths on the left triangular prism. However, applying the previous lemma to the scheme morphisms on the left triangular prism (with identity maps on $X$ and $X'$) identifies these two paths. 
+  Then base changes defined by both compactifications are paths from the magenta functor to the green functor. The red path is the base change defined by $ol(X)_1$, and the blue path is the base change defined by $ol(X)_2$ (where we used the naturality of base change here to split the base change along $R ol(f)_(2,*)$ into two steps). Now by naturality, steps 1 and 2 of the blue path may be exchanged, and so it suffices to compare steps 2, 3 of the red path with steps 1, 3, 4 of the blue path, i.e. the part of the paths on the left triangular prism. However, applying the previous lemma to the scheme morphisms on the left triangular prism (with identity maps on $X$ and $X'$) identifies these two paths. 
 
   We have thus proved well-definedness. For compatibility with concatenation of Cartesian squares, the compatibility with vertical concatenation directly follows from the same compatibility for $R f_*$. Thus, it remains to prove compatibility with horizontal concatenation. Let $Z ->^h X ->^f Y$ be two separated morphisms of finite type, and pick a compactification of $(h, f)$ and form a base change: 
   // https://q.uiver.app/#r=typst&q=WzAsMTIsWzAsMiwiWiciXSxbMywyLCJYJyJdLFs2LDIsIlknIl0sWzIsMSwib2woWiknIl0sWzUsMSwib2woWCknIl0sWzQsMCwidGlsZGUoWiknIl0sWzAsNSwiWiJdLFszLDUsIlgiXSxbNiw1LCJZIl0sWzIsNCwib2woWikiXSxbNSw0LCJvbChYKSJdLFs0LDMsInRpbGRlKFopIl0sWzYsNywiaCIsMV0sWzcsOCwiZiIsMV0sWzYsOSwiayIsMV0sWzksMTEsImVsbCIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo3MH1dLFs3LDEwLCJqIiwxXSxbOSw3LCJvbChoKSIsMV0sWzEwLDgsIm9sKGYpIiwxXSxbMTEsMTAsInRpbGRlKGgpIiwxXSxbMCwxLCJoJyIsMV0sWzEsMiwiZiciLDFdLFswLDMsImsnIiwxXSxbMyw1LCJlbGwnIiwxXSxbMSw0LCJqIiwxXSxbMywxLCJvbChoKSciLDFdLFs0LDIsIm9sKGYpJyIsMV0sWzUsNCwidGlsZGUoaCknIiwxXSxbMiw4LCJnIiwxLHsibGFiZWxfcG9zaXRpb24iOjIwfV0sWzEsNywiZyciLDEseyJsYWJlbF9wb3NpdGlvbiI6MjB9XSxbMCw2LCJnJyciLDEseyJsYWJlbF9wb3NpdGlvbiI6MjB9XSxbMyw5LCJvbChnKSciLDFdLFs0LDEwLCJvbChnKSIsMV0sWzUsMTEsInRpbGRlKGcpIiwxLHsibGFiZWxfcG9zaXRpb24iOjkwfV1d
@@ -648,7 +648,7 @@
     edge((5, 1), (5, 4), [$ol(g)$], label-side: center, "->")
     edge((4, 0), (4, 3), [$tilde(g)$], label-side: center, label-pos: 0.9, "->")
   }, crossing-fill: thm-box-curr-color(), spacing: 1.6em))
-  Then the top face of the diagram above is a compactification of $(h', f')$. Identify the base changes applied separately to $R h_!$ and $R f_!$, and the base change applied to $R(f compose f)_*$ as natural transformations: 
+  Then the top face of the diagram above is a compactification of $(h', f')$. Identify the base changes applied separately to $R h_!$ and $R f_!$, and the base change applied to $R(f compose h)_!$ as natural transformations: 
   $
     g^(-1) R ol(f)_* j_! R ol(h)_* k_! -> R ol(f)'_* R tilde(h)'_* ell'_! k'_! g''^(-1)
   $
@@ -669,7 +669,7 @@
 
     node((0, 1), [$D(Z')$])
     node((3, 2), [$D(X')$])
-    node((7, 1), [$Y'$])
+    node((7, 1), [$D(Y')$])
     node((2, 1), [$D(ol(Z)')$])
     node((5, 1), [$D(ol(X)')$])
     node((4, 0), [$D(tilde(Z)')$])
@@ -687,7 +687,7 @@
     edge((4, 3), (5, 4), [$R tilde(h)_*$], label-side: center, "->")
     edge((0, 1), (2, 1), text(fill: green)[$k'_!$], label-side: center, "->", stroke: green)
     edge((2, 1), (4, 0), text(fill: green)[$ell'_!$], label-side: center, "->", stroke: green)
-    edge((3, 2), (5, 1), [$j_!$], label-side: center, label-pos: 0.3, "->")
+    edge((3, 2), (5, 1), [$j'_!$], label-side: center, label-pos: 0.3, "->")
     edge((2, 1), (3, 2), [$R ol(h)'_*$], label-side: center, "->")
     edge((5, 1), (7, 1), text(fill: green)[$R ol(f)'_*$], label-side: center, "->", stroke: green)
     edge((4, 0), (5, 1), text(fill: green)[$R tilde(h)'_*$], label-side: center, "->", stroke: green)
@@ -700,7 +700,7 @@
   }, crossing-fill: thm-box-curr-color(), spacing: 2em))
   Both natural transformations go from the magenta functor to the green functor. The base change map of $R f_!$ then $R h_!$ is the red path, while the base change map of $R(f compose h)_!$ is the blue path. 
 
-  By naturality, step 1 and 2 of the blue path may be swapped, and step 4 and 5 of the red path may be swapped. Thus, it suffices to identify step 2, 3, 5 of the red path with step 1, 3, 4 of the blue path. This follows by applying the lemma to the central cube. 
+  By naturality, steps 1 and 2 of the blue path may be swapped, and steps 4 and 5 of the red path may be swapped. Thus, it suffices to identify steps 2, 3, 5 of the red path with steps 1, 3, 4 of the blue path. This follows by applying the lemma to the central cube. 
 
   (3) Given a pair of complementary open and closed immersions $j: U -> X, i: Z -> X$, we have the extension by zero triangle: 
   $
@@ -746,7 +746,7 @@ There is one more point to prove here, namely the compatibility of $R f_!$ we ju
   $
     h^q (R f_! cal(F))_(ol(y)) = R^q f_(ol(y),*) cal(F) = 0
   $
-  Hence, $h^q (R f_! cal(F)) = 0$ for all $q >= 1$. This proves that $R f_!$ has cohomological dimension 0 both above and below. If we temporarily use $R^0 f_!$ to denote $h^0 (R f_! (-))$, then $R^0 f_!$ is an exact functor $cAb_#[tor] (X_et, Lambda) -> cAb_#[tor] (Y_et, Lambda)$, and $R f_!$ is just $R^0 f_!$ applied termwisely. 
+  Hence, $h^q (R f_! cal(F)) = 0$ for all $q >= 1$. This proves that $R f_!$ has cohomological dimension 0 both above and below. If we temporarily use $R^0 f_!$ to denote $h^0 (R f_! (-))$, then $R^0 f_!$ is an exact functor $cAb_#[tor] (X_et, Lambda) -> cAb_#[tor] (Y_et, Lambda)$, and $R f_!$ is just $R^0 f_!$ applied termwise. 
 
   Thus, it suffices to prove that $f_! = R^0 f_!$. Pick any compactification $X ->^j ol(X) ->^(ol(f)) Y$, and so: 
   $
@@ -756,13 +756,13 @@ There is one more point to prove here, namely the compatibility of $R f_!$ we ju
   $
     f_! cal(F) (U) = {s in cal(F)(U times_Y X) : supp(s) -> U times_Y X -> U #[proper]} subset cal(F)(U times_Y X) = f_* cal(F) (U) \
 
-    ol(f)_* j_! cal(F) = {s in cal(F)(U times_Y X) : supp(s) -> U times_Y X -> U times_Y ol(X) #[proper]} subset cal(F)(U times_Y X) = f_* cal(F) (U)
+    ol(f)_* j_! cal(F)(U) = {s in cal(F)(U times_Y X) : supp(s) -> U times_Y X -> U times_Y ol(X) #[proper]} subset cal(F)(U times_Y X) = f_* cal(F) (U)
   $
   However, since $U times_Y ol(X) -> U$ is proper, $supp(s) -> U$ is proper if and only if $supp(s) -> U times_Y ol(X)$ is proper. Therefore, these two sheaves are really just the same subsheaves of $f_* cal(F)$. We have thus obtained a natural isomorphism: 
   $
     f_! cal(F) cong ol(f)_* j_! cal(F)
   $
-  To show that this natural isomorphism is independent from the choice of compactification and is compatible with composition, it amounts to the following lemma and the compatibility of composition of the map in @sep-etale-lower-shriek-alt-desc: 
+  Showing that this natural isomorphism is independent from the choice of compactification and is compatible with composition amounts to the following lemma and the compatibility of composition of the map in @sep-etale-lower-shriek-alt-desc: 
 
   #lemma(name: <open-proper-compat-and-inclusion-of-lower-shriek>)[
     Denote: 
@@ -790,7 +790,7 @@ There is one more point to prove here, namely the compatibility of $R f_!$ we ju
     // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwxLCJqX1leKC0xKSBmXygyLCopIGpfKFgsISkiXSxbMSwwLCJqXigtMSkgZl8oMiwqKSBqXyhYLCopIl0sWzIsMSwiZl8oMSwqKSBqX1heKC0xKSBqXyhYLCopIl0sWzEsMiwiZl8oMSwqKSBqX1heKC0xKSBqXyhYLCEpIl0sWzAsMSwial9ZXigtMSkgZl8oMiwqKUkoal9YKSIsMV0sWzMsMiwiZl8oMSwqKSBqX1heKC0xKSBJKGpfWCkiLDFdLFswLDMsIkJDKGpfWCxqX1ksZl8xLGZfMilqXyhYLCEpIiwxXSxbMSwyLCJCQyhqX1gsal9ZLGZfMSxmXzIpal8oWCwqKSIsMV1d
     #context align(center, diagram({
       node((-1, 0), [$j_Y^(-1) f_(2,*) j_(X,!)$])
-      node((0, -1), [$j^(-1) f_(2,*) j_(X,*)$])
+      node((0, -1), [$j_Y^(-1) f_(2,*) j_(X,*)$])
       node((1, 0), [$f_(1,*) j_X^(-1) j_(X,*)$])
       node((0, 1), [$f_(1,*) j_X^(-1) j_(X,!)$])
       edge((-1, 0), (0, -1), [$j_Y^(-1) f_(2,*)I(j_X)$], label-side: center, "->")
@@ -824,7 +824,7 @@ Furthermore, we have an identification of $f_! cal(F)$ as a subsheaf of $f_* cal
   $
   By @sep-etale-lower-shriek-alt-desc, we may identify $ol(f)_* j_! cal(F) subset ol(f)_* j_* cal(F) = f_* cal(F)$ as follows. For $U in Et_Y$, 
   $
-    ol(f)_* j_! cal(F) = {s in cal(F)(U times_Y X) : supp(s) -> U times_Y X -> U times_Y ol(X) #[proper]} subset cal(F)(U times_Y X) = f_* cal(F) (U)
+    ol(f)_* j_! cal(F)(U) = {s in cal(F)(U times_Y X) : supp(s) -> U times_Y X -> U times_Y ol(X) #[proper]} subset cal(F)(U times_Y X) = f_* cal(F) (U)
   $
   However, since $U times_Y ol(X) -> U$ is proper, $supp(s) -> U$ is proper if and only if $supp(s) -> U times_Y ol(X)$ is proper. Therefore, we have identified: 
   $

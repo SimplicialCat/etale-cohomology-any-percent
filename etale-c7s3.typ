@@ -24,8 +24,8 @@ To establish these compatibilities, the best way is to construct the projection 
     node((0, 2), [$D(X_et, Lambda)$])
     node((2, 0), [$D(Y_et, Lambda)$])
     node((2, 2), [$D(Y_et, Lambda)$])
-    edge((0, 0), (0, 2), [$RHHom_Lambda (cal(L), -)$], label-side: right, "->")
-    edge((2, 0), (2, 2), [$RHHom_Lambda (f^(-1) cal(L), -)$], label-side: left, "->")
+    edge((0, 0), (0, 2), [$RHHom_Lambda (f^(-1) cal(L), -)$], label-side: right, "->")
+    edge((2, 0), (2, 2), [$RHHom_Lambda (cal(L), -)$], label-side: left, "->")
     edge((0, 2), (2, 2), [$R f_*$], label-side: right, "->")
     edge((0, 0), (2, 0), [$R f_*$], label-side: left, "->")
     edge(..tune-2-mor-coords((0, 2), (2, 0), l: 0.8), "=>")
@@ -48,19 +48,19 @@ To establish these compatibilities, the best way is to construct the projection 
     $
       R g_* R f_* cal(K) Lotimes_Lambda cal(L) -> R g_* (R f_* cal(K) Lotimes_Lambda g^(-1) cal(L)) -> R g_* R f_* (cal(K) Lotimes_Lambda f^(-1) g^(-1) cal(L))
     $
-    is just the projection for $g compose f$. 
+    are just the projection for $g compose f$. 
 
     This compatibility follows from @bcbc-horizontal-concat, once we verify that the composition of adjunction isomorphisms: 
     $
       RHHom_Lambda (cal(L), R g_* R f_* (-)) ->^tilde R g_* RHHom_Lambda (g^(-1) cal(L), R f_* (-)) ->^tilde R g_* R f_* RHHom_Lambda (f^(-1) g^(-1) cal(L), -)
     $
-    is just the adjunction isomorphism for $f^(-1) g^(-1) tack.l R g_* R f_*$. To verify this, we may reduce to checking on sections by applying $R Gamma(U, -)$. This allows us to replace $RHHom_Lambda$ by $RHom_Lambda$. Now $h^q (RHHom_Lambda (-, -)) = Hom_Lambda (-, -[q])$ so we may replace $RHom_Lambda$ further by $Hom_Lambda$ the categorical hom. Then this compatibility is a standard categorical fact for composition of adjoints. 
+    is just the adjunction isomorphism for $f^(-1) g^(-1) tack.l R g_* R f_*$. To verify this, we may reduce to checking on sections by applying $R Gamma(U, -)$. This allows us to replace $RHHom_Lambda$ by $RHom_Lambda$. Now $h^q (RHom_Lambda (-, -)) = Hom_Lambda (-, -[q])$ so we may replace $RHom_Lambda$ further by $Hom_Lambda$ the categorical hom. Then this compatibility is a standard categorical fact for composition of adjoints. 
 
   - The projection map is compatible with tensor products in $cal(L)$. That is, consecutive projections: #h(1fr)
     $
       R f_* cal(K) Lotimes_Lambda cal(L)_1 Lotimes_Lambda cal(L)_2 -> R f_* (cal(K) Lotimes_Lambda f^(-1) cal(L)_1) Lotimes_Lambda cal(L)_2 -> R f_* (cal(K) Lotimes_Lambda f^(-1) cal(L)_1 Lotimes_Lambda f^(-1) cal(L)_2)
     $
-    is just the projection for $cal(L)_1 Lotimes_Lambda cal(L)_2$, where we identify $f^(-1) (cal(L)_1 Lotimes_Lambda cal(L)_2) = f^(-1) cal(L)_1 Lotimes_Lambda f^(-1) cal(L)_2$. 
+    are just the projection for $cal(L)_1 Lotimes_Lambda cal(L)_2$, where we identify $f^(-1) (cal(L)_1 Lotimes_Lambda cal(L)_2) = f^(-1) cal(L)_1 Lotimes_Lambda f^(-1) cal(L)_2$. 
 
     This compatibility follows from @bcbc-vertical-concat, once we verify that the following diagram commutes: 
     #align(center, diagram({
@@ -124,7 +124,7 @@ To establish these compatibilities, the best way is to construct the projection 
 
     - The projection map $R f_* (-) Lotimes_Lambda cal(L) -> R f_* (- Lotimes_Lambda f^(-1) cal(L))$ is the Beck-Chevalley base change of the adjunction isomorphism $RHHom_Lambda (cal(L), R f_* (-)) -> R f_* RHHom_Lambda (f^(-1) cal(L), -)$. 
 
-    The desired compatibility thus follows from @bcbc-vertical-concat, @bcbc-naturality, and the equality of the red and blue path in the following cube from the magenta functor to the green functor: 
+    The desired compatibility thus follows from @bcbc-vertical-concat, @bcbc-naturality, and the equality of the red and blue paths in the following cube from the magenta functor to the green functor: 
     // https://q.uiver.app/#r=typst&q=WzAsOCxbMCwxLCJEKFknKSJdLFsyLDIsIkQoWScpIl0sWzEsMCwiRChZKSJdLFszLDEsIkQoWSkiXSxbMCw0LCJEKFgnKSJdLFsyLDUsIkQoWCcpIl0sWzEsMywiRChYKSJdLFszLDQsIkQoWCkiXSxbMCwyLCJSIGdfKiIsMV0sWzEsMywiUiBnXyoiLDFdLFs0LDYsIlIgZydfKiIsMV0sWzUsNywiUiBnJ18qIiwxXSxbMiwzLCJSSEhvbV9MYW1iZGEgKGNhbChMKSwgLSkiLDFdLFswLDEsIlJISG9tX0xhbWJkYSAoZ14oLTEpIGNhbChMKSwgLSkiLDFdLFs2LDcsIlJISG9tX0xhbWJkYSAoZl4oLTEpIGNhbChMKSwgLSkiLDFdLFs0LDUsIlJISG9tX0xhbWJkYSAocF4oLTEpIGNhbChMKSwgLSkiLDFdLFs3LDMsIlIgZl8qIiwxXSxbNSwxLCJSIGZfKiIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo4MH1dLFs2LDIsIlIgZidfKiIsMSx7ImxhYmVsX3Bvc2l0aW9uIjoyMH1dLFs0LDAsIlIgZidfKiIsMV1d
     #context align(center, diagram({
       edge(..tune-2-mor-coords((2, 2), (1, 0), l: 0.6), "=>", text(fill: red)[$1$], stroke: red, label-side: center)
@@ -144,8 +144,8 @@ To establish these compatibilities, the best way is to construct the projection 
       node((1, 3), [$D(X)$])
       node((3, 4), [$D(X)$])
       edge((3, 4), (3, 1), text(fill: green)[$R f_*$], label-side: center, "->", stroke: green)
-      edge((2, 5), (2, 2), [$R f_*$], label-side: center, label-pos: 0.8, "->")
-      edge((1, 3), (1, 0), [$R f'_*$], label-side: center, label-pos: 0.2, "->")
+      edge((2, 5), (2, 2), [$R f'_*$], label-side: center, label-pos: 0.8, "->")
+      edge((1, 3), (1, 0), [$R f_*$], label-side: center, label-pos: 0.2, "->")
       edge((0, 4), (0, 1), text(fill: fuchsia)[$R f'_*$], label-side: center, "->", stroke: fuchsia)
       edge((0, 1), (1, 0), [$R g_*$], label-side: center, "->")
       edge((2, 2), (3, 1), text(fill: fuchsia)[$R g_*$], label-side: center, "->", stroke: fuchsia)
@@ -173,11 +173,11 @@ To establish these compatibilities, the best way is to construct the projection 
 
   - The projection is compatible with composition in $f$. Indeed, given another etale morphism $g: Y -> Z$, to show that the composition of projections: #h(1fr)
     $
-      g_! f_! cal(K) Lotimes_Lambda cal(L) -> g_! (f_! cal(K) Lotimes_Lambda g^(-1) cal(L)) -> g_! f_! (cal(L) Lotimes_Lambda f^(-1) g^(-1) cal(L))
+      g_! f_! cal(K) Lotimes_Lambda cal(L) -> g_! (f_! cal(K) Lotimes_Lambda g^(-1) cal(L)) -> g_! f_! (cal(K) Lotimes_Lambda f^(-1) g^(-1) cal(L))
     $
     is just projection along $g compose f$, by adjunction it suffices to show that the composition: 
     $
-      RHHom_Lambda (g^(-1) f^(-1) (-), g^(-1) f^(-1) cal(L)) -> g^(-1) RHHom_Lambda (f^(-1) (-), f^(-1) cal(L)) -> g^(-1) f^(-1) RHHom_Lambda (-, cal(L))
+      RHHom_Lambda (f^(-1) g^(-1) (-), f^(-1) g^(-1) cal(L)) -> f^(-1) RHHom_Lambda (g^(-1) (-), g^(-1) cal(L)) -> f^(-1) g^(-1) RHHom_Lambda (-, cal(L))
     $
     is just the same isomorphism for $g compose f$. But this is automatic. 
 
@@ -194,7 +194,7 @@ To establish these compatibilities, the best way is to construct the projection 
       edge((0, 0), (0, 1), [$g'$], label-side: right, "->")
       node((0.3, 0.3), $cart$)
     }))
-    with $p = g compose f' = f compose g': X' -> Y$, then the composition:
+    with $p = g compose f' = f compose g': X' -> Y$. Then the composition:
     $
       g^(-1) (f_! (-) Lotimes_Lambda cal(L)) -->^M g^(-1) f_! (-) Lotimes_Lambda g^(-1) cal(L) -->^(BC_!) f'_! g'^(-1) (-) Lotimes_Lambda g^(-1) cal(L) -->^P f'_! (g'^(-1) (-) Lotimes_Lambda p^(-1) cal(L))
     $
@@ -227,7 +227,7 @@ To establish these compatibilities, the best way is to construct the projection 
     }, crossing-fill: thm-box-curr-color()))
     It suffices to prove this commutation after applying $R Gamma(U, -)$ for $U in Et_X$. Furthermore, we may assume $U = X$. This is because upon applying $R Gamma(U, -)$ for general $U$ to the diagram above, we obtain what we would have obtained by applying global sections to the diagram above if we started with $U -> Y$ instead of $X -> Y$. By replacing $cal(L)$ with a K-flat complex and the complex in $(-)$ with a K-injective complex, we may drop all $R$'s from the derived functors by @hhom-from-kflat-to-kinj-is-kinj. 
     
-    For $U = X$, i.e. upon taking global sections, morphisms like $f^(-1) RHHom_Lambda (-, -) cong RHHom_Lambda (f^(-1) (-), f^(-1) (-))$ turns into the identity. Then the right path becomes: 
+    For $U = X$, i.e. upon taking global sections, morphisms like $f^(-1) RHHom_Lambda (-, -) cong RHHom_Lambda (f^(-1) (-), f^(-1) (-))$ turn into the identity. Then the right path becomes: 
     $
       Hom_Lambda (p^(-1) cal(L), f'^(-1) (-)) -> Hom_Lambda (f^(-1) cal(L), g'_* f'^(-1) (-)) -> Hom_Lambda (f^(-1) cal(L), f^(-1) g_* (-))
     $
@@ -237,13 +237,17 @@ To establish these compatibilities, the best way is to construct the projection 
     $
     It is direct to check that these two paths are equal. 
 
-  - The projection is compatible with tensors in $cal(L)$. To show that the composition of projections: 
+  - The projection is compatible with tensors in $cal(L)$. We show that the composition of projections: 
     $
       f_! cal(K) Lotimes_Lambda cal(L)_1 Lotimes_Lambda cal(L)_2 -> f_! (cal(K) Lotimes_Lambda f^(-1) cal(L)_1) Lotimes_Lambda cal(L)_2 -> f_! (cal(K) Lotimes_Lambda f^(-1) cal(L)_1 Lotimes_Lambda f^(-1) cal(L)_2) ->^M f_! (cal(K) Lotimes_Lambda f^(-1) (cal(L)_1 Lotimes_Lambda cal(L)_2))
     $
     is just the projection for $cal(L)_1 Lotimes_Lambda cal(L)_2$ (where $M$ is the monoidal isomorphism). 
     
-    We could have checked the hard way by comparing the adjoints of both sides as functors in $cal(K)$. Instead, we will cheat by checking on stalks only, since the projection map is compatible with arbitrary base change. We may thus assume that $f$ is $union.sq.big_(i in I) Spec(Omega) -> Spec(Omega)$ for a separably closed field $Omega$, and then everything is just a complex of $Lambda$-modules. In this case compatibility can be checked directly. 
+    Choose K-flat resolutions of $cal(K), cal(L)_1, cal(L)_2$. Etale pullbacks and extensions by zero preserve K-flatness, and so the relevant projection maps for complexes are termwise projection maps for sheaves in the K-flat resolution. Thus, it suffices to check for sheaves $cal(F), cal(G)_1, cal(G)_2$ of $Lambda$-modules, the composition of projections: 
+    $
+      f_! cal(F) otimes_Lambda cal(G)_1 otimes_Lambda cal(G)_2 -> f_! (cal(F) otimes_Lambda f^(-1) cal(G)_1) otimes_Lambda cal(G)_2 -> f_! (cal(F) otimes_Lambda f^(-1) cal(G)_1 otimes_Lambda f^(-1) cal(G)_2)
+    $
+    is just the projection w.r.t. $cal(G)_1 otimes_Lambda cal(G)_2$. This can be checked directly on stalks.  
     /*, by unfolding the definition of the monoidal isomorphism, it suffices to show that the composition: 
     $
       RHHom_Lambda (f^(-1) (cal(L)_1 Lotimes_Lambda cal(L)_2), f^(-1) (-)) -> f^(-1) RHHom_Lambda (cal(L)_1 Lotimes_Lambda cal(L)_2, R f_* f^(-1) (-)) -> 
@@ -265,7 +269,7 @@ To establish these compatibilities, the best way is to construct the projection 
         edge((0, 0), (0, 1), [$tilde$], label-side: right, "->")
         edge((0, 1), (0, 2), "->")
       }))
-      Had we not cheated by taking stalks, we would have to manually prove this. It is probably not hard anyways. 
+      Had we not cheated by taking stalks, we would have had to manually prove this. It is probably not hard anyways. 
     ]
 ]
 
@@ -285,7 +289,7 @@ We are now ready to combine the projection morphisms for $R f_*$ and for $f_!$ t
   $
   where the first step is projection for $R ol(f)_*$, and the second step is projection for $j_!$. 
 
-  Now well-definedness follows from the following lemma. Compatibility with tensors in $cal(L)$ and with arbitrary base change follow from the respective properties for projection for $R ol(f)_*$ and $j_!$. Compatibility with composition in $f$ follows from the respective property for projection for $R ol(f)_*$ and $j_!$ as well as the following lemma. 
+  Now well-definedness follows from the following lemma. Compatibility with tensors in $cal(L)$ and with arbitrary base change follows from the respective properties for projection for $R ol(f)_*$ and $j_!$. Compatibility with composition in $f$ follows from the respective property for projection for $R ol(f)_*$ and $j_!$ as well as the following lemma. 
 
   #lemma[
     Given a commutative diagram of noetherian schemes: 
@@ -314,7 +318,7 @@ We are now ready to combine the projection morphisms for $R f_*$ and for $f_!$ t
   #proof[
     We could have proved this the hard way by inspecting natural transformations in various Beck-Chevalley base changes used to define the various morphisms. 
 
-    Instead, by @open-proper-compat-with-bc and our construction for the projections $P$ and $P_!$, all natural transformations here are compatible with base change. Furthermore, by proper base change, @etale-lower-shriek-first-props (4), and monoidal isomorphism for pullbacks, the base change maps in the respective compatibilities are all isomorphisms. Therefore, by checking stalks, it suffices to prove this lemma upon base changing the entire diagram of schemes to a geometric point of $Y_2$. 
+    Instead, by @open-proper-compat-with-bc and our construction for the projections $P$ and $P_!$, all natural transformations here are compatible with base change. Furthermore, by proper base change, @etale-lower-shriek-first-props (4), and the monoidal isomorphism for pullbacks, the base change maps in the respective compatibilities are all isomorphisms. Therefore, by checking stalks, it suffices to prove this lemma upon base changing the entire diagram of schemes to a geometric point of $Y_2$. 
 
     Upon base changing to a geometric point of $Y_2$ not in $Y_1$, $j_(Y,!)$ becomes zero, and both paths are zero. Thus, we may assume that we are base changing to a geometric point $ol(y) = Spec(k) -> Y_2$ that is in $Y_1$ for $k$ an algebraically closed field. Then under this base change, $j_Y$ becomes the identity $Spec(k) -> Spec(k)$, and our commutative diagram becomes: 
     // https://q.uiver.app/#r=typst&q=WzAsMyxbMCwwLCJYXzEiXSxbMCwyLCJYXzIiXSxbMiwxLCJTcGVjKGspIl0sWzAsMSwiaiIsMl0sWzAsMiwiZl8xIl0sWzEsMiwiZl8yIiwyXV0=
@@ -344,7 +348,7 @@ We are now ready to combine the projection morphisms for $R f_*$ and for $f_!$ t
       $
       becomes $j^(-1) R j_* (-) Lotimes_Lambda j^(-1) cal(L) -> - Lotimes_Lambda j^(-1) cal(L)$ a counit. Identifying $j^(-1) R j_*$ makes this the identity. 
 
-      On the upon hand, upon applying $j^(-1)$ and the monoidal isomorphism, 
+      On the other hand, upon applying $j^(-1)$ and the monoidal isomorphism, 
       $
         P_!: j_! (-) Lotimes_Lambda cal(L) -> j_! (- Lotimes_Lambda j^(-1) cal(L))
       $
@@ -374,7 +378,7 @@ With the projection map defined, we are now ready to prove the projection formul
   $
   is a quasi-isomorphism. This follows from the following lemma: 
   #lemma(name: <projection-formula-for-global-sections>)[
-    (Projection formula for global sections) Let $X$ be scheme that is of finite type over a separably closed field $k$. Then for any $cal(K) in D(X_et, Lambda), M in D (Lambda)$, the projection map: 
+    (Projection formula for global sections) Let $X$ be a finite type scheme over a separably closed field $k$. Then for any $cal(K) in D_#[tor] (X_et, Lambda), M in D (Lambda)$, the projection map: 
     $
       R Gamma(X, cal(K)) Lotimes_Lambda M -> R Gamma(X, cal(K) Lotimes_Lambda ul(M))
     $
@@ -389,7 +393,7 @@ With the projection map defined, we are now ready to prove the projection formul
       #set enum(numbering: "(a)")
       + Given a family of complexes $M_i in D(Lambda)$, if $T(M_i)$ holds for all $i$, then $T(oplus.big_i M_i)$ holds. 
 
-      + Given a distinguished triangle $K -> L -> M ->^(+1)$ in $D(Lambda)$, if two of $T(K), T(L), T(M)$ holds, then so does the third. 
+      + Given a distinguished triangle $K -> L -> M ->^(+1)$ in $D(Lambda)$, if two of $T(K), T(L), T(M)$ hold, then so does the third. 
 
       + For all $k in ZZ$, $T(Lambda[k])$ holds. 
     ]
@@ -399,7 +403,7 @@ With the projection map defined, we are now ready to prove the projection formul
 
     Let $T$ be the property on $D(Lambda)$ such that $T(M)$ is the statement: 
 
-    - For all $cal(K) in D(X_et, Lambda)$, the projection map: #h(1fr)
+    - For all $cal(K) in D_#[tor] (X_et, Lambda)$, the projection map: #h(1fr)
       $
         R Gamma(X, cal(K)) Lotimes_Lambda M -> R Gamma(X, cal(K) Lotimes_Lambda ul(M))
       $
@@ -407,12 +411,12 @@ With the projection map defined, we are now ready to prove the projection formul
 
     Now: 
 
-    - Both sides are triangulated in $M$, so by the derived five lemma, $T(M)$ is preserved under shifts, and if $T(K), T(L)$ holds in a distinguished triangle $K -> L -> M ->^(+1)$, then $T(M)$ holds. 
+    - Both sides are triangulated in $M$, so by the derived five lemma, $T(M)$ is preserved under shifts, and if $T(K), T(L)$ hold in a distinguished triangle $K -> L -> M ->^(+1)$, then $T(M)$ holds. 
 
     - For arbitrary direct sums, we need to use a limit formula: 
 
       #proposition(name: <derived-bounded-limit-formula-for-direct-sum>)[
-        Let $X$ be a qcqs scheme s.t. $R Gamma(X, -)$ is bounded above. Then for any $cal(K)_i in D (X_et, Lambda)$ the canonical map: 
+        Let $X$ be a qcqs scheme s.t. $R Gamma(X, -)$ is bounded above on $D_#[tor] (X_et, Lambda)$. Then for any $cal(K)_i in D_#[tor] (X_et, Lambda)$ the canonical map: 
         $
           oplus.big_i R Gamma(X, cal(K)_i) -> R Gamma(X, oplus.big_i cal(K)_i)
         $
@@ -427,7 +431,7 @@ With the projection map defined, we are now ready to prove the projection formul
         $
           h^q (R Gamma(X, tau_([q-d,q+1]) cal(K))) -> h^q (R Gamma(X, cal(K)))
         $
-        is an isomorphism. Thus, to prove the desired isomorphism, we may argue for each degree separatedly, and truncate all complexes so that we may assume that each $cal(K)_i$ is supported on $[a,b]$. Now replace each $cal(K)_i$ with an injective resolution $cal(I)_i$ supported on $[a,+oo)$, and note that for each $p$, and every $q>=1$: 
+        is an isomorphism. Thus, to prove the desired isomorphism, we may argue for each degree separately, and truncate all complexes so that we may assume that each $cal(K)_i$ is supported on $[a,b]$. Now replace each $cal(K)_i$ with an injective resolution $cal(I)_i$ supported on $[a,+oo)$, and note that for each $p$, and every $q>=1$: 
         $
           H^q (X, oplus.big_i cal(I)_i^p) = oplus.big_i H^q (X, cal(I)_i^p) = 0
         $
@@ -436,7 +440,7 @@ With the projection map defined, we are now ready to prove the projection formul
           R Gamma(X, oplus.big_i cal(K)_i) = oplus.big_i R Gamma(X, cal(K)_i)
         $
       ]
-      The lemma above is applicable because $X$ is of finite type over a separably closed field $k$, and so $R Gamma(X, -)$ is bounded above by Grothendieck vanishing. Now $Lotimes_Lambda$ is a left adjoint, and hence commutes with all direct sums. Hence: 
+      The lemma above is applicable because $X$ is of finite type over a separably closed field $k$, and so $R Gamma(X, -)$ is bounded above on torsion complexes by Grothendieck vanishing. Now $Lotimes_Lambda$ is a left adjoint, and hence commutes with all direct sums. Hence: 
       $
         R Gamma(X, cal(K)) Lotimes_Lambda (oplus.big_i M_i) = oplus.big_i (R Gamma(X, cal(K)) Lotimes_Lambda M_i)
       $
@@ -459,7 +463,7 @@ With the projection map defined, we are now ready to prove the projection formul
     
     Thus, in each of the four cases, the way-out lemma is applicable, and we may reduce to the case that $cal(K)$ is a single sheaf $cal(F) in cAb(X_et)$. 
     
-    Next, having fixed $cal(K) = cal(F) in cAb(X_et, Lambda)$, both sides are bounded in $M$. By way-out lemma, we may further assume that $M = N in AMod(Lambda)$ is a $Lambda$-module. Since $Lambda$ has finite global dimension, we may find a bounded projective resolution of $M$, say $0 -> P^bullet -> M$. Now: 
+    Next, having fixed $cal(K) = cal(F) in cAb(X_et, Lambda)$, both sides are bounded in $M$. By the way-out lemma, we may further assume that $M = N in AMod(Lambda)$ is a $Lambda$-module. Since $Lambda$ has finite global dimension, we may find a bounded projective resolution of $M$, say $0 -> P^bullet -> M$. Now: 
     $
       R Gamma(X, cal(K)) Lotimes_Lambda M = R Gamma(X, cal(F)) otimes_Lambda P \
       R Gamma(X, cal(K) Lotimes_Lambda ul(M)) = R Gamma(X, cal(F) otimes_Lambda ul(P))
@@ -480,7 +484,7 @@ With the projection map defined, we are now ready to prove the projection formul
     $
       H^q (X, cal(F) otimes_Lambda ul(Q)) cong H^q (X, cal(F)) otimes_Lambda Q
     $
-    By Lazard's theorem (#cite-stacks("058G")[Theorem 10.81.4]), $Q = dirlim_lambda Q_lambda$ is a direct limit of finite free $Lambda$-modules $Q_lambda$'s. Since tensor product commutes with colimits as a left adjoint, by the limit formula @limit-formula-for-sheaves, it suffices to prove for each $Q_lambda$: 
+    By Lazard's theorem (#cite-stacks("058G")[Theorem 10.81.4]), $Q = dirlim_lambda Q_lambda$ is a direct limit of finite free $Lambda$-modules $Q_lambda$. Since tensor product commutes with colimits as a left adjoint, by the limit formula @limit-formula-for-sheaves, it suffices to prove for each $Q_lambda$: 
     $
       H^q (X, cal(F) otimes_Lambda ul(Q_lambda)) cong H^q (X, cal(F)) otimes_Lambda Q_lambda
     $
@@ -491,7 +495,7 @@ With the projection map defined, we are now ready to prove the projection formul
 Next, from the projection formula, we derive the Kunneth formula. 
 
 #theorem(name: <kunneth-formula>)[
-  (Kunneth formula) Given a Cartesian diagram of noetherian schemes: 
+  (Kunneth formula) Given a Cartesian diagram of noetherian schemes with $f_1$ and $f_2$ separated of finite type: 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJYIl0sWzAsMSwiWF8xIl0sWzEsMCwiWF8yIl0sWzEsMSwiWSJdLFswLDEsInBfMSIsMl0sWzAsMiwicF8yIl0sWzEsMywiZl8xIiwyXSxbMiwzLCJmXzIiXSxbMCwzLCJmIiwxXV0=
   #context align(center, diagram({
     node((0, 0), [$X$])
@@ -526,7 +530,7 @@ Next, from the projection formula, we derive the Kunneth formula.
     cong& R f_(2,!) R p_(2,!) (p_1^(-1) cal(K)_1 Lotimes_Lambda p_2^(-1) cal(K)_2) #[by projection formula] \
     cong& R f_! (p_1^(-1) cal(K)_1 Lotimes_Lambda p_2^(-1) cal(K)_2)
   $
-  By compatibility of projection with base change and by naturality of base change, this Kunneth isomorphism is compatible with arbitrary base change. We now prove the rest of compatibility statements. 
+  By compatibility of projection with base change and by naturality of base change, this Kunneth isomorphism is compatible with arbitrary base change. We now prove the rest of the compatibility statements. 
 
   From now on we write $Lotimes$ for $Lotimes_Lambda$ and suppress $Lambda$ from the notation. We need two lemmas to help prove the symmetry and $3 times 3$ compatibility statements. We will use:
   
@@ -555,11 +559,11 @@ Next, from the projection formula, we derive the Kunneth formula.
     $
       R f_(1,*) cal(K)_1 Lotimes R f_(2,*) cal(K)_2 &-->^(P'(f_2)) R f_(2,*) (f_2^(-1) R f_(1,*) cal(K)_1 Lotimes cal(K)_2) \
       &-->^BC R f_(2,*) (R p_(2,*) p_1^(-1) cal(K)_1 Lotimes cal(K)_2) \
-      &-->^(P(p_2)) R f_(2,*) R p_(2,*) (p_1^(-1) cal(K) Lotimes p_2^(-1) cal(K)_2) 
+      &-->^(P(p_2)) R f_(2,*) R p_(2,*) (p_1^(-1) cal(K)_1 Lotimes p_2^(-1) cal(K)_2) 
     $
     Now: 
     
-    - In the construction of the projection map for $R f_*$, we have described how the projection map looks under adjunction. Under adjunction, $P(f): R f_* cal(K) Lotimes cal(L) -> R f_* (cal(K) Lotimes cal(L))$ becomes: #h(1fr)
+    - In the construction of the projection map for $R f_*$, we have described how the projection map looks under adjunction. Under adjunction, $P(f): R f_* cal(K) Lotimes cal(L) -> R f_* (cal(K) Lotimes f^(-1) cal(L))$ becomes: #h(1fr)
       $
         f^(-1) (R f_* cal(K) Lotimes cal(L)) -->^M f^(-1) R f_* cal(K) Lotimes f^(-1) cal(L) -->^eta cal(K) Lotimes f^(-1) cal(L)
       $
@@ -578,7 +582,7 @@ Next, from the projection formula, we derive the Kunneth formula.
       p_2^(-1) f_2^(-1) (R f_(1,*) cal(K)_1 Lotimes R f_(2,*) cal(K)_2) &-->^(M(f_2)) p_2^(-1) (f_2^(-1) R f_(1,*) cal(K)_1 Lotimes f_2^(-1) R f_(2,*) cal(K)_2) -->^(M(p_2)) p_2^(-1) f_2^(-1) R f_(1,*) cal(K)_1 Lotimes p_2^(-1) f_2^(-1) R f_(2,*) cal(K)_2 \
       &-->^BC p_2^(-1) R p_(2,*) p_1^(-1) cal(K)_1 Lotimes p_2^(-1) f_2^(-1) R f_(2,*) cal(K)_2 \
       &-->^(eta(p_2)) p_1^(-1) cal(K)_1 Lotimes p_2^(-1) f_2^(-1) R f_(2,*) cal(K)_2 \
-      &-->^(eta(f_2)) p_2^(-1) (f_2^(-1) R f_(1,*) cal(K)_1 Lotimes cal(K)_2)
+      &-->^(eta(f_2)) p_1^(-1) cal(K)_1 Lotimes p_2^(-1) cal(K)_2
     $
     This already resembles the claimed morphism, and it all amounts to showing that the composition: 
     $
@@ -635,15 +639,15 @@ Next, from the projection formula, we derive the Kunneth formula.
     
     - $BC_i^T$ the base change in the same square as in $BC_i$, but with pullbacks along horizontal maps and pushforwards along vertical maps; 
 
-    - $K_1, K_2$ the Kunneth map in the upper left and lower right square, respectively. 
+    - $K_1, K_2$ the Kunneth maps in the upper left and lower right squares, respectively. 
     
     Suppose that the Kunneth map in the lower left square is symmetric. Then the Kunneth map is compatible with this $3 times 3$ square. That is, the composition: 
     $
       & R f_(1,!) R h_(1,!) cal(K)_1 Lotimes R f_(2,!) R h_(2,!) cal(K)_2 \
       -->^(K_2) & R f_(2,!) R p_(2,!) (p_1^(-1) R h_(1,!) cal(K)_1 Lotimes p_2^(-1) R h_(2,!) cal(K)_2) \
       -->^(BC_2^T, BC_3) & R f_(2,!) R p_(2,!) (R g_(1,!) s_1^(-1) cal(K)_1 Lotimes R g_(2,!) s_2^(-1) cal(K)_2) \
-      -->^(K_1) & R f_(2,!) R p_(2,!) R g_(2,!) R s_(q,!) (q_1^(-1) s_1^(-1) cal(K)_1 Lotimes q_2^(-1) s_2^(-1) cal(K)_2) \
-      cong & R f_(2,!) R h_(2,!) R s_(2,!) R s_(q,!) (q_1^(-1) s_1^(-1) cal(K)_1 Lotimes q_2^(-1) s_2^(-1) cal(K)_2)
+      -->^(K_1) & R f_(2,!) R p_(2,!) R g_(2,!) R q_(2,!) (q_1^(-1) s_1^(-1) cal(K)_1 Lotimes q_2^(-1) s_2^(-1) cal(K)_2) \
+      cong & R f_(2,!) R h_(2,!) R s_(2,!) R q_(2,!) (q_1^(-1) s_1^(-1) cal(K)_1 Lotimes q_2^(-1) s_2^(-1) cal(K)_2)
     $
     is exactly the Kunneth map of the large square. 
   ]
@@ -660,7 +664,7 @@ Next, from the projection formula, we derive the Kunneth formula.
       -->^(P(q_2)) & R f_(2,!) R p_(2,!) R g_(2,!) R q_(2,!) (q_1^(-1) s_1^(-1) cal(K)_1 Lotimes q_2^(-1) s_2^(-1) cal(K)_2) \
       -->^c & R f_(2,!) R h_(2,!) R s_(2,!) R q_(2,!) (q_1^(-1) s_1^(-1) cal(K)_1 Lotimes q_2^(-1) s_2^(-1) cal(K)_2)
     $
-    where $c$ is the isomorphism $R p_(2,!) R g_(2,!) -> R h_(2,!) R s_(2,!)$. Then path (2), the Kunneth of the large square, is the following path by compatibility of projection map with composition: 
+    where $c$ is the isomorphism $R p_(2,!) R g_(2,!) -> R h_(2,!) R s_(2,!)$. Then path (2), the Kunneth of the large square, is the following path by compatibility of the projection map with composition: 
     $
       & R f_(1,!) R h_(1,!) cal(K)_1 Lotimes R f_(2,!) R h_(2,!) cal(K)_2 \
       -->^(P'(f_2)) & R f_(2,!) (f_2^(-1) R f_(1,!) R h_(1,!) cal(K)_1 Lotimes R h_(2,!) cal(K)_2) \
@@ -686,7 +690,7 @@ Next, from the projection formula, we derive the Kunneth formula.
       -->^(BC_1^T) & R p_(2,!) R g_(2,!) (R q_(2,!) q_1^(-1) s_1^(-1) cal(K)_1 Lotimes s_2^(-1) cal(K)_2) & \ 
       -->^c & R h_(2,!) R s_(2,!) (R q_(2,!) q_1^(-1) s_1^(-1) cal(K)_1 Lotimes s_2^(-1) cal(K)_2)
     $
-    Next, in path (1'), the final $-->^(BC_1^T) -->^c$ may be exchanged to $-->^c -->^(BC_1^T)$ by naturality, and $BC_2^T$ may be thrown to the left of $P(p)_2$. In path (2'), by naturality, $BC_2^T, BC_4^T$ may be thrown to the left of $P'(h_2)$, and $BC_1^T$ may be thrown to the right of $P(s)_2$. In summarize, we are comparing path (1'): 
+    Next, in path (1'), the final $-->^(BC_1^T) -->^c$ may be exchanged to $-->^c -->^(BC_1^T)$ by naturality, and $BC_2^T$ may be thrown to the left of $P(p)_2$. In path (2'), by naturality, $BC_2^T, BC_4^T$ may be thrown to the left of $P'(h_2)$, and $BC_1^T$ may be thrown to the right of $P(s)_2$. In summary, we are comparing path (1'): 
     $
       bullet -->^(BC_4^T) bullet -->^(BC_2^T) bullet -->^(P(p_2)) bullet -->^(BC_3) bullet -->^(P'(g_2)) bullet -->^c bullet -->^(BC_1^T) bullet
     $
@@ -707,7 +711,7 @@ Next, from the projection formula, we derive the Kunneth formula.
       -->^(P(p_2)) & R p_(2,!) (R g_(1,!) s_1^(-1) cal(K)_1 Lotimes p_2^(-1) R h_(2,!) cal(K)_2) \
       -->^(BC_3) & R p_(2,!) (R g_(1,!) s_1^(-1) cal(K)_1 Lotimes R g_(2,!) s_2^(-1) cal(K)_2) \
       -->^(P'(g_2)) & R p_(2,!) R g_(2,!) (g_2^(-1) R g_(1,!) s_1^(-1) cal(K)_1 Lotimes s_2^(-1) cal(K)_2) \
-      -->^(c^(-1)) & R h_(2,!) R s_(2,!) (g_2^(-1) R g_(1,!) s_1^(-1) cal(K)_1 Lotimes s_2^(-1) cal(K)_2)
+      -->^c & R h_(2,!) R s_(2,!) (g_2^(-1) R g_(1,!) s_1^(-1) cal(K)_1 Lotimes s_2^(-1) cal(K)_2)
     $
     However, by definition, path (1'') is the Kunneth of the lower left square applied to $R g_(1,!) s_1^(-1) cal(K)_1$ and $cal(K)_2$, and path (2'') is the Kunneth of that square but transposed. Their equality is exactly what symmetry of the Kunneth of the lower left square means.  
   ]
@@ -716,7 +720,7 @@ Next, from the projection formula, we derive the Kunneth formula.
 
   - Step 1. Suppose that in the given Cartesian diagram, $f_2$ is an open immersion. Then we claim that the Kunneth map in this case is symmetric. #h(1fr)
   
-    Indeed, by proper base change and compatibility with arbitrary base change, it suffices to prove symmetry upon base changing to a geometric point $ol(y)$ of $Y$. If $ol(y)$ is not in $X_2$, then the stalk of both sides of $R f_(1,!) cal(K)_1 Lotimes R f_(2,!) cal(K)_2 -> R f_! (p_1^(-1) cal(K)_1 Lotimes p_2^(-1) cal(K)_2)$ are zero, and symmetry is automatic. Thus, it suffices to prove symmetry upon base changing to a geometric point of $Y$ in $X_2$. In this case, the base changed diagram is: 
+    Indeed, by proper base change and compatibility with arbitrary base change, it suffices to prove symmetry upon base changing to a geometric point $ol(y)$ of $Y$. If $ol(y)$ is not in $X_2$, then the stalks of both sides of $R f_(1,!) cal(K)_1 Lotimes R f_(2,!) cal(K)_2 -> R f_! (p_1^(-1) cal(K)_1 Lotimes p_2^(-1) cal(K)_2)$ are zero, and symmetry is automatic. Thus, it suffices to prove symmetry upon base changing to a geometric point of $Y$ in $X_2$. In this case, the base changed diagram is: 
     // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJYIl0sWzEsMCwiWCJdLFswLDEsIlNwZWMoaykiXSxbMSwxLCJTcGVjKGspIl0sWzAsMSwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG91YmxlIGJhcnJlZCJ9fX1dLFsyLDMsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdWJsZSBiYXJyZWQifX19XSxbMCwyLCJmIiwyXSxbMSwzLCJmIl1d
     #align(center, diagram({
       node((0, 0), [$X$])
@@ -762,10 +766,10 @@ Next, from the projection formula, we derive the Kunneth formula.
       edge((1, 1), (2, 2), [$ol(f)$], label-side: center, "->")
     }, crossing-fill: thm-box-curr-color()))
 
-    By Step 1, the Kunneth in the lower left square of this diagram is symmetric. Thus by @kunneth-3x3-and-symmetry, the Kunneth map is compatible with this $3 times 3$ diagram. In other words, with $K_1, K_2$ being the Kunneth of the upper left and lower right square respectively, the Kunneth of the original square becomes: 
+    By Step 1, the Kunneth in the lower left square of this diagram is symmetric. Thus by @kunneth-3x3-and-symmetry, the Kunneth map is compatible with this $3 times 3$ diagram. In other words, with $K_1, K_2$ being the Kunneth of the upper left and lower right squares respectively, the Kunneth of the original square becomes: 
     $
-      R f_(1,!) cal(K)_1 Lotimes R f_(2,!) cal(K)_2 &-->^(K_2) R ol(f)_! (ol(p)_1^(-1) j_(1,!) cal(K)_1 Lotimes ol(p)_2^(-1) j_(2,!) cal(K)_1) \
-      &-->^BC R ol(f)_! (g_(1,!) s_1^(-1) cal(K)_1 Lotimes g_(2,!) s_2^(-1) cal(K)_1) \
+      R f_(1,!) cal(K)_1 Lotimes R f_(2,!) cal(K)_2 &-->^(K_2) R ol(f)_! (ol(p)_1^(-1) j_(1,!) cal(K)_1 Lotimes ol(p)_2^(-1) j_(2,!) cal(K)_2) \
+      &-->^BC R ol(f)_! (g_(1,!) s_1^(-1) cal(K)_1 Lotimes g_(2,!) s_2^(-1) cal(K)_2) \
       &-->^(K_1) R f_! (p_1^(-1) cal(K)_1 Lotimes p_2^(-1) cal(K)_2)
     $ 
     Thus, it suffices to prove that the Kunneth maps $K_1, K_2$ for the two small squares are symmetric. The upper left square has its horizontal morphisms being open immersions, so $K_1$ is symmetric by Step 1. On the other hand, $K_2$ is symmetric because @proper-kunneth-alt-desc gave an alternative description of the Kunneth map that is symmetric. 
@@ -867,7 +871,7 @@ As an application of the Kunneth formula, we are now ready to compute the cohomo
   $
   Thus, we have a long exact sequence: 
   $
-    dots.c -> H^(q-1) (PP^(d-1)_k, ul(ZZ\/n)) -> H^q_c (AA^d_k, ul(ZZ\/n)) -> H^q (PP^d_k, ul(ZZ\/n)) -> H^q (PP^(d-1)_k, ul(ZZ\/n)) -> H^(q+1) (AA^d_k, ul(ZZ\/n)) -> dots.c
+    dots.c -> H^(q-1) (PP^(d-1)_k, ul(ZZ\/n)) -> H^q_c (AA^d_k, ul(ZZ\/n)) -> H^q (PP^d_k, ul(ZZ\/n)) -> H^q (PP^(d-1)_k, ul(ZZ\/n)) -> H^(q+1)_c (AA^d_k, ul(ZZ\/n)) -> dots.c
   $
 
   - When $q <= 2d-2$, $H^q_c (AA^d_k, ul(ZZ\/n)) = H^(q+1)_c (AA^d_k, ul(ZZ\/n)) = 0$ by (1). Thus, we have a canonical isomorphism: 

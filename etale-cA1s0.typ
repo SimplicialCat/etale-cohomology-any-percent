@@ -2,7 +2,7 @@
 
 The passage to limit is a technique used to reduce statements on general qcqs schemes, to statements on noetherian schemes. When phrased in full generality, it may be used for other purposes, such as for spreading out properties on local rings to open neighborhoods. 
 
-The intuition of this technique goes as follows: Given an affine scheme $X = Spec(A)$, every element of $A$ is contained in a subring of $A$ that is finite type over $ZZ$. In other words, let ${A_lambda}_lambda$ be the directed set of all subrings of $A$ finite type over $ZZ$, then: 
+The intuition of this technique goes as follows: Given an affine scheme $X = Spec(A)$, every element of $A$ is contained in a subring of $A$ that is finite type over $ZZ$. In other words, if we let ${A_lambda}_lambda$ be the directed set of all subrings of $A$ finite type over $ZZ$, then: 
 $
   A = dirlim_lambda A_lambda
 $
@@ -22,11 +22,11 @@ and we immediately see that for all $lambda >= mu$, $A_lambda -> B_lambda$ is th
 
 In other words, any morphism $A -> B$ of finite presentation must come from a morphism $A_mu -> B_mu$ at some finite stage, also of finite presentation. 
 
-We next consider properties of the morphism $A -> B$. For demonstration purposes, we take one simple property as our example: That $A -> B$ is surjective, i.e. $Spec(B) -> Spec(A)$ is a closed immersion. In other words, each $t_i in B$ is contained in the image of $A -> B$, or there exists $h_(i,j) in A[t_1, dots.c, t_n]$ s.t. 
+We next consider properties of the morphism $A -> B$. For demonstration purposes, we take one simple property as our example: That $A -> B$ is surjective, i.e. $Spec(B) -> Spec(A)$ is a closed immersion. In other words, each $t_i in B$ is contained in the image of $A -> B$, or there exist $a_i in A$ and $h_(i,j) in A[t_1, dots.c, t_n]$ s.t. 
 $
-  t_i = sum_(j=1)^m h_(i,j) g_j, forall 1 <= i <= n
+  t_i - a_i = sum_(j=1)^m h_(i,j) g_j, forall 1 <= i <= n
 $
-However, the finite set of polynomials ${h_(i,j)}$ only has finitely many coefficients, which may be all contained in some finite stage $A_(mu')$. As such, enlarging $mu$ if necessary, we see that for all $lambda >= mu$, $A_lambda -> B_lambda$ is surjective. 
+However, the finite set of polynomials ${h_(i,j)}$ and elements ${a_i}$ only has finitely many coefficients, which may be all contained in some finite stage $A_(mu')$. As such, enlarging $mu$ if necessary, we see that for all $lambda >= mu$, $A_lambda -> B_lambda$ is surjective. 
 
 These paragraphs above are not for rigorously proving any theorems. However, they establish the following intuition: 
 
@@ -44,7 +44,7 @@ The first problem to answer is approximation of schemes. It turns out that the c
   $
     X = invlim_i X_i
   $
-  in the category of schemes, which all transition maps are affine, and every $X_i$ is of finite type over $ZZ$. 
+  in the category of schemes, in which all transition maps are affine, and every $X_i$ is of finite type over $ZZ$. 
 ]
 #proof[
   See #cite-stacks("01ZA")[Lemma 32.5.4]. 
@@ -99,7 +99,7 @@ A limit result also exists for quasi-coherent sheaves with finite presentation.
   See #cite-stacks("01ZR")[Lemma 32.10.2]. 
 ]
 
-Finally, we study properties on the limit that passes to some finite stage. 
+Finally, we study properties on the limit that pass to some finite stage. 
 
 #theorem(name: <passage-to-limit-of-properties>)[
   Let $S = invlim_(i in I) S_i$ be a projective limit of qcqs schemes with affine transition maps, let $0 in I$, and let $f_0: X_0 -> Y_0$ be a morphism of qcqs $S_0$-schemes. Denote by $f_i: X_i -> Y_i$ the base change of $f_0$ along $S_i -> S_0$ for any $i >= 0$, and by $f: X -> Y$ the base change of $f_0$ along $S -> S_0$. 
@@ -128,7 +128,7 @@ Finally, we study properties on the limit that passes to some finite stage.
     + unramified
 ]
 #proof[
-  See #cite-stacks("081C")[Section 32.8] of Stacks Project, containing proofs for all entries but (2e), and #cite-stacks("081F")[Lemma 32.13.1] for (2e). 
+  See #cite-stacks("081C")[Section 32.8] , which contains proofs for all entries but (2e). Also see #cite-stacks("081F")[Lemma 32.13.1] for (2e). 
 
   I will prove (3h)(3d) and (3c) myself for self-containment. For (3h), note that: 
   $
@@ -140,13 +140,13 @@ Finally, we study properties on the limit that passes to some finite stage.
 
   For (3c), by @equiv-defns-of-smooth (3), locally around every point of $X$, $f$ factors as $U ->^j AA^d_Y -> Y$ for $j$ etale. We may take $U$ to be an affine open. 
 
-  The open immersion $U -> X$ is of finite presentation. Thus, by @passage-to-limit-of-morphisms (2), there exists some finite stage $i$ s.t. $U -> X$ come from base changing $U_i -> X_i$ for an $S_i$-scheme $U_i$. By increasing $i$, we may assume that $U_i -> X_i$ is an open immersion by (3f). 
+  The open immersion $U -> X$ is of finite presentation. Thus, by @passage-to-limit-of-morphisms (2), there exists some finite stage $i$ s.t. $U -> X$ comes from base changing $U_i -> X_i$ for an $S_i$-scheme $U_i$. By increasing $i$, we may assume that $U_i -> X_i$ is an open immersion by (3f). 
   
-  Now $j$ is a morphism of finite presentation. Thus, by increasing $i$, we may assume that $j$ comes from base changing an $S_i$-morphism $j_i: U_i -> AA^d_(Y_i)$. By (3c), $j_i$ is etale for sufficiently large $i$. Now: 
+  Now $j$ is a morphism of finite presentation. Thus, by increasing $i$, we may assume that $j$ comes from base changing an $S_i$-morphism $j_i: U_i -> AA^d_(Y_i)$. By (3d), $j_i$ is etale for sufficiently large $i$. Now: 
   $
     U_i ->^(j_i) AA^d_(Y_i) -> Y_i
   $
-  and $f_i|_(U_i)$ both base changes to $f|_U$ in the limit. By @passage-to-limit-of-morphisms (3), they agree upon base changing to a finite stage. Thus, there exists a finite stage $i$ s.t. $f_i|_(U_i)$ is smooth of relative dimension $d$. 
+  and $f_i|_(U_i)$ both base change to $f|_U$ in the limit. By @passage-to-limit-of-morphisms (3), they agree upon base changing to a finite stage. Thus, there exists a finite stage $i$ s.t. $f_i|_(U_i)$ is smooth of relative dimension $d$. 
 
   Since $X$ is qcqs, we may cover it by affine opens with etale charts, and take the upper bound of the finite stages to descend smoothness on these finitely many charts. This concludes the proof of (3c). 
 ]
@@ -161,9 +161,9 @@ Finally, we study properties on the limit that passes to some finite stage.
     #example(name: <generic-flatness>)[
       To demonstrate how to use (2), we show that (2) may be used to prove generic flatness: 
 
-      - For any morphism $f: X -> Y$ with $Y$ integral, there exists a nonempty open set $V subset Y$ s.t. $f: f^(-1)(V) -> V$ is flat. 
+      - For any morphism $f: X -> Y$ of finite presentation with $Y$ integral, there exists a nonempty open set $V subset Y$ s.t. $f: f^(-1)(V) -> V$ is flat. 
 
-      Let $eta in Y$ be the generic point. Now $Spec(cal(O)_(Y,eta)) = Spec(K(Y))$ is the spectrum of a field. Therefore, the base change $X_eta -> eta$, i.e. the generic fiber is automatically flat. By passage along the limit: 
+      Let $eta in Y$ be the generic point. Now $Spec(cal(O)_(Y,eta)) = Spec(K(Y))$ is the spectrum of a field. Therefore, the base change $X_eta -> eta$, i.e. the generic fiber, is automatically flat. By passage along the limit: 
       $
         Spec(cal(O)_(Y,eta)) = invlim_(#[affine open] emptyset != V subset Y) V
       $

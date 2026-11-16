@@ -70,11 +70,11 @@ The proofs in this appendix are purely formal and categorical, so you are encour
     edge((1, -1), (1, 0), [$g_3$], label-side: center, "->")
     edge((0.3, -0.3), (0.7, -0.7), [$t$], label-side: center, "=>")
   }, crossing-fill: thm-box-curr-color()))
-  in which $g_i$ has left adjoint $g_i^L$, the composition of base changes along the two small squares: 
+  in which $g_i$ has the left adjoint $g_i^L$, the composition of base changes along the two small squares: 
   $
     g_3^L f h -->^(BC(f,f',g_3,g_2,t)h) f'g_2^L h ->^(f'BC(h,h',g_2,g_1,s)) f'h'g_1^L
   $
-  is exactly the base change along the larger rectangle, i.e: 
+  is exactly the base change along the larger rectangle, i.e.: 
   $
     f'BC(h,h',g_2,g_1,s) compose BC(f,f',g_3,g_2,t)h = BC(f h, f'h', g_3, g_1, t h' compose f s)
   $
@@ -94,7 +94,7 @@ The proofs in this appendix are purely formal and categorical, so you are encour
   $
   - By naturality of the counit, #h(1fr)
     $
-      f' B_h compose eta_3 g' g_2^L h = eta_3 f' h' g_1^L compose g_3^L g_3 f' B_h
+      f' B_h compose eta_3 f' g_2^L h = eta_3 f' h' g_1^L compose g_3^L g_3 f' B_h
     $
     so it suffices to prove that: 
     $
@@ -183,7 +183,7 @@ The proofs in this appendix are purely formal and categorical, so you are encour
     edge((6, 0), (6, 2), "=")
     edge((10, 0), (10, 2), "=")
     edge((0, 0), (6, 0), [$B_f h$], label-side: center, "->")
-    edge((6, 0), (10, 0), [$g' B_h$], label-side: center, "->")
+    edge((6, 0), (10, 0), [$f' B_h$], label-side: center, "->")
     edge((0, 2), (2, 3), [$g_3^L f u_2 h$], label-side: center, "->")
     edge((2, 3), (4, 3), [$g_3^L t g_2^L h$], label-side: center, "->")
     edge((4, 3), (6, 2), [$eta_3 f' g_2^L h$], label-side: center, "->")
@@ -232,7 +232,7 @@ The proofs in this appendix are purely formal and categorical, so you are encour
 ]
 
 #proposition(name: <bcbc-vertical-concat>)[
-  The Beck-Chevalley base change is compatible with horizontal concatenation of diagrams. That is, given a diagram: 
+  The Beck-Chevalley base change is compatible with vertical concatenation of diagrams. That is, given a diagram: 
   // https://q.uiver.app/#r=typst&q=WzAsNixbMCwwLCJjYWwoQylfMSJdLFswLDEsImNhbChDKV8yIl0sWzAsMiwiY2FsKEMpXzMiXSxbMSwwLCJjYWwoRClfMSJdLFsxLDEsImNhbChEKV8yIl0sWzEsMiwiY2FsKEQpXzMiXSxbMiw1LCJmXzMiLDJdLFsxLDQsImZfMiIsMV0sWzAsMywiZl8xIl0sWzQsNSwiZ18xIl0sWzMsNCwiZ18yIl0sWzEsMiwiZ18zIiwyXSxbMCwxLCJnXzQiLDJdLFsyLDQsInQiLDFdLFsxLDMsInMiLDFdXQ==
   #context align(center, diagram({
     node((-1, -1), [$cal(C)_1$])
@@ -251,11 +251,11 @@ The proofs in this appendix are purely formal and categorical, so you are encour
     edge((-0.7, 0.7), (-0.3, 0.3), [$t$], label-side: center, "=>")
     edge((-0.7, -0.3), (-0.3, -0.7), [$s$], label-side: center, "=>")
   }, label-size: 0.8em, crossing-fill: thm-box-curr-color()))
-  in which $g_i$ has left adjoint $g_i^L$, the composition of base changes along the two small squares: 
+  in which $g_i$ has a left adjoint $g_i^L$, the composition of base changes along the two small squares: 
   $
     g_2^L g_1^L f_3 -->^(g_2^L BC(f_3, f_2, g_1, g_3, t)) g_2^L f_2 g_3^L ->^(BC(f_2, f_1, g_2, g_4, s) g_3^L) f_1 g_4^L g_3^L
   $
-  is exactly the base change along the larger rectangle, i.e: 
+  is exactly the base change along the larger rectangle, i.e.: 
   $
     BC(f_2, f_1, g_2, g_4, s) g_3^L compose g_2^L BC(f_3, f_2, g_1, g_3, t) = BC(f_3, f_1, g_1 g_2, g_3 g_4, g_1 s compose t g_4)
   $
@@ -268,7 +268,7 @@ The proofs in this appendix are purely formal and categorical, so you are encour
     =& eta_2 f_1 g_4^L g_3^L compose g_2^L s g_4^L g_3^L compose g_2^L f_2 u_4 g_3^L compose g_2^L eta_1 f_2 g_3^L compose g_2^L g_1^L t g_3^L compose g_2^L g_1^L f_3 u_3 \
     =& eta_2 f_1 g_4^L g_3^L compose g_2^L s g_4^L g_3^L compose g_2^L (f_2 u_4 g_3^L compose eta_1 f_2 g_3^L) compose g_2^L g_1^L t g_3^L compose g_2^L g_1^L f_3 u_3 \
     =& eta_2 f_1 g_4^L g_3^L compose g_2^L s g_4^L g_3^L compose g_2^L (eta_1 f_2 g_4 g_4^L g_3^L compose g_1^L g_1 f_2 u_4 g_3^L) compose g_2^L g_1^L t g_3^L compose g_2^L g_1^L f_3 u_3 \
-    & #[by naturality of $eta_1: id -> g_1 g_1^L$ w.r.t. $f_2 u_4 g_3^L: f_2 g_3^L -> f_2 g_3 g_4^L g_3^L$] \
+    & #[by naturality of $eta_1: g_1^L g_1 -> id$ w.r.t. $f_2 u_4 g_3^L: f_2 g_3^L -> f_2 g_4 g_4^L g_3^L$] \
     =& eta_2 f_1 g_4^L g_3^L compose g_2^L (s compose eta_1 f_2 g_4) g_4^L g_3^L compose g_2^L g_1^L (g_1 f_2 u_4 compose t) g_3^L compose g_2^L g_1^L f_3 u_3 \
     =& eta_2 f_1 g_4^L g_3^L compose g_2^L (eta_1 g_2 f_1 compose g_1^L g_1 s) g_4^L g_3^L compose g_2^L g_1^L (t g_4 g_4^L compose f_3 g_3 u_4) g_3^L compose g_2^L g_1^L f_3 u_3 \
     & #[by naturality of $s: f_2 g_4 -> g_2 f_1$ w.r.t. $eta_1: g_1^L g_1 -> id$] \
@@ -289,7 +289,7 @@ The proofs in this appendix are purely formal and categorical, so you are encour
     node((4, 1), [$g_2^L f_2 g_4 g_4^L g_3^L$])
     node((5, 2), [$g_2^L g_2 f_1 g_4^L g_3^L$])
     node((0, 3), [$g_2^L g_1^L f_3$])
-    node((6, 3), [$g_2^L g_1^L f_3$])
+    node((6, 3), [$f_1 g_4^L g_3^L$])
     node((3, 2), [$g_2^L g_1^L g_1 f_2 g_4 g_4^L g_3^L$])
     node((2, 3), [$g_2^L g_1^L f_3 g_3 g_4 g_4^L g_3^L$])
     node((4, 3), [$g_2^L g_1^L g_1 g_2 f_1 g_4^L g_3^L$])
@@ -368,7 +368,7 @@ The proofs in this appendix are purely formal and categorical, so you are encour
     $
       g^L phi -->^(g^L p) g^L f -->^(BC(f,f',g,g',s)) f' g'^L -->^(p' g'^L) phi' g'^L 
     $
-    i.e: 
+    i.e.: 
     $
       g^L phi -->^(g^L p) g^L f -->^(g^L f u_(g')) g^L f g' g'^L -->^(g^L s g'^L) g^L g f' g'^L -->^(eta_g f' g'^L) f' g'^L -->^(p' g'^L) phi' g'^L
     $
@@ -395,7 +395,7 @@ The proofs in this appendix are purely formal and categorical, so you are encour
       node((3, 3), [$h^L g g^L f g' g'^L$])
       node((6, 2), [$h^L h g^L g f' g'^L$])
       node((8, 2), [$h^L h f' g'^L$])
-      node((5, 3), [$h^L g g^L g f g'^L$])
+      node((5, 3), [$h^L g g^L g f' g'^L$])
       node((7, 3), [$h^L g f' g'^L$])
       node((2, 4), [$h^L g f' g'^L$])
       edge((0, 0), (2, 0), [$q^L f$], label-side: center, "->")
@@ -411,7 +411,7 @@ The proofs in this appendix are purely formal and categorical, so you are encour
       edge((6, 2), (7, 1), [$eta_h g^L g f' g'^L$], label-side: center, "->")
       edge((6, 2), (8, 2), [$h^L h eta_g f' g'^L$], label-side: center, "->")
       edge((8, 2), (9, 1), [$eta_h f' g'^L$], label-side: center, "->")
-      edge((3, 3), (5, 3), [$h g g^L s g'^L$], label-side: center, "->")
+      edge((3, 3), (5, 3), [$h^L g g^L s g'^L$], label-side: center, "->")
       edge((5, 3), (6, 2), [$h^L q g^L g f' g'^L$], label-side: center, "->")
       edge((5, 3), (7, 3), [$h^L g eta_g f' g'^L$], label-side: center, "->")
       edge((7, 3), (8, 2), [$h^L q f' g'^L$], label-side: center, "->")

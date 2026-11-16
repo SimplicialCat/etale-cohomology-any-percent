@@ -26,7 +26,7 @@ The proof strategy of topological invariance is an induction on dimension. The i
 
 It will turn out that a universal homeomorphism $Spec(A') -> Spec(A)$ in which $A$ is strict henselian must have $A'$ strict henselian. Now by properties of strict henselian local rings, for any etale $A$-algebra $B$, the $k(A)$-points of $B$ correspond to direct factors $A$ of $B$. These factors may be trivially dropped, leaving us to prove topological invariance for the punctured spectra $U' = Spec(A') - frak(m)_(A') -> U = Spec(A) - frak(m)_A$. However, the local rings of $U$ have dimensions $< dim(A)$ because the closed point was removed. This allows an induction on dimension to be performed. 
 
-This method is independently come up with by myself, but upon reference checking, it resembles the method of @cite-SGA1. 
+I independently came up with this method, but upon reference checking, it resembles the method of @cite-SGA1. 
 
 We now start the proof. We first prove a lemma for limit arguments. 
 
@@ -38,7 +38,7 @@ We now start the proof. We first prove a lemma for limit arguments.
   + If $A'$ is finite over $A$, we may write $A' = dirlim_lambda A'_lambda$ as a directed limit of finite $A$-algebras of finite presentation in which every $Spec(A'_lambda) -> Spec(A)$ is a universal homeomorphism. 
 ]
 #proof[
-  We claim that if the composition $X -> Y -> Z$ is a universal homeomorphism with $X -> Y$ surjective and both morphisms affine, then $X -> Y$ and $Y -> Z$ are both universal homeomorphism. 
+  We claim that if the composition $X -> Y -> Z$ is a universal homeomorphism with $X -> Y$ surjective and both morphisms affine, then $X -> Y$ and $Y -> Z$ are both universal homeomorphisms. 
 
   - Since $X$ is integral over $Z$ with $X -> Y -> Z$ both affine, $X$ is integral over $Y$. Since $X -> Z$ is injective, so is $X -> Y$. Now let $x in X$ lie above $y in Y$ and $z in Z$. Since $X -> Z$ is radicial, $k(x)\/k(z)$ is purely inseparable, and so $k(x)\/k(y)$ is also purely inseparable. Now by @equiv-defns-of-radicial (2), $X -> Y$ is radicial. Thus it is integral surjective radicial, hence a universal homeomorphism. 
 
@@ -48,15 +48,15 @@ We now start the proof. We first prove a lemma for limit arguments.
 
   - Since $A'_lambda -> A'$ is an inclusion, $Spec(A') -> Spec(A'_lambda)$ is dominant. It is also closed by integrality, hence surjective. By definition $A -> A'_lambda$ is finite type and integral, hence finite. 
 
-  Thus by claim, each $Spec(A'_lambda) -> Spec(A)$ is a universal homeomorphism. 
+  Thus by the claim, each $Spec(A'_lambda) -> Spec(A)$ is a universal homeomorphism. 
 
   (2) Pick $t_1, dots.c, t_n in A'$ s.t. $A' = A[t_1, dots.c, t_n]$, so that we may write $A' = A[T_1,dots.c,T_n]\/I$ for an ideal $I$. By finiteness, for each $i$ there is a monic polynomial $p_i (T_i) in I$. Now let $K_0 = (p_1 (T_1), dots.c, p_n (T_n))$, and put $A'_0 = A[T_1,dots.c,T_n]\/K_0$, a finite free $A$-algebra. Then $A'_0 ->> A'$ is a surjection with kernel $J$, and put: 
   $
     A' = dirlim_(K_lambda subset J \ #[finitely generated ideal]) A'_0\/K_lambda
   $
-  Denote $A'_lambda = A'_0\/K_lambda$, and consider $Spec(A') -> Spec(A'_lambda) -> Spec(A)$. By claim, it suffices to prove that for sufficiently large $lambda$, $Spec(A') -> Spec(A'_lambda)$ is surjective. It suffices to show that $Spec(A'_0) - V(J)$ is quasi-compact. Indeed: 
+  Denote $A'_lambda = A'_0\/K_lambda$, and consider $Spec(A') -> Spec(A'_lambda) -> Spec(A)$. By the claim, it suffices to prove that for sufficiently large $lambda$, $Spec(A') -> Spec(A'_lambda)$ is surjective. It suffices to show that $Spec(A'_0) - V(J)$ is quasi-compact. Indeed: 
 
-  - If $Spec(A'_0) - V(J)$ is quasi-compact, there exists finitely many $f_1, dots.c, f_m in J$ s.t. $V(J) = V(f_1, dots.c, f_m)$. Thus $sqrt(J) = sqrt((f_1, dots.c, f_m))$. Thus, whenever $K_lambda supset (f_1, dots.c, f_m)$, we have $Spec(A'_0\/J) = Spec(A') -> Spec(A'_lambda) = Spec(A'_0\/K_lambda)$ a closed immersion defined by a nil ideal, hence surjective. 
+  - If $Spec(A'_0) - V(J)$ is quasi-compact, there exist finitely many $f_1, dots.c, f_m in J$ s.t. $V(J) = V(f_1, dots.c, f_m)$. Thus $sqrt(J) = sqrt((f_1, dots.c, f_m))$. Thus, whenever $K_lambda supset (f_1, dots.c, f_m)$, we have $Spec(A'_0\/J) = Spec(A') -> Spec(A'_lambda) = Spec(A'_0\/K_lambda)$ a closed immersion defined by a nil ideal, hence surjective. 
 
   To establish this quasi-compactness, we use the universal homeomorphisms. Since $Spec(A') -> Spec(A)$ is a universal homeomorphism, so is $p: Spec(A' otimes_A A'_0) -> Spec(A'_0)$. 
   
@@ -68,7 +68,7 @@ We now start the proof. We first prove a lemma for limit arguments.
   $
     s(Spec(A')) = V(ker(phi))
   $
-  has quasi-compact complement. We claim that $p^(-1) (V(J)) = s(Spec(A'))$ on underlying set. Indeed, $p compose s: Spec(A') -> Spec(A'_0)$ is the structure map, identifying $Spec(A')$ with $V(J)$. Thus since $p$ is a homeomorphism, $p^(-1) (V(J)) = s(Spec(A'))$. 
+  has quasi-compact complement. We claim that $p^(-1) (V(J)) = s(Spec(A'))$ on the underlying set. Indeed, $p compose s: Spec(A') -> Spec(A'_0)$ is the structure map, identifying $Spec(A')$ with $V(J)$. Thus since $p$ is a homeomorphism, $p^(-1) (V(J)) = s(Spec(A'))$. 
   
   Thus $p^(-1) (V(J))$ has quasi-compact complement, and so does $V(J)$ since $p$ is a homeomorphism. Thus, truncating the directed system to those $J supset K_lambda supset (f_1, dots.c, f_m)$ concludes the proof. 
 ]
@@ -81,7 +81,7 @@ We now start the proof. We first prove a lemma for limit arguments.
   on etale sites is an equivalence of categories. 
 ]
 #proof[
-  We denote by "topological invariance holds for $f: X' -> X$" for the statement that the induced map: 
+  We use "topological invariance holds for $f: X' -> X$" as an abbreviation for the statement that the induced map: 
   $
     f: Et_X -> Et_(X'), U |-> U' = U times_X X'
   $
@@ -97,7 +97,7 @@ We now start the proof. We first prove a lemma for limit arguments.
     For every universal homeomorphism $f: X' -> X$, $Et_X -> Et_(X')$ is faithful. 
   ]
   #proof[
-    Given $Y, Z in Et_X$ and $u, v in Hom_X (Y, Z)$ giving rise to $u',v' in Hom_(X') (Y', Z')$. Form the graphs $Gamma_u, Gamma_v: Y -> Y times_X Z$. These graphs, since $Z -> X$ is etale, are open immersions. Furthermore, it is purely formal that they base change to the graphs: 
+    Take $Y, Z in Et_X$ and $u, v in Hom_X (Y, Z)$ giving rise to $u',v' in Hom_(X') (Y', Z')$. Form the graphs $Gamma_u, Gamma_v: Y -> Y times_X Z$. These graphs, since $Z -> X$ is etale, are open immersions. Furthermore, it is purely formal that they base change to the graphs: 
     $
       Gamma_(u'), Gamma_(v'): Y' -> Y' times_(X') Z'
     $
@@ -187,7 +187,7 @@ We now start the proof. We first prove a lemma for limit arguments.
   Step 3. Topological invariance holds for all universal homeomorphisms, if it holds for all finite universal homeomorphisms between finite type affine $ZZ$-schemes. 
 
   #proof[
-    By Step 2, it suffices to deal with a finite universal homeomorphism of finite type $f: Spec(A') = X' -> X = Spec(A)$ between affine schemes. Writing $A = dirlim_i A_i$ as a directed limit of finite type $ZZ$-algebras. Let $X_i = Spec(A_i)$, and by @passage-to-limit-of-morphisms, there exists a finite stage $i_0$ and $f_(i_0): X'_(i_0) -> X_(i_0)$ whose base change along $X -> X_(i_0)$ is $f: X' -> X$. Base change $f_(i_0)$ to $f_i: X'_i -> X_i$ at stages $i>=i_0$, and by @passage-to-limit-of-properties (2a)(3g) and (3g) applied to the diagonal, upon enlarging $i_0$, we have all $f_i$ being finite universal homeomorphisms. Thus each $f_i$ is a finite universal homeomorphism between finite type $ZZ$-schemes, so by the assumed case $Et_(X'_i) cong Et_(X_i)$. Thus, 
+    By Step 2, it suffices to deal with a finite universal homeomorphism of finite presentation $f: Spec(A') = X' -> X = Spec(A)$ between affine schemes. Write $A = dirlim_i A_i$ as a directed limit of finite type $ZZ$-algebras. Let $X_i = Spec(A_i)$, and by @passage-to-limit-of-morphisms, there exists a finite stage $i_0$ and $f_(i_0): X'_(i_0) -> X_(i_0)$ whose base change along $X -> X_(i_0)$ is $f: X' -> X$. Base change $f_(i_0)$ to $f_i: X'_i -> X_i$ at stages $i>=i_0$, and by @passage-to-limit-of-properties (2a)(3g) and (3g) applied to the diagonal, upon enlarging $i_0$, we have all $f_i$ being finite universal homeomorphisms. Thus each $f_i$ is a finite universal homeomorphism between finite type $ZZ$-schemes, so by the assumed case $Et_(X'_i) cong Et_(X_i)$. Thus, 
     $
       Et_(X')^#[aff] cong dirlim_i Et_(X'_i)^#[aff] cong dirlim_i Et_(X_i)^#[aff] cong Et_X^#[aff]
     $
@@ -202,11 +202,11 @@ We now start the proof. We first prove a lemma for limit arguments.
     Topological invariance holds for $f$, if for every geometric point $ol(x)$ of $X$, topological invariance holds for the base change $tilde(f)_(ol(x)): tilde(X)_(ol(x)) times_X X' -> tilde(X)_(ol(x))$. 
   ]
   #proof[
-    (Fully faithfulness) Faithfulness is already known, so we only deal with fullness. Let $Y, Z in Et_X^#[aff]$ and $u' in Hom_(X') (Y', Z')$. For every point $x in X$, let $ol(x)$ be a geometric point above $x$. Topological invariance holds for $tilde(f)_(ol(x)): tilde(X)_(ol(x)) times_X X' -> tilde(X)_(ol(x))$. Thus, the base change $tilde(u)'_(ol(x)) in Hom_(X' times_X tilde(X)_(ol(x))) (Y' times_X tilde(X)_(ol(x)), Z' times_X tilde(X)_(ol(x)))$ is base changed from a morphism $tilde(u)_(ol(x)) in Hom_(tilde(X)_(ol(x))) (Y times_X tilde(X)_(ol(x)), Z times_X tilde(X)_(ol(x)))$. 
+    (Full faithfulness) Faithfulness is already known, so we only deal with fullness. Let $Y, Z in Et_X^#[aff]$ and $u' in Hom_(X') (Y', Z')$. For every point $x in X$, let $ol(x)$ be a geometric point above $x$. Topological invariance holds for $tilde(f)_(ol(x)): tilde(X)_(ol(x)) times_X X' -> tilde(X)_(ol(x))$. Thus, the base change $tilde(u)'_(ol(x)) in Hom_(X' times_X tilde(X)_(ol(x))) (Y' times_X tilde(X)_(ol(x)), Z' times_X tilde(X)_(ol(x)))$ is base changed from a morphism $tilde(u)_(ol(x)) in Hom_(tilde(X)_(ol(x))) (Y times_X tilde(X)_(ol(x)), Z times_X tilde(X)_(ol(x)))$. 
 
     By @passage-to-limit-of-morphisms (1), there exists an etale neighborhood $(V, ol(v)) -> (X, ol(x))$ and a morphism $u_V: Y times_X V -> Z times_X V$ that base changes to $tilde(u)_(ol(x))$. By @passage-to-limit-of-morphisms (3), up to shrinking $(V, ol(v))$, we may assume that the base change $u'_V: Y' times_X V -> Z' times_X V$ is the base change of $u'$ along $V -> X$. By shrinking $V$ further, we may assume that $V$ is affine. 
 
-    Repeat this process for every point $x in X$ and picking a finite subcover, we see that there exists a surjective etale $V -> X$ and a morphism $u_V: Y times_X V -> Z times_X V$, satisfying: 
+    Repeating this process for every point $x in X$ and picking a finite subcover, we see that there exists a surjective etale $V -> X$ and a morphism $u_V: Y times_X V -> Z times_X V$, satisfying: 
 
     - The base change $u'_V: Y' times_X V -> Z' times_X V$ along $X' -> X$, is exactly the same as the base change of $u'$ along $V -> X$. 
 
@@ -237,7 +237,7 @@ We now start the proof. We first prove a lemma for limit arguments.
     $
       alpha_2 (u') = g_2 (u_V) = g_2 (alpha_1 (u)) = alpha_2 (g_1 (u))
     $
-    and so $u' = g_1 (u)$. Thus $u'$ is in the image of $Hom_X (Y, Z) -> Hom_(X') (Y', Z')$, concluding the proof of fully faithfulness. 
+    and so $u' = g_1 (u)$. Thus $u'$ is in the image of $Hom_X (Y, Z) -> Hom_(X') (Y', Z')$, concluding the proof of full faithfulness. 
 
     (Essential surjectivity) Let $Y' in Et_(X')^#[aff]$. For every point $x in X$, let $ol(x)$ be a geometric point above $x$. Topological invariance holds for $tilde(f)_(ol(x)): tilde(X)_(ol(x)) times_X X' -> tilde(X)_(ol(x))$. Thus, there exists some $tilde(Y)_(ol(x)) in Et_(tilde(X)_(ol(x)))$ s.t. $X' times_X tilde(Y)_(ol(x)) cong tilde(X)_(ol(x)) times_X Y'$. By @passage-to-limit-of-properties (1a)(3d), there exists an affine etale neighborhood $(V, ol(v)) -> (X, ol(x))$ and an affine etale $Y_V in Et_V^#[aff]$ s.t. $tilde(Y)_(ol(x)) = tilde(X)_(ol(x)) times_V Y_V$. Let $Y'_V = X' times_X Y_V$. Then, 
     $
@@ -250,7 +250,7 @@ We now start the proof. We first prove a lemma for limit arguments.
       X' times_X Y_V cong V times_X Y' 
     $
 
-    Write $V = Spec(A_1)$ so $A_1$ is a surjective etale $A$-algebra, and $A'_1 = A_1 otimes_A A'$. Write $Y' = Spec(B')$. Then our condition translates to: 
+    Write $V = Spec(A_1)$ so $A_1$ is a faithfully flat etale $A$-algebra, and $A'_1 = A_1 otimes_A A'$. Write $Y' = Spec(B')$. Then our condition translates to: 
 
     - We have an etale $A_1$-algebra $B_1$ and an isomorphism: #h(1fr)
       $
@@ -261,13 +261,13 @@ We now start the proof. We first prove a lemma for limit arguments.
     $
       eta': B_1 otimes_A A_1 otimes_A A' &->^(phi_(1,3)) B' otimes_A A_1 otimes_A A_1 ->^(s_((1,2))) A_1 otimes_A B' otimes_A A_1 ->^(phi_(2,3)^(-1)) A_1 otimes_A B_1 otimes_A A'
     $
-    Now $B_1 otimes_A A_1$ and $A_1 otimes_A B_1$ are etale $A$-algebras. Thus, by fully faithfulness, $eta'$ descends to an isomorphism: 
+    Now $B_1 otimes_A A_1$ and $A_1 otimes_A B_1$ are etale $A$-algebras. Thus, by full faithfulness, $eta'$ descends to an isomorphism: 
     $
       eta: B_1 otimes_A A_1 -> A_1 otimes_A B_1
     $
     We now verify the cocycle condition. 
 
-    - By fully faithfulness, it suffices to verify the cocycle conditions tensoring $A'$. Expanding, we need to show that the following composition is exactly $eta'_(1,3,4)$: 
+    - By full faithfulness, it suffices to verify the cocycle conditions tensoring $A'$. Expanding, we need to show that the following composition is exactly $eta'_(1,3,4)$: 
       $
         B_1 otimes_A A_1 otimes_A A_1 otimes_A A' &-->^(phi_(1,4)) B' otimes_A A_1 otimes_A A_1 otimes_A A_1 -->^(s_((1,2))) A_1 otimes_A B' otimes_A A_1 otimes_A A_1 \
         &-->^(phi_(2,4)^(-1)) A_1 otimes_A B_1 otimes_A A_1 otimes_A A' -->^(phi_(2,4)) A_1 otimes_A B' otimes_A A_1 otimes_A A_1 \
@@ -322,7 +322,7 @@ We now start the proof. We first prove a lemma for limit arguments.
       $
         B = A^(Spec(B\/frak(m)_A B)) times B_1, C = A^(Spec(C\/frak(m)_A C)) times C_1
       $
-      for $Spec(B_1), Spec(C_1) in Et_U$. Then the base changes $B', C'$ decomposes as: 
+      for $Spec(B_1), Spec(C_1) in Et_U$. Then the base changes $B', C'$ decompose as: 
       $
         B' = A'^(Spec(B'\/frak(m)_(A') B')) times B'_1, C' = A'^(Spec(C'\/frak(m)_(A') C')) times C'_1
       $
@@ -406,15 +406,15 @@ We now start the proof. We first prove a lemma for limit arguments.
 #proof[
   (1) and (2) are obvious consequences of (0). For (0), that $f^(-1)$ is an equivalence of categories is already proved. That $cal(U)$ is jointly surjective if and only if $f^(-1)(cal(U))$ is, is a consequence of $f$ being a universal homeomorphism. 
 
-  (3) Fully faithfulness follows from that of $Et_X -> Et_(X')$ directly, so it suffices to show essential surjectivity. If we can prove essential surjectivity whenever $X$ (and also $X'$) is affine, then we may glue the descended finite etale coverings of $X$ by fully faithfulness, and prove the general case. Thus we may assume that $X, X'$ are affine.
+  (3) Full faithfulness follows from that of $Et_X -> Et_(X')$ directly, so it suffices to show essential surjectivity. If we can prove essential surjectivity whenever $X$ (and also $X'$) is affine, then we may glue the descended finite etale coverings of $X$ by full faithfulness, and prove the general case. Thus we may assume that $X, X'$ are affine.
 
-  Let $Y' in FEt_(X')$ come from base changing $Y in Et_X$. By @fet-trivializes-fet-locally, there exists a finite etale covering $U' -> X'$ s.t: 
+  Since $X$ and $X'$ are noetherian and homeomorphic, they have finitely many corresponding open and closed connected components. It suffices to apply the following argument to each corresponding pair, so assume both are connected. Let $Y' in FEt_(X')$ come from base changing $Y in Et_X$. By @fet-trivializes-fet-locally, there exists a finite etale covering $U' -> X'$ such that:
   $
     Y' times_(X') U' cong union.sq.big_(i=1)^m U'
   $
   as $U'$-schemes. 
   
-  Now by essential surjectivity let $U' -> X'$ come from base changing an etale cover $U -> X$. By fully faithfulness: 
+  Now by essential surjectivity let $U' -> X'$ come from base changing an etale cover $U -> X$. By full faithfulness: 
   $
     Y times_X U cong union.sq.big_(i=1)^m U
   $

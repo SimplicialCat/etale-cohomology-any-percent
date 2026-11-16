@@ -17,7 +17,7 @@ Let $X$ be a scheme. Then we have associated to $X$ an etale site $X_et$, on whi
 $
   iota: cSh(X_et) arrow.r.hook cPSh(X_et), cAb(X_et) arrow.r.hook cPAb(X_et)
 $
-Last time, we showed that the forgetful functor $iota$ admits a right adjoint $cal(G) |-> cal(G)^\#$, The construction is like: 
+Last time, we showed that the forgetful functor $iota$ admits a left adjoint $cal(G) |-> cal(G)^\#$. The construction is like: 
 */
 
 As we stated at the beginning of the previous section, we will develop different methods of obtaining etale sheaves over the next few sections. This section corresponds to the second of these methods: using the abelian category structure of $cAb(X_et)$. 
@@ -37,7 +37,7 @@ Our first goal is the sheafification.
   $
   In other words, elements of $caron(H)^0 (cal(U), cal(G))$ are collections of sections ${s_i in cal(G)(U_i)}$ that agree on intersections (i.e. fiber products) of the ${U_i}$'s. 
 
-  Given an etale cover $cal(U) = {U_i -> U}_(i in I)$, a refinement of $cal(U)$ is an etale cover $cal(V) = {V_j -> U}_(j in J)$, a map on indices $lambda: J -> I$ and a factoring $V_j -> U_(lambda(j)) -> U$ for each $j in J$. Given a refinement $cal(V)$ of $cal(U)$, there are natural morphisms $product_i cal(G)(U_i) -> product_j cal(G)(V_j), (s_i) |-> (s_(lambda(j))|_(V_j))_j$, and similarly morphisms $product_(i,i') cal(G)(U_i times_U U_(i')) -> product_(j,j') cal(G)(V_j times_V V_(j'))$. This induces natural morphisms: 
+  Given an etale cover $cal(U) = {U_i -> U}_(i in I)$, a refinement of $cal(U)$ is an etale cover $cal(V) = {V_j -> U}_(j in J)$, a map on indices $lambda: J -> I$ and a factoring $V_j -> U_(lambda(j)) -> U$ for each $j in J$. Given a refinement $cal(V)$ of $cal(U)$, there are natural morphisms $product_i cal(G)(U_i) -> product_j cal(G)(V_j), (s_i) |-> (s_(lambda(j))|_(V_j))_j$, and similarly morphisms $product_(i,i') cal(G)(U_i times_U U_(i')) -> product_(j,j') cal(G)(V_j times_U V_(j'))$. This induces natural morphisms: 
   $
     caron(H)^0 (cal(U), cal(G)) -> caron(H)^0 (cal(V), cal(G))
   $
@@ -67,13 +67,13 @@ Our first goal is the sheafification.
   taken over the directed set of all etale covers $cal(U)$ of $U$, where $cal(U) <= cal(V)$ iff there exists a refinement from $cal(U)$ to $cal(V)$. The transition maps are defined using refinements above, and are well-defined since they are independent from the specific refinement. 
 
   #remark(name: <set-categorical-subtleties>)[
-    There are at least two subtleties in this definition:#footnote[I wasn't aware of either of these difficulties initially. The category-theoretic subtlety occurred to me when I was writing the next section on stalks and realized that it is possible that two refinements cannot be equalized, under some AI assistance. I later found out that it is documented in @cite-lei-fu. The set-theoretic subtlety was informed to me by Irisu, when I brought up the category-theoretic subtlety up in a group discussion.]
+    There are at least two subtleties in this definition:#footnote[I wasn't aware of either of these difficulties initially. The category-theoretic subtlety occurred to me when I was writing the next section on stalks and realized that it is possible that two refinements cannot be equalized, under some AI assistance. I later found out that it is documented in @cite-lei-fu. The set-theoretic subtlety was pointed out to me by Irisu, when I brought up the category-theoretic subtlety in a group discussion.]
 
     - A category-theoretic subtlety: 
     
       If you naively define $caron(H)^0 (U, cal(G)) = colim_(cal(U)) caron(H)^0 (cal(U), cal(G))$ where the colimit is taken over the category of etale covers of $U$ where morphisms are refinements, this colimit is not filtered. This is because given two refinements between a pair of covers, it is not always possible to equalize them with a further refinement. 
 
-      We eventually need to use that $caron(H)^0 (U, cal(G))$ is defined as a filtered colimit to show that sheafification commutes with finite limits and is exact. As such, had we defined $caron(H)^0$ using refinements as morphisms in the index category, at that point we will need to justify this arbitrary colimit as a directed limit, by repeating the lemma that two different refinements between the same pair of covers induces the same transition morphisms. In other words, the previous lemma is an essential part of this theory. 
+      We eventually need to use that $caron(H)^0 (U, cal(G))$ is defined as a filtered colimit to show that sheafification commutes with finite limits and is exact. As such, had we defined $caron(H)^0$ using refinements as morphisms in the index category, at that point we would need to justify this arbitrary colimit as a directed limit, by repeating the lemma that two different refinements between the same pair of covers induce the same transition morphisms. In other words, the previous lemma is an essential part of this theory. 
 
       As such, it is just better that we define $caron(H)^0 (U, cal(G))$ here as a directed limit over etale covers where morphisms are refinement _as a property_, instead of refinement _as a structure_. 
 
@@ -83,9 +83,9 @@ Our first goal is the sheafification.
 
       We may solve this set-theoretic issue by considering the following subfamily $cal(S)$ of etale covers: 
 
-      - Etale covers $cal(U) = {U_i -> U}$ in which every $U_i$ is affine, has image contained in an affine open of $U$, and in which no two morphisms in $cal(U)$ are isomorphic. 
+      - Etale covers $cal(U) = {U_i -> U}$ in which every $U_i$ is affine, has image contained in an affine open of $U$, and whose morphisms are chosen without repetition from a fixed set of representatives of affine etale morphisms into affine opens of $U$. 
 
-      By picking sufficiently small affine opens and then removing duplicates, it is evident that every etale cover of $U$ may be refined by one in $cal(S)$. On the other hand, the affine opens of $U$ form a $cal(W)$-set, and for each affine open $Spec(A) subset U$, any etale $A$-algebra is finite type over $A$, hence isomorphic to a quotient of some $A[x_1, dots.c, x_k]$. There are thus at most $max(aleph_0, abs(A))$, hence a $cal(W)$-set of them. In other words, every cover in $cal(S)$ has its morphisms chosen among a $cal(W)$-set. $cal(S)$ is thus a $cal(W)$-set. 
+      By picking sufficiently small affine opens and then removing duplicates, we see that every etale cover of $U$ may be refined by one in $cal(S)$. On the other hand, the affine opens of $U$ form a $cal(W)$-set, and for each affine open $Spec(A) subset U$, any etale $A$-algebra is finite type over $A$, hence isomorphic to a quotient of some $A[x_1, dots.c, x_k]$. There are thus at most $max(aleph_0, abs(A))$, hence a $cal(W)$-set of them. In other words, every cover in $cal(S)$ has its morphisms chosen among a $cal(W)$-set. $cal(S)$ is thus a $cal(W)$-set. 
 
       Now that every etale cover of $U$ may be refined by one in $cal(S)$, the directed limit: 
       $
@@ -202,7 +202,7 @@ By the previous lemma, $(cal(G)^+)^+$ is always a sheaf for any presheaf $cal(G)
 #proof[
   It suffices to show that $(-)^+$ commutes with finite limits since $(-)^\#$ is just $(-)^+$ applied twice. 
 
-  However, we consider the two steps taken in the construction of $(-)^+$. Since limits and colimits in $cPSh(X_et)$ and $cPAb(X_et)$ are taken section-wise, it suffices to consider on a fixed $U in Et_X$. Now: 
+  However, we consider the two steps taken in the construction of $(-)^+$. Since limits and colimits in $cPSh(X_et)$ and $cPAb(X_et)$ are taken section-wise, it suffices to work on a fixed $U in Et_X$. Now: 
   
   - $caron(H)^0 (cal(U), cal(F)) = ker(product_i cal(F)(U_i) -> product_(i,j) cal(F)(U_i times_U U_j))$ is an equalizer, which is a limit. Of course it commutes with any limits. 
 
@@ -227,7 +227,7 @@ By the previous lemma, $(cal(G)^+)^+$ is always a sheaf for any presheaf $cal(G)
 
     /*
     #lemma[
-      $ul(M)_X (U) cong M$ naturally for every connected $U in Et_X$. As a corollary, for those $U in Et_X$ that can be expressed as the disjoint union of its connected components#footnote[In the non-noetherian case this does not automatically hold.], 
+      $ul(M)_X (U) cong M$ naturally for every connected $U in Et_X$. As a corollary, for those $U in Et_X$ that can be expressed as the disjoint union of their connected components#footnote[In the non-noetherian case this does not automatically hold.], 
       $
         ul(M)_X (U) cong product_(pi_0 (U)) M
       $
@@ -268,7 +268,7 @@ By the previous lemma, $(cal(G)^+)^+$ is always a sheaf for any presheaf $cal(G)
     #proof[
       Since $ul(M)_(X,0)$ is a separated presheaf, $ul(M)_X = ul(M)_(X,0)^+$, i.e. we only need to apply the plus construction once. 
 
-      For an etale cover $cal(U) = {f_i: U_i -> U}$, 
+      For an etale cover $cal(U) = {f_i: U_i -> U}$, first remove all empty members; this does not change its zeroth Cech cohomology. Then 
       $
         caron(H)^0 (cal(U), ul(M)_(X,0)) = ker(product_i M -> product_(i,j) ul(M)_(X,0) (U_i times_U U_j))
       $
@@ -288,7 +288,7 @@ By the previous lemma, $(cal(G)^+)^+$ is always a sheaf for any presheaf $cal(G)
       $
         ul(M)_X(U) = dirlim_(cal(U)) caron(H)^0 (cal(U), ul(M)_(X,0)) -> C(U; M_#[disc])
       $
-      This morphism is surjective, since given any $f in C(U; ul(M)_#[disc])$, the Zariski covering $cal(U)_f = {f^(-1)(x) -> U}_(x in M)$ sends $(x)_x in caron(H)^0 (cal(U)_f, ul(M)_(X,0))$ to $f$. It is injective, since if $mu = (m_i)_(i in I) in caron(H)^0 (cal(U), ul(M)_(X,0))$ is sent to $0$, this means that $U_(mu,x) = emptyset$ for all $0 != x in M$, i.e. every $m_i = 0$. We are thereby done. The result on induced morphisms is just unfolding the definition of the adjunction isomorphism for sheafification. 
+      This morphism is surjective, since given any $f in C(U; ul(M)_#[disc])$, the Zariski covering $cal(U)_f = {f^(-1)(x) -> U}_(x in im(f))$ sends $(x)_x in caron(H)^0 (cal(U)_f, ul(M)_(X,0))$ to $f$. It is injective, since if $mu = (m_i)_(i in I) in caron(H)^0 (cal(U), ul(M)_(X,0))$ is sent to $0$, this means that $U_(mu,x) = emptyset$ for all $0 != x in M$, i.e. every $m_i = 0$. We are thereby done. The result on induced morphisms is just unfolding the definition of the adjunction isomorphism for sheafification. 
     ]
 ]
 
@@ -339,14 +339,14 @@ By the previous lemma, $(cal(G)^+)^+$ is always a sheaf for any presheaf $cal(G)
   $
   and thus factors through $cal(G) -> cal(P)^\#$. Hence $cal(G) -> cal(P)^\#$ is the cokernel of $f$ in $cAb(X_et)$. (Note that this argument is also purely categorical and abstract.)
 
-  To show that $cAb(X_et)$ is an abelian category, and that the image is given by the formula above, all that remains to prove is that the kernel of cokernel is the cokernel of kernel in $cAb(X_et)$. We use a subscript $cPAb$ and $cAb$ to distinguish between the presheaf and sheaf cokernel, and do not distinguish for the kernel (since the kernel is the same for presheaves and sheaves). Then: 
+  To show that $cAb(X_et)$ is an abelian category, and that the image is given by the formula above, all that remains to prove is that the kernel of the cokernel is the cokernel of the kernel in $cAb(X_et)$. We use a subscript $cPAb$ and $cAb$ to distinguish between the presheaf and sheaf cokernel, and do not distinguish for the kernel (since the kernel is the same for presheaves and sheaves). Then: 
   $
     coker_(cAb)(ker(f)) &= coker_(cPAb) (ker(f))^\# \
     &= ker(coker_(cPAb)(f))^\# #[since $cPAb(X_et)$ is an abelian category] \
     &= ker(coker_(cPAb)(f)^\#) #[since $(-)^\#$ commutes with finite limits] \
     &= ker(coker_(cAb)(f))
   $
-  The formula for image is then obtained as the cokernel of kernel. 
+  The formula for the image is then obtained as the cokernel of the kernel. 
 
   (2) follows from the formulas in (1). 
 
@@ -385,7 +385,7 @@ By the previous lemma, $(cal(G)^+)^+$ is always a sheaf for any presheaf $cal(G)
 
   (Ab5): 
   #proof[
-    Arbitrary direct sums of sheaves may be formed section-wise. Furthermore, $cPAb(X_et)$ satisfies (Ab5), as checked section-wise (and thus passed to $cAb$). 
+    Arbitrary direct sums of sheaves are obtained by sheafifying section-wise direct sums. Furthermore, $cPAb(X_et)$ satisfies (Ab5), as checked section-wise (and thus passed to $cAb$). 
 
     Suppose that ${0 -> cal(F)_i -> cal(G)_i -> cal(H)_i -> 0}_i$ is a directed system of exact sequences in $cAb(X_et)$. Since the functor $iota$ is left exact, we have left exact sequences: 
     $
@@ -467,21 +467,21 @@ By the previous lemma, $(cal(G)^+)^+$ is always a sheaf for any presheaf $cal(G)
   //   edge((0, -1), (0, 0), [$tilde$], label-side: center, "->")
   //   edge((1, -1), (1, 0), "->")
   // }, crossing-fill: thm-box-curr-color()))
-  // The first row is exact is $cPAb(X_et)$, and the first vertical arrow is injective since $im^(cPSh)(f)$ is separated. It is left as an exercise to prove that the second row is exact in $cPAb(X_et)$. 
+  // The first row is exact in $cPAb(X_et)$, and the first vertical arrow is injective since $im^(cPSh)(f)$ is separated. It is left as an exercise to prove that the second row is exact in $cAb(X_et)$. 
 
   // That $cPAb(X_et), cAb(X_et)$ have enough injectives is due to the following theorem by Grothendieck: 
   // #theorem[
   //   (Grothendieck in Touhoku) If $cal(C)$ is an abelian category satisfying the (Ab5) axiom having a family of generators, then $cal(C)$ has enough injectives. 
   // ]
 
-  // - We'll just accept that $cPAb(X_et), cAb(X_et)$ satisfies (Ab5). We won't explain what (Ab5) means. 
+  // - We'll just accept that $cPAb(X_et), cAb(X_et)$ satisfy (Ab5). We won't explain what (Ab5) means. 
 
   // - $(ZZ_V^\#)_(V in X_et)$ form a family of generators for $cAb(X_et)$. That is to say, given $cal(F) subset.neq cal(G)$, we may pick $V$ s.t. $cal(F)(V) subset.neq cal(G)(V)$. Then taking $s in cal(G)(V) - cal(F)(V)$ gives a morphism $ZZ_V^\# -> cal(G)$ not factoring through $cal(F)$. 
 
   // (3) follows from (2), and (4) is claimed to be easy. 
 ]
 
-// By (3), for a short exact sequence $0 -> cal(F) -> cal(G) -> cal(H) -> 0$ in $cAb(X_et)$, we have a right exact sequence: 
+// By (3), for a short exact sequence $0 -> cal(F) -> cal(G) -> cal(H) -> 0$ in $cAb(X_et)$, we have a left exact sequence: 
 // $
 //   0 -> cal(F)(U) -> cal(G)(U) -> cal(H)(U)
 // $

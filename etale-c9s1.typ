@@ -1,15 +1,15 @@
 #import "void-import.typ": *
 
-In this final chapter, we establish Poincare duality. We continue our analog between etale cohomology and singular cohomology. For an orientable $n$-manifold $X$, classical Poincare duality states that there exists a cup product pairing $smile$ and a trace isomorphism $Tr: H^n_c (X, QQ) ->^tilde QQ$, s.t. the following pairing is a perfect pairing: 
+In this final chapter, we establish Poincare duality. We continue our analogy between etale cohomology and singular cohomology. For a connected closed orientable $n$-manifold $X$, classical Poincare duality states that there exists a cup product pairing $smile$ and a trace isomorphism $Tr: H^n_c (X, QQ) ->^tilde QQ$, s.t. the following pairing is a perfect pairing: 
 $
   H^q_c (X, QQ) times H^(n-q) (X, QQ) ->^smile H^n_c (X, QQ) ->^Tr QQ
 $
 
-For etale cohomology, the correct analog of an orientable $d$-manifold is a scheme $X$ smooth over $k$ of relative dimension $d$. The coefficient ring $QQ$ will be replaced by a constant torsion sheaf, say $ZZ\/n$ with $n in k^times$, since etale cohomology in non-torsion coefficients, and in coefficients with torsion not invertible in base field, are very much ill-behaved. 
+For etale cohomology, the correct analog of an orientable $d$-manifold is a scheme $X$ smooth over $k$ of relative dimension $d$. The coefficient ring $QQ$ will be replaced by a constant torsion sheaf, say $ZZ\/n$ with $n in k^times$, since etale cohomology in non-torsion coefficients, and in coefficients with torsion not invertible in the base field, is very much ill-behaved. 
 
-But even with these seemingly natural modifications done, there is still no trace map $H^(2d)_c (X, ul(ZZ\/n)) -> ZZ\/n$ as in this shape. A hint lies in the cohomology of curves. 
+But even with these seemingly natural modifications done, there is still no trace map $H^(2d)_c (X, ul(ZZ\/n)) -> ZZ\/n$ in this shape. A hint lies in the cohomology of curves. 
 
-- For a smooth projective curve $X$, Kummer theory gives a canonical isomorphism: #h(1fr)
+- For a smooth projective curve $X$ over an algebraically closed field $k$, Kummer theory gives a canonical isomorphism: #h(1fr)
   $
     H^2 (X, mu_n) cong Pic(X)\/n Pic(X) -->^deg_(tilde) ZZ\/n
   $
@@ -25,11 +25,11 @@ as suggested by the curve case. In fact, the trace morphism has a relative versi
 $
   R^(2d) f_! mu_n^(otimes d) -> ul(ZZ\/n)
 $
-By the projection formula, this really gives a canonical isomorphism: 
+By the projection formula, this really gives a canonical morphism: 
 $
-  R f_! (cal(K) Lotimes_(ZZ\/n) mu_n^(otimes d))[2d] -> cal(K)
+  R f_! (f^(-1) cal(K) Lotimes_(ZZ\/n) mu_n^(otimes d))[2d] -> cal(K)
 $
-for each complex $cal(K)$. We will then prove the etale analog of classical Poincare duality, that: 
+for each complex $cal(K) in D(Y_et, ZZ\/n)$. We will then prove the etale analog of classical Poincare duality, that: 
 $
   H^q_c (X, mu_n^(otimes d)) times H^(2d-q) (X, ul(ZZ\/n)) ->^smile H^(2d)_c (X, mu_n^(otimes d)) ->^Tr ZZ\/n
 $
@@ -47,9 +47,9 @@ Not only is the functor $R f^!$ useful for Poincare duality, but its introductio
 == Trace map of a smooth morphism
 
 // 0. A trace morphism on the family of all smooth maps is unique if it exists
-// 1. A compatible family of trace morphism exists for smooth morphisms of relative dimension 0/1 with an etale coordinate
-// 2. A compatible family of trace morphism exists for smooth morphisms with an etale coordinate
-// 3. A compatible family of trace morphism exists
+// 1. A compatible family of trace morphisms exists for smooth morphisms of relative dimension 0/1 with an etale coordinate
+// 2. A compatible family of trace morphisms exists for smooth morphisms with an etale coordinate
+// 3. A compatible family of trace morphisms exists
 
 In this section, we intend to define a trace map. 
 
@@ -103,7 +103,7 @@ The axiomatic approach to the trace map in this section is inspired by the treat
     $
     is exactly $S_(X\/Z)$. (Here $P$ is a projection isomorphism.) 
 
-    As a convenient notation, we denote by the composition above as: 
+    As a convenient notation, we denote the composition above as: 
     $
       S_(Y\/Z) diamond.small S_(X\/Y)
     $
@@ -163,13 +163,13 @@ We now axiomatically characterize the uniqueness of the trace map.
   being $Tr_(U\/Y)$, is uniquely determined, where the first map is a uniquely determined surjection. Thus the second map $Tr_(X\/Y)$ is uniquely determined. 
 ]
 
-This axiomatic characterization of the uniqueness of the trace map hints its construction: It is constructed by glueing the following three constructions using various lemmas governing their compatibility: 
+This axiomatic characterization of the uniqueness of the trace map hints at its construction: It is constructed by glueing the following three constructions using various lemmas governing their compatibility: 
 
 - For a separated etale morphism $f: X -> Y$, the counit $Tr_(X\/Y)^compose: f_! ul(ZZ\/n) -> ul(ZZ\/n)$; 
 
 - For a smooth curve $f: X -> Spec(k)$ with $k$ algebraically closed, the map: #h(1fr)
   $
-    Tr_(X\/k)^tilde: H^2_c (X, mu_n) cong Pic(X)\/n Pic(X) ->^deg ZZ\/n 
+    Tr_(X\/k)^tilde: H^2_c (X, mu_n) cong Pic(ol(X))\/n Pic(ol(X)) ->^deg ZZ\/n 
   $
 
 - For a projection $p: AA^d_Y -> Y$ from affine space, the map: 
@@ -181,7 +181,7 @@ This axiomatic characterization of the uniqueness of the trace map hints its con
 Only the third construction is not known, so we construct it first. 
 
 #lemma(name: <pd-trace-affine-constr>)[
-  Given any noetherian scheme $Y$ with affine space $p_d: AA^d_Y -> Y$, there exists a canonical isomorphism: 
+  Given any noetherian $ZZ[n^(-1)]$-scheme $Y$ with affine space $p_d: AA^d_Y -> Y$, there exists a canonical isomorphism: 
   $
     Tr_(AA^d_Y\/Y)^square: R p_(d,!) mu_n^(otimes d)[2d] -> ul(ZZ\/n)
   $
@@ -208,7 +208,7 @@ Only the third construction is not known, so we construct it first.
   $
     Pic(PP^1_Y) = H^1 (PP^1_Y, GG_m) -> H^2 (PP^1_Y, mu_n)
   $
-  Let $c_(1,Y) in H^2 (PP^1_Y, mu_n)$ be the image of the canonical bundle $cal(O)_(PP^1_Y) (1)$ under this map. Recall that $R^2 ol(p_1)_* mu_n = (U |-> H^2 (PP^1_U, mu_n))^\#$, so the class $c_1 in H^2 (PP^1_Y, mu_n)$ corresponds to a global section $c_Y in Gamma(PP^1_Y, R^2 ol(p_1)_* mu_n)$. This defines a map: 
+  Let $c_(1,Y) in H^2 (PP^1_Y, mu_n)$ be the image of the line bundle $cal(O)_(PP^1_Y) (1)$ under this map. Recall that $R^2 ol(p_1)_* mu_n = (U |-> H^2 (PP^1_U, mu_n))^\#$, so the class $c_1 in H^2 (PP^1_Y, mu_n)$ corresponds to a global section $c_Y in Gamma(Y, R^2 ol(p_1)_* mu_n)$. This defines a map: 
   $
     alpha_Y: ul(ZZ\/n)_Y -> R^2 ol(p_1)_* mu_n
   $
@@ -235,15 +235,15 @@ Only the third construction is not known, so we construct it first.
     we want to show the commutativity of: 
     // https://q.uiver.app/#r=typst&q=WzAsOSxbMCwwLCJaWlxcL24iXSxbMSwwLCJQaWMoUFBeMV9ZKSJdLFswLDIsIlpaXFwvbiJdLFsxLDIsIlBpYyhQUF4xXyhZJykpIl0sWzIsMCwiSF4yIChQUF4xX1ksIG11X24pIl0sWzIsMiwiSF4yIChQUF4xXyhZJyksIG11X24pIl0sWzMsMCwiR2FtbWEoWSwgUl4yIG9sKHBfMSlfKiBtdV9uKSJdLFszLDIsIkdhbW1hKFknLCBSXjIgb2wocCdfMSlfKiBtdV9uKSJdLFszLDEsIkdhbW1hKFksIGdeKC0xKSBSXjIgb2wocF8xKV8qIG11X24pIl0sWzAsMSwiY2FsKE8pKDEpIl0sWzIsMywiY2FsKE8pKDEpIl0sWzEsNF0sWzMsNV0sWzQsNl0sWzUsN10sWzAsMiwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG91YmxlIGJhcnJlZCJ9fX1dLFsxLDMsIm9sKGcpJ14oLTEpIl0sWzQsNSwicmVzIl0sWzYsOCwicmVzIl0sWzgsNywiQkMiLDFdXQ==
     #align(center, diagram({
-      node((0, 0), [$ZZ\/n$])
+      node((0, 0), [$ZZ$])
       node((1, 0), [$Pic(PP^1_Y)$])
-      node((0, 2), [$ZZ\/n$])
+      node((0, 2), [$ZZ$])
       node((1, 2), [$Pic(PP^1_(Y'))$])
       node((2, 0), [$H^2 (PP^1_Y, mu_n)$])
       node((2, 2), [$H^2 (PP^1_(Y'), mu_n)$])
       node((3, 0), [$Gamma(Y, R^2 ol(p_1)_* mu_n)$])
       node((3, 2), [$Gamma(Y', R^2 ol(p'_1)_* mu_n)$])
-      node((3, 1), [$Gamma(Y, g^(-1) R^2 ol(p_1)_* mu_n)$])
+      node((3, 1), [$Gamma(Y', g^(-1) R^2 ol(p_1)_* mu_n)$])
       edge((0, 0), (1, 0), [$cal(O)(1)$], label-side: left, "->")
       edge((0, 2), (1, 2), [$cal(O)(1)$], label-side: left, "->")
       edge((1, 0), (2, 0), "->")
@@ -261,9 +261,9 @@ Only the third construction is not known, so we construct it first.
 
     - For $f: X -> Y$, the map $f^*: Pic(Y) -> Pic(X)$ is identified as the map: #h(1fr)
       $
-        H^1 (Y, GG_(m,X)) ->^res H^1 (X, f^(-1) GG_(m,Y)) -> H^1 (X, GG_(m,X))
+        H^1 (Y, GG_(m,Y)) ->^res H^1 (X, f^(-1) GG_(m,Y)) -> H^1 (X, GG_(m,X))
       $
-      where the map $f^(-1) GG_(m,Y) -> GG_(m,X)$ is induced by adjunction from $GG_(m,Y) -> GG_(m,X)$. Furthermore, there is a commutative diagram: 
+      where the map $f^(-1) GG_(m,Y) -> GG_(m,X)$ is induced by adjunction from $GG_(m,Y) -> f_* GG_(m,X)$. Furthermore, there is a commutative diagram: 
       // https://q.uiver.app/#r=typst&q=WzAsMTAsWzAsMCwiMCJdLFsxLDAsImZeKC0xKSBtdV8obixZKSJdLFsyLDAsImZeKC0xKSBHR18obSxZKSJdLFszLDAsImZeKC0xKSBHR18obSxZKSJdLFs0LDAsIjAiXSxbMCwxLCIwIl0sWzEsMSwibXVfKG4sWCkiXSxbMiwxLCJHR18obSxYKSJdLFszLDEsIkdHXyhtLFgpIl0sWzQsMSwiMCJdLFswLDFdLFsxLDJdLFsyLDMsIigtKV5uIl0sWzMsNF0sWzUsNl0sWzYsN10sWzcsOCwiKC0pXm4iLDJdLFs4LDldLFsxLDYsInRpbGRlIiwxXSxbMiw3XSxbMyw4XV0=
       #context align(center, diagram({
         node((0, 0), [$0$])
@@ -294,15 +294,15 @@ Only the third construction is not known, so we construct it first.
     Thus, the diagram that we want to prove to be commutative factors as: 
     // https://q.uiver.app/#r=typst&q=WzAsMTEsWzAsMCwiWlpcXC9uIl0sWzEsMCwiSF4xKFBQXjFfWSwgR0dfbSkiXSxbMCwyLCJaWlxcL24iXSxbMSwyLCJIXjEoUFBeMV8oWScpLCBHR19tKSJdLFsyLDAsIkheMiAoUFBeMV9ZLCBtdV9uKSJdLFsyLDIsIkheMiAoUFBeMV8oWScpLCBtdV9uKSJdLFszLDAsIkdhbW1hKFksIFJeMiBvbChwXzEpXyogbXVfbikiXSxbMywyLCJHYW1tYShZJywgUl4yIG9sKHAnXzEpXyogbXVfbikiXSxbMywxLCJHYW1tYShZLCBnXigtMSkgUl4yIG9sKHBfMSlfKiBtdV9uKSJdLFsxLDEsIkheMShQUF4xXyhZJyksIG9sKGcpJ14oLTEpIEdHX20pIl0sWzIsMSwiSF4yIChQUF4xXyhZJyksIG11X24pIl0sWzAsMSwiY2FsKE8pKDEpIl0sWzIsMywiY2FsKE8pKDEpIl0sWzEsNF0sWzMsNV0sWzQsNl0sWzUsN10sWzYsOCwicmVzIl0sWzgsNywiQkMiLDFdLFsxLDksInJlcyJdLFs5LDNdLFswLDIsIiIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdWJsZSBiYXJyZWQifX19XSxbNCwxMCwicmVzIl0sWzEwLDUsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdWJsZSBiYXJyZWQifX19XSxbOSwxMF1d
     #align(center, diagram({
-      node((0, 0), [$ZZ\/n$])
+      node((0, 0), [$ZZ$])
       node((1, 0), [$H^1(PP^1_Y, GG_m)$])
-      node((0, 2), [$ZZ\/n$])
+      node((0, 2), [$ZZ$])
       node((1, 2), [$H^1(PP^1_(Y'), GG_m)$])
       node((2, 0), [$H^2 (PP^1_Y, mu_n)$])
       node((2, 2), [$H^2 (PP^1_(Y'), mu_n)$])
       node((3, 0), [$Gamma(Y, R^2 ol(p_1)_* mu_n)$])
       node((3, 2), [$Gamma(Y', R^2 ol(p'_1)_* mu_n)$])
-      node((3, 1), [$Gamma(Y, g^(-1) R^2 ol(p_1)_* mu_n)$])
+      node((3, 1), [$Gamma(Y', g^(-1) R^2 ol(p_1)_* mu_n)$])
       node((1, 1), [$H^1(PP^1_(Y'), ol(g)'^(-1) GG_m)$])
       node((2, 1), [$H^2 (PP^1_(Y'),ol(g)'^(-1) mu_n)$])
       edge((0, 0), (1, 0), [$cal(O)(1)$], label-side: left, "->")
@@ -343,7 +343,7 @@ Only the third construction is not known, so we construct it first.
         node((1, 0), [$Gamma(Y, R^q f_* cal(F))$])
         node((0, 2), [$H^q (X', g'^(-1) cal(F))$])
         node((1, 2), [$Gamma(Y', R^q f'_* g'^(-1) cal(F))$])
-        node((1, 1), [$Gamma(Y, g^(-1) R^q f_* cal(F))$])
+        node((1, 1), [$Gamma(Y', g^(-1) R^q f_* cal(F))$])
         edge((0, 0), (1, 0), "->")
         edge((0, 2), (1, 2), "->")
         edge((0, 0), (0, 2), [$res$], label-side: right, "->")
@@ -352,13 +352,13 @@ Only the third construction is not known, so we construct it first.
       }))
     ]
     #proof[
-      Both paths are natural transformations $H^q (X, -) -> Gamma(Y', R^q f'_* g'^(-1) (-))$ as $delta$-functors. Note that ${H^q (X, -)}$ is a universal $delta$-functor. Thus, to prove for general $q$, it suffices to prove assuming $q = 0$. Now everything in this diagram are global sections. Pushing every sheaf to $Y$, it suffices to show the commutativity of: 
+      Both paths are natural transformations $H^q (X, -) -> Gamma(Y', R^q f'_* g'^(-1) (-))$ compatible with connecting homomorphisms. Since $H^q (X, -)$ is effaceable for $q > 0$, dimension shifting shows that it suffices to prove equality for $q = 0$: embed $cal(F)$ in an injective $cal(I)$, put $cal(C) = cal(I)\/cal(F)$, and induct using the surjection $H^(q-1) (X, cal(C)) -> H^q (X, cal(F))$. Now everything in this diagram is a space of global sections. Pushing every sheaf to $Y$, it suffices to show the commutativity of: 
       // https://q.uiver.app/#r=typst&q=WzAsNSxbMCwwLCJmXyogY2FsKEYpIl0sWzEsMCwiZl8qIGNhbChGKSJdLFswLDIsImZfKiBnJ18qIGcnXigtMSkiXSxbMSwyLCJnXyogZidfKiBnJ14oLTEpIl0sWzEsMSwiZ18qIGdeKC0xKSBmXyogY2FsKEYpIl0sWzAsMSwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG91YmxlIGJhcnJlZCJ9fX1dLFsyLDMsInRpbGRlIiwyXSxbMCwyLCIjW3VuaXRdIiwyXSxbMSw0LCIjW3VuaXRdIl0sWzQsMywiQkMiXV0=
       #align(center, diagram({
         node((0, 0), [$f_* cal(F)$])
         node((1, 0), [$f_* cal(F)$])
-        node((0, 2), [$f_* g'_* g'^(-1)$])
-        node((1, 2), [$g_* f'_* g'^(-1)$])
+        node((0, 2), [$f_* g'_* g'^(-1) cal(F)$])
+        node((1, 2), [$g_* f'_* g'^(-1) cal(F)$])
         node((1, 1), [$g_* g^(-1) f_* cal(F)$])
         edge((0, 0), (1, 0), "=")
         edge((0, 2), (1, 2), [$tilde$], label-side: right, "->")
@@ -385,7 +385,7 @@ Only the third construction is not known, so we construct it first.
 
   We now define $Tr_(AA^d_Y\/Y)^square$. Let $q_i: AA^d_Y -> AA^1_Y, 1<=i<=d$ be projections onto various coordinates. Then we take $Tr_(AA^d_Y\/Y)^square$ to be the isomorphism defined as: 
   $
-    R p_(d,!) mu_n^(otimes d)[2d] &cong R p_(d_!) (q_1^(-1) mu_n [2] Lotimes_(ZZ\/n) dots.c Lotimes_(ZZ\/n) q_d^(-1) mu_n [2]) \
+    R p_(d,!) mu_n^(otimes d)[2d] &cong R p_(d,!) (q_1^(-1) mu_n [2] Lotimes_(ZZ\/n) dots.c Lotimes_(ZZ\/n) q_d^(-1) mu_n [2]) \
     &cong underbrace(R p_(1,!) mu_n [2] Lotimes_(ZZ\/n) dots.c Lotimes_(ZZ\/n) R p_(1,!) mu_n [2], #[$d$ copies]) #[by Kunneth formula] \
     &cong ul(ZZ\/n) Lotimes_(ZZ\/n) dots.c Lotimes_(ZZ\/n) ul(ZZ\/n) #[by $d$ copies of $Tr_(AA^1_Y\/Y)^square$] \
     &cong ul(ZZ\/n)
@@ -415,7 +415,7 @@ Only the third construction is not known, so we construct it first.
 
   - For a smooth curve $f: X -> Spec(k)$ with $k$ algebraically closed, the map: #h(1fr)
     $
-      Tr_(X\/k)^tilde: H^2_c (X, mu_n) ->^tilde H^2 (ol(X), mu_n) cong Pic(X)\/n Pic(X) ->^deg_tilde ZZ\/n 
+      Tr_(X\/k)^tilde: H^2_c (X, mu_n) ->^tilde H^2 (ol(X), mu_n) cong Pic(ol(X))\/n Pic(ol(X)) ->^deg_tilde ZZ\/n 
     $
     where: 
 
@@ -423,7 +423,7 @@ Only the third construction is not known, so we construct it first.
 
     - The first map is induced by the extension by zero triangle, and is an isomorphism since $ol(X) - X$ is a finite set of closed points over $k$, and has no $H^1_c, H^2_c$; 
 
-    - The isomorphism $H^2 (ol(X), mu_n) cong Pic(X)\/n Pic(X) ->^deg_tilde$ is as in @cohom-of-proj-curve. 
+    - The isomorphism $H^2 (ol(X), mu_n) cong Pic(ol(X))\/n Pic(ol(X)) ->^deg_tilde$ is as in @cohom-of-proj-curve. 
 
   - For a projection $p: AA^d_Y -> Y$ from affine space, the map: 
     $
@@ -488,7 +488,7 @@ We now start to glue these constructions by proving compatibility lemmas.
     + There is a morphism $Nm_f: f_* GG_(m,X) -> GG_(m,Y)$, which induces $Nm_f: Pic(X) -> Pic(Y)$ on $H^1$. 
   ]
   #proof[
-    ($f: X -> Y$ is automatically flat, since for closed points $x in X, y = f(x)$, each $cal(O)_(Y,y) -> cal(O)_(X,x)$ is a morphism of DVRs, and is injective since $f$ is dominant. Thus each $cal(O)_(X,x)$ is a finite torsion-free $cal(O)_(Y,y)$-module, hence free and in particular flat.)
+    ($f: X -> Y$ is automatically flat, since for closed points $x in X, y = f(x)$, each $cal(O)_(Y,y) -> cal(O)_(X,x)$ is a morphism of DVRs, and is injective since $f$ is dominant. Thus each $cal(O)_(X,x)$ is a torsion-free $cal(O)_(Y,y)$-module, hence flat.)
 
     (1) Suppose that $D = (s) in Div(X)$ is a principal divisor. That is, $0 != s in K(X)$ is a rational function so that $D = sum_(x in abs(X)) v_x (s) x in Div(X)$, where each $v_x$ is the valuation $K(X)^times -> ZZ$ at $x$. Take $0 != Nm_(K(X)\/K(Y)) (s)$. Then for $y in abs(Y)$, we claim that: 
     $
@@ -502,11 +502,11 @@ We now start to glue these constructions by proving compatibility lemmas.
         v_y (Nm_(K(X)\/K(Y)) (s)) = length_(cal(O)_(Y,y)) (B_y\/s B_y) 
       $
 
-      - For any torsion $B_y$-module $M$, there exists a length decomposition: #h(1fr)
+      - For any finite torsion $B_y$-module $M$, there exists a length decomposition: #h(1fr)
         $
           length_(cal(O)_(Y,y)) (M) = sum_(x in f^(-1)(y)) length_(cal(O)_(X,x)) (M_x)
         $
-        Since $M$ is of finite length over $cal(O)_(Y,y)$, it is of finite length over $B_y$, and so we may take replace $M$ by its $B_y$-Jordan-Holder factors. These factors are necessarily $B_y\/frak(m)_x B_y$ for some $x in f^(-1) (y)$. For them, it suffices to prove: 
+        Since $M$ is of finite length over $cal(O)_(Y,y)$, it is of finite length over $B_y$, and so we may replace $M$ by its $B_y$-Jordan-Holder factors. These factors are necessarily $B_y\/frak(m)_x B_y$ for some $x in f^(-1) (y)$. For them, it suffices to prove: 
         $
           length_(cal(O)_(Y,y)) (B_y\/frak(m)_x B_y) = 1
         $ 
@@ -514,7 +514,7 @@ We now start to glue these constructions by proving compatibility lemmas.
         $
           length_(cal(O)_(Y,y)) (B_y\/frak(m)_x B_y) = dim_(k(y)) (B_y\/frak(m)_x B_y) = dim_(k(y)) (k(x)) = 1
         $
-        since $k(x) = k(y) = 1$, and we are done. 
+        since $k(x) = k(y) = k$, and we are done. 
       
       Hence, from the length decomposition, 
       $
@@ -548,7 +548,7 @@ We now start to glue these constructions by proving compatibility lemmas.
     $
       0 -> f_* cal(L)_X (-D) -> f_* cal(O)_X -> f_* cal(O)_D -> 0
     $
-    It can be directly checked that $f_* cal(O)_D = cal(O)_(f_* D)$, as: 
+    The stalk lengths of $f_* cal(O)_D$ are the coefficients of the divisor $f_* D$, as: 
     $
       length_(cal(O)_(Y,y)) ((f_* cal(O)_D)_y) = sum_(x in f^(-1) (y)) length_(cal(O)_(X,x)) (cal(O)_(D,x))
     $
@@ -587,7 +587,7 @@ We now start to glue these constructions by proving compatibility lemmas.
     $
     It sends units to units, and so induces a map $Nm_f: f_* cal(O)_X^times -> cal(O)_Y^times$ of Zariski sheaves. 
 
-    Next, we extend $Nm_f$ to a map $f_* GG_(m,X) -> GG_(m,Y)$ of etale sheaves. Any etale $U in Et_Y$ is regular by @etale-local-properties (2), hence a disjoint union of smooth curves over $k$. Thus, to construct $Nm_f: f_* GG_(m,X) -> GG_(m,Y)$, it suffices to construct it on sections on $U$. 
+    Next, we extend $Nm_f$ to a map $f_* GG_(m,X) -> GG_(m,Y)$ of etale sheaves. Any affine etale $U in Et_Y$ is regular by @etale-local-properties (2), hence a disjoint union of smooth curves over $k$. Thus, to construct $Nm_f: f_* GG_(m,X) -> GG_(m,Y)$, it suffices to construct it on sections on such a basis of affine $U$. 
     
     Form the base change $f_U: X_U -> U$ of $f$ along $U -> Y$, so $f_U$ is finite flat of rank $r$. By the same argument as in the beginning of (2), $f_(U,*) cal(O)_(X_U)$ is locally free of rank $r$. Thus, we may define a map: 
     $
@@ -605,7 +605,7 @@ We now start to glue these constructions by proving compatibility lemmas.
       edge((1, 1), (1, 0), "->")
       edge((0, 1), (0, 0), "->")
     }))
-    This can be checked locally by replacing $U, V$ by their affine opens. Thus, we may assume that $U, V$ are affine. Then this reduces to showin that: Given a finite locally free $A$-algebra $B$ of rank $r$, any $A$-algebra $A'$ with $B' = B' otimes_A A'$, 
+    This can be checked locally by replacing $U, V$ by their affine opens. Thus, we may assume that $U, V$ are affine. Then this reduces to showing that: Given a finite locally free $A$-algebra $B$ of rank $r$, any $A$-algebra $A'$ with $B' = B otimes_A A'$, 
     // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJCJyJdLFswLDEsIkIiXSxbMSwxLCJBIl0sWzEsMCwiQSciXSxbMSwwXSxbMiwzXSxbMSwyLCJObSIsMl0sWzAsMywiTm0iXV0=
     #align(center, diagram({
       node((0, 0), [$B'$])
@@ -627,7 +627,7 @@ We now start to glue these constructions by proving compatibility lemmas.
 
     - Any $cal(L) in Pic(X)$ can be trivialized by a Zariski cover of $X$ coming from a Zariski cover of $Y$. 
 
-      Indeed, for any $y in abs(Y)$, $X times_Y Spec(cal(O)_(Y,y)) = Spec(B_y)$ is a Dedekind domain and in particular a UFD, and it hence has trivial class group. Thus $cal(L)|_(X times_Y Spec(cal(O)_(Y,y)))$ as a line bundle is necessarily trivial. By spreading out, there exists a Zariski open $V subset Y$ s.t. $cal(L)|_(f^(-1)(V))$ is trivial. 
+      Indeed, for any $y in abs(Y)$, $X times_Y Spec(cal(O)_(Y,y)) = Spec(B_y)$ is a semilocal Dedekind domain, hence a PID and in particular a UFD, and it hence has trivial class group. Thus $cal(L)|_(X times_Y Spec(cal(O)_(Y,y)))$ as a line bundle is necessarily trivial. By spreading out, there exists a Zariski open $V subset Y$ s.t. $cal(L)|_(f^(-1)(V))$ is trivial. 
 
       Thus, we may take a Zariski cover ${Y_i}$ of $Y$, base changing to ${X_i}$ of $X$ with isomorphisms $phi_i: cal(L)|_(X_i) -> cal(O)_(X_i)$. We have sections $s_(i,j) in cal(O)_(X_(i,j)) (X_(i,j))^times$, defining the transition maps: 
       $
@@ -653,7 +653,7 @@ We now start to glue these constructions by proving compatibility lemmas.
     $
     Thus applying $f_*$, 
     $
-      psi_j = f_* s_(i,j) compose psi_i: cal(L)_(X_(i,j)) -> cal(O)_(X_(i,j))
+      psi_j = f_* s_(i,j) compose psi_i: f_* cal(L)_(X_(i,j)) -> f_* cal(O)_(X_(i,j))
     $
     and applying determinants, 
     $
@@ -784,7 +784,7 @@ We now start to glue these constructions by proving compatibility lemmas.
     $
       oplus.big_(u in ol(f)^(-1)(x)) mu_n -> mu_n, (a_u)_u |-> product_(u in ol(f)^(-1)(x)) a_u^(r_u)
     $
-    where $r_u := "rk"_(cal(O)_(X,x)^#[sh]) (cal(O)_(ol(U),u)^#[sh])$. We now check the compostion: 
+    where $r_u := "rk"_(cal(O)_(X,x)^#[sh]) (cal(O)_(ol(U),u)^#[sh])$. We now check the composition: 
     $
       f_! mu_(n,U) cong ol(f)_* j_! mu_(n,U) -> ol(f)_* mu_(n,ol(U)) ->^(Nm_(ol(f))) mu_(n,X)
     $
@@ -825,7 +825,7 @@ We now start to glue these constructions by proving compatibility lemmas.
 #lemma(name: <pd-trace-etale-affine-compat>)[
   Suppose that $f: X -> Y$ is a separated smooth morphism of relative dimension $d$. A list of global sections $s_1, dots.c, s_d in cal(O)_X (X)$ is equivalent to a map $j_(s_1,dots.c,s_d): X -> AA^d_Y$. 
   
-  Suppose that two lists of global sections $s_i, s'_i in cal(O)_X (X)$ both defines etale morphisms $j_(s_1,dots.c,s_d), j_(s'_1,dots.c,s'_d): X -> AA^d_Y$. Then: 
+  Suppose that two lists of global sections $s_i, s'_i in cal(O)_X (X)$ both define etale morphisms $j_(s_1,dots.c,s_d), j_(s'_1,dots.c,s'_d): X -> AA^d_Y$. Then: 
   $
     Tr^square_(AA^d_Y\/Y) diamond.small Tr^compose_(j_(s_1,dots.c,s_d)) = Tr^square_(AA^d_Y\/Y) diamond.small Tr^compose_(j_(s'_1,dots.c,s'_d))
   $
@@ -837,9 +837,9 @@ We now start to glue these constructions by proving compatibility lemmas.
     $
       Tr^square_(AA^d_Y\/Y) diamond.small Tr^compose_(j_(s_1|_U,dots.c,s_d|_U)) = Tr^square_(AA^d_Y\/Y) diamond.small Tr^compose_(j_(s'_1|_U,dots.c,s'_d|_U))
     $
-    Note that $j_(s_1|_U,dots.c,s_d|_U): U -> AA^d_k$ is just the composition: 
+    Note that $j_(s_1|_U,dots.c,s_d|_U): U -> AA^d_Y$ is just the composition: 
     $
-      U -> X -->^(j_(s_1,dots.c,s_d)) AA^d_k
+      U -> X -->^(j_(s_1,dots.c,s_d)) AA^d_Y
     $
     and the same goes for the primed variants. Since $Tr^compose$ is compatible with composition, 
     $
@@ -865,15 +865,15 @@ We now start to glue these constructions by proving compatibility lemmas.
     $
       Tr^square_(AA^d_k\/k) diamond.small Tr^compose_(j_(s_1,dots.c,s_d)) =  Tr^square_(AA^d_k\/k) diamond.small Tr^compose_(j_(s_(sigma(1)),dots.c,s_(sigma(d))))
     $
-    Indeed, regard $sigma$ as an automorphism $phi_sigma: AA^d_k -> AA^d_k, (x_1, dots.c, x_d) |-> (x_(sigma(1)), dots.c, x_(sigma(d)))$, we have: 
+    Indeed, regarding $sigma$ as an automorphism $phi_sigma: AA^d_k -> AA^d_k, (x_1, dots.c, x_d) |-> (x_(sigma(1)), dots.c, x_(sigma(d)))$, we have: 
     $
-      j_(s_1,dots.c,s_d) compose phi_sigma = j_(s_(sigma(1)),dots.c,s_(sigma(d)))
+      phi_sigma compose j_(s_1,dots.c,s_d) = j_(s_(sigma(1)),dots.c,s_(sigma(d)))
     $
     Hence, 
     $
-      Tr^square_(AA^d_k\/k) diamond.small Tr^compose_(j_(s_1,dots.c,s_d)) =  Tr^square_(AA^d_k\/k) diamond.small Tr^compose_(phi_sigma) diamond.small Tr^compose_(j_(s_(sigma(1)),dots.c,s_(sigma(d))))
+      Tr^square_(AA^d_k\/k) diamond.small Tr^compose_(j_(s_1,dots.c,s_d)) =  Tr^square_(AA^d_k\/k) diamond.small Tr^compose_(phi_(sigma^(-1))) diamond.small Tr^compose_(j_(s_(sigma(1)),dots.c,s_(sigma(d))))
     $
-    whereas $Tr^square_(AA^d_k\/k) = Tr^square_(AA^d_k\/k) diamond.small Tr^compose_(phi_sigma)$ as shown in @pd-trace-affine-constr. 
+    whereas $Tr^square_(AA^d_k\/k) = Tr^square_(AA^d_k\/k) diamond.small Tr^compose_(phi_(sigma^(-1)))$ as shown in @pd-trace-affine-constr. 
 
   + /*Note that for $c_1, dots.c, c_d in k$, #h(1fr)
     $
@@ -882,7 +882,7 @@ We now start to glue these constructions by proving compatibility lemmas.
     Indeed, by subtracting on one section at a time, we may assume that we are only replacing $s_i$ with $s_i - c_i$ for a single $i$. By the permutation invariance in the previous bullet, we may assume that $i=d$, i.e. we are modifying the last bullet. */
     Suppose that $s_i = s'_i$ for all $i!=i_0$, i.e. the two lists of sections differ only by one element. By permutation invariance as in (1), we may assume that $i_0 = d$, i.e. the two lists of sections differ only at the last element. 
     
-    Now put $pi_d: AA^d_k -> AA^(d-1)_k$ be projection onto the first $(d-1)$ components, and so: 
+    Now let $pi_d: AA^d_k -> AA^(d-1)_k$ be the projection onto the first $(d-1)$ components, and so: 
     $
       pi_d compose j_(s_1,dots.c,s_(d-1),s_d) = j_(s_1,dots.c,s_(d-1)) = pi_d compose j_(s_1,dots.c,s_(d-1),s'_d)
     $
@@ -910,7 +910,7 @@ We now start to glue these constructions by proving compatibility lemmas.
   To proceed, we establish a lemma: 
 
   #lemma[
-    Let $k$ be an algebraically closed field and $X -> Spec(k)$ be separated smooth of relative dimension $d$, or identically $X$ is regular. For a closed point $x in abs(X)$, suppose that global sections $s_1, dots.c, s_d in cal(O)_X (X)$ are in $frak(m)_x cal(O)_(X,x)$. Then the map $j_(s_1,dots.c,s_d): X -> AA^d_k$ they define, sending $x$ to $0$, is etale at $x$ if and only if: 
+    Let $k$ be an algebraically closed field and $X -> Spec(k)$ be separated smooth of relative dimension $d$. In particular, $X$ is regular. For a closed point $x in abs(X)$, suppose that global sections $s_1, dots.c, s_d in cal(O)_X (X)$ are in $frak(m)_x cal(O)_(X,x)$. Then the map $j_(s_1,dots.c,s_d): X -> AA^d_k$ they define, sending $x$ to $0$, is etale at $x$ if and only if: 
     $
       [s_1], dots.c, [s_d] in frak(m)_x\/frak(m)_x^2
     $ 
@@ -929,7 +929,7 @@ We now start to glue these constructions by proving compatibility lemmas.
     $
       frak(m)_x = (s_1, dots.c, s_d) cal(O)_(X,x) = frak(m)_0 cal(O)_(X,x)
     $
-    note that $x in X$ and $0 in AA^d_k$ both has residue field $k$. Thus $j_(s_1,dots.c,s_d)$ is unramified at $x$. To show that it is etale at $x$ it suffices to show flatness at $x$. By miracle flatness, it suffices to show that: 
+    note that $x in X$ and $0 in AA^d_k$ both have residue field $k$. Thus $j_(s_1,dots.c,s_d)$ is unramified at $x$. To show that it is etale at $x$ it suffices to show flatness at $x$. By miracle flatness, it suffices to show that: 
     $
       dim(cal(O)_(X,x)) = dim(cal(O)_(AA^d_k,0)) + dim(cal(O)_(X_0,x))
     $
@@ -944,9 +944,9 @@ We now start to glue these constructions by proving compatibility lemmas.
 
   - $[s_i^((0))] = [s_i], [s_i^((T))] = [s'_i]$; 
 
-  - For every $1<=t<=T$, $[s_1^((t-1))], dots.c, [s_d^((t-1))]$ and $[s_1^((t))], dots.c, [s_d^((t))]$ differs in exactly one element. 
+  - For every $1<=t<=T$, $[s_1^((t-1))], dots.c, [s_d^((t-1))]$ and $[s_1^((t))], dots.c, [s_d^((t))]$ differ in exactly one element. 
 
-  We now take lift them to sections $s_i^((t)), 0 <= t <= T + d$ as follows: 
+  We now lift them to sections $s_i^((t)), 0 <= t <= T + d$ as follows: 
 
   - Take $s_i^((0)) = s_i$; 
 
@@ -958,7 +958,7 @@ We now start to glue these constructions by proving compatibility lemmas.
       )
     $
 
-  - For $t = T + alpha, 1 <= alpha <= T$, take: 
+  - For $t = T + alpha, 1 <= alpha <= d$, take: 
     $
       s_i^((T+alpha)) = cases(
         s_i^((T)) &\, i > alpha, 
@@ -973,9 +973,9 @@ We now start to glue these constructions by proving compatibility lemmas.
 
   - $s_i^((0)) = s_i, s_i^((T+d)) = s'_i$; 
 
-  - For every $1<=t<=T$, $s_1^((t-1)), dots.c, s_d^((t-1))$ and $s_1^((t)), dots.c, s_d^((t))$ differs in at most one element. 
+  - For every $1<=t<=T+d$, $s_1^((t-1)), dots.c, s_d^((t-1))$ and $s_1^((t)), dots.c, s_d^((t))$ differ in at most one element. 
 
-  By the previous lemma, each $j_(s_1^((t)), dots.c, s_d^((t))): X -> AA^d_k$ is etale at $x$. Since the etale locus is open, by replacing $X$ with a suitable Zariski open around $x$, we may assume that each $j_(s_1^((t)), dots.c, s_d^((t))): X -> AA^d_k$ is etale. Now by observation (2) and that $s_1^((t-1)), dots.c, s_d^((t-1))$ and $s_1^((t)), dots.c, s_d^((t))$ differs in at most one element, 
+  By the previous lemma, each $j_(s_1^((t)), dots.c, s_d^((t))): X -> AA^d_k$ is etale at $x$. Since the etale locus is open, by replacing $X$ with a suitable Zariski open around $x$, we may assume that each $j_(s_1^((t)), dots.c, s_d^((t))): X -> AA^d_k$ is etale. Now by observation (2) and that $s_1^((t-1)), dots.c, s_d^((t-1))$ and $s_1^((t)), dots.c, s_d^((t))$ differ in at most one element, 
   $
     Tr^square_(AA^d_k\/k) diamond.small Tr^compose_(j_(s_1^((t-1)),dots.c,s_d^((t-1)))) = Tr^square_(AA^d_k\/k) diamond.small Tr^compose_(j_(s_1^((t)),dots.c,s_d^((t)))), forall 1<=t<=T+d
   $
@@ -1022,9 +1022,9 @@ As a corollary, a family of trace maps can now be defined on those separated smo
   $
   where $q: X ->^j AA^d_Y ->^(ell_d) AA^(d+e)_Z$ is etale. Thus by compatibility with composition of the constructions $Tr^square$ and $Tr^compose$: 
   $
-    Tr^((1))_g diamond.small Tr^((1))_f = Tr^square_(AA^e_Z\/Z) diamond.small Tr^compose_ell diamond.small Tr^square_(AA^d_Y\/Y) diamond.small Tr^square_j \
+    Tr^((1))_g diamond.small Tr^((1))_f = Tr^square_(AA^e_Z\/Z) diamond.small Tr^compose_ell diamond.small Tr^square_(AA^d_Y\/Y) diamond.small Tr^compose_j \
 
-    Tr^((1))_(g compose f) = Tr^square_(AA^e_Z\/Z) diamond.small Tr^square_(AA^(d+e)_Z\/AA^e_Z) diamond.small Tr^compose_(ell_d) diamond.small Tr^square_j
+    Tr^((1))_(g compose f) = Tr^square_(AA^e_Z\/Z) diamond.small Tr^square_(AA^(d+e)_Z\/AA^e_Z) diamond.small Tr^compose_(ell_d) diamond.small Tr^compose_j
   $
   and hence, it suffices to prove: 
   $
@@ -1032,17 +1032,17 @@ As a corollary, a family of trace maps can now be defined on those separated smo
   $
   where $ell: Y -> AA^e_Z$ is etale, and $ell_d: AA^d_Y -> AA^(d+e)_Z$ is its base change along $AA^(d+e)_Z -> AA^e_Z$ the projection onto first $e$ coordinates. Suppose that we are done with the case $d=1$. By factoring: 
   $
-    Tr^square_(AA^d_Y\/Y) = Tr^square_(AA^d_Y\/AA^(d-1)_Y) diamond.small dots.c diamond.small Tr^square_(AA^1_Y\/Y)
+    Tr^square_(AA^d_Y\/Y) = Tr^square_(AA^1_Y\/Y) diamond.small dots.c diamond.small Tr^square_(AA^d_Y\/AA^(d-1)_Y)
   $
   and exchanging step by step according to the $d=1$ case, we are done with the general case. Thus we may assume $d=1$ and aim to prove: 
   $
     Tr^compose_ell diamond.small Tr^square_(AA^1_Y\/Y) = Tr^square_(AA^(e+1)_Z\/AA^e_Z) diamond.small Tr^compose_(ell_1)
   $
-  Base changing to an algebraically closed geometric point $Spec(K) -> AA^e_Z$, and $ell: Y -> Spec(K)$ becomes a finite disjoint union of $Spec(K)$'s. Then it suffices to prove: 
+  After base changing to an algebraically closed geometric point $Spec(K) -> AA^e_Z$, $ell: Y -> Spec(K)$ becomes a finite disjoint union of $Spec(K)$'s. Then it suffices to prove: 
   $
-    Tr^compose_ell diamond.small Tr^square_(AA^1_Y\/Y) = Tr^square_(AA^1_K\/K) diamond.small Tr^compose_(Y\/K)
-  $ 
-  Indeed, on each connected component $Spec(K)$ of $Y$, both sides are $Tr^square_(AA^1_K\/K)$. We are thereby done. 
+    Tr^compose_ell diamond.small Tr^square_(AA^1_Y\/Y) = Tr^square_(AA^1_K\/K) diamond.small Tr^compose_(ell_1)
+  $
+  in this case. Indeed, on each connected component $Spec(K)$ of $Y$, both sides are $Tr^square_(AA^1_K\/K)$. We are thereby done. 
 ]
 
 We are now ready to glue ${Tr^((1))_(X\/Y)}$ to finally obtain the trace map. 
@@ -1189,7 +1189,7 @@ We are now ready to glue ${Tr^((1))_(X\/Y)}$ to finally obtain the trace map.
     }))
     where the two squares are Cartesian. Now since $f compose r in cal(S)^((1))$, we have $f' compose r' in cal(S)^((1))$. Also $g compose q in cal(S)^((1))$, and so: 
     $
-      g compose f compose r compose tilde(q)' = g compose q compose f' compose r' in cal(S)^((1))
+      g compose f compose r compose tilde(q') = g compose q compose f' compose r' in cal(S)^((1))
     $
     Hence, $r compose tilde(q'): tilde(X)' -> X$ is a suitable etale cover of $X$ for defining $Tr_(X\/Z)$. $Tr_(X\/Z)$ is the unique map in: 
     $
@@ -1215,7 +1215,7 @@ We are now ready to glue ${Tr^((1))_(X\/Y)}$ to finally obtain the trace map.
   $
     Tr^tilde_(X\/k) diamond.small Tr^compose_(U_i\/X) = Tr^tilde_(U_i\/k) = Tr_(U_i\/k) = Tr_(X\/k) diamond.small Tr^compose_(U_i\/X)
   $
-  Refining to a finite subcover and taking $U = union.sq.big_i U_i$, we thus see that there exists a surjective etale $U -> X$ s.t:: 
+  Refining to a finite subcover and taking $U = union.sq.big_i U_i$, we thus see that there exists a surjective etale $U -> X$ s.t: 
   $
     Tr^tilde_(X\/k) diamond.small Tr^compose_(U\/X) = Tr_(X\/k) diamond.small Tr^compose_(U\/X)
   $
@@ -1239,13 +1239,13 @@ The trace map can now be extended to arbitrary torsion coefficient rings.
       Hom_(ZZ\/n) (mu_n^(otimes -m), Lambda) &\, m < 0
     )
   $
-  When the underlying scheme is over $ZZ[n^(-1),zeta_n]$ (i.e. has an $n$-th root of unity), this is a sheaf non-canonically isomorphic to $ul(Lambda)$ by an artificial choice of a primitive $n$-th root of unity. 
+  When the underlying scheme is over $ZZ[n^(-1),zeta_n]$ (i.e. admits a primitive $n$-th root of unity), this is a sheaf non-canonically isomorphic to $ul(Lambda)$ by an artificial choice of a primitive $n$-th root of unity. 
   
   For any complex $cal(K)$ of etale sheaves of $Lambda$-modules, define its *Tate twists*:
   $
     cal(K)(m) = cal(K) otimes_Lambda ul(Lambda)(m)
   $
-  When the underlying scheme is over $ZZ[n^(-1),zeta_n]$ (i.e. has an $n$-th root of unity), they are all non-canonically isomorphic to $cal(K)$ by an artificial choice of a primitive $n$-th root of unity. 
+  When the underlying scheme is over $ZZ[n^(-1),zeta_n]$ (i.e. admits a primitive $n$-th root of unity), they are all non-canonically isomorphic to $cal(K)$ by an artificial choice of a primitive $n$-th root of unity. 
   
   Now monoidal relations give: 
   $
@@ -1261,7 +1261,7 @@ The trace map can now be extended to arbitrary torsion coefficient rings.
   $
     R f_* (cal(K)(m)) = (R f_* cal(K))(m)
   $
-  (The formula for $R f_*$ is not really automatic. In the case that the underlying scheme $X$ has an $n$-th root of unity, this projection is an isomorphism by the non-canonical isomorphism $ul(Lambda)(m) cong ul(Lambda)$. In the general case, adjoining an $n$-th root of unity to the underlying scheme $X$ gives a finite etale covering, the Kummer covering. Then the projection pulled back along the Kummer covering is an isomorphism, so the projection is an isomorphism by @surjective-pullback-conservative.)
+  (The formula for $R f_*$ is not really automatic. In the case that the base scheme $Y$ admits a primitive $n$-th root of unity, this projection is an isomorphism by the non-canonical isomorphism $ul(Lambda)(m) cong ul(Lambda)$. In the general case, adjoining a primitive $n$-th root of unity to the base scheme $Y$ gives a finite etale covering, the Kummer covering. By etale base change, the projection pulled back along the Kummer covering is an isomorphism, so the projection is an isomorphism by @surjective-pullback-conservative.)
 
   Hence in an expression involving Tate twists, we always throw the Tate twists to the far right, and suppress from the notation which part of the expression the Tate twist associates to. 
 ]

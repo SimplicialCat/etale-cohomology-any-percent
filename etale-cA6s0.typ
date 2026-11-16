@@ -4,7 +4,7 @@ In this appendix, we prove the Brown representability theorem, a formal criterio
 
 - Let $cal(A)$ be a Grothendieck abelian category. Then any triangulated functor $D(cal(A)) -> cal(D)$ that preserves arbitrary direct sums must have a triangulated right adjoint. 
 
-The proof first reduces to the module category $AMod(R)$ by the Gabriel-Popescu theorem, and then uses a compact version of Brown representability theorem to bootstrap the proof. 
+The proof first reduces to the module category $AMod(R)$ by the Gabriel-Popescu theorem, and then uses a compact version of the Brown representability theorem to bootstrap the proof. 
 
 #theorem(name: <gabriel-popescu>)[
   (Gabriel-Popescu theorem) Let $cal(A)$ be a Grothendieck abelian category. Then there exists a non-commutative ring $R$ and functors: 
@@ -76,7 +76,7 @@ The proof first reduces to the module category $AMod(R)$ by the Gabriel-Popescu 
 
   Finally we show that $Q$ is exact. It is already right exact, so it suffices to show that it respects injections. 
 
-  - First suppose that we have an inclusion $K arrow.hook R^(oplus I) = G(U^(oplus I))$. The claim above then shows that $Q(K) -> Q(R^(oplus I)) = U^(oplus I)$ is injective. 
+  - First suppose that we have an inclusion $K arrow.hook R^(oplus I)$. Compose it with the canonical injection $R^(oplus I) arrow.hook G(U^(oplus I))$. The claim above then shows that $Q(K) -> Q(R^(oplus I)) = U^(oplus I)$ is injective. 
 
   - For a general inclusion $A arrow.hook B$ in $AMod(R)$, pick a free resolution $P -> B$ and form: 
     $
@@ -133,7 +133,7 @@ Next, we give the bootstrapping compact case Brown representability theorem.
   $
   Note that the choice of $X_oo$ is not canonical (i.e. unique up to unique isomorphism) as it is just an arbitrary cone for $1-sigma: S -> S$. It has the following property: 
 
-  - For any (covariant) cohomological functor $F: cal(D) -> cal(A)$ (for some abelian category $cal(A)$) preserving direct sums, the morphisms $j_n: X_n -> X_oo$ induce an isomorphism: #h(1fr)
+  - For any (covariant) cohomological functor $F: cal(D) -> cal(A)$ (for some Grothendieck abelian category $cal(A)$) preserving direct sums, the morphisms $j_n: X_n -> X_oo$ induce an isomorphism: #h(1fr)
     $
       dirlim_(n>=0) F(X_n) cong F(X_oo)
     $
@@ -166,19 +166,19 @@ Next, we give the bootstrapping compact case Brown representability theorem.
     $
     is surjective. 
 
-    Indeed, apply $H$ to $S -->^(1-sigma) S -->^q X_oo ->^(+1)$ gives the exactness of: 
+    Indeed, applying $H$ to $S -->^(1-sigma) S -->^q X_oo ->^(+1)$ gives the exactness of: 
     $
       H(X_oo) -> product_(n>=0) H(X_n) ->^D product_(n>=0) H(X_n)
     $
     where: 
     $
-      D: product_(n>=0) H(X_n) -> product_(n>=0) H(X_n), (a_n)_n |-> (a_n - H(u_(n+1)) a_(n+1))_n
+      D: product_(n>=0) H(X_n) -> product_(n>=0) H(X_n), (a_n)_n |-> (a_n - H(u_n) a_(n+1))_n
     $
     By definition $invlim_(n>=0) H(X_n) = ker(D)$, so we have a surjection $H(X_oo) -> invlim_(n>=0) H(X_n)$. 
 ]
 
 #lemma(name: <cpct-generation-of-triangulated-cat>)[
-  Let $cal(D)$ be a triangulated category with arbitrary direct sums, and a family of compact objects $cal(G)$ generating $cal(D)$. Then the only triangulated subcategory $cal(E)$ of $cal(D)$ containing $cal(G)$ and closed under arbitrary direct sums is $cal(D)$ itself. 
+  Let $cal(D)$ be a triangulated category with arbitrary direct sums, and let $cal(G)$ be a family of compact objects generating $cal(D)$. Then the only triangulated subcategory $cal(E)$ of $cal(D)$ containing $cal(G)$ and closed under arbitrary direct sums is $cal(D)$ itself. 
 ]
 #proof[
   We may replace $cal(G)$ by the set of all shifts of elements of $cal(G)$ and assume that it is closed under shifts. 
@@ -200,7 +200,7 @@ Next, we give the bootstrapping compact case Brown representability theorem.
       Q_n -->^(e_n) P_n -->^(u_n) P_(n+1) ->^(+1)
     $
 
-    Note that exactness of $Hom_(cal(D)) (P_(n+1), X) -> Hom_(cal(D)) (P_n, X) -> Hom_(cal(D)) (Q_n, X)$ and that $u_n compose e_n = 0$ gives a lift $p_(n+1): P_(n+1) -> X$ s.t. $p_(n+1) compose u_n = p_n$. 
+    Note that the exactness of $Hom_(cal(D)) (P_(n+1), X) -> Hom_(cal(D)) (P_n, X) -> Hom_(cal(D)) (Q_n, X)$, together with the fact that $p_n compose e_n = 0$, gives a lift $p_(n+1): P_(n+1) -> X$ s.t. $p_(n+1) compose u_n = p_n$. 
 
   We now form the telescope $S_P = oplus.big_(n>=0) P_n -->^(1-sigma) S_P -->^q P_oo$ of $P_0 ->^(u_0) P_1 ->^(u_1) -> dots.c$ and put $j_n: P_n -> P_oo$. Then since $Hom_(cal(D)) (-, X)$ is a contravariant cohomological functor sending direct sums to direct products: 
   $
@@ -216,7 +216,7 @@ Next, we give the bootstrapping compact case Brown representability theorem.
   $
     dirlim_(n>=0) Hom_(cal(D)) (G, P_n) -> Hom_(cal(D)) (G, X)
   $
-  is injective. Indeed, for any $h in Hom_(cal(D)) (G, P_n)$ in this kernel of this map, $p_n compose h = 0$, and so $h$ indexes a direct summand of $Q_n$. Subsequently $h: G -> P_n$ factors through $e_n: Q_n -> P_n$, and so $u_n compose h = 0$. That is, $h$ becomes $0$ in the next stage of the direct limit $dirlim_(n>=0) Hom_(cal(D)) (G, P_n)$. We have thus shown injectivity. 
+  is injective. Indeed, for any $h in Hom_(cal(D)) (G, P_n)$ in the kernel of this map, $p_n compose h = 0$, and so $h$ indexes a direct summand of $Q_n$. Subsequently $h: G -> P_n$ factors through $e_n: Q_n -> P_n$, and so $u_n compose h = 0$. That is, $h$ becomes $0$ in the next stage of the direct limit $dirlim_(n>=0) Hom_(cal(D)) (G, P_n)$. We have thus shown injectivity. 
 
   Now that we have shown that $Hom_(cal(D)) (G, P_oo) -> Hom_(cal(D)) (G, X)$ is an isomorphism, we may form the cone $P_oo -->^(p_oo) X -> C ->^(+1)$. Then: 
   $
@@ -236,7 +236,7 @@ Next, we give the bootstrapping compact case Brown representability theorem.
 ]
 
 #lemma(name: <ptwise-brown-representability-cpct-case>)[
-  (Pointwise Brown representability in compact case) Let $cal(D)$ be a triangulated category with arbitrary direct sums, and a family of compact objects $cal(G)$ generating $cal(D)$. Let $H: cal(D)^opp -> cAb$ be a contravariant cohomological functor sending direct sums to direct products. Then $H$ is representable. 
+  (Pointwise Brown representability in the compact case) Let $cal(D)$ be a triangulated category with arbitrary direct sums, and let $cal(G)$ be a family of compact objects generating $cal(D)$. Let $H: cal(D)^opp -> cAb$ be a contravariant cohomological functor sending direct sums to direct products. Then $H$ is representable. 
 ]
 #proof[
   We may replace $cal(G)$ with its completion under shifts and assume that $cal(G)$ is closed under shifts. 
@@ -297,9 +297,9 @@ Next, we give the bootstrapping compact case Brown representability theorem.
 
   Now let $cal(P)$ be the full subcategory of $cal(D)$ with objects: 
   $
-    cal(P) = {Y in cal(D): theta^(a_oo)_Y: Hom_(cal(D)) (Y, X_oo) -> H(Y) #[is an isomorphism]}
+    cal(P) = {Y in cal(D): theta^(a_oo)_(Y[n]): Hom_(cal(D)) (Y[n], X_oo) -> H(Y[n]) #[is an isomorphism for every $n in ZZ$]}
   $
-  Since $Hom_(cal(D)) (-, X_oo)$ and $H$ are both triangulated functors, $cal(P)$ is closed under shifts and distinguished triangles. Since $Hom_(cal(D)) (-, X_oo)$ and $H$ both send direct sums to direct products, $cal(P)$ is closed under arbitrary direct sums. Finally, $cal(G) subset cal(P)$ as we have proved. Thus by @cpct-generation-of-triangulated-cat, $cal(P) = cal(D)$. 
+  Since $Hom_(cal(D)) (-, X_oo)$ and $H$ are both cohomological functors, this condition is closed under shifts and distinguished triangles. Since both functors send direct sums to direct products, $cal(P)$ is closed under arbitrary direct sums. Finally, $cal(G) subset cal(P)$ because $cal(G)$ is closed under shifts and we have proved the isomorphism on every generator. Thus by @cpct-generation-of-triangulated-cat, $cal(P) = cal(D)$. 
 
   Thus $theta^(a_oo)$ gives a natural isomorphism $H cong Hom_(cal(D)) (-, X_oo)$, thus representing $H$ with $X_oo in cal(D)$. 
 ]
@@ -328,7 +328,7 @@ Next, we give the bootstrapping compact case Brown representability theorem.
   $
   Take $r_L: G Q(L) -> L$ sent to $id_L$ under this morphism, and we see that $r_L compose u_L = id_L$, i.e. $r_L$ is a retract of $L$. 
 
-  By fully faithfulness of $G$, we now have a retract: 
+  By full faithfulness of $G$, we now have a retract: 
   $
     H(A) cong H(Q G (A)) cong Hom_(D(R)) (G(A), L) \
     ->^(u_L compose -) Hom_(D(R)) (G(A), G Q(L)) cong Hom_(D(cal(A))) (A, Q(L))
@@ -353,7 +353,7 @@ Next, we give the bootstrapping compact case Brown representability theorem.
     $
     Put $r: oplus.big_(n>=0) X -> X$ by $(x_n)_n |-> sum_(n>=0) e x_n$. Then $r = r compose sigma$, so $r compose (1-sigma) = 0$. Thus there exists $g: Y -> X$ s.t. $g compose q = r$. 
 
-    Let $i_n: X -> oplus.big_(n>=0) X$ be inclusion into $n$-th direct summand. Then put $f = q compose i_0: X -> Y$. Now: 
+    Let $i_n: X -> oplus.big_(n>=0) X$ be the inclusion into the $n$-th direct summand. Then put $f = q compose i_0: X -> Y$. Now: 
     $
       g compose f = g compose q compose i_0 = r compose i_0 = e
     $
@@ -361,7 +361,7 @@ Next, we give the bootstrapping compact case Brown representability theorem.
     $
       f compose g compose q = f compose r
     $
-    - Since $q = q compose sigma$, composing with $i_n$ gives $q compose i_n = q compose i_(n+1) compose e$. Right compose with $e$ and using idempotence, we have $q compose i_n compose e = q compose i_(n+1) compose e = q compose i_n$, and so: 
+    - Since $q = q compose sigma$, composing with $i_n$ gives $q compose i_n = q compose i_(n+1) compose e$. Composing on the right with $e$ and using idempotence, we have $q compose i_n compose e = q compose i_(n+1) compose e = q compose i_n$, and so: 
       $
         q compose i_n = q compose i_(n+1)
       $
@@ -369,7 +369,7 @@ Next, we give the bootstrapping compact case Brown representability theorem.
       $
         f compose r compose i_n = f compose e = f = q compose i_n
       $
-      for all $n$, and so $f compose r = q$
+      for all $n$, and so $f compose r = q$.
     Thus $f compose g compose q = q$. Since $q$ has a right inverse, $f compose g = id$. We have thus split the idempotent $e$.
 
   Since $H$ is a direct summand of $Hom_(D(cal(A))) (-, Q(L))$, it corresponds to an idempotent of $Q(L)$, factoring as $Q(L) ->^f T ->^g Q(L)$ with $f compose g = id$. Then $T$ represents $H$. 
@@ -427,7 +427,7 @@ Next, we give the bootstrapping compact case Brown representability theorem.
     edge((1, 0), (2, 0), "->")
     edge((0, 1), (1, 1), [$G(f)$], label-side: right, "->")
     edge((1, 1), (2, 1), [$G(g)$], label-side: right, "->")
-    edge((2, 1), (3, 1), [$u$], label-side: right, "->")
+    edge((2, 1), (3, 1), [$G(u)$], label-side: right, "->")
     edge((1, 0), (1, 1), "=")
     edge((2, 0), (2, 1), [$psi$], label-side: left, "->")
     edge((3, 0), (3, 1), [$tilde$], label-side: left, "->")
@@ -448,7 +448,7 @@ Next, we give the bootstrapping compact case Brown representability theorem.
     edge((1, 0), (2, 0), "->")
     edge((0, 1), (1, 1), [$G(f)$], label-side: right, "->")
     edge((1, 1), (2, 1), [$G(g)$], label-side: right, "->")
-    edge((2, 1), (3, 1), [$u$], label-side: right, "->")
+    edge((2, 1), (3, 1), [$G(u)$], label-side: right, "->")
     edge((1, 0), (1, 1), "=")
     edge((2, 0), (2, 1), [$psi$], label-side: left, "->")
     edge((3, 0), (3, 1), label-side: left, "=")

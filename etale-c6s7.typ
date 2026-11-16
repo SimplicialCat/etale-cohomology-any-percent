@@ -44,14 +44,14 @@ The proof for (Seed) in this section is inspired by the proof in @cite-lei-fu, b
 #proof[
   We invite the reader to read #cite-stacks("088C")[Proposition 30.25.4]. 
 
-  To reduce the burden of a depth-first context search when unfolding the proof of a result in Stacks Project, we suggest that the reader should read #cite-stacks("0EHN,087V,0886")[Section 30.23\~30.25] sequentially. 
+  To reduce the burden of a depth-first context search when unfolding the proof of a result in the Stacks Project, we suggest that the reader should read #cite-stacks("0EHN,087V,0886")[Section 30.23\~30.25] sequentially. 
 
   The statement on cohomology is the theorem on formal functions, which can be found as #cite-stacks("02OC")[Theorem 30.20.5]. 
 ]
 
 A statement of Artin approximation is @artin-approximation-theorem, with proof in @appendix-artin-approximation. 
 
-We now prove precursors for degree 0, 1 and 2 of (Seed) separately, since we expect vanishing in degrees $>=3$ by @cohom-of-general-curve. The case for degree 0 has already been dealt with in @pbc-seed-precursor-0. We now deal with degree 1. 
+We now prove precursors for degrees 0, 1 and 2 of (Seed) separately, since we expect vanishing in degrees $>=3$ by @cohom-of-general-curve. The case for degree 0 has already been dealt with in @pbc-seed-precursor-0. We now deal with degree 1. 
 
 #proposition(name: <pbc-seed-precursor-1>)[
   Let $(A, frak(m), k)$ be a noetherian henselian local ring, and $X -> Spec(A)$ be proper. Then the base change: 
@@ -65,7 +65,7 @@ We now prove precursors for degree 0, 1 and 2 of (Seed) separately, since we exp
     is an isomorphism for any geometric point $ol(x)$ of $X_0$. 
 ]
 #proof[
-  We first prove fully faithfulness directly. Fix a geometric point $ol(x)$ of $X_0$. Then for $Y, Z in FEt_X$: 
+  We first prove full faithfulness directly. By @pbc-seed-precursor-0 we may work componentwise and assume $X$ and $X_0$ connected. Fix a geometric point $ol(x)$ of $X_0$. Then for $Y, Z in FEt_X$: 
   $
     Hom_X (Y, Z) cong Hom_(pi_1^et (X, ol(x))) (F_(ol(x)) (Y), F_(ol(x)) (Z)) \
     Hom_(X_0) (Y_0, Z_0) cong Hom_(pi_1^et (X_0, ol(x))) (F_(ol(x)) (Y_0), F_(ol(x)) (Z_0))
@@ -90,7 +90,7 @@ We now prove precursors for degree 0, 1 and 2 of (Seed) separately, since we exp
 
     We rename this directed limit as $A = dirlim_lambda A_lambda$. 
     
-    By @passage-to-limit-of-morphisms (1) and @passage-to-limit-of-properties (2e), up to truncating the directed set ${lambda}$, we may assume that $X -> Spec(A)$ is obtained by base changing from some proper $X_lambda -> Spec(A_lambda)$. We denote by $X_mu = X_lambda otimes_(A_lambda) A_mu$ for $mu >= lambda$, and $X_(mu,0)$ its base change to the closed point of $Spec(A_mu)$. 
+    By @passage-to-limit-of-morphisms (1) and @passage-to-limit-of-properties (2e), up to truncating the directed set ${lambda}$, we may assume that $X -> Spec(A)$ is obtained by base changing from some proper $X_lambda -> Spec(A_lambda)$. We write $X_mu = X_lambda otimes_(A_lambda) A_mu$ for $mu >= lambda$, and $X_(mu,0)$ its base change to the closed point of $Spec(A_mu)$. 
 
     By @passage-to-limit-of-properties (2a)(3d), 
     $
@@ -105,7 +105,7 @@ We now prove precursors for degree 0, 1 and 2 of (Seed) separately, since we exp
   $
   is essentially surjective. 
 
-  - Denote by $X_m = X otimes_A A\/frak(m)^(m+1)$ for each $m>=0$. #h(1fr)
+  - Put $X_m = X otimes_A A\/frak(m)^(m+1)$ for each $m>=0$. #h(1fr)
   
     Fix any $Y_0 in FEt_(X_0)$. By topological invariance (@top-invariance-sheaves (3)), there exists $Y_m in FEt_(X_m)$ s.t. $Y_m cong Y_(m+1) times_(X_(m+1)) X_m$ compatibly. Let $phi_m: Y_m -> X_m$ be the structure maps, and $cal(F)_m = phi_(m,*) cal(O)_(Y_m)$. 
 
@@ -117,17 +117,17 @@ We now prove precursors for degree 0, 1 and 2 of (Seed) separately, since we exp
     $
       Hom_(cal(O)_(hat(X))) (hat(cal(F)) otimes_(cal(O)_(hat(X))) hat(cal(F)), hat(cal(F))) cong invlim_(m>=0) Hom_(cal(O)_(X_m)) (cal(F)_m otimes_(cal(O)_(X_m)) cal(F)_m, cal(F)_m)
     $
-    so the multiplication on each $cal(F)_m$ lifts to $hat(cal(F))$. Associativity, commutativity and the unit follows from lifting the corresponding relations from each $X_m$ via the theorem on formal functions. For example, commutativity is checked by lifting the symmetric isomorphism through: 
+    so the multiplication on each $cal(F)_m$ lifts to $hat(cal(F))$. Associativity, commutativity and the unit follow from lifting the corresponding relations from each $X_m$ via the theorem on formal functions. For example, commutativity is checked by lifting the symmetric isomorphism through: 
     $
       & Hom_(cal(O)_(hat(X))) (HHom_(cal(O)_(hat(X))) (hat(cal(F)) otimes_(cal(O)_(hat(X))) hat(cal(F)), hat(cal(F))), HHom_(cal(O)_(hat(X))) (hat(cal(F)) otimes_(cal(O)_(hat(X))) hat(cal(F)), hat(cal(F)))) \
       cong& invlim_(m>=0) Hom_(cal(O)_(X_m)) (HHom_(cal(O)_(X_m)) (cal(F)_m otimes_(cal(O)_(X_m)) cal(F)_m, cal(F)_m), HHom_(cal(O)_(X_m)) (cal(F)_m otimes_(cal(O)_(X_m)) cal(F)_m, cal(F)_m))
     $
     We won't check other ring axioms as that is just routine. Thus $hat(cal(F))$ is identified as a coherent sheaf of $cal(O)_(hat(X))$-algebras s.t. $cal(F)_m cong hat(cal(F)) otimes_(hat(A)) A\/frak(m)^(m+1)$. Put $hat(Y) = SPec(hat(cal(F)))$, and so $hat(phi): hat(Y) -> hat(X)$ is a finite map, base changing to every $phi_m$. Etaleness is governed by the following lemma and we are done.  
     #lemma[
-      If $(A, frak(m))$ is a noetherian complete local ring and $f: X -> Y$ is a morphism between finite $A$-schemes, s.t. for all $m>=0$ the base change $f_m: X_m -> Y_m$ along $Spec(A\/frak(m)^(m+1)) -> Spec(A)$ is etale. Then $f$ is finite etale. 
+      If $(A, frak(m))$ is a noetherian complete local ring and $f: X -> Y$ is a morphism between finite $A$-schemes, s.t. for all $m>=0$ the base change $f_m: X_m -> Y_m$ along $Spec(A\/frak(m)^(m+1)) -> Spec(A)$ is etale, then $f$ is finite etale. 
     ]
     #proof[
-      We may check etaleness locally on target, so we may assume that $X = Spec(C), Y = Spec(B)$ with $B, C$ finite $A$-algebras. Put $X_m = Spec(C_m), Y_m = Spec(B_m)$. 
+      We may check etaleness locally on the target, so we may assume that $X = Spec(C), Y = Spec(B)$ with $B, C$ finite $A$-algebras. Put $X_m = Spec(C_m), Y_m = Spec(B_m)$. 
       
       $f$ is unramified, since: 
       $
@@ -137,7 +137,7 @@ We now prove precursors for degree 0, 1 and 2 of (Seed) separately, since we exp
 
       For any maximal ideal $frak(q) in Spec(B)$, we aim to show that $C_(frak(q))$ is free over $B_(frak(q))$. Since $B$ is finite over $A$, $frak(q)$ lies above the maximal ideal $frak(m) in Spec(A)$, i.e. $frak(q) B_(frak(q)) supset frak(m) B_(frak(q))$. 
 
-      Since each $f_m$ is finite flat, each $B_(frak(q))\/frak(m)^(m+1) B_(frak(q)) -> C_(frak(q))\/frak(m)^(m+1) C_(frak(q))$ is finite flat. It is thus free since $B_(frak(q))\/frak(m)^(m+1) B_(frak(q))$ is local. They all have common rank $r$. 
+      Since each $f_m$ is finite flat, each $B_(frak(q))\/frak(m)^(m+1) B_(frak(q)) -> C_(frak(q))\/frak(m)^(m+1) C_(frak(q))$ is finite flat. It is thus free since $B_(frak(q))\/frak(m)^(m+1) B_(frak(q))$ is local. They all have a common rank $r$. 
 
       Pick a basis $[c_1], dots.c, [c_r]$ of $C_(frak(q))\/frak(m) C_(frak(q))$ over $B_(frak(q))\/frak(m) B_(frak(q))$, and lift them arbitrarily to $c_1, dots.c, c_r$. Then: 
       $
@@ -174,7 +174,7 @@ Next, we deal with degree 2.
   is surjective. 
 ]
 #proof[
-  Similar to the proof of claim in the proof of @pbc-seed-precursor-1, we may write $A = dirlim_lambda A_lambda$ where $A_lambda$ is the henselization of a finite type $ZZ$-algebra at a prime ideal, with all transition maps local. Let $X -> Spec(A)$ come from some proper $X_lambda -> Spec(A_lambda)$ by @passage-to-limit-of-morphisms (2) and @passage-to-limit-of-properties (2e). 
+  Similar to the proof of the claim in the proof of @pbc-seed-precursor-1, we may write $A = dirlim_lambda A_lambda$ where $A_lambda$ is the henselization of a finite type $ZZ$-algebra at a prime ideal, with all transition maps local. Let $X -> Spec(A)$ come from some proper $X_lambda -> Spec(A_lambda)$ by @passage-to-limit-of-morphisms (2) and @passage-to-limit-of-properties (2e). 
 
   #lemma[
     Let $X = invlim_lambda X_lambda$ be a projective limit of qcqs schemes with affine transition maps. Then: 
@@ -203,25 +203,25 @@ Next, we deal with degree 2.
 
   - Let $X_n = X otimes_A A\/frak(m)^(n+1)$, which shares the same underlying topological space as $X_0$. Now consider the exact sequence of Zariski sheaves on $X_0$ for $n>=0$: 
     $
-      0 -> frak(m)^(n+1) cal(O)_X -->^(gamma |-> 1+gamma) (cal(O)_X\/frak(m)^(n+2) cal(O)_X)^times -> (cal(O)_X\/frak(m)^(n+1) cal(O)_X)^times -> 0
+      0 -> frak(m)^(n+1) cal(O)_X\/frak(m)^(n+2) cal(O)_X -->^(gamma |-> 1+gamma) (cal(O)_X\/frak(m)^(n+2) cal(O)_X)^times -> (cal(O)_X\/frak(m)^(n+1) cal(O)_X)^times -> 0
     $
     Taking the long exact sequence on cohomology, we get: 
     $
-      dots.c -> H^1_#[Zar] (X_0, (cal(O)_X\/frak(m)^(n+2) cal(O)_X)^times) -> H^1_#[Zar] (X_0, (cal(O)_X\/frak(m)^(n+1) cal(O)_X)^times) -> H^2_#[Zar] (X_0, frak(m)^(n+1) cal(O)_X) -> dots.c
+      dots.c -> H^1_#[Zar] (X_0, (cal(O)_X\/frak(m)^(n+2) cal(O)_X)^times) -> H^1_#[Zar] (X_0, (cal(O)_X\/frak(m)^(n+1) cal(O)_X)^times) -> H^2_#[Zar] (X_0, frak(m)^(n+1) cal(O)_X\/frak(m)^(n+2) cal(O)_X) -> dots.c
     $
     i.e: 
     $
-      dots.c -> Pic(X_(n+1)) -> Pic(X_n) -> H^2_#[Zar] (X_0, frak(m)^(n+1)) -> dots.c
+      dots.c -> Pic(X_(n+1)) -> Pic(X_n) -> H^2_#[Zar] (X_0, frak(m)^(n+1) cal(O)_X\/frak(m)^(n+2) cal(O)_X) -> dots.c
     $
-    Since $dim(X_0) <= 1$ and Zariski cohomology vanishes beyond the dimension, $H^2_#[Zar] (X_0, frak(m)^(n+1)) = 0$, and so each $Pic(X_(n+1)) -> Pic(X_n)$ is surjective. 
+    Since $dim(X_0) <= 1$ and Zariski cohomology vanishes beyond the dimension, $H^2_#[Zar] (X_0, frak(m)^(n+1) cal(O)_X\/frak(m)^(n+2) cal(O)_X) = 0$, and so each $Pic(X_(n+1)) -> Pic(X_n)$ is surjective. 
   
     We claim that $Pic(hat(X)) = invlim_(n>=0) Pic(X_n)$. 
     #proof_[Proof of claim][
-      By Grothendieck existence theorem (@grothendieck-existence-thm), as sets, 
+      By the Grothendieck existence theorem (@grothendieck-existence-thm), as sets, 
       $
         {cal(L) in Coh(hat(X)): j_n^* cal(L) in Pic(X_n)}/cong = invlim_(n>=0) Pic(X_n)
       $
-      for $j_n: X_n -> hat(X)$. Now if $cal(L) in Coh(hat(X))$ s.t. each $j_n^* cal(L)$ is invertible. Let $cal(M)_n = (j_n^* cal(L))^(otimes (-1))$. Then for $i_n: X_n -> X_(n+1)$, 
+      for $j_n: X_n -> hat(X)$. Now suppose that $cal(L) in Coh(hat(X))$ s.t. each $j_n^* cal(L)$ is invertible. Let $cal(M)_n = (j_n^* cal(L))^(otimes (-1))$. Then for $i_n: X_n -> X_(n+1)$, 
       $
         i_n^* cal(M)_(n+1) cong (i_n^* j_(n+1)^* cal(L))^(otimes (-1)) cong (j_n^* cal(L))^(otimes (-1)) cong cal(M)_n
       $
@@ -263,32 +263,32 @@ Finally, we deal with degree $>=3$, which boils down to a vanishing result.
   $
     cal(F)_(ol(x)) |-> oplus.big_(i: x in X_i) cal(F)_(ol(x))
   $
-  which is injective for all $x in X$, and bijective when $x in U$. Thus, taking the cokernel, we have an exact sequence: 
+  which is injective for all $x in X_0$, and bijective when $x in U$. Thus, taking the cokernel, we have an exact sequence: 
   $
     0 -> cal(F) -> oplus.big_(i=1)^s f_(i,*) f_i^(-1) cal(F) -> cal(R) -> 0
   $
-  where $cal(R)|_U = 0$. Let $j: Z -> X$ be the inclusion, and then by @pushforward-by-closed-immersion (2), $cal(R) = j_* cal(G)$ for some $cal(G) in cAb(Z_et)$. Now form the long exact sequence and use @pushforward-by-finite-morphism: 
+  where $cal(R)|_U = 0$. Let $j: Z -> X_0$ be the inclusion, and then by @pushforward-by-closed-immersion (2), $cal(R) = j_* cal(G)$ for some $cal(G) in cAb(Z_et)$. Now form the long exact sequence and use @pushforward-by-finite-morphism: 
   $
-    dots.c -> H^(q-1) (Z, cal(G)) -> oplus.big_(i=1)^s H^q (X_i, f_i^(-1) cal(F)) -> H^q (X, cal(F)) -> H^q (Z, cal(G)) -> dots.c
+    dots.c -> H^(q-1) (Z, cal(G)) -> H^q (X_0, cal(F)) -> oplus.big_(i=1)^s H^q (X_i, f_i^(-1) cal(F)) -> H^q (Z, cal(G)) -> dots.c
   $
   Since $Z = union.sq.big_(z in Z) Spec(k)$, whenever $q>=2$ and so $q-1>=1$, by @struct-of-spec-omega-et, $H^(q-1) (Z, cal(G)) = H^q (Z, cal(G)) = 0$. Thus, 
   $
-    H^q (X, cal(F)) cong oplus.big_(i=1)^s H^q (X_i, f_i^(-1) cal(F)), q >= 2
+    H^q (X_0, cal(F)) cong oplus.big_(i=1)^s H^q (X_i, f_i^(-1) cal(F)), q >= 2
   $
 
-  (1) Take $cal(F) = ul(ZZ\/p^a)$ and applying the result on each $X_i$ (which is integral) concludes the proof. 
+  (1) Taking $cal(F) = ul(ZZ\/p^a)$ and applying the result on each $X_i$ (which is integral) concludes the proof. 
 
   (2) From the argument above, we have: 
   $
-    H^q (X, GG_m) cong oplus.big_(i=1)^s H^q (X_i, f_i^(-1) GG_m), q >= 2
+    H^q (X_0, GG_m) cong oplus.big_(i=1)^s H^q (X_i, f_i^(-1) GG_m), q >= 2
   $
-  Now consider the canonical map $phi: f_i^(-1) GG_(m,X) -> GG_(m,X_i)$. Since $f_i|_(U ∩ X_i): U ∩ X_i -> U$ is an isomorphism, we see that $phi: f_i^(-1) GG_(m,X) -> GG_(m,X_i)$ is an isomorphism upon restriction to $U ∩ X_i$. Now form the kernel and cokernel: 
+  Now consider the canonical map $phi: f_i^(-1) GG_(m,X_0) -> GG_(m,X_i)$. Since $f_i|_(U ∩ X_i): U ∩ X_i -> U_i$ is an isomorphism, we see that $phi: f_i^(-1) GG_(m,X_0) -> GG_(m,X_i)$ is an isomorphism upon restriction to $U ∩ X_i$. Now form the kernel and cokernel: 
   $
-    0 -> cal(K) -> f_i^(-1) GG_(m,X) ->^phi GG_(m,X_i) -> cal(R) -> 0
+    0 -> cal(K) -> f_i^(-1) GG_(m,X_0) ->^phi GG_(m,X_i) -> cal(R) -> 0
   $
   where $cal(K)|_(U∩X_i) = cal(R)|_(U∩X_i) = 0$. By @pushforward-by-closed-immersion (2), $cal(K), cal(R)$ are pushforwards from sheaves on $Z ∩ X_i = union.sq.big_(z in Z ∩ X_i) Spec(k)$, a set of closed points with residue field $k$. By @pushforward-by-finite-morphism and @struct-of-spec-omega-et, we see that $H^q (X_i, cal(K)) = H^q (X_i, cal(R)) = 0$ for all $q >= 1$. Thus, whenever $q >= 2$, using the long exact sequence: 
   $
-    H^q (X_i, f_i^(-1) GG_(m,X)) cong H^q (X_i, im(phi)) cong H^q (X_i, GG_m) = 0
+    H^q (X_i, f_i^(-1) GG_(m,X_0)) cong H^q (X_i, im(phi)) cong H^q (X_i, GG_m) = 0
   $
   by applying the result for cohomology of $GG_m$ on $X_i$, which is integral. 
 ]
@@ -296,14 +296,14 @@ Finally, we deal with degree $>=3$, which boils down to a vanishing result.
 We are finally ready to prove (Seed). 
 
 #theorem[
-  (Seed) Let $(A, frak(m), k)$ be a strict henselian local ring and $X -> PP^1_A$ be finite. Let $X_0 = X otimes_A k$. Then for all natural numbers $n>=1$, the restriction: 
+  (Seed) Let $(A, frak(m), k)$ be a noetherian strict henselian local ring and $X -> PP^1_A$ be finite. Let $X_0 = X otimes_A k$. Then for all natural numbers $n>=1$, the restriction: 
   $
     H^q (X, ul(ZZ\/n)) -> H^q (X_0, ul(ZZ\/n))
   $
   is an isomorphism for $q = 0$, and surjective for $q >= 1$. 
 ]
 #proof[
-  We prove for each degree separately. 
+  We prove it for each degree separately. 
 
   - Case $q = 0$ is solved by @pbc-point-deg0. 
 

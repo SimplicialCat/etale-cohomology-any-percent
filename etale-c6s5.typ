@@ -35,9 +35,9 @@ We first need a lemma to establish the etale locality of base change:
   $
     R^q f'_* g'^(-1) cal(F) (V') = (V' |-> H^q (f'^(-1) (V'), g'^(-1) cal(F)))^\# (V')
   $
-  where $(V' |-> H^q (f^(-1) (V'), g'^(-1) cal(F))) in cPAb(Y'_et)$. Thus, it suffices to prove that: 
+  where $(V' |-> H^q (f'^(-1) (V'), g'^(-1) cal(F))) in cPAb(Y'_et)$. Thus, it suffices to prove that: 
   $
-    g^(-1) ((V |-> H^q (f^(-1) (V), cal(F)))^\#) = (V' |-> H^q (f^(-1) (V'), g'^(-1) cal(F)))^\# in cAb(Y'_et)
+    g^(-1) ((V |-> H^q (f^(-1) (V), cal(F)))^\#) = (V' |-> H^q (f'^(-1) (V'), g'^(-1) cal(F)))^\# in cAb(Y'_et)
   $ 
   Note that: 
   $
@@ -128,7 +128,7 @@ Next, we establish a limit formula for base change, involving passage to limit o
   $
     dirlim_(i in I) h_i^(-1) R^q g_(i,*) cal(F)_i -> R^q g_* cal(F)
   $
-  where the transition morphisms $h_j^(-1) R^q g_(j,*) cal(F)_j -> h_i^(-1) R^q g_(i,*) cal(F)_i$ is the composition: 
+  where the transition morphism $h_j^(-1) R^q g_(j,*) cal(F)_j -> h_i^(-1) R^q g_(i,*) cal(F)_i$ is the composition: 
   $
     h_j^(-1) R^q g_(j,*) cal(F)_j = h_i^(-1) h_(i,j)^(-1) R^q g_(j,*) cal(F)_j ->^BC h_i^(-1) R^q g_(i,*) f_(i,j)^(-1) cal(F)_j ->^(h_i^(-1) R^q g_(i,*) psi_(i,j)) h_i^(-1) R^q g_(i,*) cal(F)_i
   $
@@ -159,7 +159,7 @@ Next, we establish a limit formula for base change, involving passage to limit o
   $
     (dirlim_(i in I \ cPAb) h_(i,cPSh)^(-1) cal(P)_i)(V) = cal(P)(V)
   $
-  LHS may be computed by @limit-formula-composite-pab: Suppose that $V in Et_S$ is base changed from qcqs $V_k in Et_(S_k)$, then: 
+  LHS may be computed by @limit-formula-composite-pab: If $V in Et_S$ is base changed from qcqs $V_k in Et_(S_k)$, then: 
   $
     (dirlim_(i in I \ cPAb) h_(i,cPSh)^(-1) cal(P)_i)(V) = dirlim_(i>=k) cal(P)_i (V_i) = dirlim_(i>=k) H^q (X_i times_(S_i) V_i, cal(F)_i)
   $
@@ -171,7 +171,7 @@ Next, we establish a limit formula for base change, involving passage to limit o
 ]
 
 #theorem(name: <pbc-reduce>)[
-  (Reduce) When $Y', Y$ are locally noetherian,
+  (Reduce) When $f$ is qcqs and $Y', Y$ are locally noetherian,
   $
         & BC(X ->^f Y, Y' ->^g Y) \
     <== & (BC_* (X times_Y Spec(A) -> Spec(A)), forall Spec(A) -> Y, forall A #[noetherian strict henselian])
@@ -220,13 +220,13 @@ Next, we establish a limit formula for base change, involving passage to limit o
     $
       h^(-1) g^(-1) R^q f_* cal(F) -> h^(-1) R^q f'_* g'^(-1) cal(F)
     $
-    is an isomorphism. Now by @pbc-etale-bc, the base change morphism $h^(-1) R^q f'_* g'^(-1) cal(F) -> R^q f''_* h'^(-1) g^(-1) cal(F)$ is an isomorphism (where $g'^(-1) cal(F)$ is torsion by @pullback-of-torsion-sheaf). By naturality of the base change morphism, composing this isomorphism with the morphism above gives: 
+    is an isomorphism. Now by @pbc-etale-bc, the base change morphism $h^(-1) R^q f'_* g'^(-1) cal(F) -> R^q f''_* h'^(-1) g'^(-1) cal(F)$ is an isomorphism (where $g'^(-1) cal(F)$ is torsion by @pullback-of-torsion-sheaf). By naturality of the base change morphism, composing this isomorphism with the morphism above gives: 
     $
-      h^(-1) g^(-1) R^q f_* cal(F) -> h^(-1) R^q f'_* g'^(-1) cal(F) ->^tilde R^q f''_* h'^(-1) g^(-1) cal(F)
+      h^(-1) g^(-1) R^q f_* cal(F) -> h^(-1) R^q f'_* g'^(-1) cal(F) ->^tilde R^q f''_* h'^(-1) g'^(-1) cal(F)
     $
     which is the base change morphism for the torsion sheaf $cal(F)$ along the large rectangle, hence an isomorphism. Thus $h^(-1) g^(-1) R^q f_* cal(F) -> h^(-1) R^q f'_* g'^(-1) cal(F)$ is an isomorphism and we are done. 
   ]
-  Now pick a cover ${Y''_i}$ of $Y'$ by affine opens $Y''_i$ whose image in $Y'$ is contained in some affine open of $Y'$. Taking $Y'' = union.sq.big_i Y''_i$, and by the previous lemma, we may replace $g: Y' -> Y$ with $Y'' -> Y$. From the disjoint union structure, it suffices to show that base change holds along $f: X -> Y$ and $Y''_i -> Y$ for each $i$. In other words, we are free to assume that $Y'$ is affine with image in $Y$ contained in an affine open $Y_1$. Now $g: Y' -> Y$ factors as $Y' ->^(g_1) Y_1 ->^i Y$. Consider the diagram of successive base changes: 
+  Now pick a cover ${Y''_i}$ of $Y'$ by affine opens $Y''_i$ whose image in $Y$ is contained in some affine open of $Y$. Taking $Y'' = union.sq.big_i Y''_i$, and by the previous lemma, we may replace $g: Y' -> Y$ with $Y'' -> Y$. From the disjoint union structure, it suffices to show that base change holds along $f: X -> Y$ and $Y''_i -> Y$ for each $i$. In other words, we are free to assume that $Y'$ is affine with image in $Y$ contained in an affine open $Y_1$. Now $g: Y' -> Y$ factors as $Y' ->^(g_1) Y_1 ->^i Y$. Consider the diagram of successive base changes: 
   // https://q.uiver.app/#r=typst&q=WzAsNixbMCwxLCJYXzEiXSxbMSwxLCJZXzEiXSxbMCwyLCJYIl0sWzEsMiwiWSJdLFsxLDAsIlknIl0sWzAsMCwiWCciXSxbMiwzLCJmIl0sWzAsMSwiZiciXSxbMSwzLCJpIl0sWzAsMiwiaSciLDJdLFs1LDQsImYnJyJdLFs0LDEsImdfMSJdLFs1LDAsImcnXzEiLDJdXQ==
   #align(center, diagram({
     node((0, 1), [$X_1$])
@@ -294,7 +294,7 @@ Next, we establish a limit formula for base change, involving passage to limit o
     Hence base change holds along $f$ and $g$. 
     #suppress-qed
   ]
-  We may thus assume that $g$ is of finite type. By @stalks-detects-properties and @very-dense-sets-of-pts, it suffices to prove that for any finite type point $y' in Y'$, the base change map $g^(-1) R^q f_* cal(F) -> R^q f'_* g'^(-1) cal(F)$ for torsion $cal(F)$ is an isomorphism at $ol(y') = Spec(k(y')^sep)$ where $k(y')^sep$ is a fixed separable closure of $k(y')$. Let $y = g(y')$, and $ol(y) = Spec(k(y)^sep)$ where $k(y)^sep$ is the separable closure of $k(y)$ in $k(y')^sep$. (This explicit choice is so that the stalk of $R^q f_* cal(F)$ at $g(ol(y'))$ is explicitly computed using the strict henselization of $cal(O)_(Y,g(y))$ w.r.t. $k(y) -> k(y)^sep$.)
+  We may thus assume that $g$ is of finite type. By @stalks-detects-properties and @very-dense-sets-of-pts, it suffices to prove that for any finite type point $y' in Y'$, the base change map $g^(-1) R^q f_* cal(F) -> R^q f'_* g'^(-1) cal(F)$ for torsion $cal(F)$ is an isomorphism at $ol(y') = Spec(k(y')^sep)$ where $k(y')^sep$ is a fixed separable closure of $k(y')$. Let $y = g(y')$, and $ol(y) = Spec(k(y)^sep)$ where $k(y)^sep$ is the separable closure of $k(y)$ in $k(y')^sep$. (This explicit choice is so that the stalk of $R^q f_* cal(F)$ at $g(ol(y'))$ is explicitly computed using the strict henselization of $cal(O)_(Y,y)$ w.r.t. $k(y) -> k(y)^sep$.)
 
   Now compute: 
   $

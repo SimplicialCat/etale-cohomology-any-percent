@@ -21,11 +21,11 @@ Mimicking the topological case, we define the etale fundamental group:
 #proof[
   We first construct the morphism $Phi: Aut(Z\/X) -> Aut(Y\/X)$. Pick compatible geometric points $ol(z)$ of $Z$, $ol(y)$ of $Y$ and $ol(x)$ of $X$. For any fixed $sigma in Aut(Z\/X)$, consider the geometric point $f(sigma(ol(z)))$ of $Y$. This geometric point lies above $ol(x)$ and $Aut(Y\/X)$ acts faithfully and transitively on the fiber $F_(ol(x)) (Y)$ since $Y\/X$ is Galois. Therefore, there exists a unique $tau in Aut(Y\/X)$ s.t. $tau(ol(y)) = f(sigma(ol(z)))$. We then define $Phi(sigma) = tau$. 
 
-  In other words, $tau = Phi(sigma)$ is the unique element of $Aut(Y\/X)$ s.t. $tau(f(ol(z))) = f(sigma(ol(z)))$. Since $Z$ is connected, any $X$-morphism $Z -> Y$ agreeing on a single geometric point must be equal, so this condition is equivalent to $tau compose f = f compose sigma$. In particular, $Phi$ is independent from the choice of $ol(z),ol(y),ol(x)$. Furthermore, $Phi$ is indeed a group homomorphism: 
+  In other words, $tau = Phi(sigma)$ is the unique element of $Aut(Y\/X)$ s.t. $tau(f(ol(z))) = f(sigma(ol(z)))$. Since $Z$ is connected, any pair of $X$-morphisms $Z -> Y$ agreeing on a single geometric point must be equal, so this condition is equivalent to $tau compose f = f compose sigma$. In particular, $Phi$ is independent from the choice of $ol(z),ol(y),ol(x)$. Furthermore, $Phi$ is indeed a group homomorphism: 
   $
     f compose sigma_1 compose sigma_2 = Phi(sigma_1) compose f compose sigma_2 = Phi(sigma_1) compose Phi(sigma_2) compose f
   $
-  and so $Phi(sigma_1 compose sigma_2) = Phi(sigma_1) compose Phi(sigma_2)$. We now consider the kernel of $Phi$. $sigma in Aut(Z\/X)$ is in $ker(Phi)$ if and only if $f = f compose sigma$, i.e. when $sigma$ is an $Y$-morphism. In other words, we have obtained an exact sequence: 
+  and so $Phi(sigma_1 compose sigma_2) = Phi(sigma_1) compose Phi(sigma_2)$. We now consider the kernel of $Phi$. $sigma in Aut(Z\/X)$ is in $ker(Phi)$ if and only if $f = f compose sigma$, i.e. when $sigma$ is a $Y$-morphism. In other words, we have obtained an exact sequence: 
   $
     1 -> Aut(Z\/Y) -> Aut(Z\/X) ->^Phi Aut(Y\/X)
   $
@@ -33,7 +33,7 @@ Mimicking the topological case, we define the etale fundamental group:
   $
     abs(F_(ol(x))(Y)) = abs(Aut(Y\/X)) >= abs(im(Phi)) = (abs(Aut(Z\/X)))/(abs(Aut(Z\/Y))) = (abs(F_(ol(x))(Z)))/(abs(Aut(Z\/Y)))
   $
-  and so $abs(Aut(Z\/Y)) >= abs(F_(ol(x))(Z))\/abs(F_(ol(x))(Y)) = abs(F_(ol(y))(Z))$. Meanwhile, $<=$ holds automatically since $Aut(Z\/Y)$ acts faithfully on $F_(ol(y))(Z)$. Thus equality holds, $Z\/Y$ is Galois and $im(Phi) = Aut(Y\/X)$. We then see that $Z\/Y$ is Galois and also get the exact sequence: 
+  and so $abs(Aut(Z\/Y)) >= abs(F_(ol(x))(Z))\/abs(F_(ol(x))(Y)) = abs(F_(ol(y))(Z))$. Meanwhile, $<=$ holds automatically since $Aut(Z\/Y)$ acts freely on $F_(ol(y))(Z)$. Thus equality holds, $Z\/Y$ is Galois and $im(Phi) = Aut(Y\/X)$. We then see that $Z\/Y$ is Galois and also get the exact sequence: 
   $
     1 -> Aut(Z\/Y) -> Aut(Z\/X) ->^Phi Aut(Y\/X) -> 1
   $
@@ -78,7 +78,7 @@ Mimicking the topological case, we define the etale fundamental group:
   $
   (Note that the order of $gamma$ and $delta$ is reversed. This is the purpose of the opposite group in $Aut(X_i\/X)^opp$.)
   
-  They are compatible with the projective system $I$. Indeed, given a morphism $f: (X_j, ol(x_j)) -> (X_i, ol(x_i))$. Let $sigma_i (ol(x_i)) = gamma(ol(x_i))$ and $sigma_j (ol(x_j)) = gamma(ol(x_j))$. Then: 
+  They are compatible with the projective system $I$. Indeed, take a morphism $f: (X_j, ol(x_j)) -> (X_i, ol(x_i))$. Let $sigma_i (ol(x_i)) = gamma(ol(x_i))$ and $sigma_j (ol(x_j)) = gamma(ol(x_j))$. Then: 
   $
     sigma_i (f(ol(x_j))) = sigma_i (ol(x_i)) = gamma(ol(x_i)) = gamma(f(ol(x_j))) = f(gamma(ol(x_j))) = f(sigma_j (ol(x_j)))
   $
@@ -105,7 +105,7 @@ Mimicking the topological case, we define the etale fundamental group:
     edge((0, 0), (1, 0), "->")
     edge((-2, 0), (0, 0), "->", [$f_k$], label-side: center)
   }, crossing-fill: thm-box-curr-color()))
-  Thus to prove that $gamma(ol(y))$ defined with $i$ and $j$ agrees, it suffices to prove that the definition with $i$ and $k$ agrees. Indeed, 
+  Thus to prove that the values of $gamma(ol(y))$ defined with $i$ and $j$ agree, it suffices to prove that the definitions with $i$ and $k$ agree. Indeed, 
   $
     f_k (sigma_k (ol(x_k))) &= f_i (g_i (sigma_k (ol(x_k)))) \
     &= f_i (sigma_i (g_i (ol(x_k)))) #[by definition of the transition morphisms] \
@@ -143,14 +143,14 @@ Mimicking the topological case, we define the etale fundamental group:
   $
     pi_1^et (X, ol(x)) = invlim_(i in I) Aut(X_i\/X)^opp
   $
-  For every $Z in FEt_X$, the action of $pi_1^et (X, ol(x))$ on $F_(ol(x)) (Z)$ is continuous. This defines a functor: 
+  for every $Z in FEt_X$, the action of $pi_1^et (X, ol(x))$ on $F_(ol(x)) (Z)$ is continuous. This defines a functor: 
   $
     F_(ol(x)): FEt_X -> GSet(pi_1^et (X, ol(x)))^#[fin,cont]
   $
   from $FEt_X$ to the category of finite sets with a continuous $pi_1^et (X, ol(x))$-action. 
 ]
 #proof[
-  The only thing left to show is that $pi_1^et (X, ol(x))$ acts continuously on $F_(ol(x)) (Z)$. Indeed, pick any Galois closure $X_i -> Z$ and by construction of the isomorphism $pi_1^et (X, ol(x)) = invlim_(i in I) Aut(X_i\/X)^opp$, the action of an element $(sigma_i)_(i in I) in pi_1^et (X, ol(x))$ on $F_(ol(x)) (Z)$ is determined by $sigma_i$. Thus a normal subgroup of $pi_1^et (X, ol(x))$ of finite index fixes $F_(ol(x))(Z)$. 
+  If $Z$ is empty, the action is trivially continuous. Otherwise, choose a geometric point above $ol(x)$ in each connected component of $Z$, take its pointed Galois closure, and choose a common pointed Galois covering $X_i$ dominating these finitely many closures. By the construction of $pi_1^et (X, ol(x)) = invlim_(i in I) Aut(X_i\/X)^opp$, the action on every component of $F_(ol(x))(Z)$ is determined by the $i$-th coordinate. Thus the open normal kernel of the projection to $Aut(X_i\/X)^opp$ fixes the entire fiber, proving continuity.
 ]
 
 #theorem[
@@ -174,9 +174,9 @@ Mimicking the topological case, we define the etale fundamental group:
   #proof[
     Let $T$ be a finite set with a continuous $pi_1^et (X, ol(x))$-action. We may decompose $T$ into its $pi_1^et (X, ol(x))$-orbits ${T_s}$. If for each $T_s$ we may find some $Z_s in FEt_X$ s.t. $F_(ol(x)) (Z_s) cong T_s$ as $pi_1^et (X, ol(x))$-sets, then $F_(ol(x)) (union.sq.big_s Z_s) cong T$ as $pi_1^et (X, ol(x))$-sets. Thus, we are reduced to the case that $T$ is transitive under the action. 
 
-    Since $G = pi_1^et (X, ol(x))$ is profinite and acts transitively on $T$, $T cong G\/H$ as $G$-sets for some finite index subgroup $H <= G$. By the construction of $G$ as a projective limit, there exists some $i$ and a normal subgroup $N$ of $G$ s.t. $N <= H$ and $G\/N = Aut(X_i\/X)$. Let $ol(H)$ be the image of $H$ in $G\/N = Aut(X_i\/X)$. Then as $G$-sets, $T cong G\/H cong Aut(X_i\/X)\/ol(H)$. 
+    Since $G = pi_1^et (X, ol(x))$ is profinite and acts transitively on $T$, $T cong G\/H$ as $G$-sets for some finite index subgroup $H <= G$. By the construction of $G$ as a projective limit, there exists some $i$ and a normal subgroup $N$ of $G$ s.t. $N <= H$ and $G\/N = Aut(X_i\/X)^opp$. Let $ol(H)$ be the image of $H$ in $G\/N = Aut(X_i\/X)^opp$. Then as $G$-sets, $T cong G\/H cong Aut(X_i\/X)^opp\/ol(H)$. 
 
-    We may take $Z = X_i\/ol(H)$, constructed according to @galois-theory-of-coverings (2). By @affine-sch-quotient (2), the fibers of $X_i -> Z$ are precisely $ol(H)$-orbits, i.e. $Spec(k(z)) = (X_i)_z\/ol(H)$. Then passing to the geometric fiber is a flat base change and preserves the quotient, so $F_(ol(x))(Z) cong F_(ol(x))(X_i)\/ol(H) cong Aut(X_i\/X)\/ol(H) cong T$ as $Aut(X_i\/X)$-sets, hence as $G$-sets. 
+    We may take $Z = X_i\/ol(H)$, constructed according to @galois-theory-of-coverings (2). By @affine-sch-quotient (2), the fibers of $X_i -> Z$ are precisely $ol(H)$-orbits, i.e. $Spec(k(z)) = (X_i)_z\/ol(H)$. Then passing to the geometric fiber is a flat base change and preserves the quotient, so $F_(ol(x))(Z) cong F_(ol(x))(X_i)\/ol(H) cong Aut(X_i\/X)^opp\/ol(H) cong T$ as $Aut(X_i\/X)^opp$-sets, hence as $G$-sets. 
 
     #suppress-qed
   ]
@@ -201,7 +201,7 @@ Mimicking the topological case, we define the etale fundamental group:
       $
       Given any element $phi in Hom_(pi_1^et (X, ol(x))) (F_(ol(x)) (Z), F_(ol(x)) (Y))$, consider its graph $Gamma_phi subset F_(ol(x)) (Y) times F_(ol(x)) (Z) = F_(ol(x)) (Y times_X Z)$. Since $phi$ is $pi_1^et (X, ol(x))$-equivariant, the subset $Gamma_phi$ is $pi_1^et (X, ol(x))$-invariant. From the construction for essential surjectivity, there exists an open-and-closed subscheme $W subset Y times_X Z$ s.t. $F_(ol(x)) (W) cong Gamma_phi$ as $pi_1^et (X, ol(x))$-sets. 
 
-      Consider the projection map $p_Z: W -> Z$. Then by definition, $F_(ol(x)) (p_Z): Gamma_phi -> F_(ol(x)) (Z)$ is projection of a graph to the second factor, hence a bijection. By @fet-first-props (4), $p_Z$ is an isomorphism. Then the morphism: 
+      Consider the projection map $p_Z: W -> Z$. Then by definition, $F_(ol(x)) (p_Z): Gamma_phi -> F_(ol(x)) (Z)$ is the projection of a graph to the second factor, hence a bijection. By @fet-first-props (4), $p_Z$ is an isomorphism. Then the morphism: 
       $
         Z -->^(p_Z^(-1)) W -->^(p_Y) Y
       $
@@ -220,7 +220,7 @@ We have thus obtained the full analog of the statement for the topological funda
 ]
 #proof[
   There are a few options for this proof, but the fastest way is through the etale fundamental group. 
-  Assume that $X$ is connected, since we can trivialize $X'$ separately over each connected component of $X$. Fixing a base point $ol(x)$ of $X$, and from the theory of etale fundamental groups, $X'$ corresponds to an object: 
+  Assume that $X$ is connected, since we can trivialize $X'$ separately over each connected component of $X$. Fix a base point $ol(x)$ of $X$. From the theory of etale fundamental groups, $X'$ corresponds to an object: 
   $
     S in GSet(pi_1^et (X, ol(x)))^#[fin,cont]
   $
@@ -267,7 +267,7 @@ We have thus obtained the full analog of the statement for the topological funda
   
   + Let $Z$ be a connected etale covering space over $X$, and $G <= Aut(Z\/X)^opp$ be a finite subgroup. Then $Z -> Z\/G$ is a Galois covering with $G cong Aut(Z\/(Z\/G))^opp$.
   
-  To see etaleness of $Z -> Z\/G$. We need to check that for any $z in Z$, the inertia subgroup:
+  To see etaleness of $Z -> Z\/G$, we need to check that for any $z in Z$, the inertia subgroup:
   $
     G_i (z) := {g in G: g(z) = z, g "acts by the identity on" κ(z)}
   $
@@ -277,5 +277,5 @@ We have thus obtained the full analog of the statement for the topological funda
   $
   can only have a single element by (1).
   
-  The point (2) is useful in showing that $FEt_X -> pi_1^et (X, ol(X))"-"cSet^("fin,cont")$ is essentially surjective. Indeed, for any $pi_1^et$-set $T$, we may perform an orbit decomposition. We must then associate an etale covering space with any transitive $pi_1^et$-set $T$. Let $S$ be the stablizer of a point, and $N$ be a finite index normal subgroup of $pi_1^et$ s.t. $N <= S <= pi_1^et$. Then $pi_1^et\/N$ corresponds to a Galois covering $X_i$, and $pi_1^et\/S$ corresponds to the covering $X_i -> X_i\/(S\/N)$.
+  The point (2) is useful in showing that $FEt_X -> pi_1^et (X, ol(X))"-"cSet^("fin,cont")$ is essentially surjective. Indeed, for any $pi_1^et$-set $T$, we may perform an orbit decomposition. We must then associate an etale covering space with any transitive $pi_1^et$-set $T$. Let $S$ be the stabilizer of a point, and $N$ be a finite index normal subgroup of $pi_1^et$ s.t. $N <= S <= pi_1^et$. Then $pi_1^et\/N$ corresponds to a Galois covering $X_i$, and $pi_1^et\/S$ corresponds to the covering $X_i -> X_i\/(S\/N)$.
 ]*/

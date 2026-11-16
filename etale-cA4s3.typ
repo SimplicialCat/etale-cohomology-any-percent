@@ -2,7 +2,7 @@
 
 == Weierstrass divisibility induction
 
-We are now ready to conclude the proof in an induction. First, we need some final preparations to utilize the determinant condition we obtained through Neron smoothing. 
+We are now ready to conclude the proof by induction. First, we need some final preparations to utilize the determinant condition we obtained through Neron smoothing. 
 
 The following lemma is attributed in @cite-Art69 to Tougeron.
 
@@ -17,7 +17,7 @@ The following lemma is attributed in @cite-Art69 to Tougeron.
   $
     f_1 (arrow(y^0)), dots.c, f_(m-d) (arrow(y^0)) in Delta^2 frak(m)
   $
-  Then there exists $arrow(y) in A^m$ s.t: 
+  Then there exists $arrow(y) in A^m$ s.t.: 
   $
     f_1 (arrow(y)) = dots.c = f_(m-d) (arrow(y)) = 0 \
 
@@ -25,7 +25,7 @@ The following lemma is attributed in @cite-Art69 to Tougeron.
   $
 ]
 #proof[
-  For each $i$, multiplication by $d_i$ on $A^(m-d)$ factors through $J$. Thus there exists $N_i in MM_(m times (m-d)) (A)$ s.t: 
+  For each $i$, multiplication by $d_i$ on $A^(m-d)$ factors through $J$. Thus there exists $N_i in MM_(m times (m-d)) (A)$ s.t.: 
   $
     J N_i = d_i I_(m-d)
   $
@@ -35,7 +35,7 @@ The following lemma is attributed in @cite-Art69 to Tougeron.
   $
     arrow(f)(arrow(y^0) + U arrow(d)) = arrow(f)(arrow(y^0)) + J U arrow(d) + sum_(i,j) d_i d_j arrow(Q)_(i,j) (U)
   $
-  where each monomial in $arrow(Q)_(i,j) (U)$ has degree $>=2$. Rewrite using $arrow(f)(arrow(y^0)) = sum_(i,j) d_i d_j arrow(epsilon)_(i,j)$ and $J N_i = d_i I_(m-d)$, we have: 
+  where each monomial in $arrow(Q)_(i,j) (U)$ has degree $>=2$. Rewriting using $arrow(f)(arrow(y^0)) = sum_(i,j) d_i d_j arrow(epsilon)_(i,j)$ and $J N_i = d_i I_(m-d)$, we have: 
   $
     arrow(f)(arrow(y^0) + U arrow(d)) = sum_(i=1)^s d_i J (underbrace(mat(U_(1,i); dots.v; U_(m,i)), arrow(U)_i) + sum_(j=1)^s N_j (arrow(Q)_(i,j) (U) + arrow(epsilon)_(i,j)))
   $
@@ -50,7 +50,7 @@ The following lemma is attributed in @cite-Art69 to Tougeron.
   Then $arrow(Phi)_i (0) = sum_(j=1)^s N_j arrow(epsilon)_(i,j)$ has all coefficients in $frak(m)$. Furthermore, the differential $d Phi(0) = id$ since $arrow(Q)_(i,j)$ has every term of degree $>=2$. It remains to invoke the following lemma: 
 
   #lemma[
-    Let $(A, frak(m))$ be a henselian local ring, and: 
+    Let $(A, frak(m))$ be a henselian local ring, and let: 
     $
       Phi: A^n -> A^n
     $
@@ -61,7 +61,7 @@ The following lemma is attributed in @cite-Art69 to Tougeron.
     $
       R = (A[T_1, dots.c, T_n])/((Phi_1 (T_1, dots.c, T_n), dots.c, Phi_n (T_1, dots.c, T_n)))
     $
-    Since $d Phi(0) = id$, the Jacobian matrix $J = display(mat(nabla Phi_1, dots.c, nabla Phi_n))$ is $I_n + K$ for some $K in (T_1, dots.c, T_n) dot MM_(n times n) (A[T_1, dots.c, T_n])$. It is thus invertible when localized at $(frak(m), T_1, dots.c, T_n)$. Hence, there exists $h in A[T_1, dots.c, T_n] - (frak(m), T_1, dots.c, T_n)$ s.t: 
+    Since $d Phi(0) = id$, the Jacobian matrix $J = display(mat(nabla Phi_1, dots.c, nabla Phi_n))$ is $I_n + K$ for some $K in (T_1, dots.c, T_n) dot MM_(n times n) (A[T_1, dots.c, T_n])$. It is thus invertible when localized at $(frak(m), T_1, dots.c, T_n)$. Hence, there exists $h in A[T_1, dots.c, T_n] - (frak(m), T_1, dots.c, T_n)$ s.t.: 
     $
       R_h = (A[T_1, dots.c, T_n]_h)/((Phi_1 (T_1, dots.c, T_n), dots.c, Phi_n (T_1, dots.c, T_n)))
     $
@@ -78,7 +78,7 @@ The following lemma is attributed in @cite-Art69 to Tougeron.
   $
     f_1 (arrow(y^0)), dots.c, f_(m-d) (arrow(y^0)) in d_0^2 frak(m)^(2N+1)
   $
-  Then there exists $arrow(y) in A^m$ s.t: 
+  Then there exists $arrow(y) in A^m$ s.t.: 
   $
     f_1 (arrow(y)) = dots.c = f_(m-d) (arrow(y)) = 0 \
 
@@ -130,7 +130,7 @@ We are now ready to perform the induction. The following lemma is Artin's Lemma 
 
     f_i (arrow(X), hat(y)) in g(arrow(X), hat(y)) hat(A_n), forall 1 <= i <= r
   $
-  Then for every $N >= 1$, there exists $arrow(y) in A_n^m$ agreeing with $hat(y)$ modulo $frak(m)_n^N$ s.t: 
+  Then for every $N >= 1$, there exists $arrow(y) in A_n^m$ agreeing with $hat(y)$ modulo $frak(m)_n^N$ s.t.: 
   $
     f_i (arrow(X), arrow(y)) in g(arrow(X), arrow(y)) A_n, forall 1 <= i <= r
   $
@@ -140,7 +140,7 @@ We are now ready to perform the induction. The following lemma is Artin's Lemma 
 
   Put $arrow(X)' = (X_1, dots.c, X_(n-1))$ and $T = X_n$. 
 
-  - The reduction $ol(H) in k fps(arrow(X)'\, T)$ is nonzero. We claim that there exists some $e_1, dots.c, e_(n-1) in NN$ s.t. after applying the automorphism:
+  - The reduction $ol(H) in k fps(arrow(X)'\, T)$ is nonzero. We claim that there exist some $e_1, dots.c, e_(n-1) in NN$ s.t. after applying the automorphism:
     $
       T |-> T, X_i |-> X_i + T^(e_i), i < n
     $
@@ -173,7 +173,7 @@ We are now ready to perform the induction. The following lemma is Artin's Lemma 
       != 0.
     $
 
-  The triangular automorphism $T |-> T, X_i |-> X_i + T^(e_i)$ fixes $(pi.alt, X_1, dots.c, X_(n-1), T)$. Thus it fixes $frak(m)_n$ and $frak(m)_n hat(A_n)$. Thus, after applying such a triangular automorphism on the system and solutions, and undoing it on the solutions at the end, we may assume that $ol(H)(0, dots.c, 0, T) != 0$. 
+  The triangular automorphism $T |-> T, X_i |-> X_i + T^(e_i)$ fixes $(pi.alt, X_1, dots.c, X_(n-1), T)$. Thus it fixes $frak(m)_n$ and $frak(m)_n hat(A_n)$. Thus, after applying such a triangular automorphism to the system and solutions, and undoing it on the solutions at the end, we may assume that $ol(H)(0, dots.c, 0, T) != 0$. 
 
   Put: 
   $
@@ -182,7 +182,7 @@ We are now ready to perform the induction. The following lemma is Artin's Lemma 
   $
   and so $hat(A_n) = B fps(T)$ and $B\/frak(b) cong k$. Since $ol(H)(0, dots.c, 0, T) != 0$, we precisely know that $H != 0 in B\/frak(b) fps(T)$. 
   #lemma[
-    (Formal Weierstrass preparation) Let $(A, frak(m))$ be a complete local ring and let $H(T) in A fps(T)$ be s.t. $H(T) mod frak(m) in k fps(T)$ is nonzero. Then there exist $d in NN$, $a_0, dots.c, a_(d-1) in frak(m)$ and $u in A fps(T)^times$ s.t: 
+    (Formal Weierstrass preparation) Let $(A, frak(m))$ be a complete local ring and let $H(T) in A fps(T)$ be s.t. $H(T) mod frak(m) in k fps(T)$ is nonzero. Then there exist $d in NN$, $a_0, dots.c, a_(d-1) in frak(m)$ and $u in A fps(T)^times$ s.t.: 
     $
       H(T) = u(T) (T^d + a_(d-1) T^(d-1) + dots.c + a_0)
     $
@@ -204,9 +204,9 @@ We are now ready to perform the induction. The following lemma is Artin's Lemma 
     
     For every $f = sum_(j>=0) f_j T^j in A fps(T)$, denote: 
     $
-      pi(f) = sum_(j=0)^(d-1) f_j T^j, sigma(f) = sum_(j>=d) f_j T^j
+      pi(f) = sum_(j=0)^(d-1) f_j T^j, sigma(f) = sum_(j>=d) f_j T^(j-d)
     $
-    Put $D = A[T]_(<d)$ be the $A$-module of polynomials in $A$ of degree $<d$. We now aim to find $q in frak(m) A fps(T), a in frak(m) D$ s.t: 
+    Let $D = A[T]_(<d)$ be the $A$-module of polynomials in $A$ of degree $<d$. We now aim to find $q in frak(m) A fps(T), a in frak(m) D$ s.t.: 
     $
       T^d + r(T) = (1 + q(T))(T^d + a(T))
     $
@@ -273,7 +273,7 @@ We are now ready to perform the induction. The following lemma is Artin's Lemma 
     $
     where $hat(a)_s, hat(y)^*_(i,s) in hat(A_(n-1))$. 
 
-  - By the inductive hypothesis, for every $N >= 1$, there exist actual solutions $a_s, y^*_(i,s) in A_(n-1)$ agreeing with the formal solutions $hat(a)_s, hat(y)^*_(i,s)$ modulo $frak(m)_(n-1)^N$ s.t: 
+  - By the inductive hypothesis, for every $N >= 1$, there exist actual solutions $a_s, y^*_(i,s) in A_(n-1)$ agreeing with the formal solutions $hat(a)_s, hat(y)^*_(i,s)$ modulo $frak(m)_(n-1)^N$ s.t.: 
     $
       G_s (arrow(X'), {a_s}, {y^*_(i,s)}) = F_(i,s) (arrow(X'), {a_s}, {y^*_(i,s)}) = 0
     $
@@ -297,7 +297,7 @@ We are now ready to perform the induction. The following lemma is Artin's Lemma 
     $
       G_s (arrow(X'), {a_s}, {y^*_(i,s)}) = F_(i,s) (arrow(X'), {a_s}, {y^*_(i,s)}) = 0
     $
-    By evaluating the remainder equations at $A_s = a_s, Z_(i,s) = y^*_(i,s)$, we see: 
+    by evaluating the remainder equations at $A_s = a_s, Z_(i,s) = y^*_(i,s)$, we see: 
     $
       g(arrow(X), arrow(y)) in a A_n \
       f_i (arrow(X), arrow(y)) in a A_n
@@ -307,7 +307,7 @@ We are now ready to perform the induction. The following lemma is Artin's Lemma 
     $
       g(arrow(X), arrow(y)) - g(arrow(X), hat(y)) in frak(m)_n^N hat(A_n)
     $
-    Reduce under the map $rho: hat(A_n) -> k fps(T)$ that kills $pi.alt$ and $arrow(X')$. Then $frak(m)_n^N$ is sent to $(T^N)$. Thus whenever $N > d = "ord"_T (rho(g(arrow(X'), hat(y))))$, 
+    Reduce under the map $rho: hat(A_n) -> k fps(T)$ that kills $pi.alt$ and $arrow(X')$. Then $frak(m)_n^N$ is sent to $(T^N)$. Thus whenever $N > d = "ord"_T (rho(g(arrow(X), hat(y))))$, 
     $
       "ord"_T (rho(g(arrow(X), arrow(y)))) = d
     $
@@ -331,7 +331,7 @@ We are now ready to perform the induction. The following lemma is Artin's Lemma 
     g(arrow(X), hat(y)) in hat(A_n) - pi.alt hat(A_n) \
     f_i (arrow(X), hat(y)) = 0 in g(arrow(X), hat(y)) hat(A_n)
   $
-  Thus by @weierstrass-divisibility-induction, there exists $arrow(y^0) in A_n^m$ agreeing with $hat(y)$ modulo $frak(m)_n^(2N+2d_0+10)$ s.t: 
+  Thus by @weierstrass-divisibility-induction, there exists $arrow(y^0) in A_n^m$ agreeing with $hat(y)$ modulo $frak(m)_n^(2N+2d_0+10)$ s.t.: 
   $
     f_i (arrow(X), arrow(y^0)) in delta(arrow(X), arrow(y^0))^2 A_n
   $
@@ -339,14 +339,14 @@ We are now ready to perform the induction. The following lemma is Artin's Lemma 
   $
     f_i (arrow(X), arrow(y^0)) in delta(arrow(X), arrow(y^0))^2 frak(m)_n^(2N+1) A_n
   $
-  and so by @jacobian-correction, there exists $arrow(y) in A_n^m$ agreeing with $arrow(y^0)$, hence $hat(y)$ modulo $frak(m)_n^(N+1)$, s.t: 
+  and so by @jacobian-correction, there exists $arrow(y) in A_n^m$ agreeing with $arrow(y^0)$, hence $hat(y)$ modulo $frak(m)_n^(N+1)$, s.t.: 
   $
     f_i (arrow(X), arrow(y)) = 0
   $
   We have thus found an approximation to order $N+1$. We are thereby done. 
 ]
 
-We have thus completed the proof of Artin approximation theorem. 
+We have thus completed the proof of the Artin approximation theorem. 
 
 #theorem(name: <artin-approximation-theorem>)[
   (Artin approximation theorem) Let $A$ be the henselization of a finite type algebra over any field or excellent DVR at any prime. Then: 
@@ -355,7 +355,7 @@ We have thus completed the proof of Artin approximation theorem.
     $
       f_1 (hat(y)_1, dots.c, hat(y)_m) = dots.c = f_r (hat(y)_1, dots.c, hat(y)_m) = 0
     $
-    Then for each $N >= 1$, there exist actual solutions $y_1, dots.c, y_m in A$ s.t: 
+    Then for each $N >= 1$, there exist actual solutions $y_1, dots.c, y_m in A$ s.t.: 
     $
       f_1 (y_1, dots.c, y_m) = dots.c = f_r (y_1, dots.c, y_m) = 0
     $

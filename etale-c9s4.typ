@@ -3,7 +3,7 @@
 
 In this section, we establish so-called Verdier duality, a result on the dualizability of complexes of etale sheaves. This will be our final puzzle piece in the theory of etale cohomology. 
 
-The method of this section closely follows that of @cite-lei-fu[Section 9.6], with specialization to the case where the base is a field. The finiteness and biduality arguments in @cite-lei-fu also works over a regular $1$-dimensional base, so you should check it out if you want more general results. 
+The method of this section closely follows that of @cite-lei-fu[Section 9.6], with specialization to the case where the base is a field. The finiteness and biduality arguments in @cite-lei-fu also work over a regular $1$-dimensional base, so you should check it out if you want more general results. 
 
 #definition(name: <defn-dualizing-complex-functor>)[
   Let $f: X -> Spec(k)$ be a separated morphism of finite type, where $k$ is a field and $Lambda$ is an $n$-torsion noetherian ring s.t. $n in k^times$. Then we define *the dualizing complex* functor to be the contravariant functor: 
@@ -44,7 +44,7 @@ The statement of biduality is that the natural map $cal(K) -> DD_X DD_X cal(K)$ 
 #proof[
   Since $f$ is proper, $R f_* = R f_!$. By @existence-of-upper-shriek (4), there exists a natural isomorphism: 
   $
-    RHHom_Lambda (R f_* cal(K), Lambda) cong R f^! RHHom_Lambda (cal(K), R f^! Lambda)
+    RHHom_Lambda (R f_* cal(K), Lambda) cong R f_* RHHom_Lambda (cal(K), R f^! Lambda)
   $
   and in other words, $DD_(Spec(k)) R f_* cal(K) cong R f_* DD_X cal(K)$. We thus have an isomorphism: 
   $
@@ -99,9 +99,9 @@ To proceed, we would have needed a limit formula to base change from an arbitrar
   $
   and so $(R i^! cal(L))|_(X_L) cong R i_L^! cal(L)|_(Y_L)$. 
 
-  Next, suppose that $f = p: AA^d_Y -> Y$. Then by relative Poincare duality, both sides are $cal(K)|_(X_L)(d)[2d]$ and are isomorphism. 
+  Next, suppose that $f = p: AA^d_Y -> Y$. Then by relative Poincare duality, both sides are $cal(K)|_(X_L)(d)[2d]$ and are isomorphic. 
 
-  Now for the general case, by picking an affine cover of $X$, there is an etale cover $j: U -> X$ s.t. $f compose j$ factors as $U ->^i AA^d_k ->^p Spec(k)$ for $i$ a closed immersion. Then by the previous too cases, the lemma holds for $f compose j$. Thus, 
+  Now for the general case, by picking an affine cover of $X$, there is an etale cover $j: U -> X$ s.t. $f compose j$ factors as $U ->^i AA^d_k ->^p Spec(k)$ for $i$ a closed immersion. Then by the previous two cases, the lemma holds for $f compose j$. Thus, 
   $
     j_L^(-1) (R f^! cal(K))|_(X_L) cong j_L^(-1) R f_L^! cal(K)|_(Y_L)
   $
@@ -147,12 +147,12 @@ To proceed, we would have needed a limit formula to base change from an arbitrar
   $
   In other words, replacing $X$ with $U$, it suffices to prove that: 
   
-  - For any l.c.c. flat sheaf of $Lambda$-modules $cal(F), cal(G)$ on $X$, #h(1fr)
+  - For any l.c.c. flat sheaves of $Lambda$-modules $cal(F), cal(G)$ on $X$, #h(1fr)
     $
       RHHom_Lambda (cal(F), cal(G))|_(X_L) cong RHHom_Lambda (cal(F)|_(X_L), cal(G)|_(X_L))
     $
 
-  There exists an etale cover $j: U -> X$ with $U$ affine s.t. $j^(-1) cal(F), j^(-1) cal(G)$ are both constant. It suffices to verify after pulling back along @surjective-pullback-conservative. Thus we may in fact assume that $cal(F), cal(G)$ are constant $ul(F), ul(G)$ for finite projective $Lambda$-modules $F,G$. Then we have seen that: 
+  There exists an etale cover $j: U -> X$ with $U$ affine s.t. $j^(-1) cal(F), j^(-1) cal(G)$ are both constant. It suffices to verify after pulling back along $j$, by @surjective-pullback-conservative. Thus we may in fact assume that $cal(F), cal(G)$ are constant $ul(F), ul(G)$ for finite projective $Lambda$-modules $F,G$. Then we have seen that: 
   $
     RHHom_Lambda (cal(F), cal(G))|_(X_L) cong ul(Hom_Lambda (F, G)) cong RHHom_Lambda (cal(F)|_(X_L), cal(G)|_(X_L))
   $
@@ -179,7 +179,7 @@ To proceed, we would have needed a limit formula to base change from an arbitrar
 To proceed, we need some more limit formulas. 
 
 #lemma(name: <limit-formula-for-upper-shriek>)[
-  (Limit formula for $R i^!$) Suppose that $X = invlim_(i >= 0) X_i$ is a noetherian scheme that is a projective limit of noetherian schemes under affine transition maps $u_(i,j): X_i -> X_j$. Denote by $u_i: X -> X_i$ the projections. Let $h_0: Z_0 -> X_0$ be a closed immersion, base changed to $h_i: Z_i -> X_i$ and $h: Z -> X$. Then for any system of sheaves $(cal(F)_i, phi_(i,j))$ on ${X_i}$ with limit sheaf $cal(F)$, the canonical map: 
+  (Limit formula for $R i^!$) Suppose that $X = invlim_(i >= 0) X_i$ is a noetherian scheme that is a projective limit of noetherian schemes under affine transition maps $u_(i,j): X_i -> X_j$. Denote by $u_i: X -> X_i$ the projections. Let $h_0: Z_0 -> X_0$ be a closed immersion, base changed to $h_i: Z_i -> X_i$ and $h: Z -> X$. Then for any system of sheaves $(cal(F)_i, phi_(i,j))$ on ${X_i}$ with limit sheaf $cal(F)$, the canonical map is an isomorphism: 
   $
     dirlim_i (R^q h_i^! cal(F)_i)|_Z cong R^q h^! cal(F)
   $
@@ -187,7 +187,7 @@ To proceed, we need some more limit formulas.
 #proof[
   Take complementary open immersions $g_i: U_i -> X_i$ and $g: U -> X$. Now $(g_i^(-1) cal(F)_i, g_i^(-1) phi_(i,j))$ is a system of sheaves on ${U_i}$ with limit sheaf $g^(-1) cal(F)$, so by the base change limit formula @limit-formula-for-base-change, we have: 
   $
-    u_i^(-1) R^q g_(i,*) g_i^(-1) cal(F)_i cong R^q g_* g^(-1) cal(F)
+    dirlim_i u_i^(-1) R^q g_(i,*) g_i^(-1) cal(F)_i cong R^q g_* g^(-1) cal(F)
   $
   Thus: 
   $
@@ -204,7 +204,7 @@ To proceed, we need some more limit formulas.
   $
     dirlim_i (R^q h_i^! cal(F)_i)|_Z &cong dirlim_i (h_i^(-1) R^(q-1) g_(i,*) g_i^(-1) cal(F)_i)|_Z \
     &cong dirlim_i h^(-1) u_i^(-1) R^(q-1) g_(i,*) g_i^(-1) cal(F)_i \
-    &cong h^(-1) R^(q-1) g_* cal(F) cong R^q h^! cal(F)
+    &cong h^(-1) R^(q-1) g_* g^(-1) cal(F) cong R^q h^! cal(F)
   $
 ]
 
@@ -219,7 +219,7 @@ To proceed, we need some more limit formulas.
   $
   are isomorphisms. 
 
-  In particular, by truncations and way-out arguments, for all $cal(L)_0 in D^+ ((X_0)_et, Lambda)$ with $cal(L)_i = cal(L)_0|_(X_i)$ and $cal(L) = cal(L)_0|_X$, the canonical maps: 
+  In particular, by truncations and way-out arguments, for all $cal(L)_0 in D^+ ((X_0)_et, Lambda)$ with $cal(L)_i = cal(L)_0|_(X_i)$ and $cal(L) = cal(L)_0|_X$, the canonical maps are isomorphisms: 
   $
     dirlim_i h^q (RHom_Lambda (cal(K)_i, cal(L)_i)) -> h^q (RHom_Lambda (cal(K), cal(L))) \
 
@@ -249,17 +249,17 @@ To proceed, we need some more limit formulas.
   $
   and: 
   $
-    dirlim_i EExt^q_Lambda (j_(i,!) ul(Lambda), cal(G)_i) cong dirlim_i R^q j_(i,*) j_i^(-1) cal(G)_i cong R^q j_* j^(-1) cal(G) cong EExt^q_Lambda (j_! ul(Lambda), cal(G)) #[by @relative-limit-formula-composite] 
+    dirlim_i u_i^(-1) EExt^q_Lambda (j_(i,!) ul(Lambda), cal(G)_i) cong dirlim_i u_i^(-1) R^q j_(i,*) j_i^(-1) cal(G)_i cong R^q j_* j^(-1) cal(G) cong EExt^q_Lambda (j_! ul(Lambda), cal(G)) #[by @relative-limit-formula-composite] 
   $
   We are thereby done. 
   // $
   //   cal(S)_0 = {Z_0 subset X_0 #[closed] :& dirlim_i h^q (RHom_Lambda (cal(F)_i, cal(G)_i)) cong h^q (RHom_Lambda (cal(F), cal(G))) \
   //   & #[for all constructible $cal(F)_0$ s.t. $supp(cal(F)_0) subset Z_0$] \
-  //   & #[for all system of sheaves $(cal(G)_i, phi_(i,j))$ on ${X_i}$ with limit $cal(G)$]}
+  //   & #[for all systems of sheaves $(cal(G)_i, phi_(i,j))$ on ${X_i}$ with limit $cal(G)$]}
   // $
   // If an object has subscript $0$, we change this subscript to $i$ or drop it to denote the obvious meaning of pulling back to $X_i$ or $X$, unless otherwise stated. 
 
-  // Suppose that $Z_0 subset X_0$ has the property that every proper closed subset $W_0 subset.neq Z_0$ is in $cal(S)_0$. Take a immersion $Z_0 ->^(h_0) X_0$. Then for any constructible $cal(F)_0$ with $supp(cal(F)_0) subset Z_0$, we may write $cal(F)_0 = h_(0,*) h_0^(-1) cal(F)_0$. Pick a Zariski open $j_0: U_0 -> Z_0$ s.t. $j_0^(-1) h_0^(-1) cal(F)_0$ is l.c.c, and take a complementary closed immersion $w_0: W_0 -> Z_0$. We now have the exact sequences: 
+  // Suppose that $Z_0 subset X_0$ has the property that every proper closed subset $W_0 subset.neq Z_0$ is in $cal(S)_0$. Take an immersion $Z_0 ->^(h_0) X_0$. Then for any constructible $cal(F)_0$ with $supp(cal(F)_0) subset Z_0$, we may write $cal(F)_0 = h_(0,*) h_0^(-1) cal(F)_0$. Pick a Zariski open $j_0: U_0 -> Z_0$ s.t. $j_0^(-1) h_0^(-1) cal(F)_0$ is l.c.c, and take a complementary closed immersion $w_0: W_0 -> Z_0$. We now have the exact sequences: 
   // $
   //   0 -> h_(0,*) j_(0,!) j_0^(-1) h_0^(-1) cal(F)_0 -> cal(F)_0 -> w_(0,*) w_0^(-1) cal(F)_0 -> 0
   // $
@@ -277,7 +277,7 @@ To proceed, we need some more limit formulas.
   // $
   // for each $q$. Now by @limit-formula-for-upper-shriek, $(R^q h_i^! cal(G)_i)$ is a system of sheaves on ${Z_i}$ with limit $R^q h_i^! cal(G)$, and hence, $(j_i^(-1) R^q h_i^(-1) cal(G)_i)$ is a system of sheaves on $U_i$ with limit $j^(-1) R^q h^! cal(G)$. 
   
-  // - $j_0^(-1) h_0^(-1) cal(F)_0$ is a l.c.c. sheaf, and by @limit-formula-for-upper-shriek
+  // - $j_0^(-1) h_0^(-1) cal(F)_0$ is an l.c.c. sheaf, and by @limit-formula-for-upper-shriek
 ]
 
 #theorem[
@@ -339,7 +339,7 @@ To proceed, we need some more limit formulas.
     $
       cal(K)|_U -> DD_U DD_U cal(K)|_U -> Delta|_U ->^(+1)
     $
-    Thus, replacing $X$ with $U$, we may assume that $X$ is affine (and forget above the assumption that $X$ is proper over $k$, since that is not useful). Pick a closed immersion $i: X -> AA^m_k$ and take projections $pi_1, dots.c, pi_m: AA^m_k -> AA^1_k$. Let $eta = Spec(k(t))$ be the generic point of $AA^1_k$, and $X_(eta,j) = h^(-1) (pi_j^(-1) (eta))$. Then: 
+    Thus, replacing $X$ with $U$, we may assume that $X$ is affine (and forget about the assumption that $X$ is proper over $k$, since that is not useful). Pick a closed immersion $i: X -> AA^m_k$ and take projections $pi_1, dots.c, pi_m: AA^m_k -> AA^1_k$. Let $eta = Spec(k(t))$ be the generic point of $AA^1_k$, and $X_(eta,j) = i^(-1) (pi_j^(-1) (eta))$. Then: 
     $
       dim(X_(eta,j)) <= dim(X) - 1 < d
     $
@@ -388,7 +388,7 @@ To proceed, we need some more limit formulas.
     $
       0 = Hom_Lambda (Delta|_(X_(eta,j)), Delta|_(X_(eta,j))) = dirlim_(U subset AA^1_k) Hom_Lambda (Delta|_(g_j^(-1)(U)), Delta|_(g_j^(-1)(U)))
     $
-    where the limit ranges over all nonempty opens of $AA^1_k$. Thus $id$ on RHS must pass to $0$ at some further stage. But $id$ must also pass to $id$, so $id = 0$ at some finite stage in the limit on RHS. Thus, for some dense open $U_j subset AA^1_k$, $Delta|_(g_j^(-1)(U_j)) = 0$. 
+    where the limit ranges over all nonempty opens of $AA^1_k$. Thus $id$ on the RHS must pass to $0$ at some further stage. But $id$ must also pass to $id$, so $id = 0$ at some finite stage in the limit on the RHS. Thus, for some dense open $U_j subset AA^1_k$, $Delta|_(g_j^(-1)(U_j)) = 0$. 
 
     Pick $U_1, dots.c, U_m subset AA^1_k$ this way for all $j = 1,dots.c,m$. Then: 
     $

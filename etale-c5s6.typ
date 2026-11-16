@@ -26,22 +26,22 @@ In this short section, we will establish the structure of $cSh(X_et)$ and $cAb(X
 
   To show that $(-)_(ol(x)): cSh(Spec(K)_et) -> GSet(Gal_K)^("disc,cont")$ is an equivalence, we directly construct its quasi-inverse: 
   $
-    Phi: GSet(Gal_K)^#[disc,cont] -> cSh(Spec(K)_et), M |-> (Phi(M): union.sq.big_i Spec(L_i) |-> union.sq.big_i M^(Gal_L))
+    Phi: GSet(Gal_K)^#[disc,cont] -> cSh(Spec(K)_et), M |-> (Phi(M): union.sq.big_i Spec(L_i) |-> product_i M^(Gal_(L_i)))
   $
 
   To show that $Phi_M$ is a sheaf, since it respects disjoint unions, it suffices to verify the sheaf conditions on every ${Spec(L) -> Spec(K)}$. If $N\/L\/K$ is the Galois closure of $L\/K$, then we have a refinement $Spec(N) -> Spec(K)$ of $Spec(L) -> Spec(K)$. 
 
-  By nine lemma diagram tracing like in the proof of @etale-cover-equiv-conds, it suffices to verify the sheaf conditions for those $N\/K$. Now: 
+  By the nine lemma diagram tracing like in the proof of @etale-cover-equiv-conds, it suffices to verify the sheaf conditions for those $N\/K$. Now: 
   $
     N otimes_K N = product_(sigma in Gal(N\/K)) N
   $
-  Let the factor corresponding to $sigma$ be denoted $N_sigma$. Then the two projections: 
+  Let the factor corresponding to $sigma$ be denoted $N_sigma$. The two scheme projections are
   $
-    p_(1,2): N otimes_K N -> N
+    p_(1,2): Spec(N otimes_K N) -> Spec(N).
   $
-  have $p_1$ sending $N_sigma -> N$ by the identity, and $p_2$ sending $N_sigma -> N$ by $sigma$. Hence, 
+  On the component $Spec(N_sigma)$, the first is the identity and the second is induced by the field automorphism $sigma$. The sheaf equalizer is therefore
   $
-    ker(M^(Gal_N) -> product_(sigma in Gal(N\/K)) M^(Gal_N)) = inter.big_(sigma in Gal(N\/K)) (M^(Gal_N))^sigma = M^(Gal_K)
+    {m in M^(Gal_N) : sigma(m)=m, forall sigma in Gal(N/K)} = inter.big_(sigma in Gal(N/K)) (M^(Gal_N))^sigma = M^(Gal_K)
   $
   Hence, the sheaf conditions are verified for $Phi(M)$. It now remains to show that $Phi$ and $(-)_(ol(x))$ are quasi-inverses: 
 
@@ -62,7 +62,7 @@ In this short section, we will establish the structure of $cSh(X_et)$ and $cAb(X
     $
     We are thereby done showing $cal(F) cong Phi(M)$. 
 
-  We are thus done with the sheaf of sets case. For abelian group, the quasi-inverse is given by: 
+  We are thus done with the sheaf of sets case. For abelian groups, the quasi-inverse is given by: 
   $
     Phi: AMod(Gal_K)^#[disc,cont] -> cAb(Spec(K)_et), M |-> (Phi(M): union.sq.big_i Spec(L_i) |-> product_i M^(Gal_(L_i)))
   $
@@ -102,7 +102,7 @@ From facts on etale cohomology, we may derive facts on continuous Galois cohomol
     $
   
   + (Limit formulas)
-    + For a $G$-stable colimit $M = colim_i M_i$, there is an isomorphism: 
+    + For a filtered colimit $M = colim_i M_i$ of discrete continuous $G$-modules, there is an isomorphism: 
       $
         colim_i H^q_"cont" (G, M_i) overset(->, tilde) H^q_"cont" (G, M)
       $

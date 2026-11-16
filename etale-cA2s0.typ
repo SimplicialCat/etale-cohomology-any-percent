@@ -35,7 +35,7 @@ Tsen's theorem describes the algebraic properties of the function field of a cur
 #proof[
   We may assume that $L\/K$ is a finite extension of degree $s$.
   
-  Take:
+  Take a homogeneous polynomial of degree $1 <= d < n$:
   $
     f(x_1, dots.c, x_n) = sum_(i=(i_1,dots.c,i_n) \ i_1+dots.c+i_n = d) a_i arrow(x)^i, a_i in L
   $
@@ -43,7 +43,7 @@ Tsen's theorem describes the algebraic properties of the function field of a cur
   $
     g(arrow(y)) = Nm_(L\/K) (f(arrow(x)(arrow(y))))
   $
-  Then this is homogeneous of degree $d s$ in $n s$ variables, so by Step 1, $g$ has a nonzero solution of $arrow(y)$ in $K$. This gives a nonzero solution of $arrow(x)$ in $L$. 
+  Then this is homogeneous of degree $d s$ in $n s$ variables, so by the $C_1$ property of $K$, since $d s < n s$, $g$ has a nonzero solution of $arrow(y)$ in $K$. This gives a nonzero solution of $arrow(x)$ in $L$. 
 ]
 
 #theorem(name: <tsen-theorem>)[
@@ -65,7 +65,7 @@ Tsen's theorem describes the algebraic properties of the function field of a cur
   $
   where $deg_t (g) <= delta + d N$.
   
-  Consider the equation $g(arrow(y)) = 0$. This is equivalent to all coefficients of $t^ell, 0 <= ell <= d N + delta$ being zero. Thus, we have $(delta + d N + 1)$ equations in the variables $arrow(y)$, which is $n(N+1)$ variables. Since $n>d$ by assumption, for sufficiently large $N$, we have nonzero solutions for $arrow(y)$, hence a nonzero (i.e. nontrivial) solution for $f(arrow(x)) = 0$ by taking $arrow(x) = arrow(x)(arrow(y))$.
+  Consider the equation $g(arrow(y)) = 0$. This is equivalent to all coefficients of $t^ell, 0 <= ell <= d N + delta$ being zero. Thus, we have $(delta + d N + 1)$ equations in the variables $arrow(y)$, which are $n(N+1)$ variables. Since $n>d$ by assumption, for sufficiently large $N$, we have nonzero solutions for $arrow(y)$, hence a nonzero (i.e. nontrivial) solution for $f(arrow(x)) = 0$ by taking $arrow(x) = arrow(x)(arrow(y))$.
   
   Step 2: We now consider the general case. Pick a transcendental element $t in K$ over $k$, and then $K$ is a union of finite extensions of $k(t)$.
   
@@ -128,7 +128,7 @@ We now apply Tsen's theorem to get consequences of cohomology:
   $
     H^q_#[cont] (Gal_L, ZZ\/n) = 0
   $
-  for all $n >= 1$. Then for all finite separable $L\/K$ and all discrete torsion $Gal_L$-module $M$, $H^q_#[cont] (Gal_L, M) = 0$. 
+  for all $n >= 1$. Then for all finite separable $L\/K$ and all discrete torsion $Gal_L$-modules $M$, $H^q_#[cont] (Gal_L, M) = 0$. 
 
   #proof[
     Any finite separable extension of $L$ is a finite separable extension of $K$, so we may replace $L$ with $K$ to assume $L = K$. 
@@ -141,7 +141,7 @@ We now apply Tsen's theorem to get consequences of cohomology:
     $
       H^q_#[cont] (Gal_K, M) = 0
     $
-    for all finite discrete $Gal_K$-module $M$. Now for each prime $p$, the $p^oo$-torsion part of $M$ is $Gal_K$-stable, so $M$ is the direct sum of its $p^oo$-torsion parts. Since: 
+    for all finite discrete $Gal_K$-modules $M$. Now for each prime $p$, the $p^oo$-torsion part of $M$ is $Gal_K$-stable, so $M$ is the direct sum of its $p^oo$-torsion parts. Since: 
     $
       H^q_#[cont] (Gal_K, M) = dirlim_(E\/K #[finite Galois] \ M = M^(Gal_E)) H^q (Gal(E\/K), M)
     $
@@ -153,7 +153,7 @@ We now apply Tsen's theorem to get consequences of cohomology:
     $
       0 = M_0 subset M_1 subset dots.c subset M_k = M
     $
-    of $P$-modules, so that each $M_j\/M_(j-1)$ is a $P$-fixed submodule of $M\/M_(j-1)$ isomorphic to $ZZ\/p$ as an abelian group, i.e. isomorphic to $ZZ\/p$ as a $P$-module (by $P$-fixness). 
+    of $P$-modules, so that each $M_j\/M_(j-1)$ is a $P$-fixed submodule of $M\/M_(j-1)$ isomorphic to $ZZ\/p$ as an abelian group, i.e. isomorphic to $ZZ\/p$ as a $P$-module (by $P$-fixedness). 
 
     We claim that:
     
@@ -226,7 +226,7 @@ We now apply Tsen's theorem to get consequences of cohomology:
     $
       res^(Gal(L'\/K))_(Gal(L'\/F)) (inf_(Gal(E\/K))^(Gal(L'\/K)) (alpha_E)) = inf_(Gal(E\/F))^(Gal(L'\/F)) (res^(Gal(E\/K))_(Gal(E\/F)) (alpha_E)) = 0
     $
-    However, consider the restriction-inflation composition: 
+    However, consider the restriction-corestriction composition: 
     $
       H^q (Gal(L'\/K), M) ->^(res^(Gal(L'\/K))_(Gal(L'\/F))) H^q (Gal(L'\/F), M) -> H^q (Gal(L'\/K), M)
     $
@@ -237,7 +237,7 @@ We now apply Tsen's theorem to get consequences of cohomology:
     #suppress-qed
   ]
 
-  Step 3. For each fixed $q >= 3$, if for all primes $2 <= r < q$ we have $H^r_#[cont] (Gal_K, M) = 0$ for any discrete torsion $M$, then: 
+  Step 3. For each fixed $q >= 3$, if for all integers $2 <= r < q$ we have $H^r_#[cont] (Gal_K, M) = 0$ for any discrete torsion $M$, then: 
   $
     H^q (Gal_K, ZZ\/n) = 0
   $
@@ -248,7 +248,7 @@ We now apply Tsen's theorem to get consequences of cohomology:
     $
       0 -> ZZ\/n -> coInd_1^(Gal_K) (ZZ\/n) -> R -> 0
     $
-    of $Gal_K$. Here, the co-induced module $coInd_1^(Gal_K) (ZZ\/n)$ is: 
+    of $Gal_K$-modules. Here, the co-induced module $coInd_1^(Gal_K) (ZZ\/n)$ is: 
     $
       coInd_1^(Gal_K) (ZZ\/n) = dirlim_(L\/K #[finite Galois]) coInd_1^(Gal(L\/K)) (ZZ\/n) = dirlim_(L\/K #[finite Galois]) C(Gal(L\/K), ZZ\/n) = C(Gal_K, ZZ\/n)
     $
@@ -270,9 +270,9 @@ We now apply Tsen's theorem to get consequences of cohomology:
     $
       H^q_#[cont] (Gal_L, ZZ\/n) = 0
     $
-    for all $n >= 1$. Then for all finite separable $L\/K$ and all discrete torsion $Gal_L$-module $M$, $H^q_#[cont] (Gal_L, M) = 0$. 
+    for all $n >= 1$. Then for all finite separable $L\/K$ and all discrete torsion $Gal_L$-modules $M$, $H^q_#[cont] (Gal_L, M) = 0$. 
 
-  - For each finite separable $L\/K$, and each fixed $q >= 3$, if for all primes $2 <= r < q$ we have $H^r_#[cont] (Gal_L, M) = 0$ for any discrete torsion $M$, then:
+  - For each finite separable $L\/K$, and each fixed $q >= 3$, if for all integers $2 <= r < q$ we have $H^r_#[cont] (Gal_L, M) = 0$ for any discrete torsion $M$, then:
     $
       H^q (Gal_L, ZZ\/n) = 0
     $
@@ -280,7 +280,7 @@ We now apply Tsen's theorem to get consequences of cohomology:
 
   These three results are sufficient to conclude the proof by induction. 
 
-  (2) The case $q = 1$ is Hilbert 90, $q = 2$ is Proposition @brauer-grp-of-c1-field-trivial, so we may assume $q >= 3$. For any prime $ell != "char"(K)$, consider the Kummer sequence: 
+  (2) The case $q = 1$ is Hilbert 90, and $q = 2$ is Proposition @brauer-grp-of-c1-field-trivial, so we may assume $q >= 3$. For any prime $ell != "char"(K)$, consider the Kummer sequence: 
   $
     0 -> mu_ell (K^sep) -> (K^sep)^times ->^((-)^ell) (K^sep)^times -> 0
   $
@@ -302,7 +302,7 @@ We now apply Tsen's theorem to get consequences of cohomology:
   $
     dots.c -> H^(q-1)_#[cont] (Gal_K, Q) -> H^q_#[cont] (Gal_K, (K^sep)^times) ->^(times p) H^q_#[cont] (Gal_K, (K^sep)^times) -> H^q_#[cont] (Gal_K, Q) -> dots.c
   $
-  Since $q >= 3$, by (1) $H^(q-1)_#[cont] (Gal_K, Q) = H^q_#[cont] (Gal_K, Q) = 0$. As such, 
+  Since $q >= 3$, by (1) $H^(q-1)_#[cont] (Gal_K, Q) = H^q_#[cont] (Gal_K, Q) = 0$. As such, the following map is an isomorphism: 
   $
     times p: H^q_#[cont] (Gal_K, (K^sep)^times) -> H^q_#[cont] (Gal_K, (K^sep)^times)
   $

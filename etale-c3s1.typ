@@ -12,7 +12,7 @@ $
   bold("Cov")(X) &-> GSet(pi_1^"top" (X, x)) \
   (p: X' -> X) &|-> p^(-1) (x)
 $
-between the covering spaces of $X$ under which the finite covering spaces corresponds to finite $pi_1^"top" (X)$-sets. 
+between the covering spaces of $X$ under which the finite covering spaces correspond to finite $pi_1^"top" (X)$-sets. 
 
 In the same way, for a suitable scheme $X$, we hope to define the etale fundamental group $pi_1^et (X)$ as the automorphism of _something_. There is no universal etale covering space, so we need to get creative. It turns out that the finite etale covering spaces of $X$ form a filtered system. This allows us to define $pi_1^et (X)$ as the projective limit of automorphism groups of various etale covering spaces, a profinite group. 
 
@@ -39,10 +39,10 @@ In this chapter, we assume that $X$ is a connected noetherian scheme, and all sc
 The theory of etale fundamental groups can still be developed in a non-noetherian context. However we try to keep this material concise and self-contained, so we won't bother. 
 
 #notation(name: <terminology-etale-coverings>)[
-  The French word for the #furi[recouvrement][cover] and the #furi[revêtement][covering] looks very different, but unfortunately they look similar in English. Try to distinguish between these notions. In this document, we will use the following notation for disambiguation:
+  The French words for the #furi[recouvrement][cover] and the #furi[revêtement][covering] look very different, but unfortunately they look similar in English. Try to distinguish between these notions. In this document, we will use the following notation for disambiguation:
   - An _etale cover_ refers to a jointly surjective family of etale morphisms ${f_i: Z_i -> X}$
   - A _finite etale covering space_ refers to a finite etale morphism $f: Z -> X$.
-  However I am not perfect and may forget whether to use 'cover' and 'covering' every now and then. 'Finite etale covering spaces' are 4 words and I won't bother to write all 4 words in most cases. The rule of thumb is that whenever you see 'finite' or 'covering space', I am referring to the second concept. If you see 'etale cover', I am referring to the first. If you see 'etale covering' without the word 'finite' or 'space', you need to use the context to disambiguate, and you should probably contact me. 
+  However I am not perfect and may forget whether to use 'cover' and 'covering' every now and then. 'Finite etale covering spaces' is 4 words and I won't bother to write all 4 words in most cases. The rule of thumb is that whenever you see 'finite' or 'covering space', I am referring to the second concept. If you see 'etale cover', I am referring to the first. If you see 'etale covering' without the word 'finite' or 'space', you need to use the context to disambiguate, and you should probably contact me. 
 ]
 
 == Etale covering spaces
@@ -158,7 +158,7 @@ The theory of etale fundamental groups can still be developed in a non-noetheria
   
   + If $Z in FEt_X$ is connected, then any $X$-endomorphism $g: Z -> Z$ is an isomorphism. 
     #proof[
-      Since $Z$ is connected, by (1), $F_(ol(x)) (g): F_(ol(x)) (Z) -> F_(ol(x)) (Z)$ is injective. There's a deep theorem that a map between two finite sets of the same cardinality is injective $<==>$ surjective $<==>$ bijective. Thus $F_(ol(x)) (g)$ is bijective, and by (3) $g$ is an isomorphism. 
+      The finite etale map $g$ has nonempty open and closed image in connected $Z$, hence is surjective. Therefore $F_(ol(x))(g)$ is a surjection between finite sets of equal cardinality, hence a bijection. Thus $F_(ol(x)) (g)$ is bijective, and by (3) $g$ is an isomorphism. 
     ]
 ]
 

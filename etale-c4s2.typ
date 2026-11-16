@@ -4,7 +4,7 @@
 /*
 Let $X$ be a scheme and $Et_X$ be the category of etale $X$-schemes. Recall that $X_et = (Et_X, "etale covers")$ is the etale site of $X$. Here, ${f_i: Z_i -> Z}$ is called an etale cover, if they are jointly surjective, i.e. $Z = union.big_i f_i (Z_i)$. 
 
-Recall that we defined presheaves $cPSh(X_et)$ on $X_et$ to be a functor $cal(F): Et_X^opp -> cSet$, and sheaves $cSh(X_et)$ to be presheaves s.t. for any etale cover ${f_i: Z_i -> Z}$, 
+Recall that we defined presheaves $cPSh(X_et)$ on $X_et$ to be functors $cal(F): Et_X^opp -> cSet$, and sheaves $cSh(X_et)$ to be presheaves s.t. for any etale cover ${f_i: Z_i -> Z}$, 
 $
   cal(F) -> product_i cal(F)(Z_i) arrows.rr product_(i,j) cal(F)(Z_i times_Z Z_j)
 $
@@ -19,7 +19,7 @@ As usual, once we have introduced an object, we study its first properties. In t
 
 We will deal with these topics in this section and the following few sections. Our arrangement of sections corresponds to the methods of obtaining an etale sheaf on $X$: 
 - Constructed directly as one of the primary examples; 
-- From the abelian category structure of $cAb(X_et)$, i.e as a kernel, cokernel or image of a morphism between etale sheaves on $X$; 
+- From the abelian category structure of $cAb(X_et)$, i.e. as a kernel, cokernel or image of a morphism between etale sheaves on $X$; 
 - From functoriality, by applying a functor like $f_*, f^(-1)$ (and $f_!$ which will be introduced much later) or a derived version of them to an etale sheaf on another scheme. 
 
 #lemma[
@@ -56,32 +56,32 @@ We will deal with these topics in this section and the following few sections. O
   }, spacing: 5em, crossing-fill: thm-box-curr-color()))
   in which every parallelogram commutes, i.e: 
   $
-    alpha_2 compose f_1 = alpha_1 compose f_2 \
+    alpha_2 compose f_1 = f_2 compose alpha_1 \
     alpha_3 compose g_(1,i) = g_(2,i) compose alpha_2, forall i in {1,2} \
     beta_(2,j) compose f_2 = f_3 compose beta_(1,j), forall j in {1,2} \
     beta_(3,j) compose g_(2,i) = g_(3,i) compose beta_(2,j), forall i,j in {1, 2}
   $
   If all three columns and the bottom two rows are equalizers, then so is the top row. Furthermore, the top row is an equalizer under the weaker assumption that: 
-  - $alpha_(1,2,3)$ and $f_(2,3)$ are all injective;
+  - $alpha_(1,2,3)$ and $f_(2,3)$ are all injective, and $beta_(2,1) compose alpha_2 = beta_(2,2) compose alpha_2$;
   - The middle row is an equalizer;
   - The equalizer of $beta_(1,1),beta_(1,2)$ factors through (i.e. is contained in) $alpha_1 (A_1)$. 
-  In this weaker assumption you can actually drop $g_(3,i)$ and $beta_(3,j)$ from the diagram. 
+  Under this weaker assumption you can actually drop $g_(3,i)$ and $beta_(3,j)$ from the diagram. 
 ]
 #proof[
   The proof is uninteresting diagram tracing. Please skip it. 
 
-  Since $alpha_1, f_2$ are injective, so is $alpha_2 compose f_1 = alpha_1 compose f_2$. Thus $f_1$ is injective. Furthermore, for $i in {1, 2}$, 
+  Since $alpha_1, f_2$ are injective, so is $alpha_2 compose f_1 = f_2 compose alpha_1$. Thus $f_1$ is injective. Furthermore, for $i in {1, 2}$, 
   $
     alpha_3 compose g_(1,i) compose f_1 = g_(2,i) compose f_2 compose alpha_1
   $
   Since $g_(2,1) compose f_2 = g_(2,2) compose f_2$, we have $alpha_3 compose g_(1,1) compose f_1 = alpha_3 compose g_(1,2) compose f_1$. Since $alpha_3$ is injective, we may left cancel it to get $g_(1,1) compose f_1 = g_(1,2) compose f_1$. 
 
-  To show that the top row is an equalizers, it remains to show that if $g_(1,1)(b_1) = g_(1,2)(b_1)$, then $b_1 in f_1 (A_1)$. Apply $alpha_3$ to the equality, we see $g_(2,1)(alpha_2 (b_1)) = g_(2,2) (alpha_2 (b_1))$. Since the middle row is an equalizer, there exists $a_2 in A_2$ s.t. $alpha_2 (b_1) = f_2 (a_2)$. Applying $beta_(2,j)$ to this equality, we see that $beta_(2,1) (f_2 (a_2)) = beta_(2,1) (alpha_2 (b_1)) = beta_(2,2) (alpha_2 (b_1)) = beta_(2,2) (f_2 (a_2))$. In other words, $f_3 (beta_(1,1) (a_2)) = f_3 (beta_(1,2) (a_2))$. Since $f_3$ is injective, $beta_(1,1) (a_2) = beta_(1,2) (a_2)$. Since the left column is an equalizer, there exists $a_1 in A_1$ s.t. $a_2 = alpha_1 (a_1)$. Now $alpha_2 (b_1) = f_2 (alpha_1 (a_1)) = alpha_2 (f_1 (a_1))$, and since $alpha_2$ is injective, $b_1 = f_1 (a_1)$. 
+  To show that the top row is an equalizer, it remains to show that if $g_(1,1)(b_1) = g_(1,2)(b_1)$, then $b_1 in f_1 (A_1)$. Applying $alpha_3$ to the equality, we see $g_(2,1)(alpha_2 (b_1)) = g_(2,2) (alpha_2 (b_1))$. Since the middle row is an equalizer, there exists $a_2 in A_2$ s.t. $alpha_2 (b_1) = f_2 (a_2)$. Applying $beta_(2,j)$ to this equality, we see that $beta_(2,1) (f_2 (a_2)) = beta_(2,1) (alpha_2 (b_1)) = beta_(2,2) (alpha_2 (b_1)) = beta_(2,2) (f_2 (a_2))$. In other words, $f_3 (beta_(1,1) (a_2)) = f_3 (beta_(1,2) (a_2))$. Since $f_3$ is injective, $beta_(1,1) (a_2) = beta_(1,2) (a_2)$. Since the left column is an equalizer, there exists $a_1 in A_1$ s.t. $a_2 = alpha_1 (a_1)$. Now $alpha_2 (b_1) = f_2 (alpha_1 (a_1)) = alpha_2 (f_1 (a_1))$, and since $alpha_2$ is injective, $b_1 = f_1 (a_1)$. 
 
   By carefully inspecting the proof, we see that the only conditions used are: 
-  - $alpha_(1,2,3)$ and $f_(2,3)$ being injective; 
+  - $alpha_(1,2,3)$ and $f_(2,3)$ being injective, and $beta_(2,1) compose alpha_2 = beta_(2,2) compose alpha_2$; 
   - The middle row is an equalizer; 
-  - The left columns satisfies that if $beta_(1,1)(a_2) = beta_(1,2)(a_2)$, then $a_2 in alpha_1 (A_1)$. That is, the equalizer of $beta_(1,1),beta_(1,2)$ factors through (i.e. is contained in) $alpha_1 (A_1)$. 
+  - The left column satisfies that if $beta_(1,1)(a_2) = beta_(1,2)(a_2)$, then $a_2 in alpha_1 (A_1)$. That is, the equalizer of $beta_(1,1),beta_(1,2)$ factors through (i.e. is contained in) $alpha_1 (A_1)$. 
 ]
 
 #lemma(name: <etale-cover-equiv-conds>)[
@@ -161,7 +161,7 @@ We will deal with these topics in this section and the following few sections. O
   
   - Since $W$ is arbitrary, from the previous point $cal(F)(Z) -> cal(F)(Z')$ is injective for every $Z in Et_X$ and every etale cover $Z' -> Z$ in $Et_X$. In particular it holds for each $(U_p ∩ U_q) times_W W' -> U_p ∩ U_q$. In other words, the first arrow of the last row is injective. 
 
-    Now that we have all columns and second row being equalizers, and the first arrow of the first and third row being injective, the nine lemma on sets is applicable, and the first arrow is an equalizer. 
+    Now that we have all columns and second row being equalizers, and the first arrow of the first and third rows being injective, the nine lemma on sets is applicable, and the first arrow is an equalizer. 
 
   Therefore, the general sheaf condition is reduced to (c). We need to show that for any surjective etale $U' -> U$ in $Et_X$ with $U$ affine, the sheaf condition holds for $U' -> U$. 
 
@@ -210,7 +210,7 @@ We will deal with these topics in this section and the following few sections. O
 
   - Since (cs)$==>$(s), we now have (s), and so $f_1, beta, gamma$ are all injective. By diagram tracing, the first row is an equalizer and we have (c). 
   
-    (Here is the precise diagram tracing involved, if you want to read it. Firstly, $gamma compose g_(1,i) compose f_1 = g_(2,i) compose beta compose f_1 = g_(2,i) compose f_2$ agrees for $i = 1,2$. Since $gamma$ is injective, we may left cancel it to get $g_(1,1) compose f_1 = g_(1,2) compose f_1$. If $b in cal(F)(W)$ satisfies $g_(1,1)(b) = g_(1,2)(b)$, then applying $gamma$ and use the right commutative parallelograms gives $g_(2,1)(beta(b)) = g_(2,2)(beta(b))$. Since the bottom row is an equalizer, there exists $a in cal(F)(U)$ s.t. $f_2 (a) = beta(b)$, i.e. $beta(b) = beta(f_1(a))$. Since $beta$ is injective, $b = f_1 (a)$.)
+    (Here is the precise diagram tracing involved, if you want to read it. Firstly, $gamma compose g_(1,i) compose f_1 = g_(2,i) compose beta compose f_1 = g_(2,i) compose f_2$ agrees for $i = 1,2$. Since $gamma$ is injective, we may left cancel it to get $g_(1,1) compose f_1 = g_(1,2) compose f_1$. If $b in cal(F)(W)$ satisfies $g_(1,1)(b) = g_(1,2)(b)$, then applying $gamma$ and using the right commutative parallelograms gives $g_(2,1)(beta(b)) = g_(2,2)(beta(b))$. Since the bottom row is an equalizer, there exists $a in cal(F)(U)$ s.t. $f_2 (a) = beta(b)$, i.e. $beta(b) = beta(f_1(a))$. Since $beta$ is injective, $b = f_1 (a)$.)
 
   In summary, we have shown that (d)$==>$(c), so it remains to prove (d). Consider an etale cover $U' = union.sq.big_(i in I) U_i -> U$ in which each $U_i$ and $U$ is affine. Since $U$ is quasi-compact, there exists a finite subcollection $J subset I$ s.t. $U'_1 = union.sq.big_(i in J) U_i -> U$ is surjective. In other words, $U'_1$ is affine and $U'_1 -> U$ is surjective etale. We now consider the following diagram: 
 
@@ -222,7 +222,7 @@ We will deal with these topics in this section and the following few sections. O
       node((1, -1), [$product_(i,j in I) cal(F)(U_i times_U U_j)$])
       node((-1, 0), [$cal(F)(U'_1)$])
       node((0, 0), [$product_(i in I) cal(F)(U'_1 times_U U_i)$])
-      node((1, 0), [$product_(i,j in I) cal(F)(U'_1 times_U U'_1 times_U U_i)$])
+      node((1, 0), [$product_(i,j in I) cal(F)(U'_1 times_U U_i times_U U_j)$])
       node((1, 1), [$product_(i,j in I) cal(F)(U'_1 times_U U'_1 times_U U_i times_U U_j)$])
       node((0, 1), [$product_(i in I) cal(F)(U'_1 times_U U'_1 times_U U_i)$])
       node((-1, 1), [$cal(F)(U'_1 times_U U'_1)$])
@@ -251,7 +251,7 @@ We will deal with these topics in this section and the following few sections. O
   in which parallelograms commute. Now: 
   - Every column is (a direct product) of the sheaf condition sequence for $W times_U U'_1 -> W$ for $W = U, U_i$ or $U_i times_U U_j$. They are all equalizers by (4b). 
 
-  - $U'_1 times_U U' -> U'_1$ admits a section $(id, subset): U'_1 -> U'_1 times_U U'$. Similarly, $U'_1 times_U U'_1 times_U U' -> U'_1 times_U U'_1$ also admits a section $(id_(U'_1 times_U U'_1), Delta)$. The bottom two rows are equalizers from the following lemma: 
+  - Let $iota: U'_1 -> U'$ be the inclusion. $U'_1 times_U U' -> U'_1$ admits a section $(id, iota): U'_1 -> U'_1 times_U U'$. Similarly, $U'_1 times_U U'_1 times_U U' -> U'_1 times_U U'_1$ also admits a section $(id_(U'_1 times_U U'_1), iota compose p_1)$. The bottom two rows are equalizers from the following lemma: 
     #lemma[
       For any $cal(F) in cPSh(X_et)$, if a morphism $f: Z -> Y$ in $Et_X$ admits a section $s: Y -> Z$, then the sheaf condition holds for $f: Z -> Y$. 
     ]
@@ -269,10 +269,10 @@ We will deal with these topics in this section and the following few sections. O
         x = cal(F)(f)(cal(F)(s)(x))
       $
     ]
-  From nine lemma, the top row is an equalizer, and (c) is proved. 
+  From the nine lemma, the top row is an equalizer, and (c) is proved. 
 
   /*
-  We first prove that (a)(b) implies the following condition (b'): 
+  We first prove that (a)(b) imply the following condition (b'): 
 
   #[
     #set enum(numbering: _ => "(b')")

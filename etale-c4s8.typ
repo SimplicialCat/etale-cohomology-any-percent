@@ -63,7 +63,7 @@ We also need a short discussion about the category of $n$-torsion sheaves for a 
 ]
 
 #properties(name: <etale-zn-sheaves-first-props>)[
-  + Any additive functor between a category of etale sheaves/presheaves preserves the subcategory of $ZZ\/n$-modules.
+  + Any additive functor between categories of etale sheaves/presheaves preserves the subcategory of $ZZ\/n$-modules.
     
     In particular, the functors $R^q f_*, f^(-1)_cPSh, f^(-1), (-)^\#, f_!, i^!$ preserve the subcategory of $ZZ\/n$-modules.
   
@@ -88,7 +88,7 @@ We also need a short discussion about the category of $n$-torsion sheaves for a 
   
   (3) Pick an injective $cal(J) in cAb(X_et)$ with an embedding $cal(I) arrow.hook cal(J)$. Since $cal(I)$ is $n$-torsion, there is an embedding $cal(I) arrow.hook cal(J)[n]$ in $cAb(X_et, ZZ\/n)$. Since $cal(I)$ is injective in $cAb(X_et, ZZ\/n)$, $cal(I)$ is a direct summand of $cal(J)[n]$. It suffices to prove the acyclicity of $cal(J)[n]$.
   
-  Since $cal(J)$ is an injective etale sheaf, and any $times n: ul(ZZ)_(!,U) -> ul(ZZ)_(!,U)$ for $U in Et_X$ is injective, $times n: cal(J)(U) -> cal(J)(U)$ must be surjective. In other words, $times n: cal(J) -> cal(J)$ is surjective, given an injective resolution of $cal(J)[n]$:
+  Since $cal(J)$ is an injective etale sheaf, and any $times n: ul(ZZ)_(!,U) -> ul(ZZ)_(!,U)$ for $U in Et_X$ is injective, $times n: cal(J)(U) -> cal(J)(U)$ must be surjective. In other words, $times n: cal(J) -> cal(J)$ is surjective, giving an injective resolution of $cal(J)[n]$:
   $
     0 -> cal(J)[n] -> cal(J) ->^(times n) cal(J) -> 0
   $

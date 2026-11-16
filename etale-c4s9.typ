@@ -92,11 +92,11 @@ We next define a tensor product, and prove hom-tensor duality:
   $
     cal(M) otimes_(cal(A)) cal(N) := (cal(M) otimes_(cal(A),cPSh) cal(N))^\#
   $
-  to be the sheafification of the presheaf tensor product. 
+  that is, the sheafification of the presheaf tensor product. 
 ]
 
 #proposition(name: <hom-tensor-first-props>)[
-  + Given a etale presheaf of rings $cal(A)$ on $X$ and $cal(N) in cPAb(X_et, cal(A))$, there is a natural isomorphism for any $cal(M), cal(P) in cPAb(X_et, cal(A))$: #h(1fr)
+  + Given an etale presheaf of rings $cal(A)$ on $X$ and $cal(N) in cPAb(X_et, cal(A))$, there is a natural isomorphism for any $cal(M), cal(P) in cPAb(X_et, cal(A))$: #h(1fr)
     $
       HHom_(cal(A)) (cal(M), HHom_(cal(A)) (cal(N), cal(P))) cong HHom_(cal(A)) (cal(M) otimes_(cal(A),cPSh) cal(N), cal(P))
     $
@@ -106,7 +106,7 @@ We next define a tensor product, and prove hom-tensor duality:
     $
     and so the tensor product $- otimes_(cal(A),cPSh) cal(N)$ is the left adjoint of $HHom_(cal(A)) (cal(N), -): cPAb(X_et, cal(A)) -> cPAb(X_et, cal(A))$. 
 
-  + Given a etale sheaf of rings $cal(A)$ on $X$ and $cal(N) in cAb(X_et, cal(A))$, there is a natural isomorphism for any $cal(M), cal(P) in cAb(X_et, cal(A))$: #h(1fr)
+  + Given an etale sheaf of rings $cal(A)$ on $X$ and $cal(N) in cAb(X_et, cal(A))$, there is a natural isomorphism for any $cal(M), cal(P) in cAb(X_et, cal(A))$: #h(1fr)
     $
       HHom_(cal(A)) (cal(M), HHom_(cal(A)) (cal(N), cal(P))) cong HHom_(cal(A)) (cal(M) otimes_(cal(A)) cal(N), cal(P))
     $
@@ -180,7 +180,7 @@ Next, we study how functors like $f_*$ and $f^(-1)$ interact with hom and tensor
   
 ]
 #proof[
-  (1) and (3) can be checked on sections, and really just reduces to the adjunction of $f_*$ with $f^(-1)$, and $f^(-1)$ with $f_!$. 
+  (1) and (3) can be checked on sections, and really just reduce to the adjunction of $f_*$ with $f^(-1)$, and $f^(-1)$ with $f_!$. 
 
   (2) can be checked by Yoneda and (1): 
   $
@@ -221,13 +221,13 @@ Finally, we deal with flat objects.
   $
   is a free $cal(A)_(ol(x))$-module, hence flat. 
 
-  For any $cal(M) in cAb(X_et, cal(A))$, it admits a surjection from a flat $cal(A)$-module by the following construction: 
+  Choose a fixed set $cal(S)$ of representatives of the isomorphism classes of affine etale objects $f: U -> X$ whose images lie in affine opens of $X$, as in @set-categorical-subtleties. For any $cal(M) in cAb(X_et, cal(A))$, it admits a surjection from a flat $cal(A)$-module by the following construction: 
   $
-    oplus.big_((f: U -> X) in Et_X \ #[$U$ affine \ $exists V subset X$ affine, $f(U) subset V$]) oplus.big_(s in cal(M)(f)) f_! f^(-1) cal(A) -> cal(M)
+    oplus.big_((f: U -> X) in cal(S)) oplus.big_(s in cal(M)(f)) f_! f^(-1) cal(A) -> cal(M)
   $
   where for each $(f, s)$ indexing this direct sum, $f_! f^(-1) cal(A) -> cal(M)$ is obtained by adjunction from $f^(-1) cal(A) -> f^(-1) cal(M)$, defined by the global section $s$ of $f^(-1) cal(M)$. $s in cal(M)(f)$ is thus in the image of this $f_! f^(-1) cal(A) -> cal(M)$. Since every object of $Et_X$ is covered by objects $f: U -> X$ of $Et_X$ s.t. $U$ is affine and $f(U)$ is contained in an affine open of $X$, this morphism is surjective, and its LHS is a direct sum of flat objects, hence flat. 
 
   #remark[
-    The restriction on $f in Et_X$ in the direct sum is to avoid a set-theoretic difficulty, as discussed in @set-categorical-subtleties. 
+    The choice of a fixed representative set $cal(S)$ in the direct sum avoids a set-theoretic difficulty, as discussed in @set-categorical-subtleties. 
   ]
 ]

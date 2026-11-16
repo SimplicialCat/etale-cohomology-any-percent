@@ -16,7 +16,7 @@ We first introduce the setup of this section.
     frak(q) = ker(phi) in Spec(D) \
     frak(p) = phi^(-1) (pi.alt V') in Spec(D)
   $
-  be the images of the generic and special point of $Spec(V')$ in $Spec(D)$. 
+  be the images of the generic and special points of $Spec(V')$ in $Spec(D)$. 
 ]
 
 #definition(name: <defn-affine-neron-blowup>)[
@@ -104,7 +104,7 @@ The purpose of the affine Neron blowup is that, after finitely many Neron blowup
   $
   of $D$ as a $V$-algebra, and let $J = ker(rho)$. Then by the second exact sequence: 
   $
-    e(D, phi) = length_(V') (coker(J\/J^2 otimes_E V' -> Omega_(E\/V) otimes_E V'))
+    e(D, phi) = length_(V') (T_(pi.alt^oo) (coker(J\/J^2 otimes_E V' -> Omega_(E\/V) otimes_E V')))
   $
 
   For $x in Spec(D)$ over $y in Spec(V)$, put: 
@@ -125,7 +125,7 @@ The purpose of the affine Neron blowup is that, after finitely many Neron blowup
   $
   is also the free rank of $Q_D$, and: 
   $
-    rho(frak(p)) = d + e(D, phi)
+    rho(frak(p)) = d + dim_(k(V')) (T_(pi.alt^oo) (Q_D) otimes_(V') k(V'))
   $
 ]
 
@@ -133,7 +133,7 @@ The purpose of the affine Neron blowup is that, after finitely many Neron blowup
   If $D$ is smooth at $frak(q)$ and $e(D, phi) = 0$, then $D$ is smooth at $frak(p)$. 
 ]
 #proof[
-  Since $rho(frak(p)) = d + e(D, phi)$, $e(D, phi) = 0$ gives $rho(frak(p)) = d$. Now: 
+  Since $e(D, phi)=0$, the torsion part of $Q_D$ vanishes. Its residue dimension therefore equals its free rank $d$, so $rho(frak(p))=d$. Now: 
   $
     rho(frak(p)) = d = tau(frak(q)) <= tau(frak(p))
   $
@@ -145,7 +145,7 @@ The purpose of the affine Neron blowup is that, after finitely many Neron blowup
 
   + If $D$ is smooth of relative dimension $d$ over $V$ at $frak(p)$ and $k(V')\/k(V)$ is a separable#footnote[Separability for a non-algebraic field extension is defined as in #cite-stacks("030O")[Definition 10.42.1].] field extension, then $D^+$ is smooth of relative dimension $d$ over $V$ at $frak(p)^+$. 
 
-  + In the setup of (2), assume that $D cong V[T_1,dots.c,T_r]_s$ is a localization of a polynomial ring over $V$. Then, after potentially increasing $s$ in $V[T_1,dots.c,T_r] - frak(p)$, 
+  + In the setup of (2), assume that $D cong V[T_1,dots.c,T_r]_s$ is a localization of a polynomial ring over $V$. Then, after potentially increasing $s$ in $V[T_1,dots.c,T_r] - frak(p)$, put: 
     $
       Q_D &= Omega_(D\/V) otimes_D V' \
       Q_(D^+) &= Omega_(D^+\/V) otimes_(D^+) V'
@@ -167,7 +167,7 @@ The purpose of the affine Neron blowup is that, after finitely many Neron blowup
 
   Choose $g_1, dots.c, g_c in frak(p)$ mapping to a regular system of parameters in $(D\/pi.alt D)_(ol(frak(p))) = D_(frak(p))\/pi.alt D_(frak(p))$. Then up to shrinking $D$ around $frak(p)$, we have $frak(p) = (pi.alt, g_1, dots.c, g_c)$. By flatness, $pi.alt$ is a nonzerodivisor in $D_(frak(p))$. Thus $pi.alt, g_1, dots.c, g_c$ is a regular sequence in $D_(frak(p))$. By shrinking $D$ around $frak(p)$, we may thus assume that $pi.alt, g_1, dots.c, g_c$ is a regular sequence in $D$. 
 
-  By applying the following lemma inductively: 
+  We apply the following lemma inductively: 
   #lemma[
     If $a$ is a nonzerodivisor in $A$ and $b in A$ is a nonzerodivisor in $A\/a$, then $a$ is a nonzerodivisor in $A[Z]\/(a Z - b)$. 
   ]
@@ -235,7 +235,7 @@ The purpose of the affine Neron blowup is that, after finitely many Neron blowup
   $
   has $det(Delta) in k(frak(p))^times$. Thus $det(Delta) in D_(frak(p))^times$. Thus, shrinking $D$ around $frak(p)$, we may assume that $det(Delta) in D^times$. 
 
-  Then $d g_1, dots.c, d g_c, d T_(c+1), dots.c, d T_r$ is a basis of $Omega_(D\/V)$, i.e: 
+  Then $d g_1, dots.c, d g_c, d T_(c+1), dots.c, d T_r$ is a basis of $Omega_(D\/V)$, i.e.: 
   $
     Omega_(D\/V) = oplus.big_(i=1)^c D d g_i oplus oplus.big_(i=c+1)^r D d T_i
   $
@@ -265,7 +265,7 @@ The purpose of the affine Neron blowup is that, after finitely many Neron blowup
   $
   of $D$ as a $V$-algebra, where $E$ is a polynomial algebra over $V$. 
 
-  Note that for $e(D_([q])^+, phi_([q])^+) = e(D^+, phi^+)$, since $Q_(D_([q])^+) cong Omega_(D\/V) otimes_D D_([q]) otimes_(D_([q])) V' cong Q_(D^+)$. Thus, it is safe to localize $E$ and $D$ at an element $q in E - frak(p)_E$. By @neron-smoothing-smoothness-pass, we may thus localize $E$ so that $E$ is smooth of relative dimension $d$ over $V$, s.t. the map: 
+  Note that $e(D_([q])^+, phi_([q])^+) = e(D^+, phi^+)$, since $Q_(D_([q])^+) cong Omega_(D^+\/V) otimes_(D^+) (D^+)_([q]) otimes_((D^+)_([q])) V' cong Q_(D^+)$. Thus, it is safe to localize $E$ and $D$ at an element $q in E - frak(p)_E$. By @neron-smoothing-smoothness-pass, we may thus localize $E$ so that $E$ is smooth of relative dimension $r$ over $V$, s.t. the map: 
   $
     Q_E -> Q_(E^+)
   $ 
@@ -273,8 +273,8 @@ The purpose of the affine Neron blowup is that, after finitely many Neron blowup
 
   Put $J^+ = ker(E^+ ->> D^+) = (J E^+ : pi.alt^oo)$. Now put: 
   $
-    M = Q_E = Omega_(E\/V) otimes_E V, N = im(J\/J^2 otimes_D V' -> M) \
-    M^+ = Q_(E^+) = Omega_(E^+\/V) otimes_(E^+) V, N^+ = im(J^+\/(J^+)^2 otimes_(D^+) V' -> M^+)
+    M = Q_E = Omega_(E\/V) otimes_E V', N = im(J\/J^2 otimes_D V' -> M) \
+    M^+ = Q_(E^+) = Omega_(E^+\/V) otimes_(E^+) V', N^+ = im(J^+\/(J^+)^2 otimes_(D^+) V' -> M^+)
   $
   The second exact sequence identifies $Q := M\/N cong Q_D$ and $Q^+ := M^+\/N^+ cong Q_(D^+)$. By @neron-smoothing-smoothness-pass (3), 
   $
@@ -321,7 +321,7 @@ The purpose of the affine Neron blowup is that, after finitely many Neron blowup
   $
     J\/J^2 otimes_D k(frak(p)) -> oplus.big_(i=1)^r k(frak(p)) d T_i -> Omega_(D\/V) otimes_D k(frak(p)) -> 0
   $
-  the first map has image of dimension $r-s$. We may thus pick a set of generators $J = (h_1, dots.c, h_t)$ s.t. $d h_1, dots.c, d h_(r-s)$ is a basis of this image, and $d h_(r-s+1), dots.c,  d h_t = 0 in oplus.big_(i=1)^r k(frak(p)) d T_i$. 
+  the first map has an image of dimension $r-s$. We may thus pick a set of generators $J = (h_1, dots.c, h_t)$ s.t. $d h_1, dots.c, d h_(r-s)$ is a basis of this image, and $d h_(r-s+1), dots.c,  d h_t = 0 in oplus.big_(i=1)^r k(frak(p)) d T_i$. 
   
   On the other hand, choose a set of generators $frak(p)_E = (pi.alt, g_1, dots.c, g_c)$ as in the proof of @neron-smoothing-smoothness-pass (2). Then since $d g_1, dots.c, d g_c in Omega_(E\/V) otimes_E k(frak(p)_E)$ are linearly independent and $d pi.alt = 0$, 
   $
@@ -333,7 +333,7 @@ The purpose of the affine Neron blowup is that, after finitely many Neron blowup
   $
   By shrinking $E$ around $frak(p)_E$, we may assume $b_i in E, u_i in frak(p)_E^2 E$. Now $h_i$ maps to $0$ in $V'$, and $u_i$ maps to an element of $pi.alt^2 V'$. Thus $b_i$ maps to an element of $pi.alt V'$, and so $b_i in frak(p)_E$ too. 
 
-  Now $N$ is generated by $d h_1, dots.c, d h_t$, but $dim_(k(V)) (N\/pi.alt N) = r - d > r - s$. Thus, there exists some $i > r - s$ s.t. $d h_i in.not pi.alt N$. For this $i$: 
+  Now $N$ is generated by $d h_1, dots.c, d h_t$, but $dim_(k(V')) (N\/pi.alt N) = r - d > r - s$. Thus, there exists some $i > r - s$ s.t. $d h_i in.not pi.alt N$. For this $i$: 
 
   - $pi.alt^(-2) h_i = pi.alt^(-1) b_i + pi.alt^(-2) u_i in E[pi.alt^(-1) frak(p)_E] = E^+$ and is in $(J E^+ : pi.alt^oo) = J^+$. Consequently, #h(1fr)
     $
@@ -349,7 +349,7 @@ The purpose of the affine Neron blowup is that, after finitely many Neron blowup
 ]
 
 #theorem(name: <classical-neron-smoothing>)[
-  (Classical Neron smoothing) Let $(D, phi)$ be as in @situation-neron-smoothing. Then assuming: 
+  (Classical Neron smoothing) Let $(D, phi)$ be as in @situation-neron-smoothing. Assuming: 
 
   - $D$ is smooth at $frak(q)$; 
 
@@ -372,7 +372,7 @@ The purpose of the affine Neron blowup is that, after finitely many Neron blowup
 #proposition(name: <artin-approx-smoothing-reduction>)[
   TFAE: 
 
-  + For any excellent DVR $R$, let $A_n = R{X_1, dots.c, X_n}$. For any $N >= 1$, if a system of polynomial equations $f_1, dots.c, f_r in R[Y_1, dots.c, Y_m]$ has a formal solution $hat(y)_1, dots.c, hat(y)_m in hat(A_n)$, where $hat(A_n) = hat(R) fps(X_1\, dots.c\, X_n)$: 
+  + For any excellent DVR $R$, let $A_n = R{X_1, dots.c, X_n}$. For any $N >= 1$, if a system of polynomial equations $f_1, dots.c, f_r in R[X_1, dots.c, X_n, Y_1, dots.c, Y_m]$ has a formal solution $hat(y)_1, dots.c, hat(y)_m in hat(A_n)$, where $hat(A_n) = hat(R) fps(X_1\, dots.c\, X_n)$: 
     $
       f_1 (hat(y)_1, dots.c, hat(y)_m) = dots.c = f_r (hat(y)_1, dots.c, hat(y)_m) = 0
     $
@@ -403,7 +403,7 @@ The purpose of the affine Neron blowup is that, after finitely many Neron blowup
   
   Since $R[arrow(X)]_((pi,arrow(X)))$ is excellent, the generic fiber $Spec(Frac(hat(A_n))) -> Spec(Frac(R)(arrow(X)))$ is regular. By #cite-stacks("07EQ")[Lemma 15.42.6], $Frac(hat(A_n))\/Frac(R)(arrow(X))$ is a separable extension. 
   
-  Thus $Frac(D)\/Frac(R)(arrow(X))$ is separably generated, and so by #cite-stacks("07EQ")[Lemma 15.42.6], $Frac(hat(A_n))\/Frac(R)(arrow(X))$ again, the map $Spec(D) -> Spec(R[arrow(X)])$ has the generic point of the generic fiber geometrically regular. Thus by @equiv-defns-of-smooth (2), $Spec(D)$ is smooth over $Spec(R[arrow(X)])$ in a dense open set. 
+  Thus $Frac(D)\/Frac(R)(arrow(X))$ is separably generated, and so by #cite-stacks("07EQ")[Lemma 15.42.6] again, the map $Spec(D) -> Spec(R[arrow(X)])$ is geometrically regular at the generic point of the generic fiber. Thus by @equiv-defns-of-smooth (2), $Spec(D)$ is smooth over $Spec(R[arrow(X)])$ in a dense open set. 
 
   Now put $V = R[arrow(X)]_((pi.alt)), V' = (hat(A_n))_(pi.alt hat(A_n))$. Then $V -> V'$ is an extension of DVRs with the same uniformizer $pi.alt$. The residue fields are: 
   $
@@ -416,7 +416,7 @@ The purpose of the affine Neron blowup is that, after finitely many Neron blowup
     $
       C = R[arrow(X), arrow(Y)]\/frak(q), frak(q) = (f_1, dots.c, f_r)
     $
-    is a finite type $R[arrow(X)]$-algebra, that is a $R[arrow(X)]$-subalgebra of $hat(A_n)$. We also assume that $Spec(C) -> Spec(R[arrow(X)])$ is smooth on a dense open. 
+    is a finite type $R[arrow(X)]$-algebra, that is an $R[arrow(X)]$-subalgebra of $hat(A_n)$. We also assume that $Spec(C) -> Spec(R[arrow(X)])$ is smooth on a dense open. 
     
     Put $frak(p) = pi.alt hat(A_n) inter C in Spec(C)$, and denote: 
     $
@@ -457,7 +457,7 @@ The purpose of the affine Neron blowup is that, after finitely many Neron blowup
     $
       phi_V: C_V -> V', c otimes v |-> c v
     $
-    This map is $C_V -> hat(A_n) otimes_(R[arrow(X)]) V$ the base change of $phi$, followed by the map $(hat(A_n))_(pi.alt R[arrow(X)]) = hat(A_n) otimes_(R[arrow(X)]) V -> V' = (hat(A_n))_(pi.alt hat(A_n))$. The second map is a localization of domains, hence injective. The first map is a localization of an injection, hence injective. Thus $phi_V$ is injective. 
+    This map is $C_V -> hat(A_n) otimes_(R[arrow(X)]) V$, the base change of $phi$, followed by the map $(hat(A_n))_(pi.alt R[arrow(X)]) = hat(A_n) otimes_(R[arrow(X)]) V -> V' = (hat(A_n))_(pi.alt hat(A_n))$. The second map is a localization of domains, hence injective. The first map is a localization of an injection, hence injective. Thus $phi_V$ is injective. 
 
     - If $c in C, f in R[arrow(X)] - pi.alt R[arrow(X)]$ has $c\/f in pi.alt V'$, then: #h(1fr)
       $
@@ -478,7 +478,7 @@ The purpose of the affine Neron blowup is that, after finitely many Neron blowup
   Summarizing the discussion above, we may apply $C |-> C'$ finitely many times with only harmless extensions to the polynomial system. By @classical-neron-smoothing and the discussion above, we may assume that $Spec(D_V) -> Spec(V)$ is smooth at $frak(p)_V = phi^(-1) (pi.alt hat(A_n)) otimes_(R[arrow(X)]) V$. Now $(D_V)_(frak(p)_V) cong D_(phi^(-1) (pi.alt hat(A_n)))$ by comparing localizations, so $Spec(D) -> Spec(R[arrow(X)])$ is smooth at $phi^(-1) (pi.alt hat(A_n))$. We've thus reduced to the hypothesis. 
 ]
 
-We continue the setup to turn @artin-approx-smoothing-reduction to a more usable form. 
+We continue the setup to turn @artin-approx-smoothing-reduction into a more usable form. 
 
 #construction[
   Let $f_1, dots.c, f_r in R[arrow(X), arrow(Y)]$ be a system with a formal solution $hat(y) in hat(A_n)^m$ as in the setup of @artin-approx-smoothing-reduction (2). That is, for: 
@@ -513,18 +513,18 @@ We continue the setup to turn @artin-approx-smoothing-reduction to a more usable
     $
     Thus $dim(C) - dim(C\/frak(p) C) = m - d$. Thus, $frak(p) C = (a_1, dots.c, a_(m-d))$ for a regular sequence $a_1, dots.c, a_(m-d)$ in $C$. By #cite-stacks("061P")[Definition 10.69.1] and #cite-stacks("00LN")[Lemma 10.69.2], $frak(p)C\/frak(p)^2 C$ is a free $C\/frak(p)$-module of rank $m-d$. 
 
-    Then the invertible minor $delta(arrow(X), arrow(Y))$ shows that $f_1, dots.c, f_(m-d) in frak(p)$, when reduced to $frak(p)C\/frak(p)^2 C$, forms a basis. By Nakayama's lemma, 
+    Then the invertible minor $delta(arrow(X), arrow(Y))$ shows that $f_1, dots.c, f_(m-d) in frak(p)$, when reduced to $frak(p)C\/frak(p)^2 C$, form a basis. By Nakayama's lemma, 
     $
       frak(p) C = (f_1, dots.c, f_(m-d)) + frak(p)^2 C
     $
-    and by Nakayama again, $frak(p) C = (f_1, dots.c, f_(m-d))$. Thus for every generator $f_i in frak(p)$, there exists $g_i in C = R[arrow(X), arrow(Y)]_(frak(r))$ s.t. $f_i in g_i (f_1, dots.c, f_(m-d)) subset C$. Clearing finitely many denominators in $R[arrow(X), arrow(Y)] - frak(r)$, we have constructed $h in R[arrow(X), arrow(Y)] - frak(r)$ s.t: 
+    and by Nakayama again, $frak(p) C = (f_1, dots.c, f_(m-d))$. Thus for every generator $f_i in frak(p)$, there exists $g_i in C = R[arrow(X), arrow(Y)]_(frak(r))$ s.t. $f_i in g_i (f_1, dots.c, f_(m-d)) subset C$. Clearing finitely many denominators in $R[arrow(X), arrow(Y)] - frak(r)$, we have constructed $h in R[arrow(X), arrow(Y)] - frak(r)$ s.t.: 
     $
       h frak(p) subset (f_1, dots.c, f_(m-d))
     $
 
   Let $M = "ord"_(frak(m)_n) (h(arrow(X), hat(y)))$. Then: 
 
-  - If we have $arrow(y) in A_n^m$ agreeing with $hat(y)$ modulo $frak(m)_n^N$ s.t. $N > M$, then: #h(1fr)
+  - If we have $arrow(y) in A_n^m$ agreeing with $hat(y)$ modulo $frak(m)_n^N$ s.t. $N > M$ and $f_1 (arrow(X), arrow(y)) = dots.c = f_(m-d) (arrow(X), arrow(y)) = 0$, then: #h(1fr)
     $
       h(arrow(X), arrow(y)) mod frak(m)_n^N = h(arrow(X), hat(y)) mod frak(m)_n^N != 0
     $
@@ -542,7 +542,7 @@ Following this discussion and @artin-approx-smoothing-reduction, we have:
 #proposition(name: <artin-approx-smoothing-reduction-2>)[
   TFAE: 
 
-  + For any excellent DVR $R$, let $A_n = R{X_1, dots.c, X_n}$. For any $N >= 1$, if a system of polynomial equations $f_1, dots.c, f_r in R[Y_1, dots.c, Y_m]$ has a formal solution $hat(y)_1, dots.c, hat(y)_m in hat(A_n)$, where $hat(A_n) = hat(R) fps(X_1\, dots.c\, X_n)$: 
+  + For any excellent DVR $R$, let $A_n = R{X_1, dots.c, X_n}$. For any $N >= 1$, if a system of polynomial equations $f_1, dots.c, f_r in R[X_1, dots.c, X_n, Y_1, dots.c, Y_m]$ has a formal solution $hat(y)_1, dots.c, hat(y)_m in hat(A_n)$, where $hat(A_n) = hat(R) fps(X_1\, dots.c\, X_n)$: 
     $
       f_1 (hat(y)_1, dots.c, hat(y)_m) = dots.c = f_r (hat(y)_1, dots.c, hat(y)_m) = 0
     $

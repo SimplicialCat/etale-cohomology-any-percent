@@ -6,7 +6,7 @@ In this section, we apply proper base change to prove higher vanishing of cohomo
 
 We will justify our remarks in @remark-on-vanishing, that $H^q (X, cal(F))$ for a torsion sheaf $cal(F)$ vanishes for $q > 2dim(X)$ whenever $X$ is of finite type over an algebraically closed field $k$, and for $q > dim(X)$ under the additional assumption that $X$ is affine. This is important for both a formal reason and a rigorous motivational reason: 
 
-- Establishing this will pave our way for transitioning statements on the abelian categories $cAb(X_et)$ to its derived category $D^bullet (X_et)$, by showing that certain triangulated functors like $R f_*$ and $R Gamma$ are bounded both above and below, allowing for their definition on the bounded above derived category $D^- (X_et)$, and unbounded derived categories $D(X_et)$, allowing statements like the projection formula and Kunneth formula to be stated. 
+- Establishing this will pave our way for transitioning statements on the abelian categories $cAb(X_et)$ to their derived categories $D^bullet (X_et)$, by showing that certain triangulated functors like $R f_*$ and $R Gamma$ are bounded both above and below, allowing for their definition on the bounded above derived category $D^- (X_et)$, and unbounded derived categories $D(X_et)$, allowing statements like the projection formula and Kunneth formula to be stated. 
 
 - Once we have established vanishing of $H^q (X, -)$ for $q > 2d$ for $d = dim(X)$, we see that $H^(2d) (X, -): cAb(X_et, ZZ\/n) -> cAb$ is now right exact. 
 
@@ -23,7 +23,7 @@ There is also a historical reason for Artin vanishing, for it to hold a natural 
 // As in most results in etale cohomology, Artin vanishing is proved by induction on dimension. In our case, all that's needed to bootstrap the induction is one seemingly innocent invocation of proper base change, and some vanishing results in dimension 1. 
 
 #lemma(name: <relative-grothendieck-vanishing-in-dim-1>)[
-  Let $f: X -> Y$ be a proper morphism whose fibers have dimension $<=1$. Then for all torsion $cal(F) in cAb(X_et)$ and all $q>2$, $R^q f_* cal(F) = 0$. 
+  Let $f: X -> Y$ be a proper morphism between locally noetherian schemes whose fibers have dimension $<=1$. Then for all torsion $cal(F) in cAb(X_et)$ and all $q>2$, $R^q f_* cal(F) = 0$. 
 ]
 #proof[
   For every geometric point $ol(y) = Spec(k(y)^sep)$ of $Y$, 
@@ -41,7 +41,7 @@ There is also a historical reason for Artin vanishing, for it to hold a natural 
   $
     cd(X) := min({d >= 0 : forall cal(F) in cAb(X_et) #[torsion], forall q > d, H^q (X, cal(F)) = 0}) in NN union {oo}
   $
-  to be its *etale cohomological dimension*. For a ring $A$, we use $cd(A)$ to denote $cd(Spec(A))$. 
+  its *etale cohomological dimension*. For a ring $A$, we use $cd(A)$ to denote $cd(Spec(A))$. 
 ]
 
 #lemma(name: <cohom-dim-of-rings-props>)[
@@ -61,7 +61,7 @@ There is also a historical reason for Artin vanishing, for it to hold a natural 
     $
 ]
 #proof[
-  When proving these results, we will use $cal(F) = dirlim_(n>=1) cal(F)[n!]$ for a torsion sheaf $cal(F)$ by definition, and limit formula @limit-formula-for-sheaves, to reduce to the case of $cal(F)$ being $n$-torsion for a fixed $n$. In this case, any sheaf obtained by applying an additive functor to $cal(F)$ is still $n$-torsion, so we can avoid justifying why the sheaves involved are torsion. We will be using this trick implicitly throughout this proof and will not state it at a use site. 
+  When proving these results, we will use $cal(F) = dirlim_(n>=1) cal(F)[n!]$ for a torsion sheaf $cal(F)$ by definition, and the limit formula @limit-formula-for-sheaves, to reduce to the case of $cal(F)$ being $n$-torsion for a fixed $n$. In this case, any sheaf obtained by applying an additive functor to $cal(F)$ is still $n$-torsion, so we can avoid justifying why the sheaves involved are torsion. We will be using this trick implicitly throughout this proof and will not state it at a use site. 
 
   (1) Let $X = Spec(A)$ and $ol(X) = X otimes_K K^sep$. Let $f: X -> Spec(K)$ be the structure map, and $ol(k): Spec(K^sep) -> Spec(K)$ be a geometric point. Then for $cal(F) in cAb(X_et, ZZ\/n)$, by @stalks-of-derived-lowerstar, since $tilde(Spec(K))_(ol(k)) = Spec(K^sep)$:  
   $
@@ -110,7 +110,7 @@ The technical engine of Artin vanishing is the following proposition:
   Furthermore, if $X$ is regular around $x$, we may take $Y$ to be regular. 
 ]
 #proof[
-  Since this problem is local in $X$, we may assume that $X = Spec(A)$ is affine. Since the transcendence degree $trd_K (k(x)) = a$, we may pick $c_1, dots.c, c_a in A$ whose image in $k(x)$ are algebraically independent, defining a morphism: 
+  Since this problem is local in $X$, we may assume that $X = Spec(A)$ is affine. Since the transcendence degree $trd_K (k(x)) = a$, we may pick $c_1, dots.c, c_a in A$ whose images in $k(x)$ are algebraically independent, defining a morphism: 
   $
     f: X -> AA^a_K
   $
@@ -118,14 +118,14 @@ The technical engine of Artin vanishing is the following proposition:
   $
     trd_(K(t_1, dots.c, t_a)) (k(z)) = trd_K (k(z)) - a
   $
-  and so $X_eta$ has dimension $d-a$. Furthermore, $trd_(K(t_1, dots.c, t_a)) (k(x)) = trd_K (k(x)) - a = a - a = 0$, so $x in X_eta$ is a closed point. Finally, 
+  and so $X_eta$ has dimension $<=d-a$. Furthermore, $trd_(K(t_1, dots.c, t_a)) (k(x)) = trd_K (k(x)) - a = a - a = 0$, so $x in X_eta$ is a closed point. Finally, 
   $
     cal(O)_(X_eta,x) = cal(O)_(X,x)\/frak(m)_(AA^a_K,eta) cal(O)_(X,x) = cal(O)_(X,x)
   $
-  Next, consider the geometric point $ol(eta): Spec(K(t_1,dots.c,t_a)^sep) -> eta -> X$, corresponding to a fixed separable closure of $K(t_1, dots.c, t_a)$. Take $Y = X_(ol(eta))$, and $y in Y$ any point above $x in X_eta$. Since $Y = X_eta times_eta ol(eta)$, we see that $dim(Y) = d - a$ and $y$ is a closed point. Now: 
+  Next, consider the geometric point $ol(eta): Spec(K(t_1,dots.c,t_a)^sep) -> eta -> AA^a_K$, corresponding to a fixed separable closure of $K(t_1, dots.c, t_a)$. Take $Y = X_(ol(eta))$, and $y in Y$ any point above $x in X_eta$. Since $Y = X_eta times_eta ol(eta)$, we see that $dim(Y) <= d - a$ and $y$ is a closed point. Now: 
 
   #lemma[
-    Let $K$ be a field and $X$ be a scheme over $K$. Fix a separable closure $K -> K^sep$. Let $x in X$, and take $ol(x) in ol(X) = X otimes_K K^sep$ be a point above $x in X$. Then there exists an isomorphism of $K$-algebras: 
+    Let $K$ be a field and $X$ be a scheme over $K$. Fix a separable closure $K -> K^sep$. Let $x in X$, and let $ol(x) in ol(X) = X otimes_K K^sep$ be a point above $x in X$. Then there exists an isomorphism of $K$-algebras: 
     $
       cal(O)_(X,x)^#[sh] cong cal(O)_(ol(X),ol(x))^#[sh]
     $
@@ -135,7 +135,7 @@ The technical engine of Artin vanishing is the following proposition:
     $
       cal(O)_(ol(X),ol(x)) = dirlim_(L\/K #[finite separable]) cal(O)_(X_L,x_L)
     $
-    Since strict henselization commute with direct limits, 
+    Since strict henselization commutes with direct limits, 
     $
       cal(O)_(ol(X),ol(x))^#[sh] = dirlim_(L\/K #[finite separable]) cal(O)_(X_L,x_L)^#[sh]
     $
@@ -195,7 +195,7 @@ We are now ready to start the induction required to prove Artin vanishing. We wi
       $
         cal(O)_(Y,y)^#[sh] [f^(-1)] = dircolim_((U,ol(u)) -> (Y,ol(y)) #[etale] \ U=Spec(B) #[affine]) cal(O)_(U,u) [f^(-1)]
       $
-      For each affine etale neighborhood $Spec(B) = U -> Y$, since $Y$ is regular, $U$ is regular by @etale-local-properties (1). By taking $U$ to be connected, we may assume that $U$ is integral. We will soon compare transcendence degree of fraction fields. Now for each such $U$, there is a natural morphism: 
+      For each affine etale neighborhood $Spec(B) = U -> Y$, since $Y$ is regular, $U$ is regular by @etale-local-properties (1). By taking $U$ to be connected, we may assume that $U$ is integral. We will soon compare transcendence degrees of fraction fields. Now for each such $U$, there is a natural morphism: 
       $
         k[s] -> cal(O)_(U,u), s |-> f in frak(m)_u
       $
@@ -226,9 +226,9 @@ We are now ready to start the induction required to prove Artin vanishing. We wi
     $
       cal(O)_(Y,y)^#[sh] [f^(-1)] = dirlim_lambda A_lambda
     $
-    as a direct limit of finite type $k(t_1, dots.c, t_a)^sep (s)$-algebras of dimension $<= d - a - 1$. Since Artin vanishing holds in dimension $<= d - 1$, 
+    as a direct limit of finite type $K(t_1, dots.c, t_a)^sep (s)$-algebras of dimension $<= d - a - 1$. Since Artin vanishing holds in dimension $<= d - 1$, 
     $
-      cd(A_lambda) <= d - a - 1 + cd(k(t_1, dots.c, t_a)^sep (s)) <= d - a
+      cd(A_lambda) <= d - a - 1 + cd(K(t_1, dots.c, t_a)^sep (s)) <= d - a
     $
     where the last inequality is due to @cohom-dim-of-rings-props (3). By @cohom-dim-of-rings-props (2), 
     $
@@ -240,9 +240,9 @@ We are now ready to start the induction required to prove Artin vanishing. We wi
   $
     pi: X -> AA^d_K
   $
-  Since $H^q (X, cal(F)) = H^q (X, pi_* cal(F))$ by @pushforward-by-finite-morphism, it suffices to prove $cd(AA^d_K) <= cd(K) + d$. We may thus assume $X = AA^d_K$. 
+  Since $H^q (X, cal(F)) = H^q (AA^d_K, pi_* cal(F))$ by @pushforward-by-finite-morphism, it suffices to prove $cd(AA^d_K) <= cd(K) + d$. We may thus assume $X = AA^d_K$. 
   
-  By limit formula @limit-formula-for-sheaves, it suffices to deal with $cal(F) in cAb((AA^d_K)_et, ZZ\/n)$. Take the projection $f: AA^d_K -> AA^(d-1)_(K)$, factored as: 
+  By the limit formula @limit-formula-for-sheaves, it suffices to deal with $cal(F) in cAb((AA^d_K)_et, ZZ\/n)$. Take the projection $f: AA^d_K -> AA^(d-1)_(K)$, factored as: 
   // https://q.uiver.app/#r=typst&q=WzAsMyxbMCwxLCJBQV5kX0siXSxbMiwxLCJBQV4oZC0xKV9LIl0sWzEsMCwiQUFeKGQtMSlfSyB0aW1lc19LIFBQXjFfSyJdLFswLDIsImoiXSxbMiwxLCJvbChmKSJdLFswLDEsImYiLDJdXQ==
   #align(center, diagram({
     node((-1, 0), [$AA^d_K$])
@@ -297,7 +297,7 @@ We are now ready to start the induction required to prove Artin vanishing. We wi
   $
     H^p (AA^(d-1)_K, R^q f_* cal(F)) = dirlim_lambda H^p (AA^(d-1)_K, cal(G)_lambda) = dirlim_lambda H^p (Z_lambda, cal(G)_lambda|_(Z_lambda)) = 0
   $
-  for $p > cd(K) + d - q$, since each $dim(Z_lambda) <= d - max(1, q)$ and Artin vanishing holds in dimension $<= d - 1$ by inductive hypothesis. In other words, the $E_2$-page of the Leray spectral sequence $E_2^(p,q) = H^p (AA^(d-1)_K, R^q f_* cal(F)) => H^(p+q) (AA^d_K, cal(F))$ vanishes whenever $p + q > cd(K) + d$. Thus, 
+  for $p > cd(K) + d - q$, since each $dim(Z_lambda) <= d - max(1, q)$ and Artin vanishing holds in dimension $<= d - 1$ by the inductive hypothesis. In other words, the $E_2$-page of the Leray spectral sequence $E_2^(p,q) = H^p (AA^(d-1)_K, R^q f_* cal(F)) => H^(p+q) (AA^d_K, cal(F))$ vanishes whenever $p + q > cd(K) + d$. Thus, 
   $
     H^m (AA^d_K, cal(F)) = 0, forall m > cd(K) + d
   $
@@ -363,7 +363,7 @@ Finally, we prove a relative version of Grothendieck and Artin vanishing.
 
   + (Fiberwise Grothendieck vanishing)
 
-    If $f: X -> Y$ is any proper morphism between schemes whose fibers have dimension $<=d$, then for any torsion sheaf $cal(F) in cAb(X_et)$, $R^q f_* cal(F) = 0$ for $q > 2d$. 
+    If $f: X -> Y$ is any proper morphism between locally noetherian schemes whose fibers have dimension $<=d$, then for any torsion sheaf $cal(F) in cAb(X_et)$, $R^q f_* cal(F) = 0$ for $q > 2d$. 
 ]
 #proof[
   In (1)(2), if $cal(F)$ is supported on dimensions $<=m$, by @supp-of-torsion-sheaf-dim, $cal(F) = dirlim_lambda cal(F)_lambda$ in which every $cal(F)_lambda$ is supported on a closed subscheme of $X$ of dimension $<=m$. By @relative-limit-formula-for-sheaves, $R^q f_* cal(F) = dirlim_lambda R^q f_* cal(F)_lambda$, and stalks commute with direct limits, so it suffices to prove the desired vanishing for each $cal(F)_lambda$. Replacing $cal(F)$ with $cal(F)_lambda$, we may assume that $cal(F)$ is supported on a closed subscheme $Z subset X$ of dimension $<=m$. Now: 
@@ -372,7 +372,7 @@ Finally, we prove a relative version of Grothendieck and Artin vanishing.
   $
   Thus, replacing $f$ with $f compose i$ and $X$ with $Z$, we may assume that $m = dim(X)$ and drop the conditions on the support of $cal(F)$. 
 
-  Let $y in Y$ with $dim(ol({y})) = a$, and let $dim(Y) = d$. By the proof of @artin-vanishing-engine, there exists an affine morphism $Y -> AA^a_K$ sending $y$ to the generic point $eta in AA^a_K$. Base changing along the geometric point $ol(eta) = Spec(K(t_1, dots.c, t_a)^sep)$, we get a Cartesian diagram: 
+  Let $y in Y$ with $dim(ol({y})) = a$, and let $dim(Y) = d$. After restricting $Y$ to an affine neighborhood of $y$ using @pbc-etale-bc, the proof of @artin-vanishing-engine gives an affine morphism $Y -> AA^a_K$ sending $y$ to the generic point $eta in AA^a_K$. Base changing along the geometric point $ol(eta) = Spec(K(t_1, dots.c, t_a)^sep)$, we get a Cartesian diagram: 
   // https://q.uiver.app/#r=typst&q=WzAsNixbMSwxLCJZIl0sWzEsMCwiWSciXSxbMCwxLCJYIl0sWzAsMCwiWCciXSxbMiwxLCJBQV5hX0siXSxbMiwwLCJvbChldGEpIl0sWzMsMSwiZiciXSxbMSwwLCJnIl0sWzEsNV0sWzAsNF0sWzUsNF0sWzIsMCwiZiIsMl0sWzMsMiwiZyciLDJdXQ==
   #align(center, diagram({
     node((0, 0), [$Y$])
@@ -411,7 +411,7 @@ Finally, we prove a relative version of Grothendieck and Artin vanishing.
     dim(ol({x})_(X_eta)) &= trd_(K(t_1,dots.c,t_a)) (k_(X_eta) (x)) = trd_(K(t_1,dots.c,t_a)) (k_X (x)) = trd_K (k_X (x)) - a = dim(ol({x})_X) - a \
     &<= m - a
   $
-  and so $dim(X_eta) <= m - a$. $X' = X_(ol(eta))$ being a base field extension $X_eta times_eta ol(eta)$ of $X_eta$, thus has dimension $dim(X') <= m - a$. Thus, we may use the isomorphism: 
+  and so $dim(X_eta) <= m - a$. $X' = X_(ol(eta))$, being a base field extension $X_eta times_eta ol(eta)$ of $X_eta$, thus has dimension $dim(X') <= m - a$. Thus, we may use the isomorphism: 
   $
     (R^q f_* cal(F))_(ol(y)) cong (R^q f'_* (cal(F)|_(X')))_(ol(y'))
   $

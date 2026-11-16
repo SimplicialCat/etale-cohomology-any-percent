@@ -7,7 +7,7 @@ In this section, we prove Poincare duality for etale cohomology, and also prove 
 #definition(name: <defn-cup-product-pairing>)[
   Let $X$ be smooth of dimension $d$ over an algebraically closed field $k$, and $Lambda$ be an $n$-torsion noetherian ring s.t. $n in k^times$. For a complex $cal(K) in D(X_et, Lambda)$,
   $
-    h^(2d-q) (RHom_Lambda (cal(K), ul(Lambda)(d))) = Hom_(D(X_et,Lambda)) (cal(K)[q], mu_n^(otimes d) [2d])
+    h^(2d-q) (RHom_Lambda (cal(K), ul(Lambda)(d))) = Hom_(D(X_et,Lambda)) (cal(K)[q], ul(Lambda)(d) [2d])
   $
   Thus every element of $h^(2d-q)(RHom_Lambda (cal(K), Lambda(d)))$ induces a morphism:
   $
@@ -23,7 +23,7 @@ In this section, we prove Poincare duality for etale cohomology, and also prove 
   $
 ]
 
-In particular, when $cal(F)$ is a l.c.c. sheaf of $Lambda$-modules, we will see that $EExt^p (cal(F), Lambda(d)) = 0$ for $p>0$ and so by the Hochschild-Serre spectral sequence, $Ext^(2d-q)_Lambda (cal(F), Lambda(d)) = H^(2d-q) (X, caron(cal(F))(d))$ where $caron(cal(F)) = HHom_Lambda (cal(F), Lambda)$. We will then have the classical Poincare duality, that:
+In particular, when $Lambda$ is injective as a $Lambda$-module and $cal(F)$ is an l.c.c. sheaf of $Lambda$-modules, we will see that $EExt^p (cal(F), Lambda(d)) = 0$ for $p>0$ and so by the Hochschild-Serre spectral sequence, $Ext^(2d-q)_Lambda (cal(F), Lambda(d)) = H^(2d-q) (X, caron(cal(F))(d))$ where $caron(cal(F)) = HHom_Lambda (cal(F), Lambda)$. We will then have the classical Poincare duality, that:
 $
   smile: H^q_c (X, cal(F)) times H^(2d-q) (X, caron(cal(F))(d)) -> Lambda
 $
@@ -55,7 +55,7 @@ is a perfect pairing.
   $
   is an isomorphism.
 
-  The shape of this isomorphism strongly hints the existence of a right adjoint $R g^!: D(Spec(k)_et, Lambda) -> D(X_et, Lambda)$ of $R g_!$, and an identification:
+  The shape of this isomorphism strongly hints at the existence of a right adjoint $R g^!: D(Spec(k)_et, Lambda) -> D(X_et, Lambda)$ of $R g_!$, and an identification:
   $
     R g^! ul(Lambda) cong ul(Lambda)(d)[2d]
   $
@@ -116,10 +116,10 @@ We are now motivated to find a right adjoint $R f^!$ to $R f_!$ for any $f: X ->
     $
 ]
 #proof[
-  Suppose that we have shown that $R f^!$ exists. (1)(2)(3) are adjoint to composition of $R f_!$, proper base change and projection formula respectively. (0) comes from the sheaf-level adjunctions:
+  Suppose that we have shown that $R f^!$ exists. (1)(2)(3) are adjoint to composition of $R f_!$, proper base change and the projection formula respectively. (0) comes from the sheaf-level adjunctions:
   $
-    f^(-1) tack.l f_* \
-    i^! tack.l i_*
+    f_! tack.l f^(-1) \
+    i_* tack.l i^!
   $
   For (4), we prove it the same way as in @derived-functoriality-etale (3), by applying $R Gamma$ and taking cohomology of complexes to reduce to the categorical $Hom$.  
 
@@ -206,7 +206,7 @@ For this, it turns out that we need to establish a special case Gysin purity sta
     $
     Now $k[t]^times = k^times$ and $(-)^n$ is surjective on it since $k$ is separably closed and $n in k^times$. Thus, $H^1 (AA^1_k, mu_n) = ker((-)^n: Pic(AA^1_k) -> Pic(AA^1_k))$. 
 
-    Thus it suffices to show that $Pic(AA^1_k) = 0$. For comedic reasons I've put the proof of this part into a footnote. Please think about it for a moment, and if you can't figure it out, please read the footnote for a good laugh.#footnote[$k[t]$ is a PID and finite modules over it has a classification. The only locally free $k[t]$-modules of rank 1 among them is $k[t]$ itself. If this gave you a good laugh, you can try mess with your friends with this puzzle.]
+    Thus it suffices to show that $Pic(AA^1_k) = 0$. For comedic reasons I've put the proof of this part into a footnote. Please think about it for a moment, and if you can't figure it out, please read the footnote for a good laugh.#footnote[$k[t]$ is a PID and finite modules over it have a classification. The only locally free $k[t]$-module of rank 1 among them is $k[t]$ itself. If this gave you a good laugh, you can try messing with your friends with this puzzle.]
   ]
 
   Now $p$ is smooth, hence locally acyclic relative to $ul(ZZ\/n)$. To prove that the unit $ul(ZZ\/n) -> R p_* ul(ZZ\/n)$ is an isomorphism, we invoke @loc-acyc-constancy-of-pushforward and see that it suffices to show that:
@@ -221,7 +221,7 @@ For this, it turns out that we need to establish a special case Gysin purity sta
 
   There is a unique morphism $c: i_* ul(ZZ\/n)_Y -> ul(ZZ\/n)_(PP^1_Y)(1)[2]$ s.t. the composition:
   $
-    ul(ZZ\/n)_(PP^1_Y) cong R p_* i_* ul(ZZ\/n)_Y -->^(R p_* (c)) R p_* ul(ZZ\/n)_(PP^1_Y)(1)[2] -->^(Tr_(PP^1_Y\/Y)) ul(ZZ\/n)_Y
+    ul(ZZ\/n)_Y cong R p_* i_* ul(ZZ\/n)_Y -->^(R p_* (c)) R p_* ul(ZZ\/n)_(PP^1_Y)(1)[2] -->^(Tr_(PP^1_Y\/Y)) ul(ZZ\/n)_Y
   $
   is the identity. It is compatible with base change.
 ]
@@ -260,7 +260,7 @@ For this, it turns out that we need to establish a special case Gysin purity sta
   - #h(1fr)
     $
       R Gamma(PP^1_Y, ul(ZZ\/n)) = R Gamma(Y, R p_* ul(ZZ\/n)) = RHom_(ZZ\/n) (ul(ZZ\/n)_Y, R p_* ul(ZZ\/n)_(PP^1_Y)) \
-      R Gamma(AA^1_Y, ul(ZZ\/n)) = R Gamma(Y, R (p compose j)_* ul(ZZ\/n)) = RHom_(ZZ\/n) (ul(ZZ\/n)_Y, R (p compose j)_* ul(ZZ\/n)_(PP^1_Y))
+      R Gamma(AA^1_Y, ul(ZZ\/n)) = R Gamma(Y, R (p compose j)_* ul(ZZ\/n)) = RHom_(ZZ\/n) (ul(ZZ\/n)_Y, R (p compose j)_* ul(ZZ\/n)_(AA^1_Y))
     $
     Under these identifications, one can check formally that:
 
@@ -279,7 +279,7 @@ For this, it turns out that we need to establish a special case Gysin purity sta
     $
       R (p compose j)_* ul(ZZ\/n)_(AA^1_Y) -> ul(ZZ\/n)_Y
     $
-    by $AA^1$-homotopy invariance (@etale-a1-homotopy-invariance). We claim that under these identifications, the unit $R p_* ul(ZZ\/n) -> R(p compose j)_* ul(ZZ\/n)$ is identified with the projection $ul(ZZ\/n)(-1)[-2] oplus ul(ZZ\/n) -> ul(ZZ\/n)$ onto second factor. For this we need to show the commutativity of:
+    by $AA^1$-homotopy invariance (@etale-a1-homotopy-invariance). We claim that under these identifications, the unit $R p_* ul(ZZ\/n) -> R(p compose j)_* ul(ZZ\/n)$ is identified with the projection $ul(ZZ\/n)(-1)[-2] oplus ul(ZZ\/n) -> ul(ZZ\/n)$ onto the second factor. For this we need to show the commutativity of:
     // https://q.uiver.app/#r=typst&q=WzAsMyxbMCwwLCJSIHFfKiB1bChaWlxcL24pXyhBQV4xX1kpIl0sWzIsMCwidWwoWlpcXC9uKV9ZIl0sWzAsMSwiUiBwXyogdWwoWlpcXC9uKV8oUFBeMV9ZKSJdLFsxLDAsInVfcSIsMl0sWzIsMCwiUiBxXyogKHVfaikiXSxbMiwxLCJSIHBfKiAodV8oaV9vbykpIiwyXV0=
     #align(center, diagram({
       node((0, 0), [$R q_* ul(ZZ\/n)_(AA^1_Y)$])
@@ -297,23 +297,23 @@ For this, it turns out that we need to establish a special case Gysin purity sta
       &= RHom_(ZZ\/n) (ul(ZZ\/n)_Y, ul(ZZ\/n)_Y (-1)[-2] oplus ul(ZZ\/n)_Y) \
       &-> RHom_(ZZ\/n) (ul(ZZ\/n)_Y, ul(ZZ\/n)_Y (-1)[-2])
     $
-    is just $Phi$ twisted by $(-1)[-2]$. Indeed, the first line is identified with $R p_* (-)$ as argued in the first bullet, and the second and third line is induced by $Tr_(PP^1_Y\/Y)$ by definition.
+    is just $Phi$ twisted by $(-1)[-2]$. Indeed, the first line is identified with $R p_* (-)$ as argued in the first bullet, and the second and third lines are induced by $Tr_(PP^1_Y\/Y)$ by definition.
 
     This composition is an isomorphism due to the distinguished triangle:
     $
       RHom_(ZZ\/n) (i_* ul(ZZ\/n)_Y, ul(ZZ\/n)_(PP^1_Y)) ->^Q R Gamma(PP^1_Y, ul(ZZ\/n)) ->^res R Gamma(AA^1_Y, ul(ZZ\/n)) ->^(+1)
     $
 
-    Thus, $Phi: RHom_(ZZ\/n) (i_* ul(ZZ\/n)_Y (1)[2], ul(ZZ\/n)_(PP^1_Y)) -> RHom_(ZZ\/n) (ul(ZZ\/n)_Y, ul(ZZ\/n)_Y)$ is an isomorphism.
+    Thus, $Phi: RHom_(ZZ\/n) (i_* ul(ZZ\/n)_Y, ul(ZZ\/n)_(PP^1_Y)(1)[2]) -> RHom_(ZZ\/n) (ul(ZZ\/n)_Y, ul(ZZ\/n)_Y)$ is an isomorphism.
 
   Taking $h^0$,
   $
-    Phi: Hom_(ZZ\/n) (i_* ul(ZZ\/n)_Y (1)[2], ul(ZZ\/n)_(PP^1_Y)) -> Hom_(ZZ\/n) (ul(ZZ\/n)_Y, ul(ZZ\/n)_Y)
+    Phi: Hom_(ZZ\/n) (i_* ul(ZZ\/n)_Y, ul(ZZ\/n)_(PP^1_Y)(1)[2]) -> Hom_(ZZ\/n) (ul(ZZ\/n)_Y, ul(ZZ\/n)_Y)
   $
-  is an isomorphism. Taking the inverse image of $id$ yields $c: i_* ul(ZZ\/n)_Y (1)[2] -> ul(ZZ\/n)_(PP^1_Y)$.
+  is an isomorphism. Taking the inverse image of $id$ yields $c: i_* ul(ZZ\/n)_Y -> ul(ZZ\/n)_(PP^1_Y)(1)[2]$.
 
   The construction of $Phi$ is compatible with base change, so the formation of $c$ is compatible with base change.
-  /*Also denote $i_oo: Y -> PP^1_Y$ the infinity section.
+  /*Also denote by $i_oo: Y -> PP^1_Y$ the infinity section.
 
   We first identify $R p_* ul(ZZ\/n)$. Consider the trace map:
   $
@@ -349,7 +349,7 @@ For this, it turns out that we need to establish a special case Gysin purity sta
     $
       R q_* ul(ZZ\/n) cong ul(ZZ\/n)
     $
-    by $AA^1$-homotopy invariance (@etale-a1-homotopy-invariance). We claim that under these identifications, $h$ is identified with the projection $ul(ZZ\/n)(-1)[-2] oplus ul(ZZ\/n) -> ul(ZZ\/n)$ onto second factor. For this we need to show the commutativity of:
+    by $AA^1$-homotopy invariance (@etale-a1-homotopy-invariance). We claim that under these identifications, $h$ is identified with the projection $ul(ZZ\/n)(-1)[-2] oplus ul(ZZ\/n) -> ul(ZZ\/n)$ onto the second factor. For this we need to show the commutativity of:
     // https://q.uiver.app/#r=typst&q=WzAsMyxbMCwwLCJSIHFfKiB1bChaWlxcL24pXyhBQV4xX1kpIl0sWzIsMCwidWwoWlpcXC9uKV9ZIl0sWzAsMSwiUiBwXyogdWwoWlpcXC9uKV8oUFBeMV9ZKSJdLFsxLDAsInVfcSIsMl0sWzIsMCwiUiBxXyogKHVfaikiXSxbMiwxLCJSIHBfKiAodV8oaV9vbykpIiwyXV0=
     #align(center, diagram({
       node((0, 0), [$R q_* ul(ZZ\/n)_(AA^1_Y)$])
@@ -378,7 +378,7 @@ For this, it turns out that we need to establish a special case Gysin purity sta
 
   There is a unique morphism $c: i_* ul(ZZ\/n)_Y -> ul(ZZ\/n)_(AA^1_Y)(1)[2]$ s.t. the composition:
   $
-    ul(ZZ\/n)_(AA^1_Y) cong R p_! i_* ul(ZZ\/n)_Y -->^(R p_! (c)) R p_! ul(ZZ\/n)_(AA^1_Y)(1)[2] -->^(Tr_(AA^1_Y\/Y)) ul(ZZ\/n)_Y
+    ul(ZZ\/n)_Y cong R p_! i_* ul(ZZ\/n)_Y -->^(R p_! (c)) R p_! ul(ZZ\/n)_(AA^1_Y)(1)[2] -->^(Tr_(AA^1_Y\/Y)) ul(ZZ\/n)_Y
   $
   is the identity. It is compatible with base change.
 ]
@@ -394,15 +394,16 @@ For this, it turns out that we need to establish a special case Gysin purity sta
     &-->^(Tr_(AA^1_Y\/PP^1_Y)) Hom_(ZZ\/n) (ol(i)_* ul(ZZ\/n)_Y, ul(ZZ\/n)_(PP^1_Y) (1)[2]) \
     &-->^Phi Hom_(ZZ\/n) (ul(ZZ\/n)_Y, ul(ZZ\/n)_Y)
   $
-  is exactly the $Phi$ constructed in @p1-section-gysin-purity for the $PP^1$-case, which we shall denote by $Phi'$. Thus by @p1-section-gysin-purity, $Phi'$ is an isomorphism. On the other hand, 
+  is exactly the $Phi$ constructed for the $AA^1$-case. The last arrow is the isomorphism of @p1-section-gysin-purity, which we denote by $Phi'$. Thus by @p1-section-gysin-purity, $Phi'$ is an isomorphism. On the other hand, 
 
   - $Hom_(ZZ\/n) (cal(K), cal(L)) -->^(j_! (-)) Hom_(ZZ\/n) (j_! cal(K), j_! cal(L))cong Hom_(ZZ\/n) (cal(K), j^(-1) j_! cal(L)) cong Hom_(ZZ\/n) (cal(K), cal(L))$ by adjunction, hence $j_! (-)$ is always an isomorphism. Thus the first line is an isomorphism; 
 
   - For the second line, we have a distinguished triangle:
     $
-      RHom_(ZZ\/n) (ol(i)_* ul(ZZ\/n)_Y, j_! ul(ZZ\/n)_(AA^1_Y) (1)[2]) -->^(Tr_(AA^1_Y\/PP^1_Y)) RHom_(ZZ\/n) (ol(i)_* ul(ZZ\/n)_Y, ul(ZZ\/n)_(PP^1_Y) (1)[2]) -> RHom_(ZZ\/n) (ol(i)_* ul(ZZ\/n)_Y, i_(oo,*) ul(ZZ\/n)_Y) ->^(+1)
+      RHom_(ZZ\/n) (ol(i)_* ul(ZZ\/n)_Y, j_! ul(ZZ\/n)_(AA^1_Y) (1)[2]) &-->^(Tr_(AA^1_Y\/PP^1_Y)) RHom_(ZZ\/n) (ol(i)_* ul(ZZ\/n)_Y, ul(ZZ\/n)_(PP^1_Y) (1)[2]) \
+      &-> RHom_(ZZ\/n) (ol(i)_* ul(ZZ\/n)_Y, i_(oo,*) ul(ZZ\/n)_Y (1)[2]) ->^(+1)
     $
-    but $RHom_(ZZ\/n) (ol(i)_* ul(ZZ\/n)_Y, i_(oo,*) ul(ZZ\/n)_Y) cong RHom_(ZZ\/n) (i_oo^(-1) ol(i)_* ul(ZZ\/n)_Y, ul(ZZ\/n)_Y) = 0$ since $ol(i), i_oo$ has disjoint image. Thus $Tr_(AA^1_Y\/PP^1_Y)$ is an isomorphism: 
+    but $RHom_(ZZ\/n) (ol(i)_* ul(ZZ\/n)_Y, i_(oo,*) ul(ZZ\/n)_Y) cong RHom_(ZZ\/n) (i_oo^(-1) ol(i)_* ul(ZZ\/n)_Y, ul(ZZ\/n)_Y) = 0$ since $ol(i), i_oo$ have disjoint images. Thus $Tr_(AA^1_Y\/PP^1_Y)$ is an isomorphism: 
     $
       RHom_(ZZ\/n) (ol(i)_* ul(ZZ\/n)_Y, j_! ul(ZZ\/n)_(AA^1_Y) (1)[2]) -> RHom_(ZZ\/n) (ol(i)_* ul(ZZ\/n)_Y, ul(ZZ\/n)_(PP^1_Y) (1)[2])
     $
@@ -443,7 +444,7 @@ We are now ready to prove Poincare duality.
     $
     s.t the composition: 
     $
-      ul(ZZ\/n)_(AA^1_Y) cong R q_(i,*) Delta_* ul(ZZ\/n)_(AA^1_Y) -->^(R q_(i,*) c) R q_(i,*) ul(ZZ\/n)_(AA^2_Y)(1)[2] -->^(Tr_(q_i:AA^2_Y\/AA^1_Y)) ul(ZZ\/n)_(AA^1_Y)
+      ul(ZZ\/n)_(AA^1_Y) cong R q_(i,!) Delta_* ul(ZZ\/n)_(AA^1_Y) -->^(R q_(i,!) c) R q_(i,!) ul(ZZ\/n)_(AA^2_Y)(1)[2] -->^(Tr_(q_i:AA^2_Y\/AA^1_Y)) ul(ZZ\/n)_(AA^1_Y)
     $
     is the identity for both $i=1,2$. 
 
@@ -452,11 +453,11 @@ We are now ready to prove Poincare duality.
       cal(L) &cong R q_(2,!) R Delta_* cal(L) cong R q_(2,!) R Delta_* (Delta^(-1) q_1^(-1) cal(L)) \
       &cong R q_(2,!) (q_1^(-1) cal(L) Lotimes_(ZZ\/n) R Delta_* ul(ZZ\/n)) #[by projection formula] \
       &->^(c_Y) R q_(2,!) q_1^(-1) cal(L)(1)[2] \
-      &cong R p_! p^(-1) cal(L)(1)[2] #[by proper base change]
+      &cong p^(-1) R p_! cal(L)(1)[2] #[by proper base change]
     $
     This is the unit map $u_Y$. 
 
-  It remains to verify the adjunction identities that: 
+  It remains to verify that the following compositions are identities: 
   $
     R p_! cal(L) -->^(R p_! u_Y) R p_! p^(-1) R p_! cal(L)(1)[2] -->^(eta_Y R p_!) R p_! cal(L)
   $
@@ -491,11 +492,11 @@ We are now ready to prove Poincare duality.
     Since the Kunneth map is symmetric, it can be defined by projecting onto either factor first. Thus the lower left path factors as: 
     $
       R r_! (q_1^(-1) cal(L) Lotimes_(ZZ\/n) q_2^(-1) ul(ZZ\/n)) &-->^P R p_! (cal(L) Lotimes_(ZZ\/n) R q_(1,!) q_2^(-1) ul(ZZ\/n)) -->^(BC^(-1)) R p_! (cal(L) Lotimes_(ZZ\/n) p^(-1) R p_! ul(ZZ\/n)) \
-      &-->^P R p_! cal(L) Lotimes_(ZZ\/n) R p_! ul(ZZ\/n) -->^(Tr_p) cal(L) Lotimes_(ZZ\/n) ul(ZZ\/n)(-1)[2]
+      &-->^P R p_! cal(L) Lotimes_(ZZ\/n) R p_! ul(ZZ\/n) -->^(Tr_p) R p_! cal(L) Lotimes_(ZZ\/n) ul(ZZ\/n)(-1)[-2]
     $
     The last two maps may be swapped by naturality to: 
     $
-      dots.c -->^(Tr_p) R p_! (cal(L) Lotimes_(ZZ\/n) ul(ZZ\/n)(-1)[2]) -->^(P) cal(L) Lotimes_(ZZ\/n) ul(ZZ\/n)(-1)[2]
+      dots.c -->^(Tr_p) R p_! (cal(L) Lotimes_(ZZ\/n) ul(ZZ\/n)(-1)[-2]) -->^(P) R p_! cal(L) Lotimes_(ZZ\/n) ul(ZZ\/n)(-1)[-2]
     $
 
     The first projection along $q_1$ may be cancelled with that of the right path, and the last projection along $p$ may also be cancelled. Then also peeling off $R p_!$ and $cal(L) Lotimes_(ZZ\/n) -$ it suffices to check that the composition: 
@@ -592,7 +593,7 @@ We are now ready to prove Poincare duality.
       $
       is just $Tr_(q_2)$. This is compatibility with base change of the trace map. 
 
-    Thus it suffices to prove that the right path is the identity. Indeed, by defining properties of $c$, 
+    Thus it suffices to prove that the right path is the identity. Indeed, by the defining properties of $c$, 
     $
       R q_(2,!) R Delta_* ul(ZZ\/n) ->^c R q_(2,!) ul(ZZ\/n) (1)[2] -->^(Tr_(q_2)) ul(ZZ\/n)
     $
@@ -610,7 +611,7 @@ We are now ready to prove Poincare duality.
 ]
 
 #theorem(name: <relative-poincare-duality>)[
-  (Relative Poincare duality) Let $Lambda$ be an $n$-torsion noetherian ring. For any smooth morphism $f: X -> Y$ of relative dimension $d$ between noetherian $ZZ[n^(-1)]$-schemes, the purity map: 
+  (Relative Poincare duality) Let $Lambda$ be an $n$-torsion noetherian ring. For any separated smooth morphism $f: X -> Y$ of relative dimension $d$ between noetherian $ZZ[n^(-1)]$-schemes, the purity map: 
   $
     t_(X\/Y): f^(-1) cal(K)(d)[2d] -> R f^! cal(K)
   $
@@ -645,17 +646,16 @@ We are now ready to prove Poincare duality.
 #theorem(name: <absolute-poincare-duality>)[
   (Absolute Poincare duality) Let $Lambda$ be an $n$-torsion noetherian ring that is an injective module over itself. Let $k$ be an algebraically closed field s.t. $n in k^times$, and $X$ be a smooth $k$-scheme of pure dimension $d$. Then: 
 
-  + For a complex $cal(K) in D(X_et, Lambda)$, the cup product pairing: #h(1fr)
+  + For a complex $cal(K) in D(X_et, Lambda)$, the cup product pairing induces a canonical isomorphism: #h(1fr)
     $
-      smile: h^q (R Gamma_c (X, cal(K))) times h^(2d-q) (RHom_Lambda (cal(K), ul(Lambda)(d))) -> Lambda
+      h^(2d-q) (RHom_Lambda (cal(K), ul(Lambda)(d))) cong Hom_Lambda (h^q (R Gamma_c (X, cal(K))), Lambda)
     $
-    is perfect. In particular, for a sheaf $cal(F) in cAb(X_et, Lambda)$, the cup product pairing:
+    In particular, for a sheaf $cal(F) in cAb(X_et, Lambda)$, it induces a canonical isomorphism:
     $
-      smile: H^q_c (X, cal(F)) times Ext^(2d-q)_Lambda (cal(F), ul(Lambda)(d)) -> Lambda
+      Ext^(2d-q)_Lambda (cal(F), ul(Lambda)(d)) cong Hom_Lambda (H^q_c (X, cal(F)), Lambda)
     $
-    is perfect. 
 
-  + For a l.c.c. sheaf $cal(F) in cAb(X_et, Lambda)$, there exists a canonical perfect bilinear pairing: 
+  + For an l.c.c. sheaf $cal(F) in cAb(X_et, Lambda)$, there exists a canonical perfect bilinear pairing: 
     $
       smile: H^q_c (X, cal(F)) times H^(2d-q) (X, caron(cal(F))(d)) -> Lambda
     $
@@ -765,7 +765,7 @@ We are now ready to prove Poincare duality.
 ]
 
 #example[
-  (Cohomology of affine smooth curve) We may finally compute the cohomology of an affine curve, not explicitly computed in @sect-cohom-of-curves. 
+  (Cohomology of an affine smooth curve) We may finally compute the cohomology of an affine curve, not explicitly computed in @sect-cohom-of-curves. 
   
   Suppose that $k$ is an algebraically closed field, $n in k^times$ a natural number, and $X$ is an affine smooth curve over $k$. Then pick the completion $ol(X)$ of $X$, so $j: X -> ol(X)$ is an open immersion where $ol(X)$ is a projective smooth curve. Let $Z = ol(X) - X$ be equipped with the reduced induced structure, thus being a finite set of closed points over $k$. Now $Z, ol(X)$ are both smooth over $k$, so by @relative-purity, we have a Gysin sequence: 
   $
@@ -777,7 +777,7 @@ We are now ready to prove Poincare duality.
   $
   sends a copy of $ZZ\/n$ indexed by a point $z in Z$ to the corresponding divisor in $H^2 (ol(X), ul(ZZ\/n)) cong Pic(ol(X))\/n Pic(ol(X))$. It is thus identified with $(ZZ\/n(-1))^(oplus Z) -> ZZ\/n(-1)$ a sum over components indexed by $Z$. Thus, we have a short exact sequence: 
   $
-    0 -> H^1 (ol(X), ul(ZZ\/n)) -> H^1 (X, ul(ZZ\/n)) -> (ZZ\/n (-1))^(oplus (m-1))
+    0 -> H^1 (ol(X), ul(ZZ\/n)) -> H^1 (X, ul(ZZ\/n)) -> (ZZ\/n (-1))^(oplus (m-1)) -> 0
   $
   where $m = abs(Z) = abs(ol(X) - X)$ is the number of missing points in $X$. There is a non-canonical isomorphism: 
   $

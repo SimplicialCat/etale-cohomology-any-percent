@@ -4,7 +4,7 @@
 
 In this section, we establish explicit (Zariski) local descriptions of etale and smooth morphisms. 
 
-The arguments in this section mostly follow from Stacks Project. 
+The arguments in this section mostly follow from the Stacks Project. 
 
 #definition(name: <defn-standard-etale-morphism>)[
   A *standard etale morphism* is a morphism: 
@@ -29,7 +29,7 @@ The arguments in this section mostly follow from Stacks Project.
   Step 1. Produce an immersion $X -> AA^1_Y$ by appropriately choosing a function $b in B$. 
   
   #proof[
-    Since etale morphisms are quasi-finite, by Zariski main theorem, we may factor $f$ as: 
+    Since etale morphisms are quasi-finite, by Zariski's main theorem, we may factor $f$ as: 
     $
       X = Spec(B) ->^j Z = Spec(C) ->^(ol(f)) Y = Spec(A)
     $
@@ -112,7 +112,7 @@ The arguments in this section mostly follow from Stacks Project.
     $
       Spec(B) = Spec(A[T]_(h(T))\/I) ->^i Spec(A[T]_(h(T)g'(T))\/g(T)) ->^(f') Spec(A)
     $
-    Here, $f'$ is a standard etale morphism, hence etale (since $g'(T)$ is invertible in $A[T]_(h(T)g'(T))\/g(T)$), and $f$ is etale. Thus the closed immersion $i$ is in fact etale. It is thus an open and closed immersion. Thus $Spec(B)$ is a standard affine open of $Spec(A[T]_(g'(T)h(T))\/g(T)) = Spec((A[T]\/g(T))_(g'(T)h(T)))$ and is obtained by inverting an idempotent that we shall multiply to $g'(T)h(T)$. Thus $Spec(B) -> Spec(A)$ is standard etale. 
+    Here, $f'$ is a standard etale morphism, hence etale (since $g'(T)$ is invertible in $A[T]_(h(T)g'(T))\/g(T)$). Meanwhile, $f$ is also etale. Thus the closed immersion $i$ is in fact etale. It is thus an open and closed immersion. Thus $Spec(B)$ is a standard affine open of $Spec(A[T]_(g'(T)h(T))\/g(T)) = Spec((A[T]\/g(T))_(g'(T)h(T)))$, in which $B$ is obtained from $(A[T]\/g(T))_(g'(T)h(T))$ by inverting a certain idempotent $[e(T)] in (A[T]\/g(T))_(g'(T)h(T))$. Thus $B cong (A[T]\/g(T))_(e(T)g'(T)h(T))$, and $Spec(B) -> Spec(A)$ is standard etale. 
     #suppress-qed
   ]
   This proves the local structure of etale morphisms. 
@@ -120,7 +120,7 @@ The arguments in this section mostly follow from Stacks Project.
 
 // The next goal is to establish a local structure theorem for smooth morphisms. Recall the definition (as in Hartshorne) that: 
 
-// - A morphism $f: X -> Y$ of finite presentation is said to be *smooth (of relative dimension $d$)* at $x$, if it is flat at $x$ and $(Omega_(X\/Y))_x$ is free (of rank $d$). 
+// - A morphism $f: X -> Y$ of finite presentation is said to be *smooth (of relative dimension $d$)* at $x$, if it is flat at $x$ and its fiber over $f(x)$ is geometrically regular at $x$ (of dimension $d$ near $x$). 
 
 //   A morphism $f: X -> Y$ is said to be *smooth (of relative dimension $d$)*, if it is smooth at every point. Equivalently, if $f$ is flat and $Omega_(X\/Y)$ is locally free (of rank $d$). 
 
@@ -131,14 +131,14 @@ The arguments in this section mostly follow from Stacks Project.
 //   $
 //     X ->^j AA^d_Y -> Y
 //   $
-//   for an etale morphism $j$. A standard smooth morphism of relative dimension $d$ is smooth of relative dimension $d$, since etale morphisms are smooth of relative dimension $0$, and $AA^d_Y -> Y$ is smooth of relative dimension $d$, and smooth morphisms composes. 
+//   for an etale morphism $j$. A standard smooth morphism of relative dimension $d$ is smooth of relative dimension $d$, since etale morphisms are smooth of relative dimension $0$, and $AA^d_Y -> Y$ is smooth of relative dimension $d$, and smooth morphisms compose. 
 // ]
 
 // #theorem(name: <local-struct-of-smooth-morphisms>)[
 //   (Local structure of smooth morphisms) For any morphism $f: X -> Y$ smooth of relative dimension $d$ at $x in X$, there exists an open neighborhood $x in U subset X$ s.t. $U -> Y$ is standard smooth. 
 // ]
 // #proof[
-//   Since $Omega_(X\/Y)$ is locally free of rank $d$ at $x$, by shrinking $X$ around $x$, we may assume that $X = Spec(B)$ is affine and $Omega_(X\/Y)$ is free of rank $d$. We may shrink $X$ further to assume that the image of $X$ is contained in an affine open $U subset Y$. Now if we have an etale chart $X -> AA^d_U$, the open immersion gives an etale chart $X -> AA^d_Y$. Thus it is safe to replace $Y$ with $U$ and assume that $Y = Spec(A)$ is affine too. Now that we have an isomorphism $Omega_(B\/A) cong B^(oplus d)$, we may pick $b_1, dots.c, b_d in B$ s.t. $d b_1, dots.c, d b_d$ forms a basis of $Omega_(B\/A)$. These sections define a map: 
+//   Since $Omega_(X\/Y)$ is locally free of rank $d$ at $x$, by shrinking $X$ around $x$, we may assume that $X = Spec(B)$ is affine and $Omega_(X\/Y)$ is free of rank $d$. We may shrink $X$ further to assume that the image of $X$ is contained in an affine open $U subset Y$. Now if we have an etale chart $X -> AA^d_U$, the open immersion gives an etale chart $X -> AA^d_Y$. Thus it is safe to replace $Y$ with $U$ and assume that $Y = Spec(A)$ is affine too. Now that we have an isomorphism $Omega_(B\/A) cong B^(oplus d)$, we may pick $b_1, dots.c, b_d in B$ s.t. $d b_1, dots.c, d b_d$ form a basis of $Omega_(B\/A)$. These sections define a map: 
 //   $
 //     Spec(B) -> Spec(A[T_1, dots.c, T_d])
 //   $ 
@@ -146,7 +146,7 @@ The arguments in this section mostly follow from Stacks Project.
 //   $
 //     Omega_(A[T_1,dots.c,T_d]\/A) otimes_(A[T_1,dots.c,T_d]) B -> Omega_(B\/A) -> Omega_(B\/A[T_1,dots.c,T_d]) -> 0
 //   $
-//   Now $Omega_(A[T_1,dots.c,T_d]\/A) otimes_(A[T_1,dots.c,T_d]) B cong B d T_1 oplus dots.c oplus B d T_d$, and the first map sends $d T_i |-> d b_i$. By our choice of the $b_i$'s, this map is an isomorphism. Thus $Omega_(B\/A[T_1,dots.c,T_d]) = 0$ and so $B$ is unramified over $A[T_1, dots.c, T_d]$. It suffices to show that it is flat. By fiberwise criterion for flatness (#cite-stacks("039E")[Lemma 37.16.4]), it suffices to check that for each point $y in Spec(A)$, the base change: 
+//   Now $Omega_(A[T_1,dots.c,T_d]\/A) otimes_(A[T_1,dots.c,T_d]) B cong B d T_1 oplus dots.c oplus B d T_d$, and the first map sends $d T_i |-> d b_i$. By our choice of the $b_i$'s, this map is an isomorphism. Thus $Omega_(B\/A[T_1,dots.c,T_d]) = 0$ and so $B$ is unramified over $A[T_1, dots.c, T_d]$. It suffices to show that it is flat. By the fiberwise criterion for flatness (#cite-stacks("039E")[Lemma 37.16.4]), it suffices to check that for each point $y in Spec(A)$, the base change: 
 //   $
 //     X_y = Spec(B otimes_A k(y)) -> AA^d_(k(y))
 //   $

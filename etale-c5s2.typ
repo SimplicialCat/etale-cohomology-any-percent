@@ -8,7 +8,7 @@
   $
 ]
 #proof[
-  We first prove for Cech cohomology, i.e: 
+  We first prove this for Cech cohomology, i.e: 
   $
     caron(H)^q (U, cal(M)_et) = 0, forall q >= 1
   $
@@ -40,7 +40,7 @@
   $
     0 -> caron(H)^n (U, cal(M)_et) -> H^n (U, cal(M)_et) -> caron(H)^0 (U, ul(H)^n (cal(M)_et)) -> dots.c
   $
-  Now $caron(H)^n (U, cal(M)_et) = 0$ as proved previously, and $caron(H)^0 (U, ul(H)_n (cal(M)_et)) = 0$ by @cech-h0-of-hq-psh-vanish. We are thereby done showing $H^n (U, cal(M)_et) = 0$.  
+  Now $caron(H)^n (U, cal(M)_et) = 0$ as proved previously, and $caron(H)^0 (U, ul(H)^n (cal(M)_et)) = 0$ by @cech-h0-of-hq-psh-vanish. We are thereby done showing $H^n (U, cal(M)_et) = 0$.  
 ]
 
 #theorem(name: <etale-cohom-of-qcoh-sheaf>)[
@@ -55,7 +55,7 @@
   $
     epsilon: cAb(X_et) -> cAb(X_#[Zar])
   $
-  from etale sheaves on $X$ to Zariski sheaves on $X$. Since left exactness for both etale and Zariski sheaves are measured section-wise, $epsilon$ is a left exact functor. We want to apply the Grothendieck-Leray spectral sequence to the composition: 
+  from etale sheaves on $X$ to Zariski sheaves on $X$. Since left exactness for both etale and Zariski sheaves is measured section-wise, $epsilon$ is a left exact functor. We want to apply the Grothendieck-Leray spectral sequence to the composition: 
   // https://q.uiver.app/#r=typst&q=WzAsMyxbMCwxLCJjQWIoWF9ldCkiXSxbMiwxLCJjQWIiXSxbMSwwLCJjQWIoWF8jW1phcl0pIl0sWzIsMSwiR2FtbWEoWCwtKSJdLFswLDEsIkdhbW1hKFgsLSkiLDJdLFswLDIsImVwc2lsb24iXV0=
   #align(center, diagram({
     node((-1, 0), [$cAb(X_et)$])
@@ -68,7 +68,7 @@
   For this, we need to show that $epsilon$ sends injectives to ${H^q_#[Zar] (X, -)}_(q>=0)$-acyclics. 
 
   #lemma[
-    Given additive functors $F: cal(A) -> cal(B), G: cal(B) -> cal(C)$ between abelian categories, where $cal(A), cal(B)$ has enough injectives. Suppose that there exists a collection $cal(I)$ of injectives of $cal(A)$ s.t:
+    Consider additive functors $F: cal(A) -> cal(B), G: cal(B) -> cal(C)$ between abelian categories, where $cal(A), cal(B)$ have enough injectives. Suppose that there exists a collection $cal(I)$ of injectives of $cal(A)$ s.t:
     
     - Every object of $cal(A)$ embeds into an object in the collection $cal(I)$; 
 

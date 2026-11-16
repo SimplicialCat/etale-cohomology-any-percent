@@ -3,7 +3,7 @@
 == Cech cohomology
 
 #construction(name: <constr-cech-cohom>)[
-  Let $X$ be a scheme. Given $U in Et_X$ and an etale cover $cal(U) = {U_i -> U}_(i in I)$. Denote $U_(i_0,dots.c,i_p) = U_(i_0) times_U dots.c times_U U_(i_p)$. 
+  Let $X$ be a scheme. Given $U in Et_X$ and an etale cover $cal(U) = {U_i -> U}_(i in I)$, denote $U_(i_0,dots.c,i_p) = U_(i_0) times_U dots.c times_U U_(i_p)$. 
   
   Given $cal(G) in cPAb(X_et)$, define the *Cech complex* of $cal(G)$ w.r.t. $cal(U)$ to be the cochain complex: 
   $
@@ -85,13 +85,13 @@
   $
     0 -> C^bullet (cal(U), cal(F)) -> C^bullet (cal(U), cal(G)) -> C^bullet (cal(U), cal(H)) -> 0
   $
-  and induces a long exact sequence on cohomologies. As such, to show that $caron(H)^p (cal(U), -) cong R^p caron(H)^0 (cal(U), -)$, it suffices to prove that $caron(H)^p (cal(U), cal(I)) = 0$ for every $p >= 1$ and every injective $cal(I) in cPAb(X_et)$. Suppose that $cal(U) = {U_i -> U}_(i in I)$. We then need to show the exactness of the Cech complex: 
+  and induces a long exact sequence on cohomologies. As such, to show that $caron(H)^p (cal(U), -) cong R^p caron(H)^0 (cal(U), -)$, it suffices to prove that $caron(H)^p (cal(U), cal(I)) = 0$ for every $p >= 1$ and every injective $cal(I) in cPAb(X_et)$. Suppose that $cal(U) = {U_i -> U}_(i in I)$. We then need to show that the Cech complex: 
   $
     0 -> product_(i_0 in I) cal(I) (U_(i_0)) -> dots.c -> product_(i_0,dots.c,i_p in I) cal(I) (U_(i_0,dots.c,i_p)) -> product_(i_0,dots.c,i_(p+1) in I) cal(I) (U_(i_0,dots.c,i_(p+1))) -> dots.c
   $
   is exact at every $p >= 1$. Now $cal(I)(U^((p))) = Hom_(cPAb)(ul(ZZ)_(!,U^((p)),0), cal(I))$ and $cal(I)$ is injective so $Hom_(cPAb) (-, cal(I))$ is contravariant exact. As such, it suffices to show that we have an exact sequence: 
   $
-    dots.c -> product_(i_0,dots.c,i_(p+1) in I) ul(ZZ)_(!,U_(i_0,dots.c,i_(p+1)),0) ->^partial product_(i_0,dots.c,i_p in I) ul(ZZ)_(!,U_(i_0,dots.c,i_p),0)  -> dots.c -> product_(i_0 in I) ul(ZZ)_(!,U_(i_0),0)
+    dots.c -> oplus.big_(i_0,dots.c,i_(p+1) in I) ul(ZZ)_(!,U_(i_0,dots.c,i_(p+1)),0) ->^partial oplus.big_(i_0,dots.c,i_p in I) ul(ZZ)_(!,U_(i_0,dots.c,i_p),0) -> dots.c -> oplus.big_(i_0 in I) ul(ZZ)_(!,U_(i_0),0)
   $
   where $partial$ is: 
   $
@@ -99,7 +99,7 @@
 
     (s(f))_(f in Hom(U^((p+1)), V)) &|-> (sum_(k=0)^p (-1)^k s(g compose #[pr]_(0,dots.c,cancel(k),dots.c,p)))_(g in Hom(U^((p)), V))
   $
-  where $#[pr] _(0,dots.c,cancel(k),dots.c,p): U^((p+1)) -> U^((p))$ is the projection onto all but the $k$-th components of $U^((p+1))$. 
+  where $#[pr] _(0,dots.c,cancel(k),dots.c,p): U^((p+1)) -> U^((p))$ is the projection onto all but the $k$-th component of $U^((p+1))$. 
 
   We know this chain complex very well from topology: This is the singular chain complex of a simplex. We may thus accept that it is exact. 
 
@@ -194,7 +194,7 @@
 
 /*
 #lemma[
-  If $X$ is a scheme in which every finite set of points in contained in an affine open, and $cal(P) in cPAb(X_et)$ s.t. $cal(P)^+ = 0$, then for all $U in Et_X$: 
+  If $X$ is a scheme in which every finite set of points is contained in an affine open, and $cal(P) in cPAb(X_et)$ s.t. $cal(P)^+ = 0$, then for all $U in Et_X$: 
   $
     caron(H)^p (U, cal(P)) = 0, forall p >= 0
   $
@@ -204,7 +204,7 @@
 ]
 
 #corollary[
-  If $X$ is a scheme in which every finite set of points in contained in an affine open (which holds in many cases, say whenever $X$ is quasi-projective over an affine scheme), there are natural isomorphisms for all $U in Et_X, cal(F) in cAb(X_et)$: 
+  If $X$ is a scheme in which every finite set of points is contained in an affine open (which holds in many cases, say whenever $X$ is quasi-projective over an affine scheme), there are natural isomorphisms for all $U in Et_X, cal(F) in cAb(X_et)$: 
   $
     caron(H)^q (U, cal(F)) ->^tilde H^q (U, cal(F)), forall q >= 0
   $

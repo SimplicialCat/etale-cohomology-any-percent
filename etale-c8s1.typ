@@ -38,24 +38,24 @@ The theory of local acyclicity, roughly speaking, consists of the following stat
 
 Logically, (1) smooth base change is equivalent to (2) local acyclicity of smooth morphisms, with (3) smooth proper base change and (4) finiteness of $R f_!$ depending on (1)(2). The motivation to develop this theory lies in (3) and the sheaf-theoretic result @descs-of-lcc-sheaves (a)$<==>$(b): 
 
-- A sheaf $cal(F) in cAb(X_et)$ with finite stalks is l.c.c. if and only if for every pair $t succ s$ in $X$, the specialization map $cal(F)_(ol(t)) -> cal(F)_(ol(s))$ is an isomorphism. 
+- A sheaf $cal(F) in cAb(X_et)$ with finite stalks is l.c.c. if and only if for every pair $t succ s$ in $X$, the specialization map $cal(F)_(ol(s)) -> cal(F)_(ol(t))$ is an isomorphism. 
 
-This allows us to ask the question: For a proper morphism $f: X -> S$, when is $R^q f_* ul(ZZ\/n)$ l.c.c? The finiteness of stalks may be established by some reduction to curves, so all that is required is the specialization maps to be isomorphisms. By proper base change, this amounts to an isomorphism: 
+This allows us to ask the question: For a proper morphism $f: X -> S$, when is $R^q f_* ul(ZZ\/n)$ l.c.c? The finiteness of stalks may be established by reduction to curves, so all that is required is to establish the specialization maps as isomorphisms. By proper base change, this amounts to an isomorphism: 
 $
-  H^q (X_(ol(t)), ul(ZZ\/n)) ->^tilde H^q (X_(ol(s)), ul(ZZ\/n))
+  H^q (X_(ol(s)), ul(ZZ\/n)) ->^tilde H^q (X_(ol(t)), ul(ZZ\/n))
 $
 We will see how this morphism can be expressed by embedding both geometric fibers in $X times_S tilde(S)_(ol(s))$, then translated through a vanishing cycle construction to the statement (2). Then through devissage arguments, (3) will imply (4). 
 
 There is a final side remark regarding coefficient rings. 
 
 #remark[
-  The main application of the theory of etale cohomology is the proof of the Weil conjectures, which requires establishing the theory of $ell$-adic sheaves. That is, over a scheme $X$ with characteristic $p$, for every $ell != p$, there is a cohomology theory with coefficients in $ol(QQ_ell)$. Such a cohomology theory is established by doing it over every finite extension $E\/QQ_ell$, by passing from the ring of integers $cal(O)_E$, which is itself constructed by a limit construction from etale sheaves in coefficients $cal(O)_E\/frak(m)_E^N$. 
+  The main application of the theory of etale cohomology is the proof of the Weil conjectures, which requires establishing the theory of $ell$-adic sheaves. That is, over a scheme $X$ with characteristic $p$, for every $ell != p$, there is a cohomology theory with coefficients in $ol(QQ_ell)$. Such a cohomology theory is established by doing it over every finite extension $E\/QQ_ell$, by passing from the ring of integers $cal(O)_E$, which is itself constructed by a limit construction from etale sheaves with coefficients $cal(O)_E\/frak(m)_E^N$. 
 
   Thus, the most important coefficient rings, and a class of coefficient rings enough for application, are the rings $Lambda = cal(O)_E\/frak(m)_E^N$ for a finite extension $E\/QQ_ell$ with $ell in cal(O)_X^times$. (This includes the rings $ZZ\/ell^N$.) These $Lambda$ together with $Lambda = ZZ\/n, n in cal(O)_X^times$ have the following desirable properties: 
 
   - $Lambda$ is a torsion ring with torsion coefficient in $cal(O)_X^times$; 
 
-  - $Lambda$ is a finite ring, so constructible sheaves of $Lambda$-modules are just sheaves of $Lambda$-modules constructible as a sheaf of abelian groups; 
+  - $Lambda$ is a finite ring, so constructible sheaves of $Lambda$-modules are just sheaves of $Lambda$-modules constructible as sheaves of abelian groups; 
 
   - Every finite $Lambda$-module admits an injection into a free $Lambda$-module of finite rank; 
 
@@ -69,14 +69,14 @@ Throughout this chapter, $Lambda$ is assumed to be a torsion ring.
 == General reduction on base changes
 
 #notation(name: <constructible-finite-tor-derived-category>)[
-  We use the notion $D^b_#[ctf] (X_et, Lambda)$ to denote the triangulated category of bounded complexes of etale sheaves of $Lambda$-modules on $X$ with constructible cohomology sheaves, and with finite Tor-dimension (i.e. the functor $cal(K) Lotimes_Lambda -$ is bounded above and below). Equivalently, such a complex is in $D^b_c$ and has bounded flat resolution. 
+  We use the notation $D^b_#[ctf] (X_et, Lambda)$ to denote the triangulated category of bounded complexes of etale sheaves of $Lambda$-modules on $X$ with constructible cohomology sheaves, and with finite Tor-dimension (i.e. the functor $cal(K) Lotimes_Lambda -$ is bounded above and below). Equivalently, such a complex is in $D^b_c$ and has a bounded flat resolution. 
 
   #lemma(name: <resolution-of-ctf-complexes>)[
-    (#cite-stacks("03TT")[Lemma 59.77.3]) Let $X$ be a noetherian scheme, and let $cal(K) in D^b_#[ctf] (X_et, Lambda)$ satisfy that $cal(K) Lotimes_Lambda cal(G) in D_([a,b]) (X_et, Lambda)$ for all sheaves $cal(G) in cAb(X_et, Lambda)$. Then $cal(K)$ can be represented by a complex: 
+    (#cite-stacks("03TT")[Lemma 59.77.3]) Let $Lambda$ be noetherian and $X$ be a noetherian scheme, and let $cal(K) in D^b_#[ctf] (X_et, Lambda)$ satisfy that $cal(K) Lotimes_Lambda cal(G) in D_([a,b]) (X_et, Lambda)$ for all sheaves $cal(G) in cAb(X_et, Lambda)$. Then $cal(K)$ can be represented by a complex: 
     $
       0 -> cal(F)^a -> cal(F)^(a+1) -> dots.c -> cal(F)^b -> 0
     $ 
-    in which every $cal(F)^q = j_(q,!) ul(Lambda)$ is constructible and flat. 
+    in which every $cal(F)^q$ is constructible and flat. 
   ]
   #proof[
     We argue by induction on $b-a$. If $a=b$, then $cal(K) = h^a (cal(K))[-a]$. The hypothesis then says that $h^a (cal(K))$ is constructible flat, so the claim follows. 
@@ -89,7 +89,7 @@ Throughout this chapter, $Lambda$ is assumed to be a torsion ring.
     $
       cal(F)[-b] -> cal(K) -> cal(L) ->^(+1)
     $
-    The complex $cal(L) in D^b_#[ctf] (X_et, Lambda)$, and has Tor-amplitude contained in $[a,b-1]$. Indeed, the map $cal(F) -> h^b (cal(K))$ is surjective. Thus tensoring with an arbitrary sheaf $cal(G)$, we have a long exact sequence: 
+    The complex $cal(L)$ is in $D^b_#[ctf] (X_et, Lambda)$, and has Tor-amplitude contained in $[a,b-1]$. Indeed, the map $cal(F) -> h^b (cal(K))$ is surjective. Thus tensoring with an arbitrary sheaf $cal(G)$, we have a long exact sequence: 
     $
       dots.c -> h^q (cal(G) Lotimes_Lambda cal(K)) -> h^q (cal(G) Lotimes_Lambda cal(L)) -> h^(q-b+1) (cal(G) Lotimes_Lambda cal(F)) -> dots.c
     $
@@ -166,12 +166,12 @@ Throughout this chapter, $Lambda$ is assumed to be a torsion ring.
       edge((1, -1), (1, 0), [$h$], label-side: left, "->")
       edge((0, -1), (0, 0), [$h'$], label-side: right, "->")
     }))
-    the relative base change $h^(-1) g^(-1) R f_* cal(K) Lotimes_Lambda h^(-1) cal(L) -> R f''_* (h'^(-1) g'^(-1) cal(K) Lotimes_Lambda h^(-1) f''^(-1) cal(L))$ relative to $h^(-1) cal(L)$, is the composition: 
+    the relative base change $h^(-1) g^(-1) R f_* cal(K) Lotimes_Lambda h^(-1) cal(L) -> R f''_* (h'^(-1) g'^(-1) cal(K) Lotimes_Lambda f''^(-1) h^(-1) cal(L))$ relative to $h^(-1) cal(L)$, is the composition: 
     $
       h^(-1) g^(-1) R f_* cal(K) Lotimes_Lambda h^(-1) cal(L) &cong h^(-1) (g^(-1) R f_* cal(K) Lotimes_Lambda cal(L)) \
       &-> h^(-1) R f'_* (g'^(-1) cal(K) Lotimes_Lambda f'^(-1) cal(L)) \
       &-> R f''_* h'^(-1) (g'^(-1) cal(K) Lotimes_Lambda f'^(-1) cal(L)) \
-      &cong R f''_* (h'^(-1) g'^(-1) cal(K) Lotimes_Lambda h^(-1) f''^(-1) cal(L))
+      &cong R f''_* (h'^(-1) g'^(-1) cal(K) Lotimes_Lambda f''^(-1) h^(-1) cal(L))
     $
     of the relative base change of the lower square w.r.t. $cal(L)$, and the base change of the upper square. 
 
@@ -194,7 +194,7 @@ Throughout this chapter, $Lambda$ is assumed to be a torsion ring.
     }))
     the relative base change $g^(-1) R f_* R h_* cal(K) Lotimes_Lambda cal(L) -> R f'_* R h'_* (g''^(-1) cal(K) Lotimes_Lambda h'^(-1) f'^(-1) cal(L))$, is the composition: 
     $
-      g^(-1) R f_* R h_* cal(K) Lotimes_Lambda cal(L) -> R f'_* (g'^(-1) R h_* cal(K) Lotimes_Lambda f'^(-1) cal(L)) -> R h'_* R f'_* (g''^(-1) cal(K) Lotimes_Lambda h'^(-1) f'^(-1) cal(L))
+      g^(-1) R f_* R h_* cal(K) Lotimes_Lambda cal(L) -> R f'_* (g'^(-1) R h_* cal(K) Lotimes_Lambda f'^(-1) cal(L)) -> R f'_* R h'_* (g''^(-1) cal(K) Lotimes_Lambda h'^(-1) f'^(-1) cal(L))
     $
     of the relative base change of the right square w.r.t. $cal(L)$ and the relative base change of the left square w.r.t. $f'^(-1) cal(L)$. 
 ]
@@ -210,7 +210,7 @@ To establish the main result, we need some preliminary statements.
   $
 ]
 #proof[
-  By @finite-morphisms-and-constructible-sheaves, there exists finite $h: X' -> X$ and an injection $cal(F) -> h_* ul(ZZ\/n)$. Note that since $h$ is finite, $h_*$ is exact and by Leray spectral sequence @derived-lower-star-first-props (1), $h_* ol(x')_* ul(ZZ\/n) = (h(ol(x')))_* ul(ZZ\/n)$. Thus by replacing $X$ with $X'$, we may assume that $cal(F) = ul(ZZ\/n)$. 
+  By @finite-morphisms-and-constructible-sheaves, there exists finite $h: X' -> X$ and an injection $cal(F) -> h_* ul(ZZ\/n)$. Note that since $h$ is finite, $h_*$ is exact and by the Leray spectral sequence @derived-lower-star-first-props (1), $h_* ol(x')_* ul(ZZ\/n) = (h(ol(x')))_* ul(ZZ\/n)$. Thus by replacing $X$ with $X'$, we may assume that $cal(F) = ul(ZZ\/n)$. 
 
   Let $x_1, dots.c, x_m in X$ be generic points of all irreducible components of $X$, and $ol(x_i)$ be a geometric point above $x_i$. We claim that the canonical map: 
   $
@@ -220,7 +220,7 @@ To establish the main result, we need some preliminary statements.
   $
     ZZ\/n -> oplus.big_(i=1)^m (ZZ\/n)^(oplus pi_0 (U_(ol(x_i))))
   $
-  This diagonal map is injective, since the image of $U$ in $X$ must contain the generic point of some irreducible component of $X$, making $U_(ol(x_i))$ nonempty, and the direct sum on RHS nonzero. We are thereby done. 
+  This diagonal map is injective, since the image of $U$ in $X$ must contain the generic point of some irreducible component of $X$, making $U_(ol(x_i))$ nonempty, and the direct sum on the RHS nonzero. We are thereby done. 
 ]
 
 #proposition(name: <finite-bc-in-the-limit>)[
@@ -264,7 +264,7 @@ To establish the main result, we need some preliminary statements.
     edge((0, -1), (0, 0), [$g'_i$], label-side: left, "->")
     edge((-1, -1), (-1, 0), [$g'$], label-side: right, "->")
   }))
-  By @limit-formula-adjunction, $cal(F) = dirlim_i h_i^(-1) h_(i,*) cal(F)$. Denote by $cal(F)_i = h_(i,*) cal(F)$. Thus by @relative-limit-formula-composite, 
+  By @limit-formula-adjunction, $cal(F) = dirlim_i h_i^(-1) h_(i,*) cal(F)$. Put $cal(F)_i = h_(i,*) cal(F)$. Thus by @relative-limit-formula-composite, 
   $
     R^q f_* cal(F) = dirlim_i R^q f_(i,*) cal(F)_i
   $
@@ -322,13 +322,13 @@ The main reduction result is now stated in the following theorem.
 #proof[
   (1)$==>$(2) is tautological, so we only prove (2)$==>$(1). The proof is essentially a sequence of reductions. Also, note that since $cal(L)_S in D^b_#[ctf] (S'_et, Lambda)$, and arbitrary pullbacks preserve flatness of sheaves of $Lambda$-modules, $cal(L)_X, cal(L)_Y$ are always in $D^b_#[ctf]$ of the respective schemes. 
 
-  Thus, both sides of $g_Y^(-1) R f_* cal(K) Lotimes_Lambda cal(L)_Y -> R f'_* (g_X^(-1) cal(K) Lotimes_Lambda cal(L)_X)$ are bounded both above and below in $cal(K)$. By the way-out lemma, it suffices to deal with the case that $cal(K) = cal(F) in cAb(X_et, Lambda)$ is just a single sheaf. From now on we always assume $cal(K) = cal(F)$ is a single sheaf. 
+  Thus, both sides of $g_Y^(-1) R f_* cal(K) Lotimes_Lambda cal(L)_Y -> R f'_* (g_X^(-1) cal(K) Lotimes_Lambda cal(L)_X)$ are bounded below in $cal(K)$. By the way-out lemma, it suffices to deal with the case that $cal(K) = cal(F) in cAb(X_et, Lambda)$ is just a single sheaf. From now on we always assume $cal(K) = cal(F)$ is a single sheaf. 
 
-  Furthermore, to use limit formulas, we need to translate statements in derived categories to statements in abelian categories. Replace $cal(L)_S$ with a bounded complex $cal(P)_S^bullet$ of flat sheaves. Then by the hypercohomology spectral sequence, for LHS of relative base change, there is a spectral sequence: 
+  Furthermore, to use limit formulas, we need to translate statements in derived categories to statements in abelian categories. Replace $cal(L)_S$ with a bounded complex $cal(P)_S^bullet$ of flat sheaves. Then by the hypercohomology spectral sequence, for the LHS of the relative base change, there is a spectral sequence: 
   $
     E_1^(p,q) = g_Y^(-1) R^q f_* cal(F) otimes_Lambda cal(P)_Y^p ==> h^(p+q) (g_Y^(-1) R f_* cal(F) Lotimes_Lambda cal(L)_Y)
   $
-  and for RHS, there is a spectral sequence: 
+  and for the RHS, there is a spectral sequence: 
   $
     tilde(E)_1^(p,q) = R^q f'_* (g_X^(-1) cal(F) otimes_Lambda cal(P)_X^p) ==> h^(p+q) (R f'_* (g_X^(-1) cal(F) otimes_Lambda cal(L)_X))
   $
@@ -340,7 +340,7 @@ The main reduction result is now stated in the following theorem.
   Step 1. It suffices to deal with the case where $X -> Y$ is of finite presentation. 
 
   #proof_[Proof of Step 1][
-    Note that $f: X -> Y$ is qcqs, and so by @relative-approx, we may write $X = invlim_lambda X_lambda$ as a projective limit of finite presentation $Y$-schemes with affine transition morphisms. We thus have a following Cartesian diagram of $S$-schemes: 
+    Note that $f: X -> Y$ is qcqs, and so by @relative-approx, we may write $X = invlim_lambda X_lambda$ as a projective limit of finite presentation $Y$-schemes with affine transition morphisms. We thus have the following Cartesian diagram of $S$-schemes: 
     // https://q.uiver.app/#r=typst&q=WzAsNixbMCwwLCJYJyJdLFsxLDAsIlgnX2xhbWJkYSJdLFsyLDAsIlknIl0sWzAsMSwiWCJdLFsxLDEsIlhfbGFtYmRhIl0sWzIsMSwiWSJdLFsyLDUsImciXSxbMSw0LCJnJ19sYW1iZGEiXSxbMCwzLCJnJyIsMl0sWzQsNSwiZl9sYW1iZGEiLDJdLFszLDQsImhfbGFtYmRhIiwyXSxbMCwxLCJoJ19sYW1iZGEiXSxbMSwyLCJmJ19sYW1iZGEiXV0=
     #align(center, diagram({
       node((0, 0), [$X'$])
@@ -357,7 +357,7 @@ The main reduction result is now stated in the following theorem.
       edge((0, 0), (1, 0), [$h'_lambda$], label-side: left, "->")
       edge((1, 0), (2, 0), [$f'_lambda$], label-side: left, "->")
     }))
-    Take $cal(F)_lambda = h_(lambda,*) cal(F)$, and take a bounded flat resolution $cal(P)^bullet$ of $cal(L)_Y$. By @limit-formula-adjunction, $cal(F) = dirlim_lambda h_lambda^(-1) cal(F)_lambda$. Now consider the two spectral sequences on LHS and RHS of relative base changes for the right square for various $lambda$: 
+    Take $cal(F)_lambda = h_(lambda,*) cal(F)$, and take a bounded flat resolution $cal(P)^bullet$ of $cal(L)_Y$. By @limit-formula-adjunction, $cal(F) = dirlim_lambda h_lambda^(-1) cal(F)_lambda$. Now consider the two spectral sequences on the LHS and RHS of relative base changes for the right square for various $lambda$: 
     $
       E_(1,lambda)^(p,q) = g_Y^(-1) R^q f_(lambda,*) cal(F)_lambda otimes_Lambda cal(P)^p => h^(p+q) (g_Y^(-1) R f_(lambda,*) cal(F)_lambda Lotimes_Lambda cal(L)_Y) \
 
@@ -369,7 +369,7 @@ The main reduction result is now stated in the following theorem.
     $
     by @relative-limit-formula-for-schemes, while by the same limit formula: 
     $
-      dirlim_lambda (R^q f'_(lambda,*) (g_lambda^(-1) cal(F) otimes_Lambda f'_lambda^(-1) cal(P)^p)) &cong R^q f'_* (dirlim_lambda (h'_lambda^(-1) g_lambda^(-1) cal(F)_lambda otimes_Lambda f'^(-1) cal(P)^p)) \
+      dirlim_lambda (R^q f'_(lambda,*) (g_lambda^(-1) cal(F)_lambda otimes_Lambda f'_lambda^(-1) cal(P)^p)) &cong R^q f'_* (dirlim_lambda (h'_lambda^(-1) g_lambda^(-1) cal(F)_lambda otimes_Lambda f'^(-1) cal(P)^p)) \
       &= R^q f'_* ((dirlim_lambda g_X^(-1) h_lambda^(-1) cal(F)_lambda) otimes_Lambda f'^(-1) cal(P)^p) \
       &= R^q f'_* (g_X^(-1) cal(F) otimes_Lambda f'^(-1) cal(P)^p)
     $
@@ -390,7 +390,7 @@ The main reduction result is now stated in the following theorem.
   Step 2. It suffices to deal with the case where $f: X -> Y$ is between finite type $S$-schemes. 
 
   #proof_[Proof of Step 2][
-    By Step 1, we may assume that $f: X -> Y$ is of finite presentation between qcqs $S$-schemes. By @passage-to-limit-of-morphisms and @relative-approx, we may write $Y = invlim_i Y_i$ with $Y_i$ being finite type $S$-schemes for $i >= 0$, and we have a finite type morphism $f_0: X_0 -> Y_0$ whose base change along $Y -> Y_0$ is just $f: X -> Y$. Put $f_i: X_i -> Y_i$ to be the base change of $f_0$ along $Y_i -> Y_0$. 
+    By Step 1, we may assume that $f: X -> Y$ is of finite presentation between qcqs $S$-schemes. By @passage-to-limit-of-morphisms and @relative-approx, we may write $Y = invlim_i Y_i$ with $Y_i$ being finite type $S$-schemes for $i >= 0$, and we have a finite type morphism $f_0: X_0 -> Y_0$ whose base change along $Y -> Y_0$ is just $f: X -> Y$. Let $f_i: X_i -> Y_i$ be the base change of $f_0$ along $Y_i -> Y_0$. 
 
     We now have a cube with Cartesian faces: 
     // https://q.uiver.app/#r=typst&q=WzAsOCxbMCwwLCJYJyJdLFsyLDAsIlknIl0sWzEsMSwiWCdfaSJdLFszLDEsIlknX2kiXSxbMCwyLCJYIl0sWzIsMiwiWSJdLFsxLDMsIlhfaSJdLFszLDMsIllfaSJdLFszLDcsImdfKFlfaSkiLDEseyJsYWJlbF9wb3NpdGlvbiI6MjB9XSxbMSw1LCJnX1kiLDEseyJsYWJlbF9wb3NpdGlvbiI6ODB9XSxbMiw2LCJnXyhYX2kpIiwxLHsibGFiZWxfcG9zaXRpb24iOjIwfV0sWzAsNCwiZ19YIiwxLHsibGFiZWxfcG9zaXRpb24iOjgwfV0sWzQsNSwiZiIsMSx7ImxhYmVsX3Bvc2l0aW9uIjozMH1dLFswLDEsImYnIiwxXSxbNiw3LCJmX2kiLDFdLFsyLDMsImYnX2kiLDEseyJsYWJlbF9wb3NpdGlvbiI6ODB9XSxbNSw3LCJoX2kiLDFdLFsxLDMsImgnX2kiLDFdLFs0LDYsImtfaSIsMV0sWzAsMiwiaydfaSIsMV1d
@@ -416,7 +416,7 @@ The main reduction result is now stated in the following theorem.
       edge((0, 2), (1, 3), [$k_i$], label-side: center, "->")
       edge((0, 0), (1, 1), [$k'_i$], label-side: center, "->")
     }, crossing-fill: thm-box-curr-color()))
-    where the vertical morphisms are base changes of $g: S' -> S$. Put $cal(L) = cal(L)_Y$ and $cal(L)_i = cal(L)_(Y_i)$, and pick flat resolutions $cal(P)^bullet, cal(P)_i^bullet$ of $cal(L), cal(L)_i$ all supported on a certain bounded interval. Put $cal(F)_i = k_(i,*) cal(F)$ so that $cal(F) = dirlim_i k_i^(-1) cal(F)_i$ by @limit-formula-adjunction. 
+    where the vertical morphisms are base changes of $g: S' -> S$. Put $cal(L) = cal(L)_Y$ and $cal(L)_i = cal(L)_(Y_i)$, and pick a bounded flat resolution $cal(P)_S^bullet$ of $cal(L)_S$ and obtain $cal(P)^bullet, cal(P)_i^bullet$ by pulling it back to $Y'$, $Y'_i$. Put $cal(F)_i = k_(i,*) cal(F)$ so that $cal(F) = dirlim_i k_i^(-1) cal(F)_i$ by @limit-formula-adjunction. 
     
     Consider canonical spectral sequences: 
     $
@@ -435,14 +435,14 @@ The main reduction result is now stated in the following theorem.
       dirlim_i h'_i^(-1) tilde(E)_1^(p,q) &= dirlim_i h'_i^(-1) R^q f'_(i,*) (g_(X_i)^(-1) cal(F)_i otimes_Lambda f'_i^(-1) cal(P)^p_i) \
       &cong R^q f'_* (dirlim_i k'_i^(-1) (g_(X_i)^(-1) cal(F)_i otimes_Lambda f'_i^(-1) cal(P)^p_i)) \
       &= R^q f'_* (dirlim_i (g_X^(-1) k_i^(-1) cal(F)_i otimes_Lambda f'^(-1) h'_i^(-1) cal(P)^p_i)) \
-      &= R^q f'_* (g_X^(-1) (dirlim_i k_i^(-1) cal(F)_i) otimes_Lambda cal(P)^p) \
-      &= R^q f'_* (g_X^(-1) cal(F) otimes_Lambda cal(P)^p)
+      &= R^q f'_* (g_X^(-1) (dirlim_i k_i^(-1) cal(F)_i) otimes_Lambda f'^(-1) cal(P)^p) \
+      &= R^q f'_* (g_X^(-1) cal(F) otimes_Lambda f'^(-1) cal(P)^p)
     $
     Hence, we have canonical spectral sequences: 
     $
       E_1^(p,q) = g_Y^(-1) R^q f_* cal(F) otimes_Lambda cal(P)^p => dirlim_i h'_i^(-1) h^(p+q) (g_(Y_i)^(-1) R f_(i,*) cal(F)_i Lotimes_Lambda cal(L)_i) \
 
-      tilde(E)_1^(p,q) = R^q f'_* (g_X^(-1) cal(F) otimes_Lambda cal(P)^p) => dirlim_i h'_i^(-1) h^(p+q) (R f'_(i,*) (g_(X_i)^(-1) cal(F)_i Lotimes_Lambda f'_i^(-1) cal(L)_i))
+      tilde(E)_1^(p,q) = R^q f'_* (g_X^(-1) cal(F) otimes_Lambda f'^(-1) cal(P)^p) => dirlim_i h'_i^(-1) h^(p+q) (R f'_(i,*) (g_(X_i)^(-1) cal(F)_i Lotimes_Lambda f'_i^(-1) cal(L)_i))
     $
     However, the same canonical exact sequences converge to $h^(p+q) (g_Y^(-1) R f_* cal(F) Lotimes_Lambda cal(L)_Y)$ and $h^(p+q) (R f'_* (g_X^(-1) cal(F) Lotimes_Lambda cal(L)_X))$, respectively. More precisely, there exist two canonical morphisms of spectral sequences, each the identity on the $E_1$-page, so the limits are isomorphic. Hence, we have canonical isomorphisms: 
     $
@@ -458,11 +458,11 @@ The main reduction result is now stated in the following theorem.
   #proof_[Proof of Step 3][
     By Step 2, we may assume that $f: X -> Y$ is between finite type $S$-schemes. 
 
-    Suppose that $f$ is additionally separated. Since $S$ is noetherian, so is $X$ and $Y$. Thus we may pick a compactification $X ->^j ol(X) ->^(ol(f)) Y$. Now the relative base change for $cal(L)_(ol(X))$ along $j$ is an isomorphism by hypotheses, and that for $cal(L)_Y$ along $ol(f)$ is an isomorphism by proper base change. Thus the relative base change along $f$ for $cal(L)_Y$ is an isomorphism, and we are done. 
+    Suppose that $f$ is additionally separated. Since $S$ is noetherian, so are $X$ and $Y$. Thus we may pick a compactification $X ->^j ol(X) ->^(ol(f)) Y$. Now the relative base change for $cal(L)_(ol(X))$ along $j$ is an isomorphism by hypotheses, and that for $cal(L)_Y$ along $ol(f)$ is an isomorphism by proper base change. Thus the relative base change along $f$ for $cal(L)_Y$ is an isomorphism, and we are done. 
 
-    Since $X$ is noetherian, we may cover it by finitely many affine opens. That is, there exists an affine scheme $Z$ with $j: Z -> X$ a surjection. By the separated case, the relative base change for $cal(L)_Y$ along $j$ and $f compose j$ are isomorphisms. For a complex $cal(K)$ of the form $R j_* cal(K)_Z$, the composition: 
+    Since $X$ is noetherian, we may cover it by finitely many affine opens. That is, there exists an affine scheme $Z$ with $j: Z -> X$ a surjection. By the separated case, the relative base changes for $cal(L)_Y$ along $j$ and $f compose j$ are isomorphisms. For a complex $cal(K)$ of the form $R j_* cal(K)_Z$, the composition: 
     $
-      g_Y^(-1) R f_* R j_* cal(K)_Z Lotimes_Lambda cal(L)_Y -> R f'_* (g_X^(-1) R j_* cal(K)_Z Lotimes_Lambda cal(L)_X) -> R f'_* R j_* (g_Z^(-1) cal(K)_Z Lotimes_Lambda cal(L)_Z) 
+      g_Y^(-1) R f_* R j_* cal(K)_Z Lotimes_Lambda cal(L)_Y -> R f'_* (g_X^(-1) R j_* cal(K)_Z Lotimes_Lambda cal(L)_X) -> R f'_* R j'_* (g_Z^(-1) cal(K)_Z Lotimes_Lambda cal(L)_Z) 
     $
     of relative base changes for $f$ and $j$, is the same as the relative base change along $f compose j$. Hence, the composition here is an isomorphism and the second map is an isomorphism by the separated case. Thus, the first map: 
     $
@@ -474,7 +474,7 @@ The main reduction result is now stated in the following theorem.
     $
       g_Y^(-1) R f_* cal(K) Lotimes_Lambda cal(L)_Y -> R f'_* (g_X^(-1) cal(K) Lotimes_Lambda cal(L)_X)
     $
-    is supported on $>=a-b_1$. Form a distinguished triangle: 
+    are supported on $>=a+b_1$. Form a distinguished triangle: 
     $
       cal(K) -> R j_* j^(-1) cal(K) -> cal(R) ->^(+1) 
     $
@@ -521,23 +521,23 @@ The main reduction result is now stated in the following theorem.
     $
       g_Y^(-1) R f_* cal(K) Lotimes_Lambda cal(L)_Y -> R f'_* (g_X^(-1) cal(K) Lotimes_Lambda cal(L)_X)
     $
-    being an isomorphism on $h^r$ for all $r<=q$ and for all $cal(K) in D_(>=a)$, implies the same statement but for $h^(q+1)$. Both sides are supported on $>=a-b_1$, so this map is trivially an isomorphism on $h^r$ for $r<=a-b_1-1$. By induction, this map is a quasi-isomorphism. 
+    being an isomorphism on $h^r$ for all $r<=q$ and for all $cal(K) in D_(>=a)$, implies the same statement but for $h^(q+1)$. Both sides are supported on $>=a+b_1$, so this map is trivially an isomorphism on $h^r$ for $r<=a+b_1-1$. By induction, this map is a quasi-isomorphism. 
   ]
 
   Step 4. Conclusion of proof. 
 
   #proof[
-    Let $f: X -> Y$ be an open immersion between finite type $S$-scheme. In particular, $X, Y$ are noetherian. Suppose that $cal(F) = dirlim_lambda cal(F)_lambda$. 
+    Let $f: X -> Y$ be an open immersion between finite type $S$-schemes. In particular, $X, Y$ are noetherian. Suppose that $cal(F) = dirlim_lambda cal(F)_lambda$. 
 
-    Take the spectral sequences for LHS and RHS for $cal(F)_lambda$: 
+    Take the spectral sequences for the LHS and RHS for $cal(F)_lambda$: 
     $
       E_(1,lambda)^(p,q) = g_Y^(-1) R^q f_* cal(F)_lambda otimes_Lambda cal(P)_Y^p ==> h^(p+q) (g_Y^(-1) R f_* cal(F)_lambda Lotimes_Lambda cal(L)_Y)
     $
-    and for RHS, there is a spectral sequence: 
+    and for the RHS, there is a spectral sequence: 
     $
       tilde(E)_(1,lambda)^(p,q) = R^q f'_* (g_X^(-1) cal(F)_lambda otimes_Lambda cal(P)_X^p) ==> h^(p+q) (R f'_* (g_X^(-1) cal(F)_lambda otimes_Lambda cal(L)_X))
     $
-    Taking limit over all $lambda$ and using @relative-limit-formula-for-sheaves yields (by similar arguments as in Step 2 and Step 3): 
+    Taking the limit over all $lambda$ and using @relative-limit-formula-for-sheaves yields (by similar arguments as in Step 2 and Step 3): 
     $
       dirlim_lambda h^(p+q) (g_Y^(-1) R f_* cal(F)_lambda Lotimes_Lambda cal(L)_Y) cong h^(p+q) (g_Y^(-1) R f_* cal(F) Lotimes_Lambda cal(L)_Y) \
       dirlim_lambda h^(p+q) (R f'_* (g_X^(-1) cal(F)_lambda otimes_Lambda cal(L)_X)) cong h^(p+q) (R f'_* (g_X^(-1) cal(F) otimes_Lambda cal(L)_X))
@@ -569,7 +569,7 @@ The main reduction result is now stated in the following theorem.
 
     - For every algebraic geometric point $p: ol(x) = P -> X$, the relative base change: #h(1fr)
       $
-        g_X^(-1) p_* ul(M) Lotimes_Lambda cal(L)_X -> g_P^(-1) (ul(M) Lotimes_Lambda cal(L)_P)
+        g_X^(-1) p_* ul(M) Lotimes_Lambda cal(L)_X -> R p'_* (g_P^(-1) ul(M) Lotimes_Lambda cal(L)_P)
       $
       is an isomorphism. 
 

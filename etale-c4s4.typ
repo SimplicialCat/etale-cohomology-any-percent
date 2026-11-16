@@ -17,7 +17,7 @@ In this section, we will establish:
 
   - $f^(-1) (V_1 times_V V_2) = f^(-1) (V_1) times_(f^(-1) (V)) f^(-1) (V_2)$. 
   
-  Therefore, $cal(V) = {V_i -> V}$ is a cover in $Y_et$ implies that ${f^(-1) (V_i) -> f^(-1) (V)}$ is a covering in $X_et$. 
+  Therefore, the fact that $cal(V) = {V_i -> V}$ is a cover in $Y_et$ implies that ${f^(-1) (V_i) -> f^(-1) (V)}$ is a covering in $X_et$. 
 ]
 
 #definition(name: <defn-etale-direct-image>)[
@@ -32,9 +32,9 @@ In this section, we will establish:
 #proof[
   Indeed, it suffices to show that if $cal(F)$ is a sheaf, so is $f_* cal(F)$. Indeed, the sheaf condition for $f_* cal(F)$ requires that: 
   $
-    f_* cal(F) (V) -> product_i f_* cal(F)(V_i) -> product_(i,j) f_* cal(F) (V_i times_V V_j)
+    f_* cal(F) (V) -> product_i f_* cal(F)(V_i) arrows.rr product_(i,j) f_* cal(F) (V_i times_V V_j)
   $
-  is an equalizer for every cover $cal(V) = {V_i -> V}$ in $Et_Y$. However, using the properties of $f^(-1)$ given above, this translates to the sheaf conditions for $cal(F)$ for the cover $f^(-1) (cal(V)) = {f^(-1) (V_i) -> f^(-1) (V)}$ in $Et_X$, which holds since $cal(F)$ is a sheaf. 
+  is an equalizer for every cover $cal(V) = {V_i -> V}$ in $Et_Y$. However, using the properties of $f^(-1)$ given above, this translates to the sheaf conditions for $cal(F)$ for the cover $f^(-1) (cal(V)) = {f^(-1) (V_i) -> f^(-1) (V)}$ in $Et_X$, which hold since $cal(F)$ is a sheaf. 
 ]
 
 #definition[
@@ -115,7 +115,7 @@ In this section, we will establish:
   and the same goes for $cPAb$. 
 ]
 #proof[
-  We prove for $cPSh$ since the proof for $cPAb$ is the same. We only construct the unit and counit morphisms: 
+  We prove this for $cPSh$ since the proof for $cPAb$ is the same. We only construct the unit and counit morphisms: 
   $
     alpha_(cal(F)): f^(-1)_cPSh f_* cal(F) -> cal(F), beta_(cal(G)): cal(G) -> f_* f^(-1)_cPSh cal(G)
   $

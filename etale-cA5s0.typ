@@ -26,11 +26,11 @@ This appendix mostly follows the development of #cite-stacks("0GIN")[Section 10.
   $
   is surjective.
 
-  Put $R = A_(frak(p))^#[sh]$ and $C = R otimes_(A_(frak(p))) B_(frak(q))$. Quasi-finiteness is preserved by base change, so $C$ is quasi-finite over $R$ at $frak(r)$. By Zariski's main theorem, an open neighborhood $U subset Spec(C)$ of $frak(r)$ admits an open immersion into a scheme $ol(U)$ finite over $Spec(R)$. 
+  Put $R = A_(frak(p))^#[sh]$, $C = R otimes_(A_(frak(p))) B_(frak(q))$, and $C_0 = R otimes_A B$. Let $frak(r)_0$ be the inverse image of $frak(r)$ in $C_0$. Then $C_(frak(r)) cong (C_0)_(frak(r)_0)$. Quasi-finiteness is preserved by base change, so $C_0$ is quasi-finite over $R$ at $frak(r)_0$. By Zariski's main theorem, an open neighborhood $U subset Spec(C_0)$ of $frak(r)_0$ admits an open immersion into a scheme $ol(U)$ finite over $Spec(R)$. 
   
-  Since $R$ is henselian, by @equiv-defns-of-henselian (1), $ol(U)$ decomposes into spectra of finite local $R$-algebras. The point $frak(r)$ is the closed point of one such component $V$. Now $U inter V$ contains the closed point of the local scheme $V$, hence $U inter V = V$. Consequently,
+  Since $R$ is henselian, by @equiv-defns-of-henselian (1), $ol(U)$ decomposes into spectra of finite local $R$-algebras. The point $frak(r)_0$ is the closed point of one such component $V$. Now $U inter V$ contains the closed point of the local scheme $V$, hence $U inter V = V$. Consequently,
   $
-    C_(frak(r)) cong cal(O)_(V,frak(r))
+    C_(frak(r)) cong (C_0)_(frak(r)_0) cong cal(O)_(V,frak(r)_0)
   $
   is a finite local $R$-algebra. It is thus strict henselian by @finite-over-henselian-is-henselian. By the surjectivity of $k(frak(p))^sep otimes_(k(frak(p))) k(frak(q)) -> k(frak(q))^sep$, the residue field of $C_(frak(r))$ is $k(frak(q))^sep$, so $C_(frak(r))$ is strictly henselian.
 
@@ -46,7 +46,7 @@ This appendix mostly follows the development of #cite-stacks("0GIN")[Section 10.
 ]
 
 #lemma(name: <tensor-of-local-rings-still-local-criterion>)[
-  (#cite-stacks("092Y")[Lemma 10.156.5]) Let $A -> B$ and $A -> C$ be local homomorphisms of local rings, s.t:: 
+  (#cite-stacks("092Y")[Lemma 10.156.5]) Let $A -> B$ and $A -> C$ be local homomorphisms of local rings, s.t.: 
 
   - $A -> C$ is integral; 
 
@@ -75,7 +75,7 @@ This appendix mostly follows the development of #cite-stacks("0GIN")[Section 10.
 
   - $A -> B$ is quasi-finite at $frak(p)_B$;
   
-  - $B$ is a filtered colimit of quasi-finite $A$-algebras. In particular, when $B$ is integral over $A$. 
+  - $B$ is a filtered colimit of quasi-finite $A$-algebras, in particular when $B$ is integral over $A$. 
 
   (Here, all strict henselizations of $A,B,C,D$ are taken w.r.t. the separable closure of $k(frak(p)_(A,B,C,D))$ in $Omega$.)
 ]

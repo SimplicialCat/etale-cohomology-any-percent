@@ -84,7 +84,7 @@ In this section, we write down the six functor formalism, a set of axioms that e
 
   + (Poincare duality) For smooth $f$ of relative dimension $d$, there is a canonical identification: 
     $
-      R f^! cal(K) cong cal(K)(d)[2d]
+      R f^! cal(K) cong f^(-1) cal(K)(d)[2d]
     $
 
   + (Smooth base change) For every Cartesian square: 
@@ -140,7 +140,7 @@ As a final gift, the next page contains a cheat sheet for etale cohomology for y
   #set text(fill: red, weight: "semibold")
   #set align(left)
 
-  Second part of this book on Weil conjectures is planned, but will not be worked on at least in a few months. Stay tuned! 
+  The second part of this book on the Weil conjectures is planned, but will not be worked on for at least a few months. Stay tuned! 
 ]
 
 #pagebreak()
@@ -261,7 +261,7 @@ As a final gift, the next page contains a cheat sheet for etale cohomology for y
     box(inset: (x: 6pt, y: 6pt), stroke: black, height: auto, width: 100%)[
       - l.c.c. sheaves = const. after etale cover, constr. sheaves = l.c.c. on loc. closed stratification
       - constr. sheaves closed under ker, coker, extensions, $j_!$ for $j$ q.c. etale, $h_*$ for $h$ finite
-      - constr. sheaves resolved on the left by $j_! ul(Lambda)$ for $j$ q.c. etale, and on the right by $h_* ul(Lambda)$ for $h$ finite
+      - constr. sheaves resolved on the left by $j_! ul(ZZ\/n)$ for $j$ q.c. etale, and on the right by $h_* ul(ZZ\/n)$ for $h$ finite
     ],
     grid(columns: (1fr, 1fr), inset: (6pt, 6pt), stroke: black, 
       [#align(center)[#text(size: 13pt)[Proper base change]]], 
@@ -286,8 +286,8 @@ As a final gift, the next page contains a cheat sheet for etale cohomology for y
         - $f^(-1) tack.l R f_*$, $R f_! tack.l R f^!$, $- Lotimes_Lambda bullet tack.l RHHom(bullet, -)$ \
           all six functors preserve $D^b_#[ctf]$
       ], [
-        - $f$ sm. of rel. dim. $d$, $R f^! cal(K) cong cal(K)(d)[2d]$; 
-        - $X$ sm. of rel. dim. $d$ over $k = ol(k)$ $==>$ perfect pairing $H^q_c (X, cal(F)) times Ext^(2d-q) (cal(F), ul(ZZ\/n)(d)) -> ZZ\/n$
+        - $f$ sm. of rel. dim. $d$, $R f^! cal(K) cong f^(-1) cal(K)(d)[2d]$; 
+        - $X$ sm. of rel. dim. $d$ over $k = ol(k)$ $==>$ $forall cal(F) in cAb_c (X_et, ZZ\/n)$, a perfect pairing $H^q_c (X, cal(F)) times Ext^(2d-q) (cal(F), ul(ZZ\/n)(d)) -> ZZ\/n$
         #v(1fr)
       ]
     )

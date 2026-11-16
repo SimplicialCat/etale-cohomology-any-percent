@@ -9,7 +9,7 @@ To put it simply, descent theory answers the following questions. Given a morphi
 
 - When does $cal(G) in QCoh(S')$ come from the pullback of some $cal(F) in QCoh(S)$, and how natural is this construction? 
 
-- When does a morphism $S' -> X$ lift to a morphism $S -> X$, and how natural this construction is? 
+- When does a morphism $S' -> X$ lift to a morphism $S -> X$, and how natural is this construction? 
 
 It turns out that when $S' -> S$ is fpqc, both questions have satisfactory answers. 
 
@@ -48,9 +48,9 @@ It turns out that when $S' -> S$ is fpqc, both questions have satisfactory answe
   $
   We call the pair $(cal(F)', eta)$ the *canonical descent datum* for $cal(F)'$. 
 
-  Mimicking this construction, a *descent datum* for $S' -> S$ is a pair $(cal(F)', eta)$, where $cal(F)' in QCoh(S')$, and $eta: p_1^* cal(F)' -> p_2^* cal(F)'$ satisfies the cocycle condition $p_(13)^* eta = p_(23)^* eta compose p_(12)^* eta$. A morphism between descent data is a morphism between their underlying sheaves, compatible with the isomorphisms $eta$. 
+  Mimicking this construction, a *descent datum* for $S' -> S$ is a pair $(cal(F)', eta)$, where $cal(F)' in QCoh(S')$, and $eta: p_1^* cal(F)' -> p_2^* cal(F)'$ is an isomorphism satisfying the cocycle condition $p_(13)^* eta = p_(23)^* eta compose p_(12)^* eta$. A morphism between descent data is a morphism between their underlying sheaves, compatible with the isomorphisms $eta$. 
   
-  The category of descent datum for $f: S' -> S$ is denoted $DD(f)$. Then the construction of the canonical descent datum gives a functor: 
+  The category of descent data for $f: S' -> S$ is denoted $DD(f)$. Then the construction of the canonical descent datum gives a functor: 
   $
     QCoh(S) -> DD(f), cal(F) |-> (cal(F)', eta)
   $
@@ -60,7 +60,7 @@ It turns out that when $S' -> S$ is fpqc, both questions have satisfactory answe
 #lemma[
   Let $f: S' -> S$ be faithfully flat and $(cal(G), eta) in DD(f)$ be any descent datum. Then $eta$ satisfies the counit condition: 
   $
-    Delta^* eta = id_(Delta^* cal(G))
+    Delta^* eta = id_(cal(G))
   $
 ]
 #proof[
@@ -76,14 +76,14 @@ It turns out that when $S' -> S$ is fpqc, both questions have satisfactory answe
   $
     eta = eta compose (Delta compose p_1)^* eta
   $
-  Since $eta$ is an isomorphism, we may cancel it to get $p_1^* Delta^* eta = id_(p_1^* Delta^* cal(G))$. $p_1$ is a base change of $f$, and is hence faithfully flat. Thus $p_1^*$ is faithful on morphisms, and so $Delta^* eta = id_(Delta^* cal(G))$. 
+  Since $eta$ is an isomorphism, we may cancel it to get $p_1^* Delta^* eta = id_(p_1^* cal(G))$. $p_1$ is a base change of $f$, and is hence faithfully flat. Thus $p_1^*$ is faithful on morphisms, and so $Delta^* eta = id_(cal(G))$. 
 ]
 
 #lemma(name: <amitsur-complex-exact>)[
   (Amitsur sequence) Given $A -> A'$ faithfully flat, let $A^((n))$ be the tensor product of $n$ copies of $A'$ over $A$. For any $M in AMod(A)$, denote $M^((n)) = M otimes_A A^((n))$. Then the sequence: 
   $
     0 -> M -> M' -> dots.c -> M^((n)) &-> M^((n+1)) -> dots.c \
-    m otimes a_1 otimes dots.c otimes a_n &|-> m otimes (sum_(i=0)^n (-1)^i (dots.c otimes a_(i-1) otimes 1 otimes a_i otimes dots.c))
+    m otimes a_1 otimes dots.c otimes a_n &|-> m otimes (sum_(i=0)^n (-1)^i (a_1 otimes dots.c otimes a_i otimes 1 otimes a_(i+1) otimes dots.c otimes a_n))
   $
   is exact. In particular, we have a left exact sequence: 
   $
@@ -103,16 +103,16 @@ It turns out that when $S' -> S$ is fpqc, both questions have satisfactory answe
   where the first $A'$ is the distinguished tensor factor coming from $A' otimes_A -$. Now for the base changed complex, the differential is: 
   $
     d^n: N^((n)) &-> N^((n+1)) \
-    m otimes a_0 otimes a_1 otimes dots.c otimes a_n &|-> m otimes a_0 otimes (sum_(i=0)^n (-1)^i (dots.c otimes a_(i-1) otimes 1 otimes a_i otimes dots.c))
+    m otimes a_0 otimes a_1 otimes dots.c otimes a_n &|-> m otimes a_0 otimes (sum_(i=0)^n (-1)^i (a_1 otimes dots.c otimes a_i otimes 1 otimes a_(i+1) otimes dots.c otimes a_n))
   $
   which leaves the distinguished factor $a_0$ untouched. Let:
   $
-    delta^n_i (m otimes a_0 otimes a_1 otimes dots.c otimes a_n) = m otimes a_0 otimes dots.c otimes a_(i-1) otimes 1 otimes a_i otimes dots.c
+    delta^n_i (m otimes a_0 otimes a_1 otimes dots.c otimes a_n) = m otimes a_0 otimes a_1 otimes dots.c otimes a_i otimes 1 otimes a_(i+1) otimes dots.c otimes a_n
   $
   be the $i$-th coface map in the sum defining $d^n$, so $d^n = sum_(i=0)^n (-1)^i delta^n_i$. We now define: 
   $
     phi^n: N^((n+1)) &-> N^((n)) \
-    m otimes a_0 otimes a_1 otimes dots.c otimes a_n &|-> m otimes a_0 a_1 otimes a_2 otimes dots.c otimes a_n
+    m otimes a_0 otimes a_1 otimes dots.c otimes a_(n+1) &|-> m otimes a_0 a_1 otimes a_2 otimes dots.c otimes a_(n+1)
   $
   Then: 
 
@@ -121,7 +121,7 @@ It turns out that when $S' -> S$ is fpqc, both questions have satisfactory answe
       phi^n compose delta^n_0 = id_(N^((n)))
     $
 
-  - For $i >= 1$, $delta^n_i$ inserts $1$ at position $i+1>=2$. Thus $phi^n$ would multiply the old $0$th and $1$st tensor factor, leaving the inserted $1$ at position $i$. Thus: 
+  - For $i >= 1$, $delta^n_i$ inserts $1$ at position $i+1>=2$. Thus $phi^n$ would multiply the old $0$th and $1$st tensor factors, leaving the inserted $1$ at position $i$. Thus: 
     $
       phi^n compose delta^n_i = delta^(n-1)_(i-1) compose phi^(n-1)
     $
@@ -155,7 +155,7 @@ It turns out that when $S' -> S$ is fpqc, both questions have satisfactory answe
     is essentially surjective. 
 ]
 #proof[
-  (1) That $f^*$ is injective is a feature of faithfully flatness, and this sequence is a chain complex naturally since $p_1 compose f = p_2 compose f$. It suffices to show that any morphism $phi in Hom_(A') (M', N')$ satisfying $p_1^* phi = p_2^* phi$, or equivalently, after expanding the definitions: 
+  (1) That $f^*$ is injective is a feature of faithful flatness, and this sequence is a chain complex naturally since $p_1 compose f = p_2 compose f$. It suffices to show that any morphism $phi in Hom_(A') (M', N')$ satisfying $p_1^* phi = p_2^* phi$, or equivalently, after expanding the definitions: 
   $
     phi(m otimes a'_1) otimes a'_2 = a'_1 otimes phi(m otimes a'_2)
   $
@@ -305,7 +305,7 @@ It turns out that when $S' -> S$ is fpqc, both questions have satisfactory answe
       node((1, 1), $product_i Hom_(DD(f_i)) (f_i^* cal(F)|_(S_i), f_i^* cal(G)|_(S_i))$)
       edge("->", shift: (0, 0.1))
       edge("->", shift: (0, -0.1))
-      node((2, 1), $product_(i,j) Hom_(DD(f_(i,j))) (cal(F)|_(f_(i,j)^* S_(i,j)), f_(i,j)^* cal(G)|_(S_(i,j)))$)
+      node((2, 1), $product_(i,j) Hom_(DD(f_(i,j))) (f_(i,j)^* cal(F)|_(S_(i,j)), f_(i,j)^* cal(G)|_(S_(i,j)))$)
 
       for i in range(3) { edge((i, 0), (i, 1), "->") }
     }, spacing: (3em, 5em), node-defocus: 0))
@@ -325,7 +325,7 @@ It turns out that when $S' -> S$ is fpqc, both questions have satisfactory answe
 
   Essential surjectivity: 
   #proof[
-    Given any descent datum $(cal(G), eta) in DD(f)$, note that $(cal(G)|_(S'_i), lambda_i^* eta)$ are descent datum w.r.t. $f_i: S'_i -> S_i$. By the affine case, there are isomorphic to $(f_i^* cal(F)_i, eta_(cal(F)_i))$ for some $cal(F)_i in QCoh(S_i)$. 
+    Given any descent datum $(cal(G), eta) in DD(f)$, note that $(cal(G)|_(S'_i), lambda_i^* eta)$ are descent data w.r.t. $f_i: S'_i -> S_i$. By the affine case, they are isomorphic to $(f_i^* cal(F)_i, eta_(cal(F)_i))$ for some $cal(F)_i in QCoh(S_i)$. 
 
     Next, from compatibilities of ${(cal(G)|_(S'_i), lambda_i^* eta)}$, we see that there are isomorphisms $(f_(i,j)^* cal(F)_i|_(S_(i,j)), eta_#[natural]) cong (f_(i,j)^* cal(F)_j|_(S_(i,j)), eta_#[natural])$ in $DD(f_(i,j))$, satisfying the cocycle condition. By full faithfulness, these descend to isomorphisms $cal(F)_i|_(S_(i,j)) cong cal(F)_j|_(S_(i,j))$ satisfying the cocycle condition. Thus, the $cal(F)_i$'s glue together to form $cal(F) in QCoh(S)$. 
     #suppress-qed
@@ -333,7 +333,7 @@ It turns out that when $S' -> S$ is fpqc, both questions have satisfactory answe
 ]
 
 #theorem(name: <fpqc-descent-of-morphisms>)[
-  (Fpqc descent of morphisms) Let $f: S' -> S$ be a fpqc morphism between $T$-schemes. Then the natural maps: 
+  (Fpqc descent of morphisms) Let $f: S' -> S$ be an fpqc morphism between $T$-schemes. Then the natural maps: 
   $
     Hom_T (S, X) ->^(- compose f) Hom_T (S', X) arrows.rr^(- compose p_1)_(- compose p_2) Hom_T (S'', X)
   $
@@ -364,21 +364,21 @@ It turns out that when $S' -> S$ is fpqc, both questions have satisfactory answe
 
   - Suppose that $V' in "Open"(S')$ satisfies that $p_1^(-1) (V') = p_2^(-1) (V')$. 
     
-    If $s'_(1,2) in S'$ lies above the same point $s in S$, there exists a point $s'' in S''$ s.t. $p_(1,2) (s'') = s'_(1,2)$. Thus: 
+    If $s'_(1,2) in S'$ lie above the same point $s in S$, there exists a point $s'' in S''$ s.t. $p_(1,2) (s'') = s'_(1,2)$. Thus: 
     $
       p_1 (s'') = s'_1 in V' <==> s'' in p_1^(-1) (V') <==> s'' in p_2^(-1) (V') <==> p_2 (s'') = s'_2 in V'
     $ 
-    Thus, $V'$ is a disjoint union of fibers of $f: S' -> S$. That is, there exists some subset $V subset S$ s.t. $V' = f^(-1) (V)$. Since $f$ is surjective, $V = f(V')$, and since $f$ is flat hence open, $V subset S$ is open. We have thus found $V in "Open"(S)$ s.t. $f^(-1)(V) = V'$. 
+    Thus, $V'$ is a disjoint union of fibers of $f: S' -> S$. That is, there exists some subset $V subset S$ s.t. $V' = f^(-1) (V)$. Since $f$ is surjective, $V = f(V')$, and since $f$ is fpqc and hence submersive (#cite-stacks("02JY")[Lemma 29.26.12]), $V subset S$ is open. We have thus found $V in "Open"(S)$ s.t. $f^(-1)(V) = V'$. 
 
   We are now ready to deal with the general case. Pick an affine open cover ${X_i}$ of $X$ s.t. each $X_i$ lies above an affine open of $T$. Now: 
 
-  - Given $T$-morphisms $a,b: S -> X$ s.t. $a compose f = b compose f$, since $f$ is surjective, $a$ and $b$ agrees on the underlying topological spaces. Let $S_i = a^(-1) (X_i) = b^(-1) (X_i)$, and put $a_i, b_i: S_i -> X_i$, with $f_i: S'_i -> S_i$ being the base change of $f$, still fpqc. Now $a_i compose f_i = b_i compose f_i$, and by the affine case, $a_i = b_i$. Thus $a = b$. 
+  - Given $T$-morphisms $a,b: S -> X$ s.t. $a compose f = b compose f$, since $f$ is surjective, $a$ and $b$ agree on the underlying topological spaces. Let $S_i = a^(-1) (X_i) = b^(-1) (X_i)$, and put $a_i, b_i: S_i -> X_i$, with $f_i: S'_i -> S_i$ being the base change of $f$, still fpqc. Now $a_i compose f_i = b_i compose f_i$, and by the affine case, $a_i = b_i$. Thus $a = b$. 
 
   - Let $phi: S' -> X$ be a $T$-morphism s.t. $phi compose p_1 = phi compose p_2$. Put $V'_i = phi^(-1) (X_i)$. Then we have: 
     $
       p_1^(-1) (V'_i) = p_1^(-1) (phi^(-1) (X_i)) = p_2^(-1) (phi^(-1) (X_i)) = p_2^(-1) (V'_i)
     $
-    Thus by our previous discussions on lifting open sets, there exists an open $V_i subset S$ s.t. $V'_i = f^(-1) (V_i)$. Since ${V'_i}$ is an open cover of $S'$, applying $f$ (which is surjective), ${V_i}$ is an open cover of $S$. Put $f_i: V'_i -> V_i$, being still fpqc. 
+    Thus by our previous discussions on lifting open sets, there exists an open $V_i subset S$ s.t. $V'_i = f^(-1) (V_i)$. Since ${V'_i}$ is an open cover of $S'$, applying $f$ (which is surjective), we see that ${V_i}$ is an open cover of $S$. Put $f_i: V'_i -> V_i$, being still fpqc. 
     
     Put $p_(1,i), p_(2,i): p_1^(-1) (V'_i) = p_2^(-1) (V'_i) = V'_i times_(V_i) V'_i -> V'_i$, and so by the given condition, $phi|_(V'_i) compose p_(1,i) = phi|_(V'_i) compose p_(2,i)$. $phi|_(V'_i)$ is a map $V'_i -> X_i$, so by the affine case, there exists a $T$-morphism $psi_i: V_i -> X_i$ s.t. $phi|_(V'_i) = psi_i compose f_i$. 
 
@@ -492,7 +492,7 @@ Finally, as a corollary of fpqc descent for quasi-coherent sheaves, we prove fpq
   $
   The algebra axioms hold because they hold after pullback to $X'$ and fpqc descent is faithful. Thus $cal(A)$ is a quasi-coherent $cal(O)_X$-algebra.
 
-  Set $Y = SPec(cal(A))$. Then $Y -> X$ is affine. Since $SPec$ commutes with base change, so
+  Set $Y = SPec(cal(A))$. Then $Y -> X$ is affine. Since $SPec$ commutes with base change,
   $
     Y times_X X' cong SPec(f^* cal(A)) cong SPec(cal(A)') 
   $

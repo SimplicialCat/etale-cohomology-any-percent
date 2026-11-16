@@ -2,7 +2,7 @@
 
 == Henselization & strict henselization
 
-Etale morphisms mimic open subsets, in the sense that they define a finer "topology" that will later be studied and is suitable for applications. Now in Zariski topology, one important object of a scheme is its local ring at a point: 
+Etale morphisms mimic open subsets, in the sense that they define a finer "topology" that will later be studied and is suitable for applications. Now in the Zariski topology, one important object of a scheme is its local ring at a point: 
 $
   cal(O)_(X,x) = dirlim_(x in U subset X #[open]) cal(O)_U (U)
 $
@@ -36,7 +36,7 @@ It will turn out that such rings are a special type of local rings characterized
 
   We first prove (5)$==>$(4): 
   #proof[
-    Note that if $(A, frak(m))$ is a local ring, then the image of any map $Spec(A) -> X$ is contained in any open containing $Spec(frak(m))$. 
+    Note that if $(A, frak(m))$ is a local ring, then the image of any map $Spec(A) -> X$ is contained in any open containing the image of the closed point $frak(m) in Spec(A)$. 
 
     Fix a $k$-point $x_0: Spec(k) -> X_0$. Then any section $x: Spec(A) -> X$ lifting $x_0$ must have image contained in any neighborhood $U$ of $x_0$. Thus it suffices to prove for a fixed arbitrary neighborhood $U$ of $x_0$ that there is a unique section $Spec(A) -> U$ lifting $x_0: Spec(k) -> U_0$. 
 
@@ -54,7 +54,7 @@ It will turn out that such rings are a special type of local rings characterized
 
   (2)$==>$(4): 
   #proof[
-    Note that if $(A, frak(m))$ is a local ring, then the image of any map $Spec(A) -> X$ is contained in any open containing $Spec(frak(m))$. 
+    Note that if $(A, frak(m))$ is a local ring, then the image of any map $Spec(A) -> X$ is contained in any open containing the image of the closed point $frak(m) in Spec(A)$. 
 
     Fix a $k$-point $x_0: Spec(k) -> X_0$. Then any section $x: Spec(A) -> X$ lifting $x_0$ must have image contained in any neighborhood $U$ of $x_0$. Thus it suffices to prove for a fixed arbitrary neighborhood $U$ of $x_0$ that there is a unique section $Spec(A) -> U$ lifting $x_0: Spec(k) -> U_0$. 
 
@@ -138,7 +138,7 @@ It will turn out that such rings are a special type of local rings characterized
       $
       Thus $J^2 = I$ in $R$, so $J$ is invertible. Thus $R$ is an etale $A$-algebra. 
 
-    (4) combined with these two points thus show that the reduction: 
+    (4) combined with these two points thus shows that the reduction: 
     $
       Idem(B) -> Idem(B_0), b |-> [b]
     $
@@ -166,7 +166,7 @@ It will turn out that such rings are a special type of local rings characterized
     $
       B_0 = B_(1,0) times dots.c times B_(m,0)
     $
-    modulo $frak(m)$. On the other hand, $gcd(g_0, h_0) = 1$, so $B_0 cong k[T]\/(g_0 (T)) times k[T]\/(h_0 (T))$ by Chinese remainder theorem. Thus, we may assume that: 
+    modulo $frak(m)$. On the other hand, $gcd(g_0, h_0) = 1$, so $B_0 cong k[T]\/(g_0 (T)) times k[T]\/(h_0 (T))$ by the Chinese remainder theorem. Thus, we may assume that: 
     $
       B_(1,0) times dots.c times B_(ell,0) cong k[T]\/(g_0 (T)) \
       B_(ell+1,0) times dots.c times B_(m,0) cong k[T]\/(h_0 (T))
@@ -176,7 +176,7 @@ It will turn out that such rings are a special type of local rings characterized
       g(X) = det(X id - T : B_1 times dots.c times B_ell) \
       h(X) = det(X id - T : B_(ell+1) times dots.c times B_m)
     $
-    to be the characteristic polynomials of $T$ on these factors. Then $g(X) h(X) = det(X id - T : B) = f(X)$, and taking the reductions, $g_0 = g mod frak(m), h_0 = h mod frak(m)$. (In this step, we use the assumption that $g_0, h_0$ are monic.)
+    These are the characteristic polynomials of $T$ on these factors. Then $g(X) h(X) = det(X id - T : B) = f(X)$, and taking the reductions, $g_0 = g mod frak(m), h_0 = h mod frak(m)$. (In this step, we use the assumption that $g_0, h_0$ are monic.)
     #suppress-qed
   ]
 
@@ -226,7 +226,7 @@ Now that we have characterized henselian local rings, we need to construct the h
 
     That is, the strict henselization of $A$ is the filtered colimit of all local rings of etale neighborhoods of $(A, frak(m))$. 
 
-  Now for rigor of the proofs, we need to check that the indexing category of the colimits defining $A^#[h]$ and $A^#[sh]$ are indeed filtered. 
+  Now for rigor of the proofs, we need to check that the indexing categories of the colimits defining $A^#[h]$ and $A^#[sh]$ are indeed filtered. 
   #proof[
     For $A^#[h]$: 
 
@@ -240,7 +240,7 @@ Now that we have characterized henselian local rings, we need to construct the h
       $
         g = (g_1, g_2): Spec(C) -> Spec(B otimes_A B)
       $
-      Since $g_1, g_2$ both induces the morphism $k(frak(q)) -> k(frak(r))$ identified with $k cong k$ on residue fields, $g$ sends $frak(r)$ into the diagonal $Delta_(B\/A) subset Spec(B otimes_A B)$. Since $B$ is etale over $A$, $Delta_(B\/A) subset Spec(B otimes_A B)$ is open. 
+      Since $g_1, g_2$ both induce the morphism $k(frak(q)) -> k(frak(r))$ identified with $k cong k$ on residue fields, $g$ sends $frak(r)$ into the diagonal $Delta_(B\/A) subset Spec(B otimes_A B)$. Since $B$ is etale over $A$, $Delta_(B\/A) subset Spec(B otimes_A B)$ is open. 
       
       Thus taking an affine open $frak(r) in Spec(D) subset g^(-1) (Delta_(B\/A))$, we see that $(Spec(D), frak(r))$ is still in the indexing category, and the inclusion $(Spec(D), frak(r)) -> (Spec(C), frak(r))$ equalizes $g_(1,2)$. 
 
@@ -295,7 +295,7 @@ We now prove the first properties of (strict) henselizations.
     + $A -> A^#[sh]$ is a faithfully flat local homomorphism;
     + $frak(m)_(A^#[sh]) = frak(m) A^#[sh]$; 
     + $k(A^#[sh]) = k^sep$; 
-    + For every strict henselian local ring $R$ and a fixed inclusion $iota: k^sep -> k(R)$, any local homomorphism $A -> R$ factors uniquely as local homomorphisms $A -> A^#[sh] -> R$ with $A^#[sh] -> R$ inducing $iota$ on residue fields. 
+    + For every strict henselian local ring $R$ and a fixed inclusion $iota: k^sep -> k(R)$, any local homomorphism $A -> R$ whose residue-field map equals $k -> k^sep ->^iota k(R)$ factors uniquely as local homomorphisms $A -> A^#[sh] -> R$ with $A^#[sh] -> R$ inducing $iota$ on residue fields. 
 
 ]
 #proof[
@@ -309,7 +309,7 @@ We now prove the first properties of (strict) henselizations.
     frak(m)_(A^#[h]) = frak(m) A^#[h], frak(m)_(A^#[sh]) = frak(m) A^#[sh]
   $
 
-  (1c)(2c) Each $B_(frak(q))$ in the definition of $A^#[h]$ or $A^#[sh]$ is a faithfully flat local $A$-algebra. Thus as a directed limit of them, $A^#[h]$ and $A^#[sh]$ are flat $A$-algebras. Now $A -> A^#[h]$ and $A -> A^#[sh]$ are flat local homomorphisms, so they are faithfully flat. (Indeed, flat morphisms are open on spectra, and local homomorphisms send the closed point to the closed point. Thus the images are open subsets of $Spec(A)$ containing the closed point, hence $Spec(A)$ itself.) 
+  (1c)(2c) Each $B_(frak(q))$ in the definition of $A^#[h]$ or $A^#[sh]$ is a faithfully flat local $A$-algebra. Thus as a directed limit of them, $A^#[h]$ and $A^#[sh]$ are flat $A$-algebras. Now $A -> A^#[h]$ and $A -> A^#[sh]$ are flat local homomorphisms, so they are faithfully flat. (Indeed, flat morphisms are generalizing, and a local homomorphism sends the closed point to the closed point. Its image therefore contains every generalization of that point, hence all of $Spec(A)$.) 
 
   (1e)(2e) The residue fields can be written as: 
   $
@@ -319,7 +319,7 @@ We now prove the first properties of (strict) henselizations.
   $
   In the first limit, every $k(frak(q)) = k$, so $k(A^#[h]) = k$. In the second limit, $k(A^#[sh])$ is the union of the $k(frak(q))$'s in $k^sep$. Thus, to show that $k(A^#[sh]) = k^sep$, it remains to show that every finite separable extension $L\/k$ occurs as the residue field of an etale $A$-algebra at a prime above $frak(m)$. 
 
-  - Pick a primitive element $alpha$ so that $L = k(alpha)$, and $alpha$ has monic minimal polynomial $ol(p)(T) in k[T]$. Lift $ol(p)(T)$ arbitrarily to a monic $p(T) in A[T]$ of the same degree. Now since $ol(p)(T) in k[T]$ is separable, we may pick $ol(a_0)(T), ol(a_1)(T) in k[T]$ s.t: 
+  - Pick a primitive element $alpha$ so that $L = k(alpha)$, and $alpha$ has a monic minimal polynomial $ol(p)(T) in k[T]$. Lift $ol(p)(T)$ arbitrarily to a monic $p(T) in A[T]$ of the same degree. Now since $ol(p)(T) in k[T]$ is separable, we may pick $ol(a_0)(T), ol(a_1)(T) in k[T]$ s.t: 
     $
       ol(p)(T) ol(a_0)(T) + ol(p)'(T) ol(a_1) (T) = 1 in k[T]
     $
@@ -353,7 +353,7 @@ We now prove the first properties of (strict) henselizations.
 
   (2a) Similarly, for any etale $A^#[sh]$-algebra $R$ with a prime $frak(q)$ above $frak(m) A^#[sh]$, by @passage-to-limit-of-morphisms and @passage-to-limit-of-properties (3d), there exists an etale neighborhood $(B, frak(q)) -> (A, frak(m))$ and a compatible inclusion $phi: k(frak(q)) -> k^sep$ and an etale $B$-algebra $C$ s.t. $R = C otimes_B A^#[sh]$. There also exists a prime $frak(r) in Spec(C)$ above $frak(q)$. 
   
-  Now base change $Spec(C) -> Spec(B)$ along itself, and the projection $p_1: Spec(C otimes_B C) -> Spec(C)$ admits the diagonal map as a section. Furthermore, we may arbitrarily choose a compatible inclusion $psi: k(frak(r)) -> k^sep$, making $(C, frak(r), psi)$ a stage in the direct limit defining $A^#[sh]$ that dominates $(B, frak(q), phi)$. Thus base changing $Spec(C) -> Spec(B)$ to this stage gives a section, so further base changing to $Spec(R) -> Spec(A^#[sh])$ also has a section. 
+  Now base change $Spec(C) -> Spec(B)$ along itself, and the projection $p_1: Spec(C otimes_B C) -> Spec(C)$ admits the diagonal map as a section. Furthermore, we may arbitrarily choose a compatible inclusion $psi: k(frak(r)) -> k^sep$, making $(C, frak(r), psi)$ a stage in the direct limit defining $A^#[sh]$ that dominates $(B, frak(q), phi)$. Thus base changing $Spec(C) -> Spec(B)$ to this stage gives a section, so after further base changing, $Spec(R) -> Spec(A^#[sh])$ also has a section. 
 
   (1f)(2f) For these universal properties, we need the following lemma. 
 
@@ -431,7 +431,7 @@ An important feature of (strict) henselization is permanence of various desirabl
     $
       d = "ord"_(frak(m) A^#[sh]) (f), quad d_i = "ord"_(frak(m) A^#[sh]) (f_i).
     $
-    Taking the homogeneous degree-$d$ part, there exist homogeneous elements $g_i in G'$ such that:
+    Taking the homogeneous degree-$d$ part, we obtain homogeneous elements $g_i in G'$ such that:
     $
       "in"_(frak(m) A^#[sh]) (f) = sum_(i=1)^s g_i "in"_(frak(m) A^#[sh]) (f_i) in G',
     $
@@ -570,7 +570,7 @@ Next, we prove some miscellaneous properties on henselizations and strict hensel
     $
     In particular, both of these rings are fields. 
 
-  + Let $A arrow.hook B$ be an inclusion of normal local domains. Then the induced maps: 
+  + Let $A arrow.hook B$ be a local inclusion of normal local domains. Then the induced maps: 
     $
       A^#[h] -> B^#[h], A^#[sh] -> B^#[sh]
     $

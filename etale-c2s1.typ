@@ -32,14 +32,14 @@
 
   + $(Omega_(X\/Y))_x = 0$. 
 
-  + The diagonal morphism $Delta_(X\/Y): X -> X times_Y X$ is an open immersion on an open neighborhood of $X$. 
+  + The diagonal morphism $Delta_(X\/Y): X -> X times_Y X$ is an open immersion on an open neighborhood of $x$. 
 ]
 #proof[
   This problem is local on base and source in nature, so we may assume that $X = Spec(B), Y = Spec(A)$ are connected, with $B$ a finitely generated $A$-algebra. Let $x$ correspond to $frak(q) subset B$, and $y$ correspond to $frak(p) subset A$.
 
   (2)$<==>$(3): 
   #proof[
-    We first note that property (2) and (3) are both local in $x$. (3) is local in $x$ by definition, while (2) is local in $x$, since $Omega_(X\/Y)$ is a coherent sheaf on $X$ as $X -> Y$ is locally of finite type, and so it has closed support. As such, we may replace conditions (2)(3) with: 
+    We first note that properties (2) and (3) are both local in $x$. (3) is local in $x$ by definition. (2) is local in $x$, since $X -> Y$ is locally of finite presentation, making $Omega_(X\/Y)$ a coherent sheaf on $X$, which must have closed support. As such, we may replace conditions (2)(3) with: 
     #[
       #set enum(numbering: "(1')")
       2. $Omega_(B\/A) = 0$; 
@@ -54,7 +54,7 @@
   #proof[
     Note that differential sheaves are preserved under base change:
     $
-      Omega_(X\/Y) cong i_(X_y)^* (Omega_(X_y\/k(y)))
+      i_(X_y)^* (Omega_(X\/Y)) cong Omega_(X_y\/k(y))
     $
     so:
     $
@@ -70,12 +70,12 @@
                           & <==> (Omega_(X_y\/k(y)))_x otimes_(cal(O)_(X_y,x)) k(x) = 0 \
                           & <==> (Omega_(X_y\/k(y)))_x = 0
     $
-    Meanwhile, the condition (1) is also preserved under passing to fiber: Indeed, $cal(O)_(X_y,x) = cal(O)_(X,x)\/frak(m)_y cal(O)_(X,x)$ by construction, while the maximal ideal of a field is $0$. Thus, passing to the fiber, it suffices to show that if $f: X = Spec(A) -> Y = Spec(k)$ is of finite type, $x in X$, then TFAE:
+    Meanwhile, the condition (1) is also preserved under passing to a fiber: Indeed, $cal(O)_(X_y,x) = cal(O)_(X,x)\/frak(m)_y cal(O)_(X,x)$ by construction, while the maximal ideal of a field is $0$. Thus, passing to the fiber, it suffices to show that if $f: X = Spec(A) -> Y = Spec(k)$ is of finite type, $x in X$, then TFAE:
 
     + $cal(O)_(X,x)$ is a field and a finite separable extension of $k$;
 
     + $(Omega_(X\/Y))_x = 0$.
-    i.e. the original statement with $Y$ assumed to be spectrum of a field.
+    i.e. the original statement with $Y$ assumed to be the spectrum of a field.
     
     Let $x$ correspond to the prime ideal $frak(q) subset A$. Now: 
     $
@@ -83,7 +83,7 @@
     $
     Thus, it suffices to prove that $Omega_(A_(frak(q))\/k) = 0$ if and only if $A_(frak(q))$ is a field and a finite separable field extension of $k$. The ($<==$) implication is clear from @rel-differential-of-fin-sep-ext, so we prove ($==>$) only. $Omega_(A\/k)$ is a finite $A$-module, so the vanishing of the stalk $Omega_(A\/k) otimes_A A_(frak(q))$ spreads out. Upon replacing $A$ by some $A_f$ for $f in A - frak(q)$, we may assume that $Omega_(A\/k) = 0$. In that case statement (1) states that $X = Spec(A)$ is artinian and reduced, hence $X = union.sq.big_i Spec(L_i)$ for finitely many finite separable extensions $L_i\/k$. 
 
-    Consider first the case that $k$ is an algebraically closed field. By (2)$<==>$(3), $Omega_(A\/k)$ really says that the diagonal $Delta_(A\/k): Spec(A) -> Spec(A otimes_k A)$ is an open immersion. Since affine morphisms are closed, it is also a closed immersion. Thus for any closed point $x in X$, the graph $Gamma_x: Spec(k) -> Spec(k) times_k X$ of the inclusion $x: Spec(k) -> X$, being a base change of the diagonal, must be an open and closed immersion. Thus the inclusion $x -> X$ itself is an open and closed immersion. In other words, every closed point of $X$ is both open and closed. Thus $X$ is a disjoint union of its points. Finally, $X$ is reduced by the following lemma, and so a disjoint union of $Spec(k)$. We may thus conclude the proof in the case that $k$ is algebraically closed. 
+    Consider first the case that $k$ is an algebraically closed field. By (2)$<==>$(3), $Omega_(A\/k)$ really says that the diagonal $Delta_(A\/k): Spec(A) -> Spec(A otimes_k A)$ is an open immersion. Since affine morphisms are separated, this diagonal is also a closed immersion. Thus for any closed point $x in X$, the graph $Gamma_x: Spec(k) -> Spec(k) times_k X$ of the inclusion $x: Spec(k) -> X$, being a base change of the diagonal, must be an open and closed immersion. Thus the inclusion $x -> X$ itself is an open and closed immersion. In other words, every closed point of $X$ is both open and closed. Thus $X$ is a disjoint union of its points. Finally, $X$ is reduced by the following lemma, and so a disjoint union of $Spec(k)$. We may thus conclude the proof in the case that $k$ is algebraically closed. 
 
     #lemma[
       For any artinian local ring $(A, frak(m))$ finite over an algebraically closed field $k$ s.t. $Omega_(A\/k) = 0$, $A = k$. 
@@ -104,11 +104,11 @@
     $
       Spec(A) = union.sq.big_i Spec(L_i)
     $
-    for some finite field extensions $L_i\/k$. If $"char"(k) = 0$ we have separability automatically. If $"char"(k) = p$, take the separable closure $E_i$ of $k$ in $L_i$. Then $L_i = E_i [x_1, dots.c, x_m]\/(x_1^(p^(a_1)) - e_1, dots.c, x_m^(p^(a_m)) - e_m)$. Now $E_i otimes_k ol(k) = ol(k)^([E_i:k])$ by separability, so: 
+    for some finite field extensions $L_i\/k$. If $"char"(k) = 0$ we have separability automatically. If $"char"(k) = p$, let $E_i$ be the separable closure of $k$ in $L_i$. Then $L_i\/E_i$ is finite purely inseparable, and:
     $
-      L_i otimes_k ol(k) cong ((ol(k)[x_1, dots.c, x_m])/((x_1^(p^(a_1)) - e_1, dots.c, x_m^(p^(a_m)) - e_m)))^([E_i:k])
+      L_i otimes_k ol(k) cong product_(sigma: E_i arrow.hook ol(k)) (L_i otimes_(E_i,sigma) ol(k))
     $
-    have components being nilpotent thickenings of $ol(k)$. Thus $L_i otimes_k ol(k)$ has $[E_i:k]$ connected components. On the other hand, $L_i otimes_k ol(k) cong ol(k)^([L_i:k])$ as we have shown. Thus $[E_i:k] = [L_i:k]$, $E_i = L_i$ and so $L_i\/k$ is separable. 
+    Since $L_i\/E_i$ is purely inseparable, each factor is a local artinian algebra with one point (by writing $L_i$ as a tower of simple purely inseparable extensions and checking). Thus, $Spec(L_i otimes_k ol(k))$ has $[E_i:k]$ connected components. On the other hand, $L_i otimes_k ol(k) cong ol(k)^([L_i:k])$ as shown above. Thus $[E_i:k] = [L_i:k]$, $E_i = L_i$, and $L_i\/k$ is separable.
   ]
 ]
 
@@ -138,7 +138,7 @@
   + Unramified/etale morphisms are stable under compositions and base change. 
 
   + Given morphisms $X overset(->,f) Y overset(->,g) Z$, we have: 
-    + $g compose f$ unramified $==>$ $f$ unramified; 
+    + $g compose f$ unramified and $g$ locally of finite type $==>$ $f$ unramified; 
     + $g compose f$ etale and $g$ unramified $==>$ $f$ etale. 
 ]
 #proof[
@@ -152,15 +152,19 @@
   $
     Omega_(B\/A) otimes_B C -> Omega_(C\/A) -> Omega_(C\/B) -> 0
   $
-  where the first and third term vanishing implies vanishing of the second term. 
+  where the first and third terms vanishing implies vanishing of the second term. 
 
   (1) By locality and (2) it suffices to show that $id$ is etale and closed immersions are unramified. Obviously $id$ is etale. Closed immersions are unramified, since under the map $A ->> A\/I$, the multiplication map $mu: A\/I otimes_A A\/I -> A\/I$ is an isomorphism $A\/I otimes_A A\/I cong A\/I$. Its kernel is $0$, so $Omega_((A\/I)\/A) = 0$. 
 
-  (3a) From locality, assume all schemes in question are affine. Consider the first exact sequence of Kahler differentials:
+  (3a) From locality, assume all schemes in question are affine, with $X = Spec(C), Y = Spec(B), Z = Spec(A)$. Since $g$ is locally of finite type, write $B = A[b_1, dots.c, b_m]$. Since $g compose f$ is locally of finite presentation, choose a finite presentation $C = A[T_1, dots.c, T_n]\/(F_1, dots.c, F_r)$. Lift the image of each $b_j$ in $C$ to a polynomial $P_j in A[T_1, dots.c, T_n]$. Then:
+  $
+    C cong B[T_1, dots.c, T_n]\/(F_1, dots.c, F_r, b_1 - P_1, dots.c, b_m - P_m)
+  $
+  as $B$-algebras. Thus $f$ is locally of finite presentation. Consider the first exact sequence of Kahler differentials:
   $
     Omega_(B\/A) otimes_B C -> Omega_(C\/A) -> Omega_(C\/B) -> 0
   $
-  The vanishing of the first and second term implies vanishing of the third. 
+  The vanishing of the first and second terms implies vanishing of the third. 
 
   (3b) The proof should seem automatic. You use base change and the graph scheme, similar to how you prove similar properties for separatedness and properness. Consider the Cartesian diagram: 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJYIl0sWzAsMiwiWSJdLFsyLDIsIlkgdGltZXNfWiBZIl0sWzIsMCwiWCB0aW1lc19aIFkiXSxbMCwxLCJmIl0sWzEsMiwiRGVsdGFfKFlcXC9aKSJdLFszLDIsImYgdGltZXMgaWRfWSIsMl0sWzAsMywiR2FtbWFfZiIsMl1d
@@ -222,10 +226,10 @@
 ]
 
 #proposition[
-  Etale morphisms are open and quasi-finite. 
+  Etale morphisms are open and locally quasi-finite. 
 ]
 #proof[
-  Etale morphisms are open since flat morphisms are open. (This can be checked in the noetherian case as in @cite-hartshorne-ag[Exercise III.9.1]. In the general case, pass to affine opens and use passage to limit as in @absolute-noetherian-approx and @passage-to-limit-of-properties (a) to reduce to the noetherian case.)
+  Etale morphisms are open since flat morphisms locally of finite presentation are open. (This can be checked in the noetherian case as in @cite-hartshorne-ag[Exercise III.9.1]. In the general case, pass to affine opens and use passage to limit as in @absolute-noetherian-approx and @passage-to-limit-of-properties (a) to reduce to the noetherian case.)
   
   They are quasi-finite, since their fibers are etale. However if $k$ is a field, by definition of unramifiedness, any unramified $k$-scheme $X$ must look like: 
   $
@@ -263,7 +267,7 @@ Next, we prove the permanence of many desirable properties under etale morphisms
     $
     and so $I$ is finitely generated. 
 
-    (2) If $B$ is normal, since $A -> B$ is injective, $A$ is at least integral. Now for any $a\/b in Frac(A)$ integral over $A$, it is integral over $B$ as an element of $Frac(B)$, and so $a\/b in B$. Thus $a in A inter b B$. But by faithful flatness, $A inter b B = b A$, and so $a\/b in A$. Thus $A$ is normal. 
+    (2) It suffices to show that for each prime $frak(p) in Spec(A)$, $A_(frak(p))$ is a normal local domain. Choose $frak(q) in Spec(B)$ above it. Then the local map $A_(frak(p)) -> B_(frak(q))$ is faithfully flat and $B_(frak(q))$ is a normal domain. Replacing $A, B$ with $A_(frak(p)), B_(frak(q))$, we may thus assume that $B$ is a normal domain. Since $A -> B$ is injective, $A$ is at least integral. Now for any $a\/b in Frac(A)$ integral over $A$, it is integral over $B$ as an element of $Frac(B)$, and so $a\/b in B$. Thus $a in A inter b B$. But by faithful flatness, $A inter b B = b A$, and so $a\/b in A$. Thus $A$ is normal. 
   ]
 
   Base changing $f$ along $Spec(cal(O)_(Y,y)) -> Y$ does not affect local rings at $x$ and $y$. Thus performing this base change and then shrinking $X$ around $x$, we may assume that $f: Spec(B) = X -> Y = Spec(A)$ is etale between two affine schemes, with $A$ local and $y$ the closed point of $Spec(A)$. 
@@ -294,7 +298,7 @@ Next, we prove the permanence of many desirable properties under etale morphisms
   $
     dim(B_(frak(q))) = dim(A_(frak(p)))
   $
-  so $dim(B_(frak(q))) <= k$ if and only if $dim(A_(frak(p))) <= k$. Also by (1) the regularity of $B_(frak(q))$ and $A_(frak(p))$ are equivalent. Thus, $cal(O)_(X,x)$ is ($R_k$) if and only if $A$ is. 
+  so $dim(B_(frak(q))) <= k$ if and only if $dim(A_(frak(p))) <= k$. Also by (1) the regularities of $B_(frak(q))$ and $A_(frak(p))$ are equivalent. Thus, $cal(O)_(X,x)$ is ($R_k$) if and only if $A$ is. 
 
   (3) For any $frak(q) in Spec(cal(O)_(X,x))$ lying above $frak(p) in Spec(A)$, by the dimension and depth formulas, 
   $
@@ -311,7 +315,7 @@ Next, we prove the permanence of many desirable properties under etale morphisms
   - reducedness $<==> (R_0) and (S_1)$; 
   - normality $<==> (R_1) and (S_2)$. 
 
-  Thus (2)(3) implies (4)(5) in the noetherian case. In general, we need to use limit arguments. Write $A = dirlim_lambda A_lambda$, where each $A_lambda$ is obtained from a finite type $ZZ$-subalgebra $A_(lambda,0)$ of $A$ localized w.r.t. $A_(lambda,0) inter frak(m)_A$, ordered under inclusion. By @passage-to-limit-of-morphisms (1), there exists a finite stage $lambda_0$ and an $A_(lambda_0)$-algebra $B_(lambda_0)$ s.t. $B cong B_(lambda_0) otimes_(A_(lambda_0)) A$. Put $B_lambda = B_(lambda_0) otimes_(A_(lambda_0)) A_lambda$. By @passage-to-limit-of-properties (3d), up to enlarging $lambda_0$, we may assume that $B_(lambda_0)$ is an etale $A_(lambda_0)$-algebra. Thus for each $lambda >= lambda_0$, $B_lambda$ is an etale $A_lambda$-algebra. 
+  Thus (2)(3) imply (4)(5) in the noetherian case. In general, we need to use limit arguments. Write $A = dirlim_lambda A_lambda$, where each $A_lambda$ is obtained from a finite type $ZZ$-subalgebra $A_(lambda,0)$ of $A$ localized w.r.t. $A_(lambda,0) inter frak(m)_A$, ordered under inclusion. By @passage-to-limit-of-morphisms (1), there exists a finite stage $lambda_0$ and an $A_(lambda_0)$-algebra $B_(lambda_0)$ s.t. $B cong B_(lambda_0) otimes_(A_(lambda_0)) A$. Put $B_lambda = B_(lambda_0) otimes_(A_(lambda_0)) A_lambda$. By @passage-to-limit-of-properties (3d), up to enlarging $lambda_0$, we may assume that $B_(lambda_0)$ is an etale $A_(lambda_0)$-algebra. Thus for each $lambda >= lambda_0$, $B_lambda$ is an etale $A_lambda$-algebra. 
   
   Since $B = B_lambda otimes_(A_lambda) A$ and $B_lambda$ is flat over $A_lambda$, the maps $B_lambda -> B$ are also inclusions. So we have directed limits: 
   $
@@ -323,9 +327,9 @@ Next, we prove the permanence of many desirable properties under etale morphisms
   $
   also has injective transition maps. Now: 
 
-  - For reducedness, $A$ is reduced if and only if every $A_lambda$ is reduced (since the nilpotents of $A$ are just the union of the nilpotents of every $A_lambda$). Similarly, $B$ is reduced if and only if every $B_(lambda,frak(q)_lambda)$ is reduced. Thus (4) follows from the noetherian case. 
+  - For reducedness, $A$ is reduced if and only if every $A_lambda$ is reduced (since the nilpotents of $A$ are just the union of the nilpotents of every $A_lambda$). Similarly, $B_(frak(q))$ is reduced if and only if every $B_(lambda,frak(q)_lambda)$ is reduced. Thus (4) follows from the noetherian case. 
 
-  - For normality, one direction follows from a limit argument. Suppose that $A$ is normal. Then by replacing each $A_lambda$ (known to be integral) with its integral closure in $A$, we may assume that every $A_lambda$ is normal. Then by the noetherian case of (5), every $B_(lambda,frak(q)_lambda)$ is normal. Thus it is easy to check that the limit $B_(frak(q))$ is normal. 
+  - For normality, one direction follows from a limit argument. Suppose that $A$ is normal. Then by replacing each $A_lambda$ (known to be integral) with the localization of its integral closure in $Frac(A_lambda)$ at the prime induced by $frak(m)_A$, we may assume that every $A_lambda$ is normal. Then by the noetherian case of (5), every $B_(lambda,frak(q)_lambda)$ is normal. Thus it is easy to check that the limit $B_(frak(q))$ is normal. 
 
   - The other direction for normality can be checked directly. Note that $A -> C = B_(frak(q))$ is faithfully flat. Thus if $C$ is normal, @noetherianity-normality-descends-along-faithfully-flat-map (2) may be invoked to conclude that $A$ is normal. 
 
@@ -353,7 +357,7 @@ Etaleness can be obtained using Jacobians, as in the following lemma.
   // By enlarging $A_0$ so that $B_0$ contains the inverse of the determinant of the Jacobian $J = display(mat(nabla F_1, dots.c, nabla F_n))$, we may assume that $J$ is invertible in $B_0$. Thus replacing $A, B$ with $A_0, B_0$, we may assume that $A, B$ are noetherian. 
   Let's first assume that $A$ is noetherian. 
   
-  Fix $frak(q) in Spec(B)$ lying above $frak(p) in Spec(A)$. Since the flat locus is open, it suffices to prove flatness at a dense subset of points. Thus we may assume that $frak(q)$ is a closed point in its fiber over $frak(p)$. Let $P = A[T_1,dots.c,T_n]$ and let $frak(r) in Spec(P)$ correspond to $frak(q)$. We aim to show that $A_(frak(p)) -> B_(frak(q))$ is flat. Note that $B_(frak(q)) = P_(frak(r))\/(F_1, dots.c, F_n)$ and $A_(frak(p)) -> P_(frak(r))$ is flat. Thus, we want to use the following flatness criterion: 
+  Fix $frak(q) in Spec(B)$ lying above $frak(p) in Spec(A)$. Since $B$ is unramified over $A$, every point $frak(q)$ is a closed point in its fiber over $frak(p)$. Let $P = A[T_1,dots.c,T_n]$ and let $frak(r) in Spec(P)$ correspond to $frak(q)$. We aim to show that $A_(frak(p)) -> B_(frak(q))$ is flat. Note that $B_(frak(q)) = P_(frak(r))\/(F_1, dots.c, F_n)$ and $A_(frak(p)) -> P_(frak(r))$ is flat. Thus, we want to use the following flatness criterion: 
 
   #lemma[
     (#cite-stacks("00MG")[Lemma 10.99.3]) Suppose that $A -> B$ is a flat local homomorphism of noetherian local rings, and $f_1, dots.c, f_c in B$ s.t. $[f_1], dots.c, [f_c] in B\/frak(m)_A B$ is a regular sequence. Then $B\/(f_1, dots.c, f_c)$ is flat over $A$.  
@@ -365,11 +369,11 @@ Etaleness can be obtained using Jacobians, as in the following lemma.
   $
   for $ol(frak(r))$ the reduction of $frak(r)$. Since $frak(q)$ is a closed point of its fiber over $frak(p)$, $ol(frak(r))$ is a maximal ideal of $S = k(frak(p))[T_1, dots.c, T_n]$. Thus RHS is a regular local ring of dimension $n$. 
   
-  Thus it suffices to prove that the $n$ elements $ol(F)_1, dots.c, ol(F)_n in S = k(frak(p))[T_1, dots.c, T_n]$ forms a regular sequence in this $n$-dimensional regular local ring $S_(ol(frak(r)))$. Since $F_1, dots.c, F_n in frak(r)$, $ol(F)_1, dots.c, ol(F)_n in ol(frak(r)) S_(ol(frak(r)))$. 
+  Thus it suffices to prove that the $n$ elements $ol(F)_1, dots.c, ol(F)_n in S = k(frak(p))[T_1, dots.c, T_n]$ form a regular sequence in this $n$-dimensional regular local ring $S_(ol(frak(r)))$. Since $F_1, dots.c, F_n in frak(r)$, $ol(F)_1, dots.c, ol(F)_n in ol(frak(r)) S_(ol(frak(r)))$. 
   
   Now it suffices to show that $ol(F)_1, dots.c, ol(F)_n in ol(frak(r)) S_(ol(frak(r)))$ are linearly independent in $ol(frak(r)) S_(ol(frak(r)))\/ol(frak(r))^2 S_(ol(frak(r)))$. Consider the cotangent map: 
   $
-    ol(frak(r)) S_(ol(frak(r)))\/ol(frak(r))^2 S_(ol(frak(r))) &-> Omega_(S_(ol(frak(r)))\/k(frak(p))) \
+    ol(frak(r)) S_(ol(frak(r)))\/ol(frak(r))^2 S_(ol(frak(r))) &-> Omega_(S_(ol(frak(r)))\/k(frak(p))) otimes_(S_(ol(frak(r)))) k(ol(frak(r))) \
     [F] &|-> d F
   $
   which sends: 
@@ -394,7 +398,7 @@ Next, we need to define smooth morphisms. We need to establish the equivalences 
   $
   Here, RHS is also the largest dimension of the irreducible components of $X$ containing $x$. 
 
-  Furthermore, equality holds if and only if $X$ is geometrically regular in a neighborhood around $x$. In that case, $Omega_(X\/k)$ is locally free around $x$. For any local presentation $X = Spec(A)$ for $A = k[T_1, dots.c, T_n]\/I$, there exist elements $F_1, dots.c, F_(n-d_x) in I$ that generate $I$ around $x$, and coordinates $T_(j_1), dots.c, T_(j_(d_x))$ s.t. the Jacobian matrix $J = display(mat(nabla F_1, dots.c, nabla F_(n-d_x), E_(j_1), dots.c, E_(j_(d_x)))) in MM_(n times n) (k[T_1, dots.c, T_n])$ is invertible upon reduction to $A$. 
+  Furthermore, equality holds if and only if $X$ is geometrically regular in a neighborhood around $x$. In that case, $Omega_(X\/k)$ is locally free around $x$. For any local presentation $X = Spec(A)$ for $A = k[T_1, dots.c, T_n]\/I$, there exist elements $F_1, dots.c, F_(n-d_x) in I$ that generate $I$ around $x$, and coordinates $T_(j_1), dots.c, T_(j_(d_x))$ s.t. the Jacobian matrix $J = display(mat(nabla F_1, dots.c, nabla F_(n-d_x), E_(j_1), dots.c, E_(j_(d_x)))) in MM_(n times n) (k[T_1, dots.c, T_n])$ is invertible upon reduction to $A$ in a neighborhood of $x$. 
 ]
 #proof[
   This lemma is local around $x$, so we may shrink $X$ around $x$ to make $X = Spec(A)$ affine. Let $x$ correspond to a prime ideal $frak(p)$, so $k(x) = A_(frak(p))\/frak(p) A_(frak(p))$. Let $phi_x: A -> k(x)$ be the evaluation map. Now put: 
@@ -425,7 +429,7 @@ Next, we need to define smooth morphisms. We need to establish the equivalences 
     $
     dim_(ol(k(x))) (Omega_(S_(frak(q))\/ol(k(x))) otimes_(S_(frak(q))) ol(k(x))) = dim_(k(x)) (Omega_(A_(frak(p))\/k) otimes_(A_(frak(p))) k(x))
     $
-  On the other hand, $frak(q) in Spec(S)$ is a rational point of the finite type $ol(k(x))$-scheme $Spec(S)$. By @cite-hartshorne-ag[Proposition III.8.6], $Omega_(S_(frak(q))\/ol(k(x))) cong frak(q) S_(frak(q))\/frak(q)^2 S_(frak(q))$. Thus, our desired inequality becomes:
+  On the other hand, $frak(q) in Spec(S)$ is a rational point of the finite type $ol(k(x))$-scheme $Spec(S)$. By @cite-hartshorne-ag[Proposition III.8.6], $Omega_(S_(frak(q))\/ol(k(x))) otimes_(S_(frak(q))) ol(k(x)) cong frak(q) S_(frak(q))\/frak(q)^2 S_(frak(q))$. Thus, our desired inequality becomes:
   $
     dim_(ol(k(x))) (frak(q) S_(frak(q))\/frak(q)^2 S_(frak(q))) >= dim(S_(frak(q)))
   $
@@ -445,7 +449,7 @@ Next, we need to define smooth morphisms. We need to establish the equivalences 
   $
     dim(P_(frak(q))) = dim(P) - dim(P\/frak(q)) = n - trd_k (Frac(P\/frak(q))) = n - trd_k (k(x))
   $
-  The classes of $F_1, dots.c, F_(n-d_x)$ in $frak(q) P_(frak(q))\/frak(q)^2 P_(frak(q))$ are $k(x)$-linearly independently, for otherwise they would induce a $k(x)$-linear relation between $d F_1, dots.c, d F_(n-d_x)$. Thus, $F_1, dots.c, F_(n-d_x)$ extends to a regular system of parameters for the regular local ring $P_(frak(q))$, and so $P_(frak(q))\/(F_1, dots.c, F_(n-d_x))$ is a regular local ring of dimension: 
+  The classes of $F_1, dots.c, F_(n-d_x)$ in $frak(q) P_(frak(q))\/frak(q)^2 P_(frak(q))$ are $k(x)$-linearly independent, for otherwise they would induce a $k(x)$-linear relation between $d F_1, dots.c, d F_(n-d_x)$. Thus, $F_1, dots.c, F_(n-d_x)$ extend to a regular system of parameters for the regular local ring $P_(frak(q))$, and so $P_(frak(q))\/(F_1, dots.c, F_(n-d_x))$ is a regular local ring of dimension: 
   $
     dim(P_(frak(q))\/(F_1, dots.c, F_(n-d_x))) = dim(P_(frak(q))) - (n - d_x) = d_x - trd_k (k(x)) = dim(cal(O)_(X,x))
   $
@@ -453,7 +457,7 @@ Next, we need to define smooth morphisms. We need to establish the equivalences 
   $
     I P_(frak(q)) = (F_1, dots.c, F_(n-d_x)) subset P_(frak(q))
   $
-  Now pick coordinates $T_(j_1), dots.c, T_(j_(d_x))$ s.t. $[d T_(j_i)]$ forms a basis of $coker(I\/I^2 otimes_A k(x)-> oplus.big_(i=1)^n k(x) d T_i)$. Then $d F_1, dots.c, d F_(n-d_x), d T_(j_1), dots.c, d T_(j_(d_x))$ forms a basis of $oplus.big_(i=1)^n k(x) d T_i$. 
+  Now pick coordinates $T_(j_1), dots.c, T_(j_(d_x))$ s.t. $[d T_(j_i)]$ forms a basis of $coker(I\/I^2 otimes_A k(x)-> oplus.big_(i=1)^n k(x) d T_i)$. Then $d F_1, dots.c, d F_(n-d_x), d T_(j_1), dots.c, d T_(j_(d_x))$ form a basis of $oplus.big_(i=1)^n k(x) d T_i$. 
 
   Form the Jacobian matrix: 
   $
@@ -538,7 +542,7 @@ Next, we need to define smooth morphisms. We need to establish the equivalences 
   
     By @equiv-defns-of-smooth-auxiliary, $Omega_(ol(B)\/k(y))$ is locally free of rank $d$ at $ol(frak(q))$, where up to shrinking $B$ around $ol(frak(q))$, $ol(B)$ is geometrically regular over $k(y)$ of dimension $d$, and has connected spectrum. In particular, at least $ol(B)$ is integral regular of dimension $d$. 
     
-    Pick $ol(b)_i in ol(B)_(ol(frak(q)))$ s.t. $[d ol(b)_1], dots.c, [d ol(b)_d]$ forms a basis of $Omega_(ol(B)_(ol(frak(q)))\/k(y)) otimes_(ol(B)_(ol(frak(q)))) k(x)$. Now by Nakayama's lemma, $Omega_(ol(B)_(ol(frak(q))\/k(y))$ is generated by the elements $d ol(b)_1, dots.c, d ol(b)_d$. Next, arbitrarily lift $ol(b)_i$ to $b_i in B_(frak(q))$, and: 
+    Pick $ol(b)_i in ol(B)_(ol(frak(q)))$ s.t. $[d ol(b)_1], dots.c, [d ol(b)_d]$ form a basis of $Omega_(ol(B)_(ol(frak(q)))\/k(y)) otimes_(ol(B)_(ol(frak(q)))) k(x)$. Now by Nakayama's lemma, $Omega_(ol(B)_(ol(frak(q))\/k(y))$ is generated by the elements $d ol(b)_1, dots.c, d ol(b)_d$. Next, arbitrarily lift $ol(b)_i$ to $b_i in B_(frak(q))$, and: 
     $
       Omega_(ol(B)_(ol(frak(q)))\/k(y)) = Omega_(B_(frak(q))\/A_(frak(p))) otimes_(B_(frak(q))) B_(frak(q))\/frak(p) B_(frak(q))
     $
@@ -616,7 +620,7 @@ Next, we need to define smooth morphisms. We need to establish the equivalences 
     $
       det mat(display((partial F_j)/(partial T_i)))_(1<=i,j<=n-d) mod frak(p) B_(frak(p)) = det mat(display((partial ol(F)_j)/(partial T_i)))_(1<=i,j<=n-d) in ol(B)^times
     $
-    Therefore, at least $det display(mat((partial F_j)/(partial T_i))_(1<=i,j<=n-d)) in B$ is outside $frak(q)$. Shrink $Spec(B)$ around $frak(q)$ once more by inverting this determinant, we may assume that: 
+    Therefore, at least $det display(mat((partial F_j)/(partial T_i))_(1<=i,j<=n-d)) in B$ is outside $frak(q)$. Shrinking $Spec(B)$ around $frak(q)$ once more by inverting this determinant, we may assume that: 
     $
       det(H) in B^times, H := mat(display((partial F_j)/(partial T_i)))_(1<=i,j<=n-d)
     $
@@ -634,7 +638,7 @@ Next, we need to define smooth morphisms. We need to establish the equivalences 
     $
     Then for $i <= n-d$: 
     $
-      lambda(delta(F_i)) &= lambda(sum_(j=1)^(n-d) (partial F_i)/(partial T_j) d T_j) = sum_(j=1)^(n-d) sum_(k=1)^(n-d) (partial F_i)/(partial T_j) G_(j,k) F_k \
+      lambda(delta(F_i)) &= lambda(sum_(j=1)^(n-d) (partial F_i)/(partial T_j) d T_j) = sum_(j=1)^(n-d) sum_(k=1)^(n-d) (partial F_i)/(partial T_j) G_(k,j) F_k \
       &= sum_(k=1)^(n-d) F_k (sum_(j=1)^(n-d) (partial F_i)/(partial T_j) G_(k,j)) = sum_(k=1)^(n-d) F_k delta_(i,k) = F_i
     $
     We have thus split the exact sequence. 

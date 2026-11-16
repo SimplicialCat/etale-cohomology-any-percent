@@ -2,7 +2,7 @@
 
 == Etale cohomology of curves <sect-cohom-of-curves>
 #let Jac = math.op[Jac]
-In this section, we use the word "curve" to denote an integral, separated scheme of finite type and dimension $1$ over a field $k$. We do not assume that a curve is necessarily nonsingular (i.e. smooth over $k$), and will use the word "smooth curve" when we make that assumption. However, we always assume that a curve is integral, hence connected. 
+In this section, we use the word "curve" to denote an integral, separated scheme of finite type and dimension $1$ over a field $k$. We do not assume that a curve is necessarily smooth over $k$, and will use the word "smooth curve" when we make that assumption. However, we always assume that a curve is integral, hence connected. 
 
 In this section, we are finally ready to explicitly compute the first nontrivial example of etale cohomology: the etale cohomology of a smooth curve. Specifically, a curve is either projective or affine, and we will establish the following results: 
 
@@ -37,9 +37,9 @@ We start with the cohomology of $GG_m$, and the vanishing of cohomology of $ZZ\/
   $
 ]
 #proof[
-  Since $X$ is noetherian, every $U in Et_X$ is locally noetherian, hence locally connected. It is thus the disjoint union of its connected components, so it suffices to define this sequence for any connected $U in Et_X$. 
-  
-  Such $U$ is smooth of relative dimension $1$ over $k$, hence nonsingular. Since it is connected, it is integral. The theory of Weil divisors thus holds on $U$. Furthermore, $U -> X$ is of finite type over $k$, so it sends closed points to closed points. Thus, the fiber of the generic point $eta in X$ in $U$ is the generic point $eta_U$ of $U$, and so $j_* GG_(m,eta) (U) = GG_(m,eta) (eta_U) = cal(O)_(U,eta_U)^times = K(U)^times$. 
+  Since $X$ is noetherian, etale schemes over it are locally noetherian, hence locally connected. The connected affine objects of $Et_X$ form a basis, so it suffices to construct and check the sequence on this basis and then glue.
+
+  Let $U$ be such a connected affine etale object. It is connected affine and smooth of relative dimension $1$ over $k$, hence an affine curve over $k$. Thus its closed points map to closed points of $X$. Its generic fiber over $X$ is its generic point $eta_U$, and so $j_* GG_(m,eta) (U) = GG_(m,eta) (eta_U) = K(U)^times$.
   
   We define the morphisms by: 
   $
@@ -58,7 +58,7 @@ We start with the cohomology of $GG_m$, and the vanishing of cohomology of $ZZ\/
   $
     0 -> GG_m -> j_* GG_(m,eta) ->^#[div] oplus.big_(x in abs(X)) x_* ul(ZZ)
   $
-  It remains to prove that it is right exact, i.e. a divisor $d in oplus.big_(u in abs(U)) ZZ$ comes from a function $K(U)^times$ etale locally in $U$. But this holds Zariski locally in $U$, as $U$ is nonsingular, hence locally factorial, and so every Weil divisor on $U$ is Zariski locally principal. 
+  It remains to prove that it is right exact, i.e. a divisor $d in oplus.big_(u in abs(U)) ZZ$ comes from a function in $K(U)^times$ etale locally in $U$. But this holds Zariski locally in $U$, as $U$ is nonsingular, hence locally factorial, and so every Weil divisor on $U$ is Zariski locally principal. 
 ]
 
 // #lemma[
@@ -321,7 +321,7 @@ We start with the cohomology of $GG_m$, and the vanishing of cohomology of $ZZ\/
   $
     H^q_et (X, ZZ\/p) = 0
   $
-  for all primes $p$ and degrees $q >= 3$. We may then conclude using the exact sequence $0 -> ZZ\/n -> ZZ\/m n -> ZZ\/m -> 0$, inducing exact: 
+  for all primes $p$ and degrees $q >= 3$. We may then conclude using the exact sequence $0 -> ZZ\/n -> ZZ\/m n -> ZZ\/m -> 0$, inducing an exact sequence: 
   $
     dots.c -> H^q_et (X, ZZ\/n) -> H^q_et (X, ZZ\/m n) -> H^q_et (X, ZZ\/m) -> dots.c
   $
@@ -444,7 +444,7 @@ Next, we explicitly compute the cohomology for a projective smooth curve.
 
     We claim that if there is a $p^m$-linear bijection $phi: U -> W$ between finite-dimensional $k$-vector spaces, then $dim_k (U) = dim_k (W)$. 
 
-      - Indeed, take a $k$-basis $u_1, dots.c, u_d$ of $U$, and we need to show that $phi(u_1), dots.c, phi(u_d)$ is a $k$-basis of $W$. 
+      - Indeed, take a $k$-basis $u_1, dots.c, u_d$ of $U$, and we need to show that $phi(u_1), dots.c, phi(u_d)$ form a $k$-basis of $W$. 
 
       - Given any $w in W$, since $phi$ is surjective, take $u = sum_i c_i u_i in U$ s.t. $phi(u) = w$. Then: #h(1fr)
         $
@@ -466,7 +466,7 @@ Next, we explicitly compute the cohomology for a projective smooth curve.
     $
       dim_k (V_#[ss]) + dim_k (V_#[nil]) = dim_k (V)
     $
-    Furthermore, if $v in V_#[ss] ∩ V_#[nil]$, then $v in im(F^N)$ and so $v = F^N x$ for some $x$. Since $v in ker(F^N)$, $F^(2N) x = F^N v = 0$. Thus $x in ker(F^(2N)) = ker(F^N)$ (since ${ker(F^m)}$ stablizes after stage $N$) and so $v = F^N x = 0$. Therefore, $V_#[ss] ∩ V_#[nil] = 0$. Combined with the equation on dimensions above, we see that: 
+    Furthermore, if $v in V_#[ss] ∩ V_#[nil]$, then $v in im(F^N)$ and so $v = F^N x$ for some $x$. Since $v in ker(F^N)$, $F^(2N) x = F^N v = 0$. Thus $x in ker(F^(2N)) = ker(F^N)$ (since ${ker(F^m)}$ stabilizes after stage $N$) and so $v = F^N x = 0$. Therefore, $V_#[ss] ∩ V_#[nil] = 0$. Combined with the equation on dimensions above, we see that: 
     $
       V = V_#[ss] oplus V_#[nil]
     $
@@ -474,7 +474,7 @@ Next, we explicitly compute the cohomology for a projective smooth curve.
 
     For this, we replace $V$ with $V_#[ss]$ and $F$ with $F|_(V_#[ss])$, and assume that $F$ is bijective. Let $n = dim(V_#[ss])$. Pick an arbitrary basis $e_1, dots.c, e_n in V$, and suppose $F e_j = sum_(i=1)^n m_(i,j) e_i$, and form the matrix $M = mat(m_(i,j))_(i,j) in GL_n (k)$. Then: 
     $
-      F(sum_i x_i e_j) = sum_(i,j) m_(i,j) x_j^p e_i
+      F(sum_i x_i e_i) = sum_(i,j) m_(i,j) x_j^p e_i
     $
     Therefore, to find fixed points of $F$, it suffices to solve the system of equations: 
     $
@@ -490,7 +490,7 @@ Next, we explicitly compute the cohomology for a projective smooth curve.
     $
     However, $d(X_i - sum_(j=1)^n m_(i,j) X_j^p) = d X_i$ by characteristic $p$, so the submodule on the denominator is really just $(d X_1, dots.c, d X_n)$, i.e. the whole $oplus.big_(i=1)^n k[X_1, dots.c, X_n] d X_i$. In other words, $Omega_(A\/k) = 0$, so $A$ is an etale $k$-algebra. Since $k$ is algebraically closed, $A$ is a direct product of copies of $k$, which must be $p^n$ copies since $dim_k (A) = p^n$. Thus, $Spec(A)$ has $p^n$ closed points, or $F$ has $p^n$ fixed points. 
 
-    Let $V^F$ denote the fixed points of $F$. Since $F$ is $FF_p$-linear, $V^F$ is an $FF_p$-vector space of cardinality $p^n$, hence dimension $n$. Now pick $v_1, dots.c, v_n in V^F$ to be an $FF_p$-basis of $V^F$. We claim that these vectors are indeed $k$-linear independent. If not, pick a smallest $1<=m<=n$ s.t. $v_1, dots.c, v_m$ admits a nontrivial linear relation over $k$. The coefficient of $v_m$ must be nonzero, since otherwise we have a nontrivial linear relation of $v_1, dots.c, v_(m-1)$. Normalize this coefficient to be $1$, we obtain a linear relation: 
+    Let $V^F$ denote the fixed points of $F$. Since $F$ is $FF_p$-linear, $V^F$ is an $FF_p$-vector space of cardinality $p^n$, hence dimension $n$. Now pick $v_1, dots.c, v_n in V^F$ to be an $FF_p$-basis of $V^F$. We claim that these vectors are indeed $k$-linearly independent. If not, pick a smallest $1<=m<=n$ s.t. $v_1, dots.c, v_m$ admit a nontrivial linear relation over $k$. The coefficient of $v_m$ must be nonzero, since otherwise we have a nontrivial linear relation of $v_1, dots.c, v_(m-1)$. Normalize this coefficient to $1$, and we obtain a linear relation: 
     $
       v_m = sum_(i=1)^(m-1) c_i v_i
     $
@@ -500,7 +500,7 @@ Next, we explicitly compute the cohomology for a projective smooth curve.
     $
     and so $sum_(i=1)^(m-1) (c_i^p - c_i) v_i = 0$. Since $v_1, dots.c, v_(m-1)$ are linearly independent, every $c_i^p - c_i = 0$, i.e. $c_i in FF_p$. In other words, we actually have a linear relation between $v_1, dots.c, v_m$ over $FF_p$, a contradiction. 
 
-    Thus, $v_1, dots.c, v_n$ is a basis of $V$ consisting of fixed points of $F$. 
+    Thus, $v_1, dots.c, v_n$ form a basis of $V$ consisting of fixed points of $F$. 
   ]
   We now study $wp = F - id: V = H^1_#[Zar] (X, cal(O)_X) -> V$, with $F$ being $p$-linear. By the previous lemma, we decompose: 
   $
@@ -572,7 +572,7 @@ Next, we prove vanishing for an affine smooth curve:
   $
     H^2_et (X, ZZ\/n) = Pic(X)\/n Pic(X) = 0
   $
-  We may then conclude the proof by using the $n$ and $p$ case, together with the exact sequence $0 -> ZZ\/n -> ZZ\/m n -> ZZ\/m -> 0$. 
+  We may then conclude the proof by using the $n$ and $p$ cases, together with the exact sequence $0 -> ZZ\/n -> ZZ\/m n -> ZZ\/m -> 0$. 
 ]
 
 With explicit computations involving constant sheaves done, we dedicate the remainder of this section to higher vanishing of general torsion sheaves. 
@@ -599,7 +599,7 @@ With explicit computations involving constant sheaves done, we dedicate the rema
 We now prove Grothendieck vanishing for curves. 
 
 #lemma[
-  Let $X$ be an irreducible noetherian scheme of dimension 1 over a separably closed field $k$, with generic point $eta$. Suppose that $cal(R) in cAb(X_et)$ satisfies $cal(R)_(ol(eta)) = 0$. Then there is a natural isomorphism: 
+  Let $X$ be an irreducible scheme of finite type and dimension 1 over a separably closed field $k$, with generic point $eta$. Suppose that $cal(R) in cAb(X_et)$ satisfies $cal(R)_(ol(eta)) = 0$. Then there is a natural isomorphism: 
   $
     cal(R) cong oplus.big_(x in abs(X)) x_* cal(R)_x
   $
@@ -627,7 +627,7 @@ We now prove Grothendieck vanishing for curves.
   $
     gamma: cal(R) -> oplus.big_(x in abs(X)) x_* cal(R)_(x)
   $
-  Now stalks commutes with direct sums, which, combined with @stalks-of-skyscraper-sheaves and @stalks-of-finite-pushforward, gives: 
+  Now stalks commute with direct sums, which, combined with @stalks-of-skyscraper-sheaves and @stalks-of-finite-pushforward, gives: 
   $
     (oplus.big_(x in abs(X)) x_* cal(R)_(x))_(ol(y)) = cases(
       cal(R)_y &\, y in abs(X), 
@@ -682,7 +682,7 @@ We now prove Grothendieck vanishing for curves.
   $
     E_2^(p,q) = H^p (X, R^q j_* j^(-1) cal(F)) ==> H^(p+q) (eta, j^(-1) cal(F)) 
   $
-  the only nonzero terms on the $E_2$-page are $E_2^(p,0)$ and $E_2^(0,1)$. The only surviving differential is $d_2: E_2^(0,1) -> E_2^(2,0)$, and the spectral sequence stablizes on the $E_3$-page. Thus for all $p >= 3$, this spectral sequence induces an isomorphism: 
+  the only nonzero terms on the $E_2$-page are $E_2^(p,0)$ and $E_2^(0,1)$. The only surviving differential is $d_2: E_2^(0,1) -> E_2^(2,0)$, and the spectral sequence stabilizes on the $E_3$-page. Thus for all $p >= 3$, this spectral sequence induces an isomorphism: 
   $
     H^p (X, j_* j^(-1) cal(F)) = H^p (eta, j^(-1) cal(F))
   $

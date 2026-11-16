@@ -13,7 +13,7 @@ The heavy workload of the proof will be done via an application of local acyclic
 The proofs for proper smooth base change and for finiteness of $R f_!$ intertwine, so we prove a lemma for dimension $1$ to bootstrap the induction. 
 
 #lemma(name: <proper-smooth-base-change-bootstrap>)[
-  (Proper smooth base change for dimension $1$) Let $f: X -> Y$ be a proper morphism with fiber dimensions $<=1$. Then, for any natural number $n in cal(O)_Y^times$, the sheaves $R^q f_* ul(ZZ\/n)$ are l.c.c. for all $q>=0$. 
+  (Proper smooth base change for dimension $1$) Let $f: X -> Y$ be a proper smooth morphism between noetherian schemes with fiber dimensions $<=1$. Then, for any natural number $n in cal(O)_Y^times$, the sheaves $R^q f_* ul(ZZ\/n)$ are l.c.c. for all $q>=0$. 
 ]
 #proof[
   We first show that $R^q f_* ul(ZZ\/n)$ has finite stalks. By proper base change $(R^q f_* ul(ZZ\/n))_(ol(y)) = H^q (X_(ol(y)), ul(ZZ\/n))$. These stalks are finite abelian groups by the following lemma: 
@@ -64,17 +64,17 @@ The proofs for proper smooth base change and for finiteness of $R f_!$ intertwin
   // $
   // Suppose that $cal(S) != emptyset$. By noetherian induction, $cal(S)$ has a minimal element $Z$. Suppose for contradiction that $(R^q f_! cal(F))|_Z$ is not constructible, but $Z$ is not irreducible with irreducible components $Z_1, dots.c, Z_m$. Then by minimality, each $(R^q f_! cal(F))|_(Z_i)$ is constructible. For every irreducible closed subset $W subset Z$, $W subset Z_i$ for some $Z_i$, and so according to @constructible-sheaves-first-props (2), by constructibility of $(R^q f_! cal(F))|_(Z_i)$, there exists a nonempty open $U subset W$ s.t. $(R^q f_! cal(F))|_W$ is l.c.c. Thus by @constructible-sheaves-first-props (2), $(R^q f_! cal(F))|_Z$ is constructible, a contradiction to $Z in cal(S)$. 
 
-  // Thus, $Z$ has to be irreducible. Equip $Z$ with the reduced substructure, we may assume that $Z$ is integral. By proper base change $(R^q f_! cal(F))|_Z = R^q f_(Z,!) (cal(F)|_(X_Z))$ where $f_Z: X_Z -> Z$ is the base change of $f$ along $Z -> Y$. $cal(F)|_(X_Z)$ is constructible, so by replacing $f$ with $f_Z$, we may assume that: 
+  // Thus, $Z$ has to be irreducible. Equipping $Z$ with the reduced substructure, we may assume that $Z$ is integral. By proper base change $(R^q f_! cal(F))|_Z = R^q f_(Z,!) (cal(F)|_(X_Z))$ where $f_Z: X_Z -> Z$ is the base change of $f$ along $Z -> Y$. $cal(F)|_(X_Z)$ is constructible, so by replacing $f$ with $f_Z$, we may assume that: 
 
-  // - $X$ is integral; 
+  // - $Y$ is integral; 
 
-  // - For all proper closed subscheme $Z subset.neq X$ and all $q>=0$, $(R^q f_! cal(F))|_Z$ is constructible. 
+  // - For all proper closed subschemes $Z subset.neq Y$ and all $q>=0$, $(R^q f_! cal(F))|_Z$ is constructible. 
 
   // Now pick an affine open $j: U -> Y$ with complementary closed immersion $i: Z -> Y$. We have an extension by zero triangle: 
   // $
   //   j_! (R f_! cal(F)|_U) -> R f_! cal(F) -> i_* (R f_! cal(F)|_Z) ->^(+1)
   // $
-  // Since we assumed $R f_! cal(F)|_Z in D^b_c (Z_et, ZZ\/n)$, we have $i_* (R f_! cal(F)|_Z) in D^b_c (Y_et, ZZ\/n)$. Thus, to show that $R f_! cal(F) in D^b_c (X_et, ZZ\/n)$, it suffices to show
+  // Since we assumed $R f_! cal(F)|_Z in D^b_c (Z_et, ZZ\/n)$, we have $i_* (R f_! cal(F)|_Z) in D^b_c (Y_et, ZZ\/n)$. Thus, to show that $R f_! cal(F) in D^b_c (Y_et, ZZ\/n)$, it suffices to show
   
   // Form a Cartesian diagram: 
   // // // https://q.uiver.app/#r=typst&q=WzAsNixbMCwwLCJYX1UiXSxbMCwxLCJVIl0sWzEsMSwiWSJdLFsyLDEsIloiXSxbMSwwLCJYIl0sWzIsMCwiWF9aIl0sWzEsMiwiaiIsMl0sWzMsMiwiaSJdLFswLDQsImonIl0sWzUsNCwiaSciLDJdLFs0LDIsImYiXSxbNSwzLCJmX1oiXSxbMCwxLCJmX1UiLDJdXQ==
@@ -93,16 +93,16 @@ The proofs for proper smooth base change and for finiteness of $R f_!$ intertwin
   // //   edge((2, 0), (2, 1), [$f_Z$], label-side: left, "->")
   // //   edge((0, 0), (0, 1), [$f_U$], label-side: right, "->")
   // // }))
-  // // Now have the extension by zero triangle: 
+  // // Now we have the extension by zero triangle: 
   // // $
   // //   R(f compose j')_! j'^(-1) cal(F) -> R f_! cal(F) -> R(f compose i')_! i'^(-1) cal(F) ->^(+1)
   // // $
   
   First, we may show that the sheaf statement and the derived statement are equivalent. Indeed, the derived statement is clearly stronger. Suppose we have the sheaf statement. Then for $cal(K) in D^b_c (X_et, ZZ\/n)$, we have a hypercohomology spectral sequence: 
   $
-    E_1^(p,q) = R^q f_! (h^p (cal(K))) => h^(p+q) (R f_! cal(K))
+    E_2^(p,q) = R^p f_! (h^q (cal(K))) => h^(p+q) (R f_! cal(K))
   $
-  The sheaf statement would imply that each $E_1^(p,q)$ is constructible. By Grothendieck vanishing, $E_1^(p,q)$ is supported in a bounded rectangle. Thus every $h^(p+q) (R f_! cal(K))$ is an extension of finitely many constructible sheaves, hence constructible. Thus $R f_! cal(K) in D^b_c (Y_et, ZZ\/n)$. We now focus on the sheaf statement. 
+  The sheaf statement would imply that each $E_2^(p,q)$ is constructible. By Grothendieck vanishing, $E_2^(p,q)$ is supported in a bounded rectangle. Thus every $h^(p+q) (R f_! cal(K))$ is an extension of finitely many constructible sheaves, hence constructible. Thus $R f_! cal(K) in D^b_c (Y_et, ZZ\/n)$. We now focus on the sheaf statement. 
 
   By @constructible-sheaves-first-props (2), it suffices to show that for every irreducible closed subset $Z subset Y$ (with reduced substructure), there exists a nonempty open $V subset Z$ of $Z$ s.t. $(R^q f_! cal(F))|_V$ is constructible. 
 
@@ -185,7 +185,7 @@ The proofs for proper smooth base change and for finiteness of $R f_!$ intertwin
     in which $ol(X)$ is normal and of dimension 1. Now for every finite field extension $L\/K$, since $K$ is perfect, $L\/K$ is separable, and $Spec(L) -> Spec(K)$ is etale. Thus the base change $ol(X)_L -> ol(X)$ is etale. Since $ol(X)$ is normal, by @etale-local-properties (5), $ol(X)_L$ is normal. Since $ol(X)_L$ is of dimension 1, it must be regular. Hence we have shown that $ol(X)$ is geometrically regular over $K$, thus smooth over $K$. Hence $ol(f)$ is proper smooth. Furthermore, $ol(X) - X$ is finite over $X_1 - X$ since $nu$ is finite. Thus $ol(X) - X$ is finite over $K$. 
   ]
 
-  By the previous lemma, $g_L$ has a compactification: 
+  Applying the previous lemma to each connected component, $g_L$ has a compactification: 
   $
     g_L: U_L ->^(h_L) U'_L ->^(r_L) Spec(L)
   $
@@ -193,19 +193,19 @@ The proofs for proper smooth base change and for finiteness of $R f_!$ intertwin
 
   Recall $L$ is $K$ with every $p^m$-th root adjoined when $"char"(K) = p$, and $L = K$ when $"char"(K) = 0$. Now: 
 
-  - When $"char"(K) = p$, every element $x in L$ is in $K(x_1^(p^(-m_1)), dots.c, x_s^(p^(-m_s)))$ for some finite set $x_1, dots.c, x_s in K$ and powers $m_1, dots.c, m_s >= 1$. Write $x = display((alpha(x_1^(p^(-m_1)), dots.c, x_s^(p^(-m_s))))/(beta(x_1^(p^(-m_1)), dots.c, x_s^(p^(-m_s)))))$ for polynomials $alpha, beta$, and $0 != beta_0 = beta(x_1^(p^(-m_1)), dots.c, x_s^(p^(-m_s))) in L$. Thus there exists some $m_0$ s.t. $x_0 = beta_0^(p^(m_0)) in K$. Thus $x in K[x_1^(p^(-m_1)), dots.c, x_s^(p^(-m_s)), x_0^(p^(-m_0))]$. Now the coefficients of a polynomial representation of $x$ must lie in $A_u$ for some fixed $u in A^times$, so: 
+  - When $"char"(K) = p$, every element $x in L$ is in $K(x_1^(p^(-m_1)), dots.c, x_s^(p^(-m_s)))$ for some finite set $x_1, dots.c, x_s in K$ and powers $m_1, dots.c, m_s >= 1$. Write $x = display((alpha(x_1^(p^(-m_1)), dots.c, x_s^(p^(-m_s))))/(beta(x_1^(p^(-m_1)), dots.c, x_s^(p^(-m_s)))))$ for polynomials $alpha, beta$, and $0 != beta_0 = beta(x_1^(p^(-m_1)), dots.c, x_s^(p^(-m_s))) in L$. Thus there exists some $m_0$ s.t. $x_0 = beta_0^(p^(m_0)) in K$. Thus $x in K[x_1^(p^(-m_1)), dots.c, x_s^(p^(-m_s)), x_0^(p^(-m_0))]$. Now the coefficients of a polynomial representation of $x$ must lie in $A_u$ for some fixed $0 != u in A$, so: 
     $
       x in A_u [x_0^(p^(-m_0)), dots.c, x_s^(p^(-m_s))]
     $
-    for some fixed $u in A^times$, some $x_0, dots.c, x_s in A_u$, and some powers $m_0, dots.c, m_s >= 0$. 
+    for some fixed $0 != u in A$, some $x_0, dots.c, x_s in A_u$, and some powers $m_0, dots.c, m_s >= 0$. 
 
     For these algebras, $Spec(A_u) -> Spec(A)$ is a principal affine open, and $Spec(A_u [x_0^(p^(-m_0)), dots.c, x_s^(p^(-m_s))]) -> Spec(A_u)$ is a finite universal homeomorphism by @adjoining-pth-root-in-char-p-is-univ-homeo. 
 
-    In other words, $L = dirlim_R R$ where each $R$ is a finite surjective radicial $A_u$-algebra for some $u in A^times$. 
+    In other words, $L = dirlim_R R$ where each $R$ is a finite surjective radicial $A_u$-algebra for some $0 != u in A$. 
 
-  - When $"char"(K) = 0$, $L = K = dirlim_(u in A^times) A_u$, so the same conclusion as in characteristic $p$ still holds. 
+  - When $"char"(K) = 0$, $L = K = dirlim_(0 != u in A) A_u$, so the same conclusion as in characteristic $p$ still holds. 
 
-  Applying @passage-to-limit-of-morphisms and @passage-to-limit-of-properties (2e)(3f), we see that there exists $u in A^times$ and a finite surjective radicial $A_u$-algebra $R$ s.t. $g_R: U_R -> Spec(R)$ admits a compactification: 
+  Applying @passage-to-limit-of-morphisms and @passage-to-limit-of-properties (2e)(3f), we see that there exists $0 != u in A$ and a finite surjective radicial $A_u$-algebra $R$ s.t. $g_R: U_R -> Spec(R)$ admits a compactification: 
   $
     g_R: U_R ->^(h_R) U'_R ->^(r_R) Spec(R)
   $
@@ -238,7 +238,7 @@ The proofs for proper smooth base change and for finiteness of $R f_!$ intertwin
   $
     R f_! ul(Lambda) = R f_! ul(ZZ\/n) Lotimes_(ZZ\/n) ul(Lambda)
   $
-  By truncation triangles, it suffices to show that each $R^q f_! ul(ZZ\/n) Lotimes_(ZZ\/n) ul(Lambda) in D^b_c (Y_et, Lambda)$. Since $R^q f_! ul(ZZ\/n)$ is constructible, we may resolve it as $dots.c -> cal(P)^(-1) -> cal(P)^0 -> R^q f_! ul(ZZ\/n)$ in which every $cal(P)^p = j_(-p,!) ul(ZZ\/n)$ for quasi-compact etale $j_p: U_p -> Y$. Now each $cal(P)^p$ is flat as a sheaf of $ul(ZZ\/n)$-modules, so: 
+  Boundedness of the full $R f_! ul(Lambda)$ is already given by Grothendieck vanishing. By truncation triangles, it suffices to show that each $R^q f_! ul(ZZ\/n) Lotimes_(ZZ\/n) ul(Lambda)$ has constructible cohomology sheaves. Since $R^q f_! ul(ZZ\/n)$ is constructible, we may resolve it as $dots.c -> cal(P)^(-1) -> cal(P)^0 -> R^q f_! ul(ZZ\/n)$ in which every $cal(P)^p = j_(-p,!) ul(ZZ\/n)$ for quasi-compact etale $j_p: U_p -> Y$. Now each $cal(P)^p$ is flat as a sheaf of $ul(ZZ\/n)$-modules, so: 
   $
     h^p (R^q f_! ul(ZZ\/n) Lotimes_(ZZ\/n) ul(Lambda)) = h^p (cal(P)^bullet otimes_(ZZ\/n) ul(Lambda))
   $
@@ -246,7 +246,7 @@ The proofs for proper smooth base change and for finiteness of $R f_!$ intertwin
 ]
 
 #theorem[
-  (Proper smooth base change) Let $f: X -> Y$ be a smooth proper morphism between noetherian schemes, and $Lambda$ be an $n$-torsion noetherian ring s.t. $n in cal(O)_Y^times$. Let $cal(F) in cAb(X_et, Lambda)$ be a l.c.c. sheaf of $Lambda$-modules on $X$. Then every $R^q f_* cal(F)$ is an l.c.c. sheaf of $Lambda$-modules on $Y$. 
+  (Proper smooth base change) Let $f: X -> Y$ be a smooth proper morphism between noetherian schemes, and $Lambda$ be an $n$-torsion noetherian ring s.t. $n in cal(O)_Y^times$. Let $cal(F) in cAb(X_et, Lambda)$ be an l.c.c. sheaf of $Lambda$-modules on $X$. Then every $R^q f_* cal(F)$ is an l.c.c. sheaf of $Lambda$-modules on $Y$. 
 ]
 #proof[
   By @loc-acyc-of-smooth-maps, $f$ is locally acyclic relative to $cal(F)$ as a smooth map. Thus by @proper-loc-acyc-bc, the sheaves $R^q f_* cal(F)$ have all specialization maps being isomorphisms. By @finiteness-of-lower-shriek, the $R^q f_* cal(F)$ are constructible sheaves of $Lambda$-modules, hence have finite $Lambda$-module stalks. Thus by @descs-of-lcc-sheaves, the $R^q f_* cal(F)$ are all l.c.c. sheaves. 

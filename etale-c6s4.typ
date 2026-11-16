@@ -20,7 +20,7 @@ In this section, we prove (Shift), an intermediate step that allows us to transf
   #proof[
     For a connected component $C subset Y$, $f^(-1) (C)$ is open and closed in $X$, hence a disjoint union of connected components of $X$. Replacing $X -> Y$ with $f^(-1) (C) -> C$, we may assume that $Y$ is connected and aim to prove that $X$ is connected. 
 
-    Assume the contrary that $X = X_1 union.sq X_2$ for closed and open $X_1, X_2 subset X$. Since $f$ is closed, $f(X_1), f(X_2) subset Y$ are closed. Since $f$ is surjective, $Y = f(X_1) union f(X_2)$. Had this union been disjoint, $Y$ is the disjoint union of two proper closed and open subsets, a contradiction to the connectivity of $Y$. Thus there exists $y in Y$ s.t. $y in f(X_1) ∩ f(X_2)$. Now by hypothesis, $f^(-1)(y)$ is connected. However, $f^(-1)(y) = (X_1 ∩ f^(-1)(y)) union.sq (X_2 ∩ f^(-1)(y))$ is the disjoint union of two proper open and closed subsets, a contradiction to connectivity of $f^(-1)(y)$. 
+    Assume the contrary that $X = X_1 union.sq X_2$ for closed and open $X_1, X_2 subset X$. Since $f$ is closed, $f(X_1), f(X_2) subset Y$ are closed. Since $f$ is surjective, $Y = f(X_1) union f(X_2)$. Had this union been disjoint, $Y$ would be the disjoint union of two proper closed and open subsets, a contradiction to the connectivity of $Y$. Thus there exists $y in Y$ s.t. $y in f(X_1) ∩ f(X_2)$. Now by hypothesis, $f^(-1)(y)$ is connected. However, $f^(-1)(y) = (X_1 ∩ f^(-1)(y)) union.sq (X_2 ∩ f^(-1)(y))$ is the disjoint union of two proper open and closed subsets, a contradiction to the connectivity of $f^(-1)(y)$. 
   ]
 
   Thus, $pi_0 (g): pi_0 (X) -> pi_0 (Y)$ and $pi_0 (g_0): pi_0 (X_0) -> pi_0 (Y_0)$ are bijective. Thus it suffices to show that $pi_0 (Y_0) -> pi_0 (Y)$ is bijective. Replacing $X$ with $Y$, we may assume that $X -> Spec(A)$ is finite, i.e. $X = Spec(B)$ for a finite $A$-algebra $B$. By @equiv-defns-of-henselian (1), since $A$ is henselian, $B = B_1 times dots.c times B_m$ is a direct product of finite local $A$-algebras, and $Spec(B) = union.sq.big_(i=1)^m Spec(B_i)$ is a connected-component decomposition. Now $X_0 = Spec(B_0), B_0 = B\/frak(m) B$, and so $B_0 = B_(1,0) times dots.c times B_(m,0)$ where each $B_(i,0) = B_i\/frak(m) B_i$ is a finite local $k$-algebra. Thus $Spec(B_0) = union.sq.big_(i=1)^m Spec(B_(i,0))$ is a connected-component decomposition, with $pi_0 (Spec(B_0)) -> pi_0 (Spec(B))$ sending $Spec(B_(i,0))$ to $Spec(B_i)$. Thus, $pi_0 (X_0) -> pi_0 (X)$ is a bijection in this case, and we are done. 
@@ -34,7 +34,7 @@ In this section, we prove (Shift), an intermediate step that allows us to transf
   is bijective. In other words, proper base change along $X -> Spec(A)$ always holds in degree $0$. 
 ]
 #proof[
-  By @pbc-dev-lem3, it suffices to prove when $cal(F) = ul(ZZ\/n)$. Now: 
+  By @pbc-dev-lem3, it suffices to prove this when $cal(F) = ul(ZZ\/n)$. Now: 
   $
     Gamma(X, ul(ZZ\/n)) = (ZZ\/n)^(oplus pi_0 (X)), Gamma(X_0, ul(ZZ\/n)) = (ZZ\/n)^(oplus pi_0 (X_0))
   $
@@ -50,7 +50,7 @@ In this section, we prove (Shift), an intermediate step that allows us to transf
     $
     is bijective. 
 
-  - For any injective object $cal(I) in cAb(X_et, ZZ\/n)$, $H^q (X_0, cal(I)|_(X_0)) = 0$ for $q >= 1$. 
+  - For every $n >= 1$ and every injective object $cal(I) in cAb(X_et, ZZ\/n)$, $H^q (X_0, cal(I)|_(X_0)) = 0$ for $q >= 1$. 
 ]
 #proof[
   ($==>$) is automatic by @etale-zn-sheaves-first-props (3), so it suffices to prove ($<==$). By @pbc-dev-lem1, we may assume that $cal(F)$ is constructible, hence $n$-torsion for some $n>=1$. Now pick an injective resolution: 
@@ -73,7 +73,7 @@ In this section, we prove (Shift), an intermediate step that allows us to transf
 ]
 
 #theorem[
-  (Shift) In a diagram of successive base changes in which all schemes are noetherian and $A$ is strict henselian with $X', X$ proper over $Spec(A)$:
+  (Shift) In a diagram of successive base changes in which all schemes are noetherian and $A$ is strict henselian with $X', X$ proper over $Spec(A)$ and $pi: X' -> X$ surjective:
   // https://q.uiver.app/#r=typst&q=WzAsNixbMCwxLCJYJyJdLFsxLDEsIlgiXSxbMiwxLCJTcGVjKEEpIl0sWzIsMCwiU3BlYyhrKSJdLFsxLDAsIlhfMCJdLFswLDAsIlgnXzAiXSxbMCwxLCJwaSIsMl0sWzEsMl0sWzMsMl0sWzUsNCwicGlfMCJdLFs0LDEsImkiXSxbNSwwLCJpJyIsMl0sWzQsM11d
   #align(center, diagram({
     node((-1, 0), [$X'$])
@@ -90,7 +90,7 @@ In this section, we prove (Shift), an intermediate step that allows us to transf
     edge((-1, -1), (-1, 0), [$i'$], label-side: right, "->")
     edge((0, -1), (1, -1), "->")
   }))
-  We have:
+  we have:
   $
         & BC(pi, i) \
     ==> & (BC_* (X -> Spec(A)) <==> BC_* (X' -> Spec(A)))

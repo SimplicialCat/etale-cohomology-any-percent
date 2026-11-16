@@ -4,13 +4,13 @@
 
 In this section, we introduce constructible sheaves. Constructible sheaves are a suitable class of torsion sheaves whose structure is mild and whose study is more tractable than that of arbitrary torsion sheaves, which might vary wildly. In a sense, being constructible is a reasonable finiteness condition on a sheaf: an intermediate layer between a constant sheaf $ul(ZZ\/n)$ and an arbitrary torsion sheaf. Much of the further theory of etale cohomology is centered on constructible sheaves (and a more restricted class of them, namely local systems). 
 
-The mechanism of constructible sheaves will debut in the proof of proper base change, demonstrating their power through a devissage argument, by reducing general torsion sheaves to them via limit formula for sheaves, and by reducing them to constant sheaves $ul(ZZ\/n)$ up to a finite morphism, effectively reducing results on general torsion sheaves to results on $ul(ZZ\/n)$. 
+The mechanism of constructible sheaves will debut in the proof of proper base change, demonstrating their power through a devissage argument, by reducing general torsion sheaves to them via the limit formula for sheaves, and by reducing them to constant sheaves $ul(ZZ\/n)$ up to a finite morphism, effectively reducing results on general torsion sheaves to results on $ul(ZZ\/n)$. 
 
 For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lambda$ will denote a coefficient ring, which is always noetherian. 
 
 /*
 #definition[
-  Given a $X$-scheme $X'$, recall that there exists an etale sheaf in $cSh(X_et)$ defined by: 
+  Given an $X$-scheme $X'$, recall that there exists an etale sheaf in $cSh(X_et)$ defined by: 
   $
     Et_X -> cSet, U |-> Hom_X (U, X')
   $
@@ -36,9 +36,9 @@ For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lam
 
   An etale sheaf $cal(F)$ of $Lambda$-modules (resp. sets; resp. abelian groups) is called #furi[locally constant constructible][*l.c.c.*] if $cal(F)$ is locally constant, and its stalks are finite $Lambda$-modules (resp. finite sets; resp. finite abelian groups). 
 
-  In other words, a l.c.c. etale sheaf of abelian groups is an l.c.c. etale sheaf of $ZZ$-modules that is a torsion sheaf, or equivalently an l.c.c. etale sheaf of $ZZ\/n$-modules for some $n$. 
+  In other words, an l.c.c. etale sheaf of abelian groups is an l.c.c. etale sheaf of $ZZ$-modules that is a torsion sheaf, or equivalently an l.c.c. etale sheaf of $ZZ\/n$-modules for some $n$. 
 
-  When we simply say a *l.c.c. sheaf*, we refer to a l.c.c. sheaf of abelian groups. 
+  When we simply say an *l.c.c. sheaf*, we refer to an l.c.c. sheaf of abelian groups. 
 ]
 
 #definition(name: <defn-specialization-morphism>)[
@@ -95,16 +95,16 @@ For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lam
 
   (c)$==>$(b) is tautological.
   
-  (b)$==>$(a): //We may assume that $X$ is affine (for we can cover general $X$ by open affines ${V_i}$. If for each $i$, we may find $V'_i -> V_i$ representing $cal(F)$, then since $cal(F)|_(V_i)|_(V_i ∩ V_j) cong cal(F)|_(V_j)|_(V_i ∩ V_j)$ canonically, the representing schemes $V'_i, V'_j$ glues.), that $X$ is connected, and assume that ${U_i -> X}$ is a finite family with each $U_i$ affine connected. Then $U = union.sq.big_(i \ "finite") U_i -> X$ is an fpqc cover.
+  (b)$==>$(a): //We may assume that $X$ is affine (for we can cover general $X$ by open affines ${V_i}$. If for each $i$, we may find $V'_i -> V_i$ representing $cal(F)$, then since $cal(F)|_(V_i)|_(V_i ∩ V_j) cong cal(F)|_(V_j)|_(V_i ∩ V_j)$ canonically, the representing schemes $V'_i, V'_j$ glue.), that $X$ is connected, and assume that ${U_i -> X}$ is a finite family with each $U_i$ affine connected. Then $U = union.sq.big_(i \ "finite") U_i -> X$ is an fpqc cover.
   //
-  //By our assumption, $cal(F)|_U = tilde(G_U)$. Now consider $p_(1,2): U times_X U arrows.rr U$, with isomorphism $p_2^(-1) (cal(F)|_U) cong cal(F)|_(U times_X U) cong p_1^(-1) (cal(F)|_U)$ gives $eta: p_2^(-1) G_U -> p_1^(-1) G_U$ on $U times_X U$, satisfying the cocycle conditions. Thus it descneds to the desired etale covering $X' -> X$. (Finiteness and etaleness is preserved by fpqc descent.)
+  //By our assumption, $cal(F)|_U = tilde(G_U)$. Now consider $p_(1,2): U times_X U arrows.rr U$, with an isomorphism $p_2^(-1) (cal(F)|_U) cong cal(F)|_(U times_X U) cong p_1^(-1) (cal(F)|_U)$ giving $eta: p_2^(-1) G_U -> p_1^(-1) G_U$ on $U times_X U$, satisfying the cocycle conditions. Thus it descends to the desired etale covering $X' -> X$. (Finiteness and etaleness are preserved by fpqc descent.)
   On each $U_i$, $cal(F)|_(U_i) cong h_(G_i times U_i)$. Now we have isomorphisms $cal(F)|_(U_i)|_(U_(i,j)) cong cal(F)|_(U_j)|_(U_(i,j))$ for $U_(i,j) = U_i times_X U_j$, hence isomorphisms of finite etale coverings of $U_(i,j)$:
   $
     U_(i,j) times G_i cong U_(i,j) times G_j
   $
   satisfying the cocycle condition. 
 
-  In other words, $union.sq.big_i (U_i times G_i)$ is a finite etale coverings over $union.sq.big_i U_i -> X$, equipped with a transition isomorphism satisfying the cocycle condition. By fpqc descent of relatively affine schemes (@fpqc-descent-of-relatively-affine-schemes), it comes from base changing a scheme $X' -> X$ along $union.sq.big_i U_i -> X$, which is finite and etale by @fpqc-descent-of-properties (2)(5). 
+  In other words, $union.sq.big_i (U_i times G_i)$ is a finite etale covering over $union.sq.big_i U_i -> X$, equipped with a transition isomorphism satisfying the cocycle condition. By fpqc descent of relatively affine schemes (@fpqc-descent-of-relatively-affine-schemes), it comes from base changing a scheme $X' -> X$ along $union.sq.big_i U_i -> X$, which is finite and etale by @fpqc-descent-of-properties (2)(5). 
 
   Now that we have compatible isomorphisms $cal(F)|_(U_i) cong h_(X' times_X U_i)$, we have obtained an isomorphism: 
   $
@@ -150,8 +150,8 @@ For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lam
       node((0, 0), [$cal(F)_(ol(eta))$])
       edge((-1, -1), (0, -1), "=")
       edge((-1, 0), (0, 0), "=")
-      edge((-1, -1), (-1, 0), [$sp_(ol(xi),ol(x))$], label-side: right, "->")
-      edge((0, -1), (0, 0), [$sp_(ol(eta),ol(y))$], label-side: left, "->")
+      edge((-1, -1), (-1, 0), [$sp_(ol(x),ol(xi))$], label-side: right, "->")
+      edge((0, -1), (0, 0), [$sp_(ol(y),ol(eta))$], label-side: left, "->")
     }))
   ]
   #proof[
@@ -172,11 +172,11 @@ For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lam
 
   Thus, given a pair of geometric points $(ol(x),ol(xi))$ of $X$ s.t. $ol(xi)$ generalizes $ol(x)$, we pick any etale neighborhood $(U, ol(u)) -> (X, ol(x))$ s.t. $cal(F)|_U$ is constant. Since $ol(xi)$ is a geometric point of $tilde(X)_(ol(x))$, it lifts canonically to a geometric point $ol(v)$ of $U$, lying above $ol(xi)$. Thus, the specialization map: 
   $
-    sp_(ol(xi),ol(x)): cal(F)_(ol(x)) -> cal(F)_(ol(xi))
+    sp_(ol(x),ol(xi)): cal(F)_(ol(x)) -> cal(F)_(ol(xi))
   $
   is really just the specialization: 
   $
-    sp_(ol(v),ol(u)): (cal(F)|_U)_(ol(u)) -> (cal(F)|_U)_(ol(v))
+    sp_(ol(u),ol(v)): (cal(F)|_U)_(ol(u)) -> (cal(F)|_U)_(ol(v))
   $
   However, $cal(F)|_U$ is a constant sheaf, and the specialization map in a constant sheaf is always an isomorphism. We are thereby done. 
 
@@ -184,9 +184,9 @@ For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lam
   $
     Lambda^r ->^A Lambda^m -> M -> 0
   $
-  of $M$. Let the generators of $M$ corresponding to $Lambda^r ->> M$ be $s_1, dots.c, s_m in M = cal(F)_(ol(x))$. By definition of a stalk, each $s_i$ comes from a section in $cal(F)(U_i)$ for an etale neighborhood $(U_i, ol(u)_i) -> (X, ol(x))$. Picking a common etale neighborhood $(U, ol(u))$ of all $u_i$, we may assume that each $s_i in cal(F)_(ol(x))$ comes from $s_i in cal(F)(U)$. 
+  of $M$. Let the generators of $M$ corresponding to $Lambda^m ->> M$ be $s_1, dots.c, s_m in M = cal(F)_(ol(x))$. By definition of a stalk, each $s_i$ comes from a section in $cal(F)(U_i)$ for an etale neighborhood $(U_i, ol(u)_i) -> (X, ol(x))$. Picking a common etale neighborhood $(U, ol(u))$ of all $u_i$, we may assume that each $s_i in cal(F)_(ol(x))$ comes from $s_i in cal(F)(U)$. 
 
-  By shrinking the etale neighborhood further, we may assume that the $s_i$'s satisfy all $r$ relations between the $m$ generators of $M$. Indeed, for a relation, $s_i$'s satisfy this relation in $cal(F)_(ol(x))$, and so they satisfy this relation in some small etale neighborhood. 
+  By shrinking the etale neighborhood further, we may assume that the $s_i$'s satisfy all $r$ relations between the $m$ generators of $M$. Indeed, for a relation, the $s_i$'s satisfy this relation in $cal(F)_(ol(x))$, and so they satisfy this relation in some small etale neighborhood. 
   
   Thus, the sections $s_i in cal(F)(U)$ define a map: 
   $
@@ -225,11 +225,11 @@ For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lam
   $
     cal(J)|_U: Et_U^opp -> cSet, V |-> "Isom"(ul(G)_V, ul(G)_V) = Aut_(Lambda)(G)^(pi_0 (V))
   $
-  In other words, $cal(J)|_U cong ul(Aut_Lambda (G))_U$ is constant. Thus, $cal(J)$ is a locally constant sheaf of sets. Furthermore, $Lambda$ is a finite ring and $G$ is a finite $Lambda$-module. Thus, $Aut_Lambda (G)$ is finite as a set, and so $cal(J)$ is a l.c.c. sheaf of sets. By @descs-of-lcc-sheaves-of-sets, there exists a finite etale covering $U ->> X$ s.t. $cal(J)|_U cong ul(Aut_Lambda (G))_U$. Taking the global section corresponding to the identity $id in Aut_Lambda (G)$ gives an isomorphism $cal(F)|_U cong ul(G)_U$. 
+  In other words, $cal(J)|_U cong ul(Aut_Lambda (G))_U$ is constant. Thus, $cal(J)$ is a locally constant sheaf of sets. Furthermore, $Lambda$ is a finite ring and $G$ is a finite $Lambda$-module. Thus, $Aut_Lambda (G)$ is finite as a set, and so $cal(J)$ is an l.c.c. sheaf of sets. By @descs-of-lcc-sheaves-of-sets, there exists a finite etale covering $U ->> X$ s.t. $cal(J)|_U cong ul(Aut_Lambda (G))_U$. Taking the global section corresponding to the identity $id in Aut_Lambda (G)$ gives an isomorphism $cal(F)|_U cong ul(G)_U$. 
 ]
 
 #definition(name: <defn-constructible-sheaf>)[
-  An etale sheaf $cal(F)$ on $X$ of $Lambda$-modules (resp. abelian groups) is called a *constructible sheaf* if there exists a stratification $X = union.sq.big_i X_i$ by finitely many locally closed subschemes $X_i subset X$ s.t. each $cal(F)|_(X_i)$ is a l.c.c. sheaf of $Lambda$-modules (resp. abelian groups) for each $i$. 
+  An etale sheaf $cal(F)$ on $X$ of $Lambda$-modules (resp. abelian groups) is called a *constructible sheaf* if there exists a stratification $X = union.sq.big_i X_i$ by finitely many locally closed subschemes $X_i subset X$ s.t. each $cal(F)|_(X_i)$ is an l.c.c. sheaf of $Lambda$-modules (resp. abelian groups) for each $i$. 
 
   When we simply say a *constructible sheaf*, we refer to a constructible sheaf of abelian groups. 
 ]
@@ -253,8 +253,8 @@ For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lam
 
   + For a sheaf $cal(F)$ of $Lambda$-modules, TFAE:
     + $cal(F)$ is constructible;
-    + $cal(F)$ is /*torsion and */noetherian (i.e. any ascending chain of abelian subsheaves $0 = cal(F)_0 subset cal(F)_1 subset dots.c subset cal(F)$ eventually stabilizes).
-    + There exists etale quasi-compact maps $f: U -> X$, $f': U' -> X$ and a right exact sequence:
+    + $cal(F)$ is /*torsion and */noetherian (i.e. any ascending chain of subsheaves of $Lambda$-modules $0 = cal(F)_0 subset cal(F)_1 subset dots.c subset cal(F)$ eventually stabilizes).
+    + There exist etale quasi-compact maps $f: U -> X$, $f': U' -> X$ and a right exact sequence:
       $
         f'_! ul(Lambda)_(U') -> f_! ul(Lambda)_U -> cal(F) -> 0
       $
@@ -262,14 +262,14 @@ For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lam
     For a sheaf $cal(F)$ of abelian groups, TFAE: 
     + $cal(F)$ is constructible;
     + $cal(F)$ is torsion and noetherian; 
-    + There exists etale quasi-compact maps $f: U -> X$, $f': U' -> X$ and a right exact sequence:
+    + There exist etale quasi-compact maps $f: U -> X$, $f': U' -> X$ and a right exact sequence:
       $
         f'_! ul(ZZ\/n)_(U') -> f_! ul(ZZ\/n)_U -> cal(F) -> 0
       $
       for some $n >= 1$. 
 
   
-  + Any subsheaf or quotient sheaf of a constructible sheaf of $Lambda$-modules (resp. abelian groups) is constructible. Any extension of constructible sheaves of $Lambda$-modules (resp. abelian groups) is constructible. The constructible sheaves of $Lambda$-modules (resp. abelian groups) on $X$ forms an abelian category.
+  + Any subsheaf or quotient sheaf of a constructible sheaf of $Lambda$-modules (resp. abelian groups) is constructible. Any extension of constructible sheaves of $Lambda$-modules (resp. abelian groups) is constructible. The constructible sheaves of $Lambda$-modules (resp. abelian groups) on $X$ form an abelian category.
   
   + 
     - Every sheaf $cal(F)$ of $Lambda$-modules is the direct limit of its constructible subsheaves ordered under inclusion. 
@@ -308,7 +308,7 @@ For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lam
   #proof[
     (a)$==>$(b): By (1), $cal(F)|_Z$ is constructible. In the locally closed stratification $Z = union.sq.big_i Z_i$, pick the stratum containing the generic point of $Z$, say $Z_1$. Then $Z_1$ is a nonempty open of $Z$ s.t. $cal(F)|_(Z_1)$ is l.c.c.
     
-    (b)$==>$(a): By noetherian induction, there exists a maximal open subset $U subset X$ s.t. $cal(F)|_U$ is constructible. If $U != X$, we may take an irreducible component $Z$ of the nonempty closed subset $X - U$. By hypothesis, there exists an open subset $V subset Z$ s.t. $cal(F)|_V$ is l.c.c. $V$ is a locally closed subset of $X$. Pick a finite stratification $U = union.sq.big_i U_i$ s.t. each $cal(F)|_(U_i)$ is l.c.c. Then $U union V = (Z - V)^c$ is an open subset of $X$ with a finite locally closed stratification $(union.sq.big_i U_i) union.sq V$, s.t. $cal(F)$ restricted to each stratum is l.c.c. Thus, $cal(F)|_(U union V)$ is constructible, a contradiction to the maximality of $U$. Thus $U = X$ and $cal(F)$ is constructible. 
+    (b)$==>$(a): By noetherian induction, there exists a maximal open subset $U subset X$ s.t. $cal(F)|_U$ is constructible. If $U != X$, we may take an irreducible component $Z$ of the nonempty closed subset $X - U$. By hypothesis, there exists an open subset $V subset Z$ s.t. $cal(F)|_V$ is l.c.c. $V$ is a locally closed subset of $X$. Pick a finite stratification $U = union.sq.big_i U_i$ s.t. each $cal(F)|_(U_i)$ is l.c.c. After shrinking $V$ to avoid the other irreducible components of $X-U$, it is a nonempty open subset of $X-U$. Thus $U union V$ is an open subset of $X$ with a finite locally closed stratification $(union.sq.big_i U_i) union.sq V$, s.t. $cal(F)$ restricted to each stratum is l.c.c. Thus, $cal(F)|_(U union V)$ is constructible, a contradiction to the maximality of $U$. Thus $U = X$ and $cal(F)$ is constructible. 
 
     (b)$==>$(c) is tautological. 
     
@@ -317,7 +317,7 @@ For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lam
 
   (3)
   #proof[
-    By (2) and that $f_!$ commutes with base change (@etale-lower-shriek-first-props (4)), we may assume that $X$ is integral with generic point $eta$//, and that $U times_X eta -> Spec(k(eta))$ is finite etale. (Etale over a field is always finite etale.) Then by a limit argument, there exists $eta in V subset X$ open s.t. $f^(-1) (V) -> V$ is finite etale. Then it is easy to check that:
+    By (2) and the fact that $f_!$ commutes with base change (@etale-lower-shriek-first-props (4)), we may assume that $X$ is integral with generic point $eta$//, and that $U times_X eta -> Spec(k(eta))$ is finite etale. (Etale over a field is always finite etale.) Then by a limit argument, there exists $eta in V subset X$ open s.t. $f^(-1) (V) -> V$ is finite etale. Then it is easy to check that:
     // $
     //   (f_! underline(ZZ\/n))|_V = (f|_(f^(-1)(U)))_! underline(ZZ\/n)
     // $
@@ -334,7 +334,7 @@ For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lam
     $
     by @etale-lower-shriek-first-props (4). Thus, it suffices to prove the following lemma:
     #lemma[
-      If $X$ is connected noetherian and $f: U -> X$ is a finite etale covering, then $f_! ul(Lambda)$ is a l.c.c sheaf of $Lambda$-modules.
+      If $X$ is connected noetherian and $f: U -> X$ is a finite etale covering, then $f_! ul(Lambda)$ is an l.c.c sheaf of $Lambda$-modules.
     ]
     #proof[
       By @fet-trivializes-fet-locally, we may pick a connected $Z in FEt_X$ s.t. the finite etale covering $f_Z: U times_X Z -> Z$ is trivial. Now:
@@ -360,13 +360,13 @@ For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lam
     $
       0 = cal(F)_0|_(Z_i) subset cal(F)_1|_(Z_i) subset dots.c subset cal(F)|_(Z_i)
     $
-    does stabilize, say after stage $N_i$. Taking $N = max(N_1, dots.c, N_m)$. Now for all $n > N$. Consider the inclusion $cal(F)_N arrow.hook cal(F)_n$. It is an isomorphism when pulled back along $union.sq.big_(i=1)^m Z_i -> X$ by our hypothesis. Thus $cal(F)_N -> cal(F)_n$ is an isomorphism by @surjective-pullback-conservative.
+    does stabilize, say after stage $N_i$. Take $N = max(N_1, dots.c, N_m)$. Now for all $n > N$, consider the inclusion $cal(F)_N arrow.hook cal(F)_n$. It is an isomorphism when pulled back along $union.sq.big_(i=1)^m Z_i -> X$ by our hypothesis. Thus $cal(F)_N -> cal(F)_n$ is an isomorphism by @surjective-pullback-conservative.
     
     As such, we may assume that $X$ is irreducible, hence integral. By (2), there exists a nonempty open $V subset X$ s.t. $cal(F)|_V$ is l.c.c, hence an etale cover $U -> V$ s.t. $cal(F)|_U cong ul(G)_U$ for some finite $Lambda$-module $G$. Pulling back the chain of inclusions to $U$:
     $
       0 = cal(F)_0|_U subset cal(F)_1|_U subset dots.c subset ul(G)_U
     $
-    We want to show that this chain eventually stabilizes.
+    we want to show that this chain eventually stabilizes.
     
     #lemma[
       Let $X$ be a noetherian scheme and $G$ be a finite $Lambda$-module. Then every chain of inclusions:
@@ -384,13 +384,13 @@ For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lam
       $
         (cal(G)_m)_(ol(eta)) = dircolim_((U,ol(u)) -> (X,ol(eta)) #[etale]) cal(G)_m (U) = dircolim_((U,ol(u)) -> (X,ol(eta)) #[etale] \ U #[connected]) cal(G)_m (U)
       $
-      where connected etale neighborhoods are cofinal since $X$ is noetherian. However, on connected etale opens of $X$, the constant sheaf $ul(G)_X$ evaluates to $G$, with restriction maps being identity. Thus each $cal(G)_m$, as a subsheaf of $ul(G)_X$, has injective restriction maps between connected etale opens. Thus, for $m >= N$, the isomorphism:
+      where connected etale neighborhoods are cofinal since $X$ is noetherian. However, on connected etale opens of $X$, the constant sheaf $ul(G)_X$ evaluates to $G$, with restriction maps being the identity. Thus each $cal(G)_m$, as a subsheaf of $ul(G)_X$, has injective restriction maps between connected etale opens. Thus, for $m >= N$, the isomorphism:
       $
         dircolim_((U,ol(u)) -> (X,ol(eta)) #[etale] \ U #[connected]) cal(G)_m (U) -> H
       $
       has LHS being a filtered colimit with injective transition morphisms. Thus each $cal(G)_m (U) -> dircolim_((U,ol(u)) -> (X,ol(eta)) #[etale] \ U #[connected]) cal(G)_m (U) -> H$ is injective.
       
-      - Taking $m = N$, and since $H$ is a finite $Lambda$-module, there exists a fixed connected etale open $U$ s.t. $cal(G)_N (U) = H$ (by finding a common etale neighborhoods of representative sections of a finite set of generators of $(cal(G)_N)_(ol(eta)) = H$).
+      - Taking $m = N$, and since $H$ is a finite $Lambda$-module, there exists a fixed connected etale open $U$ s.t. $cal(G)_N (U) = H$ (by finding a common etale neighborhood of representative sections of a finite set of generators of $(cal(G)_N)_(ol(eta)) = H$).
       
       - For every $m >= N$ and every refinement $V -> U$ of connected etale opens, we have a composition of injective morphisms:
         $
@@ -441,11 +441,11 @@ For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lam
       
       By (1), we may assume that $X$ is integral, and only aim to prove that $cal(H)|_U$ is l.c.c. when pulled back to some nonempty open of $X$.
       
-      Since $cal(F), cal(G)$ are both constructible, there exists some nonempty open $U subset X$ s.t. $cal(F)|_U, cal(G)|_U$ are both l.c.c. By @descs-of-lcc-sheaves (c), there exists a common etale cover $V -> U$ s.t. $cal(F)|_V cong ul(F)_V, cal(G)|_V cong ul(G)_V$ for finite $Lambda$-modules $F, G$. Restricting to $V$, we get an exact sequence:
+      Since $cal(F), cal(G)$ are both constructible, there exists some nonempty open $U subset X$ s.t. $cal(F)|_U, cal(G)|_U$ are both l.c.c. By definition of l.c.c. sheaves, there exists a common etale cover $V -> U$ s.t. $cal(F)|_V cong ul(F)_V, cal(G)|_V cong ul(G)_V$ for finite $Lambda$-modules $F, G$. Restricting to $V$, we get an exact sequence:
       $
         ul(F)_V -> ul(G)_V -> cal(H)|_V -> 0
       $
-      This gives a morphism $phi: F -> G$, and identifies $cal(H)|_V cong ul(coker(phi))_V$, the constant sheaf associated with a finite $Lambda$-module. Thus $cal(H)|_U$ is l.c.c. by @descs-of-lcc-sheaves (c), and we are done.
+      This gives a morphism $phi: F -> G$, and identifies $cal(H)|_V cong ul(coker(phi))_V$, the constant sheaf associated with the finite $Lambda$-module $coker(phi)$. Thus $cal(H)|_U$ is l.c.c. by definition, and we are done.
     ]
     
     Take a right exact sequence:
@@ -492,13 +492,13 @@ For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lam
   is a constructible subset of $X$. 
 ]
 #proof[
-  It suffices to show that for any irreducible closed subset $Z subset X$ with reduced induced subscheme structure, and with generic point $eta in Z$, if $eta in supp(cal(F))$, then there exists a nonempty open $V subset Z$ s.t. $V subset supp(cal(F))$. Since constructibility is preserved under pullback and $supp(cal(F)|_Z) = supp(cal(F)) ∩ Z$, we may replace $cal(F)$ with $cal(F)|_Z$ and $X$ with $Z$, to assume that $X$ is integral and $Z = X$. 
+  It suffices to show that for any irreducible closed subset $Z subset X$ with reduced induced subscheme structure, and with generic point $eta in Z$, there exists a nonempty open $V subset Z$ such that either $V subset supp(cal(F))$ or $V inter supp(cal(F))=emptyset$. Since constructibility is preserved under pullback and $supp(cal(F)|_Z) = supp(cal(F)) ∩ Z$, we may replace $cal(F)$ with $cal(F)|_Z$ and $X$ with $Z$, to assume that $X$ is integral and $Z = X$. 
 
   Since $cal(F)$ is constructible on integral $X$, there exists a nonempty open $eta in U subset X$ s.t. $cal(F)|_U$ is l.c.c. Thus, there exists an etale cover $pi: V ->> U$ s.t. $pi^(-1) (cal(F)|_U) cong ul(G)_V$ for some finite $Lambda$-module $G$. Thus, for all geometric points $ol(u)$ lying above $u in U$, with $ol(v) in pi^(-1) (ol(u))$, 
   $
     cal(F)_(ol(u)) = (pi^(-1) (cal(F)|_U))_(ol(v)) cong (ul(G)_V)_(ol(v)) = G
   $
-  Thus, $G != 0$ since $G cong cal(F)_(ol(eta)) != 0$, and so for all $ol(u)$ lying above $u in U$, $cal(F)_(ol(u)) cong G != 0$. Thus $U subset supp(cal(F))$. 
+  Thus if $G != 0$, then $U subset supp(cal(F))$, while if $G=0$, then $U inter supp(cal(F))=emptyset$. This gives the required dichotomy and proves constructibility by noetherian induction. 
 ]
 
 #theorem(name: <finite-morphisms-and-constructible-sheaves>)[
@@ -530,7 +530,7 @@ For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lam
   }))
   Since $cal(F)|_(X')$ is constructible and $f'$ is finite, we may assume that $Y$ is integral with generic point $eta$, and check that $f_* cal(F)$ is l.c.c. on an open subset of $Y$. 
   
-  By generic flatness (see @generic-flatness) and using (Finite) (@pbc-finite) in the same way as above, we may assume that $f$ is finite flat, upon passing to an open subset of $Y$. By topological invariance, we may assume that $X$ is reduced by passing to its reduction. Now let $eta in Y$ be the generic point, and consider the generic fiber $X_eta -> eta = Spec(K(Y))$, which is finite with $X_eta$ reduced. This forces $X_eta = Spec(A)$, where $A = product_(i=1)^m L_i$, each $L_i\/K(Y)$ is a finite field extension. Now for each $i$, $L_i\/K(Y)$ factors as $L_i\/L'_i\/K(Y)$, with $L_i\/L'_i$ purely inseparable and $L'_i\/K(Y)$ etale. Thus, taking $A' = product_(i=1)^m L'_i$, $f_eta: X_eta -> eta$ factors as: 
+  By generic flatness (see @generic-flatness) and using (Finite) (@pbc-finite) in the same way as above, we may assume that $f$ is finite flat, upon passing to an open subset of $Y$. By topological invariance, we may assume that $X$ is reduced by passing to its reduction. Now let $eta in Y$ be the generic point, and consider the generic fiber $X_eta -> eta = Spec(K(Y))$, which is finite with $X_eta$ reduced. This forces $X_eta = Spec(A)$, where $A = product_(i=1)^m L_i$, and also forces each $L_i\/K(Y)$ to be a finite field extension. Now for each $i$, $L_i\/K(Y)$ factors as $L_i\/L'_i\/K(Y)$, with $L_i\/L'_i$ purely inseparable and $L'_i\/K(Y)$ etale. Thus, taking $A' = product_(i=1)^m L'_i$, $f_eta: X_eta -> eta$ factors as: 
   $
     underbrace(X_eta, Spec(A)) ->^(g_eta) underbrace(X'_eta, Spec(A')) ->^(h_eta) underbrace(eta, Spec(K(Y)))
   $
@@ -548,7 +548,7 @@ For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lam
 
   As such, $f_* cal(F)$ is now constructible, hence l.c.c. when restricted to some nonempty open of $V$. We are thereby done.  
   
-  (2) The abelian group case follows from the $Lambda$-module case, by first resolving $cal(F) arrow.r.hook g_* ul(M)$ for a finite $ZZ\/n$-module $M$, and then note that every finite $ZZ\/n$-module $M$ can be embedded into some $(ZZ\/n)^(oplus m)$. We first claim that: 
+  (2) The abelian group case follows from the $Lambda$-module case, by first resolving $cal(F) arrow.r.hook g_* ul(M)$ for a finite $ZZ\/n$-module $M$, and then noting that every finite $ZZ\/n$-module $M$ can be embedded into some $(ZZ\/n)^(oplus m)$. We first claim that: 
 
   - If for each geometric point $ol(x)$ of $X$, we can find a finite $Lambda$-module $G$, a finite morphism $g: Z -> X$ and a morphism $phi: cal(F) -> g_* ul(G)_Z$ s.t. $phi$ induces an injection on stalks $cal(F)_(ol(x)) -> (g_* ul(G)_Z)_(ol(x))$ at $x$, then we are done. 
 
@@ -557,14 +557,14 @@ For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lam
     $
       phi_(i,j): cal(F) -> g_(i,j,*) ul(G_(i,j))_Z
     $
-    for some $G_(i,j)$ finite abelian, s.t. $phi_(i,j)$ is injective on stalks at $ol(eta_(i,j))$. Now form the direct sum: 
+    for some finite $Lambda$-modules $G_(i,j)$, s.t. $phi_(i,j)$ is injective on stalks at $ol(eta_(i,j))$. Now form the direct sum: 
     $
       phi = oplus.big_(i,j) phi_(i,j): cal(F) -> oplus.big_(i,j) g_(i,j,*) ul(G_(i,j))_Z
     $
     and so $ker(phi)_(ol(eta_(i,j))) = 0$ for each $i,j$. Furthermore, $ker(phi) subset cal(F)$ and so $ker(phi)|_(X_i) subset cal(F)|_(X_i)$. 
 
     #lemma[
-      Let $X$ be a noetherian scheme, $cal(F) in cAb(X_et, Lambda)$ be a l.c.c sheaf of $Lambda$-modules, and $cal(G) subset cal(F)$ be a subsheaf s.t. $cal(G)_(ol(eta)) = 0$ for all $eta in X$ being the generic point of an irreducible component of $X$. Then $cal(G) = 0$. 
+      Let $X$ be a noetherian scheme, $cal(F) in cAb(X_et, Lambda)$ be an l.c.c sheaf of $Lambda$-modules, and $cal(G) subset cal(F)$ be a subsheaf s.t. $cal(G)_(ol(eta)) = 0$ for all $eta in X$ being the generic point of an irreducible component of $X$. Then $cal(G) = 0$. 
     ]
     #proof[
       For any geometric point $ol(x)$ of $X$, pick $eta$ the generic point of some irreducible component of $X$ containing $x$, and $ol(eta)$ any geometric point above $eta$ generalizing $ol(x)$. We have a commutative diagram: 
@@ -593,7 +593,7 @@ For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lam
       $
       is just the identity. Thus, since $s_(ol(u)) in cal(G)_(ol(eta)) = 0$, $s = 0$. */
     ]
-    By lemma, $ker(phi)|_(X_i) = 0$ for each $i$. Applying @surjective-pullback-conservative to $union.sq.big_i X_i -> X$ concludes that $ker(phi) = 0$ and $phi$ is injective. /*Finally, we embed each finite group $G_(i,j)$ into a finite direct sum $(ZZ\/n)^(oplus m_(i,j))$ for some uniform $n$, we replace $G_(i,j)$ with $ZZ\/n$, and we have found finitely many finite morphisms $g_k: Z_k -> X$ and an injection $cal(F) arrow.r.hook oplus.big_k g_(k,*) ul(ZZ\/n)$. Finally, we form the disjoint union $g: Z := union.sq.big_k Z_k -> X$, and so we have an injection $cal(F) -> g_* ul(ZZ\/n)$. */Finally, we take $M = oplus.big_(i,j) G_(i,j)$ and so we have found a finite $Lambda$-module $M$, and finitely many finite morphisms $g_k: Z_k -> X$, with an injection: 
+    By the lemma, $ker(phi)|_(X_i) = 0$ for each $i$. Applying @surjective-pullback-conservative to $union.sq.big_i X_i -> X$ concludes that $ker(phi) = 0$ and $phi$ is injective. /*Finally, we embed each finite group $G_(i,j)$ into a finite direct sum $(ZZ\/n)^(oplus m_(i,j))$ for some uniform $n$, we replace $G_(i,j)$ with $ZZ\/n$, and we have found finitely many finite morphisms $g_k: Z_k -> X$ and an injection $cal(F) arrow.r.hook oplus.big_k g_(k,*) ul(ZZ\/n)$. Finally, we form the disjoint union $g: Z := union.sq.big_k Z_k -> X$, and so we have an injection $cal(F) -> g_* ul(ZZ\/n)$. */Finally, we take $M = oplus.big_(i,j) G_(i,j)$ and so we have found a finite $Lambda$-module $M$, and finitely many finite morphisms $g_k: Z_k -> X$, with an injection: 
     $
       cal(F) arrow.r.hook oplus.big_k g_(k,*) ul(M)
     $
@@ -607,7 +607,7 @@ For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lam
   Take the normalization $nu: Y -> Z$ where $Y$ is the normalization of $Z$ in $L$, making $Y$ a normal integral scheme and $nu$ an integral morphism. Since $L\/K$ is finite, $L = K(Y)$ (by checking on affine opens). Let $y in Y$ be the generic point of $Y$, with $k(y) = L$, and we have $nu(y) = x$. Now $cal(F)|_y$ is the constant sheaf $ul(G)_y$ since $Gal_L$ acts trivially on the finite abelian group $cal(F)_(ol(x))$. From adjunction, the isomorphism $cal(F)|_y -> ul(G)_y$ gives a morphism $cal(F)|_Y -> y_* ul(G)_y$, hence a morphism $phi: cal(F) -> f_* y_* ul(G)_y$, where $f: Y ->^nu Z arrow.r.hook X$. 
 
   #lemma(name: <generic-pt-pushforward-of-const-shv-on-normal-sch>)[
-    Let $X$ be a integral normal scheme with function field $K$. Then the inclusion of the generic point $eta: eta = Spec(K) -> X$ satisfies: 
+    Let $X$ be an integral normal scheme with function field $K$. Then the inclusion of the generic point $eta: eta = Spec(K) -> X$ satisfies: 
     $
       eta_* ul(G)_eta cong ul(G)_X
     $
