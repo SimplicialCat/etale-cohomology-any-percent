@@ -28,7 +28,7 @@ As such, to establish $cAb(X_et)$ as a well-behaved abelian category, our goal i
 - $cAb(X_et)$ being an abelian category (a.k.a. defining kernels, cokernels and images); 
 - $cAb(X_et)$ having enough injectives. 
 
-Our first goal is the sheafification. 
+Our first goal is the sheafification. We first establish presheaves as an abelian category. 
 
 #construction(name: <constr-zeroth-cech-cohom>)[
   Given any etale cover $cal(U) = {U_i -> U}_i$ in $Et_X$ and $cal(G) in cPSh(X_et)$, we define the *zeroth Cech cohomology* of $cal(G)$ w.r.t. $cal(U)$, denoted $caron(H)^0 (cal(U), cal(G))$ to be the equalizer: 
@@ -67,7 +67,7 @@ Our first goal is the sheafification.
   taken over the directed set of all etale covers $cal(U)$ of $U$, where $cal(U) <= cal(V)$ iff there exists a refinement from $cal(U)$ to $cal(V)$. The transition maps are defined using refinements above, and are well-defined since they are independent from the specific refinement. 
 
   #remark(name: <set-categorical-subtleties>)[
-    There are at least two subtleties in this definition:#footnote[I wasn't aware of either of these difficulties initially. The category-theoretic subtlety occurred to me when I was writing the next section on stalks and realized that it is possible that two refinements cannot be equalized, under some AI assistance. I later found out that it is documented in @cite-lei-fu. The set-theoretic subtlety was pointed out to me by Irisu, when I brought up the category-theoretic subtlety in a group discussion.]
+    There are at least three subtleties in this definition:#footnote[I wasn't aware of all of these difficulties initially. The category-theoretic subtlety occurred to me when I was writing the next section on stalks and realized that it is possible that two refinements cannot be equalized, under some AI assistance. I later found out that it is documented in @cite-lei-fu. The second set-theoretic subtlety was pointed out to me by Irisu, when I brought up the category-theoretic subtlety in a group discussion. The first set-theoretic subtlety was pointed out to me by ChatGPT 6.1 Sol.]
 
     - A category-theoretic subtlety: 
     
@@ -77,21 +77,32 @@ Our first goal is the sheafification.
 
       As such, it is just better that we define $caron(H)^0 (U, cal(G))$ here as a directed limit over etale covers where morphisms are refinement _as a property_, instead of refinement _as a structure_. 
 
-    - A set-theoretic subtlety: 
+    - Two set-theoretic subtleties: 
 
-      Suppose that our ambient Grothendieck universe is $cal(W)$, where#footnote[We use $cal(W)$ instead of the customary $cal(U)$ since $cal(U)$ has been used to denote an etale cover in this context.] our sets are $cal(W)$-sets and schemes are $cal(W)$-schemes, etc. Then in general, the set of all etale covers of $U$ (indexed by a $cal(W)$-set using $cal(W)$-schemes, of course) has the same cardinality as $cal(W)$, and is not a $cal(W)$-set. As such, there is a priori a concern that the directed limit above might not exist as a $cal(W)$-set. 
+      - Suppose that our ambient Grothendieck universe is $cal(W)$, where#footnote[We use $cal(W)$ instead of the customary $cal(U)$ since $cal(U)$ has been used to denote an etale cover in this context.] our sets/abelian groups are $cal(W)$-sets/abelian groups, and schemes are $cal(W)$-schemes. Then the category $cPSh(X_et)$ or $cPAb(X_et)$ is not even locally $cal(W)$-small. Indeed, $Et_X$ has the same cardinality as $cal(W)$, so a hom-set between two presheaves may have too many possibilities. 
 
-      We may solve this set-theoretic issue by considering the following subfamily $cal(S)$ of etale covers: 
+        This subtlety makes hom-sets of internal Hom sheaves poorly defined. To counteract this, we fix two Grothendieck universes $cal(W) in cal(W)'$, and require: 
+        $
+          cPSh(X_et) = "Fun"((Et_X^opp)_((cal(W))), cSet_((cal(W)'))) \
+          cPAb(X_et) = "Fun"((Et_X^opp)_((cal(W))), cAb_((cal(W)')))
+        $
+        That is, we only allow $cal(W)$-small schemes, but allow arbitrary $cal(W)'$-small sets/abelian groups as values. Then $(Et_X)_((cal(W)))$ is a $cal(W)'$-small category, and this makes the presheaf categories locally $cal(W)'$-small, and possess all $cal(W)'$-small limits and colimits. 
 
-      - Etale covers $cal(U) = {U_i -> U}$ in which every $U_i$ is affine, has image contained in an affine open of $U$, and whose morphisms are chosen without repetition from a fixed set of representatives of affine etale morphisms into affine opens of $U$. 
+        Therefore, we fix the convention that, when we talk about presheaves and sheaves, we only allow $cal(W)$-small schemes, but allow them to take value in $cal(W)'$-small sets/abelian groups. 
 
-      By picking sufficiently small affine opens and then removing duplicates, we see that every etale cover of $U$ may be refined by one in $cal(S)$. On the other hand, the affine opens of $U$ form a $cal(W)$-set, and for each affine open $Spec(A) subset U$, any etale $A$-algebra is finite type over $A$, hence isomorphic to a quotient of some $A[x_1, dots.c, x_k]$. There are thus at most $max(aleph_0, abs(A))$, hence a $cal(W)$-set of them. In other words, every cover in $cal(S)$ has its morphisms chosen among a $cal(W)$-set. $cal(S)$ is thus a $cal(W)$-set. 
+      - The index category in the directed limit defining $caron(H)^0 (U, cal(G))$ is the category of ($cal(W)$-small) etale covers $cal(U)$ of $U$. This category is not $cal(W)$-small, and a priori, it might cause the Cech cohomology to depend on the choice of the universe $cal(W)$, which is pathological. 
 
-      Now that every etale cover of $U$ may be refined by one in $cal(S)$, the directed limit: 
-      $
-        dirlim_(cal(U)) caron(H)^0 (cal(U), cal(G)) = dirlim_(cal(U) in cal(S)) caron(H)^0 (cal(U), cal(G))
-      $
-      exists as a $cal(W)$-set. 
+        We may solve this set-theoretic issue by considering the following subfamily $cal(S)$ of etale covers: 
+
+        - Etale covers $cal(U) = {U_i -> U}$ in which every $U_i$ is affine, has image contained in an affine open of $U$, and whose morphisms are chosen without repetition from a fixed set of representatives of affine etale morphisms into affine opens of $U$. 
+
+        By picking sufficiently small affine opens and then removing duplicates, we see that every etale cover of $U$ may be refined by one in $cal(S)$. On the other hand, the affine opens of $U$ form a $cal(W)$-set, and for each affine open $Spec(A) subset U$, any etale $A$-algebra is finite presentation over $A$, hence isomorphic to a quotient of some $A[x_1, dots.c, x_k]$. There are thus at most $max(aleph_0, abs(A))$, hence a $cal(W)$-set of them. In other words, every cover in $cal(S)$ has its morphisms chosen among a $cal(W)$-set. $cal(S)$ is thus a $cal(W)$-set. 
+
+        Now that every etale cover of $U$ may be refined by one in $cal(S)$, the directed limit: 
+        $
+          dirlim_(cal(U)) caron(H)^0 (cal(U), cal(G)) = dirlim_(cal(U) in cal(S)) caron(H)^0 (cal(U), cal(G))
+        $
+        is a colimit indexed by a $cal(W)_0$-small category for every universe $cal(W)_0$ containing $U$. The family $cal(S)$ does not depend on the choice of the universe $cal(W)$, so the dependence of Cech cohomology on the ambient universe $cal(W)$ is removed. Thus, Cech cohomology on the etale site is really a canonical construction, independent of the size of an ambient universe.
   ]
 ]
 
@@ -181,9 +192,8 @@ By the previous lemma, $(cal(G)^+)^+$ is always a sheaf for any presheaf $cal(G)
   We then prove surjectivity, i.e. any morphism $f': cal(F) -> cal(G)$ factors through $theta$. Indeed, given any $s in cal(F)^+ (U)$ represented by ${s_i in cal(F)(U_i)}$, the sections ${f'(s_i) in cal(G)(U_i)}$ are compatible on each $U_i times_U U_j$, since $f'$ is compatible with restrictions and the ${s_i}$'s are compatible. Thus, ${f'(s_i)}_i$ glue to a section $t in cal(G)(U)$. We then define $f(s) = t$. It is easy to check that $f$ is a morphism between sheaves and $f' = f compose theta$. 
 ]
 
-#let Fun = math.op[Fun]
 #lemma[
-  For any category $cal(C)$, the category $Fun(cal(C), cAb)$ is an abelian category with enough injectives, and kernels, cokernels and images in this category are taken pointwise. Limits and colimits are also taken pointwise. 
+  For any $cal(W)$-small category $cal(C)$, the category $"Fun"(cal(C), cAb_((cal(W))))$ is a locally $cal(W)$-small abelian category with enough injectives, and kernels, cokernels and images in this category are taken pointwise. Limits and colimits are also taken pointwise. 
 ]
 #proof[
   This argument is purely formal. 
@@ -193,7 +203,7 @@ By the previous lemma, $(cal(G)^+)^+$ is always a sheaf for any presheaf $cal(G)
   $cPAb(X_et)$ is an abelian category with enough injectives, with kernels, cokernels, images taken section-wise. Limits and colimits are also taken section-wise. 
 ]
 #proof[
-  Take $cal(C) = Et_X^opp$ in the previous lemma. 
+  Take $cal(C) = Et_X^opp$ in the previous lemma. One should keep in mind that as in @set-categorical-subtleties, we have two universes $cal(W) in cal(W)'$, so that we only consider $cal(W)$-schemes but consider $cal(W)'$-small abelian groups. Thus $Et_X$ is $cal(W)'$-small, and the previous lemma is applicable. 
 ]
 
 #lemma[
@@ -316,7 +326,7 @@ By the previous lemma, $(cal(G)^+)^+$ is always a sheaf for any presheaf $cal(G)
     $
     i.e. limits of sheaves are just their limits as presheaves, while colimits are presheaf colimits sheafified. 
 
-  + $cAb(X_et)$ has enough injectives. 
+  + $cAb(X_et)$ is a Grothendieck abelian category, and hence has enough injectives. 
 
   0. $(-)^\#: cPAb(X_et) -> cAb(X_et)$, the sheafification functor, is exact. 
 
@@ -372,7 +382,7 @@ By the previous lemma, $(cal(G)^+)^+$ is always a sheaf for any presheaf $cal(G)
 
   We use the following theorem from @cite-grothendieck-tohoku:
   #theorem[
-    Suppose that $cal(A)$ is an abelian category satisfying: 
+    Suppose that $cal(A)$ is a Grothendieck abelian category, i.e. an abelian category satisfying: 
 
     + (Ab5) condition: $cal(A)$ has arbitrary coproducts, and filtered colimits are exact. 
 
@@ -415,19 +425,15 @@ By the previous lemma, $(cal(G)^+)^+$ is always a sheaf for any presheaf $cal(G)
 
   Existence of generator: 
   #proof[
-    We would like to take the generator $G = oplus.big_(U in Et_X) ul(ZZ)_(!,U)$. However this doesn't work due to set-theoretic difficulties: 
+    Take the generator $G = oplus.big_(U in Et_X) ul(ZZ)_(!,U)$. 
 
-    - When we talk about sets, schemes etc, we have an ambient fixed Grothendieck universe $cal(U)$, and we are really talking about $cal(U)$-sets and $cal(U)$-schemes (schemes where the involved structures are sets in $cal(U)$). A direct sum thus must be indexed by a $cal(U)$-set, but in general $Et_X$, the category of $cal(U)$-schemes etale over $X$, may contain schemes that are disjoint unions of etale schemes over $X$ indexed by any $cal(U)$-set, and has the same cardinality as $cal(U)$. 
-
-    Instead, we take a basis of the etale topology on $X$. Let $X$ be covered by affine opens ${Spec(A_i)}_(i in I)$, where $I$ is a $cal(U)$-set, and each $A_i$ is a $cal(U)$-ring. Let $cal(S)_i$ be the set of isomorphism classes of etale $A_i$-algebras. Since etale $A_i$-algebras are finite type over $A_i$, they are isomorphic to quotients of $A_i [x_1, dots.c, x_k]$ for some $k$, and so there are at most $max(aleph_0, abs(A_i))$ isomorphism classes of them. As such, each $cal(S)_i$ is a $cal(U)$-set, and so the disjoint union $cal(S) = union.sq.big_(i in I) cal(S)_i$ is a $cal(U)$-set. 
-
-    We claim that a morphism $f: cal(F) -> cal(G)$ in $cAb(X_et)$ vanishes if it vanishes on sections on the etale opens $Spec(B_i) -> Spec(A_i) -> X$ for every $B_i in cal(S)_i$ and every $i$. Indeed, for any $U in Et_X$, we may cover $U$ by affine opens whose image in $X$ is contained in one of the $Spec(A_i)$'s, i.e. $U = union.big_(i,j) Spec(C_(i,j))$ where $C_(i,j)$ is (isomorphic to a ring) in $cal(S)_i$. Since $f$ vanishes on sections on each $C_(i,j)$, by the sheaf conditions, $f$ vanishes on sections on $U$. Thus $f = 0$. 
-
-    In other words, the following direct sum indexed over a $cal(U)$-set $cal(S)$: 
+    If a morphism $f: cal(F) -> cal(G)$ in $cAb(X_et)$ vanishes under $Hom(G, -)$, we may conclude that the map: 
     $
-      G = oplus.big_(B_i in cal(S)) ul(ZZ)_(!,Spec(B_i))
-    $
-    has the property that $Hom(G, -): cAb(X_et) -> cAb$ is faithful, and is hence a generator. 
+      product_(U in Et_X) cal(F)(U) -> product_(U in Et_X) cal(G)(U)
+    $ 
+    vanishes, and so $f$ vanishes on every section. Thus $f = 0$. 
+
+    Thus $G$ has the property that $Hom(G, -): cAb(X_et) -> cAb$ is faithful. Hence, $G$ is a generator. 
 
     #suppress-qed
   ]

@@ -750,7 +750,7 @@ We also have relative versions of limit formulas:
   $
 ]
 
-Finally, we state @stalks-of-derived-lowerstar in the derived category. 
+Finally, we state a couple of derived category statements. First, we have @stalks-of-derived-lowerstar in the derived category. 
 
 #proposition(name: <derived-stalks-of-derived-pushforward>)[
   For $cal(K) in D^+ (X_et, Lambda)$ and a qcqs morphism $f: X -> Y$ between schemes, there exists a canonical quasi-isomorphism: 
@@ -761,4 +761,166 @@ Finally, we state @stalks-of-derived-lowerstar in the derived category.
 ]
 #proof[
   We apply @stalks-of-derived-lowerstar and the way-out lemma. 
+]
+
+Next, absolute and relative limit formula at the complex level may also be established. 
+
+#notation[
+  Let $cal(A)$ be an abelian category. Suppose that we have a directed system of complexes ${K_i}_(i in I) subset D(cal(A))$ that admits compatible maps to a complex $K in D(cal(A))$. We use the notation: 
+  $
+    dirhlim_(i in I) K_i cong K
+  $
+  to denote the statement that: 
+
+  - For every degree $q in ZZ$, the induced map: 
+    $
+      dirlim_(i in I) h^q (K_i) -> h^q (K)
+    $
+    is an isomorphism. 
+]
+
+We first establish the relative version. 
+#proposition(name: <derived-relative-limit-formula-composite>)[
+  Let $S$ be a qcqs scheme. Let ${X_i}_(i in I)$ be a projective system of qcqs $S$-schemes, with all transition maps $u_(i,j): X_i -> X_j$ for $i>=j$ affine. Let: 
+  $
+    X = invlim_(i in I) X_i
+  $
+  with projections $v_i: X -> X_i$ and structure maps $g_i: X_i -> S, g: X -> S$. 
+  
+  Suppose that for a fixed $a in ZZ$, there are complexes $cal(K)_i in D_(>=a) ((X_i)_et, Lambda)$ and $cal(K) in D_(>=a) (X_et, Lambda)$, together with compatible transition morphisms: 
+  $
+    psi_(i,j): u_(i,j)^(-1) cal(K)_j -> cal(K)_i \
+    phi_i: v_i^(-1) cal(K)_i -> cal(K)
+  $
+  Suppose that: 
+  $
+    dirhlim v_i^(-1) cal(K)_i cong cal(K)
+  $
+  Then: 
+  $
+    dirhlim R g_(i,*) cal(K)_i cong R g_* cal(K)
+  $
+]
+#proof[
+  Fix a degree $b in ZZ$ so that we want to prove the isomorphism: 
+  $
+    dirlim_(i in I) h^b (R g_(i,*) cal(K)_i) cong h^b (R g_* cal(K))
+  $
+  Then consider the truncation triangles: 
+  $
+    tau_(<=b) cal(K)_i -> cal(K)_i -> tau_(>b) cal(K)_i ->^(+1) \
+    tau_(<=b) cal(K) -> cal(K) -> tau_(>b) cal(K) ->^(+1)
+  $
+  Now $h^(b-1) (R g_(i,*) (X_i, tau_(>b) cal(K)_i)) = h^b (R g_(i,*) (X_i, tau_(>b) cal(K)_i)) = 0$ and the same holds for $R g_* (X, tau_(>b) cal(K))$. Thus, there are canonical isomorphisms: 
+  $
+    h^b (R g_(i,*) cal(K)_i) cong h^b (R g_(i,*) tau_(<=b) cal(K)_i) \
+    h^b (R g_* cal(K)) cong h^b (R g_* tau_(<=b) cal(K))
+  $
+  Thus, we may apply $tau_(<=b)$ to every complex in question, and assume that all complexes in question are supported in a fixed bounded interval $[a,b]$. 
+
+  Now perform induction on $b$. The base case $b < a$ is vacuous. Now suppose that this proposition holds for all complexes supported on $[a,b-1]$. Then for the supported on $[a,b]$ case, we have truncation triangles: 
+  $
+    tau_(<=b-1) cal(K)_i -> cal(K)_i -> h^b (cal(K)_i)[-b] ->^(+1) \
+    tau_(<=b-1) cal(K) -> cal(K) -> h^b (cal(K))[-b] ->^(+1)
+  $
+  We thus have commutative diagrams with long exact rows: 
+  // https://q.uiver.app/#r=typst&q=WzAsMTQsWzAsMCwiZG90cy5jIl0sWzAsMSwiZG90cy5jIl0sWzYsMCwiZG90cy5jIl0sWzYsMSwiZG90cy5jIl0sWzMsMCwiaF5xIChSIGdfKGksKikgY2FsKEspX2kpIl0sWzMsMSwiaF5xIChSIGdfKiBjYWwoSykpIl0sWzQsMCwiUl4ocS1iKSBnXyhpLCopIGheYiAoY2FsKEtfaSkpIl0sWzQsMSwiUl4ocS1iKSBnXyogaF5iIChjYWwoSykpIl0sWzEsMCwiUl4ocS1iLTEpIGdfKGksKikgaF5iIChjYWwoS19pKSkiXSxbMSwxLCJSXihxLWItMSkgZ18qIGheYiAoY2FsKEspKSJdLFsyLDAsImhecSAoUiBnXyhpLCopIHRhdV8oPD1iLTEpIGNhbChLKV9pKSJdLFsyLDEsImhecSAoUiBnXyogdGF1Xyg8PWItMSkgY2FsKEspKSJdLFs1LDAsImheKHErMSkgKFIgZ18oaSwqKSB0YXVfKDw9Yi0xKSBjYWwoSylfaSkiXSxbNSwxLCJoXihxKzEpIChSIGdfKiB0YXVfKDw9Yi0xKSBjYWwoSykpIl0sWzAsOF0sWzgsMTBdLFsxMCw0XSxbNCw2XSxbNiwxMl0sWzEyLDJdLFsxLDldLFs5LDExXSxbMTEsNV0sWzUsN10sWzcsMTNdLFsxMywzXSxbOCw5XSxbMTAsMTFdLFs0LDVdLFs2LDddLFsxMiwxM11d
+  #align(center, diagram({
+    node((0, 0), [$dots.c$])
+    node((0, 1), [$dots.c$])
+    node((6, 0), [$dots.c$])
+    node((6, 1), [$dots.c$])
+    node((3, 0), [$h^q (R g_(i,*) cal(K)_i)$])
+    node((3, 1), [$h^q (R g_* cal(K))$])
+    node((4, 0), [$R^(q-b) g_(i,*) h^b (cal(K_i))$])
+    node((4, 1), [$R^(q-b) g_* h^b (cal(K))$])
+    node((1, 0), [$R^(q-b-1) g_(i,*) h^b (cal(K_i))$])
+    node((1, 1), [$R^(q-b-1) g_* h^b (cal(K))$])
+    node((2, 0), [$h^q (R g_(i,*) tau_(<=b-1) cal(K)_i)$])
+    node((2, 1), [$h^q (R g_* tau_(<=b-1) cal(K))$])
+    node((5, 0), [$h^(q+1) (R g_(i,*) tau_(<=b-1) cal(K)_i)$])
+    node((5, 1), [$h^(q+1) (R g_* tau_(<=b-1) cal(K))$])
+    edge((0, 0), (1, 0), "->")
+    edge((1, 0), (2, 0), "->")
+    edge((2, 0), (3, 0), "->")
+    edge((3, 0), (4, 0), "->")
+    edge((4, 0), (5, 0), "->")
+    edge((5, 0), (6, 0), "->")
+    edge((0, 1), (1, 1), "->")
+    edge((1, 1), (2, 1), "->")
+    edge((2, 1), (3, 1), "->")
+    edge((3, 1), (4, 1), "->")
+    edge((4, 1), (5, 1), "->")
+    edge((5, 1), (6, 1), "->")
+    edge((1, 0), (1, 1), "->")
+    edge((2, 0), (2, 1), "->")
+    edge((3, 0), (3, 1), "->")
+    edge((4, 0), (4, 1), "->")
+    edge((5, 0), (5, 1), "->")
+  }, spacing: (1em, 3em)))
+  Taking directed limits over the first row, we have a commutative diagram with exact rows: 
+  #align(center, snap-width(diagram({
+    node((0, 0), [$dots.c$])
+    node((0, 1), [$dots.c$])
+    node((6, 0), [$dots.c$])
+    node((6, 1), [$dots.c$])
+    node((3, 0), [$dirlim_i h^q (R g_(i,*) cal(K)_i)$])
+    node((3, 1), [$h^q (R g_* cal(K))$])
+    node((4, 0), [$dirlim_i R^(q-b) g_(i,*) h^b (cal(K_i))$])
+    node((4, 1), [$R^(q-b) g_* h^b (cal(K))$])
+    node((1, 0), [$dirlim_i R^(q-b-1) g_(i,*) h^b (cal(K_i))$])
+    node((1, 1), [$R^(q-b-1) g_* h^b (cal(K))$])
+    node((2, 0), [$dirlim_i h^q (R g_(i,*) tau_(<=b-1) cal(K)_i)$])
+    node((2, 1), [$h^q (R g_* tau_(<=b-1) cal(K))$])
+    node((5, 0), [$dirlim_i h^(q+1) (R g_(i,*) tau_(<=b-1) cal(K)_i)$])
+    node((5, 1), [$h^(q+1) (R g_* tau_(<=b-1) cal(K))$])
+    edge((0, 0), (1, 0), "->")
+    edge((1, 0), (2, 0), "->")
+    edge((2, 0), (3, 0), "->")
+    edge((3, 0), (4, 0), "->")
+    edge((4, 0), (5, 0), "->")
+    edge((5, 0), (6, 0), "->")
+    edge((0, 1), (1, 1), "->")
+    edge((1, 1), (2, 1), "->")
+    edge((2, 1), (3, 1), "->")
+    edge((3, 1), (4, 1), "->")
+    edge((4, 1), (5, 1), "->")
+    edge((5, 1), (6, 1), "->")
+    edge((1, 0), (1, 1), "->")
+    edge((2, 0), (2, 1), "->")
+    edge((3, 0), (3, 1), "->")
+    edge((4, 0), (4, 1), "->")
+    edge((5, 0), (5, 1), "->")
+  }, spacing: (1em, 3em))))
+  By @relative-limit-formula-composite, the first and fourth vertical arrow are bijective. By the inductive hypothesis, the second and fifth vertical arrow are bijective. Thus by the five lemma, the third vertical arrow is bijective, and so we have the isomorphism: 
+  $
+    dirlim_i h^q (R g_(i,*) cal(K)_i) cong h^q (R g_* cal(K))
+  $
+  We are thereby done. 
+]
+
+Then the absolute version: 
+#proposition(name: <derived-absolute-limit-formula-composite>)[
+  Let ${X_i}_(i in I)$ be a projective system of qcqs schemes, with all transition maps $u_(i,j): X_i -> X_j$ for $i>=j$ affine. Let: 
+  $
+    X = invlim_(i in I) X_i
+  $
+  with projections $v_i: X -> X_i$. 
+  
+  Suppose that for a fixed $a in ZZ$, there are complexes $cal(K)_i in D_(>=a) ((X_i)_et, Lambda)$ and $cal(K) in D_(>=a) (X_et, Lambda)$, together with compatible transition morphisms: 
+  $
+    psi_(i,j): u_(i,j)^(-1) cal(K)_j -> cal(K)_i \
+    phi_i: v_i^(-1) cal(K)_i -> cal(K)
+  $
+  Suppose that: 
+  $
+    dirhlim v_i^(-1) cal(K)_i cong cal(K)
+  $
+  Then: 
+  $
+    dirhlim R Gamma(X_i, cal(K)_i) cong R Gamma(X, cal(K))
+  $
+]
+#proof[
+  The proof is exactly the same as @derived-relative-limit-formula-composite, but with @limit-formula-composite to handle the sheaf case. We omit the details of the proof.
 ]

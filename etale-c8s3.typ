@@ -728,3 +728,39 @@ As a consequence of smooth base change, we show that etale cohomology of torsion
   $
   where $Spec(A_L [f^(-1)])$ is an affine open of $Spec(A_L)$, hence smooth over $K$. We have thus written $ol(K(t))$ as a direct limit of smooth $K$-algebras. 
 ]
+
+// local acyclicity no longer requires algebraic geometric points
+#corollary[
+  Let $Lambda$ be an $n$-torsion noetherian ring. For a morphism of $ZZ[n^(-1)]$-schemes $f: X -> S$ with geometric points $ol(x)$ of $X$ and $ol(s) = f(ol(x))$, and a complex $cal(K) in D^+ (X_et, Lambda)$, TFAE: 
+
+  + $f$ is locally acyclic at $ol(x)$ relative to $cal(K)$; 
+
+  + For every geometric point $ol(t)$ of $tilde(S)_(ol(s))$ (not necessarily algebraic ones), the restriction morphism: 
+    $
+      alpha_(cal(K),ol(x),ol(t)): cal(K)_(ol(x)) -> R Gamma(F_(ol(x),ol(t)), cal(K)|_(F_(ol(x),ol(t))))
+    $
+    is an isomorphism. 
+
+  That is, local acyclicity tested on algebraic geometric points is equivalent to local acyclicity tested on all geometric points. In turn, under the assumption that $Lambda$ is $n$-torsion and the schemes in question are $ZZ[n^(-1)]$-schemes, 
+
+  - The cospecialization map $cosp: R Gamma(X_(ol(t)), cal(K)|_(X_(ol(t)))) -> R Gamma(X_(ol(s)), cal(K)|_(X_(ol(s))))$ as in @cospecialization-map can be constructed whenever $f$ is locally acyclic relative to $cal(K)$, and $ol(t)$ is any geometric point of $tilde(S)_(ol(s))$. 
+
+  - The parenthesized assumption that $ol(t)$ is an algebraic geometric point can be dropped from @loc-acyc-sp-cosp-square and @proper-loc-acyc-bc. 
+]
+#proof[
+  (2)$==>$(1) is tautological. For (1)$==>$(2), let $ol(t)$ lie above $t in tilde(S)_(ol(s))$, and let $ol(t_0)$ be an algebraic geometric point above $t$. Then by definition of local acyclicity, 
+  $
+    alpha_(cal(K),ol(x),ol(t_0)): cal(K)_(ol(x)) -> R Gamma(F_(ol(x),ol(t_0)), cal(K)|_(F_(ol(x),ol(t_0))))
+  $
+  is an isomorphism. 
+
+  By topological invariance, we may replace $ol(t)$ with $Spec(ol(k(ol(t))))$, to assume that $ol(t)$ is algebraically closed too. Then $k(ol(t))\/ol(k(t))$ is an extension of algebraically closed field, and $F_(ol(x),ol(t_0))$ is a qcqs $ol(k(t))$-scheme. By @bc-along-extension-of-sep-cl-fields, the restriction map: 
+  $
+    R Gamma(F_(ol(x),ol(t_0)), cal(K)|_(F_(ol(x),ol(t_0)))) -> R Gamma(F_(ol(x),ol(t)), cal(K)|_(F_(ol(x),ol(t))))
+  $
+  is an isomorphism. The map $alpha$'s are also restriction maps, so we may conclude that: 
+  $
+    alpha_(cal(K),ol(x),ol(t)): cal(K)_(ol(x)) -> R Gamma(F_(ol(x),ol(t)), cal(K)|_(F_(ol(x),ol(t))))
+  $
+  is an isomorphism. 
+]

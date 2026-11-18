@@ -105,6 +105,112 @@ where in the derived category, the Leray spectral sequence is really just $R(h c
 
 Next, we will demonstrate the power of constructible sheaves, when we perform the critical devissage required to reduce arbitrary torsion sheaves to $ul(ZZ\/n)$. 
 
+First, we prove an abstract lemma that serves as the framework of devissage. 
+#lemma(name: <abstract-devissage>)[
+  (Abstract devissage) Let $cal(A), cal(B)$ be abelian categories, so that $cal(B)$ has (Ab5). 
+  
+  Let $S^q,T^q: cal(A) -> cal(B)$ be two $delta$-functors defined for all degrees $q in ZZ$ defined for all $cal(R)$, with a natural transformation $eta^q: S^q -> T^q$ of $delta$-functors. Suppose that: 
+
+  - $S^q, T^q$ commute with directed limits. 
+
+  - There exists $a in ZZ$ s.t. for all $q < a$, $S^q = T^q = 0$. 
+
+  - Every object in $cal(A)$ can be written as a directed limit of objects in a certain subset of objects $cal(A)_0 subset cal(A)$. 
+
+  - For every $q >= a$, every object $A in cal(A)_0$ admits embeddings $A arrow.hook C, D$ into objects $C, D in cal(A)$ so tha $eta^q_C: S^q (C) -> T^q (C)$ is injective, and $eta^q_D: S^q (D) -> T^q (D)$ is surjective. 
+
+  Then $eta^q: S^q -> T^q$ is an natural isomorphism of $delta$-functors.
+
+  If we may take $cal(A)_0 = cal(A)$ itself, then the requirements on commuting with directed limits and on (Ab5) may be omitted.
+]
+#proof[
+  Let $P(n)$ denote the statement that: 
+
+  - For all degrees $q <= n$, $eta^q: S^q -> T^q$ is a natural isomorphism. 
+
+  Then the vanishing below degree $a$ gives the base case $P(a-1)$ automatically. We now perform induction, assuming $P(n-1)$ and aiming to prove $P(n)$. 
+
+  - For every $A in cal(A)_0$, embed it as $A arrow.hook C$ so that $eta^q_C$ is injective, and form the cokernel $0 -> A -> C -> R -> 0$. Now consider the commutative diagram with exact rows: 
+    // https://q.uiver.app/#r=typst&q=WzAsMTIsWzAsMCwiZG90cy5jIl0sWzEsMCwiU14obi0xKSAoQykiXSxbMiwwLCJTXihuLTEpIChSKSJdLFszLDAsIlNebiAoQSkiXSxbNCwwLCJTXm4gKEMpIl0sWzUsMCwiZG90cy5jIl0sWzAsMSwiZG90cy5jIl0sWzUsMSwiZG90cy5jIl0sWzEsMSwiVF4obi0xKSAoQykiXSxbMiwxLCJUXihuLTEpIChSKSJdLFszLDEsIlRebiAoQSkiXSxbNCwxLCJUXm4gKEMpIl0sWzAsMV0sWzEsMl0sWzIsM10sWzMsNF0sWzQsNV0sWzYsOF0sWzgsOV0sWzksMTBdLFsxMCwxMV0sWzExLDddLFsxLDgsImV0YV4obi0xKV9DIiwxLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifSwiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzIsOSwiZXRhXihuLTEpX1IiLDEseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9LCJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMywxMCwiZXRhXm5fQSIsMV0sWzQsMTEsImV0YV5uX0MiLDEseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dXQ==
+    #context align(center, diagram({
+      node((0, 0), [$dots.c$])
+      node((1, 0), [$S^(n-1) (C)$])
+      node((2, 0), [$S^(n-1) (R)$])
+      node((3, 0), [$S^n (A)$])
+      node((4, 0), [$S^n (C)$])
+      node((5, 0), [$dots.c$])
+      node((0, 1), [$dots.c$])
+      node((5, 1), [$dots.c$])
+      node((1, 1), [$T^(n-1) (C)$])
+      node((2, 1), [$T^(n-1) (R)$])
+      node((3, 1), [$T^n (A)$])
+      node((4, 1), [$T^n (C)$])
+      edge((0, 0), (1, 0), "->")
+      edge((1, 0), (2, 0), "->")
+      edge((2, 0), (3, 0), "->")
+      edge((3, 0), (4, 0), "->")
+      edge((4, 0), (5, 0), "->")
+      edge((0, 1), (1, 1), "->")
+      edge((1, 1), (2, 1), "->")
+      edge((2, 1), (3, 1), "->")
+      edge((3, 1), (4, 1), "->")
+      edge((4, 1), (5, 1), "->")
+      edge((1, 0), (1, 1), [$eta^(n-1)_C$], label-side: center, "hook->>")
+      edge((2, 0), (2, 1), [$eta^(n-1)_R$], label-side: center, "hook->>")
+      edge((3, 0), (3, 1), [$eta^n_A$], label-side: center, "->")
+      edge((4, 0), (4, 1), [$eta^n_C$], label-side: center, "hook->")
+    }, crossing-fill: thm-box-curr-color()))
+    By the inductive hypothesis, $eta^(n-1)_C$ and $eta^(n-1)_R$ are bijective. By assumption, $eta^n_C$ is injective. By the injective four lemma, $eta^n_A$ is injective. 
+  
+  - For every $A in cal(A)$, write $A = dirlim_lambda A_lambda$ for $A_lambda in cal(A)_0$. We have shown that $eta^n_(A_lambda)$ is injective for all $lambda$. Now: 
+    $
+      eta^n_A: S^n (A) cong dirlim_lambda S^n (A_lambda) -> T^n (A) cong dirlim_lambda T^n (A_lambda)
+    $
+    is the directed limit of the $eta^n_lambda$'s, which are injective maps. By (Ab5) of $cal(B)$, $eta^n_A$ is injective. 
+
+  - For every $A in cal(A)_0$, embed it as $A arrow.hook D$ so that $eta^q_D$ is surjective, and form the cokernel $0 -> A -> D -> R -> 0$. Now consider the commutative diagram with exact rows: 
+    // https://q.uiver.app/#r=typst&q=WzAsMTIsWzAsMCwiZG90cy5jIl0sWzEsMCwiU14obi0xKSAoUikiXSxbMiwwLCJTXm4gKEEpIl0sWzMsMCwiU15uIChDKSJdLFs0LDAsIlNebiAoUikiXSxbNCwxLCJTXm4gKFIpIl0sWzAsMSwiZG90cy5jIl0sWzEsMSwiVF4obi0xKSAoUikiXSxbMiwxLCJUXm4gKEEpIl0sWzMsMSwiVF5uIChDKSJdLFs1LDAsImRvdHMuYyJdLFs1LDEsImRvdHMuYyJdLFswLDFdLFsxLDJdLFsyLDNdLFszLDRdLFs2LDddLFs3LDhdLFs4LDldLFs5LDVdLFsxLDcsImV0YV4obi0xKV9SIiwxLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifSwiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzIsOCwiZXRhXm5fQSIsMSx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzMsOSwiZXRhXm5fQyIsMSx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn0sImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFs0LDUsImV0YV5uX1IiLDEseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFs0LDEwXSxbNSwxMV1d
+    #context align(center, diagram({
+      node((1, 0), [$dots.c$])
+      node((2, 0), [$S^(n-1) (R)$])
+      node((3, 0), [$S^n (A)$])
+      node((4, 0), [$S^n (D)$])
+      node((5, 0), [$S^n (R)$])
+      node((5, 1), [$S^n (R)$])
+      node((1, 1), [$dots.c$])
+      node((2, 1), [$T^(n-1) (R)$])
+      node((3, 1), [$T^n (A)$])
+      node((4, 1), [$T^n (D)$])
+      node((6, 0), [$dots.c$])
+      node((6, 1), [$dots.c$])
+      edge((1, 0), (2, 0), "->")
+      edge((2, 0), (3, 0), "->")
+      edge((3, 0), (4, 0), "->")
+      edge((4, 0), (5, 0), "->")
+      edge((1, 1), (2, 1), "->")
+      edge((2, 1), (3, 1), "->")
+      edge((3, 1), (4, 1), "->")
+      edge((4, 1), (5, 1), "->")
+      edge((2, 0), (2, 1), [$eta^(n-1)_R$], label-side: center, "hook->>")
+      edge((3, 0), (3, 1), [$eta^n_A$], label-side: center, "hook->")
+      edge((4, 0), (4, 1), [$eta^n_D$], label-side: center, "hook->>")
+      edge((5, 0), (5, 1), [$eta^n_R$], label-side: center, "hook->")
+      edge((5, 0), (6, 0), "->")
+      edge((5, 1), (6, 1), "->")
+    }, crossing-fill: thm-box-curr-color()))
+    As previously shown, all vertical arrows are injective. Furthermore, $eta^(n-1)_R$ is bijective by the inductive hypothesis, and $eta^n_D$ is surjective by assumption. By the surjective four lemma, $eta^n_A$ is surjective. 
+
+  - For every $A in cal(A)$, write $A = dirlim_lambda A_lambda$ for $A_lambda in cal(A)_0$. We have shown that $eta^n_(A_lambda)$ is bijective for all $lambda$. Now: 
+    $
+      eta^n_A: S^n (A) cong dirlim_lambda S^n (A_lambda) -> T^n (A) cong dirlim_lambda T^n (A_lambda)
+    $
+    is the directed limit of the $eta^n_lambda$'s, which are bijective maps. By (Ab5) of $cal(B)$, $eta^n_A$ is bijective. 
+
+  We have thus shown $P(n)$. We may conclude the proof by induction.
+
+  If take $cal(A)_0 = cal(A)$, the two directed limit parts in the proof may be dropped. Thus, the assumptions on commuting with directed limits and (Ab5) of $cal(B)$ may be dropped.
+]
+
 #theorem(name: <pbc-dev>)[
   (Dev) Whenever $A$ is strict henselian noetherian and $X -> Spec(A)$ is noetherian, 
   $
@@ -125,183 +231,42 @@ Next, we will demonstrate the power of constructible sheaves, when we perform th
   is bijective for all torsion $cal(F) in cAb(tilde(X)_et)$. 
 ]
 #proof[
-  The main idea is that we perform dimension reduction along two exact sequences. 
+  The same hypothesis holds for all finite $tilde(X)$ over $X$. Thus, we may assume that $tilde(X) = X$, and focus on sheaves over $X$. 
 
-  #lemma(name: <pbc-dev-lem1>)[
-    Given any noetherian $X -> Spec(A)$ and fixed $q >= 0$, if $res_(cal(F))^(q,X)$ is injective/surjective/bijective for all constructible $cal(F) in cAb(X_et)$, the same holds for all torsion $cal(F) in cAb(X_et)$. 
-  ]
-  #proof[
-    By @constructible-sheaves-first-props (6), every torsion $cal(F)$ can be written as a direct limit of its constructible subsheaves: 
+  Now for $h: tilde(X) -> X$ base changing to $h_0: tilde(X)_0 -> X_0$, 
+  $
+    H^q (X, h_* ul(ZZ\/n)) cong H^q (tilde(X), ul(ZZ\/n))
+  $
+  and by (Finite) (@pbc-finite), 
+  $
+    H^q (X_0, (h_* ul(ZZ\/n))|_(X_0)) cong H^q (X_0, h_(0,*) ul(ZZ\/n)) cong H^q (tilde(X)_0, ul(ZZ\/n))
+  $
+  Under these identifications, we may check that the restriction map $H^q (X, h_* ul(ZZ\/n)) -> H^q (X_0, (h_* ul(ZZ\/n))|_(X_0))$ is identified with the restriction map $H^q (tilde(X), ul(ZZ\/n)) -> H^q (X, ul(ZZ\/n))$. Thus, we may conclude that: 
+
+  - For every finite $h: tilde(X) -> X$, the restriction maps: 
     $
-      cal(F) = dirlim_(i in I) cal(F)_i
+      res_(h_* ul(ZZ\/n))^(q,X): H^q (X, h_* ul(ZZ\/n)) -> H^q (X_0, (h_* ul(ZZ\/n))|_(X_0))
     $
-    where each $cal(F)_i$ is constructible. Now by @limit-formula-for-sheaves and the fact that pullbacks preserve colimits as left adjoints, 
-    $
-      H^q (X, cal(F)) = dirlim_(i in I) H^q (X, cal(F)_i) \
-      H^q (X_0, cal(F)|_(X_0)) = dirlim_(i in I) H^q (X_0, cal(F)_i|_(X_0))
-    $
-    and so as morphisms: 
-    $
-      res^(q,X)_(cal(F)) = dirlim_(i in I) res^(q,X)_(cal(F)_i)
-    $
-    By (Ab5) of $cAb$, the injective/surjective/bijective properties of $res^(q,X)_(cal(F)_i)$ pass to $res^(q,X)_(cal(F))$. 
-  ]
+    is bijective for $q = 0$ and surjective for $q >= 1$. 
 
-  #lemma(name: <pbc-dev-lem2>)[
-    Given any noetherian $X -> Spec(A)$ and fixed $q >= 1$, if: 
+  We now apply the abstract devissage @abstract-devissage to the restriction map $res^(q,X): H^q (X, -) -> H^q (X_0, (-)|_(X_0))$, defined on torsion sheaves on $X$. 
 
-    - For all $p < q$ and all torsion $cal(F) in cAb(X_et)$, $res^(p,X)_(cal(F))$ is bijective. 
+  - By @limit-formula-for-sheaves, both functors commute with directed limits. Both functors vanishes for $q < 0$. 
 
-    Then: 
+  - Every torsion abelian sheaf is the directed limit of its constructible subsheaves by @constructible-sheaves-first-props (6). 
 
-    - For all torsion $cal(F) in cAb(X_et)$, $res^(q,X)_(cal(F))$ is injective. 
-  ]
-  #proof[
-    By @pbc-dev-lem1, it suffices to prove that for all constructible $cal(F) in cAb(X_et)$, $res^(q,X)_(cal(F))$ is injective. Suppose that $cal(F)$ is $n$-torsion. Then by @etale-zn-sheaves-first-props (3), by embedding $cal(F)$ into an injective object of $cAb(X_et, ZZ\/n)$, there exists an $n$-torsion $Gamma(X, -)$-acyclic sheaf $cal(C)$ and an injection $cal(F) -> cal(C)$. Forming the cokernel, we have an exact sequence: 
-    $
-      0 -> cal(F) -> cal(C) -> cal(R) -> 0
-    $
-    of $n$-torsion sheaves on $X$. We thus have an exact sequence of $n$-torsion sheaves: 
-    $
-      0 -> cal(F)|_(X_0) -> cal(C)|_(X_0) -> cal(R)|_(X_0) -> 0
-    $
-    of $n$-torsion sheaves on $X_0$. Now consider the long exact sequence on cohomology, paired with naturality of base change morphisms: 
-    // https://q.uiver.app/#r=typst&q=WzAsMTIsWzEsMCwiSF4ocS0xKSAoWCwgY2FsKEMpKSJdLFsyLDAsIkheKHEtMSkgKFgsIGNhbChSKSkiXSxbMywwLCJIXnEgKFgsIGNhbChGKSkiXSxbNCwwLCJvdmVyYnJhY2UoSF5xIChYLCBjYWwoQykpLCAwKSJdLFsxLDEsIkheKHEtMSkgKFhfMCwgY2FsKEMpfF8oWF8wKSkiXSxbMiwxLCJIXihxLTEpIChYXzAsIGNhbChSKXxfKFhfMCkpIl0sWzMsMSwiSF5xIChYXzAsIGNhbChGKXxfKFhfMCkpIl0sWzQsMSwiSF5xIChYXzAsIGNhbChDKXxfKFhfMCkpIl0sWzAsMCwiZG90cy5jIl0sWzAsMSwiZG90cy5jIl0sWzUsMCwiZG90cy5jIl0sWzUsMSwiZG90cy5jIl0sWzAsMV0sWzEsMl0sWzIsM10sWzQsNV0sWzUsNl0sWzYsN10sWzgsMF0sWzksNF0sWzMsMTBdLFs3LDExXSxbMCw0LCJyZXNeKHEtMSxYKV8oY2FsKEMpKSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn0sImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFsxLDUsInJlc14ocS0xLFgpXyhjYWwoUikpIiwxLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifSwiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzIsNiwicmVzXihxLFgpXyhjYWwoRikpIiwxXSxbMyw3LCJyZXNeKHEsWClfKGNhbChDKSkiLDEseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dXQ==
-    #align(center, diagram({
-      node((-2, -1), [$H^(q-1) (X, cal(C))$])
-      node((-1, -1), [$H^(q-1) (X, cal(R))$])
-      node((0, -1), [$H^q (X, cal(F))$])
-      node((1, -1), [$overbrace(H^q (X, cal(C)), 0)$])
-      node((-2, 0), [$H^(q-1) (X_0, cal(C)|_(X_0))$])
-      node((-1, 0), [$H^(q-1) (X_0, cal(R)|_(X_0))$])
-      node((0, 0), [$H^q (X_0, cal(F)|_(X_0))$])
-      node((1, 0), [$H^q (X_0, cal(C)|_(X_0))$])
-      node((-3, -1), [$dots.c$])
-      node((-3, 0), [$dots.c$])
-      node((2, -1), [$dots.c$])
-      node((2, 0), [$dots.c$])
-      edge((-2, -1), (-1, -1), "->")
-      edge((-1, -1), (0, -1), "->")
-      edge((0, -1), (1, -1), "->")
-      edge((-2, 0), (-1, 0), "->")
-      edge((-1, 0), (0, 0), "->")
-      edge((0, 0), (1, 0), "->")
-      edge((-3, -1), (-2, -1), "->")
-      edge((-3, 0), (-2, 0), "->")
-      edge((1, -1), (2, -1), "->")
-      edge((1, 0), (2, 0), "->")
-      edge((-2, -1), (-2, 0), [$res^(q-1,X)_(cal(C))$], label-side: left, "hook->>")
-      edge((-1, -1), (-1, 0), [$res^(q-1,X)_(cal(R))$], label-side: left, "hook->>")
-      edge((0, -1), (0, 0), [$res^(q,X)_(cal(F))$], label-side: left, "->")
-      edge((1, -1), (1, 0), [$res^(q,X)_(cal(C))$], label-side: left, "hook->")
-    }, spacing: (2.4em, 3em)))
-    where: 
+  - Let $cal(F)$ be a constructible sheaf on $X$. Then: 
 
-    - The first two vertical arrows are bijective by the inductive hypothesis, since $cal(C), cal(R)$ are $n$-torsion; 
+    - By @finite-morphisms-and-constructible-sheaves (2), there exists $h: tilde(X) -> X$ finite and an embedding $cal(F) arrow.hook h_* ul(ZZ\/n)$. Now $res^(q,X)$ on $h_* ul(ZZ\/n)$ is bijective for $q = 0$ and surjective for $q >= 1$; 
 
-    - The fourth vertical arrow is injective since $H^q (X, cal(C)) = 0$ due to acyclicity of $cal(C)$. 
+    - Let $cal(F)$ be $n$-torsion, and embed $cal(F) arrow.hook cal(I)$ for an injective sheaf $cal(I)$ of $ZZ\/n$-modules. Then $H^q (X, cal(I)) = 0$ for $q >= 1$ by @etale-zn-sheaves-first-props (3). Thus $res^(q,X)$ is injective on $cal(I)$ for $q >= 1$. 
 
-    By the four lemma for monomorphisms, $res^(q,X)_(cal(F))$ is injective. 
-  ]
+    This constructs the required embeddings in @abstract-devissage with injective/surjective transformations.
 
-  #lemma(name: <pbc-dev-lem3>)[
-    Given any noetherian $X -> Spec(A)$ and fixed $q >= 0$, if: 
+  Thus @abstract-devissage may be applied, and we may conclude that the base change map:
+  $
+    res_(cal(F))^(q,tilde(X)): H^q (tilde(X), cal(F)) -> H^q (tilde(X)_0, cal(F)|_(tilde(X)_0))
+  $
+  is bijective for all torsion $cal(F) in cAb(tilde(X)_et)$. 
 
-    - For all $p < q$, all finite $tilde(X) -> X$ and all torsion $cal(F) in cAb(tilde(X)_et)$, $res_(cal(F))^(p,tilde(X))$ is bijective. 
-
-    - For all finite $tilde(X) -> X$ and all $n >= 1$, $res_(ul(ZZ\/n))^(q,tilde(X))$ is surjective, and in addition bijective when $q = 0$. 
-
-    Then: 
-
-    - For all finite $tilde(X) -> X$ and all torsion $cal(F) in cAb(tilde(X)_et)$, $res_(cal(F))^(q,tilde(X))$ is bijective. 
-  ]
-  #proof[
-    By @pbc-dev-lem1, it suffices to prove this when $cal(F)$ is constructible. By replacing $X$ with $tilde(X)$ we may also assume that $cal(F) in cAb(X_et)$. Now by @finite-morphisms-and-constructible-sheaves (2), there exists a finite morphism $g: tilde(X) -> X$ and an injection $cal(F) -> g_* ul(ZZ\/n)_(tilde(X))$. Forming the cokernel, we have an exact sequence of constructible sheaves: 
-    $
-      0 -> cal(F) -> g_* ul(ZZ\/n)_(tilde(X)) -> cal(R) -> 0
-    $
-    Base change $g: tilde(X) -> X$ to $g_0: tilde(X)_0 -> X_0$. Then by (Finite) (@pbc-finite), upon pulling back to $X_0$, we have an exact sequence of constructible sheaves: 
-    $
-      0 -> cal(F)|_(X_0) -> g_(0,*) ul(ZZ\/n)_(tilde(X)_0) -> cal(R)|_(X_0) -> 0
-    $
-    Now consider the long exact sequence on cohomology, paired with naturality of base change morphisms, together with @pushforward-by-finite-morphism: 
-
-    - Case $q = 0$: We have a commutative diagram: #h(1fr)
-      // https://q.uiver.app/#r=typst&q=WzAsMTAsWzAsMCwiMCJdLFswLDEsIjAiXSxbMSwwLCJIXjAgKFgsIGNhbChGKSkiXSxbMSwxLCJIXjAgKFhfMCwgY2FsKEYpfF8oWF8wKSkiXSxbMywwLCJIXjAgKFgsIGNhbChSKSkiXSxbMywxLCJIXjAgKFhfMCwgY2FsKFIpfF8oWF8wKSkiXSxbMiwwLCJIXjAgKHRpbGRlKFgpLCB1bChaWlxcL24pKSJdLFsyLDEsIkheMCAodGlsZGUoWClfMCwgdWwoWlpcXC9uKSkiXSxbNCwwLCJkb3RzLmMiXSxbNCwxLCJkb3RzLmMiXSxbMiw2LCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFswLDJdLFs2LDRdLFsxLDNdLFszLDcsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzcsNV0sWzIsMywicmVzXigwLFgpXyhjYWwoRikpIl0sWzQsNSwicmVzXigwLFgpXyhjYWwoUikpIl0sWzYsNywicmVzXigwLHRpbGRlKFgpKV8odWwoWlpcXC9uKSkiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9LCJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbNCw4XSxbNSw5XV0=
-      #align(center, diagram({
-        node((-3, -1), [$0$])
-        node((-3, 0), [$0$])
-        node((-2, -1), [$H^0 (X, cal(F))$])
-        node((-2, 0), [$H^0 (X_0, cal(F)|_(X_0))$])
-        node((0, -1), [$H^0 (X, cal(R))$])
-        node((0, 0), [$H^0 (X_0, cal(R)|_(X_0))$])
-        node((-1, -1), [$H^0 (tilde(X), ul(ZZ\/n))$])
-        node((-1, 0), [$H^0 (tilde(X)_0, ul(ZZ\/n))$])
-        node((1, -1), [$dots.c$])
-        node((1, 0), [$dots.c$])
-        edge((-2, -1), (-1, -1), "hook->")
-        edge((-3, -1), (-2, -1), "->")
-        edge((-1, -1), (0, -1), "->")
-        edge((-3, 0), (-2, 0), "->")
-        edge((-2, 0), (-1, 0), "hook->")
-        edge((-1, 0), (0, 0), "->")
-        edge((-2, -1), (-2, 0), [$res^(0,X)_(cal(F))$], label-side: left, "->")
-        edge((0, -1), (0, 0), [$res^(0,X)_(cal(R))$], label-side: left, "->")
-        edge((-1, -1), (-1, 0), [$res^(0,tilde(X))_(ul(ZZ\/n))$], label-side: left, "hook->>")
-        edge((0, -1), (1, -1), "->")
-        edge((0, 0), (1, 0), "->")
-      }, spacing: (2.4em, 3em)))
-      
-      - The first vertical arrow $res^(0,X)_(cal(F))$ is injective, since all other arrows in the first square are injective. 
-
-      - This shows that for all constructible $cal(F) in cAb(X_et)$, $res^(0,X)_(cal(F))$ is injective. In particular, the third vertical arrow $res^(0,X)_(cal(R))$ is injective. 
-
-      - Since the second vertical arrow $res^(0,tilde(X))_(ul(ZZ\/n))$ is surjective and the third vertical arrow $res^(0,X)_(cal(R))$ is injective, by the four lemma for epimorphisms, $res^(0,X)_(cal(F))$ is surjective. 
-
-      We are thereby done in this case. 
-
-    - Case $q >= 1$. In this case, the inductive hypothesis allows us to apply @pbc-dev-lem2, and conclude that: 
-
-      - For all finite $tilde(X) -> X$ and all torsion $cal(F) in cAb(tilde(X)_et)$, $res_(cal(F))^(q,tilde(X))$ is injective. 
-
-      Now consider the same long exact sequence: 
-      // https://q.uiver.app/#r=typst&q=WzAsMTIsWzEsMCwiSF4ocS0xKSAoWCwgY2FsKFIpKSJdLFsyLDAsIkhecSAoWCwgY2FsKEYpKSJdLFszLDAsIkhecSAodGlsZGUoWCksIHVsKFpaXFwvbikpIl0sWzQsMCwiSF5xIChYLCBjYWwoUikpIl0sWzMsMSwiSF5xICh0aWxkZShYKV8wLCB1bChaWlxcL24pKSJdLFs0LDEsIkhecSAoWF8wLCBjYWwoUil8XyhYXzApKSJdLFsxLDEsIkheKHEtMSkgKFhfMCwgY2FsKFIpfF8oWF8wKSkiXSxbMiwxLCJIXnEgKFhfMCwgY2FsKEYpfF8oWF8wKSkiXSxbMCwwLCJkb3RzLmMiXSxbMCwxLCJkb3RzLmMiXSxbNSwwLCJkb3RzLmMiXSxbNSwxLCJkb3RzLmMiXSxbMCwxXSxbMSwyXSxbMiwzXSxbNiw3XSxbNyw0XSxbNCw1XSxbMiw0LCJyZXNeKHEsdGlsZGUoWCkpXyh1bChaWlxcL24pKSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn0sImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFsxLDcsInJlc14ocSxYKV8oY2FsKEYpKSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzAsNiwicmVzXihxLTEsWClfKGNhbChSKSkiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9LCJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbOCwwXSxbOSw2XSxbMywxMF0sWzUsMTFdLFszLDUsInJlc14ocSxYKV8oY2FsKFIpKSIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV1d
-      #align(center, diagram({
-        node((2, 0), [$H^(q-1) (X, cal(R))$])
-        node((3, 0), [$H^q (X, cal(F))$])
-        node((4, 0), [$H^q (tilde(X), ul(ZZ\/n))$])
-        node((5, 0), [$H^q (X, cal(R))$])
-        node((4, 1), [$H^q (tilde(X)_0, ul(ZZ\/n))$])
-        node((5, 1), [$H^q (X_0, cal(R)|_(X_0))$])
-        node((2, 1), [$H^(q-1) (X_0, cal(R)|_(X_0))$])
-        node((3, 1), [$H^q (X_0, cal(F)|_(X_0))$])
-        node((1, 0), [$dots.c$])
-        node((1, 1), [$dots.c$])
-        node((6, 0), [$dots.c$])
-        node((6, 1), [$dots.c$])
-        edge((2, 0), (3, 0), "->")
-        edge((3, 0), (4, 0), "->")
-        edge((4, 0), (5, 0), "->")
-        edge((2, 1), (3, 1), "->")
-        edge((3, 1), (4, 1), "->")
-        edge((4, 1), (5, 1), "->")
-        edge((4, 0), (4, 1), [$res^(q,tilde(X))_(ul(ZZ\/n))$], label-side: left, "hook->>")
-        edge((3, 0), (3, 1), [$res^(q,X)_(cal(F))$], label-side: left, "hook->")
-        edge((2, 0), (2, 1), [$res^(q-1,X)_(cal(R))$], label-side: left, "hook->>")
-        edge((1, 0), (2, 0), "->")
-        edge((1, 1), (2, 1), "->")
-        edge((5, 0), (6, 0), "->")
-        edge((5, 1), (6, 1), "->")
-        edge((5, 0), (5, 1), [$res^(q,X)_(cal(R))$], label-side: left, "hook->")
-      }, spacing: (2.4em, 3em)))
-      where: 
-      - The first vertical arrow is bijective by the inductive hypothesis; 
-
-      - The second, third and fourth arrows are injective, since we have proved using @pbc-dev-lem2 that for all finite $tilde(X) -> X$ and all torsion $cal(F) in cAb(tilde(X)_et)$, $res_(cal(F))^(q,tilde(X))$ is injective. 
-
-      - The third arrow is surjective by our hypothesis on $res^(q,tilde(X))_(ul(ZZ\/n))$. 
-
-      By the four lemma for epimorphisms, the second vertical arrow $res^(q,X)_(cal(F))$ is surjective, hence bijective. We are thereby done. 
-  ]
-  After proving the three lemmas, the third lemma (@pbc-dev-lem3) and the theorem hypothesis allow us to perform induction and show that $res^(q,X)_(cal(F))$ is bijective for all $q >= 0$ and torsion $cal(F) in cAb(X_et)$. 
 ]

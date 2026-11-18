@@ -74,7 +74,7 @@ For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lam
   $
   This sheaf is denoted by $h_Y$. 
 
-  For example, for a set $G$, the constant sheaf $ul(G)$ is represented by $X times G = union.big_(g in G) X$, the disjoint union of copies of $X$ indexed by $G$. Thus, we may write: 
+  For example, for a set $G$, the constant sheaf#footnote[Following the convention in @set-categorical-subtleties, we have two universes $cal(W) in cal(W)'$, and allow $cal(W)'$-small sets but only $cal(W)$-small schemes. In this case, we have to require the set $G$ to be $cal(W)$-small too.] $ul(G)$ is represented by $X times G = union.big_(g in G) X$, the disjoint union of copies of $X$ indexed by $G$. Thus, we may write: 
   $
     ul(G)_X cong h_(X times G)
   $
@@ -402,15 +402,11 @@ For simplicity, in this section, we assume that $X$ is a noetherian scheme. $Lam
     ]
     By the lemma, our chain $0 = cal(F)_0|_U subset cal(F)_1|_U subset dots.c subset ul(G)_U$ stabilizes at some stage $N$. Enlarging $N$ if necessary, by the inductive hypothesis, $0 = cal(F)_0|_Z subset cal(F)_1|_Z subset dots.c subset cal(F)|_Z$ stabilizes at stage $N$ for $Z = X - V$. Now applying @surjective-pullback-conservative to $U union.sq Z -> X$, we see that $0 = cal(F)_0 subset cal(F)_1 subset dots.c subset cal(F)$ stabilizes at stage $N$.
     
-    (b)$==>$(c): Assume that $cal(F)$ is noetherian. /*Since $cal(F) = union.big_(n>=1) cal(F)[n!]$ is the union of its $n!$-torsion, there exists $n$ s.t. $n cal(F) = 0$. */Now consider the canonical map:
+    (b)$==>$(c): Assume that $cal(F)$ is noetherian. Now consider the canonical map:
     $
-      gamma: oplus.big_(f_alpha: U_alpha -> X "etale" \ U_alpha "affine" \ f_alpha (U_alpha) subset "some affine open" subset X) oplus.big_(s_alpha in cal(F)(U_alpha)) f_(alpha,!) underline(Lambda) -> cal(F)
+      gamma: oplus.big_(f_alpha: U_alpha -> X "etale" \ U_alpha "affine") oplus.big_(s_alpha in cal(F)(U_alpha)) f_(alpha,!) underline(Lambda) -> cal(F)
     $
-    where the morphism $f_(alpha,!) underline(Lambda) -> cal(F)$ corresponding to $f_alpha, s_alpha$ is obtained by adjunction from $underline(Lambda) -> f_alpha^(-1) cal(F)$, sending $1 |-> s_alpha$. By unfolding definitions, this morphism contains $s_alpha$ in its image. Thus by construction, $gamma$ is surjective.
-    
-    #remark[
-      The weird range of the first direct sum $oplus.big_(f_alpha: U_alpha -> X "etale" \ U_alpha "affine" \ f_alpha (U_alpha) subset "some affine open" subset X)$ is to avoid a set-theoretic issue, in the same way as in @set-categorical-subtleties.
-    ]
+    where the morphism $f_(alpha,!) underline(Lambda) -> cal(F)$ corresponding to $f_alpha, s_alpha$ is obtained by adjunction from $underline(Lambda) -> f_alpha^(-1) cal(F)$, sending $1 |-> s_alpha$. By unfolding definitions, this morphism contains $s_alpha$ in its image. Thus by construction, $im(gamma)$ contains every section in $cal(F)(U)$ for affine $U in Et_X$. Every $U in Et_X$ can be covered by affine objects of $Et_X$, so $gamma$ is surjective. 
     
     Since $cal(F)$ is noetherian, the direct sum on LHS of $gamma$ over all $f_alpha, s_alpha$ can be replaced with a finite one and still be surjective. We thus obtain a surjection:
     $

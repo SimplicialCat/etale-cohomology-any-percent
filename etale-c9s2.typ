@@ -143,15 +143,7 @@ We are now motivated to find a right adjoint $R f^!$ to $R f_!$ for any $f: X ->
     h^q (R f_! (oplus.big_i cal(K)_i)) cong h^q (R f_! (oplus.big_i tau_(>=q-2d) cal(K)_i)) \
     h^q (R f_! cal(K)_i) cong h^q (R f_! (tau_(>=q-2d) cal(K)_i))
   $
-  Thus replacing $cal(K)_i$ with $tau_(>=q-2d)$, we may assume that there exists a fixed $a in ZZ$ s.t. every $cal(K)_i in D_(>=a) (X_et, Lambda)$. Similarly, since $R f_!$ has cohomological dimension below $0$, we may perform upper truncations and assume that there are fixed $a, b in ZZ$ s.t. every $cal(K)_i in D_([a,b]) (X_et, Lambda)$. Next, for $cal(L) in D_([a,b]) (X_et, Lambda)$ we have truncations:
-  $
-    tau_(<=a) cal(L) -> cal(L) -> tau_(>=a+1) cal(L) ->^(+1)
-  $
-  where $tau_(>=a+1) cal(L) in D_([a+1,b]) (X_et,Lambda)$ and $tau_(<=a) cal(L)$ is concentrated in degree $a$. Thus by induction on $b-a$ and the five lemma, we may assume that all $cal(K)_i$ are supported on the same single degree $a in ZZ$, i.e. are sheaves $cal(F)_i in cAb(X_et, Lambda)$. Thus we only need to prove that:
-  $
-    R^q f_! (oplus.big_i cal(F)_i) cong oplus.big_i R^q f_! cal(F)_i
-  $
-  Pick a compactification $X ->^j ol(X) ->^(ol(f)) Y$ of $f$ so that $R^q f_! cong R^q ol(f)_* j_!$. Now $j_!$ preserves direct sums as a left adjoint, and $R ol(f)_*$ preserves direct sums by the limit formula @relative-limit-formula-for-sheaves. We are thereby done.
+  Thus replacing $cal(K)_i$ with $tau_(>=q-2d)$, we may assume that there exists a fixed $a in ZZ$ s.t. every $cal(K)_i in D_(>=a) (X_et, Lambda)$. Picking a compatification $X ->^j ol(X) ->^(ol(f)) Y$, $j_!$ commutes with direct sums as a left adjoint, and $R ol(f)_*$ commutes with direct sums in this uniformly bounded below situation, according to @derived-relative-limit-formula-composite. We may thus conclude the proof.
 ]
 
 #construction(name: <purity-map>)[

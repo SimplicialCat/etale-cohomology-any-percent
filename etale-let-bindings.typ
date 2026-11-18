@@ -5,6 +5,7 @@
 
 #let invlim = math.op(underset([lim], [#scale(math.arrow.l.long, x: 160%)]), limits: true)
 #let dirlim = math.op(underset([lim], [#scale(math.arrow.r.long, x: 160%)]), limits: true)
+#let dirhlim = math.op(underset([holim], [#scale(math.arrow.r.long, x: 160%)]), limits: true)
 #let dircolim = math.op(underset([colim], [#scale(math.arrow.r.long, x: 160%)]), limits: true)
 
 // #let cite-stacks(tag, index) = {

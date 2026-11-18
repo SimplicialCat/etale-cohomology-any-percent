@@ -16,7 +16,7 @@ With the reductions of the last section in mind, we are now ready to introduce l
   $
   Denote: 
 
-  - $f$ is *locally acyclic at $ol(x)$ relative to $cal(K)$*, if for any geometric point $ol(t)$ of $tilde(S)_(ol(s))$, $alpha_(cal(K),ol(x),ol(t))$ is an isomorphism. 
+  - $f$ is *locally acyclic at $ol(x)$ relative to $cal(K)$*, if for any algebraic geometric point $ol(t)$ of $tilde(S)_(ol(s))$, $alpha_(cal(K),ol(x),ol(t))$ is an isomorphism. 
 
   - $f$ is *locally acyclic relative to $cal(K)$* if it is locally acyclic at every geometric point relative to $cal(K)$, and *locally acyclic* if for every natural number $n in cal(O)_S^times$, $f$ is locally acyclic relative to $ul(ZZ\/n)$. 
 
@@ -36,7 +36,7 @@ Local acyclicity is a sort of compatibility condition between the cohomology of 
 
   + $f: X -> S$ is locally acyclic w.r.t. $cal(K)$ at every geometric point of $X_(ol(s))$; 
 
-  + For $ol(t)$ any geometric point of $tilde(S)_(ol(s))$, form the Cartesian diagram: #h(1fr)
+  + For $ol(t)$ any algebraic geometric point of $tilde(S)_(ol(s))$, form the Cartesian diagram: #h(1fr)
     // https://q.uiver.app/#r=typst&q=WzAsNixbMCwwLCJYXyhvbCh0KSkiXSxbMSwwLCJYIHRpbWVzX1MgdGlsZGUoUylfKG9sKHMpKSJdLFsyLDAsIlhfKG9sKHMpKSJdLFsyLDEsIm9sKHMpIl0sWzEsMSwidGlsZGUoUylfKG9sKHMpKSJdLFswLDEsIm9sKHQpIl0sWzUsNCwiaiIsMl0sWzMsNCwiaSJdLFsyLDMsImZfKG9sKHMpKSJdLFsxLDQsInRpbGRlKGYpIl0sWzAsNSwiZl8ob2wodCkpIiwyXSxbMiwxLCJpJyIsMl0sWzAsMSwiaiciXV0=
     #align(center, diagram({
       node((0, 0), [$X_(ol(t))$])
@@ -89,7 +89,7 @@ Local acyclicity is a sort of compatibility condition between the cohomology of 
   
   Thus, by checking stalks, condition (2) is equivalent to the statement: 
 
-  - For any geometric point $ol(x)$ of $X_(ol(s))$ and any geometric point $ol(t)$ of $tilde(S)_(f(ol(x)))$, #h(1fr)
+  - For any geometric point $ol(x)$ of $X_(ol(s))$ and any algebraic geometric point $ol(t)$ of $tilde(S)_(f(ol(x)))$, #h(1fr)
     $
       alpha_(cal(K),ol(x),ol(t)): cal(K)_(ol(x)) = R Gamma(tilde(X)_(ol(x)), cal(K)|_(tilde(X)_(ol(x)))) -> R Gamma(F_(ol(x),ol(t)), cal(K)|_(F_(ol(x),ol(t))))
     $
@@ -173,7 +173,7 @@ We are now ready to establish the relation between local acyclicity and base cha
     in which every step is the identity. We are thereby done. 
   ]
 
-  We now prove local acyclicity. Let $ol(s)$ be any geometric point of $S$, and $ol(t)$ be any geometric point of $tilde(S)_(ol(s))$. Form the Cartesian diagram: 
+  We now prove local acyclicity. Let $ol(s)$ be any geometric point of $S$, and $ol(t)$ be any (algebraic) geometric point of $tilde(S)_(ol(s))$. Form the Cartesian diagram: 
   #align(center, diagram({
     node((0, 0), [$S'_(ol(t))$])
     node((1, 0), [$S' times_S tilde(S)_(ol(s))$])
@@ -213,7 +213,7 @@ We are now ready to establish the relation between local acyclicity and base cha
 
   (2)$==>$(3) is tautological. 
 
-  (3)$==>$(1): Recall that we assumed that every finite $Lambda$-module embeds into a finite free $Lambda$-module. By @rel-bc-reductions, it suffices to show the result when $X = Spec(A)$ is the normalization of a finite type $S$-scheme in the algebraic closure of its function field $K$, and $j: xi = Spec(K) -> X$ is the inclusion of the generic point, in the Cartesian diagram: 
+  (3)$==>$(1): Recall that we assumed that every finite $Lambda$-module embeds into a finite free $Lambda$-module. By @rel-bc-reductions, it suffices to show the result when $X = Spec(A)$ is the normalization of a finite type affine $S$-scheme in the algebraic closure of its function field $K$, and $j: xi = Spec(K) -> X$ is the inclusion of the generic point, in the Cartesian diagram: 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJ4aSciXSxbMCwxLCJ4aSJdLFsxLDEsIlgiXSxbMSwwLCJYJyJdLFszLDIsImdfWCJdLFswLDEsImdfeGkiLDJdLFsxLDIsImoiLDJdLFswLDMsImonIl1d
   #align(center, diagram({
     node((0, 0), [$X'_xi$])
@@ -351,7 +351,7 @@ Now that we have seen the intimate connection between local acyclicity and base 
   - If $f$ is locally acyclic relative to $cal(K)$ at $ol(x)$, then $f'$ is locally acyclic relative to $cal(K)|_(X')$ at $ol(x')$. 
 ]
 #proof[
-  (1) Let $ol(s') = f'(ol(x')), ol(s) = f(ol(x))$. Let $ol(t')$ be a geometric point of $tilde(S')_(ol(s'))$ above $ol(t)$ of $tilde(S)_(ol(s))$. We now compare the vanishing cycle varieties: 
+  (1) Let $ol(s') = f'(ol(x')), ol(s) = f(ol(x))$. Let $ol(t')$ be an algebraic geometric point of $tilde(S')_(ol(s'))$ above $ol(t)$ of $tilde(S)_(ol(s))$. We now compare the vanishing cycle varieties: 
   $
     F_(ol(x'),ol(t')) = ol(t') times_(tilde(S')_(ol(s'))) tilde(X')_(ol(x')) 
   $
@@ -368,7 +368,7 @@ Now that we have seen the intimate connection between local acyclicity and base 
   $
     k(ol(t')) otimes_(cal(O)_(S',ol(s'))^#[sh]) cal(O)_(X',ol(x'))^#[sh] cong k(ol(t')) otimes_(cal(O)_(S,ol(s))^#[sh]) cal(O)_(X,ol(x))^#[sh]
   $
-  i.e. $F_(ol(x'),ol(t')) cong F_(ol(x),ol(t))$. Now that: 
+  i.e. $F_(ol(x'),ol(t')) cong F_(ol(x),ol(t))$. Since $S'$ is a projective limit of locally quasi-finite $S$-schemes with affine transition maps, $S' -> S$ has residue field extensions algebraic, and so $ol(t)$ remains an algebraic geometric point of $S$. Thus: 
   $
     cal(K)_(ol(x)) -> R Gamma(F_(ol(x),ol(t)), cal(K)|_(F_(ol(x),ol(t))))
   $
@@ -376,7 +376,7 @@ Now that we have seen the intimate connection between local acyclicity and base 
 ]
 
 #construction(name: <cospecialization-map>)[
-  Suppose that $f: X -> S$ is a locally acyclic morphism relative to $cal(K) in D^+ (X_et, Lambda)$. For any geometric point $ol(s)$ of $S$, any geometric point $ol(t)$ of $tilde(S)_(ol(s))$, form the Cartesian diagram: #h(1fr)
+  Suppose that $f: X -> S$ is a locally acyclic morphism relative to $cal(K) in D^+ (X_et, Lambda)$. For any geometric point $ol(s)$ of $S$, any (algebraic) geometric point $ol(t)$ of $tilde(S)_(ol(s))$, form the Cartesian diagram: #h(1fr)
     // https://q.uiver.app/#r=typst&q=WzAsNixbMCwwLCJYXyhvbCh0KSkiXSxbMSwwLCJYIHRpbWVzX1MgdGlsZGUoUylfKG9sKHMpKSJdLFsyLDAsIlhfKG9sKHMpKSJdLFsyLDEsIm9sKHMpIl0sWzEsMSwidGlsZGUoUylfKG9sKHMpKSJdLFswLDEsIm9sKHQpIl0sWzUsNCwiaiIsMl0sWzMsNCwiaSJdLFsyLDMsImZfKG9sKHMpKSJdLFsxLDQsInRpbGRlKGYpIl0sWzAsNSwiZl8ob2wodCkpIiwyXSxbMiwxLCJpJyIsMl0sWzAsMSwiaiciXV0=
     #align(center, diagram({
       node((0, 0), [$X_(ol(t))$])
@@ -411,7 +411,7 @@ Now that we have seen the intimate connection between local acyclicity and base 
 ]
 
 #proposition(name: <loc-acyc-sp-cosp-square>)[
-  Let $f: X -> S$ be a qcqs locally acyclic morphism relative to $cal(K) in D^+ (X_et, Lambda)$. Then for every geometric point $ol(s)$ of $S$, every generalization of $ol(s)$, i.e. a geometric point $ol(t)$ of $tilde(S)_(ol(s))$, the following diagram commutes: 
+  Let $f: X -> S$ be a qcqs locally acyclic morphism relative to $cal(K) in D^+ (X_et, Lambda)$. Then for every geometric point $ol(s)$ of $S$, every (algebraic) geometric point $ol(t)$ of $tilde(S)_(ol(s))$, the following diagram commutes: 
   // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCIoUiBmXyogY2FsKEspKV8ob2wocykpIl0sWzAsMSwiKFIgZl8qIGNhbChLKSlfKG9sKHQpKSJdLFsxLDAsIlIgR2FtbWEoWF8ob2wocykpLCBjYWwoSyl8XyhYXyhvbChzKSkpKSJdLFsxLDEsIlIgR2FtbWEoWF8ob2wodCkpLCBjYWwoSyl8XyhYXyhvbCh0KSkpKSJdLFswLDIsIkJDIl0sWzEsMywiQkMiLDJdLFswLDEsInNwIiwyXSxbMiwzLCJjb3NwIl1d
   #align(center, diagram({
     node((0, 0), [$(R f_* cal(K))_(ol(s))$])
@@ -496,7 +496,7 @@ Now that we have seen the intimate connection between local acyclicity and base 
 ]
 
 #corollary(name: <proper-loc-acyc-bc>)[
-  Let $f: X -> S$ be a proper morphism between locally noetherian schemes that is locally acyclic relative to $cal(K) in D^+_#[tor] (X_et, Lambda)$. Then for every geometric point $ol(s)$ of $S$, every generalization of $ol(s)$, i.e. a geometric point $ol(t)$ of $tilde(S)_(ol(s))$, the specialization and cospecialization maps: 
+  Let $f: X -> S$ be a proper morphism between locally noetherian schemes that is locally acyclic relative to $cal(K) in D^+_#[tor] (X_et, Lambda)$. Then for every geometric point $ol(s)$ of $S$, every (algebraic) geometric point $ol(t)$ of $tilde(S)_(ol(s))$, the specialization and cospecialization maps: 
   $
     sp: (R f_* cal(K))_(ol(s)) -> (R f_* cal(K))_(ol(t)) \
 
@@ -532,7 +532,7 @@ Now that we have seen the intimate connection between local acyclicity and base 
 
   - $f$ is locally acyclic relative to $cal(K)$ and $g$ is locally acyclic at $ol(y)$ relative to $ul(cal(K)_(ol(x))) = ul(R Gamma(X, cal(K)))$. 
 
-  Let $ol(t)$ be any geometric point of $S$. To show that $g compose f$ is locally acyclic relative to $cal(K)$ at $ol(x)$, it suffices to show that the following map is an isomorphism: 
+  Let $ol(t)$ be any algebraic geometric point of $S$. To show that $g compose f$ is locally acyclic relative to $cal(K)$ at $ol(x)$, it suffices to show that the following map is an isomorphism: 
   $
     cal(K)_(ol(x)) -> R Gamma(X_(ol(t)), cal(K)|_(X_(ol(t))))
   $
@@ -550,7 +550,7 @@ Now that we have seen the intimate connection between local acyclicity and base 
   $
   where the last isomorphism is due to local acyclicity of $g$ relative to $ul(cal(K)_(ol(x)))$. We would thus be done. It therefore suffices to show that the canonical map $ul(cal(K)_(ol(x))) -> R f_(ol(t),*) (cal(K)|_(X_(ol(t))))$ is an isomorphism. 
   #lemma[
-    Let $f: X -> S$ be a locally acyclic morphism relative to $cal(K) in D^+ (X_et, Lambda)$. Then for every geometric point $ol(t)$ of $S$, form the Cartesian diagram: 
+    Let $f: X -> S$ be a locally acyclic morphism relative to $cal(K) in D^+ (X_et, Lambda)$. Then for every algebraic geometric point $ol(t)$ of $S$, form the Cartesian diagram: 
     // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJYXyhvbCh0KSkiXSxbMSwwLCJYIl0sWzEsMSwiUyJdLFswLDEsIm9sKHQpIl0sWzAsMSwiaiciXSxbMywyLCJqIiwyXSxbMSwyLCJmIl0sWzAsMywiZl8ob2wodCkpIiwyXV0=
     #align(center, diagram({
       node((0, 0), [$X_(ol(t))$])
@@ -577,7 +577,7 @@ Now that we have seen the intimate connection between local acyclicity and base 
 
     Since relative base change is compatible with horizontal concatenation of Cartesian squares, by @finite-bc-in-the-limit, it suffices to deal with base change along $ol(t) -> S'$ and $X' -> S'$. In other words, we may assume that: 
 
-    - $S$ is a normal integral scheme with algebraically closed function field, and $ol(t)$ is above its generic point. 
+    - $S$ is a normal integral scheme with algebraically closed function field, and $ol(t)$ is its generic point. 
 
     Let $t$ be the generic point of $S$, which is an algebraic geometric point. Factor $j: ol(t) -> S$ into $ol(t) ->^q t ->^h S$ where $t$ is the generic point of $S$, being an algebraic geometric point. By @integral-normal-affine-with-ac-func-field, 
     $
@@ -596,7 +596,7 @@ Now that we have seen the intimate connection between local acyclicity and base 
     $
       ol(t) times_S tilde(X)_(ol(x)) = ol(t) times_(Spec(cal(O)_(S,s))) tilde(X)_(ol(x)) = ol(t) times_(tilde(S)_s) tilde(X)_(ol(x)) = F_(ol(x),ol(t))
     $
-    is a vanishing cycle variety. Thus, the map: 
+    is a vanishing cycle variety. Furthermore, $ol(t)$ is an algebraic geometric point. Thus, by local acyclicity, the map: 
     $
       cal(K)_(ol(x)) -> (R j'_* j'^(-1) cal(K))_(ol(x)) = R Gamma(F_(ol(x),ol(t)), cal(K)|_(F_(ol(x),ol(t))))
     $
@@ -608,7 +608,7 @@ Now that we have seen the intimate connection between local acyclicity and base 
     $
       R Gamma(X_(ol(t)), cal(K)|_(X_(ol(t)))) -> R Gamma(X_(ol(s)), cal(K)|_(X_(ol(s))))
     $
-    are isomorphisms for geometric points $ol(t)$ of $tilde(S)_(ol(s))$. Then the base change: 
+    are isomorphisms for all algebraic geometric points $ol(t)$ of $tilde(S)_(ol(s))$. Then the base change: 
     $
       (R f_* cal(K))_(ol(s)) -> R Gamma(X_(ol(s)), cal(K)|_(X_(ol(s))))
     $
@@ -623,7 +623,7 @@ Now that we have seen the intimate connection between local acyclicity and base 
     $
     is an isomorphism. We will then take $cal(F) = ul(Lambda)$ to conclude the proof. 
 
-    Firstly, suppose that $cal(F) = j_* ul(Lambda)$ for a geometric point $j: ol(t) -> S$. Form the Cartesian diagram: 
+    Firstly, suppose that $cal(F) = j_* ul(Lambda)$ for an algebraic geometric point $j: ol(t) -> S$. Form the Cartesian diagram: 
     #align(center, diagram({
       node((0, 0), [$X_(ol(t))$])
       node((1, 0), [$X$])
@@ -659,77 +659,43 @@ Now that we have seen the intimate connection between local acyclicity and base 
     $
       (R f_* (cal(K) Lotimes_Lambda f^(-1) cal(F)))_(ol(s)) -> R Gamma (X_(ol(s)), (cal(K) Lotimes_Lambda f^(-1) cal(F))|_(X_(ol(s))))
     $
-    is an isomorphism whenever $cal(F) = j_* ul(Lambda)$ for a geometric point $j: ol(t) -> S$. 
+    is an isomorphism whenever $cal(F) = j_* ul(Lambda)$ for an algebraic geometric point $j: ol(t) -> S$. 
 
-    Replace $cal(K)$ by a bounded flat resolution $cal(P)^bullet$, and we have hypercohomology spectral sequences: 
+    Let $cal(K)$ have a flat resolution supported on $[b_1,b_2]$. We now aim to apply @abstract-devissage on the natural transformation: 
     $
-      E_1^(p,q) (cal(F)) := (R^q f_* (cal(P)^p otimes_Lambda f^(-1) cal(F)))_(ol(s)) => h^(p+q) ((R f_* (cal(K) Lotimes_Lambda f^(-1) cal(F)))_(ol(s))) =: L^(p+q) (cal(F)) \
-
-      tilde(E)_1^(p,q) (cal(F)) := H^q (X_(ol(s)), (cal(P)^p Lotimes_Lambda f^(-1) cal(F))|_(X_(ol(s)))) => h^(p+q) (R Gamma (X_(ol(s)), (cal(K) Lotimes_Lambda f^(-1) cal(F))|_(X_(ol(s))))) =: S^(p+q) (cal(F))
+      h^q (R f_* (cal(K) Lotimes_Lambda f^(-1) (-)))_(ol(s)) -> h^q (R Gamma (X_(ol(s)), (cal(K) Lotimes_Lambda f^(-1) (-))|_(X_(ol(s)))))
     $
-    Since $f$ is qcqs, by the limit formulas @limit-formula-for-sheaves and @relative-limit-formula-for-sheaves, $E_1^(p,q)$ and $tilde(E)_1^(p,q)$ both commute with directed limits. Thus, $L^q (cal(F))$ and $S^q (cal(F))$ both commute with directed limits in $cal(F)$. 
+    of $delta$-functors. 
 
-    Suppose that for a fixed $q$, for all $r < q$, $L^r (cal(F)) -> S^r (cal(F))$ is an isomorphism for all $cal(F) in cAb(S_et, Lambda)$. Note that: 
+    - Both sides vanish for $q < b_1$. Furthermore, they both commutes with directed limits. Suppose that $cal(F) = dirlim_lambda cal(F)_lambda$. Then: 
 
-    - $S$ is noetherian, and so every sheaf $cal(F) in cAb(S_et, Lambda)$ can be written as $cal(F) = dirlim_lambda cal(F)_lambda$ as a directed limit of constructible sheaves of $Lambda$-modules. Now $L^q (cal(F)) -> S^q (cal(F))$ is the directed limit of $L^q (cal(F)_lambda) -> S^q (cal(F)_lambda)$, and so TFAE: 
+      - 
+        $
+          dirhlim_lambda R f_* (cal(K) Lotimes_Lambda f^(-1) cal(F)_lambda) cong R f_* (dirhlim_lambda (cal(K) Lotimes_Lambda f^(-1) cal(F)_lambda)) cong R f_* (cal(K) Lotimes_Lambda f^(-1) cal(F))
+        $
+        by @derived-relative-limit-formula-composite then @dirhlim-and-bounded-flat-resln. 
 
-      - $L^q (cal(F)) -> S^q (cal(F))$ is injective for all $cal(F) in cAb(S_et, Lambda)$; 
+      - 
+        $
+          dirhlim_lambda R Gamma (X_(ol(s)), (cal(K) Lotimes_Lambda f^(-1) cal(F)_lambda)|_(X_(ol(s)))) cong R Gamma(X_(ol(s)), dirhlim_lambda (cal(K) Lotimes_Lambda f^(-1) cal(F)_lambda)|_(X_(ol(s)))) cong R Gamma(X_(ol(s)), cal(K) Lotimes_Lambda f^(-1) cal(F))|_(X_(ol(s)))
+        $
+        by @derived-absolute-limit-formula-composite then @dirhlim-and-bounded-flat-resln. 
 
-      - $L^q (cal(F)) -> S^q (cal(F))$ is injective for all constructible $cal(F) in cAb(S_et, Lambda)$. 
-  
-    - For every constructible sheaf $cal(F)$, by @constructible-godement-resolution we may get an injection $cal(F) -> oplus.big_(i=1)^m ol(t_i)_* ul(M_i)$ for finite $Lambda$-modules $M_i$ and geometric points $ol(t_i) -> S$. Now since every finite $Lambda$-module embeds into a finite free $Lambda$-module, we may assume that every $M_i$ is finite free, and by splitting them we may assume that every $M_i = Lambda$. Form the short exact sequence: #h(1fr)
-      $
-        0 -> cal(F) -> cal(C) = oplus.big_(i=1)^m ol(t_i)_* ul(Lambda) -> cal(R) -> 0
-      $
-      Now consider the following commutative diagram with exact rows: 
-      // https://q.uiver.app/#r=typst&q=WzAsMTQsWzAsMCwiZG90cy5jIl0sWzEsMCwiTF4ocS0xKSAoY2FsKEMpKSJdLFsyLDAsIkxeKHEtMSkgKGNhbChSKSkiXSxbMywwLCJMXnEgKGNhbChGKSkiXSxbNCwwLCJMXnEgKGNhbChDKSkiXSxbNSwwLCJMXnEgKGNhbChSKSkiXSxbNiwwLCJkb3RzLmMiXSxbMCwxLCJkb3RzLmMiXSxbNiwxLCJkb3RzLmMiXSxbMSwxLCJTXihxLTEpIChjYWwoQykpIl0sWzIsMSwiU14ocS0xKSAoY2FsKFIpKSJdLFszLDEsIlNecSAoY2FsKEYpKSJdLFs0LDEsIlNecSAoY2FsKEMpKSJdLFs1LDEsIlNecSAoY2FsKFIpKSJdLFswLDFdLFsxLDJdLFsyLDNdLFszLDRdLFs0LDVdLFs1LDZdLFs3LDldLFs5LDEwXSxbMTAsMTFdLFsxMSwxMl0sWzEyLDEzXSxbMTMsOF0sWzEsOV0sWzIsMTBdLFszLDExXSxbNCwxMl0sWzUsMTNdXQ==
-      #align(center, diagram({
-        node((0, 0), [$dots.c$])
-        node((1, 0), [$L^(q-1) (cal(C))$])
-        node((2, 0), [$L^(q-1) (cal(R))$])
-        node((3, 0), [$L^q (cal(F))$])
-        node((4, 0), [$L^q (cal(C))$])
-        node((5, 0), [$L^q (cal(R))$])
-        node((6, 0), [$dots.c$])
-        node((0, 1), [$dots.c$])
-        node((6, 1), [$dots.c$])
-        node((1, 1), [$S^(q-1) (cal(C))$])
-        node((2, 1), [$S^(q-1) (cal(R))$])
-        node((3, 1), [$S^q (cal(F))$])
-        node((4, 1), [$S^q (cal(C))$])
-        node((5, 1), [$S^q (cal(R))$])
-        edge((0, 0), (1, 0), "->")
-        edge((1, 0), (2, 0), "->")
-        edge((2, 0), (3, 0), "->")
-        edge((3, 0), (4, 0), "->")
-        edge((4, 0), (5, 0), "->")
-        edge((5, 0), (6, 0), "->")
-        edge((0, 1), (1, 1), "->")
-        edge((1, 1), (2, 1), "->")
-        edge((2, 1), (3, 1), "->")
-        edge((3, 1), (4, 1), "->")
-        edge((4, 1), (5, 1), "->")
-        edge((5, 1), (6, 1), "->")
-        edge((1, 0), (1, 1), "->")
-        edge((2, 0), (2, 1), "->")
-        edge((3, 0), (3, 1), "->")
-        edge((4, 0), (4, 1), "->")
-        edge((5, 0), (5, 1), "->")
-      }))
-      
-      - By our inductive hypothesis, the first two vertical maps are isomorphisms. By the discussion above on sheaves of the shape $ul(t)_* ul(Lambda)$, the fourth vertical map is an isomorphism. 
+    - Every sheaf of $Lambda$-modules on $S$ is the direct limit of constructible sheaves of $Lambda$-modules. 
 
-        Thus, by the injective four lemma, the third vertical arrow is injective. Thus $L^q (cal(F)) -> S^q (cal(F))$ is injective for all constructible sheaves $cal(F)$, hence for all sheaves by the previous bullet. 
+    - This base change map is an isomorphism when applied to sheaves of the shape $ol(s)_* ul(Lambda)$ for an algebraic geometric point $ol(s)$ of $S$, or to finite direct sums of them. Meanwhile, by @constructible-godement-resolution, every constructible sheaf of $Lambda$-modules on $S$ embeds into some $oplus.big_(i=1)^r ol(s_i)_* ul(Lambda)$ for geometric points $ol(s_1), dots.c, ol(s_r)$ of $S$, which may be taken to be algebraic. 
 
-        In particular $L^q (cal(R)) -> S^q (cal(R))$, the fifth vertical arrow, is injective, so by the surjective four lemma, the third vertical arrow is surjective. Thus $L^q (cal(F)) -> S^q (cal(F))$ is bijective for all constructible sheaves $cal(F)$, hence for all sheaves $cal(F)$ by the previous bullet.
-
-    Setting $cal(F) = ul(Lambda)$ concludes the proof.  
+    By @abstract-devissage, the base change: 
+    $
+      (R f_* (cal(K) Lotimes_Lambda f^(-1) cal(F)))_(ol(s)) -> R Gamma (X_(ol(s)), (cal(K) Lotimes_Lambda f^(-1) cal(F))|_(X_(ol(s))))
+    $
+    is an isomorphism for all $cal(F)$. Taking $cal(F) = ul(Lambda)$ concludes the proof. 
   ]
 
   #lemma(name: <loc-acyc-constancy-of-pushforward>)[
     Let $Lambda$ be a noetherian ring s.t. every finite $Lambda$-module embeds into a finite free $Lambda$-module. Let $f: X -> S$ be a qcqs morphism between locally noetherian schemes, locally acyclic relative to $cal(K) in D^b_#[ctf] (X_et, Lambda)$. 
 
-    Suppose that we have a complex $A in D^b (Lambda)$ and a morphism $alpha: ul(A)_X -> cal(K)$, s.t. for every geometric point $ol(s)$ of $S$, the map induced by $alpha$: 
+    Suppose that we have a complex $A in D^b (Lambda)$ and a morphism $alpha: ul(A)_X -> cal(K)$, s.t. for every algebraic geometric point $ol(s)$ of $S$, the map induced by $alpha$: 
     $
       A -> R Gamma(X_(ol(s)), ul(A)) -> R Gamma(X_(ol(s)), cal(K)|_(X_(ol(s))))
     $
@@ -740,11 +706,11 @@ Now that we have seen the intimate connection between local acyclicity and base 
     induced from $alpha$ by adjunction is an isomorphism. 
   ]
   #proof[
-    By unfolding the definitions, it can be checked that the isomorphisms $A -> R Gamma(X_(ol(s)), cal(K)|_(X_(ol(s))))$ are compatible with cospecializations between different geometric fibers. Thus, all cospecializations of $f$ on $cal(K)$ are isomorphisms. 
+    By unfolding the definitions, it can be checked that the isomorphisms $A -> R Gamma(X_(ol(s)), cal(K)|_(X_(ol(s))))$ are compatible with cospecializations between different geometric fibers. Thus, all cospecializations of $f$ on $cal(K)$ between fibers above algebraic geometric points are isomorphisms. 
 
-    For every geometric point $ol(s)$ of $S$, consider the map $tilde(f)_(ol(s)): X times_S tilde(S)_(ol(s)) -> tilde(S)_(ol(s))$. $tilde(S)_(ol(s))$ is a projective limit of affine etale neighborhoods of $ol(s)$ in $S$, and is hence a projective limit of quasi-finite $S$-schemes under affine transition maps. Thus by @loc-acyc-and-limits-of-qfinite, $tilde(f)_(ol(s))$ is locally acyclic relative to $cal(K)|_(X times_S tilde(S)_(ol(s)))$. 
+    For every algebraic geometric point $ol(s)$ of $S$, consider the map $tilde(f)_(ol(s)): X times_S tilde(S)_(ol(s)) -> tilde(S)_(ol(s))$. $tilde(S)_(ol(s))$ is a projective limit of affine etale neighborhoods of $ol(s)$ in $S$, and is hence a projective limit of quasi-finite $S$-schemes under affine transition maps. Thus by @loc-acyc-and-limits-of-qfinite, $tilde(f)_(ol(s))$ is locally acyclic relative to $cal(K)|_(X times_S tilde(S)_(ol(s)))$. 
 
-    Furthermore, the cospecializations of $tilde(f)_(ol(s))$ on $cal(K)|_(X times_S tilde(S)_(ol(s)))$ are exactly the same as the cospecializations of $f$ on $cal(K)$ by definition. Thus, all cospecializations of $tilde(f)_(ol(s))$ on $cal(K)|_(X times_S tilde(S)_(ol(s)))$ are isomorphisms. 
+    Furthermore, the cospecializations of $tilde(f)_(ol(s))$ on $cal(K)|_(X times_S tilde(S)_(ol(s)))$ are exactly the same as the cospecializations of $f$ on $cal(K)$ by definition. Thus, all cospecializations of $tilde(f)_(ol(s))$ on $cal(K)|_(X times_S tilde(S)_(ol(s)))$ between fibers above algebraic geometric points are isomorphisms. 
 
     The previous lemma is now applicable, and we have a base change isomorphism: 
     $
@@ -757,14 +723,31 @@ Now that we have seen the intimate connection between local acyclicity and base 
     One may check that this isomorphism is exactly the morphism $beta_(ol(s)): A -> (R f_* cal(K))_(ol(s))$. Thus $beta$ is an isomorphism. 
   ]
 
-  Recall that we intend to show that the map $ul(cal(K)_(ol(x))) -> R f_(ol(t),*) (cal(K)|_(X_(ol(t))))$, induced from $ul(cal(K)_(ol(x))) -> cal(K)|_(X_(ol(t)))$, is an isomorphism. $ol(t) -> S$ is quasi-finite, so by @loc-acyc-and-limits-of-qfinite, $f_(ol(t))$ is locally acyclic relative to $cal(K)|_(X_(ol(t)))$. Now for a geometric point $ol(u)$ of $Y_(ol(t))$, 
+  Recall that we intend to show that the map $ul(cal(K)_(ol(x))) -> R f_(ol(t),*) (cal(K)|_(X_(ol(t))))$, induced from $ul(cal(K)_(ol(x))) -> cal(K)|_(X_(ol(t)))$, is an isomorphism. Here, $ol(t)$ is an algebraic geometric point of $S$. 
+  
+  We would like to apply the previous lemma to $f_(ol(t))$, but unfortunately, $X_(ol(t)), Y_(ol(t))$ may fail to be noetherian due to the unfortunate fact that the tensor product of two noetherian rings need not be noetherian. This makes the previous lemma inapplicable. As a replacement, we need a limit argument. 
+
+  Let $ol(t)$ lie above $t in S$, and let $L\/k(t)$ be a finite field extension. 
+  
+  Now $Spec(L) -> S$ is the composition $Spec(L) -> Spec(k(t)) -> Spec(cal(O)_(S,t)) -> S$, in which the first two steps are finite, and $Spec(cal(O)_(S,t)) -> S$ is a projective limit of the inclusions of all affine neighborhoods of $t in S$ into $S$, where these inclusions are necessarily quasi-finite. Thus by applying @loc-acyc-and-limits-of-qfinite to the three component maps, we may conclude that $f_L: X_L -> Y_L$ is locally acyclic relative to $cal(K)|_(X_L)$. 
+  
+  $X_L, Y_L$ are finite over the schemes $X_t, Y_t$, which are fibers of noetherian schemes, hence noetherian. Now for an algebraic geometric point $ol(u)$ of $Y_L$, 
   $
-    R Gamma(X_(ol(t)) times_(Y_(ol(t))) ol(u), cal(K)|_(X_(ol(t)) times_(Y_(ol(t))) ol(u))) cong R Gamma(X_(ol(u)), cal(K)|_(X_(ol(u))))
+    R Gamma(X_L times_(Y_L) ol(u), cal(K)|_(X_L times_(Y_L) ol(u))) cong R Gamma(X_(ol(u)), cal(K)|_(X_(ol(u))))
   $
-  However, $X_(ol(u)) = ol(u) times_Y X = ol(u) times_(tilde(Y)_(ol(y))) tilde(X)_(ol(x)) = F_(ol(x),ol(u))$ is a vanishing cycle variety for $f: X -> Y$, so $R Gamma(X_(ol(u)), cal(K)|_(X_(ol(u)))) = R Gamma(F_(ol(x),ol(u)), cal(K)|_(F_(ol(x),ol(u)))) = cal(K)_(ol(x))$ by definition of local acyclicity. Thus we have natural isomorphisms $cal(K)_(ol(x)) cong R Gamma(X_(ol(t)) times_(Y_(ol(t))) ol(u), cal(K)|_(X_(ol(t)) times_(Y_(ol(t))) ol(u)))$. The previous lemma can now be invoked to show that we have the desired isomorphism: 
+  However, $X_(ol(u)) = ol(u) times_Y X = ol(u) times_(tilde(Y)_(ol(y))) tilde(X)_(ol(x)) = F_(ol(x),ol(u))$ is a vanishing cycle variety for $f: X -> Y$. $ol(u)$ is an algebraic geometric point for $Y_L$, which is finite over a fiber of $Y$ over $S$. Thus $ol(u)$ is an algebraic geometric point of $Y$, and by definition of local acyclicity, 
   $
-    ul(cal(K)_(ol(x))) cong R f_(ol(t),*) (cal(K)|_(X_(ol(t))))
+    R Gamma(X_(ol(u)), cal(K)|_(X_(ol(u)))) = R Gamma(F_(ol(x),ol(u)), cal(K)|_(F_(ol(x),ol(u)))) = cal(K)_(ol(x))
   $
+  Thus we have natural isomorphisms $cal(K)_(ol(x)) cong R Gamma(X_L times_(Y_L) ol(u), cal(K)|_(X_L times_(Y_L) ol(u)))$. The previous lemma can now be invoked to show that we have an isomorphism: 
+  $
+    ul(cal(K)_(ol(x))) cong R f_(L,*) (cal(K)|_(X_L))
+  $
+  Thus by the limit formula @derived-limit-formula-for-base-change, 
+  $
+    R f_(ol(t),*) (cal(K)|_(X_(ol(t)))) = dirhlim_(L\/k(t) #[finite]) (R f_(L,*) (cal(K)|_(X_L)))|_(Y_(ol(t))) cong dirhlim_(L\/k(t) #[finite]) ul(cal(K)_(ol(x))) = ul(cal(K)_(ol(x)))
+  $
+  We may thus conclude the proof.
 ]
 
 #lemma(name: <loc-acyc-pass-to-lcc-sheaves>)[
@@ -779,7 +762,7 @@ Now that we have seen the intimate connection between local acyclicity and base 
   $
     M = oplus.big_i ZZ\/d_i
   $
-  for some $d_i|n$. By the limit formula @limit-formula-for-sheaves, 
+  for some $d_i|n$. For any algebraic geometric point $t$ of $S$, by the limit formula @limit-formula-for-sheaves, 
   $
     H^q (F_(ol(x),ol(t)), ul(M)) = H^q (F_(ol(x),ol(t)), oplus.big_i ZZ\/d_i) = oplus.big_i H^q (F_(ol(x),ol(t)), ZZ\/d_i) = cases(
       0 &\, q >= 1, 

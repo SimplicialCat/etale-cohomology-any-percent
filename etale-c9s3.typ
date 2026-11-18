@@ -693,7 +693,7 @@ The generic base change theorem has profound implications.
       R f_* (g_X^(-1) cal(F) Lotimes_Lambda f^(-1) (oplus.big_i cal(K)_(i,Y))) &cong R f_* (oplus.big_i g_X^(-1) cal(F) Lotimes_Lambda f^(-1) cal(K)_(i,Y)) \
       &cong oplus.big_i R f_* (g_X^(-1) cal(F) Lotimes_Lambda f^(-1) cal(K)_(i,Y))
     $
-    Here, the last step is due to @relative-limit-formula-for-sheaves and the boundedness of $R f_*$. The argument is truncating, then applying the limit formula that is pretty much the same as the proof of @derived-bounded-limit-formula-for-direct-sum. 
+    In the last step, for each cohomology degree, we may use the boundedness of $R f_*$ to truncate each summand to be supported in degrees $>=a$ for a fixed $a in ZZ$, and then invoke @derived-relative-limit-formula-composite. 
 
     Hence, both sides of $g_Y^(-1) R f_(0,*) cal(F) Lotimes_Lambda cal(K)_Y -> R f_* (g_X^(-1) cal(F) Lotimes_Lambda f^(-1) cal(K)_Y)$ are compatible with direct sums in $cal(K) in D(S_et, Lambda)$. 
 
@@ -841,7 +841,7 @@ Finally, as an application, we prove the preservation of $D^b_#[ctf]$ under the 
     $
       R f_* cal(K) Lotimes_Lambda ul(M)_Y cong R f_* (cal(K) Lotimes_Lambda ul(M)_X)
     $
-    Indeed, this property on $M$ is invariant under shifts and completion of distinguished triangles, since both sides are triangulated functors in $M$. Furthermore, both sides commute with arbitrary direct sums in $M$. This follows from the same truncation argument as in @derived-bounded-limit-formula-for-direct-sum, this time using the boundedness of $R f_*$ instead of $R Gamma$. Finally, when $M = Lambda$, both sides are $R f_* cal(K)$ and the projection is an isomorphism. Our claim is thus verified by @cpct-generator-of-d-lambda. 
+    Indeed, this property on $M$ is invariant under shifts and completion of distinguished triangles, since both sides are triangulated functors in $M$. Furthermore, both sides commute with arbitrary direct sums in $M$. Indeed, for LHS, the tensor product commutes with direct limits as a left adjoint. For RHS, we used the boundedness of $R f_*$ to truncate each direct summand complex to be supported on degrees $>=a$ for a fixed $a in ZZ$, then invoke @derived-relative-limit-formula-composite. Our claim is thus verified by @cpct-generator-of-d-lambda. 
 
     In particular, let $d$ be the cohomological dimension above of $R f_*$, and $[a,b]$ be the Tor-amplitude of $cal(K)$. Then we have shown that for every geometric point $ol(y)$ of $Y$, every complex $M$ of $Lambda$-modules supported on $[a',b']$
     $

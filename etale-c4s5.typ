@@ -20,6 +20,14 @@ Let $Omega$ be a separably closed field.
     $
       cSh(Spec(Omega)_et) overset(->, tilde) cSet , cAb(Spec(Omega)_et) overset(->, tilde) cAb
     $
+
+  #footnote[
+    Following the convention in @set-categorical-subtleties, we have two universes $cal(W) in cal(W)'$, and allow $cal(W)'$-small sets but only $cal(W)$-small schemes. Then more precisely, 
+    $
+      Et_(Spec(Omega)) cong cSet_((cal(W))), cSh(Spec(Omega)_et) cong cSet_((cal(W)'))
+    $
+    are set categories from different universes. We suppressed this subtlety from the notation.
+  ]
 ]
 #proof[
   (0) Full faithfulness is evident, so we only prove essential surjectivity, i.e. every etale $X -> Spec(Omega)$ is a disjoint union of copies of $Spec(Omega)$. 

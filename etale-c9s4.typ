@@ -187,97 +187,54 @@ To proceed, we need some more limit formulas.
 #proof[
   Take complementary open immersions $g_i: U_i -> X_i$ and $g: U -> X$. Now $(g_i^(-1) cal(F)_i, g_i^(-1) phi_(i,j))$ is a system of sheaves on ${U_i}$ with limit sheaf $g^(-1) cal(F)$, so by the base change limit formula @limit-formula-for-base-change, we have: 
   $
-    dirlim_i u_i^(-1) R^q g_(i,*) g_i^(-1) cal(F)_i cong R^q g_* g^(-1) cal(F)
+    dirhlim_i u_i^(-1) R g_(i,*) g_i^(-1) cal(F)_i cong R g_* g^(-1) cal(F)
   $
-  Thus: 
+  Thus exploiting the sections with support triangle: 
   $
-    dirlim_i (h_i^! cal(F)_i)|_Z &cong dirlim_i ker(h_i^(-1) cal(F)_i -> h_i^(-1) g_(i,*) g_i^(-1) cal(F)_i)|_Z \
-    &cong ker(dirlim_i (h_i^(-1) cal(F)_i)|_Z -> dirlim_i (h_i^(-1) g_(i,*) g_i^(-1) cal(F)_i)|_Z) \
-    &cong ker(h^(-1) cal(F) -> dirlim_i h^(-1) u_i^(-1) g_(i,*) g_i^(-1) cal(F)_i) \
-    &cong ker(h^(-1) cal(F) -> h^(-1) g_* g^(-1) cal(F)) cong h^! cal(F)
+    R h_i^! cal(F)_i -> h_i^(-1) cal(F)_i -> h_i^(-1) R g_(i,*) g_i^(-1) cal(F)_i ->^(+1) \
+    R h^! cal(F) -> h^(-1) cal(F) -> h^(-1) R g_* g^(-1) cal(F) ->^(+1)
   $
-  Similarly, replacing all $ker$ with $coker$ in the deduction above yields: 
-  $
-    dirlim_i (R^1 h_i^! cal(F)_i)|_Z cong R^1 h^! cal(F)
-  $
-  Finally, for $q >= 2$, 
-  $
-    dirlim_i (R^q h_i^! cal(F)_i)|_Z &cong dirlim_i (h_i^(-1) R^(q-1) g_(i,*) g_i^(-1) cal(F)_i)|_Z \
-    &cong dirlim_i h^(-1) u_i^(-1) R^(q-1) g_(i,*) g_i^(-1) cal(F)_i \
-    &cong h^(-1) R^(q-1) g_* g^(-1) cal(F) cong R^q h^! cal(F)
-  $
+  We may conclude that $dirhlim_i (R h_i^! cal(F)_i)|_Z cong R h^! cal(F)$ and conclude the proof. 
 ]
 
 #lemma(name: <limit-formula-for-hom-and-ext>)[
-  Suppose that $X = invlim_(i >= 0) X_i$ is a noetherian scheme that is a projective limit of noetherian schemes under affine transition maps $u_(i,j): X_i -> X_j$. Denote by $u_i: X -> X_i$ the projections.  
+  Let $Lambda$ be a noetherian ring. Suppose that $X = invlim_(i in I) X_i$ is a noetherian scheme that is a projective limit of noetherian schemes under affine transition maps $u_(i,j): X_i -> X_j$, where $I$ is directed with least element $0$. Denote by $u_i: X -> X_i$ the projections.
+
+  Suppose that we have: 
+
+  - $cal(K)_0 in D^b_c ((X_0)_et, Lambda)$, with $cal(K)_i = cal(K)_0|_(X_i)$ and $cal(K) = cal(K)_0|_X$;
   
-  Suppose that $cal(K)_0 in D^b_c ((X_0)_et, Lambda)$ with $cal(K)_i = cal(K)_0|_(X_i)$ and $cal(K) = cal(K)_0|_X$, and $(cal(G)_i, phi_(i,j))$ is a system of sheaves on ${X_i}$ with limit sheaf $cal(G)$. Then the canonical maps: 
-  $
-    dirlim_i h^q (RHom_Lambda (cal(K)_i, cal(G)_i)) -> h^q (RHom_Lambda (cal(K), cal(G))) \
+  - For a fixed $a in ZZ$, a directed system of complexes $cal(G)_i in D_(>=a) ((X_i)_et, Lambda)$ admitting compatible maps to $cal(G) in D_(>=a) (X_et, Lambda)$ so that $dirhlim_i u_i^(-1) cal(G)_i cong cal(G)$. 
 
-    dirlim_i u_i^(-1) h^q (RHHom_Lambda (cal(K)_i, cal(G)_i)) -> h^q (RHHom_Lambda (cal(K), cal(G)))
+  Then the canonical comparison maps give isomorphisms:
   $
-  are isomorphisms. 
-
-  In particular, by truncations and way-out arguments, for all $cal(L)_0 in D^+ ((X_0)_et, Lambda)$ with $cal(L)_i = cal(L)_0|_(X_i)$ and $cal(L) = cal(L)_0|_X$, the canonical maps are isomorphisms: 
-  $
-    dirlim_i h^q (RHom_Lambda (cal(K)_i, cal(L)_i)) -> h^q (RHom_Lambda (cal(K), cal(L))) \
-
-    dirlim_i u_i^(-1) h^q (RHHom_Lambda (cal(K)_i, cal(L)_i)) -> h^q (RHHom_Lambda (cal(K), cal(L)))
+    dirhlim_i RHom_Lambda (cal(K)_i, cal(G)_i) cong RHom_Lambda (cal(K), cal(G)) \
+    dirhlim_i u_i^(-1) RHHom_Lambda (cal(K)_i, cal(G)_i) cong RHHom_Lambda (cal(K), cal(G))
   $
 ]
 #proof[
-  We check the $RHom$ statement first. Both sides are cohomological in both $cal(K)_0$ and $(cal(G)_i, phi_(i,j))$. By the way-out lemma, it thus suffices to check when $cal(K)_0 = cal(F)_0$ is a constructible sheaf. Now pick a resolution: 
+  The cohomology on both sides are cohomological functors in $cal(K)_0$. Thus, by an way-out argument via truncation triangles and the five lemma, we may assume that $cal(K)_0 = cal(F)_0$ is a constructible sheaf. We now want to apply @abstract-devissage to the maps: 
   $
-    dots.c -> cal(H)^((p))_0 -> dots.c -> cal(H)^((1))_0 -> cal(H)^((0))_0 -> cal(F)_0 -> 0
+    dirlim_i h^q (RHom_Lambda (cal(F)_i, cal(G)_i)) -> h^q (RHom_Lambda (cal(F), cal(G))) \
+    dirlim_i h^q (u_i^(-1) RHHom_Lambda (cal(F)_i, cal(G)_i)) -> h^q (RHHom_Lambda (cal(F), cal(G)))
   $
-  in which $cal(H)^((p))_0 = j^((p))_(0,!) ul(Lambda)$ for $j^((p))_0: U^((p))_0 -> X_0$ etale from an affine scheme. Then we have a first quadrant spectral sequence from hypercohomology: 
-  $
-    E_(1,i)^(p,q) = Ext^q_Lambda (cal(H)_i^((p)), cal(G)_i) => Ext^(p+q)_Lambda (cal(F)_i, cal(G)_i)
-  $
-  and hence in the limit, 
-  $
-    E_1^(p,q) = dirlim_i Ext^q_Lambda (cal(H)_i^((p)), cal(G)_i) => dirlim_i Ext^(p+q)_Lambda (cal(F)_i, cal(G)_i)
-  $
-  On the other hand, there is another spectral sequence: 
-  $
-    tilde(E)_1^(p,q) = Ext^q_Lambda (cal(H)^((p)), cal(G)) => Ext^(p+q)_Lambda (cal(F), cal(G))
-  $
-  By comparison of the spectral sequences $E_1^(p,q)$ and $tilde(E)_1^(p,q)$, we see that it suffices to prove this lemma whenever $cal(F)_0 = j_(0,!) ul(Lambda)$ for an etale $j: U_0 -> X_0$ from an affine. Similarly, replacing all $Ext$ with $EExt$ should give the $RHHom$ statement. Now in this case: 
-  $
-    dirlim_i Ext^q_Lambda (j_(i,!) ul(Lambda), cal(G)_i) cong dirlim_i H^q (U_i, cal(G)_i) cong H^q (U, cal(G)) #[by @limit-formula-composite]
-  $
-  and: 
-  $
-    dirlim_i u_i^(-1) EExt^q_Lambda (j_(i,!) ul(Lambda), cal(G)_i) cong dirlim_i u_i^(-1) R^q j_(i,*) j_i^(-1) cal(G)_i cong R^q j_* j^(-1) cal(G) cong EExt^q_Lambda (j_! ul(Lambda), cal(G)) #[by @relative-limit-formula-composite] 
-  $
-  We are thereby done. 
-  // $
-  //   cal(S)_0 = {Z_0 subset X_0 #[closed] :& dirlim_i h^q (RHom_Lambda (cal(F)_i, cal(G)_i)) cong h^q (RHom_Lambda (cal(F), cal(G))) \
-  //   & #[for all constructible $cal(F)_0$ s.t. $supp(cal(F)_0) subset Z_0$] \
-  //   & #[for all systems of sheaves $(cal(G)_i, phi_(i,j))$ on ${X_i}$ with limit $cal(G)$]}
-  // $
-  // If an object has subscript $0$, we change this subscript to $i$ or drop it to denote the obvious meaning of pulling back to $X_i$ or $X$, unless otherwise stated. 
+  as $delta$-functors in $cal(F)_0$ on the opposite category of constructible sheaves of $Lambda$-modules. Now: 
 
-  // Suppose that $Z_0 subset X_0$ has the property that every proper closed subset $W_0 subset.neq Z_0$ is in $cal(S)_0$. Take an immersion $Z_0 ->^(h_0) X_0$. Then for any constructible $cal(F)_0$ with $supp(cal(F)_0) subset Z_0$, we may write $cal(F)_0 = h_(0,*) h_0^(-1) cal(F)_0$. Pick a Zariski open $j_0: U_0 -> Z_0$ s.t. $j_0^(-1) h_0^(-1) cal(F)_0$ is l.c.c, and take a complementary closed immersion $w_0: W_0 -> Z_0$. We now have the exact sequences: 
-  // $
-  //   0 -> h_(0,*) j_(0,!) j_0^(-1) h_0^(-1) cal(F)_0 -> cal(F)_0 -> w_(0,*) w_0^(-1) cal(F)_0 -> 0
-  // $
-  // Now $supp(w_(0,*) w_0^(-1) cal(F)_0) subset W_0 in cal(S)_0$ has been dealt with, so it suffices to deal with the first term $j_(0,!) j_0^(-1) h_0^(-1) cal(F)_0$. Now: 
-  // $
-  //   RHom_Lambda (h_(i,*) j_(i,!) j_i^(-1) h_i^(-1) cal(F)_i, cal(G)_i) cong RHom_Lambda (j_i^(-1) h_i^(-1) cal(F)_i, j_i^(-1) R h_i^! cal(G)_i)
-  // $
-  // By truncations and standard way-out arguments, to prove that: 
-  // $
-  //   dirlim_i RHom_Lambda (j_i^(-1) h_i^(-1) cal(F)_i, j_i^(-1) R h_i^! cal(G)_i) cong dirlim_i RHom_Lambda (j^(-1) h^(-1) cal(F), j^(-1) R h^! cal(G))
-  // $
-  // it suffices to prove: 
-  // $
-  //   dirlim_i RHom_Lambda (j_i^(-1) h_i^(-1) cal(F)_i, j_i^(-1) R^q h_i^! cal(G)_i) cong dirlim_i RHom_Lambda (j^(-1) h^(-1) cal(F), j^(-1) R^q h^! cal(G))
-  // $
-  // for each $q$. Now by @limit-formula-for-upper-shriek, $(R^q h_i^! cal(G)_i)$ is a system of sheaves on ${Z_i}$ with limit $R^q h_i^! cal(G)$, and hence, $(j_i^(-1) R^q h_i^(-1) cal(G)_i)$ is a system of sheaves on $U_i$ with limit $j^(-1) R^q h^! cal(G)$. 
-  
-  // - $j_0^(-1) h_0^(-1) cal(F)_0$ is an l.c.c. sheaf, and by @limit-formula-for-upper-shriek
+  - Both sides vanish for $q < a$. 
+
+  - Suppose that $j_0: U_0 -> X_0$ is a quasi-compact etale map base changing to $j_i: U_i -> X_i$ and $j_!: U -> X$. If we take $cal(F)_0 = j_(0,!) ul(Lambda)$, then: 
+    $
+      & dirhlim_i RHom_Lambda (cal(F)_i, cal(G)_i) cong dirhlim_i RHom_Lambda (j_(i,!) ul(Lambda), cal(G)_i) cong dirhlim_i R Gamma(U_i, j_i^(-1) cal(G)_i) \
+      cong& R Gamma(U, j^(-1) cal(G)) cong RHom_Lambda (j_! ul(Lambda), cal(G)) cong RHom_Lambda (cal(F), cal(G))
+    $
+    by @derived-absolute-limit-formula-composite, and: 
+    $
+      & dirhlim_i u_i^(-1) RHHom_Lambda (cal(F)_i, cal(G)_i) cong dirhlim_i u_i^(-1) RHHom_Lambda (j_(i,!) ul(Lambda), cal(G)_i) cong dirhlim_i u_i^(-1) R j_(i,*) j_i^(-1) cal(G)_i  \
+      cong& R j_* j^(-1) cal(G) cong RHHom_Lambda (j_! ul(Lambda), cal(G)) cong RHHom_Lambda (cal(F), cal(G))
+    $
+    by @derived-limit-formula-for-base-change. Thus, the aforementioned maps are isomorphisms for $cal(F)_0 = j_(0,!) ul(Lambda)$. 
+
+  Now every constructible sheaf of $Lambda$-modules admit a surjection from some $j_(0,!) ul(Lambda)$. By the limit-free case of @abstract-devissage, we may conclude the proof.
 ]
 
 #theorem[

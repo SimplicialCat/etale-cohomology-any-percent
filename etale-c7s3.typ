@@ -431,14 +431,7 @@ With the projection map defined, we are now ready to prove the projection formul
         $
           h^q (R Gamma(X, tau_([q-d,q+1]) cal(K))) -> h^q (R Gamma(X, cal(K)))
         $
-        is an isomorphism. Thus, to prove the desired isomorphism, we may argue for each degree separately, and truncate all complexes so that we may assume that each $cal(K)_i$ is supported on $[a,b]$. Now replace each $cal(K)_i$ with an injective resolution $cal(I)_i$ supported on $[a,+oo)$, and note that for each $p$, and every $q>=1$: 
-        $
-          H^q (X, oplus.big_i cal(I)_i^p) = oplus.big_i H^q (X, cal(I)_i^p) = 0
-        $
-        Thus, $oplus.big_i cal(K)_i$ is quasi-isomorphic to the bounded below complex $oplus.big_i cal(I)_i$ of $Gamma(X,-)$-acyclic sheaves. This acyclic resolution can thus be used to compute $R Gamma(X, -)$, giving: 
-        $
-          R Gamma(X, oplus.big_i cal(K)_i) = oplus.big_i R Gamma(X, cal(K)_i)
-        $
+        is an isomorphism. Thus, to prove the desired isomorphism, we may argue for each degree separately, and truncate all complexes so that we may assume that each $cal(K)_i$ is supported on $[a,b]$. This uniformly bounded case then follows from @derived-absolute-limit-formula-composite.
       ]
       The lemma above is applicable since $R Gamma(X, -)$ is bounded above on torsion complexes by Grothendieck vanishing. Now $Lotimes_Lambda$ is a left adjoint, and hence commutes with all direct sums. Hence: 
       $

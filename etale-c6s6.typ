@@ -59,13 +59,14 @@
   $
     H^q (X, cal(F)) = 0
   $
+  Furthermore, if $"char"(k) = p > 0$ and $cal(F) = ul(ZZ\/p^a)$, then the same vanishing holds for $q = 2$. 
 ]
 #proof[
   By topological invariance, since $ol(k)\/k$ is a purely inseparable extension, we may base change to $ol(k)$ and assume that $k$ is algebraically closed. Take the normalization $nu: tilde(X) -> X$, which is a finite surjection. Then $tilde(X)$ is a smooth curve over $k$, and $nu$ is an isomorphism over the regular locus of $X$. Thus, the unit map $cal(F) -> nu_* nu^(-1) cal(F)$ is injective, and an isomorphism over the regular locus of $X$. we may thus form an exact sequence: 
   $
     0 -> cal(F) -> nu_* nu^(-1) cal(F) -> cal(R) -> 0
   $
-  in which $cal(R)$ is supported on finitely many closed points of $X$. Thus, $cal(R)$ is acyclic, and for $q >= 3$, 
+  in which $cal(R)$ is supported on finitely many closed points of $X$. Thus, $cal(R)$ is acyclic, and for $q >= 2$, 
   $
     H^q (X, cal(F)) cong H^q (X, nu_* nu^(-1) cal(F)) cong H^q (tilde(X), nu^(-1) cal(F))
   $
@@ -115,7 +116,13 @@
   $
     H^p (X, cal(F)) cong H^p (X, j_* j^(-1) cal(F)) cong H^p (eta, j^(-1) cal(F)) = 0
   $
-  and we are done. 
+  and we are done for the degree $>= 3$ case. 
+
+  For the degree $2$, $"char"(k) = ell > 0$ and $cal(F) = ul(ZZ\/ell^a)$ case: 
+
+  - $H^2 (X, ul(ZZ\/ell^a)) = 0$ for a projective smooth curve $X$, by @cohom-of-proj-curve and short exact sequences that writes $ul(ZZ\/ell^a)$ as extensions of copies of $ul(ZZ\/ell)$.
+
+  - $H^2 (X, ul(ZZ\/ell^a)) = 0$ for an affine smooth curve $X$, by @h2-zn-of-affine-smooth-curve.
 ]
 
 We are now ready to prove Grothendieck vanishing in dimension 1. 
@@ -125,31 +132,26 @@ We are now ready to prove Grothendieck vanishing in dimension 1.
   $
     H^q (X, cal(F)) = 0
   $
+  Furthermore, if $"char"(k) = p > 0$ and $cal(F) = ul(ZZ\/p^a)$, then the same vanishing holds for $q = 2$. 
 ]
 #proof[
   By topological equivalence, we may base change from the separably closed field $k$ to $ol(k)$, and assume that $k$ is algebraically closed.
 
-  We run induction on the number of irreducible components of $X$. 
-
-  Suppose that $X$ is irreducible. By topological invariance, we may replace $X$ by its reduction and assume that $X$ is integral. Then $X$ is either a point $Spec(k)$ or a curve. The case of a point is done by @struct-of-spec-omega-et, and the case of a curve is done by the previous proposition. 
-
-  For the inductive step, suppose that the theorem holds for all $X$ with $<n$ irreducible components, and $X$ has $n$ irreducible components. Let $Z$ be an irreducible component of $X$ equipped with reduced induced subscheme structure, and $U = X - Z$ its complement, with $n-1$ irreducible components. Let $i: Z -> X, j: U -> X$ be the inclusions. By @etale-lower-shriek-first-props (3), we have a short exact sequence: 
+  Suppose that we are done with the case that $X$ is irreducible. Then in the general case, let $X_1, dots.c, X_r$ be the irreducible components of $X$, $i_j: X_j -> X$ be the closed immersions, and $U$ be the open subset of $X$ consisting of points belonging to a unique irreducible component. Then consider the natural map: 
   $
-    0 -> j_! j^(-1) cal(F) -> cal(F) -> i_* i^(-1) cal(F) -> 0
+    cal(F) -> oplus.big_(j=1)^r i_(j,*) i_j^(-1) cal(F)
   $
-  Now for $q >= 3$: 
+  By checking stalks, this map is injective, and bijective when pulled back to $U$. Thus, there is a short exact sequence: 
+  $
+    0 -> cal(F) -> oplus.big_(j=1)^r i_(j,*) i_j^(-1) cal(F) -> cal(R) -> 0
+  $
+  with $cal(R)$ supported on $X - U$, a finite set of closed points. By @supp-of-torsion-sheaf-dim-0, $cal(R)$ is acyclic. Thus, for all $q >= 2$, 
+  $
+    H^q (X, cal(F)) cong H^q (oplus.big_(j=1)^r i_(j,*) i_j^(-1) cal(F)) cong oplus.big_(j=1)^r H^q (X_r, i_j^(-1) cal(F))
+  $
+  which vanishes when $q >= 3$, or $q = 2$ and $cal(F) = ul(ZZ\/p^a)$, if we assume the irreducible case. 
 
-  - $H^q (X, i_* i^(-1) cal(F)) = H^q (Z, i^(-1) cal(F)) = 0$ by the irreducible case; 
-
-  - $supp(j_! j^(-1) cal(F)) subset U subset Y := ol(U)$. $Y$ has $n-1$ irreducible components, and we equip it with the reduced induced subscheme structure and consider the inclusion $h: Y -> X$. 
-
-    Then $j_! j^(-1) cal(F) = h_* cal(G)$ for some $cal(G) in cAb(Y_et)$. For any $ol(y) in Y_et$, $cal(G)_(ol(y)) = (h_* cal(G))_(ol(y)) = (j_! j^(-1) cal(F))_(ol(y))$ is torsion, and so $cal(G)$ is a torsion sheaf by @torsion-sheaves-first-props. As such, 
-    $
-      H^q (X, j_! j^(-1) cal(F)) = H^q (Y, cal(G)) = 0
-    $
-    by the case of $n-1$ irreducible components. 
-
-  Using the long exact sequence, $H^q (X, cal(F)) = 0$ for all $q >= 3$, and we are done. 
+  Thus, we are reduced to the case where $X$ is irreducible. By topological invariance, we may replace $X$ with its reduction and assume that $X$ is integral. Then $X$ is either a point $Spec(k)$ or a curve over $k$. The case of a point is done by @struct-of-spec-omega-et, and the case of a curve is done by @grothendieck-vanishing-for-curves. 
 ]
 
 Next, we deal with Artin vanishing in dimension 1. 
