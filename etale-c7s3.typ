@@ -316,45 +316,30 @@ We are now ready to combine the projection morphisms for $R f_*$ and for $f_!$ t
     where $P$ denotes projection for $R f_(1,*)$ or $R f_(2,*)$, and $P_!$ denotes projection for $j_(X,!)$ or $j_(Y,!)$. 
   ]
   #proof[
-    We could have proved this the hard way by inspecting natural transformations in various Beck-Chevalley base changes used to define the various morphisms. 
-
-    Instead, by @open-proper-compat-with-bc and our construction for the projections $P$ and $P_!$, all natural transformations here are compatible with base change. Furthermore, by proper base change, @etale-lower-shriek-first-props (4), and the monoidal isomorphism for pullbacks, the base change maps in the respective compatibilities are all isomorphisms. Therefore, by checking stalks, it suffices to prove this lemma upon base changing the entire diagram of schemes to a geometric point of $Y_2$. 
-
-    Upon base changing to a geometric point of $Y_2$ not in $Y_1$, $j_(Y,!)$ becomes zero, and both paths are zero. Thus, we may assume that we are base changing to a geometric point $ol(y) = Spec(k) -> Y_2$ that is in $Y_1$ for $k$ an algebraically closed field. Then under this base change, $j_Y$ becomes the identity $Spec(k) -> Spec(k)$, and our commutative diagram becomes: 
-    // https://q.uiver.app/#r=typst&q=WzAsMyxbMCwwLCJYXzEiXSxbMCwyLCJYXzIiXSxbMiwxLCJTcGVjKGspIl0sWzAsMSwiaiIsMl0sWzAsMiwiZl8xIl0sWzEsMiwiZl8yIiwyXV0=
-    #align(center, diagram({
-      node((0, 0), [$X_1$])
-      node((0, 2), [$X_2$])
-      node((2, 1), [$Spec(k)$])
-      edge((0, 0), (0, 2), [$j$], label-side: right, "->")
-      edge((0, 0), (2, 1), [$f_1$], label-side: left, "->")
-      edge((0, 2), (2, 1), [$f_2$], label-side: right, "->")
-    }, spacing: 1.5em))
-    in which $f_1, f_2$ are proper and $j$ is an open immersion. Thus $j$ is a proper open immersion, hence an open and closed immersion. //We may thus write $X_2 = X_1 union.sq X_3$ for another proper $k$-scheme $f_3: X_3 -> Spec(k)$. 
+    For $cal(K) in D_#[tor] ((X_1)_et, Lambda)$, the projection isomorphism for $j_(Y,!)$ identifies the common source with
+    $
+      j_(Y,!) (R f_(1,*) cal(K) Lotimes_Lambda j_Y^(-1) cal(L)).
+    $
+    By the adjunction $j_(Y,!) tack.l j_Y^(-1)$, equality of the two maps can therefore be checked after applying $j_Y^(-1)$. By @open-proper-compat-with-bc and compatibility of both projections with base change, it suffices to prove the statement with the whole diagram base changed along $j_Y$, i.e. when $j_Y = id, Y_1 = Y_2 = Y$ and $p = f_1$.
     
-    In this case, we may identify $j_! cong R j_*$. 
+    In this case, $j_X$ is an open immersion between two proper $Y$-schemes. It is thus an open and closed immersion. Let $ell: X_3 -> X_2$ be the complementary open and closed immersion to $j_X$. The decomposition $X_2 = X_1 union.sq X_3$ gives a canonical identification: 
+    $
+      cal(K) cong j_(X,!) j_X^(-1) cal(K) oplus ell_! ell^(-1) cal(K)
+    $
+    for all $cal(K) in D((X_2)_et, Lambda)$. 
 
-    - Under this identification, the natural transformation $T: R f_(1,*) -> R f_(2,*) j_!$ is just the composition $R f_(1,*) cong R f_(2,*) R j_*$. Indeed:
-    
-      - By definition, $T$ is an inverse to the base change $R f_(2,*) j_! -> R f_(1,*) j^(-1) j_! cong R f_(1,*)$. 
-      
-      - $R f_(1,*) cong R f_(2,*) R j_*$ is an inverse to the base change $R f_(2,*) R j_* -> R f_(1,*) j^(-1) R j_* cong R f_(1,*)$. This is just compatibility of base change with horizontal concatenation of squares. 
+    Under this identification, the projection maps for $j_(X,!) cong R j_(X,*)$ agree. For $cal(M) = j_(X,!) cal(M)_1 oplus ell_! cal(M)_3$ on $X_2$, it is easy to check that both projections act as: 
+    $
+      j_(X,!) cal(N) Lotimes_Lambda (j_(X,!) cal(M)_1 oplus ell_! cal(M)_3) cong j_(X,!) (cal(N) Lotimes_Lambda cal(M)_1)
+    $
+    which is just the tensor on the $X_1$ component, while killing the $X_3$ component.
 
-      - The identification $j_! cong R j_*$ is compatible with the identification $j^(-1) j_! cong id cong j^(-1) R j_*$. 
+    Also, by the construction in @open-proper-compat, $T$ is inverse to the base change map: 
+    $
+      R f_(2,*) j_(X,!) (-) -> R f_(1,*) j_X^(-1) j_(X,!) (-) cong R f_(1,*) (-)
+    $
 
-    - Under this identification, the projection for $j_!$ becomes the projection for $R j_*$. Indeed, upon applying $j^(-1)$ and the monoidal isomorphism, 
-      $
-        P: R j_* (-) Lotimes_Lambda cal(L) -> R j_* (- Lotimes_Lambda j^(-1) cal(L))
-      $
-      becomes $j^(-1) R j_* (-) Lotimes_Lambda j^(-1) cal(L) -> - Lotimes_Lambda j^(-1) cal(L)$ a counit. Identifying $j^(-1) R j_*$ makes this the identity. 
-
-      On the other hand, upon applying $j^(-1)$ and the monoidal isomorphism, 
-      $
-        P_!: j_! (-) Lotimes_Lambda cal(L) -> j_! (- Lotimes_Lambda j^(-1) cal(L))
-      $
-      becomes the identity on $- Lotimes_Lambda j^(-1) cal(L)$ too, by compatibility of $P_!$ with base change. We have thus verified this claim.  
-
-    Now with these two claims, the desired equality just becomes the compatibility of projection for $R f_*$ with composition. 
+    Consequently, the first path in the lemma is the inverse of the base change along the diagram, then the successive projection for $R f_(2,*)$ and $R j_(X,*)$. The second path is the projection for $R f_(1,*)$, then the inverse of the base change along the diagram. The two paths agree by compatibility of the projection map with composition, applied to $f_1 = f_2 compose j_X$, and also base change compatibility of the projection map.
   ]
 ]
 
@@ -713,23 +698,13 @@ Next, from the projection formula, we derive the Kunneth formula.
 
   - Step 1. Suppose that in the given Cartesian diagram, $f_2$ is an open immersion. Then we claim that the Kunneth map in this case is symmetric. #h(1fr)
   
-    Indeed, by proper base change and compatibility with arbitrary base change, it suffices to prove symmetry upon base changing to a geometric point $ol(y)$ of $Y$. If $ol(y)$ is not in $X_2$, then the stalks of both sides of $R f_(1,!) cal(K)_1 Lotimes R f_(2,!) cal(K)_2 -> R f_! (p_1^(-1) cal(K)_1 Lotimes p_2^(-1) cal(K)_2)$ are zero, and symmetry is automatic. Thus, it suffices to prove symmetry upon base changing to a geometric point of $Y$ in $X_2$. In this case, the base changed diagram is: 
-    // https://q.uiver.app/#r=typst&q=WzAsNCxbMCwwLCJYIl0sWzEsMCwiWCJdLFswLDEsIlNwZWMoaykiXSxbMSwxLCJTcGVjKGspIl0sWzAsMSwiIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG91YmxlIGJhcnJlZCJ9fX1dLFsyLDMsIiIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRvdWJsZSBiYXJyZWQifX19XSxbMCwyLCJmIiwyXSxbMSwzLCJmIl1d
-    #align(center, diagram({
-      node((0, 0), [$X$])
-      node((1, 0), [$X$])
-      node((0, 1), [$Spec(k)$])
-      node((1, 1), [$Spec(k)$])
-      edge((0, 0), (1, 0), "=")
-      edge((0, 1), (1, 1), "=")
-      edge((0, 0), (0, 1), [$f$], label-side: right, "->")
-      edge((1, 0), (1, 1), [$f$], label-side: left, "->")
-    }, spacing: (1.5em, 3em)))
-    for a separably closed field $k$. The Kunneth map in this case is simply the projection map: 
+    Indeed, upon pulling back along a complementary closed immersion of $f_2$, both sides of the Kunneth map becomes zeroes, and so the Kunneth map is obtained by applying $f_(2,!)$ to its pullback along $f_2^(-1)$. Thus by compatibility of the Kunneth map with base change, it suffices to prove the symmetry of the Kunneth map on the diagram base changed along $f_2$. 
+    
+    That is, it suffices to show that the Kunneth map is symmetric when $f_2 = p_1 = id$ and $p_2 = f_1$. Indeed, in this case the Kunneth map is: 
     $
-      R f_! cal(K)_1 Lotimes cal(K)_2 -> R f_! (cal(K)_1 Lotimes f^(-1) cal(K)_2)
+      R f_(1,!) cal(K)_1 Lotimes_Lambda cal(K)_2 cong R f_(1,!) (cal(K)_1 Lotimes_Lambda f_1^(-1) cal(K)_2)
     $
-    while the Kunneth map of the transpose is also this projection map, as can be checked by definition. Thus symmetry is automatic. 
+    the projection map, while the Kunneth map defined for the transposed diagram is still this projection map.
 
   - Step 2. In the general case, pick compactifications $X_i ->^(j_i) ol(X)_i ->^(ol(f)_i) Y$, and we may split the original Cartesian square into a $3 times 3$ Cartesian diagram: 
     // https://q.uiver.app/#r=typst&q=WzAsOSxbMCwwLCJYIl0sWzEsMCwiWl8xIl0sWzIsMCwiWF8xIl0sWzAsMSwiWl8yIl0sWzEsMSwib2woWCkiXSxbMiwxLCJvbChYKV8xIl0sWzAsMiwiWF8yIl0sWzEsMiwib2woWClfMiJdLFsyLDIsIlkiXSxbNSw4LCJvbChmKV8xIiwxXSxbNyw4LCJvbChmKV8yIiwxXSxbNCw1LCJvbChwKV8xIiwxXSxbNCw3LCJvbChwKV8yIiwxXSxbMiw1LCJqXzEiLDFdLFs2LDcsImpfMiIsMV0sWzEsNCwiZ18xIiwxXSxbMyw0LCJnXzIiLDFdLFsxLDIsInNfMSIsMV0sWzMsNiwic18yIiwxXSxbMCwxLCJxXzEiLDFdLFswLDMsInFfMiIsMV1d

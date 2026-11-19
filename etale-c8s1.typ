@@ -510,12 +510,12 @@ The main reduction result is now stated in the following theorem.
     $
     - By $P(Z)$, the relative base change $g_Y^(-1) R f_* i_* R i^! cal(K) Lotimes_Lambda cal(L)_Y -> R f'_* (g_X^(-1) i_* R i^! cal(K) Lotimes_Lambda cal(L)_X)$ is an isomorphism. 
 
-    - Since $U$ is affine, $j: U -> X$ and $j compose f: U -> Y$ are both separated between finite type $S$-schemes. Thus by the separated case, 
+    - Since $U$ is affine, $j: U -> X$ and $f compose j: U -> Y$ are both separated between finite type $S$-schemes. Thus by the separated case, 
       $
         g_Y^(-1) R f_* R j_* j^(-1) cal(K) Lotimes_Lambda cal(L)_Y cong R f'_* R j'_* (g_U^(-1) j^(-1) cal(K) Lotimes_Lambda cal(L)_U) cong R f'_* (g_X^(-1) R j_* j^(-1) cal(K) Lotimes_Lambda cal(L)_X) 
       $
 
-    These two isomorphisms together with the extension by zero triangle establishes the isomorphism $g_Y^(-1) R f_* cal(K) Lotimes_Lambda cal(L)_Y cong R f'_* (g_X^(-1) cal(K) Lotimes_Lambda cal(L)_X)$.
+    These two isomorphisms together with the sections with support triangle establishes the isomorphism $g_Y^(-1) R f_* cal(K) Lotimes_Lambda cal(L)_Y cong R f'_* (g_X^(-1) cal(K) Lotimes_Lambda cal(L)_X)$.
   ]
 
   Step 4. It suffices to deal with the case where $f$ is replaced by $j: xi -> X$, the inclusion of the generic point of $X$, where $X$ is the normalization of a finite type integral (not necessarily affine) $S$-scheme in the algebraic closure of its function field. 
@@ -571,7 +571,7 @@ The main reduction result is now stated in the following theorem.
     $
       g_Y^(-1) R f_* R j_* ul(Lambda) Lotimes_Lambda cal(L)_Y cong R f'_* R j'_* cal(L)_P cong R f'_* (g_X^(-1) R j_* ul(Lambda) Lotimes_Lambda cal(L)_X)
     $
-    By the compatibility of relative base change with composition, this isomorphism is identified with the relative base change of the sheaf $R j_* ul(Lambda) = ol(x)_* ul(Lambda)$ along $cal(F)$. We may thus conclude that: 
+    By the compatibility of relative base change with composition, this isomorphism is identified with the relative base change of the sheaf $R j_* ul(Lambda) = ol(x)_* ul(Lambda)$ along $f$. We may thus conclude that: 
 
     - The relative base change: 
       $

@@ -147,7 +147,7 @@ We are now ready to prove Grothendieck vanishing in dimension 1.
   $
   with $cal(R)$ supported on $X - U$, a finite set of closed points. By @supp-of-torsion-sheaf-dim-0, $cal(R)$ is acyclic. Thus, for all $q >= 2$, 
   $
-    H^q (X, cal(F)) cong H^q (oplus.big_(j=1)^r i_(j,*) i_j^(-1) cal(F)) cong oplus.big_(j=1)^r H^q (X_r, i_j^(-1) cal(F))
+    H^q (X, cal(F)) cong H^q (oplus.big_(j=1)^r i_(j,*) i_j^(-1) cal(F)) cong oplus.big_(j=1)^r H^q (X_j, i_j^(-1) cal(F))
   $
   which vanishes when $q >= 3$, or $q = 2$ and $cal(F) = ul(ZZ\/p^a)$, if we assume the irreducible case. 
 

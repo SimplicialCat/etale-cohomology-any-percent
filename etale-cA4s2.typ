@@ -515,7 +515,7 @@ We continue the setup to turn @artin-approx-smoothing-reduction into a more usab
     $
       frak(p) C = (f_1, dots.c, f_(m-d)) C + frak(p)^2 C
     $
-    By Nakayama, the forces:
+    By Nakayama, this forces:
     $
       frak(p) C = (f_1, dots.c, f_(m-d)) C
     $
