@@ -39,17 +39,17 @@ For each tracked `etale-c*.typ` file selected above:
 
 1. Read the whole file before doing anything else.
 2. Dispatch `allocate.md` to a subagent:
-   - **6.1 Sol, Extra high**;
+   - **6.2 Sol, Extra high**;
    - give it the whole file and the changed line spans;
    - require logical ranges that cover every changed line;
    - if its output is invalid, use one range covering the changed spans.
 3. For each range, dispatch:
-   - `surface.md` — **6.1 Sol, High**;
-   - `math.md` — **6.1 Sol, Extra high**.
+   - `surface.md` — **6.2 Sol, High**;
+   - `math.md` — **6.2 Sol, Extra high**.
 
    Give each subagent the **whole file**, not only the range, and tell it to report only inside its range. Run the two passes in parallel. Save raw output under `qa/raw/`.
 4. Validate each finding: its file must still be Git-tracked and in scope; `old` must occur verbatim in the file and its line must be in the range. Drop invalid entries.
-5. Dispatch `verify-math.md` to a separate **6.1 Sol, Extra high** subagent:
+5. Dispatch `verify-math.md` to a separate **6.2 Sol, Extra high** subagent:
    - give it the whole file and all math findings for that file;
    - keep `confirm`, remove `veto`;
    - write vetoed entries to `qa/vetoed/vetoed.json`.
