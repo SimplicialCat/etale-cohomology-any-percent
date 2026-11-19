@@ -2,7 +2,7 @@
 #import "etale-nonmath.typ" as nonmath
 
 #show: void-style
-// #assert(sys.version >= version(0, 15, 0), message: "This document requires Typst 0.15.0 or above to compile")
+#assert(sys.version >= version(0, 15, 0), message: "This document requires Typst 0.15.0 or above to compile")
 
 #let all-sections = (
   (1, (0,), <chapter-intro>),
