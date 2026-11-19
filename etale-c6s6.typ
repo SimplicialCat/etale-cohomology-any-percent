@@ -128,14 +128,14 @@
 We are now ready to prove Grothendieck vanishing in dimension 1. 
 
 #theorem(name: <grothendieck-vanishing-in-dim-1>)[
-  Let $X$ be any finite type scheme of dimension $<=1$ over a separably closed field $k$, and $cal(F) in cAb(X_et)$ be a torsion sheaf. Then for all $q >= 3$, 
+  Let $X$ be any separated of finite type scheme over a separably closed field $k$ of dimension $<=1$, and $cal(F) in cAb(X_et)$ be a torsion sheaf. Then for all $q >= 3$, 
   $
     H^q (X, cal(F)) = 0
   $
-  Furthermore, if $"char"(k) = p > 0$ and $cal(F) = ul(ZZ\/p^a)$, then the same vanishing holds for $q = 2$. 
+  Furthermore, if $"char"(k) = p > 0$, and $cal(F) = ul(ZZ\/p^a)$, then the same vanishing holds for $q = 2$. 
 ]
 #proof[
-  By topological equivalence, we may base change from the separably closed field $k$ to $ol(k)$, and assume that $k$ is algebraically closed.
+  By topological invariance, we may base change from the separably closed field $k$ to $ol(k)$, and assume that $k$ is algebraically closed.
 
   Suppose that we are done with the case that $X$ is irreducible. Then in the general case, let $X_1, dots.c, X_r$ be the irreducible components of $X$, $i_j: X_j -> X$ be the closed immersions, and $U$ be the open subset of $X$ consisting of points belonging to a unique irreducible component. Then consider the natural map: 
   $
@@ -151,7 +151,7 @@ We are now ready to prove Grothendieck vanishing in dimension 1.
   $
   which vanishes when $q >= 3$, or $q = 2$ and $cal(F) = ul(ZZ\/p^a)$, if we assume the irreducible case. 
 
-  Thus, we are reduced to the case where $X$ is irreducible. By topological invariance, we may replace $X$ with its reduction and assume that $X$ is integral. Then $X$ is either a point $Spec(k)$ or a curve over $k$. The case of a point is done by @struct-of-spec-omega-et, and the case of a curve is done by @grothendieck-vanishing-for-curves. 
+  Thus, we are reduced to the case where $X$ is irreducible. By topological invariance, we may replace $X$ with its reduction and assume that $X$ is integral. Separatedness is preserved under taking irreducible components or reductions, so $X$ is also separated. Thus $X$ is a variety, hence either a point $Spec(k)$ or a curve over $k$. The case of a point is done by @struct-of-spec-omega-et, and the case of a curve is done by @grothendieck-vanishing-for-curves. 
 ]
 
 Next, we deal with Artin vanishing in dimension 1. 

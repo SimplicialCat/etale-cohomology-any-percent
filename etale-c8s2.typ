@@ -669,18 +669,15 @@ Now that we have seen the intimate connection between local acyclicity and base 
 
     - Both sides vanish for $q < b_1$. Furthermore, they both commutes with directed limits. Suppose that $cal(F) = dirlim_lambda cal(F)_lambda$. Then: 
 
-      - 
+      - By @dirhlim-and-bounded-flat-resln, $dirhlim_lambda (cal(K) Lotimes_Lambda f^(-1) cal(F)_lambda) cong cal(K) Lotimes_Lambda f^(-1) cal(F)$. Thus by @derived-relative-limit-formula-composite,
         $
-          dirhlim_lambda R f_* (cal(K) Lotimes_Lambda f^(-1) cal(F)_lambda) cong R f_* (dirhlim_lambda (cal(K) Lotimes_Lambda f^(-1) cal(F)_lambda)) cong R f_* (cal(K) Lotimes_Lambda f^(-1) cal(F))
-        $
-        by @derived-relative-limit-formula-composite then @dirhlim-and-bounded-flat-resln. 
+          dirhlim_lambda R f_* (cal(K) Lotimes_Lambda f^(-1) cal(F)_lambda) cong R f_* (cal(K) Lotimes_Lambda f^(-1) cal(F))
+        $ 
 
-      - 
+      - By @dirhlim-and-bounded-flat-resln, $dirhlim_lambda (cal(K) Lotimes_Lambda f^(-1) cal(F)_lambda)|_(X_(ol(s))) cong (cal(K) Lotimes_Lambda f^(-1) cal(F))|_(X_(ol(s)))$. Thus by @derived-absolute-limit-formula-composite, 
         $
-          dirhlim_lambda R Gamma (X_(ol(s)), (cal(K) Lotimes_Lambda f^(-1) cal(F)_lambda)|_(X_(ol(s)))) cong R Gamma(X_(ol(s)), dirhlim_lambda (cal(K) Lotimes_Lambda f^(-1) cal(F)_lambda)|_(X_(ol(s)))) cong R Gamma(X_(ol(s)), cal(K) Lotimes_Lambda f^(-1) cal(F))|_(X_(ol(s)))
+          dirhlim_lambda R Gamma (X_(ol(s)), (cal(K) Lotimes_Lambda f^(-1) cal(F)_lambda)|_(X_(ol(s)))) cong R Gamma(X_(ol(s)), (cal(K) Lotimes_Lambda f^(-1) cal(F))|_(X_(ol(s))))
         $
-        by @derived-absolute-limit-formula-composite then @dirhlim-and-bounded-flat-resln. 
-
     - Every sheaf of $Lambda$-modules on $S$ is the direct limit of constructible sheaves of $Lambda$-modules. 
 
     - This base change map is an isomorphism when applied to sheaves of the shape $ol(s)_* ul(Lambda)$ for an algebraic geometric point $ol(s)$ of $S$, or to finite direct sums of them. Meanwhile, by @constructible-godement-resolution, every constructible sheaf of $Lambda$-modules on $S$ embeds into some $oplus.big_(i=1)^r ol(s_i)_* ul(Lambda)$ for geometric points $ol(s_1), dots.c, ol(s_r)$ of $S$, which may be taken to be algebraic. 
@@ -727,7 +724,7 @@ Now that we have seen the intimate connection between local acyclicity and base 
   
   We would like to apply the previous lemma to $f_(ol(t))$, but unfortunately, $X_(ol(t)), Y_(ol(t))$ may fail to be noetherian due to the unfortunate fact that the tensor product of two noetherian rings need not be noetherian. This makes the previous lemma inapplicable. As a replacement, we need a limit argument. 
 
-  Let $ol(t)$ lie above $t in S$, and let $L\/k(t)$ be a finite field extension. 
+  Let $ol(t)$ lie above $t in S$, and let $L\/k(t)$ be a finite intermediate extension of $k(ol(t))\/k(t)$. 
   
   Now $Spec(L) -> S$ is the composition $Spec(L) -> Spec(k(t)) -> Spec(cal(O)_(S,t)) -> S$, in which the first two steps are finite, and $Spec(cal(O)_(S,t)) -> S$ is a projective limit of the inclusions of all affine neighborhoods of $t in S$ into $S$, where these inclusions are necessarily quasi-finite. Thus by applying @loc-acyc-and-limits-of-qfinite to the three component maps, we may conclude that $f_L: X_L -> Y_L$ is locally acyclic relative to $cal(K)|_(X_L)$. 
   

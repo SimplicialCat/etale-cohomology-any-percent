@@ -39,7 +39,7 @@
   cA6: "Brown representability"
 )
 #let active-sections = if (compile-cfg.ide-mode) {
-  all-sections.filter(chap => chap.at(0) in (9,))
+  all-sections.filter(chap => chap.at(0) in (7,))
 } else {all-sections}
 
 #let doc-body = for (chap-name, chap-arr, chap-lab) in active-sections {

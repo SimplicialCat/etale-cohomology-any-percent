@@ -72,8 +72,8 @@ Throughout this chapter, $Lambda$ is assumed to be a torsion ring.
   For a scheme $X$, a geometric point $ol(x)$ above $x in X$ is called an *algebraic geometric point*, if $k(ol(x))$ is an algebraic closure of $k(x)$. 
 ]
 
-#notation(name: <constructible-finite-tor-derived-category>)[
-  We use the notation $D^b_#[ctf] (X_et, Lambda)$ to denote the triangulated category of bounded complexes of etale sheaves of $Lambda$-modules on $X$ with constructible cohomology sheaves, and with finite Tor-dimension (i.e. the functor $cal(K) Lotimes_Lambda -$ is bounded above and below). Equivalently, such a complex is in $D^b_c$ and has a bounded flat resolution. 
+#definition(name: <constructible-finite-tor-derived-category>)[
+  We use $D^b_#[ctf] (X_et, Lambda)$ to denote the triangulated category of bounded complexes of etale sheaves of $Lambda$-modules on $X$ with constructible cohomology sheaves, and with finite Tor-dimension (i.e. the functor $cal(K) Lotimes_Lambda -$ is bounded above and below). Equivalently, such a complex is in $D^b_c$ and has a bounded flat resolution. 
 
   #lemma(name: <resolution-of-ctf-complexes>)[
     (#cite-stacks("03TT")[Lemma 59.77.3]) Let $Lambda$ be noetherian and $X$ be a noetherian scheme, and let $cal(K) in D^b_#[ctf] (X_et, Lambda)$ satisfy that $cal(K) Lotimes_Lambda cal(G) in D_([a,b]) (X_et, Lambda)$ for all sheaves $cal(G) in cAb(X_et, Lambda)$. Then $cal(K)$ can be represented by a complex: 
@@ -124,6 +124,42 @@ Throughout this chapter, $Lambda$ is assumed to be a torsion ring.
       0 -> cal(F)^a -> dots.c -> cal(F)^(b-1) -> cal(F) -> 0
     $
     This completes the induction.
+  ]
+
+  The bounded flat resolutions of complexes in $D^b_#[ctf]$ are especially useful, since tensoring with them commutes with homotopy directed limits, as stated in the following lemma. 
+  #lemma(name: <dirhlim-and-bounded-flat-resln>)[
+    Let $T$ be a scheme, and ${cal(M)_i}_(i in I)$ be a directed system in $D_(>=a) (T_et, Lambda)$, with compatible maps to $cal(M) in D_(>=a) (T_et, Lambda)$ s.t: 
+    $
+      dirhlim_(i in I) cal(M)_i cong cal(M)
+    $
+    Then for any bounded complex $cal(P)^bullet$ of flat sheaves on $T$:
+    $
+      dirhlim_(i in I) (cal(M)_i Lotimes_Lambda cal(P)^bullet) cong cal(M) Lotimes_Lambda cal(P)^bullet
+    $
+  ]
+  #proof[
+    We want to prove the statements: 
+    $
+      dirlim_(i in I) h^q (cal(M)_i Lotimes_Lambda cal(P)^bullet) cong h^q (cal(M) Lotimes_Lambda cal(P)^bullet)
+    $
+
+    We perform induction on the length of the flat resolution. Let $cal(P)^bullet$ be supported on $[b_1, b_2]$, and we induct on $b_2 - b_1$. The base case $b_2 - b_1 < 0$ is vacuous. Consider the stupid truncation: 
+    $
+      cal(P)^(b_2)[-b_2] -> cal(P)^bullet -> sigma_(<=b_2-1) cal(P)^bullet ->^(+1)
+    $
+    Now: 
+    $
+      dirlim_i h^q (cal(M)_i Lotimes_Lambda sigma_(<=b_2-1) cal(P)^bullet) cong h^q (cal(M) Lotimes_Lambda sigma_(<=b_2-1) cal(P)^bullet)
+    $
+    by the inductive hypothesis, and: 
+    $
+      dirlim_i h^q (cal(M)_i Lotimes_Lambda cal(P)^(b_2) [-b_2]) cong dirlim_i (h^(q-b_2) (cal(M)_i) otimes_Lambda cal(P)^(b_2)) cong h^(q-b_2) (cal(M)) otimes_Lambda cal(P)^(b_2) cong h^q (cal(M) Lotimes_Lambda cal(P)^(b_2) [-b_2])
+    $
+    by assumption. By applying five lemma to the map between the long exact sequences obtained by applying both $dirlim_i h^q (cal(M)_i Lotimes_Lambda -)$ and $h^q (cal(M) Lotimes_Lambda -)$ to the stupid truncation triangle, we may conclude that: 
+    $
+      dirlim_i h^q (cal(M)_i Lotimes_Lambda cal(P)^bullet) cong h^q (cal(M) Lotimes_Lambda cal(P)^bullet)
+    $
+    for each $q in ZZ$. 
   ]
 ]
 
@@ -337,43 +373,6 @@ The main reduction result is now stated in the following theorem.
 
   Thus, both sides of $g_Y^(-1) R f_* cal(K) Lotimes_Lambda cal(L)_Y -> R f'_* (g_X^(-1) cal(K) Lotimes_Lambda cal(L)_X)$ are bounded below in $cal(K)$. By the way-out lemma, it suffices to deal with the case that $cal(K) = cal(F) in cAb(X_et, Lambda)$ is just a single sheaf. From now on we always assume $cal(K) = cal(F)$ is a single sheaf. 
 
-  For passages to limits, we use @derived-relative-limit-formula-composite together with the following lemma. 
-  
-  #lemma(name: <dirhlim-and-bounded-flat-resln>)[
-    Let $T$ be a scheme, and ${cal(M)_i}_(i in I)$ be a directed system in $D_(>=a) (T_et, Lambda)$, with compatible maps to $cal(M) in D_(>=a) (T_et, Lambda)$ s.t: 
-    $
-      dirhlim_(i in I) cal(M)_i cong cal(M)
-    $
-    Then for any bounded complex $cal(P)^bullet$ of flat sheaves on $T$:
-    $
-      dirhlim_(i in I) (cal(M)_i Lotimes_Lambda cal(P)^bullet) cong cal(M) Lotimes_Lambda cal(P)^bullet
-    $
-  ]
-  #proof[
-    We want to prove the statements: 
-    $
-      dirlim_(i in I) h^q (cal(M)_i Lotimes_Lambda cal(P)^bullet) cong h^q (cal(M) Lotimes_Lambda cal(P)^bullet)
-    $
-
-    We perform induction on the length of the flat resolution. Let $cal(P)^bullet$ be supported on $[b_1, b_2]$, and we induct on $b_2 - b_1$. The base case $b_2 - b_1 < 0$ is vacuous. Consider the stupid truncation: 
-    $
-      cal(P)^(b_2)[-b_2] -> cal(P)^bullet -> sigma_(<=b_2-1) cal(P)^bullet ->^(+1)
-    $
-    Now: 
-    $
-      dirlim_i h^q (cal(M)_i Lotimes_Lambda sigma_(<=b_2-1) cal(P)^bullet) cong h^q (cal(M) Lotimes_Lambda sigma_(<=b_2-1) cal(P)^bullet)
-    $
-    by the inductive hypothesis, and: 
-    $
-      dirlim_i h^q (cal(M)_i Lotimes_Lambda cal(P)^(b_2) [-b_2]) cong dirlim_i (h^(q-b_2) (cal(M)_i) otimes_Lambda cal(P)^(b_2)) cong h^(q-b_2) (cal(M)) otimes_Lambda cal(P)^(b_2) cong h^q (cal(M) Lotimes_Lambda cal(P)^(b_2) [-b_2])
-    $
-    by assumption. By applying five lemma to the map between the long exact sequences obtained by applying both $dirlim_i h^q (cal(M)_i Lotimes_Lambda -)$ and $h^q (cal(M) Lotimes_Lambda -)$ to the stupid truncation triangle, we may conclude that: 
-    $
-      dirlim_i h^q (cal(M)_i Lotimes_Lambda cal(P)^bullet) cong h^q (cal(M) Lotimes_Lambda cal(P)^bullet)
-    $
-    for each $q in ZZ$. 
-  ]
-
   Fix a bounded flat resolution $cal(P)_S^bullet$ of $cal(L)_S$ supported on $[b_1, b_2]$, and denote its pullbacks to $X'$ and $Y'$ by $cal(P)_X^bullet$ and $cal(P)_Y^bullet$. They are flat resolutions of $cal(L)_X$ and $cal(L)_Y$ respectively, supported on $[b_1, b_2]$. 
 
   Step 1. It suffices to deal with the case where $X -> Y$ is of finite presentation. 
@@ -519,7 +518,7 @@ The main reduction result is now stated in the following theorem.
     These two isomorphisms together with the extension by zero triangle establishes the isomorphism $g_Y^(-1) R f_* cal(K) Lotimes_Lambda cal(L)_Y cong R f'_* (g_X^(-1) cal(K) Lotimes_Lambda cal(L)_X)$.
   ]
 
-  Step 4. Conclusion of proof. 
+  Step 4. It suffices to deal with the case where $f$ is replaced by $j: xi -> X$, the inclusion of the generic point of $X$, where $X$ is the normalization of a finite type integral (not necessarily affine) $S$-scheme in the algebraic closure of its function field. 
 
   #proof[
     Let's assume for now that every finite $Lambda$-module embeds into a finite free $Lambda$-module. 
@@ -561,7 +560,7 @@ The main reduction result is now stated in the following theorem.
     $
       & g_X^(-1) R j_* ul(Lambda) Lotimes_Lambda cal(L)_X cong g_X^(-1) R i_* R q_* ul(Lambda) Lotimes_Lambda cal(L)_X \
       cong& R i'_* (g_T^(-1) R q_* ul(Lambda) Lotimes_Lambda cal(L)_T) #[by @finite-bc-in-the-limit] \
-      cong& R i'_* R q'_* cal(L)_P #[by the hypothesis] \
+      cong& R i'_* R q'_* cal(L)_P #[by the assumption] \
       cong& R j'_* cal(L)_P
     $
     is an isomorphism. Meanwhile, $f compose j: ol(x) -> Y$ is also the inclusion of an algebraic geometric point, so by the same argument, the relative base change: 
@@ -604,5 +603,37 @@ The main reduction result is now stated in the following theorem.
     - By @constructible-godement-resolution, every constructible sheaf $cal(F)$ of $Lambda$-module on $X$ admits an embedding $cal(F) arrow.hook oplus.big_(i=1)^r ol(x_i)_* ul(Lambda)$ for geometric points $ol(x_1), dots.c, ol(x_r)$, which may be taken to be algebraic. We have shown that the relative base change map is an isomorphism for sheaves of the shape $oplus.big_(i=1)^r ol(x_i)_* ul(Lambda)$. 
 
     Thus applying the abstract devissage @abstract-devissage concludes the proof in the case that every finite $Lambda$-module embeds into a finite free one. In case that we don't have this assumption, the proof is identical - use the same argument to show that the relative base change is an isomorphism for sheaves of the shape $ol(x)_* ul(M)$ for finite $Lambda$-modules $M$, then applying @constructible-godement-resolution for @abstract-devissage. 
+  ]
+
+  Step 5. Concluding the proof. 
+  #proof[
+    Let $j: xi -> X$ be the inclusion of the generic point of the normalization of an integral finite type $S$-scheme $X_0$ in the algebraic closure of its function field. We want to reduce to the case that $X_0$ is affine. Indeed, for any affine open $U_0 subset X_0$, form the Cartesian diagram: 
+    // https://q.uiver.app/#r=typst&q=WzAsNixbMCwwLCJQJyJdLFswLDEsInhpIl0sWzEsMSwiVSJdLFsyLDEsIlgiXSxbMiwwLCJYJyJdLFsxLDAsIlUnIl0sWzEsMiwicSIsMl0sWzIsMywiZWxsIiwyXSxbMCw1LCJxJyJdLFs1LDQsImVsbCciXSxbNCwzLCJnX1giXSxbNSwyLCJnX1UiXSxbMCwxLCJnX1AiLDJdXQ==
+    #align(center, diagram({
+      node((0, 0), [$P'$])
+      node((0, 1), [$xi$])
+      node((1, 1), [$U$])
+      node((2, 1), [$X$])
+      node((2, 0), [$X'$])
+      node((1, 0), [$U'$])
+      node((0.3, 0.3), $cart$)
+      node((1.3, 0.3), $cart$)
+      edge((0, 1), (1, 1), [$q$], label-side: right, "->")
+      edge((1, 1), (2, 1), [$ell$], label-side: right, "->")
+      edge((0, 0), (1, 0), [$q'$], label-side: left, "->")
+      edge((1, 0), (2, 0), [$ell'$], label-side: left, "->")
+      edge((2, 0), (2, 1), [$g_X$], label-side: left, "->")
+      edge((1, 0), (1, 1), [$g_U$], label-side: left, "->")
+      edge((0, 0), (0, 1), [$g_P$], label-side: right, "->")
+    }))
+    Then $U$ is the normalization of $U_0$ in $k(xi)$, and by the hypothesis, relative base change is an isomorphism along $q$. 
+
+    Now for $M = Lambda$, or for any finite $Lambda$-module $M$ if we do not assume that every finite $Lambda$-module embeds into a finite free one: 
+    $
+      & ell'^(-1) (g_X^(-1) R j_* ul(M) Lotimes_Lambda cal(L)_X) cong g_U^(-1) ell^(-1) R ell_* R q_* ul(M) Lotimes_Lambda ell'^(-1) cal(L)_X cong g_U^(-1) R q_* ul(M) Lotimes_Lambda cal(L)_U\
+      cong & R q'_* (ul(M) Lotimes_Lambda cal(L)_P) #[by the hypothesis] \
+      cong & ell'^(-1) R ell'_* R q'_* (ul(M) Lotimes_Lambda cal(L)_P) cong ell'^(-1) R j'_* (ul(M) Lotimes_Lambda cal(L)_P)
+    $
+    Thus the relative base change $g_X^(-1) R j_* ul(M) Lotimes_Lambda cal(L)_X -> R j'_* (ul(M) Lotimes_Lambda cal(L)_P)$ restricts to isomorphisms on an open cover ${U'}$ of $X'$, hence is an isomorphism. 
   ]
 ]
