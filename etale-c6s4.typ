@@ -34,11 +34,12 @@ In this section, we prove (Shift), an intermediate step that allows us to transf
   is bijective. In other words, proper base change along $X -> Spec(A)$ always holds in degree $0$. 
 ]
 #proof[
-  By @pbc-dev-lem3, it suffices to prove this when $cal(F) = ul(ZZ\/n)$. Now: 
+  By the abstract devissage @abstract-devissage applied with $a = b = 0$, with every torsion sheaf written as a direct limit of its constructible subsheaves, and constructible sheaves embedded into $h_* ul(ZZ\/n)$ for $h: tilde(X) -> X$ finite, it suffices to prove this when $cal(F) = h_* ul(ZZ\/n)$. Base change $h$ to $h_0: tilde(X)_0 -> X_0$, we see: 
   $
-    Gamma(X, ul(ZZ\/n)) = (ZZ\/n)^(oplus pi_0 (X)), Gamma(X_0, ul(ZZ\/n)) = (ZZ\/n)^(oplus pi_0 (X_0))
+    Gamma(X, h_* ul(ZZ\/n)) = Gamma(tilde(X), ul(ZZ\/n)) = (ZZ\/n)^(oplus pi_0 (tilde(X))) \
+    Gamma(X_0, (h_* ul(ZZ\/n))|_(X_0)) = Gamma(X_0, h_(0,*) ul(ZZ\/n)) = Gamma(tilde(X)_0, ul(ZZ\/n)) = (ZZ\/n)^(oplus pi_0 (tilde(X)_0))
   $
-  where the natural restriction is induced by the morphism $pi_0 (X_0) -> pi_0 (X)$ on connected components, which is a bijection by @pbc-seed-precursor-0. We are thereby done. 
+  where the natural restriction is induced by the map $pi_0 (tilde(X)_0) -> pi_0 (tilde(X))$ on connected components. This map on connected components is a bijection by @pbc-seed-precursor-0. We are thereby done. 
 ]
 
 #lemma(name: <pbc-and-injectives-of-ab-zn>)[
@@ -53,7 +54,7 @@ In this section, we prove (Shift), an intermediate step that allows us to transf
   - For every $n >= 1$ and every injective object $cal(I) in cAb(X_et, ZZ\/n)$, $H^q (X_0, cal(I)|_(X_0)) = 0$ for $q >= 1$. 
 ]
 #proof[
-  ($==>$) is automatic by @etale-zn-sheaves-first-props (3), so it suffices to prove ($<==$). By @pbc-dev-lem1, we may assume that $cal(F)$ is constructible, hence $n$-torsion for some $n>=1$. Now pick an injective resolution: 
+  ($==>$) is automatic by @etale-zn-sheaves-first-props (3), so it suffices to prove ($<==$). By the abstract devissage @abstract-devissage applied with every torsion sheaf written as a direct limit of its constructible subsheaves, and constructible sheaves embedded into themselves, we may assume that $cal(F)$ is constructible, hence $n$-torsion for some $n>=1$. Now pick an injective resolution: 
   $
     0 -> cal(F) -> cal(I)^bullet
   $

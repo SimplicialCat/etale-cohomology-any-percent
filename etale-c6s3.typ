@@ -119,9 +119,9 @@ First, we prove an abstract lemma that serves as the framework of devissage.
 
   - For every $q >= a$, every object $A in cal(A)_0$ admits embeddings $A arrow.hook C, D$ into objects $C, D in cal(A)$ so tha $eta^q_C: S^q (C) -> T^q (C)$ is injective, and $eta^q_D: S^q (D) -> T^q (D)$ is surjective. 
 
-  Then $eta^q: S^q -> T^q$ is an natural isomorphism of $delta$-functors.
+  Then $eta^q: S^q -> T^q$ is a natural isomorphism of $delta$-functors.
 
-  If we may take $cal(A)_0 = cal(A)$ itself, then the requirements on commuting with directed limits and on (Ab5) may be omitted.
+  If we may take $cal(A)_0 = cal(A)$ itself, then the requirements on commuting with directed limits and on (Ab5) may be omitted. If the fourth bullet is weakened to require $a <= q <= b$ for a fixed $b$, then $eta^q: S^q -> T^q$ remains a natural isomorphism for $q <= b$. 
 ]
 #proof[
   Let $P(n)$ denote the statement that: 
